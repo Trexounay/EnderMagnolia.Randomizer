@@ -17,26 +17,6 @@
 namespace SDK
 {
 
-// Function WBP_ChoiceMarker.WBP_ChoiceMarker_C.SetChoiceCount
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// int32                                   ChoiceCount                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_ChoiceMarker_C::SetChoiceCount(int32 ChoiceCount)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_ChoiceMarker_C", "SetChoiceCount");
-
-	Params::WBP_ChoiceMarker_C_SetChoiceCount Parms{};
-
-	Parms.ChoiceCount = ChoiceCount;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function WBP_ChoiceMarker.WBP_ChoiceMarker_C.SetSelectedChoiceIndex
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -52,6 +32,26 @@ void UWBP_ChoiceMarker_C::SetSelectedChoiceIndex(int32 SelectedChoiceIndex)
 	Params::WBP_ChoiceMarker_C_SetSelectedChoiceIndex Parms{};
 
 	Parms.SelectedChoiceIndex = SelectedChoiceIndex;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_ChoiceMarker.WBP_ChoiceMarker_C.SetChoiceCount
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int32                                   ChoiceCount                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_ChoiceMarker_C::SetChoiceCount(int32 ChoiceCount)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_ChoiceMarker_C", "SetChoiceCount");
+
+	Params::WBP_ChoiceMarker_C_SetChoiceCount Parms{};
+
+	Parms.ChoiceCount = ChoiceCount;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

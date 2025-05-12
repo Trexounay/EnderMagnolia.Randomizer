@@ -17,11 +17,11 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_AbilityInstant.BP_AbilityInstant_C
-// 0x0010 (0x0790 - 0x0780)
+// 0x0010 (0x07A0 - 0x0790)
 class ABP_AbilityInstant_C : public AAbilityInstant
 {
 public:
-	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0780(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0790(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
 
 public:
 	static class UClass* StaticClass()
@@ -34,8 +34,8 @@ public:
 	}
 };
 static_assert(alignof(ABP_AbilityInstant_C) == 0x000010, "Wrong alignment on ABP_AbilityInstant_C");
-static_assert(sizeof(ABP_AbilityInstant_C) == 0x000790, "Wrong size on ABP_AbilityInstant_C");
-static_assert(offsetof(ABP_AbilityInstant_C, DefaultSceneRoot) == 0x000780, "Member 'ABP_AbilityInstant_C::DefaultSceneRoot' has a wrong offset!");
+static_assert(sizeof(ABP_AbilityInstant_C) == 0x0007A0, "Wrong size on ABP_AbilityInstant_C");
+static_assert(offsetof(ABP_AbilityInstant_C, DefaultSceneRoot) == 0x000790, "Member 'ABP_AbilityInstant_C::DefaultSceneRoot' has a wrong offset!");
 
 }
 

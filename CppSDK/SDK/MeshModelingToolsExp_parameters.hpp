@@ -135,28 +135,6 @@ static_assert(alignof(DisplaceMeshCommonProperties_GetWeightMapsFunc) == 0x00000
 static_assert(sizeof(DisplaceMeshCommonProperties_GetWeightMapsFunc) == 0x000010, "Wrong size on DisplaceMeshCommonProperties_GetWeightMapsFunc");
 static_assert(offsetof(DisplaceMeshCommonProperties_GetWeightMapsFunc, ReturnValue) == 0x000000, "Member 'DisplaceMeshCommonProperties_GetWeightMapsFunc::ReturnValue' has a wrong offset!");
 
-// Function MeshModelingToolsExp.TransferMeshToolProperties.GetSourceLODNamesFunc
-// 0x0010 (0x0010 - 0x0000)
-struct TransferMeshToolProperties_GetSourceLODNamesFunc final
-{
-public:
-	TArray<class FString>                         ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(TransferMeshToolProperties_GetSourceLODNamesFunc) == 0x000008, "Wrong alignment on TransferMeshToolProperties_GetSourceLODNamesFunc");
-static_assert(sizeof(TransferMeshToolProperties_GetSourceLODNamesFunc) == 0x000010, "Wrong size on TransferMeshToolProperties_GetSourceLODNamesFunc");
-static_assert(offsetof(TransferMeshToolProperties_GetSourceLODNamesFunc, ReturnValue) == 0x000000, "Member 'TransferMeshToolProperties_GetSourceLODNamesFunc::ReturnValue' has a wrong offset!");
-
-// Function MeshModelingToolsExp.TransferMeshToolProperties.GetTargetLODNamesFunc
-// 0x0010 (0x0010 - 0x0000)
-struct TransferMeshToolProperties_GetTargetLODNamesFunc final
-{
-public:
-	TArray<class FString>                         ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(TransferMeshToolProperties_GetTargetLODNamesFunc) == 0x000008, "Wrong alignment on TransferMeshToolProperties_GetTargetLODNamesFunc");
-static_assert(sizeof(TransferMeshToolProperties_GetTargetLODNamesFunc) == 0x000010, "Wrong size on TransferMeshToolProperties_GetTargetLODNamesFunc");
-static_assert(offsetof(TransferMeshToolProperties_GetTargetLODNamesFunc, ReturnValue) == 0x000000, "Member 'TransferMeshToolProperties_GetTargetLODNamesFunc::ReturnValue' has a wrong offset!");
-
 // Function MeshModelingToolsExp.SelectiveTessellationProperties.GetMaterialIDsFunc
 // 0x0010 (0x0010 - 0x0000)
 struct SelectiveTessellationProperties_GetMaterialIDsFunc final
@@ -211,6 +189,28 @@ public:
 static_assert(alignof(MeshVertexPaintToolUtilityActions_GetLODNamesFunc) == 0x000008, "Wrong alignment on MeshVertexPaintToolUtilityActions_GetLODNamesFunc");
 static_assert(sizeof(MeshVertexPaintToolUtilityActions_GetLODNamesFunc) == 0x000010, "Wrong size on MeshVertexPaintToolUtilityActions_GetLODNamesFunc");
 static_assert(offsetof(MeshVertexPaintToolUtilityActions_GetLODNamesFunc, ReturnValue) == 0x000000, "Member 'MeshVertexPaintToolUtilityActions_GetLODNamesFunc::ReturnValue' has a wrong offset!");
+
+// Function MeshModelingToolsExp.TransferMeshToolProperties.GetSourceLODNamesFunc
+// 0x0010 (0x0010 - 0x0000)
+struct TransferMeshToolProperties_GetSourceLODNamesFunc final
+{
+public:
+	TArray<class FString>                         ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(TransferMeshToolProperties_GetSourceLODNamesFunc) == 0x000008, "Wrong alignment on TransferMeshToolProperties_GetSourceLODNamesFunc");
+static_assert(sizeof(TransferMeshToolProperties_GetSourceLODNamesFunc) == 0x000010, "Wrong size on TransferMeshToolProperties_GetSourceLODNamesFunc");
+static_assert(offsetof(TransferMeshToolProperties_GetSourceLODNamesFunc, ReturnValue) == 0x000000, "Member 'TransferMeshToolProperties_GetSourceLODNamesFunc::ReturnValue' has a wrong offset!");
+
+// Function MeshModelingToolsExp.TransferMeshToolProperties.GetTargetLODNamesFunc
+// 0x0010 (0x0010 - 0x0000)
+struct TransferMeshToolProperties_GetTargetLODNamesFunc final
+{
+public:
+	TArray<class FString>                         ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(TransferMeshToolProperties_GetTargetLODNamesFunc) == 0x000008, "Wrong alignment on TransferMeshToolProperties_GetTargetLODNamesFunc");
+static_assert(sizeof(TransferMeshToolProperties_GetTargetLODNamesFunc) == 0x000010, "Wrong size on TransferMeshToolProperties_GetTargetLODNamesFunc");
+static_assert(offsetof(TransferMeshToolProperties_GetTargetLODNamesFunc, ReturnValue) == 0x000000, "Member 'TransferMeshToolProperties_GetTargetLODNamesFunc::ReturnValue' has a wrong offset!");
 
 }
 

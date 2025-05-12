@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_AbilityInstant_StatusEffect.BP_AbilityInstant_StatusEffect_C
-// 0x0000 (0x0790 - 0x0790)
+// 0x0000 (0x07A0 - 0x07A0)
 class ABP_AbilityInstant_StatusEffect_C final : public ABP_AbilityInstant_C
 {
 public:
@@ -31,7 +31,7 @@ public:
 	}
 };
 static_assert(alignof(ABP_AbilityInstant_StatusEffect_C) == 0x000010, "Wrong alignment on ABP_AbilityInstant_StatusEffect_C");
-static_assert(sizeof(ABP_AbilityInstant_StatusEffect_C) == 0x000790, "Wrong size on ABP_AbilityInstant_StatusEffect_C");
+static_assert(sizeof(ABP_AbilityInstant_StatusEffect_C) == 0x0007A0, "Wrong size on ABP_AbilityInstant_StatusEffect_C");
 
 }
 

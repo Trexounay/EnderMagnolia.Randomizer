@@ -35,11 +35,11 @@ public:
 	bool                                          bUseAutoScale;                                     // 0x0328(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void UserConstructionScript();
-	void Hide(bool bInstant);
-	void FadeOut__UpdateFunc();
-	void FadeOut__FinishedFunc();
 	void ExecuteUbergraph_BP_FakeWall(int32 EntryPoint);
+	void FadeOut__FinishedFunc();
+	void FadeOut__UpdateFunc();
+	void Hide(bool bInstant);
+	void UserConstructionScript();
 
 public:
 	static class UClass* StaticClass()

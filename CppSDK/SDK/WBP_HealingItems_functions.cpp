@@ -17,6 +17,34 @@
 namespace SDK
 {
 
+// Function WBP_HealingItems.WBP_HealingItems_C.TriggerNoHealAnimation
+// (BlueprintCallable, BlueprintEvent)
+
+void UWBP_HealingItems_C::TriggerNoHealAnimation()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_HealingItems_C", "TriggerNoHealAnimation");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_HealingItems.WBP_HealingItems_C.RefreshButtonVisibility
+// (Private, BlueprintCallable, BlueprintEvent)
+
+void UWBP_HealingItems_C::RefreshButtonVisibility()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_HealingItems_C", "RefreshButtonVisibility");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function WBP_HealingItems.WBP_HealingItems_C.RefreshButtonState
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -93,34 +121,6 @@ void UWBP_HealingItems_C::OnHealCountChanged()
 }
 
 
-// Function WBP_HealingItems.WBP_HealingItems_C.TriggerNoHealAnimation
-// (BlueprintCallable, BlueprintEvent)
-
-void UWBP_HealingItems_C::TriggerNoHealAnimation()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_HealingItems_C", "TriggerNoHealAnimation");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_HealingItems.WBP_HealingItems_C.RefreshButtonVisibility
-// (Private, BlueprintCallable, BlueprintEvent)
-
-void UWBP_HealingItems_C::RefreshButtonVisibility()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_HealingItems_C", "RefreshButtonVisibility");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function WBP_HealingItems.WBP_HealingItems_C.OnFullyRestoreHealingItems
 // (BlueprintCallable, BlueprintEvent)
 
@@ -132,26 +132,6 @@ void UWBP_HealingItems_C::OnFullyRestoreHealingItems()
 		Func = Class->GetFunction("WBP_HealingItems_C", "OnFullyRestoreHealingItems");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_HealingItems.WBP_HealingItems_C.BuildItem
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsUsed                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_HealingItems_C::BuildItem(bool IsUsed)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_HealingItems_C", "BuildItem");
-
-	Params::WBP_HealingItems_C_BuildItem Parms{};
-
-	Parms.IsUsed = IsUsed;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -172,20 +152,6 @@ void UWBP_HealingItems_C::Initialize(class APawn* Pawn)
 	Parms.Pawn = Pawn;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_HealingItems.WBP_HealingItems_C.BindEvents
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UWBP_HealingItems_C::BindEvents()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_HealingItems_C", "BindEvents");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -218,6 +184,40 @@ void UWBP_HealingItems_C::BuildItems()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("WBP_HealingItems_C", "BuildItems");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_HealingItems.WBP_HealingItems_C.BuildItem
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    IsUsed                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_HealingItems_C::BuildItem(bool IsUsed)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_HealingItems_C", "BuildItem");
+
+	Params::WBP_HealingItems_C_BuildItem Parms{};
+
+	Parms.IsUsed = IsUsed;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_HealingItems.WBP_HealingItems_C.BindEvents
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWBP_HealingItems_C::BindEvents()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_HealingItems_C", "BindEvents");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

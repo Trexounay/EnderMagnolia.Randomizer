@@ -17,36 +17,6 @@
 namespace SDK::Params
 {
 
-// Function BP_FakeWall.BP_FakeWall_C.UserConstructionScript
-// 0x0048 (0x0048 - 0x0000)
-struct BP_FakeWall_C_UserConstructionScript final
-{
-public:
-	struct FVector                                CallFunc_GetActorScale3D_ReturnValue;              // 0x0000(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_BreakVector_X;                            // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_BreakVector_Y;                            // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_BreakVector_Z;                            // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_MakeVector_ReturnValue;                   // 0x0030(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(BP_FakeWall_C_UserConstructionScript) == 0x000008, "Wrong alignment on BP_FakeWall_C_UserConstructionScript");
-static_assert(sizeof(BP_FakeWall_C_UserConstructionScript) == 0x000048, "Wrong size on BP_FakeWall_C_UserConstructionScript");
-static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_GetActorScale3D_ReturnValue) == 0x000000, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_GetActorScale3D_ReturnValue' has a wrong offset!");
-static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_BreakVector_X) == 0x000018, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_BreakVector_X' has a wrong offset!");
-static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_BreakVector_Y) == 0x000020, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_BreakVector_Y' has a wrong offset!");
-static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_BreakVector_Z) == 0x000028, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_BreakVector_Z' has a wrong offset!");
-static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_MakeVector_ReturnValue) == 0x000030, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_MakeVector_ReturnValue' has a wrong offset!");
-
-// Function BP_FakeWall.BP_FakeWall_C.Hide
-// 0x0001 (0x0001 - 0x0000)
-struct BP_FakeWall_C_Hide final
-{
-public:
-	bool                                          bInstant;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(BP_FakeWall_C_Hide) == 0x000001, "Wrong alignment on BP_FakeWall_C_Hide");
-static_assert(sizeof(BP_FakeWall_C_Hide) == 0x000001, "Wrong size on BP_FakeWall_C_Hide");
-static_assert(offsetof(BP_FakeWall_C_Hide, bInstant) == 0x000000, "Member 'BP_FakeWall_C_Hide::bInstant' has a wrong offset!");
-
 // Function BP_FakeWall.BP_FakeWall_C.ExecuteUbergraph_BP_FakeWall
 // 0x0020 (0x0020 - 0x0000)
 struct BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall final
@@ -67,6 +37,36 @@ static_assert(offsetof(BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall, CallFunc_IsVa
 static_assert(offsetof(BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall, CallFunc_PlayEvent2D_ReturnValue) == 0x000008, "Member 'BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall::CallFunc_PlayEvent2D_ReturnValue' has a wrong offset!");
 static_assert(offsetof(BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall, K2Node_Event_bInstant) == 0x000010, "Member 'BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall::K2Node_Event_bInstant' has a wrong offset!");
 static_assert(offsetof(BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall, CallFunc_CreateDynamicMaterialInstance_ReturnValue) == 0x000018, "Member 'BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall::CallFunc_CreateDynamicMaterialInstance_ReturnValue' has a wrong offset!");
+
+// Function BP_FakeWall.BP_FakeWall_C.Hide
+// 0x0001 (0x0001 - 0x0000)
+struct BP_FakeWall_C_Hide final
+{
+public:
+	bool                                          bInstant;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(BP_FakeWall_C_Hide) == 0x000001, "Wrong alignment on BP_FakeWall_C_Hide");
+static_assert(sizeof(BP_FakeWall_C_Hide) == 0x000001, "Wrong size on BP_FakeWall_C_Hide");
+static_assert(offsetof(BP_FakeWall_C_Hide, bInstant) == 0x000000, "Member 'BP_FakeWall_C_Hide::bInstant' has a wrong offset!");
+
+// Function BP_FakeWall.BP_FakeWall_C.UserConstructionScript
+// 0x0048 (0x0048 - 0x0000)
+struct BP_FakeWall_C_UserConstructionScript final
+{
+public:
+	struct FVector                                CallFunc_GetActorScale3D_ReturnValue;              // 0x0000(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_BreakVector_X;                            // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_BreakVector_Y;                            // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_BreakVector_Z;                            // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_MakeVector_ReturnValue;                   // 0x0030(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(BP_FakeWall_C_UserConstructionScript) == 0x000008, "Wrong alignment on BP_FakeWall_C_UserConstructionScript");
+static_assert(sizeof(BP_FakeWall_C_UserConstructionScript) == 0x000048, "Wrong size on BP_FakeWall_C_UserConstructionScript");
+static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_GetActorScale3D_ReturnValue) == 0x000000, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_GetActorScale3D_ReturnValue' has a wrong offset!");
+static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_BreakVector_X) == 0x000018, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_BreakVector_X' has a wrong offset!");
+static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_BreakVector_Y) == 0x000020, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_BreakVector_Y' has a wrong offset!");
+static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_BreakVector_Z) == 0x000028, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_BreakVector_Z' has a wrong offset!");
+static_assert(offsetof(BP_FakeWall_C_UserConstructionScript, CallFunc_MakeVector_ReturnValue) == 0x000030, "Member 'BP_FakeWall_C_UserConstructionScript::CallFunc_MakeVector_ReturnValue' has a wrong offset!");
 
 }
 

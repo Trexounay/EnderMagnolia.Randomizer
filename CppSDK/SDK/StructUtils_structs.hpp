@@ -71,6 +71,16 @@ enum class EPropertyBagMissingEnum : uint8
 	EPropertyBagMissingEnum_MAX              = 1,
 };
 
+// ScriptStruct StructUtils.SharedStruct
+// 0x0010 (0x0010 - 0x0000)
+struct alignas(0x08) FSharedStruct final
+{
+public:
+	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FSharedStruct) == 0x000008, "Wrong alignment on FSharedStruct");
+static_assert(sizeof(FSharedStruct) == 0x000010, "Wrong size on FSharedStruct");
+
 // ScriptStruct StructUtils.InstancedStruct
 // 0x0010 (0x0010 - 0x0000)
 struct alignas(0x08) FInstancedStruct final
@@ -154,16 +164,6 @@ public:
 };
 static_assert(alignof(FPropertyBagMissingStruct) == 0x000001, "Wrong alignment on FPropertyBagMissingStruct");
 static_assert(sizeof(FPropertyBagMissingStruct) == 0x000001, "Wrong size on FPropertyBagMissingStruct");
-
-// ScriptStruct StructUtils.SharedStruct
-// 0x0010 (0x0010 - 0x0000)
-struct alignas(0x08) FSharedStruct final
-{
-public:
-	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FSharedStruct) == 0x000008, "Wrong alignment on FSharedStruct");
-static_assert(sizeof(FSharedStruct) == 0x000010, "Wrong size on FSharedStruct");
 
 // ScriptStruct StructUtils.ConstSharedStruct
 // 0x0010 (0x0010 - 0x0000)

@@ -10,13 +10,52 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "Zion_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "SlateCore_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.OnSetScale
+// 0x0004 (0x0004 - 0x0000)
+struct WBP_MapIcon_CustomMarker_C_OnSetScale final
+{
+public:
+	float                                         NewScale;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_MapIcon_CustomMarker_C_OnSetScale) == 0x000004, "Wrong alignment on WBP_MapIcon_CustomMarker_C_OnSetScale");
+static_assert(sizeof(WBP_MapIcon_CustomMarker_C_OnSetScale) == 0x000004, "Wrong size on WBP_MapIcon_CustomMarker_C_OnSetScale");
+static_assert(offsetof(WBP_MapIcon_CustomMarker_C_OnSetScale, NewScale) == 0x000000, "Member 'WBP_MapIcon_CustomMarker_C_OnSetScale::NewScale' has a wrong offset!");
+
+// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.OnSetCustomMarkerData
+// 0x0028 (0x0028 - 0x0000)
+struct WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData final
+{
+public:
+	struct FMapCustomMarkerIconData               NewCustomMarkerData;                               // 0x0000(0x0028)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData) == 0x000008, "Wrong alignment on WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData");
+static_assert(sizeof(WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData) == 0x000028, "Wrong size on WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData");
+static_assert(offsetof(WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData, NewCustomMarkerData) == 0x000000, "Member 'WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData::NewCustomMarkerData' has a wrong offset!");
+
+// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.GetMarkerColor
+// 0x0040 (0x0040 - 0x0000)
+struct WBP_MapIcon_CustomMarker_C_GetMarkerColor final
+{
+public:
+	struct FLinearColor                           Color;                                             // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FMapCustomMarkerIconData               CallFunc_GetCustomMarkerIconData_ReturnValue;      // 0x0010(0x0028)(ConstParm, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Percent_IntInt_ReturnValue;               // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_MapIcon_CustomMarker_C_GetMarkerColor) == 0x000008, "Wrong alignment on WBP_MapIcon_CustomMarker_C_GetMarkerColor");
+static_assert(sizeof(WBP_MapIcon_CustomMarker_C_GetMarkerColor) == 0x000040, "Wrong size on WBP_MapIcon_CustomMarker_C_GetMarkerColor");
+static_assert(offsetof(WBP_MapIcon_CustomMarker_C_GetMarkerColor, Color) == 0x000000, "Member 'WBP_MapIcon_CustomMarker_C_GetMarkerColor::Color' has a wrong offset!");
+static_assert(offsetof(WBP_MapIcon_CustomMarker_C_GetMarkerColor, CallFunc_GetCustomMarkerIconData_ReturnValue) == 0x000010, "Member 'WBP_MapIcon_CustomMarker_C_GetMarkerColor::CallFunc_GetCustomMarkerIconData_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_MapIcon_CustomMarker_C_GetMarkerColor, CallFunc_Array_Length_ReturnValue) == 0x000038, "Member 'WBP_MapIcon_CustomMarker_C_GetMarkerColor::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_MapIcon_CustomMarker_C_GetMarkerColor, CallFunc_Percent_IntInt_ReturnValue) == 0x00003C, "Member 'WBP_MapIcon_CustomMarker_C_GetMarkerColor::CallFunc_Percent_IntInt_ReturnValue' has a wrong offset!");
 
 // Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.ExecuteUbergraph_WBP_MapIcon_CustomMarker
 // 0x0170 (0x0170 - 0x0000)
@@ -107,45 +146,6 @@ static_assert(offsetof(WBP_MapIcon_CustomMarker_C_ExecuteUbergraph_WBP_MapIcon_C
 static_assert(offsetof(WBP_MapIcon_CustomMarker_C_ExecuteUbergraph_WBP_MapIcon_CustomMarker, K2Node_VariableSet_DefaultFontSize_ImplicitCast) == 0x000150, "Member 'WBP_MapIcon_CustomMarker_C_ExecuteUbergraph_WBP_MapIcon_CustomMarker::K2Node_VariableSet_DefaultFontSize_ImplicitCast' has a wrong offset!");
 static_assert(offsetof(WBP_MapIcon_CustomMarker_C_ExecuteUbergraph_WBP_MapIcon_CustomMarker, K2Node_SetFieldsInStruct_ImageSize_ImplicitCast) == 0x000158, "Member 'WBP_MapIcon_CustomMarker_C_ExecuteUbergraph_WBP_MapIcon_CustomMarker::K2Node_SetFieldsInStruct_ImageSize_ImplicitCast' has a wrong offset!");
 static_assert(offsetof(WBP_MapIcon_CustomMarker_C_ExecuteUbergraph_WBP_MapIcon_CustomMarker, K2Node_VariableSet_DefaultIconSize_ImplicitCast) == 0x000160, "Member 'WBP_MapIcon_CustomMarker_C_ExecuteUbergraph_WBP_MapIcon_CustomMarker::K2Node_VariableSet_DefaultIconSize_ImplicitCast' has a wrong offset!");
-
-// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.GetMarkerColor
-// 0x0040 (0x0040 - 0x0000)
-struct WBP_MapIcon_CustomMarker_C_GetMarkerColor final
-{
-public:
-	struct FLinearColor                           Color;                                             // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FMapCustomMarkerIconData               CallFunc_GetCustomMarkerIconData_ReturnValue;      // 0x0010(0x0028)(ConstParm, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Percent_IntInt_ReturnValue;               // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_MapIcon_CustomMarker_C_GetMarkerColor) == 0x000008, "Wrong alignment on WBP_MapIcon_CustomMarker_C_GetMarkerColor");
-static_assert(sizeof(WBP_MapIcon_CustomMarker_C_GetMarkerColor) == 0x000040, "Wrong size on WBP_MapIcon_CustomMarker_C_GetMarkerColor");
-static_assert(offsetof(WBP_MapIcon_CustomMarker_C_GetMarkerColor, Color) == 0x000000, "Member 'WBP_MapIcon_CustomMarker_C_GetMarkerColor::Color' has a wrong offset!");
-static_assert(offsetof(WBP_MapIcon_CustomMarker_C_GetMarkerColor, CallFunc_GetCustomMarkerIconData_ReturnValue) == 0x000010, "Member 'WBP_MapIcon_CustomMarker_C_GetMarkerColor::CallFunc_GetCustomMarkerIconData_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_MapIcon_CustomMarker_C_GetMarkerColor, CallFunc_Array_Length_ReturnValue) == 0x000038, "Member 'WBP_MapIcon_CustomMarker_C_GetMarkerColor::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_MapIcon_CustomMarker_C_GetMarkerColor, CallFunc_Percent_IntInt_ReturnValue) == 0x00003C, "Member 'WBP_MapIcon_CustomMarker_C_GetMarkerColor::CallFunc_Percent_IntInt_ReturnValue' has a wrong offset!");
-
-// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.OnSetCustomMarkerData
-// 0x0028 (0x0028 - 0x0000)
-struct WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData final
-{
-public:
-	struct FMapCustomMarkerIconData               NewCustomMarkerData;                               // 0x0000(0x0028)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData) == 0x000008, "Wrong alignment on WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData");
-static_assert(sizeof(WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData) == 0x000028, "Wrong size on WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData");
-static_assert(offsetof(WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData, NewCustomMarkerData) == 0x000000, "Member 'WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData::NewCustomMarkerData' has a wrong offset!");
-
-// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.OnSetScale
-// 0x0004 (0x0004 - 0x0000)
-struct WBP_MapIcon_CustomMarker_C_OnSetScale final
-{
-public:
-	float                                         NewScale;                                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_MapIcon_CustomMarker_C_OnSetScale) == 0x000004, "Wrong alignment on WBP_MapIcon_CustomMarker_C_OnSetScale");
-static_assert(sizeof(WBP_MapIcon_CustomMarker_C_OnSetScale) == 0x000004, "Wrong size on WBP_MapIcon_CustomMarker_C_OnSetScale");
-static_assert(offsetof(WBP_MapIcon_CustomMarker_C_OnSetScale, NewScale) == 0x000000, "Member 'WBP_MapIcon_CustomMarker_C_OnSetScale::NewScale' has a wrong offset!");
 
 }
 

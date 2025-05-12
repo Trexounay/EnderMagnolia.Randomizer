@@ -25,8 +25,8 @@ public:
 	TArray<class UWBP_ChoiceMarker_Entry_C*>      Entries;                                           // 0x02E8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
 
 public:
-	void SetChoiceCount(int32 ChoiceCount);
 	void SetSelectedChoiceIndex(int32 SelectedChoiceIndex);
+	void SetChoiceCount(int32 ChoiceCount);
 
 public:
 	static class UClass* StaticClass()

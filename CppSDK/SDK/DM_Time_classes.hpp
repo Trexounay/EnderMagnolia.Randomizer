@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "DM_Base_classes.hpp"
 #include "UMG_structs.hpp"
+#include "DM_Base_classes.hpp"
 
 
 namespace SDK

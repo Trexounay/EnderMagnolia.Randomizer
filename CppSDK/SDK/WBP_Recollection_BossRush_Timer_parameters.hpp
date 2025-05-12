@@ -17,6 +17,79 @@
 namespace SDK::Params
 {
 
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.Tick
+// 0x003C (0x003C - 0x0000)
+struct WBP_Recollection_BossRush_Timer_C_Tick final
+{
+public:
+	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	float                                         InDeltaTime;                                       // 0x0038(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Recollection_BossRush_Timer_C_Tick) == 0x000004, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_Tick");
+static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_Tick) == 0x00003C, "Wrong size on WBP_Recollection_BossRush_Timer_C_Tick");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_Tick, MyGeometry) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_Tick::MyGeometry' has a wrong offset!");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_Tick, InDeltaTime) == 0x000038, "Member 'WBP_Recollection_BossRush_Timer_C_Tick::InDeltaTime' has a wrong offset!");
+
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.SetCurrentBossIndex
+// 0x0004 (0x0004 - 0x0000)
+struct WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex final
+{
+public:
+	int32                                         Index_0;                                           // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex) == 0x000004, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex");
+static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex) == 0x000004, "Wrong size on WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex, Index_0) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex::Index_0' has a wrong offset!");
+
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.RefreshVisibility
+// 0x0018 (0x0018 - 0x0000)
+struct WBP_Recollection_BossRush_Timer_C_RefreshVisibility final
+{
+public:
+	bool                                          Temp_bool_Variable;                                // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3[0x5];                                        // 0x0003(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameSettingsSubsystem*                 CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_GetDisplayPlayerUI_ReturnValue;           // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility) == 0x000008, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_RefreshVisibility");
+static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility) == 0x000018, "Wrong size on WBP_Recollection_BossRush_Timer_C_RefreshVisibility");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, Temp_bool_Variable) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, Temp_byte_Variable) == 0x000001, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, Temp_byte_Variable_1) == 0x000002, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, CallFunc_GetGameInstanceSubsystem_ReturnValue) == 0x000008, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::CallFunc_GetGameInstanceSubsystem_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, CallFunc_GetDisplayPlayerUI_ReturnValue) == 0x000010, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::CallFunc_GetDisplayPlayerUI_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, K2Node_Select_Default) == 0x000011, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::K2Node_Select_Default' has a wrong offset!");
+
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.RefreshTimerText
+// 0x0028 (0x0028 - 0x0000)
+struct WBP_Recollection_BossRush_Timer_C_RefreshTimerText final
+{
+public:
+	float                                         CallFunc_GetBossRushTime_ReturnValue;              // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_BossRushRecordTimeSecondsToString_ReturnValue; // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FText                                   CallFunc_Conv_StringToText_ReturnValue;            // 0x0018(0x0010)()
+};
+static_assert(alignof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText) == 0x000008, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_RefreshTimerText");
+static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText) == 0x000028, "Wrong size on WBP_Recollection_BossRush_Timer_C_RefreshTimerText");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText, CallFunc_GetBossRushTime_ReturnValue) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshTimerText::CallFunc_GetBossRushTime_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText, CallFunc_BossRushRecordTimeSecondsToString_ReturnValue) == 0x000008, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshTimerText::CallFunc_BossRushRecordTimeSecondsToString_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText, CallFunc_Conv_StringToText_ReturnValue) == 0x000018, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshTimerText::CallFunc_Conv_StringToText_ReturnValue' has a wrong offset!");
+
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.PauseTimer
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_Recollection_BossRush_Timer_C_PauseTimer final
+{
+public:
+	bool                                          bPaused;                                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Recollection_BossRush_Timer_C_PauseTimer) == 0x000001, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_PauseTimer");
+static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_PauseTimer) == 0x000001, "Wrong size on WBP_Recollection_BossRush_Timer_C_PauseTimer");
+static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_PauseTimer, bPaused) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_PauseTimer::bPaused' has a wrong offset!");
+
 // Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.ExecuteUbergraph_WBP_Recollection_BossRush_Timer
 // 0x0088 (0x0088 - 0x0000)
 struct WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Recollection_BossRush_Timer final
@@ -55,79 +128,6 @@ static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Re
 static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Recollection_BossRush_Timer, K2Node_CustomEvent_bPaused) == 0x000074, "Member 'WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Recollection_BossRush_Timer::K2Node_CustomEvent_bPaused' has a wrong offset!");
 static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Recollection_BossRush_Timer, K2Node_Select_Default) == 0x000078, "Member 'WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Recollection_BossRush_Timer::K2Node_Select_Default' has a wrong offset!");
 static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Recollection_BossRush_Timer, CallFunc_PlayAnimationForward_ReturnValue_1) == 0x000080, "Member 'WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Recollection_BossRush_Timer::CallFunc_PlayAnimationForward_ReturnValue_1' has a wrong offset!");
-
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.PauseTimer
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_Recollection_BossRush_Timer_C_PauseTimer final
-{
-public:
-	bool                                          bPaused;                                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Recollection_BossRush_Timer_C_PauseTimer) == 0x000001, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_PauseTimer");
-static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_PauseTimer) == 0x000001, "Wrong size on WBP_Recollection_BossRush_Timer_C_PauseTimer");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_PauseTimer, bPaused) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_PauseTimer::bPaused' has a wrong offset!");
-
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.RefreshTimerText
-// 0x0028 (0x0028 - 0x0000)
-struct WBP_Recollection_BossRush_Timer_C_RefreshTimerText final
-{
-public:
-	float                                         CallFunc_GetBossRushTime_ReturnValue;              // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_BossRushRecordTimeSecondsToString_ReturnValue; // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FText                                   CallFunc_Conv_StringToText_ReturnValue;            // 0x0018(0x0010)()
-};
-static_assert(alignof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText) == 0x000008, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_RefreshTimerText");
-static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText) == 0x000028, "Wrong size on WBP_Recollection_BossRush_Timer_C_RefreshTimerText");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText, CallFunc_GetBossRushTime_ReturnValue) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshTimerText::CallFunc_GetBossRushTime_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText, CallFunc_BossRushRecordTimeSecondsToString_ReturnValue) == 0x000008, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshTimerText::CallFunc_BossRushRecordTimeSecondsToString_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshTimerText, CallFunc_Conv_StringToText_ReturnValue) == 0x000018, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshTimerText::CallFunc_Conv_StringToText_ReturnValue' has a wrong offset!");
-
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.RefreshVisibility
-// 0x0018 (0x0018 - 0x0000)
-struct WBP_Recollection_BossRush_Timer_C_RefreshVisibility final
-{
-public:
-	bool                                          Temp_bool_Variable;                                // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3[0x5];                                        // 0x0003(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameSettingsSubsystem*                 CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_GetDisplayPlayerUI_ReturnValue;           // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility) == 0x000008, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_RefreshVisibility");
-static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility) == 0x000018, "Wrong size on WBP_Recollection_BossRush_Timer_C_RefreshVisibility");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, Temp_bool_Variable) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, Temp_byte_Variable) == 0x000001, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, Temp_byte_Variable_1) == 0x000002, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, CallFunc_GetGameInstanceSubsystem_ReturnValue) == 0x000008, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::CallFunc_GetGameInstanceSubsystem_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, CallFunc_GetDisplayPlayerUI_ReturnValue) == 0x000010, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::CallFunc_GetDisplayPlayerUI_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_RefreshVisibility, K2Node_Select_Default) == 0x000011, "Member 'WBP_Recollection_BossRush_Timer_C_RefreshVisibility::K2Node_Select_Default' has a wrong offset!");
-
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.SetCurrentBossIndex
-// 0x0004 (0x0004 - 0x0000)
-struct WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex final
-{
-public:
-	int32                                         Index_0;                                           // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex) == 0x000004, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex");
-static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex) == 0x000004, "Wrong size on WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex, Index_0) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex::Index_0' has a wrong offset!");
-
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.Tick
-// 0x003C (0x003C - 0x0000)
-struct WBP_Recollection_BossRush_Timer_C_Tick final
-{
-public:
-	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
-	float                                         InDeltaTime;                                       // 0x0038(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Recollection_BossRush_Timer_C_Tick) == 0x000004, "Wrong alignment on WBP_Recollection_BossRush_Timer_C_Tick");
-static_assert(sizeof(WBP_Recollection_BossRush_Timer_C_Tick) == 0x00003C, "Wrong size on WBP_Recollection_BossRush_Timer_C_Tick");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_Tick, MyGeometry) == 0x000000, "Member 'WBP_Recollection_BossRush_Timer_C_Tick::MyGeometry' has a wrong offset!");
-static_assert(offsetof(WBP_Recollection_BossRush_Timer_C_Tick, InDeltaTime) == 0x000038, "Member 'WBP_Recollection_BossRush_Timer_C_Tick::InDeltaTime' has a wrong offset!");
 
 }
 

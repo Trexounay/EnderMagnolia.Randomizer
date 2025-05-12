@@ -17,15 +17,43 @@
 namespace SDK
 {
 
-// Function WBP_Recollection_BossRush_BossProgression_Entry.WBP_Recollection_BossRush_BossProgression_Entry_C.Construct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Function WBP_Recollection_BossRush_BossProgression_Entry.WBP_Recollection_BossRush_BossProgression_Entry_C.SetDefeated
+// (Public, BlueprintCallable, BlueprintEvent)
 
-void UWBP_Recollection_BossRush_BossProgression_Entry_C::Construct()
+void UWBP_Recollection_BossRush_BossProgression_Entry_C::SetDefeated()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_Entry_C", "Construct");
+		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_Entry_C", "SetDefeated");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_Recollection_BossRush_BossProgression_Entry.WBP_Recollection_BossRush_BossProgression_Entry_C.SetActive
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWBP_Recollection_BossRush_BossProgression_Entry_C::SetActive()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_Entry_C", "SetActive");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_Recollection_BossRush_BossProgression_Entry.WBP_Recollection_BossRush_BossProgression_Entry_C.ResetEntry
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWBP_Recollection_BossRush_BossProgression_Entry_C::ResetEntry()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_Entry_C", "ResetEntry");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -51,43 +79,15 @@ void UWBP_Recollection_BossRush_BossProgression_Entry_C::ExecuteUbergraph_WBP_Re
 }
 
 
-// Function WBP_Recollection_BossRush_BossProgression_Entry.WBP_Recollection_BossRush_BossProgression_Entry_C.ResetEntry
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function WBP_Recollection_BossRush_BossProgression_Entry.WBP_Recollection_BossRush_BossProgression_Entry_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
 
-void UWBP_Recollection_BossRush_BossProgression_Entry_C::ResetEntry()
+void UWBP_Recollection_BossRush_BossProgression_Entry_C::Construct()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_Entry_C", "ResetEntry");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_Recollection_BossRush_BossProgression_Entry.WBP_Recollection_BossRush_BossProgression_Entry_C.SetActive
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UWBP_Recollection_BossRush_BossProgression_Entry_C::SetActive()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_Entry_C", "SetActive");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_Recollection_BossRush_BossProgression_Entry.WBP_Recollection_BossRush_BossProgression_Entry_C.SetDefeated
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UWBP_Recollection_BossRush_BossProgression_Entry_C::SetDefeated()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_Entry_C", "SetDefeated");
+		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_Entry_C", "Construct");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

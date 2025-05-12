@@ -491,48 +491,6 @@ enum class ESynthSlateColorStyle : uint8
 	ESynthSlateColorStyle_MAX                = 3,
 };
 
-// ScriptStruct Synthesis.Synth1PatchCable
-// 0x0008 (0x0008 - 0x0000)
-struct FSynth1PatchCable final
-{
-public:
-	float                                         Depth;                                             // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESynth1PatchDestination                       Destination;                                       // 0x0004(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FSynth1PatchCable) == 0x000004, "Wrong alignment on FSynth1PatchCable");
-static_assert(sizeof(FSynth1PatchCable) == 0x000008, "Wrong size on FSynth1PatchCable");
-static_assert(offsetof(FSynth1PatchCable, Depth) == 0x000000, "Member 'FSynth1PatchCable::Depth' has a wrong offset!");
-static_assert(offsetof(FSynth1PatchCable, Destination) == 0x000004, "Member 'FSynth1PatchCable::Destination' has a wrong offset!");
-
-// ScriptStruct Synthesis.SubmixEffectFlexiverbSettings
-// 0x0010 (0x0010 - 0x0000)
-struct FSubmixEffectFlexiverbSettings final
-{
-public:
-	float                                         PreDelay;                                          // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DecayTime;                                         // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         RoomDampening;                                     // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Complexity;                                        // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FSubmixEffectFlexiverbSettings) == 0x000004, "Wrong alignment on FSubmixEffectFlexiverbSettings");
-static_assert(sizeof(FSubmixEffectFlexiverbSettings) == 0x000010, "Wrong size on FSubmixEffectFlexiverbSettings");
-static_assert(offsetof(FSubmixEffectFlexiverbSettings, PreDelay) == 0x000000, "Member 'FSubmixEffectFlexiverbSettings::PreDelay' has a wrong offset!");
-static_assert(offsetof(FSubmixEffectFlexiverbSettings, DecayTime) == 0x000004, "Member 'FSubmixEffectFlexiverbSettings::DecayTime' has a wrong offset!");
-static_assert(offsetof(FSubmixEffectFlexiverbSettings, RoomDampening) == 0x000008, "Member 'FSubmixEffectFlexiverbSettings::RoomDampening' has a wrong offset!");
-static_assert(offsetof(FSubmixEffectFlexiverbSettings, Complexity) == 0x00000C, "Member 'FSubmixEffectFlexiverbSettings::Complexity' has a wrong offset!");
-
-// ScriptStruct Synthesis.PatchId
-// 0x0004 (0x0004 - 0x0000)
-struct FPatchId final
-{
-public:
-	int32                                         ID;                                                // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FPatchId) == 0x000004, "Wrong alignment on FPatchId");
-static_assert(sizeof(FPatchId) == 0x000004, "Wrong size on FPatchId");
-static_assert(offsetof(FPatchId, ID) == 0x000000, "Member 'FPatchId::ID' has a wrong offset!");
-
 // ScriptStruct Synthesis.SubmixEffectFilterSettings
 // 0x000C (0x000C - 0x0000)
 struct FSubmixEffectFilterSettings final
@@ -551,19 +509,45 @@ static_assert(offsetof(FSubmixEffectFilterSettings, FilterAlgorithm) == 0x000001
 static_assert(offsetof(FSubmixEffectFilterSettings, FilterFrequency) == 0x000004, "Member 'FSubmixEffectFilterSettings::FilterFrequency' has a wrong offset!");
 static_assert(offsetof(FSubmixEffectFilterSettings, FilterQ) == 0x000008, "Member 'FSubmixEffectFilterSettings::FilterQ' has a wrong offset!");
 
-// ScriptStruct Synthesis.EpicSynth1Patch
-// 0x0018 (0x0018 - 0x0000)
-struct FEpicSynth1Patch final
+// ScriptStruct Synthesis.Synth1PatchCable
+// 0x0008 (0x0008 - 0x0000)
+struct FSynth1PatchCable final
 {
 public:
-	ESynth1PatchSource                            PatchSource;                                       // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FSynth1PatchCable>              PatchCables;                                       // 0x0008(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
+	float                                         Depth;                                             // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ESynth1PatchDestination                       Destination;                                       // 0x0004(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FEpicSynth1Patch) == 0x000008, "Wrong alignment on FEpicSynth1Patch");
-static_assert(sizeof(FEpicSynth1Patch) == 0x000018, "Wrong size on FEpicSynth1Patch");
-static_assert(offsetof(FEpicSynth1Patch, PatchSource) == 0x000000, "Member 'FEpicSynth1Patch::PatchSource' has a wrong offset!");
-static_assert(offsetof(FEpicSynth1Patch, PatchCables) == 0x000008, "Member 'FEpicSynth1Patch::PatchCables' has a wrong offset!");
+static_assert(alignof(FSynth1PatchCable) == 0x000004, "Wrong alignment on FSynth1PatchCable");
+static_assert(sizeof(FSynth1PatchCable) == 0x000008, "Wrong size on FSynth1PatchCable");
+static_assert(offsetof(FSynth1PatchCable, Depth) == 0x000000, "Member 'FSynth1PatchCable::Depth' has a wrong offset!");
+static_assert(offsetof(FSynth1PatchCable, Destination) == 0x000004, "Member 'FSynth1PatchCable::Destination' has a wrong offset!");
+
+// ScriptStruct Synthesis.SubmixEffectDelaySettings
+// 0x000C (0x000C - 0x0000)
+struct FSubmixEffectDelaySettings final
+{
+public:
+	float                                         MaximumDelayLength;                                // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         InterpolationTime;                                 // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DelayLength;                                       // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FSubmixEffectDelaySettings) == 0x000004, "Wrong alignment on FSubmixEffectDelaySettings");
+static_assert(sizeof(FSubmixEffectDelaySettings) == 0x00000C, "Wrong size on FSubmixEffectDelaySettings");
+static_assert(offsetof(FSubmixEffectDelaySettings, MaximumDelayLength) == 0x000000, "Member 'FSubmixEffectDelaySettings::MaximumDelayLength' has a wrong offset!");
+static_assert(offsetof(FSubmixEffectDelaySettings, InterpolationTime) == 0x000004, "Member 'FSubmixEffectDelaySettings::InterpolationTime' has a wrong offset!");
+static_assert(offsetof(FSubmixEffectDelaySettings, DelayLength) == 0x000008, "Member 'FSubmixEffectDelaySettings::DelayLength' has a wrong offset!");
+
+// ScriptStruct Synthesis.PatchId
+// 0x0004 (0x0004 - 0x0000)
+struct FPatchId final
+{
+public:
+	int32                                         ID;                                                // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FPatchId) == 0x000004, "Wrong alignment on FPatchId");
+static_assert(sizeof(FPatchId) == 0x000004, "Wrong size on FPatchId");
+static_assert(offsetof(FPatchId, ID) == 0x000000, "Member 'FPatchId::ID' has a wrong offset!");
 
 // ScriptStruct Synthesis.TapDelayInfo
 // 0x0018 (0x0018 - 0x0000)
@@ -587,20 +571,33 @@ static_assert(offsetof(FTapDelayInfo, OutputChannel) == 0x00000C, "Member 'FTapD
 static_assert(offsetof(FTapDelayInfo, PanInDegrees) == 0x000010, "Member 'FTapDelayInfo::PanInDegrees' has a wrong offset!");
 static_assert(offsetof(FTapDelayInfo, TapId) == 0x000014, "Member 'FTapDelayInfo::TapId' has a wrong offset!");
 
-// ScriptStruct Synthesis.SubmixEffectTapDelaySettings
+// ScriptStruct Synthesis.EpicSynth1Patch
 // 0x0018 (0x0018 - 0x0000)
-struct FSubmixEffectTapDelaySettings final
+struct FEpicSynth1Patch final
 {
 public:
-	float                                         MaximumDelayLength;                                // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         InterpolationTime;                                 // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<struct FTapDelayInfo>                  Taps;                                              // 0x0008(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
+	ESynth1PatchSource                            PatchSource;                                       // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FSynth1PatchCable>              PatchCables;                                       // 0x0008(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FSubmixEffectTapDelaySettings) == 0x000008, "Wrong alignment on FSubmixEffectTapDelaySettings");
-static_assert(sizeof(FSubmixEffectTapDelaySettings) == 0x000018, "Wrong size on FSubmixEffectTapDelaySettings");
-static_assert(offsetof(FSubmixEffectTapDelaySettings, MaximumDelayLength) == 0x000000, "Member 'FSubmixEffectTapDelaySettings::MaximumDelayLength' has a wrong offset!");
-static_assert(offsetof(FSubmixEffectTapDelaySettings, InterpolationTime) == 0x000004, "Member 'FSubmixEffectTapDelaySettings::InterpolationTime' has a wrong offset!");
-static_assert(offsetof(FSubmixEffectTapDelaySettings, Taps) == 0x000008, "Member 'FSubmixEffectTapDelaySettings::Taps' has a wrong offset!");
+static_assert(alignof(FEpicSynth1Patch) == 0x000008, "Wrong alignment on FEpicSynth1Patch");
+static_assert(sizeof(FEpicSynth1Patch) == 0x000018, "Wrong size on FEpicSynth1Patch");
+static_assert(offsetof(FEpicSynth1Patch, PatchSource) == 0x000000, "Member 'FEpicSynth1Patch::PatchSource' has a wrong offset!");
+static_assert(offsetof(FEpicSynth1Patch, PatchCables) == 0x000008, "Member 'FEpicSynth1Patch::PatchCables' has a wrong offset!");
+
+// ScriptStruct Synthesis.SubmixEffectStereoToQuadSettings
+// 0x0008 (0x0008 - 0x0000)
+struct FSubmixEffectStereoToQuadSettings final
+{
+public:
+	bool                                          bFlipChannels;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         RearChannelGain;                                   // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FSubmixEffectStereoToQuadSettings) == 0x000004, "Wrong alignment on FSubmixEffectStereoToQuadSettings");
+static_assert(sizeof(FSubmixEffectStereoToQuadSettings) == 0x000008, "Wrong size on FSubmixEffectStereoToQuadSettings");
+static_assert(offsetof(FSubmixEffectStereoToQuadSettings, bFlipChannels) == 0x000000, "Member 'FSubmixEffectStereoToQuadSettings::bFlipChannels' has a wrong offset!");
+static_assert(offsetof(FSubmixEffectStereoToQuadSettings, RearChannelGain) == 0x000004, "Member 'FSubmixEffectStereoToQuadSettings::RearChannelGain' has a wrong offset!");
 
 // ScriptStruct Synthesis.ModularSynthPreset
 // 0x00D8 (0x00E0 - 0x0008)
@@ -1233,20 +1230,22 @@ static_assert(offsetof(FSubmixEffectConvolutionReverbSettings, SurroundRearChann
 static_assert(offsetof(FSubmixEffectConvolutionReverbSettings, ImpulseResponse) == 0x000020, "Member 'FSubmixEffectConvolutionReverbSettings::ImpulseResponse' has a wrong offset!");
 static_assert(offsetof(FSubmixEffectConvolutionReverbSettings, AllowHardwareAcceleration) == 0x000028, "Member 'FSubmixEffectConvolutionReverbSettings::AllowHardwareAcceleration' has a wrong offset!");
 
-// ScriptStruct Synthesis.SubmixEffectDelaySettings
-// 0x000C (0x000C - 0x0000)
-struct FSubmixEffectDelaySettings final
+// ScriptStruct Synthesis.SubmixEffectFlexiverbSettings
+// 0x0010 (0x0010 - 0x0000)
+struct FSubmixEffectFlexiverbSettings final
 {
 public:
-	float                                         MaximumDelayLength;                                // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         InterpolationTime;                                 // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DelayLength;                                       // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         PreDelay;                                          // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DecayTime;                                         // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         RoomDampening;                                     // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Complexity;                                        // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FSubmixEffectDelaySettings) == 0x000004, "Wrong alignment on FSubmixEffectDelaySettings");
-static_assert(sizeof(FSubmixEffectDelaySettings) == 0x00000C, "Wrong size on FSubmixEffectDelaySettings");
-static_assert(offsetof(FSubmixEffectDelaySettings, MaximumDelayLength) == 0x000000, "Member 'FSubmixEffectDelaySettings::MaximumDelayLength' has a wrong offset!");
-static_assert(offsetof(FSubmixEffectDelaySettings, InterpolationTime) == 0x000004, "Member 'FSubmixEffectDelaySettings::InterpolationTime' has a wrong offset!");
-static_assert(offsetof(FSubmixEffectDelaySettings, DelayLength) == 0x000008, "Member 'FSubmixEffectDelaySettings::DelayLength' has a wrong offset!");
+static_assert(alignof(FSubmixEffectFlexiverbSettings) == 0x000004, "Wrong alignment on FSubmixEffectFlexiverbSettings");
+static_assert(sizeof(FSubmixEffectFlexiverbSettings) == 0x000010, "Wrong size on FSubmixEffectFlexiverbSettings");
+static_assert(offsetof(FSubmixEffectFlexiverbSettings, PreDelay) == 0x000000, "Member 'FSubmixEffectFlexiverbSettings::PreDelay' has a wrong offset!");
+static_assert(offsetof(FSubmixEffectFlexiverbSettings, DecayTime) == 0x000004, "Member 'FSubmixEffectFlexiverbSettings::DecayTime' has a wrong offset!");
+static_assert(offsetof(FSubmixEffectFlexiverbSettings, RoomDampening) == 0x000008, "Member 'FSubmixEffectFlexiverbSettings::RoomDampening' has a wrong offset!");
+static_assert(offsetof(FSubmixEffectFlexiverbSettings, Complexity) == 0x00000C, "Member 'FSubmixEffectFlexiverbSettings::Complexity' has a wrong offset!");
 
 // ScriptStruct Synthesis.DynamicsBandSettings
 // 0x0020 (0x0020 - 0x0000)
@@ -1342,19 +1341,20 @@ static_assert(offsetof(FSubmixEffectStereoDelaySettings, FilterType) == 0x000019
 static_assert(offsetof(FSubmixEffectStereoDelaySettings, FilterFrequency) == 0x00001C, "Member 'FSubmixEffectStereoDelaySettings::FilterFrequency' has a wrong offset!");
 static_assert(offsetof(FSubmixEffectStereoDelaySettings, FilterQ) == 0x000020, "Member 'FSubmixEffectStereoDelaySettings::FilterQ' has a wrong offset!");
 
-// ScriptStruct Synthesis.SubmixEffectStereoToQuadSettings
-// 0x0008 (0x0008 - 0x0000)
-struct FSubmixEffectStereoToQuadSettings final
+// ScriptStruct Synthesis.SubmixEffectTapDelaySettings
+// 0x0018 (0x0018 - 0x0000)
+struct FSubmixEffectTapDelaySettings final
 {
 public:
-	bool                                          bFlipChannels;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         RearChannelGain;                                   // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MaximumDelayLength;                                // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         InterpolationTime;                                 // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FTapDelayInfo>                  Taps;                                              // 0x0008(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FSubmixEffectStereoToQuadSettings) == 0x000004, "Wrong alignment on FSubmixEffectStereoToQuadSettings");
-static_assert(sizeof(FSubmixEffectStereoToQuadSettings) == 0x000008, "Wrong size on FSubmixEffectStereoToQuadSettings");
-static_assert(offsetof(FSubmixEffectStereoToQuadSettings, bFlipChannels) == 0x000000, "Member 'FSubmixEffectStereoToQuadSettings::bFlipChannels' has a wrong offset!");
-static_assert(offsetof(FSubmixEffectStereoToQuadSettings, RearChannelGain) == 0x000004, "Member 'FSubmixEffectStereoToQuadSettings::RearChannelGain' has a wrong offset!");
+static_assert(alignof(FSubmixEffectTapDelaySettings) == 0x000008, "Wrong alignment on FSubmixEffectTapDelaySettings");
+static_assert(sizeof(FSubmixEffectTapDelaySettings) == 0x000018, "Wrong size on FSubmixEffectTapDelaySettings");
+static_assert(offsetof(FSubmixEffectTapDelaySettings, MaximumDelayLength) == 0x000000, "Member 'FSubmixEffectTapDelaySettings::MaximumDelayLength' has a wrong offset!");
+static_assert(offsetof(FSubmixEffectTapDelaySettings, InterpolationTime) == 0x000004, "Member 'FSubmixEffectTapDelaySettings::InterpolationTime' has a wrong offset!");
+static_assert(offsetof(FSubmixEffectTapDelaySettings, Taps) == 0x000008, "Member 'FSubmixEffectTapDelaySettings::Taps' has a wrong offset!");
 
 // ScriptStruct Synthesis.Synth2DSliderStyle
 // 0x0428 (0x0430 - 0x0008)

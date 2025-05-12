@@ -17,15 +17,49 @@
 namespace SDK
 {
 
-// Function BP_FakeWall.BP_FakeWall_C.UserConstructionScript
-// (Event, Public, BlueprintCallable, BlueprintEvent)
+// Function BP_FakeWall.BP_FakeWall_C.ExecuteUbergraph_BP_FakeWall
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_FakeWall_C::UserConstructionScript()
+void ABP_FakeWall_C::ExecuteUbergraph_BP_FakeWall(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_FakeWall_C", "UserConstructionScript");
+		Func = Class->GetFunction("BP_FakeWall_C", "ExecuteUbergraph_BP_FakeWall");
+
+	Params::BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_FakeWall.BP_FakeWall_C.FadeOut__FinishedFunc
+// (BlueprintEvent)
+
+void ABP_FakeWall_C::FadeOut__FinishedFunc()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_FakeWall_C", "FadeOut__FinishedFunc");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_FakeWall.BP_FakeWall_C.FadeOut__UpdateFunc
+// (BlueprintEvent)
+
+void ABP_FakeWall_C::FadeOut__UpdateFunc()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_FakeWall_C", "FadeOut__UpdateFunc");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -51,51 +85,17 @@ void ABP_FakeWall_C::Hide(bool bInstant)
 }
 
 
-// Function BP_FakeWall.BP_FakeWall_C.FadeOut__UpdateFunc
-// (BlueprintEvent)
+// Function BP_FakeWall.BP_FakeWall_C.UserConstructionScript
+// (Event, Public, BlueprintCallable, BlueprintEvent)
 
-void ABP_FakeWall_C::FadeOut__UpdateFunc()
+void ABP_FakeWall_C::UserConstructionScript()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_FakeWall_C", "FadeOut__UpdateFunc");
+		Func = Class->GetFunction("BP_FakeWall_C", "UserConstructionScript");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_FakeWall.BP_FakeWall_C.FadeOut__FinishedFunc
-// (BlueprintEvent)
-
-void ABP_FakeWall_C::FadeOut__FinishedFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_FakeWall_C", "FadeOut__FinishedFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_FakeWall.BP_FakeWall_C.ExecuteUbergraph_BP_FakeWall
-// (Final, UbergraphFunction, HasDefaults)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_FakeWall_C::ExecuteUbergraph_BP_FakeWall(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_FakeWall_C", "ExecuteUbergraph_BP_FakeWall");
-
-	Params::BP_FakeWall_C_ExecuteUbergraph_BP_FakeWall Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

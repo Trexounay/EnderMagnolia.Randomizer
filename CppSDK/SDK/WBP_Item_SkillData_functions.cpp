@@ -17,63 +17,21 @@
 namespace SDK
 {
 
-// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupUpgrade
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function WBP_Item_SkillData.WBP_Item_SkillData_C.Setup
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // const struct FSkillData&                SkillData                                              (BlueprintVisible, BlueprintReadOnly, Parm)
-// const struct FSkillData&                UpgradeSkillData                                       (BlueprintVisible, BlueprintReadOnly, Parm)
 
-void UWBP_Item_SkillData_C::SetupUpgrade(const struct FSkillData& SkillData, const struct FSkillData& UpgradeSkillData)
+void UWBP_Item_SkillData_C::Setup(const struct FSkillData& SkillData)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Item_SkillData_C", "SetupUpgrade");
+		Func = Class->GetFunction("WBP_Item_SkillData_C", "Setup");
 
-	Params::WBP_Item_SkillData_C_SetupUpgrade Parms{};
+	Params::WBP_Item_SkillData_C_Setup Parms{};
 
 	Parms.SkillData = std::move(SkillData);
-	Parms.UpgradeSkillData = std::move(UpgradeSkillData);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupSPCost
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// int32                                   Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Item_SkillData_C::SetupSPCost(int32 Value)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Item_SkillData_C", "SetupSPCost");
-
-	Params::WBP_Item_SkillData_C_SetupSPCost Parms{};
-
-	Parms.Value = Value;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupCooldownCost
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// double                                  Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Item_SkillData_C::SetupCooldownCost(double Value)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Item_SkillData_C", "SetupCooldownCost");
-
-	Params::WBP_Item_SkillData_C_SetupCooldownCost Parms{};
-
-	Parms.Value = Value;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -101,21 +59,63 @@ void UWBP_Item_SkillData_C::Setup_Upgraded_Cooldown_Cost(double CurrCooldown, do
 }
 
 
-// Function WBP_Item_SkillData.WBP_Item_SkillData_C.Setup
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupCooldownCost
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// const struct FSkillData&                SkillData                                              (BlueprintVisible, BlueprintReadOnly, Parm)
+// double                                  Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Item_SkillData_C::Setup(const struct FSkillData& SkillData)
+void UWBP_Item_SkillData_C::SetupCooldownCost(double Value)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Item_SkillData_C", "Setup");
+		Func = Class->GetFunction("WBP_Item_SkillData_C", "SetupCooldownCost");
 
-	Params::WBP_Item_SkillData_C_Setup Parms{};
+	Params::WBP_Item_SkillData_C_SetupCooldownCost Parms{};
+
+	Parms.Value = Value;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupSPCost
+// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int32                                   Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_Item_SkillData_C::SetupSPCost(int32 Value)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Item_SkillData_C", "SetupSPCost");
+
+	Params::WBP_Item_SkillData_C_SetupSPCost Parms{};
+
+	Parms.Value = Value;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupUpgrade
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// const struct FSkillData&                SkillData                                              (BlueprintVisible, BlueprintReadOnly, Parm)
+// const struct FSkillData&                UpgradeSkillData                                       (BlueprintVisible, BlueprintReadOnly, Parm)
+
+void UWBP_Item_SkillData_C::SetupUpgrade(const struct FSkillData& SkillData, const struct FSkillData& UpgradeSkillData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Item_SkillData_C", "SetupUpgrade");
+
+	Params::WBP_Item_SkillData_C_SetupUpgrade Parms{};
 
 	Parms.SkillData = std::move(SkillData);
+	Parms.UpgradeSkillData = std::move(UpgradeSkillData);
 
 	UObject::ProcessEvent(Func, &Parms);
 }

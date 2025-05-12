@@ -29,11 +29,11 @@ public:
 	class UWidgetSwitcher*                        WidgetSwitcher;                                    // 0x0480(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 
 public:
-	void Construct();
-	void ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression_Entry(int32 EntryPoint);
-	void ResetEntry();
-	void SetActive();
 	void SetDefeated();
+	void SetActive();
+	void ResetEntry();
+	void ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression_Entry(int32 EntryPoint);
+	void Construct();
 
 public:
 	static class UClass* StaticClass()

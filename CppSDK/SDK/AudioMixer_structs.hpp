@@ -185,6 +185,31 @@ enum class ESubmixEffectDynamicsKeySource : uint8
 	ESubmixEffectDynamicsKeySource_MAX       = 4,
 };
 
+// ScriptStruct AudioMixer.AudioOutputDeviceInfo
+// 0x0048 (0x0048 - 0x0000)
+struct FAudioOutputDeviceInfo final
+{
+public:
+	class FString                                 Name;                                              // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 DeviceID;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         NumChannels;                                       // 0x0020(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         SampleRate;                                        // 0x0024(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioMixerStreamDataFormatType               Format;                                            // 0x0028(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<EAudioMixerChannelType>                OutputChannelArray;                                // 0x0030(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NativeAccessSpecifierPublic)
+	uint8                                         bIsSystemDefault : 1;                              // 0x0040(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (BlueprintVisible, BlueprintReadOnly, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bIsCurrentDevice : 1;                              // 0x0040(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (BlueprintVisible, BlueprintReadOnly, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FAudioOutputDeviceInfo) == 0x000008, "Wrong alignment on FAudioOutputDeviceInfo");
+static_assert(sizeof(FAudioOutputDeviceInfo) == 0x000048, "Wrong size on FAudioOutputDeviceInfo");
+static_assert(offsetof(FAudioOutputDeviceInfo, Name) == 0x000000, "Member 'FAudioOutputDeviceInfo::Name' has a wrong offset!");
+static_assert(offsetof(FAudioOutputDeviceInfo, DeviceID) == 0x000010, "Member 'FAudioOutputDeviceInfo::DeviceID' has a wrong offset!");
+static_assert(offsetof(FAudioOutputDeviceInfo, NumChannels) == 0x000020, "Member 'FAudioOutputDeviceInfo::NumChannels' has a wrong offset!");
+static_assert(offsetof(FAudioOutputDeviceInfo, SampleRate) == 0x000024, "Member 'FAudioOutputDeviceInfo::SampleRate' has a wrong offset!");
+static_assert(offsetof(FAudioOutputDeviceInfo, Format) == 0x000028, "Member 'FAudioOutputDeviceInfo::Format' has a wrong offset!");
+static_assert(offsetof(FAudioOutputDeviceInfo, OutputChannelArray) == 0x000030, "Member 'FAudioOutputDeviceInfo::OutputChannelArray' has a wrong offset!");
+
 // ScriptStruct AudioMixer.SubmixEffectEQBand
 // 0x0010 (0x0010 - 0x0000)
 struct FSubmixEffectEQBand final
@@ -212,31 +237,6 @@ public:
 static_assert(alignof(FSubmixEffectSubmixEQSettings) == 0x000008, "Wrong alignment on FSubmixEffectSubmixEQSettings");
 static_assert(sizeof(FSubmixEffectSubmixEQSettings) == 0x000010, "Wrong size on FSubmixEffectSubmixEQSettings");
 static_assert(offsetof(FSubmixEffectSubmixEQSettings, EQBands) == 0x000000, "Member 'FSubmixEffectSubmixEQSettings::EQBands' has a wrong offset!");
-
-// ScriptStruct AudioMixer.AudioOutputDeviceInfo
-// 0x0048 (0x0048 - 0x0000)
-struct FAudioOutputDeviceInfo final
-{
-public:
-	class FString                                 Name;                                              // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 DeviceID;                                          // 0x0010(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         NumChannels;                                       // 0x0020(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         SampleRate;                                        // 0x0024(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAudioMixerStreamDataFormatType               Format;                                            // 0x0028(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<EAudioMixerChannelType>                OutputChannelArray;                                // 0x0030(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NativeAccessSpecifierPublic)
-	uint8                                         bIsSystemDefault : 1;                              // 0x0040(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (BlueprintVisible, BlueprintReadOnly, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bIsCurrentDevice : 1;                              // 0x0040(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (BlueprintVisible, BlueprintReadOnly, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FAudioOutputDeviceInfo) == 0x000008, "Wrong alignment on FAudioOutputDeviceInfo");
-static_assert(sizeof(FAudioOutputDeviceInfo) == 0x000048, "Wrong size on FAudioOutputDeviceInfo");
-static_assert(offsetof(FAudioOutputDeviceInfo, Name) == 0x000000, "Member 'FAudioOutputDeviceInfo::Name' has a wrong offset!");
-static_assert(offsetof(FAudioOutputDeviceInfo, DeviceID) == 0x000010, "Member 'FAudioOutputDeviceInfo::DeviceID' has a wrong offset!");
-static_assert(offsetof(FAudioOutputDeviceInfo, NumChannels) == 0x000020, "Member 'FAudioOutputDeviceInfo::NumChannels' has a wrong offset!");
-static_assert(offsetof(FAudioOutputDeviceInfo, SampleRate) == 0x000024, "Member 'FAudioOutputDeviceInfo::SampleRate' has a wrong offset!");
-static_assert(offsetof(FAudioOutputDeviceInfo, Format) == 0x000028, "Member 'FAudioOutputDeviceInfo::Format' has a wrong offset!");
-static_assert(offsetof(FAudioOutputDeviceInfo, OutputChannelArray) == 0x000030, "Member 'FAudioOutputDeviceInfo::OutputChannelArray' has a wrong offset!");
 
 // ScriptStruct AudioMixer.SwapAudioOutputResult
 // 0x0028 (0x0028 - 0x0000)

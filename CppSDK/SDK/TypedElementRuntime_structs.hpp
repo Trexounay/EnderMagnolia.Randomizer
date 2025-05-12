@@ -33,20 +33,6 @@ enum class ETypedElementSelectionMethod : uint8
 	ETypedElementSelectionMethod_MAX         = 2,
 };
 
-// ScriptStruct TypedElementRuntime.TypedElementSelectionNormalizationOptions
-// 0x000C (0x000C - 0x0000)
-struct alignas(0x04) FTypedElementSelectionNormalizationOptions final
-{
-public:
-	bool                                          bExpandGroups;                                     // 0x0000(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          bFollowAttachment;                                 // 0x0001(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_2[0xA];                                        // 0x0002(0x000A)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FTypedElementSelectionNormalizationOptions) == 0x000004, "Wrong alignment on FTypedElementSelectionNormalizationOptions");
-static_assert(sizeof(FTypedElementSelectionNormalizationOptions) == 0x00000C, "Wrong size on FTypedElementSelectionNormalizationOptions");
-static_assert(offsetof(FTypedElementSelectionNormalizationOptions, bExpandGroups) == 0x000000, "Member 'FTypedElementSelectionNormalizationOptions::bExpandGroups' has a wrong offset!");
-static_assert(offsetof(FTypedElementSelectionNormalizationOptions, bFollowAttachment) == 0x000001, "Member 'FTypedElementSelectionNormalizationOptions::bFollowAttachment' has a wrong offset!");
-
 // ScriptStruct TypedElementRuntime.TypedElementSelectionOptions
 // 0x0010 (0x0010 - 0x0000)
 struct alignas(0x04) FTypedElementSelectionOptions final
@@ -92,6 +78,20 @@ public:
 static_assert(alignof(FTypedElementIsSelectedOptions) == 0x000004, "Wrong alignment on FTypedElementIsSelectedOptions");
 static_assert(sizeof(FTypedElementIsSelectedOptions) == 0x00000C, "Wrong size on FTypedElementIsSelectedOptions");
 static_assert(offsetof(FTypedElementIsSelectedOptions, bAllowIndirect) == 0x000000, "Member 'FTypedElementIsSelectedOptions::bAllowIndirect' has a wrong offset!");
+
+// ScriptStruct TypedElementRuntime.TypedElementSelectionNormalizationOptions
+// 0x000C (0x000C - 0x0000)
+struct alignas(0x04) FTypedElementSelectionNormalizationOptions final
+{
+public:
+	bool                                          bExpandGroups;                                     // 0x0000(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bFollowAttachment;                                 // 0x0001(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_2[0xA];                                        // 0x0002(0x000A)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FTypedElementSelectionNormalizationOptions) == 0x000004, "Wrong alignment on FTypedElementSelectionNormalizationOptions");
+static_assert(sizeof(FTypedElementSelectionNormalizationOptions) == 0x00000C, "Wrong size on FTypedElementSelectionNormalizationOptions");
+static_assert(offsetof(FTypedElementSelectionNormalizationOptions, bExpandGroups) == 0x000000, "Member 'FTypedElementSelectionNormalizationOptions::bExpandGroups' has a wrong offset!");
+static_assert(offsetof(FTypedElementSelectionNormalizationOptions, bFollowAttachment) == 0x000001, "Member 'FTypedElementSelectionNormalizationOptions::bFollowAttachment' has a wrong offset!");
 
 }
 

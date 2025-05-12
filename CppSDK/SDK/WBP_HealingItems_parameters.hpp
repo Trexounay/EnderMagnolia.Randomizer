@@ -16,6 +16,28 @@
 namespace SDK::Params
 {
 
+// Function WBP_HealingItems.WBP_HealingItems_C.RefreshButtonVisibility
+// 0x000C (0x000C - 0x0000)
+struct WBP_HealingItems_C_RefreshButtonVisibility final
+{
+public:
+	bool                                          Temp_bool_Variable;                                // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3[0x1];                                        // 0x0003(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetMaxHealCount_ReturnValue;              // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_HealingItems_C_RefreshButtonVisibility) == 0x000004, "Wrong alignment on WBP_HealingItems_C_RefreshButtonVisibility");
+static_assert(sizeof(WBP_HealingItems_C_RefreshButtonVisibility) == 0x00000C, "Wrong size on WBP_HealingItems_C_RefreshButtonVisibility");
+static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, Temp_bool_Variable) == 0x000000, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, Temp_byte_Variable) == 0x000001, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, Temp_byte_Variable_1) == 0x000002, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, CallFunc_GetMaxHealCount_ReturnValue) == 0x000004, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::CallFunc_GetMaxHealCount_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000008, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, K2Node_Select_Default) == 0x000009, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::K2Node_Select_Default' has a wrong offset!");
+
 // Function WBP_HealingItems.WBP_HealingItems_C.RefreshButtonState
 // 0x0020 (0x0020 - 0x0000)
 struct WBP_HealingItems_C_RefreshButtonState final
@@ -59,39 +81,6 @@ static_assert(alignof(WBP_HealingItems_C_OnRestoreHealingItems) == 0x000004, "Wr
 static_assert(sizeof(WBP_HealingItems_C_OnRestoreHealingItems) == 0x000004, "Wrong size on WBP_HealingItems_C_OnRestoreHealingItems");
 static_assert(offsetof(WBP_HealingItems_C_OnRestoreHealingItems, RestoreCount) == 0x000000, "Member 'WBP_HealingItems_C_OnRestoreHealingItems::RestoreCount' has a wrong offset!");
 
-// Function WBP_HealingItems.WBP_HealingItems_C.RefreshButtonVisibility
-// 0x000C (0x000C - 0x0000)
-struct WBP_HealingItems_C_RefreshButtonVisibility final
-{
-public:
-	bool                                          Temp_bool_Variable;                                // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3[0x1];                                        // 0x0003(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetMaxHealCount_ReturnValue;              // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_HealingItems_C_RefreshButtonVisibility) == 0x000004, "Wrong alignment on WBP_HealingItems_C_RefreshButtonVisibility");
-static_assert(sizeof(WBP_HealingItems_C_RefreshButtonVisibility) == 0x00000C, "Wrong size on WBP_HealingItems_C_RefreshButtonVisibility");
-static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, Temp_bool_Variable) == 0x000000, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, Temp_byte_Variable) == 0x000001, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, Temp_byte_Variable_1) == 0x000002, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, CallFunc_GetMaxHealCount_ReturnValue) == 0x000004, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::CallFunc_GetMaxHealCount_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x000008, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_HealingItems_C_RefreshButtonVisibility, K2Node_Select_Default) == 0x000009, "Member 'WBP_HealingItems_C_RefreshButtonVisibility::K2Node_Select_Default' has a wrong offset!");
-
-// Function WBP_HealingItems.WBP_HealingItems_C.BuildItem
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_HealingItems_C_BuildItem final
-{
-public:
-	bool                                          IsUsed;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_HealingItems_C_BuildItem) == 0x000001, "Wrong alignment on WBP_HealingItems_C_BuildItem");
-static_assert(sizeof(WBP_HealingItems_C_BuildItem) == 0x000001, "Wrong size on WBP_HealingItems_C_BuildItem");
-static_assert(offsetof(WBP_HealingItems_C_BuildItem, IsUsed) == 0x000000, "Member 'WBP_HealingItems_C_BuildItem::IsUsed' has a wrong offset!");
-
 // Function WBP_HealingItems.WBP_HealingItems_C.Initialize
 // 0x0008 (0x0008 - 0x0000)
 struct WBP_HealingItems_C_Initialize final
@@ -102,25 +91,6 @@ public:
 static_assert(alignof(WBP_HealingItems_C_Initialize) == 0x000008, "Wrong alignment on WBP_HealingItems_C_Initialize");
 static_assert(sizeof(WBP_HealingItems_C_Initialize) == 0x000008, "Wrong size on WBP_HealingItems_C_Initialize");
 static_assert(offsetof(WBP_HealingItems_C_Initialize, Pawn) == 0x000000, "Member 'WBP_HealingItems_C_Initialize::Pawn' has a wrong offset!");
-
-// Function WBP_HealingItems.WBP_HealingItems_C.BindEvents
-// 0x0050 (0x0050 - 0x0000)
-struct WBP_HealingItems_C_BindEvents final
-{
-public:
-	TDelegate<void(int32 RestoredHealCount)>      K2Node_CreateDelegate_OutputDelegate;              // 0x0000(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x0010(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_2;            // 0x0020(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_3;            // 0x0030(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_4;            // 0x0040(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_HealingItems_C_BindEvents) == 0x000004, "Wrong alignment on WBP_HealingItems_C_BindEvents");
-static_assert(sizeof(WBP_HealingItems_C_BindEvents) == 0x000050, "Wrong size on WBP_HealingItems_C_BindEvents");
-static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate) == 0x000000, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
-static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate_1) == 0x000010, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
-static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate_2) == 0x000020, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
-static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate_3) == 0x000030, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate_3' has a wrong offset!");
-static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate_4) == 0x000040, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate_4' has a wrong offset!");
 
 // Function WBP_HealingItems.WBP_HealingItems_C.ExecuteUbergraph_WBP_HealingItems
 // 0x0108 (0x0108 - 0x0000)
@@ -255,6 +225,36 @@ static_assert(offsetof(WBP_HealingItems_C_ExecuteUbergraph_WBP_HealingItems, Tem
 static_assert(offsetof(WBP_HealingItems_C_ExecuteUbergraph_WBP_HealingItems, CallFunc_PlayAnimation_ReturnValue) == 0x0000F8, "Member 'WBP_HealingItems_C_ExecuteUbergraph_WBP_HealingItems::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WBP_HealingItems_C_ExecuteUbergraph_WBP_HealingItems, CallFunc_Not_PreBool_ReturnValue_1) == 0x000100, "Member 'WBP_HealingItems_C_ExecuteUbergraph_WBP_HealingItems::CallFunc_Not_PreBool_ReturnValue_1' has a wrong offset!");
 static_assert(offsetof(WBP_HealingItems_C_ExecuteUbergraph_WBP_HealingItems, CallFunc_BooleanAND_ReturnValue_2) == 0x000101, "Member 'WBP_HealingItems_C_ExecuteUbergraph_WBP_HealingItems::CallFunc_BooleanAND_ReturnValue_2' has a wrong offset!");
+
+// Function WBP_HealingItems.WBP_HealingItems_C.BuildItem
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_HealingItems_C_BuildItem final
+{
+public:
+	bool                                          IsUsed;                                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_HealingItems_C_BuildItem) == 0x000001, "Wrong alignment on WBP_HealingItems_C_BuildItem");
+static_assert(sizeof(WBP_HealingItems_C_BuildItem) == 0x000001, "Wrong size on WBP_HealingItems_C_BuildItem");
+static_assert(offsetof(WBP_HealingItems_C_BuildItem, IsUsed) == 0x000000, "Member 'WBP_HealingItems_C_BuildItem::IsUsed' has a wrong offset!");
+
+// Function WBP_HealingItems.WBP_HealingItems_C.BindEvents
+// 0x0050 (0x0050 - 0x0000)
+struct WBP_HealingItems_C_BindEvents final
+{
+public:
+	TDelegate<void(int32 RestoredHealCount)>      K2Node_CreateDelegate_OutputDelegate;              // 0x0000(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x0010(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_2;            // 0x0020(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_3;            // 0x0030(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_4;            // 0x0040(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_HealingItems_C_BindEvents) == 0x000004, "Wrong alignment on WBP_HealingItems_C_BindEvents");
+static_assert(sizeof(WBP_HealingItems_C_BindEvents) == 0x000050, "Wrong size on WBP_HealingItems_C_BindEvents");
+static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate) == 0x000000, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
+static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate_1) == 0x000010, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
+static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate_2) == 0x000020, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
+static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate_3) == 0x000030, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate_3' has a wrong offset!");
+static_assert(offsetof(WBP_HealingItems_C_BindEvents, K2Node_CreateDelegate_OutputDelegate_4) == 0x000040, "Member 'WBP_HealingItems_C_BindEvents::K2Node_CreateDelegate_OutputDelegate_4' has a wrong offset!");
 
 }
 

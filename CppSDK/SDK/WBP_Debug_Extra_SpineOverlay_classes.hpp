@@ -44,17 +44,17 @@ public:
 	TMulticastInlineDelegate<void(double NewZoomMax)> OnZoomMaxChanged;                              // 0x04F8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 
 public:
+	void SetZoomMinMax(float ZoomMin, float ZoomMax);
+	void SetSceneOffset(const struct FVector2D& SceneOffset_0);
+	void SetOffset(const struct FVector2D& Offset);
+	void ExecuteUbergraph_WBP_Debug_Extra_SpineOverlay(int32 EntryPoint);
+	void Construct();
 	void BndEvt__WBP_Debug_Extra_SpineOverlay_SpinBox_ZoomMin_K2Node_ComponentBoundEvent_3_OnSpinBoxValueChangedEvent__DelegateSignature(float InValue);
 	void BndEvt__WBP_Debug_Extra_SpineOverlay_SpinBox_ZoomMax_K2Node_ComponentBoundEvent_4_OnSpinBoxValueChangedEvent__DelegateSignature(float InValue);
 	void BndEvt__WBP_Debug_Extra_SpineOverlay_SpinBox_Y_K2Node_ComponentBoundEvent_2_OnSpinBoxValueChangedEvent__DelegateSignature(float InValue);
 	void BndEvt__WBP_Debug_Extra_SpineOverlay_SpinBox_X_K2Node_ComponentBoundEvent_1_OnSpinBoxValueChangedEvent__DelegateSignature(float InValue);
 	void BndEvt__WBP_Debug_Extra_SpineOverlay_SpinBox_SceneY_K2Node_ComponentBoundEvent_5_OnSpinBoxValueChangedEvent__DelegateSignature(float InValue);
 	void BndEvt__WBP_Debug_Extra_SpineOverlay_SpinBox_SceneX_K2Node_ComponentBoundEvent_0_OnSpinBoxValueChangedEvent__DelegateSignature(float InValue);
-	void SetZoomMinMax(float ZoomMin, float ZoomMax);
-	void SetSceneOffset(const struct FVector2D& SceneOffset_0);
-	void SetOffset(const struct FVector2D& Offset);
-	void ExecuteUbergraph_WBP_Debug_Extra_SpineOverlay(int32 EntryPoint);
-	void Construct();
 
 public:
 	static class UClass* StaticClass()

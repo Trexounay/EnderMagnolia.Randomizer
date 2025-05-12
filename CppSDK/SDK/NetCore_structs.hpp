@@ -172,6 +172,18 @@ enum class EFastArraySerializerDeltaFlags : uint8
 	EFastArraySerializerDeltaFlags_MAX       = 5,
 };
 
+// ScriptStruct NetCore.StateStruct
+// 0x0018 (0x0018 - 0x0000)
+struct FStateStruct
+{
+public:
+	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 StateName;                                         // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+};
+static_assert(alignof(FStateStruct) == 0x000008, "Wrong alignment on FStateStruct");
+static_assert(sizeof(FStateStruct) == 0x000018, "Wrong size on FStateStruct");
+static_assert(offsetof(FStateStruct, StateName) == 0x000008, "Member 'FStateStruct::StateName' has a wrong offset!");
+
 // ScriptStruct NetCore.NetAnalyticsDataConfig
 // 0x000C (0x000C - 0x0000)
 struct FNetAnalyticsDataConfig final
@@ -185,18 +197,6 @@ static_assert(alignof(FNetAnalyticsDataConfig) == 0x000004, "Wrong alignment on 
 static_assert(sizeof(FNetAnalyticsDataConfig) == 0x00000C, "Wrong size on FNetAnalyticsDataConfig");
 static_assert(offsetof(FNetAnalyticsDataConfig, DataName) == 0x000000, "Member 'FNetAnalyticsDataConfig::DataName' has a wrong offset!");
 static_assert(offsetof(FNetAnalyticsDataConfig, bEnabled) == 0x000008, "Member 'FNetAnalyticsDataConfig::bEnabled' has a wrong offset!");
-
-// ScriptStruct NetCore.StateStruct
-// 0x0018 (0x0018 - 0x0000)
-struct FStateStruct
-{
-public:
-	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 StateName;                                         // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-};
-static_assert(alignof(FStateStruct) == 0x000008, "Wrong alignment on FStateStruct");
-static_assert(sizeof(FStateStruct) == 0x000018, "Wrong size on FStateStruct");
-static_assert(offsetof(FStateStruct, StateName) == 0x000008, "Member 'FStateStruct::StateName' has a wrong offset!");
 
 // ScriptStruct NetCore.EscalationState
 // 0x0018 (0x0030 - 0x0018)

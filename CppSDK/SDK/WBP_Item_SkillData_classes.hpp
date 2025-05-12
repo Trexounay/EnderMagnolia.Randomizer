@@ -40,11 +40,11 @@ public:
 	TMap<ECommandSetCategory, struct FSlateColor> ColorForCategories;                                // 0x04C8(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly)
 
 public:
-	void SetupUpgrade(const struct FSkillData& SkillData, const struct FSkillData& UpgradeSkillData);
-	void SetupSPCost(int32 Value);
-	void SetupCooldownCost(double Value);
-	void Setup_Upgraded_Cooldown_Cost(double CurrCooldown, double UpgradeCooldown);
 	void Setup(const struct FSkillData& SkillData);
+	void Setup_Upgraded_Cooldown_Cost(double CurrCooldown, double UpgradeCooldown);
+	void SetupCooldownCost(double Value);
+	void SetupSPCost(int32 Value);
+	void SetupUpgrade(const struct FSkillData& SkillData, const struct FSkillData& UpgradeSkillData);
 
 public:
 	static class UClass* StaticClass()

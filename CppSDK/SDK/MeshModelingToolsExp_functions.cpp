@@ -117,120 +117,6 @@ const TArray<class FString> UBakeMultiTexture2DProperties::GetUVLayerNamesFunc()
 }
 
 
-// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.AddBox
-// (Final, Native, Public)
-
-void USimpleCollisionEditorToolActionProperties::AddBox()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "AddBox");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.AddCapsule
-// (Final, Native, Public)
-
-void USimpleCollisionEditorToolActionProperties::AddCapsule()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "AddCapsule");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.AddSphere
-// (Final, Native, Public)
-
-void USimpleCollisionEditorToolActionProperties::AddSphere()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "AddSphere");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.Delete
-// (Final, Native, Public)
-
-void USimpleCollisionEditorToolActionProperties::Delete()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "Delete");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.DeleteAll
-// (Final, Native, Public)
-
-void USimpleCollisionEditorToolActionProperties::DeleteAll()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "DeleteAll");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.Duplicate
-// (Final, Native, Public)
-
-void USimpleCollisionEditorToolActionProperties::Duplicate()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "Duplicate");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function MeshModelingToolsExp.MeshConstraintProperties.IsPreventNormalFlipsEnabled
 // (Native, Protected, Const)
 // Parameters:
@@ -322,6 +208,44 @@ const TArray<class FString> UBakeMeshAttributeMapsToolProperties::GetMapPreviewN
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
+}
+
+
+// Function MeshModelingToolsExp.PlaneCutTool.Cut
+// (Final, Native, Protected)
+
+void UPlaneCutTool::Cut()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PlaneCutTool", "Cut");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MeshModelingToolsExp.PlaneCutTool.FlipPlane
+// (Final, Native, Protected)
+
+void UPlaneCutTool::FlipPlane()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PlaneCutTool", "FlipPlane");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
 }
 
 
@@ -565,56 +489,6 @@ TArray<class FString> UDisplaceMeshCommonProperties::GetWeightMapsFunc()
 		Func = Class->GetFunction("DisplaceMeshCommonProperties", "GetWeightMapsFunc");
 
 	Params::DisplaceMeshCommonProperties_GetWeightMapsFunc Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function MeshModelingToolsExp.TransferMeshToolProperties.GetSourceLODNamesFunc
-// (Final, Native, Public, Const)
-// Parameters:
-// const TArray<class FString>             ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-const TArray<class FString> UTransferMeshToolProperties::GetSourceLODNamesFunc() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TransferMeshToolProperties", "GetSourceLODNamesFunc");
-
-	Params::TransferMeshToolProperties_GetSourceLODNamesFunc Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function MeshModelingToolsExp.TransferMeshToolProperties.GetTargetLODNamesFunc
-// (Final, Native, Public, Const)
-// Parameters:
-// const TArray<class FString>             ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-const TArray<class FString> UTransferMeshToolProperties::GetTargetLODNamesFunc() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TransferMeshToolProperties", "GetTargetLODNamesFunc");
-
-	Params::TransferMeshToolProperties_GetTargetLODNamesFunc Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -1721,15 +1595,15 @@ void UMirrorToolActionPropertySet::Up()
 }
 
 
-// Function MeshModelingToolsExp.PlaneCutTool.Cut
-// (Final, Native, Protected)
+// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.AddBox
+// (Final, Native, Public)
 
-void UPlaneCutTool::Cut()
+void USimpleCollisionEditorToolActionProperties::AddBox()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PlaneCutTool", "Cut");
+		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "AddBox");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -1740,15 +1614,15 @@ void UPlaneCutTool::Cut()
 }
 
 
-// Function MeshModelingToolsExp.PlaneCutTool.FlipPlane
-// (Final, Native, Protected)
+// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.AddCapsule
+// (Final, Native, Public)
 
-void UPlaneCutTool::FlipPlane()
+void USimpleCollisionEditorToolActionProperties::AddCapsule()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PlaneCutTool", "FlipPlane");
+		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "AddCapsule");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -1756,6 +1630,132 @@ void UPlaneCutTool::FlipPlane()
 	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.AddSphere
+// (Final, Native, Public)
+
+void USimpleCollisionEditorToolActionProperties::AddSphere()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "AddSphere");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.Delete
+// (Final, Native, Public)
+
+void USimpleCollisionEditorToolActionProperties::Delete()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "Delete");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.DeleteAll
+// (Final, Native, Public)
+
+void USimpleCollisionEditorToolActionProperties::DeleteAll()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "DeleteAll");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MeshModelingToolsExp.SimpleCollisionEditorToolActionProperties.Duplicate
+// (Final, Native, Public)
+
+void USimpleCollisionEditorToolActionProperties::Duplicate()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SimpleCollisionEditorToolActionProperties", "Duplicate");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MeshModelingToolsExp.TransferMeshToolProperties.GetSourceLODNamesFunc
+// (Final, Native, Public, Const)
+// Parameters:
+// const TArray<class FString>             ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+const TArray<class FString> UTransferMeshToolProperties::GetSourceLODNamesFunc() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TransferMeshToolProperties", "GetSourceLODNamesFunc");
+
+	Params::TransferMeshToolProperties_GetSourceLODNamesFunc Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function MeshModelingToolsExp.TransferMeshToolProperties.GetTargetLODNamesFunc
+// (Final, Native, Public, Const)
+// Parameters:
+// const TArray<class FString>             ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+const TArray<class FString> UTransferMeshToolProperties::GetTargetLODNamesFunc() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TransferMeshToolProperties", "GetTargetLODNamesFunc");
+
+	Params::TransferMeshToolProperties_GetTargetLODNamesFunc Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
 }
 
 }

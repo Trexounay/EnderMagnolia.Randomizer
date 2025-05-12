@@ -35,19 +35,19 @@ public:
 	bool                                          IsButtonVisible;                                   // 0x04B0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
 
 public:
+	void TriggerNoHealAnimation();
+	void RefreshButtonVisibility();
 	void RefreshButtonState();
 	void OnUseHealingItem();
 	void OnRestoreHealingItems(int32 RestoreCount);
 	void OnHPChanged();
 	void OnHealCountChanged();
-	void TriggerNoHealAnimation();
-	void RefreshButtonVisibility();
 	void OnFullyRestoreHealingItems();
-	void BuildItem(bool IsUsed);
 	void Initialize(class APawn* Pawn);
-	void BindEvents();
 	void ExecuteUbergraph_WBP_HealingItems(int32 EntryPoint);
 	void BuildItems();
+	void BuildItem(bool IsUsed);
+	void BindEvents();
 
 public:
 	static class UClass* StaticClass()

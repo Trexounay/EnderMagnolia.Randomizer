@@ -280,20 +280,28 @@ void UAbilityEffectInstant::OnApplyEffect()
 }
 
 
-// Function Zion.EventAction_OpenUI.OnWidgetDestruct
+// Function Zion.EventAction_MoveTo_TalkDistance.OnMoveCompleted
 // (Final, Native, Private)
+// Parameters:
+// const struct FAIRequestID&              RequestID                                              (Parm, NoDestructor, NativeAccessSpecifierPublic)
+// EPathFollowingResult                    Result                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UEventAction_OpenUI::OnWidgetDestruct()
+void UEventAction_MoveTo_TalkDistance::OnMoveCompleted(const struct FAIRequestID& RequestID, EPathFollowingResult Result)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("EventAction_OpenUI", "OnWidgetDestruct");
+		Func = Class->GetFunction("EventAction_MoveTo_TalkDistance", "OnMoveCompleted");
+
+	Params::EventAction_MoveTo_TalkDistance_OnMoveCompleted Parms{};
+
+	Parms.RequestID = std::move(RequestID);
+	Parms.Result = Result;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, nullptr);
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 }
@@ -784,431 +792,6 @@ bool URecollectionBossBaseComponent::IsStarted() const
 }
 
 
-// Function Zion.RecollectionBossRushComponent.ClearBossRush
-// (Final, Native, Public, BlueprintCallable)
-
-void URecollectionBossRushComponent::ClearBossRush()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "ClearBossRush");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.GameMapChangePostFade
-// (Final, Native, Protected)
-
-void URecollectionBossRushComponent::GameMapChangePostFade()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "GameMapChangePostFade");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.GetMaxBossesDefeatedCount
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 URecollectionBossRushComponent::GetMaxBossesDefeatedCount()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "GetMaxBossesDefeatedCount");
-
-	Params::RecollectionBossRushComponent_GetMaxBossesDefeatedCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.GetRecordData
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const int32                             RecordIndex                                            (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FRecollectionBossRushRecordData  ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-
-struct FRecollectionBossRushRecordData URecollectionBossRushComponent::GetRecordData(const int32 RecordIndex)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "GetRecordData");
-
-	Params::RecollectionBossRushComponent_GetRecordData Parms{};
-
-	Parms.RecordIndex = RecordIndex;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.GoToNextBoss
-// (Final, Native, Public, BlueprintCallable)
-
-void URecollectionBossRushComponent::GoToNextBoss()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "GoToNextBoss");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.OnClearBossRush
-// (Event, Public, BlueprintEvent)
-
-void URecollectionBossRushComponent::OnClearBossRush()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "OnClearBossRush");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.RecollectionBossRushComponent.OnEndBossRush
-// (Event, Public, BlueprintEvent)
-
-void URecollectionBossRushComponent::OnEndBossRush()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "OnEndBossRush");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.RecollectionBossRushComponent.OnGameMapChanged
-// (Event, Protected, BlueprintEvent)
-
-void URecollectionBossRushComponent::OnGameMapChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "OnGameMapChanged");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.RecollectionBossRushComponent.OnGameMapChangedPostFade
-// (Event, Protected, BlueprintEvent)
-
-void URecollectionBossRushComponent::OnGameMapChangedPostFade()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "OnGameMapChangedPostFade");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.RecollectionBossRushComponent.OnSetTimerPaused
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool                                    bIsPaused                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URecollectionBossRushComponent::OnSetTimerPaused(bool bIsPaused)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "OnSetTimerPaused");
-
-	Params::RecollectionBossRushComponent_OnSetTimerPaused Parms{};
-
-	Parms.bIsPaused = bIsPaused;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.RecollectionBossRushComponent.OnStartBossRush
-// (Event, Public, BlueprintEvent)
-
-void URecollectionBossRushComponent::OnStartBossRush()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "OnStartBossRush");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.RecollectionBossRushComponent.ResetCurrentRecords
-// (Final, Native, Public, BlueprintCallable)
-
-void URecollectionBossRushComponent::ResetCurrentRecords()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "ResetCurrentRecords");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.SetTimerPaused
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bIsPaused                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URecollectionBossRushComponent::SetTimerPaused(bool bIsPaused)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "SetTimerPaused");
-
-	Params::RecollectionBossRushComponent_SetTimerPaused Parms{};
-
-	Parms.bIsPaused = bIsPaused;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.TryAddNewRecord
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FRecollectionBossRushRecordData&NewRecordData                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 URecollectionBossRushComponent::TryAddNewRecord(const struct FRecollectionBossRushRecordData& NewRecordData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "TryAddNewRecord");
-
-	Params::RecollectionBossRushComponent_TryAddNewRecord Parms{};
-
-	Parms.NewRecordData = std::move(NewRecordData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.CanUpdateTime
-// (Native, Event, Public, BlueprintEvent, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URecollectionBossRushComponent::CanUpdateTime() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "CanUpdateTime");
-
-	Params::RecollectionBossRushComponent_CanUpdateTime Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.GetBossRushDifficultyPreset
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EDifficultyPreset                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EDifficultyPreset URecollectionBossRushComponent::GetBossRushDifficultyPreset() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "GetBossRushDifficultyPreset");
-
-	Params::RecollectionBossRushComponent_GetBossRushDifficultyPreset Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.GetBossRushTime
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float URecollectionBossRushComponent::GetBossRushTime() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "GetBossRushTime");
-
-	Params::RecollectionBossRushComponent_GetBossRushTime Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.GetCurrentBossIndex
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 URecollectionBossRushComponent::GetCurrentBossIndex() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "GetCurrentBossIndex");
-
-	Params::RecollectionBossRushComponent_GetCurrentBossIndex Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.IsTimerPaused
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URecollectionBossRushComponent::IsTimerPaused() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "IsTimerPaused");
-
-	Params::RecollectionBossRushComponent_IsTimerPaused Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.RecollectionBossRushComponent.ShouldDisplayRecollectionBossRush
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URecollectionBossRushComponent::ShouldDisplayRecollectionBossRush() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RecollectionBossRushComponent", "ShouldDisplayRecollectionBossRush");
-
-	Params::RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function Zion.CommandModule.OnFinish
 // (Native, Event, Protected, BlueprintEvent)
 
@@ -1357,25 +940,6 @@ float UCommandModule::GetExecutionTime() const
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
-}
-
-
-// Function Zion.OrientFromFloorComponent.OnFacingChange
-// (Final, Native, Private)
-
-void UOrientFromFloorComponent::OnFacingChange()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("OrientFromFloorComponent", "OnFacingChange");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
 }
 
 
@@ -1954,19 +1518,21 @@ bool UCommand::IsInvokedInputPressed() const
 }
 
 
-// Function Zion.StatusEffect.GetDuration
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.StatusEffectComponent.LaunchStatusEffect
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EStatusEffectType                       StatusEffectType                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-float UStatusEffect::GetDuration() const
+void UStatusEffectComponent::LaunchStatusEffect(EStatusEffectType StatusEffectType)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("StatusEffect", "GetDuration");
+		Func = Class->GetFunction("StatusEffectComponent", "LaunchStatusEffect");
 
-	Params::StatusEffect_GetDuration Parms{};
+	Params::StatusEffectComponent_LaunchStatusEffect Parms{};
+
+	Parms.StatusEffectType = StatusEffectType;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -1974,24 +1540,24 @@ float UStatusEffect::GetDuration() const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
-// Function Zion.StatusEffect.GetStatusEffectType
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.StatusEffectComponent.LaunchStatusEffectFromClass
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// EStatusEffectType                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const TSubclassOf<class UStatusEffect>& StatusEffectClass                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-EStatusEffectType UStatusEffect::GetStatusEffectType() const
+void UStatusEffectComponent::LaunchStatusEffectFromClass(const TSubclassOf<class UStatusEffect>& StatusEffectClass)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("StatusEffect", "GetStatusEffectType");
+		Func = Class->GetFunction("StatusEffectComponent", "LaunchStatusEffectFromClass");
 
-	Params::StatusEffect_GetStatusEffectType Parms{};
+	Params::StatusEffectComponent_LaunchStatusEffectFromClass Parms{};
+
+	Parms.StatusEffectClass = StatusEffectClass;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -1999,8 +1565,25 @@ EStatusEffectType UStatusEffect::GetStatusEffectType() const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
+}
 
-	return Parms.ReturnValue;
+
+// Function Zion.StatusEffectComponent.OnDeathProcessStart
+// (Final, Native, Private)
+
+void UStatusEffectComponent::OnDeathProcessStart()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("StatusEffectComponent", "OnDeathProcessStart");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
 }
 
 
@@ -2029,19 +1612,107 @@ class AActor* AAbilityHitboxTarget::GetTarget() const
 }
 
 
-// Function Zion.GameStatsComponent.SetPause
-// (Final, Native, Public, BlueprintCallable)
+// Function Zion.GameSettingsSubsystem.GetMaxResolutionScale
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-int32 UGameStatsComponent::SetPause()
+float UGameSettingsSubsystem::GetMaxResolutionScale()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GameStatsComponent", "SetPause");
+		Func = StaticClass()->GetFunction("GameSettingsSubsystem", "GetMaxResolutionScale");
 
-	Params::GameStatsComponent_SetPause Parms{};
+	Params::GameSettingsSubsystem_GetMaxResolutionScale Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetMinResolutionScale
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetMinResolutionScale()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("GameSettingsSubsystem", "GetMinResolutionScale");
+
+	Params::GameSettingsSubsystem_GetMinResolutionScale Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetAntiAliasingMethod
+// (Final, Native, Public, BlueprintCallable)
+
+void UGameSettingsSubsystem::ResetAntiAliasingMethod()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetAntiAliasingMethod");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetAspectRatio
+// (Final, Native, Public, BlueprintCallable)
+
+void UGameSettingsSubsystem::ResetAspectRatio()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetAspectRatio");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetAutoClimbDirectionMode
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// EAutoClimbDirectionMode                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EAutoClimbDirectionMode UGameSettingsSubsystem::ResetAutoClimbDirectionMode()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetAutoClimbDirectionMode");
+
+	Params::GameSettingsSubsystem_ResetAutoClimbDirectionMode Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -2054,19 +1725,19 @@ int32 UGameStatsComponent::SetPause()
 }
 
 
-// Function Zion.GameStatsComponent.UnsetPause
+// Function Zion.GameSettingsSubsystem.ResetAutoSkipAlreadySeenEvents
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-int32 UGameStatsComponent::UnsetPause()
+bool UGameSettingsSubsystem::ResetAutoSkipAlreadySeenEvents()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GameStatsComponent", "UnsetPause");
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetAutoSkipAlreadySeenEvents");
 
-	Params::GameStatsComponent_UnsetPause Parms{};
+	Params::GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -2079,19 +1750,1856 @@ int32 UGameStatsComponent::UnsetPause()
 }
 
 
-// Function Zion.GameStatsComponent.GetPlayTimeAsString
+// Function Zion.GameSettingsSubsystem.ResetCameraOscillation
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::ResetCameraOscillation()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetCameraOscillation");
+
+	Params::GameSettingsSubsystem_ResetCameraOscillation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetCameraShake
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::ResetCameraShake()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetCameraShake");
+
+	Params::GameSettingsSubsystem_ResetCameraShake Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetControllerVibration
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::ResetControllerVibration()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetControllerVibration");
+
+	Params::GameSettingsSubsystem_ResetControllerVibration Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayAchievementNotifications
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::ResetDisplayAchievementNotifications()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayAchievementNotifications");
+
+	Params::GameSettingsSubsystem_ResetDisplayAchievementNotifications Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayDamageValues
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::ResetDisplayDamageValues()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayDamageValues");
+
+	Params::GameSettingsSubsystem_ResetDisplayDamageValues Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayEnemyGauges
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::ResetDisplayEnemyGauges()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayEnemyGauges");
+
+	Params::GameSettingsSubsystem_ResetDisplayEnemyGauges Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayHealValues
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::ResetDisplayHealValues()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayHealValues");
+
+	Params::GameSettingsSubsystem_ResetDisplayHealValues Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayHPAboveGauge
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::ResetDisplayHPAboveGauge()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayHPAboveGauge");
+
+	Params::GameSettingsSubsystem_ResetDisplayHPAboveGauge Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayPlayerUI
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::ResetDisplayPlayerUI()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayPlayerUI");
+
+	Params::GameSettingsSubsystem_ResetDisplayPlayerUI Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayTutorials
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::ResetDisplayTutorials()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayTutorials");
+
+	Params::GameSettingsSubsystem_ResetDisplayTutorials Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetHoldDownToDodgeStill
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::ResetHoldDownToDodgeStill()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetHoldDownToDodgeStill");
+
+	Params::GameSettingsSubsystem_ResetHoldDownToDodgeStill Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetLowHPFeedbackOpacity
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::ResetLowHPFeedbackOpacity()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetLowHPFeedbackOpacity");
+
+	Params::GameSettingsSubsystem_ResetLowHPFeedbackOpacity Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetResolutionScale
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::ResetResolutionScale()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetResolutionScale");
+
+	Params::GameSettingsSubsystem_ResetResolutionScale Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetSticksDeadZone
+// (Final, Native, Public, BlueprintCallable)
+
+void UGameSettingsSubsystem::ResetSticksDeadZone()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetSticksDeadZone");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameSettingsSubsystem.ResetToDefault
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// EGameSettingsType                       GameSettingsToReset                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UGameSettingsSubsystem::ResetToDefault(EGameSettingsType GameSettingsToReset)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "ResetToDefault");
+
+	Params::GameSettingsSubsystem_ResetToDefault Parms{};
+
+	Parms.GameSettingsToReset = GameSettingsToReset;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetAntiAliasingMethod
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const EAntiAliasingMethod&              NewAntiAliasingMethod                                  (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EAntiAliasingMethod                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EAntiAliasingMethod UGameSettingsSubsystem::SetAntiAliasingMethod(const EAntiAliasingMethod& NewAntiAliasingMethod)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetAntiAliasingMethod");
+
+	Params::GameSettingsSubsystem_SetAntiAliasingMethod Parms{};
+
+	Parms.NewAntiAliasingMethod = NewAntiAliasingMethod;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetAutoClimbDirectionMode
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// EAutoClimbDirectionMode                 NewMode                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EAutoClimbDirectionMode                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EAutoClimbDirectionMode UGameSettingsSubsystem::SetAutoClimbDirectionMode(EAutoClimbDirectionMode NewMode)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetAutoClimbDirectionMode");
+
+	Params::GameSettingsSubsystem_SetAutoClimbDirectionMode Parms{};
+
+	Parms.NewMode = NewMode;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetAutoSkipAlreadySeenEvents
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bAutoSkip                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetAutoSkipAlreadySeenEvents(bool bAutoSkip)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetAutoSkipAlreadySeenEvents");
+
+	Params::GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents Parms{};
+
+	Parms.bAutoSkip = bAutoSkip;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetAutoUploadCrashReport
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bNewAutoUploadCrashReport                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UGameSettingsSubsystem::SetAutoUploadCrashReport(bool bNewAutoUploadCrashReport)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetAutoUploadCrashReport");
+
+	Params::GameSettingsSubsystem_SetAutoUploadCrashReport Parms{};
+
+	Parms.bNewAutoUploadCrashReport = bNewAutoUploadCrashReport;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetCameraOscillation
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bEnable                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetCameraOscillation(bool bEnable)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetCameraOscillation");
+
+	Params::GameSettingsSubsystem_SetCameraOscillation Parms{};
+
+	Parms.bEnable = bEnable;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetCameraShake
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   NewCameraShake                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::SetCameraShake(float NewCameraShake)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetCameraShake");
+
+	Params::GameSettingsSubsystem_SetCameraShake Parms{};
+
+	Parms.NewCameraShake = NewCameraShake;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetConstraintCameraAspectRatio
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const EConstraintCameraAspectRatio&     NewConstraintCameraAspectRatio                         (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EConstraintCameraAspectRatio            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EConstraintCameraAspectRatio UGameSettingsSubsystem::SetConstraintCameraAspectRatio(const EConstraintCameraAspectRatio& NewConstraintCameraAspectRatio)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetConstraintCameraAspectRatio");
+
+	Params::GameSettingsSubsystem_SetConstraintCameraAspectRatio Parms{};
+
+	Parms.NewConstraintCameraAspectRatio = NewConstraintCameraAspectRatio;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetConstraintHUDAspectRatio
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bNewConstraintHUDAspectRatio                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetConstraintHUDAspectRatio(bool bNewConstraintHUDAspectRatio)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetConstraintHUDAspectRatio");
+
+	Params::GameSettingsSubsystem_SetConstraintHUDAspectRatio Parms{};
+
+	Parms.bNewConstraintHUDAspectRatio = bNewConstraintHUDAspectRatio;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetControllerVibration
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   NewControllerVibration                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::SetControllerVibration(float NewControllerVibration)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetControllerVibration");
+
+	Params::GameSettingsSubsystem_SetControllerVibration Parms{};
+
+	Parms.NewControllerVibration = NewControllerVibration;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetDisplayAchievementNotifications
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bDisplay                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetDisplayAchievementNotifications(bool bDisplay)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayAchievementNotifications");
+
+	Params::GameSettingsSubsystem_SetDisplayAchievementNotifications Parms{};
+
+	Parms.bDisplay = bDisplay;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetDisplayDamageValues
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bDisplayDamageValues                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetDisplayDamageValues(bool bDisplayDamageValues)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayDamageValues");
+
+	Params::GameSettingsSubsystem_SetDisplayDamageValues Parms{};
+
+	Parms.bDisplayDamageValues = bDisplayDamageValues;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetDisplayEnemyGauges
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bDisplay                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetDisplayEnemyGauges(bool bDisplay)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayEnemyGauges");
+
+	Params::GameSettingsSubsystem_SetDisplayEnemyGauges Parms{};
+
+	Parms.bDisplay = bDisplay;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetDisplayHealValues
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bDisplayHealValues                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetDisplayHealValues(bool bDisplayHealValues)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayHealValues");
+
+	Params::GameSettingsSubsystem_SetDisplayHealValues Parms{};
+
+	Parms.bDisplayHealValues = bDisplayHealValues;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetDisplayHPAboveGauge
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bDisplayHPAboveGauge                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetDisplayHPAboveGauge(bool bDisplayHPAboveGauge)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayHPAboveGauge");
+
+	Params::GameSettingsSubsystem_SetDisplayHPAboveGauge Parms{};
+
+	Parms.bDisplayHPAboveGauge = bDisplayHPAboveGauge;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetDisplayPlayerUI
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bDisplay                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetDisplayPlayerUI(bool bDisplay)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayPlayerUI");
+
+	Params::GameSettingsSubsystem_SetDisplayPlayerUI Parms{};
+
+	Parms.bDisplay = bDisplay;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetDisplayTutorials
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bDisplay                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetDisplayTutorials(bool bDisplay)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayTutorials");
+
+	Params::GameSettingsSubsystem_SetDisplayTutorials Parms{};
+
+	Parms.bDisplay = bDisplay;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetGamma
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   NewGamma                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::SetGamma(float NewGamma)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetGamma");
+
+	Params::GameSettingsSubsystem_SetGamma Parms{};
+
+	Parms.NewGamma = NewGamma;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetGammaPercentage
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   NewGammaPercentage                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::SetGammaPercentage(float NewGammaPercentage)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetGammaPercentage");
+
+	Params::GameSettingsSubsystem_SetGammaPercentage Parms{};
+
+	Parms.NewGammaPercentage = NewGammaPercentage;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetHoldDownToDodgeStill
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bEnable                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::SetHoldDownToDodgeStill(bool bEnable)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetHoldDownToDodgeStill");
+
+	Params::GameSettingsSubsystem_SetHoldDownToDodgeStill Parms{};
+
+	Parms.bEnable = bEnable;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetInitialSettingsDone
+// (Final, Native, Public, BlueprintCallable)
+
+void UGameSettingsSubsystem::SetInitialSettingsDone()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetInitialSettingsDone");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetLanguage
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// const class FString&                    Language                                               (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UGameSettingsSubsystem::SetLanguage(const class FString& Language)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetLanguage");
+
+	Params::GameSettingsSubsystem_SetLanguage Parms{};
+
+	Parms.Language = std::move(Language);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetLowHPFeedbackOpacity
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   NewLowHPFeedbackOpacity                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::SetLowHPFeedbackOpacity(float NewLowHPFeedbackOpacity)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetLowHPFeedbackOpacity");
+
+	Params::GameSettingsSubsystem_SetLowHPFeedbackOpacity Parms{};
+
+	Parms.NewLowHPFeedbackOpacity = NewLowHPFeedbackOpacity;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetResolutionScale
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   NewResolutionScale                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::SetResolutionScale(float NewResolutionScale)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetResolutionScale");
+
+	Params::GameSettingsSubsystem_SetResolutionScale Parms{};
+
+	Parms.NewResolutionScale = NewResolutionScale;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetStickDeadZone
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const EInputStick&                      InputStick                                             (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   NewDeadZone                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::SetStickDeadZone(const EInputStick& InputStick, float NewDeadZone)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetStickDeadZone");
+
+	Params::GameSettingsSubsystem_SetStickDeadZone Parms{};
+
+	Parms.InputStick = InputStick;
+	Parms.NewDeadZone = NewDeadZone;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetTitleType
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// EGameEndingType                         TitleType                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UGameSettingsSubsystem::SetTitleType(EGameEndingType TitleType)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetTitleType");
+
+	Params::GameSettingsSubsystem_SetTitleType Parms{};
+
+	Parms.TitleType = TitleType;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameSettingsSubsystem.SetUIAspectRatio
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const EConstraintCameraAspectRatio&     NewUIAspectRatio                                       (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EConstraintCameraAspectRatio            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EConstraintCameraAspectRatio UGameSettingsSubsystem::SetUIAspectRatio(const EConstraintCameraAspectRatio& NewUIAspectRatio)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "SetUIAspectRatio");
+
+	Params::GameSettingsSubsystem_SetUIAspectRatio Parms{};
+
+	Parms.NewUIAspectRatio = NewUIAspectRatio;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.DidReachAnyGameEnding
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::DidReachAnyGameEnding() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "DidReachAnyGameEnding");
+
+	Params::GameSettingsSubsystem_DidReachAnyGameEnding Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.DidReachGameEnding
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EGameEndingType                         GameEndingType                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::DidReachGameEnding(EGameEndingType GameEndingType) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "DidReachGameEnding");
+
+	Params::GameSettingsSubsystem_DidReachGameEnding Parms{};
+
+	Parms.GameEndingType = GameEndingType;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetAntiAliasingMethod
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EAntiAliasingMethod                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EAntiAliasingMethod UGameSettingsSubsystem::GetAntiAliasingMethod() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetAntiAliasingMethod");
+
+	Params::GameSettingsSubsystem_GetAntiAliasingMethod Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetAutoClimbDirectionMode
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EAutoClimbDirectionMode                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EAutoClimbDirectionMode UGameSettingsSubsystem::GetAutoClimbDirectionMode() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetAutoClimbDirectionMode");
+
+	Params::GameSettingsSubsystem_GetAutoClimbDirectionMode Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetAutoSkipAlreadySeenEvents
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetAutoSkipAlreadySeenEvents() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetAutoSkipAlreadySeenEvents");
+
+	Params::GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetAutoUploadCrashReport
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetAutoUploadCrashReport() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetAutoUploadCrashReport");
+
+	Params::GameSettingsSubsystem_GetAutoUploadCrashReport Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetCameraOscillation
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetCameraOscillation() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetCameraOscillation");
+
+	Params::GameSettingsSubsystem_GetCameraOscillation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetCameraShake
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetCameraShake() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetCameraShake");
+
+	Params::GameSettingsSubsystem_GetCameraShake Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetConstraintCameraAspectRatio
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EConstraintCameraAspectRatio            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EConstraintCameraAspectRatio UGameSettingsSubsystem::GetConstraintCameraAspectRatio() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetConstraintCameraAspectRatio");
+
+	Params::GameSettingsSubsystem_GetConstraintCameraAspectRatio Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetConstraintHUDAspectRatio
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetConstraintHUDAspectRatio() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetConstraintHUDAspectRatio");
+
+	Params::GameSettingsSubsystem_GetConstraintHUDAspectRatio Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetControllerVibration
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetControllerVibration() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetControllerVibration");
+
+	Params::GameSettingsSubsystem_GetControllerVibration Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetDisplayAchievementNotifications
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetDisplayAchievementNotifications() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayAchievementNotifications");
+
+	Params::GameSettingsSubsystem_GetDisplayAchievementNotifications Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetDisplayDamageValues
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetDisplayDamageValues() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayDamageValues");
+
+	Params::GameSettingsSubsystem_GetDisplayDamageValues Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetDisplayEnemyGauges
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetDisplayEnemyGauges() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayEnemyGauges");
+
+	Params::GameSettingsSubsystem_GetDisplayEnemyGauges Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetDisplayHealValues
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetDisplayHealValues() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayHealValues");
+
+	Params::GameSettingsSubsystem_GetDisplayHealValues Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetDisplayHPAboveGauge
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetDisplayHPAboveGauge() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayHPAboveGauge");
+
+	Params::GameSettingsSubsystem_GetDisplayHPAboveGauge Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetDisplayPlayerUI
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetDisplayPlayerUI() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayPlayerUI");
+
+	Params::GameSettingsSubsystem_GetDisplayPlayerUI Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetDisplayTutorials
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetDisplayTutorials() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayTutorials");
+
+	Params::GameSettingsSubsystem_GetDisplayTutorials Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetGamma
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetGamma() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetGamma");
+
+	Params::GameSettingsSubsystem_GetGamma Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetGammaDefault
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetGammaDefault() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetGammaDefault");
+
+	Params::GameSettingsSubsystem_GetGammaDefault Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetGammaMax
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetGammaMax() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetGammaMax");
+
+	Params::GameSettingsSubsystem_GetGammaMax Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetGammaMin
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetGammaMin() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetGammaMin");
+
+	Params::GameSettingsSubsystem_GetGammaMin Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetGammaPercentage
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetGammaPercentage() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetGammaPercentage");
+
+	Params::GameSettingsSubsystem_GetGammaPercentage Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetHoldDownToDodgeStill
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::GetHoldDownToDodgeStill() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetHoldDownToDodgeStill");
+
+	Params::GameSettingsSubsystem_GetHoldDownToDodgeStill Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetLanguage
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class FString UGameStatsComponent::GetPlayTimeAsString() const
+class FString UGameSettingsSubsystem::GetLanguage() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GameStatsComponent", "GetPlayTimeAsString");
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetLanguage");
 
-	Params::GameStatsComponent_GetPlayTimeAsString Parms{};
+	Params::GameSettingsSubsystem_GetLanguage Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetLowHPFeedbackOpacity
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetLowHPFeedbackOpacity() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetLowHPFeedbackOpacity");
+
+	Params::GameSettingsSubsystem_GetLowHPFeedbackOpacity Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetResolutionScale
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetResolutionScale() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetResolutionScale");
+
+	Params::GameSettingsSubsystem_GetResolutionScale Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetStickDeadZone
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const EInputStick&                      InputStick                                             (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UGameSettingsSubsystem::GetStickDeadZone(const EInputStick& InputStick) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetStickDeadZone");
+
+	Params::GameSettingsSubsystem_GetStickDeadZone Parms{};
+
+	Parms.InputStick = InputStick;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetTitleType
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EGameEndingType                         ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EGameEndingType UGameSettingsSubsystem::GetTitleType() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetTitleType");
+
+	Params::GameSettingsSubsystem_GetTitleType Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.GetUIAspectRatio
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EConstraintCameraAspectRatio            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EConstraintCameraAspectRatio UGameSettingsSubsystem::GetUIAspectRatio() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "GetUIAspectRatio");
+
+	Params::GameSettingsSubsystem_GetUIAspectRatio Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameSettingsSubsystem.IsInitialSettingsDone
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameSettingsSubsystem::IsInitialSettingsDone() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameSettingsSubsystem", "IsInitialSettingsDone");
+
+	Params::GameSettingsSubsystem_IsInitialSettingsDone Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -2254,6 +3762,145 @@ void UDeathProcess_Animation::OnDeathAnimationFinished()
 	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.Trigger_FieldMessage.LaunchFieldMessage
+// (Final, Native, Private, BlueprintCallable)
+// Parameters:
+// class UFieldMessageAsset*               FieldMessageAssetOverride                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ATrigger_FieldMessage::LaunchFieldMessage(class UFieldMessageAsset* FieldMessageAssetOverride)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Trigger_FieldMessage", "LaunchFieldMessage");
+
+	Params::Trigger_FieldMessage_LaunchFieldMessage Parms{};
+
+	Parms.FieldMessageAssetOverride = FieldMessageAssetOverride;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.Trigger_FieldMessage.OnClearStatusChecked
+// (Final, Native, Private)
+// Parameters:
+// EClearStatus                            ClearStatus                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ATrigger_FieldMessage::OnClearStatusChecked(EClearStatus ClearStatus)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Trigger_FieldMessage", "OnClearStatusChecked");
+
+	Params::Trigger_FieldMessage_OnClearStatusChecked Parms{};
+
+	Parms.ClearStatus = ClearStatus;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.Trigger_FieldMessage.OnFieldMessageFinished
+// (Final, Native, Private)
+
+void ATrigger_FieldMessage::OnFieldMessageFinished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Trigger_FieldMessage", "OnFieldMessageFinished");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.Trigger_FieldMessage.GetTargetActor
+// (Native, Event, Protected, BlueprintEvent, Const)
+// Parameters:
+// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AActor* ATrigger_FieldMessage::GetTargetActor() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Trigger_FieldMessage", "GetTargetActor");
+
+	Params::Trigger_FieldMessage_GetTargetActor Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.Trigger_FieldMessageNPC.OnNPCDestroyed
+// (Final, Native, Private)
+// Parameters:
+// class AActor*                           DestroyedActor                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ATrigger_FieldMessageNPC::OnNPCDestroyed(class AActor* DestroyedActor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Trigger_FieldMessageNPC", "OnNPCDestroyed");
+
+	Params::Trigger_FieldMessageNPC_OnNPCDestroyed Parms{};
+
+	Parms.DestroyedActor = DestroyedActor;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.Trigger_FieldMessageNPC.GetCollisionComponent
+// (Event, Protected, BlueprintEvent, Const)
+// Parameters:
+// class UShapeComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UShapeComponent* ATrigger_FieldMessageNPC::GetCollisionComponent() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Trigger_FieldMessageNPC", "GetCollisionComponent");
+
+	Params::Trigger_FieldMessageNPC_GetCollisionComponent Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
 }
 
 
@@ -3041,25 +4688,21 @@ void UUserWidgetZion::PlaySoundEvent(class UFMODEvent* SoundEffect) const
 }
 
 
-// Function Zion.UserWidgetExplanation.SetExplanationText
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.UserWidgetEvent.CompleteChoices
+// (Final, Native, Protected, BlueprintCallable)
 // Parameters:
-// const class FText&                      Text                                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const TArray<struct FRichTextInputElement>&InputElements                                          (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-// const TArray<class FString>&            StringElements                                         (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+// int32                                   SelectedChoiceIndex                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UUserWidgetExplanation::SetExplanationText(const class FText& Text, const TArray<struct FRichTextInputElement>& InputElements, const TArray<class FString>& StringElements)
+void UUserWidgetEvent::CompleteChoices(int32 SelectedChoiceIndex)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetExplanation", "SetExplanationText");
+		Func = Class->GetFunction("UserWidgetEvent", "CompleteChoices");
 
-	Params::UserWidgetExplanation_SetExplanationText Parms{};
+	Params::UserWidgetEvent_CompleteChoices Parms{};
 
-	Parms.Text = std::move(Text);
-	Parms.InputElements = std::move(InputElements);
-	Parms.StringElements = std::move(StringElements);
+	Parms.SelectedChoiceIndex = SelectedChoiceIndex;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -3067,6 +4710,256 @@ void UUserWidgetExplanation::SetExplanationText(const class FText& Text, const T
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetEvent.CompleteTalk
+// (Final, Native, Protected, BlueprintCallable)
+
+void UUserWidgetEvent::CompleteTalk()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "CompleteTalk");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetEvent.OnNotifyEventStartPlaying
+// (Event, Protected, BlueprintEvent)
+
+void UUserWidgetEvent::OnNotifyEventStartPlaying()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "OnNotifyEventStartPlaying");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetEvent.OnPlayChoices
+// (Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// const class FText&                      SpeakerName                                            (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const class FText&                      Text                                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const TArray<class FText>&              Choices                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+
+void UUserWidgetEvent::OnPlayChoices(const class FText& SpeakerName, const class FText& Text, const TArray<class FText>& Choices)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "OnPlayChoices");
+
+	Params::UserWidgetEvent_OnPlayChoices Parms{};
+
+	Parms.SpeakerName = std::move(SpeakerName);
+	Parms.Text = std::move(Text);
+	Parms.Choices = std::move(Choices);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetEvent.OnRequestRemoveFromParent
+// (Native, Event, Protected, BlueprintEvent)
+
+void UUserWidgetEvent::OnRequestRemoveFromParent()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "OnRequestRemoveFromParent");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetEvent.OnTalk
+// (Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// const class FText&                      SpeakerName                                            (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const class FText&                      Text                                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// float                                   Duration                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetEvent::OnTalk(const class FText& SpeakerName, const class FText& Text, float Duration)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "OnTalk");
+
+	Params::UserWidgetEvent_OnTalk Parms{};
+
+	Parms.SpeakerName = std::move(SpeakerName);
+	Parms.Text = std::move(Text);
+	Parms.Duration = Duration;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetEvent.CanAutoSkipEvent
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetEvent::CanAutoSkipEvent() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "CanAutoSkipEvent");
+
+	Params::UserWidgetEvent_CanAutoSkipEvent Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetEvent.CanSkipEvent
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetEvent::CanSkipEvent() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "CanSkipEvent");
+
+	Params::UserWidgetEvent_CanSkipEvent Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetEvent.GetEventPlayer
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UEventPlayer*                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UEventPlayer* UUserWidgetEvent::GetEventPlayer() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "GetEventPlayer");
+
+	Params::UserWidgetEvent_GetEventPlayer Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetEvent.IsEventAlreadySeen
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetEvent::IsEventAlreadySeen() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "IsEventAlreadySeen");
+
+	Params::UserWidgetEvent_IsEventAlreadySeen Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetEvent.ShouldUsePostSkipFadeIn
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetEvent::ShouldUsePostSkipFadeIn() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "ShouldUsePostSkipFadeIn");
+
+	Params::UserWidgetEvent_ShouldUsePostSkipFadeIn Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetEvent.ShouldUsePreSkipFadeOut
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetEvent::ShouldUsePreSkipFadeOut() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetEvent", "ShouldUsePreSkipFadeOut");
+
+	Params::UserWidgetEvent_ShouldUsePreSkipFadeOut Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
 }
 
 
@@ -3255,21 +5148,40 @@ bool ACollectable::IsActive() const
 }
 
 
-// Function Zion.RenderStateComponent.SetNewBounds
+// Function Zion.RefreshableRichTextBlock.Refresh
 // (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const class AActor*                     Actor                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void URenderStateComponent::SetNewBounds(const class AActor* Actor)
+void URefreshableRichTextBlock::Refresh()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("RenderStateComponent", "SetNewBounds");
+		Func = Class->GetFunction("RefreshableRichTextBlock", "Refresh");
 
-	Params::RenderStateComponent_SetNewBounds Parms{};
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
 
-	Parms.Actor = Actor;
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.RefreshableRichTextBlock.SetDecoratorMode
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// ERichTextDecoratorMode                  NewDecoratorMode                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URefreshableRichTextBlock::SetDecoratorMode(ERichTextDecoratorMode NewDecoratorMode)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RefreshableRichTextBlock", "SetDecoratorMode");
+
+	Params::RefreshableRichTextBlock_SetDecoratorMode Parms{};
+
+	Parms.NewDecoratorMode = NewDecoratorMode;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -3280,22 +5192,100 @@ void URenderStateComponent::SetNewBounds(const class AActor* Actor)
 }
 
 
-// Function Zion.RenderStateComponent.SetVisible
-// (Final, Native, Public, BlueprintCallable)
+// Function Zion.RefreshableRichTextBlock.SetFormat
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// bool                                    bIsVisible                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FText&                      NewFormat                                              (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 
-bool URenderStateComponent::SetVisible(bool bIsVisible)
+void URefreshableRichTextBlock::SetFormat(const class FText& NewFormat)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("RenderStateComponent", "SetVisible");
+		Func = Class->GetFunction("RefreshableRichTextBlock", "SetFormat");
 
-	Params::RenderStateComponent_SetVisible Parms{};
+	Params::RefreshableRichTextBlock_SetFormat Parms{};
 
-	Parms.bIsVisible = bIsVisible;
+	Parms.NewFormat = std::move(NewFormat);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.RefreshableRichTextBlock.SetFormatElements
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const TArray<struct FRichTextInputElement>&NewFormatElements                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+// const TArray<class FString>&            NewStringElements                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+
+void URefreshableRichTextBlock::SetFormatElements(const TArray<struct FRichTextInputElement>& NewFormatElements, const TArray<class FString>& NewStringElements)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RefreshableRichTextBlock", "SetFormatElements");
+
+	Params::RefreshableRichTextBlock_SetFormatElements Parms{};
+
+	Parms.NewFormatElements = std::move(NewFormatElements);
+	Parms.NewStringElements = std::move(NewStringElements);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.RefreshableRichTextBlock.SetupAndRefresh
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const class FText&                      NewFormat                                              (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const TArray<struct FRichTextInputElement>&NewFormatElements                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+// const TArray<class FString>&            NewStringElements                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+
+void URefreshableRichTextBlock::SetupAndRefresh(const class FText& NewFormat, const TArray<struct FRichTextInputElement>& NewFormatElements, const TArray<class FString>& NewStringElements)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RefreshableRichTextBlock", "SetupAndRefresh");
+
+	Params::RefreshableRichTextBlock_SetupAndRefresh Parms{};
+
+	Parms.NewFormat = std::move(NewFormat);
+	Parms.NewFormatElements = std::move(NewFormatElements);
+	Parms.NewStringElements = std::move(NewStringElements);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.RefreshableRichTextBlock.GetDecoratorMode
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// ERichTextDecoratorMode                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+ERichTextDecoratorMode URefreshableRichTextBlock::GetDecoratorMode() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RefreshableRichTextBlock", "GetDecoratorMode");
+
+	Params::RefreshableRichTextBlock_GetDecoratorMode Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -3308,19 +5298,19 @@ bool URenderStateComponent::SetVisible(bool bIsVisible)
 }
 
 
-// Function Zion.RenderStateComponent.IsVisible
+// Function Zion.RefreshableRichTextBlock.GetFormatElements
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const TArray<struct FRichTextInputElement>ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
 
-bool URenderStateComponent::IsVisible() const
+const TArray<struct FRichTextInputElement> URefreshableRichTextBlock::GetFormatElements() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("RenderStateComponent", "IsVisible");
+		Func = Class->GetFunction("RefreshableRichTextBlock", "GetFormatElements");
 
-	Params::RenderStateComponent_IsVisible Parms{};
+	Params::RefreshableRichTextBlock_GetFormatElements Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -3540,88 +5530,39 @@ void UDebugDisplayComponent::OnTickSpineTextureInfo()
 }
 
 
-// Function Zion.Trigger_FieldMessage.LaunchFieldMessage
-// (Final, Native, Private, BlueprintCallable)
-// Parameters:
-// class UFieldMessageAsset*               FieldMessageAssetOverride                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Zion.Trigger_Event.OnEventFinish
+// (Event, Protected, BlueprintEvent)
 
-void ATrigger_FieldMessage::LaunchFieldMessage(class UFieldMessageAsset* FieldMessageAssetOverride)
+void ATrigger_Event::OnEventFinish()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Trigger_FieldMessage", "LaunchFieldMessage");
-
-	Params::Trigger_FieldMessage_LaunchFieldMessage Parms{};
-
-	Parms.FieldMessageAssetOverride = FieldMessageAssetOverride;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.Trigger_FieldMessage.OnClearStatusChecked
-// (Final, Native, Private)
-// Parameters:
-// EClearStatus                            ClearStatus                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ATrigger_FieldMessage::OnClearStatusChecked(EClearStatus ClearStatus)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Trigger_FieldMessage", "OnClearStatusChecked");
-
-	Params::Trigger_FieldMessage_OnClearStatusChecked Parms{};
-
-	Parms.ClearStatus = ClearStatus;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.Trigger_FieldMessage.OnFieldMessageFinished
-// (Final, Native, Private)
-
-void ATrigger_FieldMessage::OnFieldMessageFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Trigger_FieldMessage", "OnFieldMessageFinished");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
+		Func = Class->GetFunction("Trigger_Event", "OnEventFinish");
 
 	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
 }
 
 
-// Function Zion.Trigger_FieldMessage.GetTargetActor
-// (Native, Event, Protected, BlueprintEvent, Const)
+// Function Zion.Trigger_Event.OnEventFinished
+// (Final, Native, Private)
 // Parameters:
-// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UEventPlayer*                     InEventPlayer                                          (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bCompletedEvent                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EEventPlayerResult                      EventResult                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class AActor* ATrigger_FieldMessage::GetTargetActor() const
+void ATrigger_Event::OnEventFinished(class UEventPlayer* InEventPlayer, bool bCompletedEvent, EEventPlayerResult EventResult)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Trigger_FieldMessage", "GetTargetActor");
+		Func = Class->GetFunction("Trigger_Event", "OnEventFinished");
 
-	Params::Trigger_FieldMessage_GetTargetActor Parms{};
+	Params::Trigger_Event_OnEventFinished Parms{};
+
+	Parms.InEventPlayer = InEventPlayer;
+	Parms.bCompletedEvent = bCompletedEvent;
+	Parms.EventResult = EventResult;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -3629,8 +5570,6 @@ class AActor* ATrigger_FieldMessage::GetTargetActor() const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -3878,31 +5817,27 @@ bool UAchievementsSubsystem::IsUsingInternalAchievements() const
 }
 
 
-// Function Zion.SleepActivatorComponent.OnWakeTriggerOverlapBegin
-// (Final, Native, Private, HasOutParams)
+// Function Zion.SkillComponent.Equip
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// class UPrimitiveComponent*              OverlappedComponent                                    (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bFromSweep                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FHitResult&                SweepResult                                            (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bAddToCurrentLoadout                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bAutoLoad                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void USleepActivatorComponent::OnWakeTriggerOverlapBegin(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
+void USkillComponent::Equip(ESkillSlot SkillSlot, const class FName& SkillID, bool bAddToCurrentLoadout, bool bAutoLoad)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("SleepActivatorComponent", "OnWakeTriggerOverlapBegin");
+		Func = Class->GetFunction("SkillComponent", "Equip");
 
-	Params::SleepActivatorComponent_OnWakeTriggerOverlapBegin Parms{};
+	Params::SkillComponent_Equip Parms{};
 
-	Parms.OverlappedComponent = OverlappedComponent;
-	Parms.OtherActor = OtherActor;
-	Parms.OtherComp = OtherComp;
-	Parms.OtherBodyIndex = OtherBodyIndex;
-	Parms.bFromSweep = bFromSweep;
-	Parms.SweepResult = std::move(SweepResult);
+	Parms.SkillSlot = SkillSlot;
+	Parms.SkillID = SkillID;
+	Parms.bAddToCurrentLoadout = bAddToCurrentLoadout;
+	Parms.bAutoLoad = bAutoLoad;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -3913,27 +5848,23 @@ void USleepActivatorComponent::OnWakeTriggerOverlapBegin(class UPrimitiveCompone
 }
 
 
-// Function Zion.SleepActivatorComponent.OnWakeTriggerOverlapEnd
-// (Final, Native, Private)
+// Function Zion.SkillComponent.EquipSkillLoadout
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class UPrimitiveComponent*              OverlappedComponent                                    (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   LoadoutIndex                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bAutoLoad                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void USleepActivatorComponent::OnWakeTriggerOverlapEnd(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void USkillComponent::EquipSkillLoadout(int32 LoadoutIndex, bool bAutoLoad)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("SleepActivatorComponent", "OnWakeTriggerOverlapEnd");
+		Func = Class->GetFunction("SkillComponent", "EquipSkillLoadout");
 
-	Params::SleepActivatorComponent_OnWakeTriggerOverlapEnd Parms{};
+	Params::SkillComponent_EquipSkillLoadout Parms{};
 
-	Parms.OverlappedComponent = OverlappedComponent;
-	Parms.OtherActor = OtherActor;
-	Parms.OtherComp = OtherComp;
-	Parms.OtherBodyIndex = OtherBodyIndex;
+	Parms.LoadoutIndex = LoadoutIndex;
+	Parms.bAutoLoad = bAutoLoad;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -3941,6 +5872,348 @@ void USleepActivatorComponent::OnWakeTriggerOverlapEnd(class UPrimitiveComponent
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.SkillComponent.LoadEquippedSkills
+// (Final, Native, Public, BlueprintCallable)
+
+void USkillComponent::LoadEquippedSkills()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "LoadEquippedSkills");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.SkillComponent.UnEquip
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bRemoveFromCurrentLoadout                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void USkillComponent::UnEquip(ESkillSlot SkillSlot, bool bRemoveFromCurrentLoadout)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "UnEquip");
+
+	Params::SkillComponent_UnEquip Parms{};
+
+	Parms.SkillSlot = SkillSlot;
+	Parms.bRemoveFromCurrentLoadout = bRemoveFromCurrentLoadout;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.SkillComponent.UnEquipAll
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bRemoveFromCurrentLoadout                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void USkillComponent::UnEquipAll(bool bRemoveFromCurrentLoadout)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "UnEquipAll");
+
+	Params::SkillComponent_UnEquipAll Parms{};
+
+	Parms.bRemoveFromCurrentLoadout = bRemoveFromCurrentLoadout;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.SkillComponent.GetCurrentSkillLoadoutIndex
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 USkillComponent::GetCurrentSkillLoadoutIndex() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "GetCurrentSkillLoadoutIndex");
+
+	Params::SkillComponent_GetCurrentSkillLoadoutIndex Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.SkillComponent.GetEquippedCommandSet
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UCommandSet*                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UCommandSet* USkillComponent::GetEquippedCommandSet(ESkillSlot SkillSlot) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "GetEquippedCommandSet");
+
+	Params::SkillComponent_GetEquippedCommandSet Parms{};
+
+	Parms.SkillSlot = SkillSlot;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.SkillComponent.GetEquippedItemSkillData
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FInventoryItemSkillData    ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+const struct FInventoryItemSkillData USkillComponent::GetEquippedItemSkillData(ESkillSlot SkillSlot) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "GetEquippedItemSkillData");
+
+	Params::SkillComponent_GetEquippedItemSkillData Parms{};
+
+	Parms.SkillSlot = SkillSlot;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.SkillComponent.GetEquippedSkillID
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class FName                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FName USkillComponent::GetEquippedSkillID(ESkillSlot SkillSlot) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "GetEquippedSkillID");
+
+	Params::SkillComponent_GetEquippedSkillID Parms{};
+
+	Parms.SkillSlot = SkillSlot;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.SkillComponent.GetEquippedSkillInputActionFromSpirit
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FInventoryItemSpiritData&  SpiritData                                             (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const class UInputAction*               ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+const class UInputAction* USkillComponent::GetEquippedSkillInputActionFromSpirit(const struct FInventoryItemSpiritData& SpiritData) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "GetEquippedSkillInputActionFromSpirit");
+
+	Params::SkillComponent_GetEquippedSkillInputActionFromSpirit Parms{};
+
+	Parms.SpiritData = std::move(SpiritData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.SkillComponent.GetEquippedSkillLevelData
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FSkillLevelData            ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+const struct FSkillLevelData USkillComponent::GetEquippedSkillLevelData(ESkillSlot SkillSlot) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "GetEquippedSkillLevelData");
+
+	Params::SkillComponent_GetEquippedSkillLevelData Parms{};
+
+	Parms.SkillSlot = SkillSlot;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.SkillComponent.GetEquippedSkillSlotFromID
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// ESkillSlot                              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+ESkillSlot USkillComponent::GetEquippedSkillSlotFromID(const class FName& SkillID) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "GetEquippedSkillSlotFromID");
+
+	Params::SkillComponent_GetEquippedSkillSlotFromID Parms{};
+
+	Parms.SkillID = SkillID;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.SkillComponent.GetMinimumEquippedSPCost
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 USkillComponent::GetMinimumEquippedSPCost() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "GetMinimumEquippedSPCost");
+
+	Params::SkillComponent_GetMinimumEquippedSPCost Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.SkillComponent.HasAnyEquippedSkill
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USkillComponent::HasAnyEquippedSkill() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "HasAnyEquippedSkill");
+
+	Params::SkillComponent_HasAnyEquippedSkill Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.SkillComponent.HasEquippedSkill
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USkillComponent::HasEquippedSkill(ESkillSlot SkillSlot) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SkillComponent", "HasEquippedSkill");
+
+	Params::SkillComponent_HasEquippedSkill Parms{};
+
+	Parms.SkillSlot = SkillSlot;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
 }
 
 
@@ -4008,19 +6281,23 @@ class AAbilityInstant* UAbilityComponent::LaunchAbilityInstant(const struct FAbi
 }
 
 
-// Function Zion.ZionInputDeviceSubsystem.GetActiveControllerID
+// Function Zion.ZionInputComponent.AddInputMappingContext
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class UInputMappingContext*       InputMappingContext                                    (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EInputMappingPriority                   Priority                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-int32 UZionInputDeviceSubsystem::GetActiveControllerID()
+void UZionInputComponent::AddInputMappingContext(const class UInputMappingContext* InputMappingContext, EInputMappingPriority Priority)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "GetActiveControllerID");
+		Func = Class->GetFunction("ZionInputComponent", "AddInputMappingContext");
 
-	Params::ZionInputDeviceSubsystem_GetActiveControllerID Parms{};
+	Params::ZionInputComponent_AddInputMappingContext Parms{};
+
+	Parms.InputMappingContext = InputMappingContext;
+	Parms.Priority = Priority;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4028,20 +6305,143 @@ int32 UZionInputDeviceSubsystem::GetActiveControllerID()
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
-// Function Zion.ZionInputDeviceSubsystem.LockActiveController
+// Function Zion.ZionInputComponent.RemoveInputMappingContext
 // (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// const class UInputMappingContext*       InputMappingContext                                    (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UZionInputDeviceSubsystem::LockActiveController()
+void UZionInputComponent::RemoveInputMappingContext(const class UInputMappingContext* InputMappingContext)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "LockActiveController");
+		Func = Class->GetFunction("ZionInputComponent", "RemoveInputMappingContext");
+
+	Params::ZionInputComponent_RemoveInputMappingContext Parms{};
+
+	Parms.InputMappingContext = InputMappingContext;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.LocomotionComponent.SetFacing
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// EFacingType                             FacingType                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ULocomotionComponent::SetFacing(EFacingType FacingType)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("LocomotionComponent", "SetFacing");
+
+	Params::LocomotionComponent_SetFacing Parms{};
+
+	Parms.FacingType = FacingType;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.LocomotionComponent.SetFacingFromVector
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// const struct FVector&                   Vector                                                 (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ULocomotionComponent::SetFacingFromVector(const struct FVector& Vector)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("LocomotionComponent", "SetFacingFromVector");
+
+	Params::LocomotionComponent_SetFacingFromVector Parms{};
+
+	Parms.Vector = std::move(Vector);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.LocomotionComponent.SetUpdateFacing
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bNewUpdateFacing                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ULocomotionComponent::SetUpdateFacing(bool bNewUpdateFacing)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("LocomotionComponent", "SetUpdateFacing");
+
+	Params::LocomotionComponent_SetUpdateFacing Parms{};
+
+	Parms.bNewUpdateFacing = bNewUpdateFacing;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.LocomotionComponent.SetUpVector
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// const struct FVector&                   NewUpVector                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ULocomotionComponent::SetUpVector(const struct FVector& NewUpVector)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("LocomotionComponent", "SetUpVector");
+
+	Params::LocomotionComponent_SetUpVector Parms{};
+
+	Parms.NewUpVector = std::move(NewUpVector);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.LocomotionComponent.ToggleFacing
+// (Final, Native, Public, BlueprintCallable)
+
+void ULocomotionComponent::ToggleFacing()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("LocomotionComponent", "ToggleFacing");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4052,69 +6452,19 @@ void UZionInputDeviceSubsystem::LockActiveController()
 }
 
 
-// Function Zion.ZionInputDeviceSubsystem.SetInputStyleGamepadOverride
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EInputStyle                             NewInputStyleGamepadOverride                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UZionInputDeviceSubsystem::SetInputStyleGamepadOverride(EInputStyle NewInputStyleGamepadOverride)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "SetInputStyleGamepadOverride");
-
-	Params::ZionInputDeviceSubsystem_SetInputStyleGamepadOverride Parms{};
-
-	Parms.NewInputStyleGamepadOverride = NewInputStyleGamepadOverride;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.ZionInputDeviceSubsystem.UnlockActiveController
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bResetLockCount                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UZionInputDeviceSubsystem::UnlockActiveController(bool bResetLockCount)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "UnlockActiveController");
-
-	Params::ZionInputDeviceSubsystem_UnlockActiveController Parms{};
-
-	Parms.bResetLockCount = bResetLockCount;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.ZionInputDeviceSubsystem.GetInputStyle
+// Function Zion.LocomotionComponent.GetFacing
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// EInputStyle                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EFacingType                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-EInputStyle UZionInputDeviceSubsystem::GetInputStyle() const
+EFacingType ULocomotionComponent::GetFacing() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "GetInputStyle");
+		Func = Class->GetFunction("LocomotionComponent", "GetFacing");
 
-	Params::ZionInputDeviceSubsystem_GetInputStyle Parms{};
+	Params::LocomotionComponent_GetFacing Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4127,44 +6477,19 @@ EInputStyle UZionInputDeviceSubsystem::GetInputStyle() const
 }
 
 
-// Function Zion.ZionInputDeviceSubsystem.GetInputStyleGamepadOverride
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EInputStyle                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EInputStyle UZionInputDeviceSubsystem::GetInputStyleGamepadOverride() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "GetInputStyleGamepadOverride");
-
-	Params::ZionInputDeviceSubsystem_GetInputStyleGamepadOverride Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionInputDeviceSubsystem.IsActiveControllerLocked
+// Function Zion.LocomotionComponent.GetUpdateFacing
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UZionInputDeviceSubsystem::IsActiveControllerLocked() const
+bool ULocomotionComponent::GetUpdateFacing() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "IsActiveControllerLocked");
+		Func = Class->GetFunction("LocomotionComponent", "GetUpdateFacing");
 
-	Params::ZionInputDeviceSubsystem_IsActiveControllerLocked Parms{};
+	Params::LocomotionComponent_GetUpdateFacing Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4177,174 +6502,19 @@ bool UZionInputDeviceSubsystem::IsActiveControllerLocked() const
 }
 
 
-// Function Zion.ZionInputDeviceSubsystem.IsAnyGamepadConnected
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UZionInputDeviceSubsystem::IsAnyGamepadConnected() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "IsAnyGamepadConnected");
-
-	Params::ZionInputDeviceSubsystem_IsAnyGamepadConnected Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionInputDeviceSubsystem.IsCursorVisible
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UZionInputDeviceSubsystem::IsCursorVisible() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "IsCursorVisible");
-
-	Params::ZionInputDeviceSubsystem_IsCursorVisible Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionInputDeviceSubsystem.IsUsingGamepad
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UZionInputDeviceSubsystem::IsUsingGamepad() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputDeviceSubsystem", "IsUsingGamepad");
-
-	Params::ZionInputDeviceSubsystem_IsUsingGamepad Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionCharacterMovementComponent.SetMovementModeCustom
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EMovementModeCustom                     NewMovementModeCustom                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UZionCharacterMovementComponent::SetMovementModeCustom(EMovementModeCustom NewMovementModeCustom)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "SetMovementModeCustom");
-
-	Params::ZionCharacterMovementComponent_SetMovementModeCustom Parms{};
-
-	Parms.NewMovementModeCustom = NewMovementModeCustom;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.ZionCharacterMovementComponent.SetMovementSpeedMode
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EMovementSpeedMode                      NewMovementSpeedMode                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UZionCharacterMovementComponent::SetMovementSpeedMode(EMovementSpeedMode NewMovementSpeedMode)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "SetMovementSpeedMode");
-
-	Params::ZionCharacterMovementComponent_SetMovementSpeedMode Parms{};
-
-	Parms.NewMovementSpeedMode = NewMovementSpeedMode;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.ZionCharacterMovementComponent.ComputeLaunchVelocityToDestination
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FVector&                   DestinationLocation                                    (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   Duration                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UZionCharacterMovementComponent::ComputeLaunchVelocityToDestination(const struct FVector& DestinationLocation, float Duration) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "ComputeLaunchVelocityToDestination");
-
-	Params::ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination Parms{};
-
-	Parms.DestinationLocation = std::move(DestinationLocation);
-	Parms.Duration = Duration;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionCharacterMovementComponent.GetLastNonFallingLocation
+// Function Zion.LocomotionComponent.GetUpVector
 // (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FVector                    ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FVector UZionCharacterMovementComponent::GetLastNonFallingLocation() const
+const struct FVector ULocomotionComponent::GetUpVector() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetLastNonFallingLocation");
+		Func = Class->GetFunction("LocomotionComponent", "GetUpVector");
 
-	Params::ZionCharacterMovementComponent_GetLastNonFallingLocation Parms{};
+	Params::LocomotionComponent_GetUpVector Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4357,19 +6527,19 @@ struct FVector UZionCharacterMovementComponent::GetLastNonFallingLocation() cons
 }
 
 
-// Function Zion.ZionCharacterMovementComponent.GetMovementSpeedMode
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.LocomotionComponent.GetWorldUpToUpRotation
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// EMovementSpeedMode                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FQuat                            ReturnValue                                            (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-EMovementSpeedMode UZionCharacterMovementComponent::GetMovementSpeedMode() const
+struct FQuat ULocomotionComponent::GetWorldUpToUpRotation() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetMovementSpeedMode");
+		Func = Class->GetFunction("LocomotionComponent", "GetWorldUpToUpRotation");
 
-	Params::ZionCharacterMovementComponent_GetMovementSpeedMode Parms{};
+	Params::LocomotionComponent_GetWorldUpToUpRotation Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4382,19 +6552,21 @@ EMovementSpeedMode UZionCharacterMovementComponent::GetMovementSpeedMode() const
 }
 
 
-// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastGrounded
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.FXComponent.ActivateAuraFXs
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FName&                      AuraFXTag                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-float UZionCharacterMovementComponent::GetTimeSinceLastGrounded() const
+void UFXComponent::ActivateAuraFXs(const class FName& AuraFXTag)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetTimeSinceLastGrounded");
+		Func = Class->GetFunction("FXComponent", "ActivateAuraFXs");
 
-	Params::ZionCharacterMovementComponent_GetTimeSinceLastGrounded Parms{};
+	Params::FXComponent_ActivateAuraFXs Parms{};
+
+	Parms.AuraFXTag = AuraFXTag;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4402,24 +6574,24 @@ float UZionCharacterMovementComponent::GetTimeSinceLastGrounded() const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
-// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastHookAttach
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.FXComponent.DeactivateAuraFXs
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FName&                      AuraFXTag                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-float UZionCharacterMovementComponent::GetTimeSinceLastHookAttach() const
+void UFXComponent::DeactivateAuraFXs(const class FName& AuraFXTag)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetTimeSinceLastHookAttach");
+		Func = Class->GetFunction("FXComponent", "DeactivateAuraFXs");
 
-	Params::ZionCharacterMovementComponent_GetTimeSinceLastHookAttach Parms{};
+	Params::FXComponent_DeactivateAuraFXs Parms{};
+
+	Parms.AuraFXTag = AuraFXTag;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4427,170 +6599,18 @@ float UZionCharacterMovementComponent::GetTimeSinceLastHookAttach() const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
-// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastWallGrab
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UZionCharacterMovementComponent::GetTimeSinceLastWallGrab() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetTimeSinceLastWallGrab");
-
-	Params::ZionCharacterMovementComponent_GetTimeSinceLastWallGrab Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionCharacterMovementComponent.IsAirborne
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UZionCharacterMovementComponent::IsAirborne() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsAirborne");
-
-	Params::ZionCharacterMovementComponent_IsAirborne Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionCharacterMovementComponent.IsHookAttached
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UZionCharacterMovementComponent::IsHookAttached() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsHookAttached");
-
-	Params::ZionCharacterMovementComponent_IsHookAttached Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionCharacterMovementComponent.IsSliding
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UZionCharacterMovementComponent::IsSliding() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsSliding");
-
-	Params::ZionCharacterMovementComponent_IsSliding Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionCharacterMovementComponent.IsWallGrabbing
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UZionCharacterMovementComponent::IsWallGrabbing() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsWallGrabbing");
-
-	Params::ZionCharacterMovementComponent_IsWallGrabbing Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZionCharacterMovementComponent.IsWallScaling
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UZionCharacterMovementComponent::IsWallScaling() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsWallScaling");
-
-	Params::ZionCharacterMovementComponent_IsWallScaling Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.KnockbackComponent.OnLandingAnimationFinished
+// Function Zion.FXComponent.OnDeathProcessStart
 // (Final, Native, Private)
 
-void UKnockbackComponent::OnLandingAnimationFinished()
+void UFXComponent::OnDeathProcessStart()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("KnockbackComponent", "OnLandingAnimationFinished");
+		Func = Class->GetFunction("FXComponent", "OnDeathProcessStart");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4601,21 +6621,23 @@ void UKnockbackComponent::OnLandingAnimationFinished()
 }
 
 
-// Function Zion.KnockbackComponent.OnPreStartCommand
+// Function Zion.FXComponent.OnFinishCommand
 // (Final, Native, Private)
 // Parameters:
 // const class UCommand*                   Command                                                (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// ECommandFinishType                      FinishType                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UKnockbackComponent::OnPreStartCommand(const class UCommand* Command)
+void UFXComponent::OnFinishCommand(const class UCommand* Command, ECommandFinishType FinishType)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("KnockbackComponent", "OnPreStartCommand");
+		Func = Class->GetFunction("FXComponent", "OnFinishCommand");
 
-	Params::KnockbackComponent_OnPreStartCommand Parms{};
+	Params::FXComponent_OnFinishCommand Parms{};
 
 	Parms.Command = Command;
+	Parms.FinishType = FinishType;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4626,15 +6648,94 @@ void UKnockbackComponent::OnPreStartCommand(const class UCommand* Command)
 }
 
 
-// Function Zion.KnockbackComponent.OnRecoveryAnimationFinished
+// Function Zion.FXComponent.OnGuarded
 // (Final, Native, Private)
+// Parameters:
+// class AAbility*                         Ability                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           Source                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UKnockbackComponent::OnRecoveryAnimationFinished()
+void UFXComponent::OnGuarded(class AAbility* Ability, class AActor* Source)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("KnockbackComponent", "OnRecoveryAnimationFinished");
+		Func = Class->GetFunction("FXComponent", "OnGuarded");
+
+	Params::FXComponent_OnGuarded Parms{};
+
+	Parms.Ability = Ability;
+	Parms.Source = Source;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FXComponent.OnLanded
+// (Final, Native, Private, HasOutParams)
+// Parameters:
+// const struct FHitResult&                Hit                                                    (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void UFXComponent::OnLanded(const struct FHitResult& Hit)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FXComponent", "OnLanded");
+
+	Params::FXComponent_OnLanded Parms{};
+
+	Parms.Hit = std::move(Hit);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FXComponent.OnParried
+// (Final, Native, Private)
+// Parameters:
+// class AAbility*                         Ability                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           Source                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UFXComponent::OnParried(class AAbility* Ability, class AActor* Source)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FXComponent", "OnParried");
+
+	Params::FXComponent_OnParried Parms{};
+
+	Parms.Ability = Ability;
+	Parms.Source = Source;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FXComponent.OnSPValueChanged
+// (Final, Native, Private)
+
+void UFXComponent::OnSPValueChanged()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FXComponent", "OnSPValueChanged");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4645,150 +6746,21 @@ void UKnockbackComponent::OnRecoveryAnimationFinished()
 }
 
 
-// Function Zion.KnockbackComponent.StartKnockback
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FKnockbackData&            KnockbackData                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// const struct FVector&                   KnockbackDirection                                     (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UKnockbackComponent::StartKnockback(const struct FKnockbackData& KnockbackData, const struct FVector& KnockbackDirection)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("KnockbackComponent", "StartKnockback");
-
-	Params::KnockbackComponent_StartKnockback Parms{};
-
-	Parms.KnockbackData = std::move(KnockbackData);
-	Parms.KnockbackDirection = std::move(KnockbackDirection);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.KnockbackComponent.IsInKnockback
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UKnockbackComponent::IsInKnockback() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("KnockbackComponent", "IsInKnockback");
-
-	Params::KnockbackComponent_IsInKnockback Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameEngineZion.Get
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// class UGameEngineZion*                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UGameEngineZion* UGameEngineZion::Get()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("GameEngineZion", "Get");
-
-	Params::GameEngineZion_Get Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.MovingBlock_Elevator.CallToDestination
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AMovingBlock_Elevator::CallToDestination(bool bInstant)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MovingBlock_Elevator", "CallToDestination");
-
-	Params::MovingBlock_Elevator_CallToDestination Parms{};
-
-	Parms.bInstant = bInstant;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.MovingBlock_Elevator.CallToOrigin
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AMovingBlock_Elevator::CallToOrigin(bool bInstant)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MovingBlock_Elevator", "CallToOrigin");
-
-	Params::MovingBlock_Elevator_CallToOrigin Parms{};
-
-	Parms.bInstant = bInstant;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.MovingBlock_Elevator.OnFinishMovement
+// Function Zion.FXComponent.OnStatusEffectLaunched
 // (Final, Native, Private)
 // Parameters:
-// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bWasMoving                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UStatusEffect*                    StatusEffect                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void AMovingBlock_Elevator::OnFinishMovement(bool bInstant, bool bWasMoving)
+void UFXComponent::OnStatusEffectLaunched(class UStatusEffect* StatusEffect)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("MovingBlock_Elevator", "OnFinishMovement");
+		Func = Class->GetFunction("FXComponent", "OnStatusEffectLaunched");
 
-	Params::MovingBlock_Elevator_OnFinishMovement Parms{};
+	Params::FXComponent_OnStatusEffectLaunched Parms{};
 
-	Parms.bInstant = bInstant;
-	Parms.bWasMoving = bWasMoving;
+	Parms.StatusEffect = StatusEffect;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4799,23 +6771,65 @@ void AMovingBlock_Elevator::OnFinishMovement(bool bInstant, bool bWasMoving)
 }
 
 
-// Function Zion.MovingBlock_Elevator.OnStartMovement
+// Function Zion.FXComponent.OnStatusEffectStopped
 // (Final, Native, Private)
 // Parameters:
-// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bWasMoving                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UStatusEffect*                    StatusEffect                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void AMovingBlock_Elevator::OnStartMovement(bool bInstant, bool bWasMoving)
+void UFXComponent::OnStatusEffectStopped(class UStatusEffect* StatusEffect)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("MovingBlock_Elevator", "OnStartMovement");
+		Func = Class->GetFunction("FXComponent", "OnStatusEffectStopped");
 
-	Params::MovingBlock_Elevator_OnStartMovement Parms{};
+	Params::FXComponent_OnStatusEffectStopped Parms{};
 
-	Parms.bInstant = bInstant;
-	Parms.bWasMoving = bWasMoving;
+	Parms.StatusEffect = StatusEffect;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.MoveComponent.Reset
+// (Final, Native, Public, BlueprintCallable)
+
+void UMoveComponent::Reset()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MoveComponent", "Reset");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.MoveComponent.SetVelocity
+// (Final, Native, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// const struct FVector&                   NewVelocity                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UMoveComponent::SetVelocity(const struct FVector& NewVelocity)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MoveComponent", "SetVelocity");
+
+	Params::MoveComponent_SetVelocity Parms{};
+
+	Parms.NewVelocity = std::move(NewVelocity);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4853,75 +6867,28 @@ void AAbilityHitboxBounce::OnProjectileBounce(const struct FHitResult& ImpactRes
 }
 
 
-// Function Zion.Interactable.OnActivateInteractable
-// (Event, Protected, BlueprintEvent)
+// Function Zion.InputSettingsSubsystem.RemapKey
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// class APlayerController*                Controller                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const EActionInputType&                 ActionInputType                                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FKey&                      NewKey                                                 (ConstParm, Parm, OutParm, ReferenceParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const TSet<EActionInputType>&           InvalidInputTypes                                      (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// bool                                    bIsGamepadKey                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void AInteractable::OnActivateInteractable(class APlayerController* Controller)
+bool UInputSettingsSubsystem::RemapKey(const EActionInputType& ActionInputType, const struct FKey& NewKey, const TSet<EActionInputType>& InvalidInputTypes, bool bIsGamepadKey)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "OnActivateInteractable");
+		Func = Class->GetFunction("InputSettingsSubsystem", "RemapKey");
 
-	Params::Interactable_OnActivateInteractable Parms{};
+	Params::InputSettingsSubsystem_RemapKey Parms{};
 
-	Parms.Controller = Controller;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.Interactable.OnCanBeInteractedChanged
-// (Event, Protected, BlueprintEvent)
-
-void AInteractable::OnCanBeInteractedChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "OnCanBeInteractedChanged");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.Interactable.OnDeactivateInteractable
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// class APlayerController*                Controller                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AInteractable::OnDeactivateInteractable(class APlayerController* Controller)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "OnDeactivateInteractable");
-
-	Params::Interactable_OnDeactivateInteractable Parms{};
-
-	Parms.Controller = Controller;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.Interactable.OnInteract
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// class APlayerController*                Controller                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AInteractable::OnInteract(class APlayerController* Controller)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "OnInteract");
-
-	Params::Interactable_OnInteract Parms{};
-
-	Parms.Controller = Controller;
+	Parms.ActionInputType = ActionInputType;
+	Parms.NewKey = std::move(NewKey);
+	Parms.InvalidInputTypes = std::move(InvalidInputTypes);
+	Parms.bIsGamepadKey = bIsGamepadKey;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4929,49 +6896,26 @@ void AInteractable::OnInteract(class APlayerController* Controller)
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
 }
 
 
-// Function Zion.Interactable.OnInteract_ConditionCheckFailed
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// class APlayerController*                Controller                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AInteractable::OnInteract_ConditionCheckFailed(class APlayerController* Controller)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "OnInteract_ConditionCheckFailed");
-
-	Params::Interactable_OnInteract_ConditionCheckFailed Parms{};
-
-	Parms.Controller = Controller;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.Interactable.SetCanBeInteracted
+// Function Zion.InputSettingsSubsystem.ResetAllInputMappingContextsToDefault
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// bool                                    bCanInteract                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bIsGamepad                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void AInteractable::SetCanBeInteracted(bool bCanInteract)
+void UInputSettingsSubsystem::ResetAllInputMappingContextsToDefault(bool bIsGamepad)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "SetCanBeInteracted");
+		Func = Class->GetFunction("InputSettingsSubsystem", "ResetAllInputMappingContextsToDefault");
 
-	Params::Interactable_SetCanBeInteracted Parms{};
+	Params::InputSettingsSubsystem_ResetAllInputMappingContextsToDefault Parms{};
 
-	Parms.bCanInteract = bCanInteract;
+	Parms.bIsGamepad = bIsGamepad;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4982,19 +6926,49 @@ void AInteractable::SetCanBeInteracted(bool bCanInteract)
 }
 
 
-// Function Zion.Interactable.CanBeInteracted
-// (Native, Event, Public, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Function Zion.InputSettingsSubsystem.ResetInputMappingContextToDefault
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UInputMappingContext*             InputMappingContext                                    (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bIsGamepad                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool AInteractable::CanBeInteracted() const
+void UInputSettingsSubsystem::ResetInputMappingContextToDefault(class UInputMappingContext* InputMappingContext, bool bIsGamepad)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "CanBeInteracted");
+		Func = Class->GetFunction("InputSettingsSubsystem", "ResetInputMappingContextToDefault");
 
-	Params::Interactable_CanBeInteracted Parms{};
+	Params::InputSettingsSubsystem_ResetInputMappingContextToDefault Parms{};
+
+	Parms.InputMappingContext = InputMappingContext;
+	Parms.bIsGamepad = bIsGamepad;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.InputSettingsSubsystem.GetMappedKey
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class FName&                      MappingName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FKey                             ReturnValue                                            (Parm, OutParm, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FKey UInputSettingsSubsystem::GetMappedKey(const class FName& MappingName) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InputSettingsSubsystem", "GetMappedKey");
+
+	Params::InputSettingsSubsystem_GetMappedKey Parms{};
+
+	Parms.MappingName = MappingName;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -5007,19 +6981,24 @@ bool AInteractable::CanBeInteracted() const
 }
 
 
-// Function Zion.Interactable.ConditionsChecked
+// Function Zion.InputSettingsSubsystem.GetMappingNameFromInputAction
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class UInputAction*               InputAction                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bIsGamepad                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class FName                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool AInteractable::ConditionsChecked() const
+class FName UInputSettingsSubsystem::GetMappingNameFromInputAction(const class UInputAction* InputAction, bool bIsGamepad) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "ConditionsChecked");
+		Func = Class->GetFunction("InputSettingsSubsystem", "GetMappingNameFromInputAction");
 
-	Params::Interactable_ConditionsChecked Parms{};
+	Params::InputSettingsSubsystem_GetMappingNameFromInputAction Parms{};
+
+	Parms.InputAction = InputAction;
+	Parms.bIsGamepad = bIsGamepad;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -5032,76 +7011,20 @@ bool AInteractable::ConditionsChecked() const
 }
 
 
-// Function Zion.Interactable.GetInteractingController
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class APlayerController*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Zion.EventAction_PlayRandomAnimations.OnAnimationFinished
+// (Final, Native, Private)
 
-class APlayerController* AInteractable::GetInteractingController() const
+void UEventAction_PlayRandomAnimations::OnAnimationFinished()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "GetInteractingController");
-
-	Params::Interactable_GetInteractingController Parms{};
+		Func = Class->GetFunction("EventAction_PlayRandomAnimations", "OnAnimationFinished");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.Interactable.GetInteractionText
-// (Native, Event, Public, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// class FText                             ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-
-class FText AInteractable::GetInteractionText() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "GetInteractionText");
-
-	Params::Interactable_GetInteractionText Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.Interactable.PlaySoundEvent
-// (Final, Native, Public, BlueprintCallable, Const)
-// Parameters:
-// class UFMODEvent*                       SoundEffect                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AInteractable::PlaySoundEvent(class UFMODEvent* SoundEffect) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Interactable", "PlaySoundEvent");
-
-	Params::Interactable_PlaySoundEvent Parms{};
-
-	Parms.SoundEffect = SoundEffect;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
 }
@@ -5132,19 +7055,24 @@ const class ACharacterZionSpirit* UCommandModule_Summon::GetSpirit() const
 }
 
 
-// Function Zion.Inventory.GetAllItemsAvailable
+// Function Zion.InventoryComponent.AddCurrency
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// TMap<class FName, int32>                ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+// ECurrencyType                           CurrencyType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   CurrencyToAdd                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-TMap<class FName, int32> UInventory::GetAllItemsAvailable()
+int32 UInventoryComponent::AddCurrency(ECurrencyType CurrencyType, int32 CurrencyToAdd)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Inventory", "GetAllItemsAvailable");
+		Func = Class->GetFunction("InventoryComponent", "AddCurrency");
 
-	Params::Inventory_GetAllItemsAvailable Parms{};
+	Params::InventoryComponent_AddCurrency Parms{};
+
+	Parms.CurrencyType = CurrencyType;
+	Parms.CurrencyToAdd = CurrencyToAdd;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -5157,44 +7085,24 @@ TMap<class FName, int32> UInventory::GetAllItemsAvailable()
 }
 
 
-// Function Zion.Inventory.MarkItemAsChecked
+// Function Zion.InventoryComponent.AddDrop
 // (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// const class FName&                      ItemRowName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FDrop&                     Drop                                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// float                                   DropFactor                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UInventory::MarkItemAsChecked(const class FName& ItemRowName)
+bool UInventoryComponent::AddDrop(const struct FDrop& Drop, float DropFactor)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Inventory", "MarkItemAsChecked");
+		Func = Class->GetFunction("InventoryComponent", "AddDrop");
 
-	Params::Inventory_MarkItemAsChecked Parms{};
+	Params::InventoryComponent_AddDrop Parms{};
 
-	Parms.ItemRowName = ItemRowName;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.Inventory.GetAllItems
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const TMap<class FName, int32>          ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-const TMap<class FName, int32> UInventory::GetAllItems() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Inventory", "GetAllItems");
-
-	Params::Inventory_GetAllItems Parms{};
+	Parms.Drop = std::move(Drop);
+	Parms.DropFactor = DropFactor;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -5207,101 +7115,23 @@ const TMap<class FName, int32> UInventory::GetAllItems() const
 }
 
 
-// Function Zion.Inventory.GetCountOfItem
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.InventoryComponent.AddItem
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// const class FName&                      ItemId                                                 (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UInventory::GetCountOfItem(const class FName& ItemId) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Inventory", "GetCountOfItem");
-
-	Params::Inventory_GetCountOfItem Parms{};
-
-	Parms.ItemId = ItemId;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.Inventory.GetDataTable
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class UDataTable*                 ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-const class UDataTable* UInventory::GetDataTable() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Inventory", "GetDataTable");
-
-	Params::Inventory_GetDataTable Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.Inventory.GetItemCount
-// (Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UInventory::GetItemCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Inventory", "GetItemCount");
-
-	Params::Inventory_GetItemCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.Inventory.HasItem
-// (Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName&                      ItemRowName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
 // int32                                   Count                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UInventory::HasItem(const class FName& ItemRowName, int32 Count) const
+bool UInventoryComponent::AddItem(const struct FDataTableRowHandle& ItemHandle, int32 Count)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Inventory", "HasItem");
+		Func = Class->GetFunction("InventoryComponent", "AddItem");
 
-	Params::Inventory_HasItem Parms{};
+	Params::InventoryComponent_AddItem Parms{};
 
-	Parms.ItemRowName = ItemRowName;
+	Parms.ItemHandle = std::move(ItemHandle);
 	Parms.Count = Count;
 
 	auto Flgs = Func->FunctionFlags;
@@ -5315,213 +7145,653 @@ bool UInventory::HasItem(const class FName& ItemRowName, int32 Count) const
 }
 
 
-// Function Zion.Inventory.HasNonCheckedItem
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UInventory::HasNonCheckedItem() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Inventory", "HasNonCheckedItem");
-
-	Params::Inventory_HasNonCheckedItem Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.Inventory.IsItemChecked
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName&                      ItemRowName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UInventory::IsItemChecked(const class FName& ItemRowName) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Inventory", "IsItemChecked");
-
-	Params::Inventory_IsItemChecked Parms{};
-
-	Parms.ItemRowName = ItemRowName;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventorySkill.GetMaxSkillLevel
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UInventorySkill::GetMaxSkillLevel()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("InventorySkill", "GetMaxSkillLevel");
-
-	Params::InventorySkill_GetMaxSkillLevel Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventorySkill.GetMinSkillLevel
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UInventorySkill::GetMinSkillLevel()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("InventorySkill", "GetMinSkillLevel");
-
-	Params::InventorySkill_GetMinSkillLevel Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventorySkill.SetSkillLevel
+// Function Zion.InventoryComponent.HasItem
 // (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   NewLevel                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UInventorySkill::SetSkillLevel(const class FName& SkillID, int32 NewLevel)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventorySkill", "SetSkillLevel");
-
-	Params::InventorySkill_SetSkillLevel Parms{};
-
-	Parms.SkillID = SkillID;
-	Parms.NewLevel = NewLevel;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventorySkill.GetInitialSkillLevel
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UInventorySkill::GetInitialSkillLevel(const class FName& SkillID) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventorySkill", "GetInitialSkillLevel");
-
-	Params::InventorySkill_GetInitialSkillLevel Parms{};
-
-	Parms.SkillID = SkillID;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventorySkill.GetSkillLevel
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bFallbackInitialLevel                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UInventorySkill::GetSkillLevel(const class FName& SkillID, bool bFallbackInitialLevel) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventorySkill", "GetSkillLevel");
-
-	Params::InventorySkill_GetSkillLevel Parms{};
-
-	Parms.SkillID = SkillID;
-	Parms.bFallbackInitialLevel = bFallbackInitialLevel;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventorySkill.IsMaxSkillLevel
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// int32                                   Count                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UInventorySkill::IsMaxSkillLevel(const class FName& SkillID) const
+bool UInventoryComponent::HasItem(const struct FDataTableRowHandle& ItemHandle, int32 Count)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventorySkill", "IsMaxSkillLevel");
+		Func = Class->GetFunction("InventoryComponent", "HasItem");
 
-	Params::InventorySkill_IsMaxSkillLevel Parms{};
+	Params::InventoryComponent_HasItem Parms{};
 
-	Parms.SkillID = SkillID;
+	Parms.ItemHandle = std::move(ItemHandle);
+	Parms.Count = Count;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.MarkItemAsChecked
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+
+void UInventoryComponent::MarkItemAsChecked(const struct FDataTableRowHandle& ItemHandle)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "MarkItemAsChecked");
+
+	Params::InventoryComponent_MarkItemAsChecked Parms{};
+
+	Parms.ItemHandle = std::move(ItemHandle);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.InventoryComponent.RemoveItem
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// int32                                   Count                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UInventoryComponent::RemoveItem(const struct FDataTableRowHandle& ItemHandle, int32 Count)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "RemoveItem");
+
+	Params::InventoryComponent_RemoveItem Parms{};
+
+	Parms.ItemHandle = std::move(ItemHandle);
+	Parms.Count = Count;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.SpendCurrency
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FCurrencyValue&            CurrencyValue                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UInventoryComponent::SpendCurrency(const struct FCurrencyValue& CurrencyValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "SpendCurrency");
+
+	Params::InventoryComponent_SpendCurrency Parms{};
+
+	Parms.CurrencyValue = std::move(CurrencyValue);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.CanSpendCurrency
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FCurrencyValue&            CurrencyValue                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UInventoryComponent::CanSpendCurrency(const struct FCurrencyValue& CurrencyValue) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "CanSpendCurrency");
+
+	Params::InventoryComponent_CanSpendCurrency Parms{};
+
+	Parms.CurrencyValue = std::move(CurrencyValue);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetAptitudeInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventoryAptitude*               ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventoryAptitude* UInventoryComponent::GetAptitudeInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetAptitudeInventory");
+
+	Params::InventoryComponent_GetAptitudeInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetAssistInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetAssistInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetAssistInventory");
+
+	Params::InventoryComponent_GetAssistInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetCostumeInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetCostumeInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetCostumeInventory");
+
+	Params::InventoryComponent_GetCostumeInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetCountOfItem
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UInventoryComponent::GetCountOfItem(const struct FDataTableRowHandle& ItemHandle) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetCountOfItem");
+
+	Params::InventoryComponent_GetCountOfItem Parms{};
+
+	Parms.ItemHandle = std::move(ItemHandle);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetCurrency
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// ECurrencyType                           CurrencyType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UInventoryComponent::GetCurrency(ECurrencyType CurrencyType) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetCurrency");
+
+	Params::InventoryComponent_GetCurrency Parms{};
+
+	Parms.CurrencyType = CurrencyType;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetCurrencyInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetCurrencyInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetCurrencyInventory");
+
+	Params::InventoryComponent_GetCurrencyInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetEnemyInfoInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetEnemyInfoInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetEnemyInfoInventory");
+
+	Params::InventoryComponent_GetEnemyInfoInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetEquipmentInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetEquipmentInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetEquipmentInventory");
+
+	Params::InventoryComponent_GetEquipmentInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetGalleryInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetGalleryInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetGalleryInventory");
+
+	Params::InventoryComponent_GetGalleryInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetInventoryFromItemType
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EInventoryItemType                      ItemType                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetInventoryFromItemType(EInventoryItemType ItemType) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetInventoryFromItemType");
+
+	Params::InventoryComponent_GetInventoryFromItemType Parms{};
+
+	Parms.ItemType = ItemType;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetNPCInfoInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetNPCInfoInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetNPCInfoInventory");
+
+	Params::InventoryComponent_GetNPCInfoInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetPassiveInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetPassiveInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetPassiveInventory");
+
+	Params::InventoryComponent_GetPassiveInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetSkillInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventorySkill*                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventorySkill* UInventoryComponent::GetSkillInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetSkillInventory");
+
+	Params::InventoryComponent_GetSkillInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetSpiritInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetSpiritInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetSpiritInventory");
+
+	Params::InventoryComponent_GetSpiritInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetStatsInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetStatsInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetStatsInventory");
+
+	Params::InventoryComponent_GetStatsInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetTipInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetTipInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetTipInventory");
+
+	Params::InventoryComponent_GetTipInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.GetTutorialInventory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UInventory* UInventoryComponent::GetTutorialInventory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "GetTutorialInventory");
+
+	Params::InventoryComponent_GetTutorialInventory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.HasAptitude
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const EAptitudeType&                    AptitudeType                                           (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UInventoryComponent::HasAptitude(const EAptitudeType& AptitudeType) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "HasAptitude");
+
+	Params::InventoryComponent_HasAptitude Parms{};
+
+	Parms.AptitudeType = AptitudeType;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.HasNonCheckedItem
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EInventoryItemType                      ItemType                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UInventoryComponent::HasNonCheckedItem(EInventoryItemType ItemType) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "HasNonCheckedItem");
+
+	Params::InventoryComponent_HasNonCheckedItem Parms{};
+
+	Parms.ItemType = ItemType;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventoryComponent.IsItemChecked
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UInventoryComponent::IsItemChecked(const struct FDataTableRowHandle& ItemHandle) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventoryComponent", "IsItemChecked");
+
+	Params::InventoryComponent_IsItemChecked Parms{};
+
+	Parms.ItemHandle = std::move(ItemHandle);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -5919,19 +8189,273 @@ void UActorBPFLibrary::ToggleActor(class AActor* Actor)
 }
 
 
-// Function Zion.HookPoint.GetHookAttachComponent
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class USceneComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Zion.HookComponent.LockCurrentHook
+// (Final, Native, Public, BlueprintCallable)
 
-class USceneComponent* AHookPoint::GetHookAttachComponent() const
+void UHookComponent::LockCurrentHook()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HookPoint", "GetHookAttachComponent");
+		Func = Class->GetFunction("HookComponent", "LockCurrentHook");
 
-	Params::HookPoint_GetHookAttachComponent Parms{};
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookComponent.OnAptitudesChanged
+// (Final, Native, Private)
+
+void UHookComponent::OnAptitudesChanged()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "OnAptitudesChanged");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookComponent.OnComponentOverlapBegin
+// (Final, Native, Private, HasOutParams)
+// Parameters:
+// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bFromSweep                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FHitResult&                SweepResult                                            (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void UHookComponent::OnComponentOverlapBegin(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "OnComponentOverlapBegin");
+
+	Params::HookComponent_OnComponentOverlapBegin Parms{};
+
+	Parms.OverlapComponent = OverlapComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+	Parms.bFromSweep = bFromSweep;
+	Parms.SweepResult = std::move(SweepResult);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookComponent.OnComponentOverlapEnd
+// (Final, Native, Private)
+// Parameters:
+// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHookComponent::OnComponentOverlapEnd(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "OnComponentOverlapEnd");
+
+	Params::HookComponent_OnComponentOverlapEnd Parms{};
+
+	Parms.OverlapComponent = OverlapComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookComponent.OnLockHook
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AHookPoint*                       HookPoint                                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHookComponent::OnLockHook(class AHookPoint* HookPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "OnLockHook");
+
+	Params::HookComponent_OnLockHook Parms{};
+
+	Parms.HookPoint = HookPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.HookComponent.OnUnlockHook
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AHookPoint*                       HookPoint                                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHookComponent::OnUnlockHook(class AHookPoint* HookPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "OnUnlockHook");
+
+	Params::HookComponent_OnUnlockHook Parms{};
+
+	Parms.HookPoint = HookPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.HookComponent.ResetOverrideHookPoint
+// (Final, Native, Public, BlueprintCallable)
+
+void UHookComponent::ResetOverrideHookPoint()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "ResetOverrideHookPoint");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookComponent.ResetOverrideHookWorldLocation
+// (Final, Native, Public, BlueprintCallable)
+
+void UHookComponent::ResetOverrideHookWorldLocation()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "ResetOverrideHookWorldLocation");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookComponent.SetOverrideHookPoint
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class AHookPoint*                       NewHookPoint                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHookComponent::SetOverrideHookPoint(class AHookPoint* NewHookPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "SetOverrideHookPoint");
+
+	Params::HookComponent_SetOverrideHookPoint Parms{};
+
+	Parms.NewHookPoint = NewHookPoint;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookComponent.SetOverrideHookWorldLocation
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// const struct FVector&                   NewHookWorldLocation                                   (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHookComponent::SetOverrideHookWorldLocation(const struct FVector& NewHookWorldLocation)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "SetOverrideHookWorldLocation");
+
+	Params::HookComponent_SetOverrideHookWorldLocation Parms{};
+
+	Parms.NewHookWorldLocation = std::move(NewHookWorldLocation);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookComponent.UnlockHook
+// (Final, Native, Public, BlueprintCallable)
+
+void UHookComponent::UnlockHook()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "UnlockHook");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookComponent.CanTargetHook
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EHookType                               HookType                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UHookComponent::CanTargetHook(EHookType HookType) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookComponent", "CanTargetHook");
+
+	Params::HookComponent_CanTargetHook Parms{};
+
+	Parms.HookType = HookType;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -5944,104 +8468,24 @@ class USceneComponent* AHookPoint::GetHookAttachComponent() const
 }
 
 
-// Function Zion.HookPoint.GetHookLocation
+// Function Zion.HookComponent.GetHookWorldLocation
 // (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FVector AHookPoint::GetHookLocation() const
+struct FVector UHookComponent::GetHookWorldLocation() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HookPoint", "GetHookLocation");
+		Func = Class->GetFunction("HookComponent", "GetHookWorldLocation");
 
-	Params::HookPoint_GetHookLocation Parms{};
+	Params::HookComponent_GetHookWorldLocation Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.HookPoint.GetHookTransform
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FTransform                       ReturnValue                                            (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FTransform AHookPoint::GetHookTransform() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookPoint", "GetHookTransform");
-
-	Params::HookPoint_GetHookTransform Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.HookPoint.GetHookType
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EHookType                               ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EHookType AHookPoint::GetHookType() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookPoint", "GetHookType");
-
-	Params::HookPoint_GetHookType Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.WaitGameReadyAsyncAction.WaitGameReady
-// (Final, Native, Static, Public, BlueprintCallable)
-// Parameters:
-// const class UObject*                    WorldContextObject                                     (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bAlsoWaitWorldLoading                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UWaitGameReadyAsyncAction*        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UWaitGameReadyAsyncAction* UWaitGameReadyAsyncAction::WaitGameReady(const class UObject* WorldContextObject, bool bAlsoWaitWorldLoading)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("WaitGameReadyAsyncAction", "WaitGameReady");
-
-	Params::WaitGameReadyAsyncAction_WaitGameReady Parms{};
-
-	Parms.WorldContextObject = WorldContextObject;
-	Parms.bAlsoWaitWorldLoading = bAlsoWaitWorldLoading;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -6362,6 +8806,170 @@ void IAICommandClassProviderInterface::GetIdlePeaceCommandClass(TSubclassOf<clas
 }
 
 
+// Function Zion.HookPoint.GetHookAttachComponent
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class USceneComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class USceneComponent* AHookPoint::GetHookAttachComponent() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookPoint", "GetHookAttachComponent");
+
+	Params::HookPoint_GetHookAttachComponent Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HookPoint.GetHookLocation
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector AHookPoint::GetHookLocation() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookPoint", "GetHookLocation");
+
+	Params::HookPoint_GetHookLocation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HookPoint.GetHookTransform
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FTransform                       ReturnValue                                            (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FTransform AHookPoint::GetHookTransform() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookPoint", "GetHookTransform");
+
+	Params::HookPoint_GetHookTransform Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HookPoint.GetHookType
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EHookType                               ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EHookType AHookPoint::GetHookType() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookPoint", "GetHookType");
+
+	Params::HookPoint_GetHookType Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HookPoint_Moving.OnComponentOverlapBegin
+// (Final, Native, Private, HasOutParams)
+// Parameters:
+// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bFromSweep                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FHitResult&                SweepResult                                            (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void AHookPoint_Moving::OnComponentOverlapBegin(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookPoint_Moving", "OnComponentOverlapBegin");
+
+	Params::HookPoint_Moving_OnComponentOverlapBegin Parms{};
+
+	Parms.OverlapComponent = OverlapComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+	Parms.bFromSweep = bFromSweep;
+	Parms.SweepResult = std::move(SweepResult);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HookPoint_Moving.OnMovementModeChanged
+// (Final, Native, Private)
+// Parameters:
+// class ACharacter*                       Character                                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EMovementMode                           PrevMovementMode                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// uint8                                   PreviousCustomMode                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AHookPoint_Moving::OnMovementModeChanged(class ACharacter* Character, EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HookPoint_Moving", "OnMovementModeChanged");
+
+	Params::HookPoint_Moving_OnMovementModeChanged Parms{};
+
+	Parms.Character = Character;
+	Parms.PrevMovementMode = PrevMovementMode;
+	Parms.PreviousCustomMode = PreviousCustomMode;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function Zion.AIControllerZion.OnChangeTarget
 // (Event, Public, BlueprintEvent)
 // Parameters:
@@ -6515,15 +9123,40 @@ void AAIControllerZion::StopLogic()
 }
 
 
-// Function Zion.EventAction_GrantItemsBase.OnWidgetDestruct
-// (Final, Native, Private)
+// Function Zion.UserWidgetWrapBox.AddChild
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class UWidget*                          Content                                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UEventAction_GrantItemsBase::OnWidgetDestruct()
+void UUserWidgetWrapBox::AddChild(class UWidget* Content)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("EventAction_GrantItemsBase", "OnWidgetDestruct");
+		Func = Class->GetFunction("UserWidgetWrapBox", "AddChild");
+
+	Params::UserWidgetWrapBox_AddChild Parms{};
+
+	Parms.Content = Content;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetWrapBox.ClearChildren
+// (Final, Native, Public, BlueprintCallable)
+
+void UUserWidgetWrapBox::ClearChildren()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "ClearChildren");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -6531,6 +9164,249 @@ void UEventAction_GrantItemsBase::OnWidgetDestruct()
 	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetWrapBox.RemoveChild
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class UWidget*                          Content                                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetWrapBox::RemoveChild(class UWidget* Content)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "RemoveChild");
+
+	Params::UserWidgetWrapBox_RemoveChild Parms{};
+
+	Parms.Content = Content;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetWrapBox.RemoveChildAt
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// int32                                   Index_0                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetWrapBox::RemoveChildAt(int32 Index_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "RemoveChildAt");
+
+	Params::UserWidgetWrapBox_RemoveChildAt Parms{};
+
+	Parms.Index_0 = Index_0;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetWrapBox.GetAllChildren
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// TArray<class UWidget*>                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+TArray<class UWidget*> UUserWidgetWrapBox::GetAllChildren() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "GetAllChildren");
+
+	Params::UserWidgetWrapBox_GetAllChildren Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetWrapBox.GetChildAt
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   Index_0                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UWidget*                          ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UWidget* UUserWidgetWrapBox::GetChildAt(int32 Index_0) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "GetChildAt");
+
+	Params::UserWidgetWrapBox_GetChildAt Parms{};
+
+	Parms.Index_0 = Index_0;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetWrapBox.GetChildIndex
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class UWidget*                    Content                                                (ConstParm, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UUserWidgetWrapBox::GetChildIndex(const class UWidget* Content) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "GetChildIndex");
+
+	Params::UserWidgetWrapBox_GetChildIndex Parms{};
+
+	Parms.Content = Content;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetWrapBox.GetChildrenCount
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UUserWidgetWrapBox::GetChildrenCount() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "GetChildrenCount");
+
+	Params::UserWidgetWrapBox_GetChildrenCount Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetWrapBox.GetWrapNavigationWidget
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    bWrapToTop                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UWidget*                          ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UWidget* UUserWidgetWrapBox::GetWrapNavigationWidget(bool bWrapToTop) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "GetWrapNavigationWidget");
+
+	Params::UserWidgetWrapBox_GetWrapNavigationWidget Parms{};
+
+	Parms.bWrapToTop = bWrapToTop;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetWrapBox.HasAnyChildren
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetWrapBox::HasAnyChildren() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "HasAnyChildren");
+
+	Params::UserWidgetWrapBox_HasAnyChildren Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetWrapBox.HasChild
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UWidget*                          Content                                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetWrapBox::HasChild(class UWidget* Content) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWrapBox", "HasChild");
+
+	Params::UserWidgetWrapBox_HasChild Parms{};
+
+	Parms.Content = Content;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
 }
 
 
@@ -6608,6 +9484,38 @@ TArray<struct FTextIntStruct> UArrayBPFLibrary::SortTextIntStructs(TArray<struct
 	Func->FunctionFlags = Flgs;
 
 	Array = std::move(Parms.Array);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.WorldSpaceWidgetHolder.CreateWorldSpaceWidgetHolder
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const class UObject*                    WorldObjectContext                                     (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const TSubclassOf<class UUserWidgetWorldSpace>&UserWidgetWorldSpaceClass                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EWidgetReleaseMode                      ReleaseMode                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AWorldSpaceWidgetHolder*          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AWorldSpaceWidgetHolder* AWorldSpaceWidgetHolder::CreateWorldSpaceWidgetHolder(const class UObject* WorldObjectContext, const TSubclassOf<class UUserWidgetWorldSpace>& UserWidgetWorldSpaceClass, EWidgetReleaseMode ReleaseMode)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("WorldSpaceWidgetHolder", "CreateWorldSpaceWidgetHolder");
+
+	Params::WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder Parms{};
+
+	Parms.WorldObjectContext = WorldObjectContext;
+	Parms.UserWidgetWorldSpaceClass = UserWidgetWorldSpaceClass;
+	Parms.ReleaseMode = ReleaseMode;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
 }
@@ -7210,6 +10118,153 @@ void UAssistTrigger_HealSuccess::OnHealSucceeded()
 }
 
 
+// Function Zion.ZoneSystemComponent.Get
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class UObject*                    WorldContextObject                                     (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UZoneSystemComponent*             ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UZoneSystemComponent* UZoneSystemComponent::Get(const class UObject* WorldContextObject)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ZoneSystemComponent", "Get");
+
+	Params::ZoneSystemComponent_Get Parms{};
+
+	Parms.WorldContextObject = WorldContextObject;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZoneSystemComponent.BindActorToZone
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class AActor*                           Actor                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UZoneSystemComponent::BindActorToZone(class AActor* Actor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZoneSystemComponent", "BindActorToZone");
+
+	Params::ZoneSystemComponent_BindActorToZone Parms{};
+
+	Parms.Actor = Actor;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.ZoneSystemComponent.OnFadeOutFinished
+// (Final, Native, Private)
+
+void UZoneSystemComponent::OnFadeOutFinished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZoneSystemComponent", "OnFadeOutFinished");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.ZoneSystemComponent.GetActiveZoneLevelName
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FString UZoneSystemComponent::GetActiveZoneLevelName() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZoneSystemComponent", "GetActiveZoneLevelName");
+
+	Params::ZoneSystemComponent_GetActiveZoneLevelName Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZoneSystemComponent.GetActiveZoneName
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FString UZoneSystemComponent::GetActiveZoneName() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZoneSystemComponent", "GetActiveZoneName");
+
+	Params::ZoneSystemComponent_GetActiveZoneName Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZoneSystemComponent.IsInAnyZone
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZoneSystemComponent::IsInAnyZone() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZoneSystemComponent", "IsInAnyZone");
+
+	Params::ZoneSystemComponent_IsInAnyZone Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function Zion.AssistTrigger_ParrySuccess.OnParried
 // (Final, Native, Private)
 // Parameters:
@@ -7380,26 +10435,6 @@ void UUserWidgetZionShowHide::Show(bool bInstant)
 	Params::UserWidgetZionShowHide_Show Parms{};
 
 	Parms.bInstant = bInstant;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetMapLegend.OnLegendInitialized
-// (Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// const TSet<EMapIconType>&               VisibleIconTypes                                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-void UUserWidgetMapLegend::OnLegendInitialized(const TSet<EMapIconType>& VisibleIconTypes)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMapLegend", "OnLegendInitialized");
-
-	Params::UserWidgetMapLegend_OnLegendInitialized Parms{};
-
-	Parms.VisibleIconTypes = std::move(VisibleIconTypes);
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -7851,22 +10886,44 @@ EBreakType UBreakPartStateManagerComponent::GetBreakPartState(const class AEnemy
 }
 
 
-// Function Zion.HealComponent.AddHealCountBonus
-// (Final, Native, Public, BlueprintCallable)
+// Function Zion.GunmanIKBoneTargetComponent.OnSpiritActivationChanged
+// (Final, Native, Private)
 // Parameters:
-// int32                                   HealCountBonusToAdd                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bNewActive                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-int32 UHealComponent::AddHealCountBonus(int32 HealCountBonusToAdd)
+void UGunmanIKBoneTargetComponent::OnSpiritActivationChanged(bool bNewActive)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "AddHealCountBonus");
+		Func = Class->GetFunction("GunmanIKBoneTargetComponent", "OnSpiritActivationChanged");
 
-	Params::HealComponent_AddHealCountBonus Parms{};
+	Params::GunmanIKBoneTargetComponent_OnSpiritActivationChanged Parms{};
 
-	Parms.HealCountBonusToAdd = HealCountBonusToAdd;
+	Parms.bNewActive = bNewActive;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GunmanIKBoneTargetComponent.GetAbilityGlobalOffset
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FTransform                 ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+const struct FTransform UGunmanIKBoneTargetComponent::GetAbilityGlobalOffset() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GunmanIKBoneTargetComponent", "GetAbilityGlobalOffset");
+
+	Params::GunmanIKBoneTargetComponent_GetAbilityGlobalOffset Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -7879,22 +10936,31 @@ int32 UHealComponent::AddHealCountBonus(int32 HealCountBonusToAdd)
 }
 
 
-// Function Zion.HealComponent.AddHealPowerPercentageBonus
-// (Final, Native, Public, BlueprintCallable)
+// Function Zion.OneWayPlatform.OnComponentOverlapBegin
+// (Final, Native, Private, HasOutParams)
 // Parameters:
-// int32                                   HealPercentBonusToAdd                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bFromSweep                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FHitResult&                SweepResult                                            (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 
-int32 UHealComponent::AddHealPowerPercentageBonus(int32 HealPercentBonusToAdd)
+void AOneWayPlatform::OnComponentOverlapBegin(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "AddHealPowerPercentageBonus");
+		Func = Class->GetFunction("OneWayPlatform", "OnComponentOverlapBegin");
 
-	Params::HealComponent_AddHealPowerPercentageBonus Parms{};
+	Params::OneWayPlatform_OnComponentOverlapBegin Parms{};
 
-	Parms.HealPercentBonusToAdd = HealPercentBonusToAdd;
+	Parms.OverlapComponent = OverlapComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+	Parms.bFromSweep = bFromSweep;
+	Parms.SweepResult = std::move(SweepResult);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -7902,24 +10968,53 @@ int32 UHealComponent::AddHealPowerPercentageBonus(int32 HealPercentBonusToAdd)
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
-// Function Zion.HealComponent.FullyRestoreHeals
-// (Final, Native, Public, BlueprintCallable)
+// Function Zion.OneWayPlatform.OnComponentOverlapEnd
+// (Final, Native, Private)
+// Parameters:
+// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AOneWayPlatform::OnComponentOverlapEnd(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("OneWayPlatform", "OnComponentOverlapEnd");
+
+	Params::OneWayPlatform_OnComponentOverlapEnd Parms{};
+
+	Parms.OverlapComponent = OverlapComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.OneWayPlatform.IsFallThrough
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UHealComponent::FullyRestoreHeals()
+bool AOneWayPlatform::IsFallThrough() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "FullyRestoreHeals");
+		Func = Class->GetFunction("OneWayPlatform", "IsFallThrough");
 
-	Params::HealComponent_FullyRestoreHeals Parms{};
+	Params::OneWayPlatform_IsFallThrough Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -7932,99 +11027,15 @@ bool UHealComponent::FullyRestoreHeals()
 }
 
 
-// Function Zion.HealComponent.RestoreHeals
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const int32                             RestoreCount                                           (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Zion.GameplayCamera.ClearSettings
+// (Final, Native, Protected, BlueprintCallable)
 
-int32 UHealComponent::RestoreHeals(const int32 RestoreCount)
+void AGameplayCamera::ClearSettings()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "RestoreHeals");
-
-	Params::HealComponent_RestoreHeals Parms{};
-
-	Parms.RestoreCount = RestoreCount;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.HealComponent.SubHealCountBonus
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// int32                                   HealCountBonusToSub                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UHealComponent::SubHealCountBonus(int32 HealCountBonusToSub)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "SubHealCountBonus");
-
-	Params::HealComponent_SubHealCountBonus Parms{};
-
-	Parms.HealCountBonusToSub = HealCountBonusToSub;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.HealComponent.SubHealPowerPercentageBonus
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// int32                                   HealPercentBonusToSub                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UHealComponent::SubHealPowerPercentageBonus(int32 HealPercentBonusToSub)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "SubHealPowerPercentageBonus");
-
-	Params::HealComponent_SubHealPowerPercentageBonus Parms{};
-
-	Parms.HealPercentBonusToSub = HealPercentBonusToSub;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.HealComponent.UseHeal
-// (Final, Native, Public, BlueprintCallable)
-
-void UHealComponent::UseHeal()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "UseHeal");
+		Func = Class->GetFunction("GameplayCamera", "ClearSettings");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -8035,223 +11046,15 @@ void UHealComponent::UseHeal()
 }
 
 
-// Function Zion.HealComponent.GetHealValue
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UHealComponent::GetHealValue() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "GetHealValue");
-
-	Params::HealComponent_GetHealValue Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.HealComponent.GetMaxHealCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UHealComponent::GetMaxHealCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "GetMaxHealCount");
-
-	Params::HealComponent_GetMaxHealCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.HealComponent.GetRemainingHealCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UHealComponent::GetRemainingHealCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "GetRemainingHealCount");
-
-	Params::HealComponent_GetRemainingHealCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.HealComponent.IsHealCountMax
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UHealComponent::IsHealCountMax() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HealComponent", "IsHealCountMax");
-
-	Params::HealComponent_IsHealCountMax Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.niagaraBPFLibrary.IsValid
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FSpineFXData&              FXData                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UniagaraBPFLibrary::IsValid(const struct FSpineFXData& FXData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("niagaraBPFLibrary", "IsValid");
-
-	Params::niagaraBPFLibrary_IsValid Parms{};
-
-	Parms.FXData = std::move(FXData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.niagaraBPFLibrary.TryReleaseToPool
-// (Final, Native, Static, Public, BlueprintCallable)
-// Parameters:
-// class UNiagaraComponent*                NiagaraComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UniagaraBPFLibrary::TryReleaseToPool(class UNiagaraComponent* NiagaraComponent)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("niagaraBPFLibrary", "TryReleaseToPool");
-
-	Params::niagaraBPFLibrary_TryReleaseToPool Parms{};
-
-	Parms.NiagaraComponent = NiagaraComponent;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.IKBonesComponent.GetIKBone
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EIKBoneDriver                           IKBoneDriver                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class USceneComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class USceneComponent* UIKBonesComponent::GetIKBone(EIKBoneDriver IKBoneDriver)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("IKBonesComponent", "GetIKBone");
-
-	Params::IKBonesComponent_GetIKBone Parms{};
-
-	Parms.IKBoneDriver = IKBoneDriver;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.IKBonesComponent.ResetIKBone
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EIKBoneDriver                           IKBoneDriver                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bResetIKConstraint                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UIKBonesComponent::ResetIKBone(EIKBoneDriver IKBoneDriver, bool bResetIKConstraint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("IKBonesComponent", "ResetIKBone");
-
-	Params::IKBonesComponent_ResetIKBone Parms{};
-
-	Parms.IKBoneDriver = IKBoneDriver;
-	Parms.bResetIKConstraint = bResetIKConstraint;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetPlayTimeClock.UpdatePlayTime
+// Function Zion.GameplayCamera.FlushCamera
 // (Final, Native, Public, BlueprintCallable)
 
-void UUserWidgetPlayTimeClock::UpdatePlayTime()
+void AGameplayCamera::FlushCamera()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayTimeClock", "UpdatePlayTime");
+		Func = Class->GetFunction("GameplayCamera", "FlushCamera");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -8259,6 +11062,622 @@ void UUserWidgetPlayTimeClock::UpdatePlayTime()
 	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameplayCamera.RegisterEnemyPawn
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class APawn*                            EnemyPawnToAdd                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AGameplayCamera::RegisterEnemyPawn(class APawn* EnemyPawnToAdd)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCamera", "RegisterEnemyPawn");
+
+	Params::GameplayCamera_RegisterEnemyPawn Parms{};
+
+	Parms.EnemyPawnToAdd = EnemyPawnToAdd;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameplayCamera.RegisterEnemyPawns
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const TArray<class APawn*>&             EnemyPawnsToAdd                                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+
+void AGameplayCamera::RegisterEnemyPawns(const TArray<class APawn*>& EnemyPawnsToAdd)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCamera", "RegisterEnemyPawns");
+
+	Params::GameplayCamera_RegisterEnemyPawns Parms{};
+
+	Parms.EnemyPawnsToAdd = std::move(EnemyPawnsToAdd);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameplayCamera.ResetCameraToDefault
+// (Final, Native, Protected, BlueprintCallable)
+
+void AGameplayCamera::ResetCameraToDefault()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCamera", "ResetCameraToDefault");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameplayCamera.SetSettings
+// (Final, Native, Protected, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FGameplayCameraSettings&   NewSettings                                            (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+
+void AGameplayCamera::SetSettings(const struct FGameplayCameraSettings& NewSettings)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCamera", "SetSettings");
+
+	Params::GameplayCamera_SetSettings Parms{};
+
+	Parms.NewSettings = std::move(NewSettings);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameplayCamera.UnregisterEnemyPawn
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class APawn*                            EnemyPawnToRemove                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AGameplayCamera::UnregisterEnemyPawn(class APawn* EnemyPawnToRemove)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCamera", "UnregisterEnemyPawn");
+
+	Params::GameplayCamera_UnregisterEnemyPawn Parms{};
+
+	Parms.EnemyPawnToRemove = EnemyPawnToRemove;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameplayCamera.UnregisterEnemyPawns
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const TArray<class APawn*>&             EnemyPawnsToRemove                                     (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+
+void AGameplayCamera::UnregisterEnemyPawns(const TArray<class APawn*>& EnemyPawnsToRemove)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCamera", "UnregisterEnemyPawns");
+
+	Params::GameplayCamera_UnregisterEnemyPawns Parms{};
+
+	Parms.EnemyPawnsToRemove = std::move(EnemyPawnsToRemove);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.HideUI
+// (Native, Event, Public, BlueprintEvent)
+// Parameters:
+// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetPlayerUI::HideUI(bool bInstant)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "HideUI");
+
+	Params::UserWidgetPlayerUI_HideUI Parms{};
+
+	Parms.bInstant = bInstant;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.OnDisplayPlayerUIChanged
+// (Final, Native, Private)
+
+void UUserWidgetPlayerUI::OnDisplayPlayerUIChanged()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "OnDisplayPlayerUIChanged");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.OnLowHPFeedbackOpacityChanged
+// (Final, Native, Private)
+
+void UUserWidgetPlayerUI::OnLowHPFeedbackOpacityChanged()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "OnLowHPFeedbackOpacityChanged");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.OnPlayerInputLocked
+// (Event, Public, BlueprintEvent)
+
+void UUserWidgetPlayerUI::OnPlayerInputLocked()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "OnPlayerInputLocked");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetPlayerUI.OnPlayerInputUnlocked
+// (Event, Public, BlueprintEvent)
+
+void UUserWidgetPlayerUI::OnPlayerInputUnlocked()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "OnPlayerInputUnlocked");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetPlayerUI.OnRefreshLowHPFeedbackOpacity
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// float                                   Opacity                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetPlayerUI::OnRefreshLowHPFeedbackOpacity(float Opacity)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "OnRefreshLowHPFeedbackOpacity");
+
+	Params::UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity Parms{};
+
+	Parms.Opacity = Opacity;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetPlayerUI.OnRefreshPlayerUIVisibility
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// bool                                    bVisible                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetPlayerUI::OnRefreshPlayerUIVisibility(bool bVisible)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "OnRefreshPlayerUIVisibility");
+
+	Params::UserWidgetPlayerUI_OnRefreshPlayerUIVisibility Parms{};
+
+	Parms.bVisible = bVisible;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetPlayerUI.RefreshHealVisibility
+// (Native, Event, Public, BlueprintCallable, BlueprintEvent)
+
+void UUserWidgetPlayerUI::RefreshHealVisibility()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "RefreshHealVisibility");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.RefreshSPVisibility
+// (Native, Event, Public, BlueprintCallable, BlueprintEvent)
+
+void UUserWidgetPlayerUI::RefreshSPVisibility()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "RefreshSPVisibility");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.ShowUI
+// (Native, Event, Public, BlueprintEvent)
+
+void UUserWidgetPlayerUI::ShowUI()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "ShowUI");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.TriggerAnimation_HealFailure_FullHP
+// (Event, Public, BlueprintEvent)
+
+void UUserWidgetPlayerUI::TriggerAnimation_HealFailure_FullHP()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "TriggerAnimation_HealFailure_FullHP");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetPlayerUI.TriggerAnimation_HealFailure_NoHeal
+// (Event, Public, BlueprintEvent)
+
+void UUserWidgetPlayerUI::TriggerAnimation_HealFailure_NoHeal()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "TriggerAnimation_HealFailure_NoHeal");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetPlayerUI.CanShowHeal
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetPlayerUI::CanShowHeal() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "CanShowHeal");
+
+	Params::UserWidgetPlayerUI_CanShowHeal Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.CanShowSP
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetPlayerUI::CanShowSP() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "CanShowSP");
+
+	Params::UserWidgetPlayerUI_CanShowSP Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.GetController
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class APlayerController*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class APlayerController* UUserWidgetPlayerUI::GetController() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "GetController");
+
+	Params::UserWidgetPlayerUI_GetController Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.GetFieldTalkHolder
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UUserWidgetFieldTalkHolder*       ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UUserWidgetFieldTalkHolder* UUserWidgetPlayerUI::GetFieldTalkHolder() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "GetFieldTalkHolder");
+
+	Params::UserWidgetPlayerUI_GetFieldTalkHolder Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.GetMinimapWidget
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UUserWidgetMinimap*               ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UUserWidgetMinimap* UUserWidgetPlayerUI::GetMinimapWidget() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "GetMinimapWidget");
+
+	Params::UserWidgetPlayerUI_GetMinimapWidget Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.GetPawn
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class APawn*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class APawn* UUserWidgetPlayerUI::GetPawn() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "GetPawn");
+
+	Params::UserWidgetPlayerUI_GetPawn Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.RefreshCustomMarkers
+// (Final, Native, Public, BlueprintCallable, Const)
+
+void UUserWidgetPlayerUI::RefreshCustomMarkers() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "RefreshCustomMarkers");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetPlayerUI.RefreshMinimap
+// (Final, Native, Public, BlueprintCallable, Const)
+
+void UUserWidgetPlayerUI::RefreshMinimap() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayerUI", "RefreshMinimap");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetNotificationHolder.OnDisplayHolder
+// (Event, Protected, BlueprintEvent)
+
+void UUserWidgetNotificationHolder::OnDisplayHolder()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetNotificationHolder", "OnDisplayHolder");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetNotificationHolder.OnHide
+// (Event, Protected, BlueprintEvent)
+
+void UUserWidgetNotificationHolder::OnHide()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetNotificationHolder", "OnHide");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetNotificationHolder.OnLaunchNotification
+// (Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// const struct FNotificationData&         NotificationData                                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void UUserWidgetNotificationHolder::OnLaunchNotification(const struct FNotificationData& NotificationData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetNotificationHolder", "OnLaunchNotification");
+
+	Params::UserWidgetNotificationHolder_OnLaunchNotification Parms{};
+
+	Parms.NotificationData = std::move(NotificationData);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetNotificationHolder.IsUIReady
+// (Event, Public, BlueprintEvent, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetNotificationHolder::IsUIReady() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetNotificationHolder", "IsUIReady");
+
+	Params::UserWidgetNotificationHolder_IsUIReady Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
 }
 
 
@@ -8328,28 +11747,17 @@ void UUserWidgetWorldSpace::Show()
 }
 
 
-// Function Zion.UserWidgetWorldSpaceText.SetText
-// (Native, Event, Public, HasOutParams, BlueprintEvent)
-// Parameters:
-// const class FText&                      Text                                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// Function Zion.UserWidgetWorldSpace_InputEvent.OnPressConfirm
+// (Event, Public, BlueprintEvent)
 
-void UUserWidgetWorldSpaceText::SetText(const class FText& Text)
+void UUserWidgetWorldSpace_InputEvent::OnPressConfirm()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceText", "SetText");
+		Func = Class->GetFunction("UserWidgetWorldSpace_InputEvent", "OnPressConfirm");
 
-	Params::UserWidgetWorldSpaceText_SetText Parms{};
-
-	Parms.Text = std::move(Text);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -8378,23 +11786,46 @@ void UCommand_AI_DashTo::OnMoveBlocked(const struct FHitResult& Hit)
 }
 
 
-// Function Zion.GuardComponent.OnGuarded
-// (Final, Native, Private)
+// Function Zion.GameViewportZion.Get
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
-// class AAbility*                         Ability                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           Source                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UGameViewportZion*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UGuardComponent::OnGuarded(class AAbility* Ability, class AActor* Source)
+class UGameViewportZion* UGameViewportZion::Get()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GuardComponent", "OnGuarded");
+		Func = StaticClass()->GetFunction("GameViewportZion", "Get");
 
-	Params::GuardComponent_OnGuarded Parms{};
+	Params::GameViewportZion_Get Parms{};
 
-	Parms.Ability = Ability;
-	Parms.Source = Source;
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameViewportZion.SetViewportOverlayRenderOpacity
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   Opacity                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UGameViewportZion::SetViewportOverlayRenderOpacity(float Opacity)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameViewportZion", "SetViewportOverlayRenderOpacity");
+
+	Params::GameViewportZion_SetViewportOverlayRenderOpacity Parms{};
+
+	Parms.Opacity = Opacity;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -8402,6 +11833,109 @@ void UGuardComponent::OnGuarded(class AAbility* Ability, class AActor* Source)
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameViewportZion.SetViewportOverlayWidgetVisible
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bVisible                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UGameViewportZion::SetViewportOverlayWidgetVisible(bool bVisible)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameViewportZion", "SetViewportOverlayWidgetVisible");
+
+	Params::GameViewportZion_SetViewportOverlayWidgetVisible Parms{};
+
+	Parms.bVisible = bVisible;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameViewportZion.SetWorldRenderingEnable
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bEnableWorldRendering                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UGameViewportZion::SetWorldRenderingEnable(bool bEnableWorldRendering)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameViewportZion", "SetWorldRenderingEnable");
+
+	Params::GameViewportZion_SetWorldRenderingEnable Parms{};
+
+	Parms.bEnableWorldRendering = bEnableWorldRendering;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameViewportZion.GetUserWidgetInStack
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// TSubclassOf<class UUserWidget>          ClassToFind                                            (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UUserWidget*                      ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UUserWidget* UGameViewportZion::GetUserWidgetInStack(TSubclassOf<class UUserWidget> ClassToFind) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameViewportZion", "GetUserWidgetInStack");
+
+	Params::GameViewportZion_GetUserWidgetInStack Parms{};
+
+	Parms.ClassToFind = ClassToFind;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.GameViewportZion.IsShowingCollision
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGameViewportZion::IsShowingCollision() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameViewportZion", "IsShowingCollision");
+
+	Params::GameViewportZion_IsShowingCollision Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
 }
 
 
@@ -8480,206 +12014,19 @@ void UDeathProcess_Transform::OnMovementModeChanged(class ACharacter* Character,
 }
 
 
-// Function Zion.FollowTargetComponent.ClearFollowTarget
-// (Final, Native, Public, BlueprintCallable)
-
-void UFollowTargetComponent::ClearFollowTarget()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FollowTargetComponent", "ClearFollowTarget");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FollowTargetComponent.OnGameMapChanged
-// (Final, Native, Private)
-
-void UFollowTargetComponent::OnGameMapChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FollowTargetComponent", "OnGameMapChanged");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FollowTargetComponent.SetFollowTarget
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class USceneComponent*                  NewFollowTarget                                        (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bSnapToTarget                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UFollowTargetComponent::SetFollowTarget(class USceneComponent* NewFollowTarget, bool bSnapToTarget)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FollowTargetComponent", "SetFollowTarget");
-
-	Params::FollowTargetComponent_SetFollowTarget Parms{};
-
-	Parms.NewFollowTarget = NewFollowTarget;
-	Parms.bSnapToTarget = bSnapToTarget;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FollowTargetComponent.TeleportToTarget
-// (Final, Native, Public, BlueprintCallable)
-
-void UFollowTargetComponent::TeleportToTarget()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FollowTargetComponent", "TeleportToTarget");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FollowTargetComponent.GetFollowTarget
+// Function Zion.FollowSplineComponent.IsClosedLoop
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// class USceneComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class USceneComponent* UFollowTargetComponent::GetFollowTarget() const
+bool UFollowSplineComponent::IsClosedLoop() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FollowTargetComponent", "GetFollowTarget");
+		Func = Class->GetFunction("FollowSplineComponent", "IsClosedLoop");
 
-	Params::FollowTargetComponent_GetFollowTarget Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.FollowTargetComponent.GetFollowTargetDeltaLocation
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UFollowTargetComponent::GetFollowTargetDeltaLocation() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FollowTargetComponent", "GetFollowTargetDeltaLocation");
-
-	Params::FollowTargetComponent_GetFollowTargetDeltaLocation Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.FollowTargetComponent.GetFollowTargetForward
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UFollowTargetComponent::GetFollowTargetForward() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FollowTargetComponent", "GetFollowTargetForward");
-
-	Params::FollowTargetComponent_GetFollowTargetForward Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.FollowTargetComponent.GetFollowTargetLocation
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UFollowTargetComponent::GetFollowTargetLocation() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FollowTargetComponent", "GetFollowTargetLocation");
-
-	Params::FollowTargetComponent_GetFollowTargetLocation Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.FollowTargetComponent.GetTargetLocation
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class USceneComponent*            PinnedTarget                                           (ConstParm, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UFollowTargetComponent::GetTargetLocation(const class USceneComponent* PinnedTarget) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FollowTargetComponent", "GetTargetLocation");
-
-	Params::FollowTargetComponent_GetTargetLocation Parms{};
-
-	Parms.PinnedTarget = PinnedTarget;
+	Params::FollowSplineComponent_IsClosedLoop Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -8758,6 +12105,51 @@ void UContactDamageComponent::OnHitboxEndOverlap(class UPrimitiveComponent* Over
 }
 
 
+// Function Zion.EventAction_GrantItemsBase.OnWidgetDestruct
+// (Final, Native, Private)
+
+void UEventAction_GrantItemsBase::OnWidgetDestruct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("EventAction_GrantItemsBase", "OnWidgetDestruct");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.GameMapChangeDataProviderInterface.GetGameMapChangeProviderData
+// (Native, Event, Public, HasOutParams, BlueprintEvent)
+// Parameters:
+// struct FGameMapChangeProviderData*      OutGameMapChangeProviderData                           (Parm, OutParm, NoDestructor, NativeAccessSpecifierPublic)
+
+void IGameMapChangeDataProviderInterface::GetGameMapChangeProviderData(struct FGameMapChangeProviderData* OutGameMapChangeProviderData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = AsUObject()->Class->GetFunction("GameMapChangeDataProviderInterface", "GetGameMapChangeProviderData");
+
+	Params::GameMapChangeDataProviderInterface_GetGameMapChangeProviderData Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	AsUObject()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (OutGameMapChangeProviderData != nullptr)
+		*OutGameMapChangeProviderData = std::move(Parms.OutGameMapChangeProviderData);
+}
+
+
 // Function Zion.DashChargeComponent.OnCommandStart
 // (Final, Native, Private)
 // Parameters:
@@ -8821,151 +12213,6 @@ bool UDashChargeComponent::IsDashCharged() const
 		Func = Class->GetFunction("DashChargeComponent", "IsDashCharged");
 
 	Params::DashChargeComponent_IsDashCharged Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.EventAction_MoveTo_TalkDistance.OnMoveCompleted
-// (Final, Native, Private)
-// Parameters:
-// const struct FAIRequestID&              RequestID                                              (Parm, NoDestructor, NativeAccessSpecifierPublic)
-// EPathFollowingResult                    Result                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UEventAction_MoveTo_TalkDistance::OnMoveCompleted(const struct FAIRequestID& RequestID, EPathFollowingResult Result)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("EventAction_MoveTo_TalkDistance", "OnMoveCompleted");
-
-	Params::EventAction_MoveTo_TalkDistance_OnMoveCompleted Parms{};
-
-	Parms.RequestID = std::move(RequestID);
-	Parms.Result = Result;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.EventAction_PlayFX.OnSystemCompleted
-// (Final, Native, Private)
-// Parameters:
-// class UNiagaraComponent*                PSystem                                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UEventAction_PlayFX::OnSystemCompleted(class UNiagaraComponent* PSystem)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("EventAction_PlayFX", "OnSystemCompleted");
-
-	Params::EventAction_PlayFX_OnSystemCompleted Parms{};
-
-	Parms.PSystem = PSystem;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FieldTalkComponent.OnPawnDeath
-// (Final, Native, Private)
-
-void UFieldTalkComponent::OnPawnDeath()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FieldTalkComponent", "OnPawnDeath");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FieldTalkComponent.ShowFieldTalkEntry
-// (Final, Native, Protected)
-
-void UFieldTalkComponent::ShowFieldTalkEntry()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FieldTalkComponent", "ShowFieldTalkEntry");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FieldTalkComponent.StartFieldTalk
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class UFieldTalkAsset*                  FieldTalkAsset                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bSkipActiveFieldTalkAsset                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UFieldTalkComponent::StartFieldTalk(class UFieldTalkAsset* FieldTalkAsset, bool bSkipActiveFieldTalkAsset)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FieldTalkComponent", "StartFieldTalk");
-
-	Params::FieldTalkComponent_StartFieldTalk Parms{};
-
-	Parms.FieldTalkAsset = FieldTalkAsset;
-	Parms.bSkipActiveFieldTalkAsset = bSkipActiveFieldTalkAsset;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.FieldTalkComponent.CanStartFieldTalk
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UFieldTalkComponent::CanStartFieldTalk() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FieldTalkComponent", "CanStartFieldTalk");
-
-	Params::FieldTalkComponent_CanStartFieldTalk Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -9864,61 +13111,41 @@ void UClearManagerComponent::ResetClearedObjects()
 }
 
 
-// Function Zion.UserWidgetRestPointListEntry.InitializeEntry
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class UUserWidgetMapIcon_RestPoint*     RestPointIcon                                          (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Zion.EventAction_Fade.OnFadeCompleted
+// (Final, Native, Private)
 
-void UUserWidgetRestPointListEntry::InitializeEntry(class UUserWidgetMapIcon_RestPoint* RestPointIcon)
+void UEventAction_Fade::OnFadeCompleted()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointListEntry", "InitializeEntry");
-
-	Params::UserWidgetRestPointListEntry_InitializeEntry Parms{};
-
-	Parms.RestPointIcon = RestPointIcon;
+		Func = Class->GetFunction("EventAction_Fade", "OnFadeCompleted");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
 }
 
 
-// Function Zion.UserWidgetRestPointListEntry.OnInitializeEntry
-// (Event, Public, BlueprintEvent)
-
-void UUserWidgetRestPointListEntry::OnInitializeEntry()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointListEntry", "OnInitializeEntry");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetRestPointListEntry.IsRestPointIcon
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.UserWidgetRestPointList.ChangeMapArea
+// (Final, Native, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
-// class UUserWidgetMapIcon_RestPoint*     RestPointIcon                                          (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   IndexOffset                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UUserWidgetMapIcon_RestPoint*     ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UUserWidgetRestPointListEntry::IsRestPointIcon(class UUserWidgetMapIcon_RestPoint* RestPointIcon) const
+class UUserWidgetMapIcon_RestPoint* UUserWidgetRestPointList::ChangeMapArea(int32 IndexOffset)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointListEntry", "IsRestPointIcon");
+		Func = Class->GetFunction("UserWidgetRestPointList", "ChangeMapArea");
 
-	Params::UserWidgetRestPointListEntry_IsRestPointIcon Parms{};
+	Params::UserWidgetRestPointList_ChangeMapArea Parms{};
 
-	Parms.RestPointIcon = RestPointIcon;
+	Parms.IndexOffset = IndexOffset;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -9931,15 +13158,94 @@ bool UUserWidgetRestPointListEntry::IsRestPointIcon(class UUserWidgetMapIcon_Res
 }
 
 
-// Function Zion.UserWidgetMinimap.ChangeDisplayMode
+// Function Zion.UserWidgetRestPointList.Close
 // (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UUserWidgetMinimap::ChangeDisplayMode()
+void UUserWidgetRestPointList::Close(bool bInstant)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMinimap", "ChangeDisplayMode");
+		Func = Class->GetFunction("UserWidgetRestPointList", "Close");
+
+	Params::UserWidgetRestPointList_Close Parms{};
+
+	Parms.bInstant = bInstant;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetRestPointList.FindNearestRestPointIcon
+// (Final, Native, Protected, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// const struct FVector2D&                 CurrentMapPosition                                     (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32*                                  OutMapAreaIndex                                        (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UUserWidgetMapIcon_RestPoint*     ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UUserWidgetMapIcon_RestPoint* UUserWidgetRestPointList::FindNearestRestPointIcon(const struct FVector2D& CurrentMapPosition, int32* OutMapAreaIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "FindNearestRestPointIcon");
+
+	Params::UserWidgetRestPointList_FindNearestRestPointIcon Parms{};
+
+	Parms.CurrentMapPosition = std::move(CurrentMapPosition);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (OutMapAreaIndex != nullptr)
+		*OutMapAreaIndex = Parms.OutMapAreaIndex;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetRestPointList.GoToMapAreaFromIndex
+// (Event, Protected, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int32                                   MapAreaIndex                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UUserWidgetMapIcon_RestPoint*     NearestRestPointIcon                                   (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetRestPointList::GoToMapAreaFromIndex(int32 MapAreaIndex, class UUserWidgetMapIcon_RestPoint* NearestRestPointIcon)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "GoToMapAreaFromIndex");
+
+	Params::UserWidgetRestPointList_GoToMapAreaFromIndex Parms{};
+
+	Parms.MapAreaIndex = MapAreaIndex;
+	Parms.NearestRestPointIcon = NearestRestPointIcon;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetRestPointList.GoToNextMapArea
+// (Final, Native, Protected, BlueprintCallable)
+
+void UUserWidgetRestPointList::GoToNextMapArea()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "GoToNextMapArea");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -9950,15 +13256,15 @@ void UUserWidgetMinimap::ChangeDisplayMode()
 }
 
 
-// Function Zion.UserWidgetMinimap.InitializeDefaultDisplayValues
-// (Final, Native, Public, BlueprintCallable)
+// Function Zion.UserWidgetRestPointList.GoToPreviousMapArea
+// (Final, Native, Protected, BlueprintCallable)
 
-void UUserWidgetMinimap::InitializeDefaultDisplayValues()
+void UUserWidgetRestPointList::GoToPreviousMapArea()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMinimap", "InitializeDefaultDisplayValues");
+		Func = Class->GetFunction("UserWidgetRestPointList", "GoToPreviousMapArea");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -9969,90 +13275,161 @@ void UUserWidgetMinimap::InitializeDefaultDisplayValues()
 }
 
 
-// Function Zion.UserWidgetMinimap.OnGameMapChanged
-// (Final, Native, Private)
+// Function Zion.UserWidgetRestPointList.InstantiateRestPointList
+// (Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// const TArray<struct FRestPointListData>&ListData                                               (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
 
-void UUserWidgetMinimap::OnGameMapChanged()
+void UUserWidgetRestPointList::InstantiateRestPointList(const TArray<struct FRestPointListData>& ListData)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMinimap", "OnGameMapChanged");
+		Func = Class->GetFunction("UserWidgetRestPointList", "InstantiateRestPointList");
 
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
+	Params::UserWidgetRestPointList_InstantiateRestPointList Parms{};
 
-	UObject::ProcessEvent(Func, nullptr);
+	Parms.ListData = std::move(ListData);
 
-	Func->FunctionFlags = Flgs;
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function Zion.UserWidgetMinimap.OnRefreshMinimap
+// Function Zion.UserWidgetRestPointList.OnClosed
 // (Event, Protected, BlueprintEvent)
-
-void UUserWidgetMinimap::OnRefreshMinimap()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMinimap", "OnRefreshMinimap");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetMinimap.OnStoryLevelChanged
-// (Final, Native, Private)
-
-void UUserWidgetMinimap::OnStoryLevelChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMinimap", "OnStoryLevelChanged");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetMinimap.RequestRender
-// (Final, Native, Public, BlueprintCallable)
-
-void UUserWidgetMinimap::RequestRender()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMinimap", "RequestRender");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetMinimap.HasValidData
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UUserWidgetMinimap::HasValidData() const
+void UUserWidgetRestPointList::OnClosed(bool bInstant)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMinimap", "HasValidData");
+		Func = Class->GetFunction("UserWidgetRestPointList", "OnClosed");
 
-	Params::UserWidgetMinimap_HasValidData Parms{};
+	Params::UserWidgetRestPointList_OnClosed Parms{};
+
+	Parms.bInstant = bInstant;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetRestPointList.OnOpened
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetRestPointList::OnOpened(bool bInstant)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "OnOpened");
+
+	Params::UserWidgetRestPointList_OnOpened Parms{};
+
+	Parms.bInstant = bInstant;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetRestPointList.Open
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// const struct FVector2D&                 CurrentMapPosition                                     (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetRestPointList::Open(const struct FVector2D& CurrentMapPosition, bool bInstant)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "Open");
+
+	Params::UserWidgetRestPointList_Open Parms{};
+
+	Parms.CurrentMapPosition = std::move(CurrentMapPosition);
+	Parms.bInstant = bInstant;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetRestPointList.RestPointEntryFocused
+// (Final, Native, Private)
+// Parameters:
+// int32                                   MapAreaIndex                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UUserWidgetMapIcon_RestPoint*     RestPointIcon                                          (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetRestPointList::RestPointEntryFocused(int32 MapAreaIndex, class UUserWidgetMapIcon_RestPoint* RestPointIcon)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "RestPointEntryFocused");
+
+	Params::UserWidgetRestPointList_RestPointEntryFocused Parms{};
+
+	Parms.MapAreaIndex = MapAreaIndex;
+	Parms.RestPointIcon = RestPointIcon;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetRestPointList.RestPointEntryPressed
+// (Final, Native, Private)
+// Parameters:
+// const struct FMapRestPointData&         RestPointData                                          (Parm, NoDestructor, NativeAccessSpecifierPublic)
+
+void UUserWidgetRestPointList::RestPointEntryPressed(const struct FMapRestPointData& RestPointData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "RestPointEntryPressed");
+
+	Params::UserWidgetRestPointList_RestPointEntryPressed Parms{};
+
+	Parms.RestPointData = std::move(RestPointData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetRestPointList.SetCurrentMapAreaIndex
+// (Final, Native, Protected, BlueprintCallable)
+// Parameters:
+// int32                                   NewMapAreaIndex                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UUserWidgetRestPointList::SetCurrentMapAreaIndex(int32 NewMapAreaIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "SetCurrentMapAreaIndex");
+
+	Params::UserWidgetRestPointList_SetCurrentMapAreaIndex Parms{};
+
+	Parms.NewMapAreaIndex = NewMapAreaIndex;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -10062,6 +13439,265 @@ bool UUserWidgetMinimap::HasValidData() const
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetRestPointList.CanBeOpened
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetRestPointList::CanBeOpened() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "CanBeOpened");
+
+	Params::UserWidgetRestPointList_CanBeOpened Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetRestPointList.CanChangeMapArea
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetRestPointList::CanChangeMapArea() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "CanChangeMapArea");
+
+	Params::UserWidgetRestPointList_CanChangeMapArea Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetRestPointList.GetIndexFromMapAreaName
+// (Final, Native, Protected, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class FName&                      MapAreaName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UUserWidgetRestPointList::GetIndexFromMapAreaName(const class FName& MapAreaName) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "GetIndexFromMapAreaName");
+
+	Params::UserWidgetRestPointList_GetIndexFromMapAreaName Parms{};
+
+	Parms.MapAreaName = MapAreaName;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetRestPointList.GetNewMapAreaIndex
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   IndexOffset                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UUserWidgetRestPointList::GetNewMapAreaIndex(int32 IndexOffset) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "GetNewMapAreaIndex");
+
+	Params::UserWidgetRestPointList_GetNewMapAreaIndex Parms{};
+
+	Parms.IndexOffset = IndexOffset;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetRestPointList.IsOpened
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetRestPointList::IsOpened() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointList", "IsOpened");
+
+	Params::UserWidgetRestPointList_IsOpened Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetMapTransition.HideMapTransition
+// (Native, Event, Public, BlueprintCallable, BlueprintEvent)
+
+void UUserWidgetMapTransition::HideMapTransition()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetMapTransition", "HideMapTransition");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetMapTransition.OnSetIconsVisibility
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// bool                                    bVisible                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetMapTransition::OnSetIconsVisibility(bool bVisible)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetMapTransition", "OnSetIconsVisibility");
+
+	Params::UserWidgetMapTransition_OnSetIconsVisibility Parms{};
+
+	Parms.bVisible = bVisible;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetMapTransition.OnSetScale
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   NewScale                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetMapTransition::OnSetScale(float NewScale)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetMapTransition", "OnSetScale");
+
+	Params::UserWidgetMapTransition_OnSetScale Parms{};
+
+	Parms.NewScale = NewScale;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetMapTransition.SetIconsVisibility
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bVisible                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetMapTransition::SetIconsVisibility(bool bVisible)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetMapTransition", "SetIconsVisibility");
+
+	Params::UserWidgetMapTransition_SetIconsVisibility Parms{};
+
+	Parms.bVisible = bVisible;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetMapTransition.SetScale
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   NewScale                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetMapTransition::SetScale(float NewScale)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetMapTransition", "SetScale");
+
+	Params::UserWidgetMapTransition_SetScale Parms{};
+
+	Parms.NewScale = NewScale;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetMapTransition.ShowMapTransition
+// (Native, Event, Public, BlueprintCallable, BlueprintEvent)
+
+void UUserWidgetMapTransition::ShowMapTransition()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetMapTransition", "ShowMapTransition");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
 }
 
 
@@ -10401,284 +14037,20 @@ bool UCommandComponent::HasCommand() const
 }
 
 
-// Function Zion.UserWidgetWorldSpaceText_Talk.CompleteTalk
-// (Final, Native, Public, BlueprintCallable)
-
-void UUserWidgetWorldSpaceText_Talk::CompleteTalk()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "CompleteTalk");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetWorldSpaceText_Talk.FinishTalk
-// (Event, Public, BlueprintEvent)
-
-void UUserWidgetWorldSpaceText_Talk::FinishTalk()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "FinishTalk");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetWorldSpaceText_Talk.OnPressConfirm
-// (Event, Public, BlueprintEvent)
-
-void UUserWidgetWorldSpaceText_Talk::OnPressConfirm()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "OnPressConfirm");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetWorldSpaceText_Talk.OnTalk
-// (Event, Public, HasOutParams, BlueprintEvent)
-// Parameters:
-// const struct FTalkParameters&           TalkParameters                                         (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-void UUserWidgetWorldSpaceText_Talk::OnTalk(const struct FTalkParameters& TalkParameters)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "OnTalk");
-
-	Params::UserWidgetWorldSpaceText_Talk_OnTalk Parms{};
-
-	Parms.TalkParameters = std::move(TalkParameters);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetWorldSpaceText_Talk.SetSpeakerName
+// Function Zion.UserWidgetWorldSpaceText.SetText
 // (Native, Event, Public, HasOutParams, BlueprintEvent)
 // Parameters:
-// const class FText&                      SpeakerName                                            (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const class FText&                      Text                                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 
-void UUserWidgetWorldSpaceText_Talk::SetSpeakerName(const class FText& SpeakerName)
+void UUserWidgetWorldSpaceText::SetText(const class FText& Text)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "SetSpeakerName");
+		Func = Class->GetFunction("UserWidgetWorldSpaceText", "SetText");
 
-	Params::UserWidgetWorldSpaceText_Talk_SetSpeakerName Parms{};
+	Params::UserWidgetWorldSpaceText_SetText Parms{};
 
-	Parms.SpeakerName = std::move(SpeakerName);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetStatusEffectIcon.OnStatusEffectFinished
-// (Final, Native, Protected)
-
-void UUserWidgetStatusEffectIcon::OnStatusEffectFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "OnStatusEffectFinished");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetStatusEffectIcon.UpdateRemainingDuration
-// (Final, Native, Public, BlueprintCallable)
-
-void UUserWidgetStatusEffectIcon::UpdateRemainingDuration()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "UpdateRemainingDuration");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetStatusEffectIcon.GetCachedStatusEffect
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UStatusEffect*                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UStatusEffect* UUserWidgetStatusEffectIcon::GetCachedStatusEffect() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "GetCachedStatusEffect");
-
-	Params::UserWidgetStatusEffectIcon_GetCachedStatusEffect Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetStatusEffectIcon.GetStatusEffectIconSprite
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// TSoftObjectPtr<class UPaperSprite>      ReturnValue                                            (Parm, OutParm, ReturnParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-TSoftObjectPtr<class UPaperSprite> UUserWidgetStatusEffectIcon::GetStatusEffectIconSprite() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "GetStatusEffectIconSprite");
-
-	Params::UserWidgetStatusEffectIcon_GetStatusEffectIconSprite Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetStatusEffectIcon.GetStatusEffectIconSpriteFromType
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const EStatusEffectType&                StatusEffectType                                       (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TSoftObjectPtr<class UPaperSprite>      ReturnValue                                            (Parm, OutParm, ReturnParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-TSoftObjectPtr<class UPaperSprite> UUserWidgetStatusEffectIcon::GetStatusEffectIconSpriteFromType(const EStatusEffectType& StatusEffectType) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "GetStatusEffectIconSpriteFromType");
-
-	Params::UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType Parms{};
-
-	Parms.StatusEffectType = StatusEffectType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.WallAttachComponent.OnMovementModeChanged
-// (Final, Native, Private)
-// Parameters:
-// class ACharacter*                       InCharacter                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EMovementMode                           PrevMovementMode                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// uint8                                   PreviousCustomMode                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UWallAttachComponent::OnMovementModeChanged(class ACharacter* InCharacter, EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WallAttachComponent", "OnMovementModeChanged");
-
-	Params::WallAttachComponent_OnMovementModeChanged Parms{};
-
-	Parms.InCharacter = InCharacter;
-	Parms.PrevMovementMode = PrevMovementMode;
-	Parms.PreviousCustomMode = PreviousCustomMode;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetWorldSpaceDebug.ClearTextForTag
-// (Native, Event, Public, BlueprintEvent)
-// Parameters:
-// class FName                             Tag                                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetWorldSpaceDebug::ClearTextForTag(class FName Tag)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceDebug", "ClearTextForTag");
-
-	Params::UserWidgetWorldSpaceDebug_ClearTextForTag Parms{};
-
-	Parms.Tag = Tag;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetWorldSpaceDebug.SetTextForTag
-// (Native, Event, Public, BlueprintEvent)
-// Parameters:
-// class FName                             Tag                                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const class FString&                    Text                                                   (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetWorldSpaceDebug::SetTextForTag(class FName Tag, const class FString& Text)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceDebug", "SetTextForTag");
-
-	Params::UserWidgetWorldSpaceDebug_SetTextForTag Parms{};
-
-	Parms.Tag = Tag;
 	Parms.Text = std::move(Text);
 
 	auto Flgs = Func->FunctionFlags;
@@ -10690,25 +14062,21 @@ void UUserWidgetWorldSpaceDebug::SetTextForTag(class FName Tag, const class FStr
 }
 
 
-// Function Zion.FadeSubsystem.LaunchFadeIn
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.UserWidgetWorldSpaceText_Interact.SetAvailable
+// (Native, Event, Public, BlueprintEvent)
 // Parameters:
-// const struct FFadeDescriptionData&      FadeDescription                                        (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// const TDelegate<void()>&                OnFadeFinishedDelegate                                 (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bAvailable                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UFadeSubsystem::LaunchFadeIn(const struct FFadeDescriptionData& FadeDescription, const TDelegate<void()>& OnFadeFinishedDelegate, EFadeLayer FadeLayer)
+void UUserWidgetWorldSpaceText_Interact::SetAvailable(bool bAvailable)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FadeSubsystem", "LaunchFadeIn");
+		Func = Class->GetFunction("UserWidgetWorldSpaceText_Interact", "SetAvailable");
 
-	Params::FadeSubsystem_LaunchFadeIn Parms{};
+	Params::UserWidgetWorldSpaceText_Interact_SetAvailable Parms{};
 
-	Parms.FadeDescription = std::move(FadeDescription);
-	Parms.OnFadeFinishedDelegate = OnFadeFinishedDelegate;
-	Parms.FadeLayer = FadeLayer;
+	Parms.bAvailable = bAvailable;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -10719,25 +14087,21 @@ void UFadeSubsystem::LaunchFadeIn(const struct FFadeDescriptionData& FadeDescrip
 }
 
 
-// Function Zion.FadeSubsystem.LaunchFadeOut
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.UserWidgetRestPointListMapArea.GenerateRestPointListEntries
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// const struct FFadeDescriptionData&      FadeDescription                                        (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// const TDelegate<void()>&                OnFadeFinishedDelegate                                 (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const TArray<class UUserWidgetMapIcon_RestPoint*>&RestPointIcons                                         (Parm, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 
-void UFadeSubsystem::LaunchFadeOut(const struct FFadeDescriptionData& FadeDescription, const TDelegate<void()>& OnFadeFinishedDelegate, EFadeLayer FadeLayer)
+void UUserWidgetRestPointListMapArea::GenerateRestPointListEntries(const TArray<class UUserWidgetMapIcon_RestPoint*>& RestPointIcons)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FadeSubsystem", "LaunchFadeOut");
+		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "GenerateRestPointListEntries");
 
-	Params::FadeSubsystem_LaunchFadeOut Parms{};
+	Params::UserWidgetRestPointListMapArea_GenerateRestPointListEntries Parms{};
 
-	Parms.FadeDescription = std::move(FadeDescription);
-	Parms.OnFadeFinishedDelegate = OnFadeFinishedDelegate;
-	Parms.FadeLayer = FadeLayer;
+	Parms.RestPointIcons = std::move(RestPointIcons);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -10748,42 +14112,121 @@ void UFadeSubsystem::LaunchFadeOut(const struct FFadeDescriptionData& FadeDescri
 }
 
 
-// Function Zion.FadeSubsystem.OnFadeWidgetDestruct
+// Function Zion.UserWidgetRestPointListMapArea.RestPointEntryFocused
 // (Final, Native, Private)
+// Parameters:
+// class UUserWidgetMapIcon_RestPoint*     RestPointIcon                                          (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UFadeSubsystem::OnFadeWidgetDestruct()
+void UUserWidgetRestPointListMapArea::RestPointEntryFocused(class UUserWidgetMapIcon_RestPoint* RestPointIcon)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FadeSubsystem", "OnFadeWidgetDestruct");
+		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "RestPointEntryFocused");
+
+	Params::UserWidgetRestPointListMapArea_RestPointEntryFocused Parms{};
+
+	Parms.RestPointIcon = RestPointIcon;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, nullptr);
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 }
 
 
-// Function Zion.FadeSubsystem.SetupFadeIn
+// Function Zion.UserWidgetRestPointListMapArea.RestPointEntryPressed
+// (Final, Native, Private)
+// Parameters:
+// const struct FMapRestPointData&         RestPointData                                          (Parm, NoDestructor, NativeAccessSpecifierPublic)
+
+void UUserWidgetRestPointListMapArea::RestPointEntryPressed(const struct FMapRestPointData& RestPointData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "RestPointEntryPressed");
+
+	Params::UserWidgetRestPointListMapArea_RestPointEntryPressed Parms{};
+
+	Parms.RestPointData = std::move(RestPointData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetRestPointListMapArea.SetCompleted
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bIsCompleted                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetRestPointListMapArea::SetCompleted(bool bIsCompleted)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "SetCompleted");
+
+	Params::UserWidgetRestPointListMapArea_SetCompleted Parms{};
+
+	Parms.bIsCompleted = bIsCompleted;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetRestPointListMapArea.SetMapAreaIndex
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// const int32                             NewMapAreaIndex                                        (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUserWidgetRestPointListMapArea::SetMapAreaIndex(const int32 NewMapAreaIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "SetMapAreaIndex");
+
+	Params::UserWidgetRestPointListMapArea_SetMapAreaIndex Parms{};
+
+	Parms.NewMapAreaIndex = NewMapAreaIndex;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetRestPointListMapArea.SetMapAreaName
 // (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// const struct FFadeDescriptionData&      FadeDescription                                        (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FText&                      NewMapAreaName                                         (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 
-void UFadeSubsystem::SetupFadeIn(const struct FFadeDescriptionData& FadeDescription, EFadeLayer FadeLayer)
+void UUserWidgetRestPointListMapArea::SetMapAreaName(const class FText& NewMapAreaName)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FadeSubsystem", "SetupFadeIn");
+		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "SetMapAreaName");
 
-	Params::FadeSubsystem_SetupFadeIn Parms{};
+	Params::UserWidgetRestPointListMapArea_SetMapAreaName Parms{};
 
-	Parms.FadeDescription = std::move(FadeDescription);
-	Parms.FadeLayer = FadeLayer;
+	Parms.NewMapAreaName = std::move(NewMapAreaName);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -10794,27 +14237,27 @@ void UFadeSubsystem::SetupFadeIn(const struct FFadeDescriptionData& FadeDescript
 }
 
 
-// Function Zion.FadeSubsystem.GetFadeState
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.WaitGameUnpaused.WaitGameUnpaused
+// (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
-// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EFadeState                              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class UObject*                    WorldContextObject                                     (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UWaitGameUnpaused*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-EFadeState UFadeSubsystem::GetFadeState(EFadeLayer FadeLayer) const
+class UWaitGameUnpaused* UWaitGameUnpaused::WaitGameUnpaused(const class UObject* WorldContextObject)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FadeSubsystem", "GetFadeState");
+		Func = StaticClass()->GetFunction("WaitGameUnpaused", "WaitGameUnpaused");
 
-	Params::FadeSubsystem_GetFadeState Parms{};
+	Params::WaitGameUnpaused_WaitGameUnpaused Parms{};
 
-	Parms.FadeLayer = FadeLayer;
+	Parms.WorldContextObject = WorldContextObject;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -10822,19 +14265,21 @@ EFadeState UFadeSubsystem::GetFadeState(EFadeLayer FadeLayer) const
 }
 
 
-// Function Zion.FadeSubsystem.IsAnyFadeVisible
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.UserWidgetWorldSpaceGauge.SetCurrentRatio
+// (Native, Event, Public, BlueprintEvent)
 // Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   CurrentRatio                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UFadeSubsystem::IsAnyFadeVisible() const
+void UUserWidgetWorldSpaceGauge::SetCurrentRatio(float CurrentRatio)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FadeSubsystem", "IsAnyFadeVisible");
+		Func = Class->GetFunction("UserWidgetWorldSpaceGauge", "SetCurrentRatio");
 
-	Params::FadeSubsystem_IsAnyFadeVisible Parms{};
+	Params::UserWidgetWorldSpaceGauge_SetCurrentRatio Parms{};
+
+	Parms.CurrentRatio = CurrentRatio;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -10842,27 +14287,24 @@ bool UFadeSubsystem::IsAnyFadeVisible() const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
-// Function Zion.FadeSubsystem.IsFadeVisible
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.UserWidgetWorldSpaceGauge.SetTargetActor
+// (Native, Event, Public, BlueprintEvent)
 // Parameters:
-// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           Actor                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UFadeSubsystem::IsFadeVisible(EFadeLayer FadeLayer) const
+void UUserWidgetWorldSpaceGauge::SetTargetActor(class AActor* Actor)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FadeSubsystem", "IsFadeVisible");
+		Func = Class->GetFunction("UserWidgetWorldSpaceGauge", "SetTargetActor");
 
-	Params::FadeSubsystem_IsFadeVisible Parms{};
+	Params::UserWidgetWorldSpaceGauge_SetTargetActor Parms{};
 
-	Parms.FadeLayer = FadeLayer;
+	Parms.Actor = Actor;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -10870,36 +14312,6 @@ bool UFadeSubsystem::IsFadeVisible(EFadeLayer FadeLayer) const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.FadeSubsystem.IsFading
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UFadeSubsystem::IsFading(EFadeLayer FadeLayer) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FadeSubsystem", "IsFading");
-
-	Params::FadeSubsystem_IsFading Parms{};
-
-	Parms.FadeLayer = FadeLayer;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -10947,105 +14359,21 @@ bool UDeathComponent::IsDead() const
 }
 
 
-// Function Zion.WorldLoaderSubsystem.OnFadeInFinished
-// (Final, Native, Private)
-
-void UWorldLoaderSubsystem::OnFadeInFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "OnFadeInFinished");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.WorldLoaderSubsystem.OnFadeOutFinished
-// (Final, Native, Private)
-
-void UWorldLoaderSubsystem::OnFadeOutFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "OnFadeOutFinished");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.WorldLoaderSubsystem.OnLevelStreamingDynamicLoaded
-// (Final, Native, Private)
-
-void UWorldLoaderSubsystem::OnLevelStreamingDynamicLoaded()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "OnLevelStreamingDynamicLoaded");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.WorldLoaderSubsystem.OnPostLoad
-// (Final, Native, Private)
-
-void UWorldLoaderSubsystem::OnPostLoad()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "OnPostLoad");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.WorldLoaderSubsystem.OpenGameMap
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.WallGrabComponent.OnMoveBlocked
+// (Final, Native, Private, HasOutParams)
 // Parameters:
-// const struct FDataTableRowHandle&       GameMapHandle                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// const class FName                       PlayerStartTag                                         (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bForceReload                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FFadeDescriptionData&      FadeOutDescription                                     (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// const struct FFadeDescriptionData&      FadeInDescription                                      (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// const struct FHitResult&                Impact                                                 (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 
-void UWorldLoaderSubsystem::OpenGameMap(const struct FDataTableRowHandle& GameMapHandle, const class FName PlayerStartTag, bool bForceReload, const struct FFadeDescriptionData& FadeOutDescription, const struct FFadeDescriptionData& FadeInDescription)
+void UWallGrabComponent::OnMoveBlocked(const struct FHitResult& Impact)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "OpenGameMap");
+		Func = Class->GetFunction("WallGrabComponent", "OnMoveBlocked");
 
-	Params::WorldLoaderSubsystem_OpenGameMap Parms{};
+	Params::WallGrabComponent_OnMoveBlocked Parms{};
 
-	Parms.GameMapHandle = std::move(GameMapHandle);
-	Parms.PlayerStartTag = PlayerStartTag;
-	Parms.bForceReload = bForceReload;
-	Parms.FadeOutDescription = std::move(FadeOutDescription);
-	Parms.FadeInDescription = std::move(FadeInDescription);
+	Parms.Impact = std::move(Impact);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -11056,27 +14384,25 @@ void UWorldLoaderSubsystem::OpenGameMap(const struct FDataTableRowHandle& GameMa
 }
 
 
-// Function Zion.WorldLoaderSubsystem.OpenWorld
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.WallGrabComponent.OnMovementModeChanged
+// (Final, Native, Private)
 // Parameters:
-// TSoftObjectPtr<class UWorld>            WorldToLoad                                            (Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class FName                             PlayerStartTag                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FFadeDescriptionData&      FadeOutDescription                                     (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// const struct FFadeDescriptionData&      FadeInDescription                                      (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// class ACharacter*                       InCharacter                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EMovementMode                           PrevMovementMode                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// uint8                                   PreviousCustomMode                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UWorldLoaderSubsystem::OpenWorld(TSoftObjectPtr<class UWorld> WorldToLoad, class FName PlayerStartTag, const struct FFadeDescriptionData& FadeOutDescription, const struct FFadeDescriptionData& FadeInDescription)
+void UWallGrabComponent::OnMovementModeChanged(class ACharacter* InCharacter, EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "OpenWorld");
+		Func = Class->GetFunction("WallGrabComponent", "OnMovementModeChanged");
 
-	Params::WorldLoaderSubsystem_OpenWorld Parms{};
+	Params::WallGrabComponent_OnMovementModeChanged Parms{};
 
-	Parms.WorldToLoad = WorldToLoad;
-	Parms.PlayerStartTag = PlayerStartTag;
-	Parms.FadeOutDescription = std::move(FadeOutDescription);
-	Parms.FadeInDescription = std::move(FadeInDescription);
+	Parms.InCharacter = InCharacter;
+	Parms.PrevMovementMode = PrevMovementMode;
+	Parms.PreviousCustomMode = PreviousCustomMode;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -11087,15 +14413,40 @@ void UWorldLoaderSubsystem::OpenWorld(TSoftObjectPtr<class UWorld> WorldToLoad, 
 }
 
 
-// Function Zion.WorldLoaderSubsystem.SwitchGameMap_PostFadeIn
+// Function Zion.WallGrabComponent.OnStartAnimation
 // (Final, Native, Private)
+// Parameters:
+// class UTrackEntry*                      TrackEntry                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UWorldLoaderSubsystem::SwitchGameMap_PostFadeIn()
+void UWallGrabComponent::OnStartAnimation(class UTrackEntry* TrackEntry)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "SwitchGameMap_PostFadeIn");
+		Func = Class->GetFunction("WallGrabComponent", "OnStartAnimation");
+
+	Params::WallGrabComponent_OnStartAnimation Parms{};
+
+	Parms.TrackEntry = TrackEntry;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.WallGrabComponent.OnWallGrab
+// (Native, Event, Protected, BlueprintEvent)
+
+void UWallGrabComponent::OnWallGrab()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WallGrabComponent", "OnWallGrab");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -11106,15 +14457,15 @@ void UWorldLoaderSubsystem::SwitchGameMap_PostFadeIn()
 }
 
 
-// Function Zion.WorldLoaderSubsystem.SwitchGameMap_PostFadeOut
-// (Final, Native, Private)
+// Function Zion.WallGrabComponent.RefreshWallGrab
+// (Final, Native, Public, BlueprintCallable)
 
-void UWorldLoaderSubsystem::SwitchGameMap_PostFadeOut()
+void UWallGrabComponent::RefreshWallGrab()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "SwitchGameMap_PostFadeOut");
+		Func = Class->GetFunction("WallGrabComponent", "RefreshWallGrab");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -11125,94 +14476,19 @@ void UWorldLoaderSubsystem::SwitchGameMap_PostFadeOut()
 }
 
 
-// Function Zion.WorldLoaderSubsystem.GetCurrentGameMapData
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FGameMapData               ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-const struct FGameMapData UWorldLoaderSubsystem::GetCurrentGameMapData() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "GetCurrentGameMapData");
-
-	Params::WorldLoaderSubsystem_GetCurrentGameMapData Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.WorldLoaderSubsystem.GetCurrentGameMapID
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class FName                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class FName UWorldLoaderSubsystem::GetCurrentGameMapID() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "GetCurrentGameMapID");
-
-	Params::WorldLoaderSubsystem_GetCurrentGameMapID Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.WorldLoaderSubsystem.GetCurrentPlayerStartTag
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class FName                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class FName UWorldLoaderSubsystem::GetCurrentPlayerStartTag() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "GetCurrentPlayerStartTag");
-
-	Params::WorldLoaderSubsystem_GetCurrentPlayerStartTag Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.WorldLoaderSubsystem.IsAvailable
+// Function Zion.WallGrabComponent.IsGrabbingWall
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UWorldLoaderSubsystem::IsAvailable() const
+bool UWallGrabComponent::IsGrabbingWall() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "IsAvailable");
+		Func = Class->GetFunction("WallGrabComponent", "IsGrabbingWall");
 
-	Params::WorldLoaderSubsystem_IsAvailable Parms{};
+	Params::WallGrabComponent_IsGrabbingWall Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -11225,22 +14501,19 @@ bool UWorldLoaderSubsystem::IsAvailable() const
 }
 
 
-// Function Zion.WorldLoaderSubsystem.IsLoading
+// Function Zion.WallGrabComponent.IsWallOnRight
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// bool                                    bConsiderFadeAsLoading                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UWorldLoaderSubsystem::IsLoading(bool bConsiderFadeAsLoading) const
+bool UWallGrabComponent::IsWallOnRight() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WorldLoaderSubsystem", "IsLoading");
+		Func = Class->GetFunction("WallGrabComponent", "IsWallOnRight");
 
-	Params::WorldLoaderSubsystem_IsLoading Parms{};
-
-	Parms.bConsiderFadeAsLoading = bConsiderFadeAsLoading;
+	Params::WallGrabComponent_IsWallOnRight Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -14685,20 +17958,45 @@ bool UEquipmentComponent::IsEquippedOnSlot(EEquipmentSlot EquipmentSlot, const c
 }
 
 
-// Function Zion.EventAction_Fade.OnFadeCompleted
+// Function Zion.EventAction_OpenUI.OnWidgetDestruct
 // (Final, Native, Private)
 
-void UEventAction_Fade::OnFadeCompleted()
+void UEventAction_OpenUI::OnWidgetDestruct()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("EventAction_Fade", "OnFadeCompleted");
+		Func = Class->GetFunction("EventAction_OpenUI", "OnWidgetDestruct");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.EventAction_PlayFX.OnSystemCompleted
+// (Final, Native, Private)
+// Parameters:
+// class UNiagaraComponent*                PSystem                                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UEventAction_PlayFX::OnSystemCompleted(class UNiagaraComponent* PSystem)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("EventAction_PlayFX", "OnSystemCompleted");
+
+	Params::EventAction_PlayFX_OnSystemCompleted Parms{};
+
+	Parms.PSystem = PSystem;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 }
@@ -14713,25 +18011,6 @@ void UEventAction_PlayLevelSequence::OnLevelSequenceFinished()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("EventAction_PlayLevelSequence", "OnLevelSequenceFinished");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.EventAction_PlayRandomAnimations.OnAnimationFinished
-// (Final, Native, Private)
-
-void UEventAction_PlayRandomAnimations::OnAnimationFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("EventAction_PlayRandomAnimations", "OnAnimationFinished");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -14764,332 +18043,6 @@ void UEventAction_SaveGame::OnSaveFinished(bool bResult)
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.PassiveComponent.EquipPassive
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const class FName&                      PassiveID                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bAddToCurrentLoadout                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   InsertIndex                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EPassiveEquipResult                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EPassiveEquipResult UPassiveComponent::EquipPassive(const class FName& PassiveID, bool bAddToCurrentLoadout, int32 InsertIndex)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "EquipPassive");
-
-	Params::PassiveComponent_EquipPassive Parms{};
-
-	Parms.PassiveID = PassiveID;
-	Parms.bAddToCurrentLoadout = bAddToCurrentLoadout;
-	Parms.InsertIndex = InsertIndex;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.PassiveComponent.EquipPassiveLoadout
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// int32                                   LoadoutIndex                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UPassiveComponent::EquipPassiveLoadout(int32 LoadoutIndex)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "EquipPassiveLoadout");
-
-	Params::PassiveComponent_EquipPassiveLoadout Parms{};
-
-	Parms.LoadoutIndex = LoadoutIndex;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.PassiveComponent.OnPossessedPawnChanged
-// (Final, Native, Private)
-// Parameters:
-// class APawn*                            OldPawn                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class APawn*                            NewPawn                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UPassiveComponent::OnPossessedPawnChanged(class APawn* OldPawn, class APawn* NewPawn)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "OnPossessedPawnChanged");
-
-	Params::PassiveComponent_OnPossessedPawnChanged Parms{};
-
-	Parms.OldPawn = OldPawn;
-	Parms.NewPawn = NewPawn;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.PassiveComponent.ReplacePassiveInAllLoadouts
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const class FName&                      PassiveToRemove                                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const class FName&                      PassiveToAdd                                           (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UPassiveComponent::ReplacePassiveInAllLoadouts(const class FName& PassiveToRemove, const class FName& PassiveToAdd)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "ReplacePassiveInAllLoadouts");
-
-	Params::PassiveComponent_ReplacePassiveInAllLoadouts Parms{};
-
-	Parms.PassiveToRemove = PassiveToRemove;
-	Parms.PassiveToAdd = PassiveToAdd;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.PassiveComponent.UnequipPassive
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const class FName&                      PassiveID                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32*                                  OutPassiveIndex                                        (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bRemoveFromCurrentLoadout                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UPassiveComponent::UnequipPassive(const class FName& PassiveID, int32* OutPassiveIndex, bool bRemoveFromCurrentLoadout)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "UnequipPassive");
-
-	Params::PassiveComponent_UnequipPassive Parms{};
-
-	Parms.PassiveID = PassiveID;
-	Parms.bRemoveFromCurrentLoadout = bRemoveFromCurrentLoadout;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (OutPassiveIndex != nullptr)
-		*OutPassiveIndex = Parms.OutPassiveIndex;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.PassiveComponent.CanEquipPassive
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FInventoryItemPassiveData& ItemPassiveData                                        (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// EPassiveEquipResult                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EPassiveEquipResult UPassiveComponent::CanEquipPassive(const struct FInventoryItemPassiveData& ItemPassiveData) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "CanEquipPassive");
-
-	Params::PassiveComponent_CanEquipPassive Parms{};
-
-	Parms.ItemPassiveData = std::move(ItemPassiveData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.PassiveComponent.GetAvailableSlotCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UPassiveComponent::GetAvailableSlotCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "GetAvailableSlotCount");
-
-	Params::PassiveComponent_GetAvailableSlotCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.PassiveComponent.GetCurrentPassiveLoadoutIndex
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UPassiveComponent::GetCurrentPassiveLoadoutIndex() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "GetCurrentPassiveLoadoutIndex");
-
-	Params::PassiveComponent_GetCurrentPassiveLoadoutIndex Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.PassiveComponent.GetEquippedPassives
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const TArray<struct FPassiveRuntimeData>ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-const TArray<struct FPassiveRuntimeData> UPassiveComponent::GetEquippedPassives() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "GetEquippedPassives");
-
-	Params::PassiveComponent_GetEquippedPassives Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.PassiveComponent.GetSlotCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UPassiveComponent::GetSlotCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "GetSlotCount");
-
-	Params::PassiveComponent_GetSlotCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.PassiveComponent.GetUsedSlotCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UPassiveComponent::GetUsedSlotCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "GetUsedSlotCount");
-
-	Params::PassiveComponent_GetUsedSlotCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.PassiveComponent.IsPassiveEquipped
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName&                      PassiveID                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UPassiveComponent::IsPassiveEquipped(const class FName& PassiveID) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PassiveComponent", "IsPassiveEquipped");
-
-	Params::PassiveComponent_IsPassiveEquipped Parms{};
-
-	Parms.PassiveID = PassiveID;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -15200,6 +18153,219 @@ TMap<class FName, class AActor*> UEventBPFLibrary::GenerateActorBindingsFromSpaw
 	Func->FunctionFlags |= 0x400;
 
 	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FadeSubsystem.LaunchFadeIn
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FFadeDescriptionData&      FadeDescription                                        (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// const TDelegate<void()>&                OnFadeFinishedDelegate                                 (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UFadeSubsystem::LaunchFadeIn(const struct FFadeDescriptionData& FadeDescription, const TDelegate<void()>& OnFadeFinishedDelegate, EFadeLayer FadeLayer)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FadeSubsystem", "LaunchFadeIn");
+
+	Params::FadeSubsystem_LaunchFadeIn Parms{};
+
+	Parms.FadeDescription = std::move(FadeDescription);
+	Parms.OnFadeFinishedDelegate = OnFadeFinishedDelegate;
+	Parms.FadeLayer = FadeLayer;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FadeSubsystem.LaunchFadeOut
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FFadeDescriptionData&      FadeDescription                                        (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// const TDelegate<void()>&                OnFadeFinishedDelegate                                 (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UFadeSubsystem::LaunchFadeOut(const struct FFadeDescriptionData& FadeDescription, const TDelegate<void()>& OnFadeFinishedDelegate, EFadeLayer FadeLayer)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FadeSubsystem", "LaunchFadeOut");
+
+	Params::FadeSubsystem_LaunchFadeOut Parms{};
+
+	Parms.FadeDescription = std::move(FadeDescription);
+	Parms.OnFadeFinishedDelegate = OnFadeFinishedDelegate;
+	Parms.FadeLayer = FadeLayer;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FadeSubsystem.OnFadeWidgetDestruct
+// (Final, Native, Private)
+
+void UFadeSubsystem::OnFadeWidgetDestruct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FadeSubsystem", "OnFadeWidgetDestruct");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FadeSubsystem.SetupFadeIn
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FFadeDescriptionData&      FadeDescription                                        (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UFadeSubsystem::SetupFadeIn(const struct FFadeDescriptionData& FadeDescription, EFadeLayer FadeLayer)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FadeSubsystem", "SetupFadeIn");
+
+	Params::FadeSubsystem_SetupFadeIn Parms{};
+
+	Parms.FadeDescription = std::move(FadeDescription);
+	Parms.FadeLayer = FadeLayer;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FadeSubsystem.GetFadeState
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EFadeState                              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EFadeState UFadeSubsystem::GetFadeState(EFadeLayer FadeLayer) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FadeSubsystem", "GetFadeState");
+
+	Params::FadeSubsystem_GetFadeState Parms{};
+
+	Parms.FadeLayer = FadeLayer;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FadeSubsystem.IsAnyFadeVisible
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UFadeSubsystem::IsAnyFadeVisible() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FadeSubsystem", "IsAnyFadeVisible");
+
+	Params::FadeSubsystem_IsAnyFadeVisible Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FadeSubsystem.IsFadeVisible
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UFadeSubsystem::IsFadeVisible(EFadeLayer FadeLayer) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FadeSubsystem", "IsFadeVisible");
+
+	Params::FadeSubsystem_IsFadeVisible Parms{};
+
+	Parms.FadeLayer = FadeLayer;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FadeSubsystem.IsFading
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EFadeLayer                              FadeLayer                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UFadeSubsystem::IsFading(EFadeLayer FadeLayer) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FadeSubsystem", "IsFading");
+
+	Params::FadeSubsystem_IsFading Parms{};
+
+	Parms.FadeLayer = FadeLayer;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -15499,6 +18665,99 @@ bool UFieldMessageComponent::IsProcessingFieldMessage() const
 		Func = Class->GetFunction("FieldMessageComponent", "IsProcessingFieldMessage");
 
 	Params::FieldMessageComponent_IsProcessingFieldMessage Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FieldTalkComponent.OnPawnDeath
+// (Final, Native, Private)
+
+void UFieldTalkComponent::OnPawnDeath()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FieldTalkComponent", "OnPawnDeath");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FieldTalkComponent.ShowFieldTalkEntry
+// (Final, Native, Protected)
+
+void UFieldTalkComponent::ShowFieldTalkEntry()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FieldTalkComponent", "ShowFieldTalkEntry");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FieldTalkComponent.StartFieldTalk
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class UFieldTalkAsset*                  FieldTalkAsset                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bSkipActiveFieldTalkAsset                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UFieldTalkComponent::StartFieldTalk(class UFieldTalkAsset* FieldTalkAsset, bool bSkipActiveFieldTalkAsset)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FieldTalkComponent", "StartFieldTalk");
+
+	Params::FieldTalkComponent_StartFieldTalk Parms{};
+
+	Parms.FieldTalkAsset = FieldTalkAsset;
+	Parms.bSkipActiveFieldTalkAsset = bSkipActiveFieldTalkAsset;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FieldTalkComponent.CanStartFieldTalk
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UFieldTalkComponent::CanStartFieldTalk() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FieldTalkComponent", "CanStartFieldTalk");
+
+	Params::FieldTalkComponent_CanStartFieldTalk Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -15897,19 +19156,206 @@ bool UFollowGeometryMovementComponent::IsMoving() const
 }
 
 
-// Function Zion.FollowSplineComponent.IsClosedLoop
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Zion.FollowTargetComponent.ClearFollowTarget
+// (Final, Native, Public, BlueprintCallable)
 
-bool UFollowSplineComponent::IsClosedLoop() const
+void UFollowTargetComponent::ClearFollowTarget()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FollowSplineComponent", "IsClosedLoop");
+		Func = Class->GetFunction("FollowTargetComponent", "ClearFollowTarget");
 
-	Params::FollowSplineComponent_IsClosedLoop Parms{};
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FollowTargetComponent.OnGameMapChanged
+// (Final, Native, Private)
+
+void UFollowTargetComponent::OnGameMapChanged()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FollowTargetComponent", "OnGameMapChanged");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FollowTargetComponent.SetFollowTarget
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class USceneComponent*                  NewFollowTarget                                        (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bSnapToTarget                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UFollowTargetComponent::SetFollowTarget(class USceneComponent* NewFollowTarget, bool bSnapToTarget)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FollowTargetComponent", "SetFollowTarget");
+
+	Params::FollowTargetComponent_SetFollowTarget Parms{};
+
+	Parms.NewFollowTarget = NewFollowTarget;
+	Parms.bSnapToTarget = bSnapToTarget;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FollowTargetComponent.TeleportToTarget
+// (Final, Native, Public, BlueprintCallable)
+
+void UFollowTargetComponent::TeleportToTarget()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FollowTargetComponent", "TeleportToTarget");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.FollowTargetComponent.GetFollowTarget
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class USceneComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class USceneComponent* UFollowTargetComponent::GetFollowTarget() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FollowTargetComponent", "GetFollowTarget");
+
+	Params::FollowTargetComponent_GetFollowTarget Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FollowTargetComponent.GetFollowTargetDeltaLocation
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UFollowTargetComponent::GetFollowTargetDeltaLocation() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FollowTargetComponent", "GetFollowTargetDeltaLocation");
+
+	Params::FollowTargetComponent_GetFollowTargetDeltaLocation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FollowTargetComponent.GetFollowTargetForward
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UFollowTargetComponent::GetFollowTargetForward() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FollowTargetComponent", "GetFollowTargetForward");
+
+	Params::FollowTargetComponent_GetFollowTargetForward Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FollowTargetComponent.GetFollowTargetLocation
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UFollowTargetComponent::GetFollowTargetLocation() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FollowTargetComponent", "GetFollowTargetLocation");
+
+	Params::FollowTargetComponent_GetFollowTargetLocation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.FollowTargetComponent.GetTargetLocation
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class USceneComponent*            PinnedTarget                                           (ConstParm, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UFollowTargetComponent::GetTargetLocation(const class USceneComponent* PinnedTarget) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("FollowTargetComponent", "GetTargetLocation");
+
+	Params::FollowTargetComponent_GetTargetLocation Parms{};
+
+	Parms.PinnedTarget = PinnedTarget;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -15972,247 +19418,28 @@ void UFootIKComponent::OnBeforeUpdateWorldTransform(class USpineSkeletonComponen
 }
 
 
-// Function Zion.FXComponent.ActivateAuraFXs
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.GameEngineZion.Get
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
-// const class FName&                      AuraFXTag                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UGameEngineZion*                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UFXComponent::ActivateAuraFXs(const class FName& AuraFXTag)
+class UGameEngineZion* UGameEngineZion::Get()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "ActivateAuraFXs");
+		Func = StaticClass()->GetFunction("GameEngineZion", "Get");
 
-	Params::FXComponent_ActivateAuraFXs Parms{};
-
-	Parms.AuraFXTag = AuraFXTag;
+	Params::GameEngineZion_Get Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-}
 
-
-// Function Zion.FXComponent.DeactivateAuraFXs
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const class FName&                      AuraFXTag                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UFXComponent::DeactivateAuraFXs(const class FName& AuraFXTag)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "DeactivateAuraFXs");
-
-	Params::FXComponent_DeactivateAuraFXs Parms{};
-
-	Parms.AuraFXTag = AuraFXTag;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FXComponent.OnDeathProcessStart
-// (Final, Native, Private)
-
-void UFXComponent::OnDeathProcessStart()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "OnDeathProcessStart");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FXComponent.OnFinishCommand
-// (Final, Native, Private)
-// Parameters:
-// const class UCommand*                   Command                                                (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// ECommandFinishType                      FinishType                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UFXComponent::OnFinishCommand(const class UCommand* Command, ECommandFinishType FinishType)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "OnFinishCommand");
-
-	Params::FXComponent_OnFinishCommand Parms{};
-
-	Parms.Command = Command;
-	Parms.FinishType = FinishType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FXComponent.OnGuarded
-// (Final, Native, Private)
-// Parameters:
-// class AAbility*                         Ability                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           Source                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UFXComponent::OnGuarded(class AAbility* Ability, class AActor* Source)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "OnGuarded");
-
-	Params::FXComponent_OnGuarded Parms{};
-
-	Parms.Ability = Ability;
-	Parms.Source = Source;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FXComponent.OnLanded
-// (Final, Native, Private, HasOutParams)
-// Parameters:
-// const struct FHitResult&                Hit                                                    (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void UFXComponent::OnLanded(const struct FHitResult& Hit)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "OnLanded");
-
-	Params::FXComponent_OnLanded Parms{};
-
-	Parms.Hit = std::move(Hit);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FXComponent.OnParried
-// (Final, Native, Private)
-// Parameters:
-// class AAbility*                         Ability                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           Source                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UFXComponent::OnParried(class AAbility* Ability, class AActor* Source)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "OnParried");
-
-	Params::FXComponent_OnParried Parms{};
-
-	Parms.Ability = Ability;
-	Parms.Source = Source;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FXComponent.OnSPValueChanged
-// (Final, Native, Private)
-
-void UFXComponent::OnSPValueChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "OnSPValueChanged");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FXComponent.OnStatusEffectLaunched
-// (Final, Native, Private)
-// Parameters:
-// class UStatusEffect*                    StatusEffect                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UFXComponent::OnStatusEffectLaunched(class UStatusEffect* StatusEffect)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "OnStatusEffectLaunched");
-
-	Params::FXComponent_OnStatusEffectLaunched Parms{};
-
-	Parms.StatusEffect = StatusEffect;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.FXComponent.OnStatusEffectStopped
-// (Final, Native, Private)
-// Parameters:
-// class UStatusEffect*                    StatusEffect                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UFXComponent::OnStatusEffectStopped(class UStatusEffect* StatusEffect)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("FXComponent", "OnStatusEffectStopped");
-
-	Params::FXComponent_OnStatusEffectStopped Parms{};
-
-	Parms.StatusEffect = StatusEffect;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
+	return Parms.ReturnValue;
 }
 
 
@@ -16991,32 +20218,6 @@ struct FVector UGameMapBPFLibrary::WorldToPixelLocation(const struct FVector& Wo
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameMapChangeDataProviderInterface.GetGameMapChangeProviderData
-// (Native, Event, Public, HasOutParams, BlueprintEvent)
-// Parameters:
-// struct FGameMapChangeProviderData*      OutGameMapChangeProviderData                           (Parm, OutParm, NoDestructor, NativeAccessSpecifierPublic)
-
-void IGameMapChangeDataProviderInterface::GetGameMapChangeProviderData(struct FGameMapChangeProviderData* OutGameMapChangeProviderData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = AsUObject()->Class->GetFunction("GameMapChangeDataProviderInterface", "GetGameMapChangeProviderData");
-
-	Params::GameMapChangeDataProviderInterface_GetGameMapChangeProviderData Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	AsUObject()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (OutGameMapChangeProviderData != nullptr)
-		*OutGameMapChangeProviderData = std::move(Parms.OutGameMapChangeProviderData);
 }
 
 
@@ -18513,59 +21714,19 @@ bool AGameModeZion::IsInNewGamePlus() const
 }
 
 
-// Function Zion.GameplayCamera.ClearSettings
-// (Final, Native, Protected, BlueprintCallable)
-
-void AGameplayCamera::ClearSettings()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCamera", "ClearSettings");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameplayCamera.FlushCamera
-// (Final, Native, Public, BlueprintCallable)
-
-void AGameplayCamera::FlushCamera()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCamera", "FlushCamera");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameplayCamera.RegisterEnemyPawn
-// (Final, Native, Public, BlueprintCallable)
+// Function Zion.GameModeZion.IsInRespawnProcess
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// class APawn*                            EnemyPawnToAdd                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void AGameplayCamera::RegisterEnemyPawn(class APawn* EnemyPawnToAdd)
+bool AGameModeZion::IsInRespawnProcess() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCamera", "RegisterEnemyPawn");
+		Func = Class->GetFunction("GameModeZion", "IsInRespawnProcess");
 
-	Params::GameplayCamera_RegisterEnemyPawn Parms{};
-
-	Parms.EnemyPawnToAdd = EnemyPawnToAdd;
+	Params::GameModeZion_IsInRespawnProcess Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -18573,125 +21734,8 @@ void AGameplayCamera::RegisterEnemyPawn(class APawn* EnemyPawnToAdd)
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-}
 
-
-// Function Zion.GameplayCamera.RegisterEnemyPawns
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const TArray<class APawn*>&             EnemyPawnsToAdd                                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-
-void AGameplayCamera::RegisterEnemyPawns(const TArray<class APawn*>& EnemyPawnsToAdd)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCamera", "RegisterEnemyPawns");
-
-	Params::GameplayCamera_RegisterEnemyPawns Parms{};
-
-	Parms.EnemyPawnsToAdd = std::move(EnemyPawnsToAdd);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameplayCamera.ResetCameraToDefault
-// (Final, Native, Protected, BlueprintCallable)
-
-void AGameplayCamera::ResetCameraToDefault()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCamera", "ResetCameraToDefault");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameplayCamera.SetSettings
-// (Final, Native, Protected, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FGameplayCameraSettings&   NewSettings                                            (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-
-void AGameplayCamera::SetSettings(const struct FGameplayCameraSettings& NewSettings)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCamera", "SetSettings");
-
-	Params::GameplayCamera_SetSettings Parms{};
-
-	Parms.NewSettings = std::move(NewSettings);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameplayCamera.UnregisterEnemyPawn
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class APawn*                            EnemyPawnToRemove                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AGameplayCamera::UnregisterEnemyPawn(class APawn* EnemyPawnToRemove)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCamera", "UnregisterEnemyPawn");
-
-	Params::GameplayCamera_UnregisterEnemyPawn Parms{};
-
-	Parms.EnemyPawnToRemove = EnemyPawnToRemove;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameplayCamera.UnregisterEnemyPawns
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const TArray<class APawn*>&             EnemyPawnsToRemove                                     (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-
-void AGameplayCamera::UnregisterEnemyPawns(const TArray<class APawn*>& EnemyPawnsToRemove)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCamera", "UnregisterEnemyPawns");
-
-	Params::GameplayCamera_UnregisterEnemyPawns Parms{};
-
-	Parms.EnemyPawnsToRemove = std::move(EnemyPawnsToRemove);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
+	return Parms.ReturnValue;
 }
 
 
@@ -18753,107 +21797,19 @@ bool UGameplayConditionCheckerAsset::CheckCondition(class APlayerController* Pla
 }
 
 
-// Function Zion.GameSettingsSubsystem.GetMaxResolutionScale
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetMaxResolutionScale()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("GameSettingsSubsystem", "GetMaxResolutionScale");
-
-	Params::GameSettingsSubsystem_GetMaxResolutionScale Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetMinResolutionScale
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetMinResolutionScale()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("GameSettingsSubsystem", "GetMinResolutionScale");
-
-	Params::GameSettingsSubsystem_GetMinResolutionScale Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetAntiAliasingMethod
-// (Final, Native, Public, BlueprintCallable)
-
-void UGameSettingsSubsystem::ResetAntiAliasingMethod()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetAntiAliasingMethod");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetAspectRatio
-// (Final, Native, Public, BlueprintCallable)
-
-void UGameSettingsSubsystem::ResetAspectRatio()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetAspectRatio");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetAutoClimbDirectionMode
+// Function Zion.GameStatsComponent.SetPause
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// EAutoClimbDirectionMode                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-EAutoClimbDirectionMode UGameSettingsSubsystem::ResetAutoClimbDirectionMode()
+int32 UGameStatsComponent::SetPause()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetAutoClimbDirectionMode");
+		Func = Class->GetFunction("GameStatsComponent", "SetPause");
 
-	Params::GameSettingsSubsystem_ResetAutoClimbDirectionMode Parms{};
+	Params::GameStatsComponent_SetPause Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -18866,44 +21822,19 @@ EAutoClimbDirectionMode UGameSettingsSubsystem::ResetAutoClimbDirectionMode()
 }
 
 
-// Function Zion.GameSettingsSubsystem.ResetAutoSkipAlreadySeenEvents
+// Function Zion.GameStatsComponent.UnsetPause
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UGameSettingsSubsystem::ResetAutoSkipAlreadySeenEvents()
+int32 UGameStatsComponent::UnsetPause()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetAutoSkipAlreadySeenEvents");
+		Func = Class->GetFunction("GameStatsComponent", "UnsetPause");
 
-	Params::GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetCameraOscillation
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::ResetCameraOscillation()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetCameraOscillation");
-
-	Params::GameSettingsSubsystem_ResetCameraOscillation Parms{};
+	Params::GameStatsComponent_UnsetPause Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -18916,1678 +21847,19 @@ bool UGameSettingsSubsystem::ResetCameraOscillation()
 }
 
 
-// Function Zion.GameSettingsSubsystem.ResetCameraShake
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::ResetCameraShake()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetCameraShake");
-
-	Params::GameSettingsSubsystem_ResetCameraShake Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetControllerVibration
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::ResetControllerVibration()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetControllerVibration");
-
-	Params::GameSettingsSubsystem_ResetControllerVibration Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayAchievementNotifications
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::ResetDisplayAchievementNotifications()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayAchievementNotifications");
-
-	Params::GameSettingsSubsystem_ResetDisplayAchievementNotifications Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayDamageValues
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::ResetDisplayDamageValues()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayDamageValues");
-
-	Params::GameSettingsSubsystem_ResetDisplayDamageValues Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayEnemyGauges
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::ResetDisplayEnemyGauges()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayEnemyGauges");
-
-	Params::GameSettingsSubsystem_ResetDisplayEnemyGauges Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayHealValues
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::ResetDisplayHealValues()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayHealValues");
-
-	Params::GameSettingsSubsystem_ResetDisplayHealValues Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayHPAboveGauge
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::ResetDisplayHPAboveGauge()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayHPAboveGauge");
-
-	Params::GameSettingsSubsystem_ResetDisplayHPAboveGauge Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayPlayerUI
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::ResetDisplayPlayerUI()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayPlayerUI");
-
-	Params::GameSettingsSubsystem_ResetDisplayPlayerUI Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayTutorials
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::ResetDisplayTutorials()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetDisplayTutorials");
-
-	Params::GameSettingsSubsystem_ResetDisplayTutorials Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetHoldDownToDodgeStill
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::ResetHoldDownToDodgeStill()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetHoldDownToDodgeStill");
-
-	Params::GameSettingsSubsystem_ResetHoldDownToDodgeStill Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetLowHPFeedbackOpacity
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::ResetLowHPFeedbackOpacity()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetLowHPFeedbackOpacity");
-
-	Params::GameSettingsSubsystem_ResetLowHPFeedbackOpacity Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetResolutionScale
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::ResetResolutionScale()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetResolutionScale");
-
-	Params::GameSettingsSubsystem_ResetResolutionScale Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetSticksDeadZone
-// (Final, Native, Public, BlueprintCallable)
-
-void UGameSettingsSubsystem::ResetSticksDeadZone()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetSticksDeadZone");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameSettingsSubsystem.ResetToDefault
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EGameSettingsType                       GameSettingsToReset                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGameSettingsSubsystem::ResetToDefault(EGameSettingsType GameSettingsToReset)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "ResetToDefault");
-
-	Params::GameSettingsSubsystem_ResetToDefault Parms{};
-
-	Parms.GameSettingsToReset = GameSettingsToReset;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetAntiAliasingMethod
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const EAntiAliasingMethod&              NewAntiAliasingMethod                                  (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EAntiAliasingMethod                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EAntiAliasingMethod UGameSettingsSubsystem::SetAntiAliasingMethod(const EAntiAliasingMethod& NewAntiAliasingMethod)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetAntiAliasingMethod");
-
-	Params::GameSettingsSubsystem_SetAntiAliasingMethod Parms{};
-
-	Parms.NewAntiAliasingMethod = NewAntiAliasingMethod;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetAutoClimbDirectionMode
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EAutoClimbDirectionMode                 NewMode                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EAutoClimbDirectionMode                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EAutoClimbDirectionMode UGameSettingsSubsystem::SetAutoClimbDirectionMode(EAutoClimbDirectionMode NewMode)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetAutoClimbDirectionMode");
-
-	Params::GameSettingsSubsystem_SetAutoClimbDirectionMode Parms{};
-
-	Parms.NewMode = NewMode;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetAutoSkipAlreadySeenEvents
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bAutoSkip                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetAutoSkipAlreadySeenEvents(bool bAutoSkip)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetAutoSkipAlreadySeenEvents");
-
-	Params::GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents Parms{};
-
-	Parms.bAutoSkip = bAutoSkip;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetAutoUploadCrashReport
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bNewAutoUploadCrashReport                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGameSettingsSubsystem::SetAutoUploadCrashReport(bool bNewAutoUploadCrashReport)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetAutoUploadCrashReport");
-
-	Params::GameSettingsSubsystem_SetAutoUploadCrashReport Parms{};
-
-	Parms.bNewAutoUploadCrashReport = bNewAutoUploadCrashReport;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetCameraOscillation
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bEnable                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetCameraOscillation(bool bEnable)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetCameraOscillation");
-
-	Params::GameSettingsSubsystem_SetCameraOscillation Parms{};
-
-	Parms.bEnable = bEnable;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetCameraShake
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   NewCameraShake                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::SetCameraShake(float NewCameraShake)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetCameraShake");
-
-	Params::GameSettingsSubsystem_SetCameraShake Parms{};
-
-	Parms.NewCameraShake = NewCameraShake;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetConstraintCameraAspectRatio
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const EConstraintCameraAspectRatio&     NewConstraintCameraAspectRatio                         (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EConstraintCameraAspectRatio            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EConstraintCameraAspectRatio UGameSettingsSubsystem::SetConstraintCameraAspectRatio(const EConstraintCameraAspectRatio& NewConstraintCameraAspectRatio)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetConstraintCameraAspectRatio");
-
-	Params::GameSettingsSubsystem_SetConstraintCameraAspectRatio Parms{};
-
-	Parms.NewConstraintCameraAspectRatio = NewConstraintCameraAspectRatio;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetConstraintHUDAspectRatio
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bNewConstraintHUDAspectRatio                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetConstraintHUDAspectRatio(bool bNewConstraintHUDAspectRatio)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetConstraintHUDAspectRatio");
-
-	Params::GameSettingsSubsystem_SetConstraintHUDAspectRatio Parms{};
-
-	Parms.bNewConstraintHUDAspectRatio = bNewConstraintHUDAspectRatio;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetControllerVibration
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   NewControllerVibration                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::SetControllerVibration(float NewControllerVibration)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetControllerVibration");
-
-	Params::GameSettingsSubsystem_SetControllerVibration Parms{};
-
-	Parms.NewControllerVibration = NewControllerVibration;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetDisplayAchievementNotifications
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bDisplay                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetDisplayAchievementNotifications(bool bDisplay)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayAchievementNotifications");
-
-	Params::GameSettingsSubsystem_SetDisplayAchievementNotifications Parms{};
-
-	Parms.bDisplay = bDisplay;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetDisplayDamageValues
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bDisplayDamageValues                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetDisplayDamageValues(bool bDisplayDamageValues)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayDamageValues");
-
-	Params::GameSettingsSubsystem_SetDisplayDamageValues Parms{};
-
-	Parms.bDisplayDamageValues = bDisplayDamageValues;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetDisplayEnemyGauges
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bDisplay                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetDisplayEnemyGauges(bool bDisplay)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayEnemyGauges");
-
-	Params::GameSettingsSubsystem_SetDisplayEnemyGauges Parms{};
-
-	Parms.bDisplay = bDisplay;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetDisplayHealValues
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bDisplayHealValues                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetDisplayHealValues(bool bDisplayHealValues)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayHealValues");
-
-	Params::GameSettingsSubsystem_SetDisplayHealValues Parms{};
-
-	Parms.bDisplayHealValues = bDisplayHealValues;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetDisplayHPAboveGauge
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bDisplayHPAboveGauge                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetDisplayHPAboveGauge(bool bDisplayHPAboveGauge)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayHPAboveGauge");
-
-	Params::GameSettingsSubsystem_SetDisplayHPAboveGauge Parms{};
-
-	Parms.bDisplayHPAboveGauge = bDisplayHPAboveGauge;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetDisplayPlayerUI
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bDisplay                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetDisplayPlayerUI(bool bDisplay)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayPlayerUI");
-
-	Params::GameSettingsSubsystem_SetDisplayPlayerUI Parms{};
-
-	Parms.bDisplay = bDisplay;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetDisplayTutorials
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bDisplay                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetDisplayTutorials(bool bDisplay)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetDisplayTutorials");
-
-	Params::GameSettingsSubsystem_SetDisplayTutorials Parms{};
-
-	Parms.bDisplay = bDisplay;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetGamma
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   NewGamma                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::SetGamma(float NewGamma)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetGamma");
-
-	Params::GameSettingsSubsystem_SetGamma Parms{};
-
-	Parms.NewGamma = NewGamma;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetGammaPercentage
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   NewGammaPercentage                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::SetGammaPercentage(float NewGammaPercentage)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetGammaPercentage");
-
-	Params::GameSettingsSubsystem_SetGammaPercentage Parms{};
-
-	Parms.NewGammaPercentage = NewGammaPercentage;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetHoldDownToDodgeStill
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bEnable                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::SetHoldDownToDodgeStill(bool bEnable)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetHoldDownToDodgeStill");
-
-	Params::GameSettingsSubsystem_SetHoldDownToDodgeStill Parms{};
-
-	Parms.bEnable = bEnable;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetInitialSettingsDone
-// (Final, Native, Public, BlueprintCallable)
-
-void UGameSettingsSubsystem::SetInitialSettingsDone()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetInitialSettingsDone");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetLanguage
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const class FString&                    Language                                               (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGameSettingsSubsystem::SetLanguage(const class FString& Language)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetLanguage");
-
-	Params::GameSettingsSubsystem_SetLanguage Parms{};
-
-	Parms.Language = std::move(Language);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetLowHPFeedbackOpacity
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   NewLowHPFeedbackOpacity                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::SetLowHPFeedbackOpacity(float NewLowHPFeedbackOpacity)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetLowHPFeedbackOpacity");
-
-	Params::GameSettingsSubsystem_SetLowHPFeedbackOpacity Parms{};
-
-	Parms.NewLowHPFeedbackOpacity = NewLowHPFeedbackOpacity;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetResolutionScale
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   NewResolutionScale                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::SetResolutionScale(float NewResolutionScale)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetResolutionScale");
-
-	Params::GameSettingsSubsystem_SetResolutionScale Parms{};
-
-	Parms.NewResolutionScale = NewResolutionScale;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetStickDeadZone
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const EInputStick&                      InputStick                                             (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   NewDeadZone                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::SetStickDeadZone(const EInputStick& InputStick, float NewDeadZone)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetStickDeadZone");
-
-	Params::GameSettingsSubsystem_SetStickDeadZone Parms{};
-
-	Parms.InputStick = InputStick;
-	Parms.NewDeadZone = NewDeadZone;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetTitleType
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EGameEndingType                         TitleType                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGameSettingsSubsystem::SetTitleType(EGameEndingType TitleType)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetTitleType");
-
-	Params::GameSettingsSubsystem_SetTitleType Parms{};
-
-	Parms.TitleType = TitleType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameSettingsSubsystem.SetUIAspectRatio
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const EConstraintCameraAspectRatio&     NewUIAspectRatio                                       (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EConstraintCameraAspectRatio            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EConstraintCameraAspectRatio UGameSettingsSubsystem::SetUIAspectRatio(const EConstraintCameraAspectRatio& NewUIAspectRatio)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "SetUIAspectRatio");
-
-	Params::GameSettingsSubsystem_SetUIAspectRatio Parms{};
-
-	Parms.NewUIAspectRatio = NewUIAspectRatio;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.DidReachAnyGameEnding
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::DidReachAnyGameEnding() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "DidReachAnyGameEnding");
-
-	Params::GameSettingsSubsystem_DidReachAnyGameEnding Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.DidReachGameEnding
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EGameEndingType                         GameEndingType                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::DidReachGameEnding(EGameEndingType GameEndingType) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "DidReachGameEnding");
-
-	Params::GameSettingsSubsystem_DidReachGameEnding Parms{};
-
-	Parms.GameEndingType = GameEndingType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetAntiAliasingMethod
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EAntiAliasingMethod                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EAntiAliasingMethod UGameSettingsSubsystem::GetAntiAliasingMethod() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetAntiAliasingMethod");
-
-	Params::GameSettingsSubsystem_GetAntiAliasingMethod Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetAutoClimbDirectionMode
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EAutoClimbDirectionMode                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EAutoClimbDirectionMode UGameSettingsSubsystem::GetAutoClimbDirectionMode() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetAutoClimbDirectionMode");
-
-	Params::GameSettingsSubsystem_GetAutoClimbDirectionMode Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetAutoSkipAlreadySeenEvents
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetAutoSkipAlreadySeenEvents() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetAutoSkipAlreadySeenEvents");
-
-	Params::GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetAutoUploadCrashReport
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetAutoUploadCrashReport() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetAutoUploadCrashReport");
-
-	Params::GameSettingsSubsystem_GetAutoUploadCrashReport Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetCameraOscillation
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetCameraOscillation() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetCameraOscillation");
-
-	Params::GameSettingsSubsystem_GetCameraOscillation Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetCameraShake
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetCameraShake() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetCameraShake");
-
-	Params::GameSettingsSubsystem_GetCameraShake Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetConstraintCameraAspectRatio
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EConstraintCameraAspectRatio            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EConstraintCameraAspectRatio UGameSettingsSubsystem::GetConstraintCameraAspectRatio() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetConstraintCameraAspectRatio");
-
-	Params::GameSettingsSubsystem_GetConstraintCameraAspectRatio Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetConstraintHUDAspectRatio
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetConstraintHUDAspectRatio() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetConstraintHUDAspectRatio");
-
-	Params::GameSettingsSubsystem_GetConstraintHUDAspectRatio Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetControllerVibration
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetControllerVibration() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetControllerVibration");
-
-	Params::GameSettingsSubsystem_GetControllerVibration Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetDisplayAchievementNotifications
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetDisplayAchievementNotifications() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayAchievementNotifications");
-
-	Params::GameSettingsSubsystem_GetDisplayAchievementNotifications Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetDisplayDamageValues
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetDisplayDamageValues() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayDamageValues");
-
-	Params::GameSettingsSubsystem_GetDisplayDamageValues Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetDisplayEnemyGauges
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetDisplayEnemyGauges() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayEnemyGauges");
-
-	Params::GameSettingsSubsystem_GetDisplayEnemyGauges Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetDisplayHealValues
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetDisplayHealValues() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayHealValues");
-
-	Params::GameSettingsSubsystem_GetDisplayHealValues Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetDisplayHPAboveGauge
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetDisplayHPAboveGauge() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayHPAboveGauge");
-
-	Params::GameSettingsSubsystem_GetDisplayHPAboveGauge Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetDisplayPlayerUI
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetDisplayPlayerUI() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayPlayerUI");
-
-	Params::GameSettingsSubsystem_GetDisplayPlayerUI Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetDisplayTutorials
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetDisplayTutorials() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetDisplayTutorials");
-
-	Params::GameSettingsSubsystem_GetDisplayTutorials Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetGamma
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetGamma() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetGamma");
-
-	Params::GameSettingsSubsystem_GetGamma Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetGammaDefault
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetGammaDefault() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetGammaDefault");
-
-	Params::GameSettingsSubsystem_GetGammaDefault Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetGammaMax
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetGammaMax() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetGammaMax");
-
-	Params::GameSettingsSubsystem_GetGammaMax Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetGammaMin
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetGammaMin() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetGammaMin");
-
-	Params::GameSettingsSubsystem_GetGammaMin Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetGammaPercentage
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetGammaPercentage() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetGammaPercentage");
-
-	Params::GameSettingsSubsystem_GetGammaPercentage Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetHoldDownToDodgeStill
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::GetHoldDownToDodgeStill() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetHoldDownToDodgeStill");
-
-	Params::GameSettingsSubsystem_GetHoldDownToDodgeStill Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetLanguage
+// Function Zion.GameStatsComponent.GetPlayTimeAsString
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class FString UGameSettingsSubsystem::GetLanguage() const
+class FString UGameStatsComponent::GetPlayTimeAsString() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetLanguage");
+		Func = Class->GetFunction("GameStatsComponent", "GetPlayTimeAsString");
 
-	Params::GameSettingsSubsystem_GetLanguage Parms{};
+	Params::GameStatsComponent_GetPlayTimeAsString Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -20600,327 +21872,23 @@ class FString UGameSettingsSubsystem::GetLanguage() const
 }
 
 
-// Function Zion.GameSettingsSubsystem.GetLowHPFeedbackOpacity
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetLowHPFeedbackOpacity() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetLowHPFeedbackOpacity");
-
-	Params::GameSettingsSubsystem_GetLowHPFeedbackOpacity Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetResolutionScale
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetResolutionScale() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetResolutionScale");
-
-	Params::GameSettingsSubsystem_GetResolutionScale Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetStickDeadZone
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const EInputStick&                      InputStick                                             (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UGameSettingsSubsystem::GetStickDeadZone(const EInputStick& InputStick) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetStickDeadZone");
-
-	Params::GameSettingsSubsystem_GetStickDeadZone Parms{};
-
-	Parms.InputStick = InputStick;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetTitleType
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EGameEndingType                         ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EGameEndingType UGameSettingsSubsystem::GetTitleType() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetTitleType");
-
-	Params::GameSettingsSubsystem_GetTitleType Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.GetUIAspectRatio
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EConstraintCameraAspectRatio            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EConstraintCameraAspectRatio UGameSettingsSubsystem::GetUIAspectRatio() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "GetUIAspectRatio");
-
-	Params::GameSettingsSubsystem_GetUIAspectRatio Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameSettingsSubsystem.IsInitialSettingsDone
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameSettingsSubsystem::IsInitialSettingsDone() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameSettingsSubsystem", "IsInitialSettingsDone");
-
-	Params::GameSettingsSubsystem_IsInitialSettingsDone Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameViewportZion.Get
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// class UGameViewportZion*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UGameViewportZion* UGameViewportZion::Get()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("GameViewportZion", "Get");
-
-	Params::GameViewportZion_Get Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameViewportZion.SetViewportOverlayRenderOpacity
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   Opacity                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGameViewportZion::SetViewportOverlayRenderOpacity(float Opacity)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameViewportZion", "SetViewportOverlayRenderOpacity");
-
-	Params::GameViewportZion_SetViewportOverlayRenderOpacity Parms{};
-
-	Parms.Opacity = Opacity;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameViewportZion.SetViewportOverlayWidgetVisible
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bVisible                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGameViewportZion::SetViewportOverlayWidgetVisible(bool bVisible)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameViewportZion", "SetViewportOverlayWidgetVisible");
-
-	Params::GameViewportZion_SetViewportOverlayWidgetVisible Parms{};
-
-	Parms.bVisible = bVisible;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameViewportZion.SetWorldRenderingEnable
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bEnableWorldRendering                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGameViewportZion::SetWorldRenderingEnable(bool bEnableWorldRendering)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameViewportZion", "SetWorldRenderingEnable");
-
-	Params::GameViewportZion_SetWorldRenderingEnable Parms{};
-
-	Parms.bEnableWorldRendering = bEnableWorldRendering;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.GameViewportZion.GetUserWidgetInStack
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// TSubclassOf<class UUserWidget>          ClassToFind                                            (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UUserWidget*                      ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UUserWidget* UGameViewportZion::GetUserWidgetInStack(TSubclassOf<class UUserWidget> ClassToFind) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameViewportZion", "GetUserWidgetInStack");
-
-	Params::GameViewportZion_GetUserWidgetInStack Parms{};
-
-	Parms.ClassToFind = ClassToFind;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GameViewportZion.IsShowingCollision
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGameViewportZion::IsShowingCollision() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameViewportZion", "IsShowingCollision");
-
-	Params::GameViewportZion_IsShowingCollision Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.GunmanIKBoneTargetComponent.OnSpiritActivationChanged
+// Function Zion.GuardComponent.OnGuarded
 // (Final, Native, Private)
 // Parameters:
-// bool                                    bNewActive                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AAbility*                         Ability                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           Source                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UGunmanIKBoneTargetComponent::OnSpiritActivationChanged(bool bNewActive)
+void UGuardComponent::OnGuarded(class AAbility* Ability, class AActor* Source)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GunmanIKBoneTargetComponent", "OnSpiritActivationChanged");
+		Func = Class->GetFunction("GuardComponent", "OnGuarded");
 
-	Params::GunmanIKBoneTargetComponent_OnSpiritActivationChanged Parms{};
+	Params::GuardComponent_OnGuarded Parms{};
 
-	Parms.bNewActive = bNewActive;
+	Parms.Ability = Ability;
+	Parms.Source = Source;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -20931,19 +21899,278 @@ void UGunmanIKBoneTargetComponent::OnSpiritActivationChanged(bool bNewActive)
 }
 
 
-// Function Zion.GunmanIKBoneTargetComponent.GetAbilityGlobalOffset
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.HealComponent.AddHealCountBonus
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// const struct FTransform                 ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   HealCountBonusToAdd                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-const struct FTransform UGunmanIKBoneTargetComponent::GetAbilityGlobalOffset() const
+int32 UHealComponent::AddHealCountBonus(int32 HealCountBonusToAdd)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GunmanIKBoneTargetComponent", "GetAbilityGlobalOffset");
+		Func = Class->GetFunction("HealComponent", "AddHealCountBonus");
 
-	Params::GunmanIKBoneTargetComponent_GetAbilityGlobalOffset Parms{};
+	Params::HealComponent_AddHealCountBonus Parms{};
+
+	Parms.HealCountBonusToAdd = HealCountBonusToAdd;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HealComponent.AddHealPowerPercentageBonus
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// int32                                   HealPercentBonusToAdd                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UHealComponent::AddHealPowerPercentageBonus(int32 HealPercentBonusToAdd)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "AddHealPowerPercentageBonus");
+
+	Params::HealComponent_AddHealPowerPercentageBonus Parms{};
+
+	Parms.HealPercentBonusToAdd = HealPercentBonusToAdd;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HealComponent.FullyRestoreHeals
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UHealComponent::FullyRestoreHeals()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "FullyRestoreHeals");
+
+	Params::HealComponent_FullyRestoreHeals Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HealComponent.RestoreHeals
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// const int32                             RestoreCount                                           (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UHealComponent::RestoreHeals(const int32 RestoreCount)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "RestoreHeals");
+
+	Params::HealComponent_RestoreHeals Parms{};
+
+	Parms.RestoreCount = RestoreCount;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HealComponent.SubHealCountBonus
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// int32                                   HealCountBonusToSub                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UHealComponent::SubHealCountBonus(int32 HealCountBonusToSub)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "SubHealCountBonus");
+
+	Params::HealComponent_SubHealCountBonus Parms{};
+
+	Parms.HealCountBonusToSub = HealCountBonusToSub;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HealComponent.SubHealPowerPercentageBonus
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// int32                                   HealPercentBonusToSub                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UHealComponent::SubHealPowerPercentageBonus(int32 HealPercentBonusToSub)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "SubHealPowerPercentageBonus");
+
+	Params::HealComponent_SubHealPowerPercentageBonus Parms{};
+
+	Parms.HealPercentBonusToSub = HealPercentBonusToSub;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HealComponent.UseHeal
+// (Final, Native, Public, BlueprintCallable)
+
+void UHealComponent::UseHeal()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "UseHeal");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.HealComponent.GetHealValue
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UHealComponent::GetHealValue() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "GetHealValue");
+
+	Params::HealComponent_GetHealValue Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HealComponent.GetMaxHealCount
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UHealComponent::GetMaxHealCount() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "GetMaxHealCount");
+
+	Params::HealComponent_GetMaxHealCount Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HealComponent.GetRemainingHealCount
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UHealComponent::GetRemainingHealCount() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "GetRemainingHealCount");
+
+	Params::HealComponent_GetRemainingHealCount Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.HealComponent.IsHealCountMax
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UHealComponent::IsHealCountMax() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HealComponent", "IsHealCountMax");
+
+	Params::HealComponent_IsHealCountMax Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -21105,273 +22332,22 @@ const class USceneComponent* UHomingComponent::GetTarget() const
 }
 
 
-// Function Zion.HookComponent.LockCurrentHook
-// (Final, Native, Public, BlueprintCallable)
-
-void UHookComponent::LockCurrentHook()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "LockCurrentHook");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookComponent.OnAptitudesChanged
-// (Final, Native, Private)
-
-void UHookComponent::OnAptitudesChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "OnAptitudesChanged");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookComponent.OnComponentOverlapBegin
-// (Final, Native, Private, HasOutParams)
-// Parameters:
-// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bFromSweep                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FHitResult&                SweepResult                                            (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void UHookComponent::OnComponentOverlapBegin(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "OnComponentOverlapBegin");
-
-	Params::HookComponent_OnComponentOverlapBegin Parms{};
-
-	Parms.OverlapComponent = OverlapComponent;
-	Parms.OtherActor = OtherActor;
-	Parms.OtherComp = OtherComp;
-	Parms.OtherBodyIndex = OtherBodyIndex;
-	Parms.bFromSweep = bFromSweep;
-	Parms.SweepResult = std::move(SweepResult);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookComponent.OnComponentOverlapEnd
-// (Final, Native, Private)
-// Parameters:
-// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UHookComponent::OnComponentOverlapEnd(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "OnComponentOverlapEnd");
-
-	Params::HookComponent_OnComponentOverlapEnd Parms{};
-
-	Parms.OverlapComponent = OverlapComponent;
-	Parms.OtherActor = OtherActor;
-	Parms.OtherComp = OtherComp;
-	Parms.OtherBodyIndex = OtherBodyIndex;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookComponent.OnLockHook
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// class AHookPoint*                       HookPoint                                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UHookComponent::OnLockHook(class AHookPoint* HookPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "OnLockHook");
-
-	Params::HookComponent_OnLockHook Parms{};
-
-	Parms.HookPoint = HookPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.HookComponent.OnUnlockHook
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// class AHookPoint*                       HookPoint                                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UHookComponent::OnUnlockHook(class AHookPoint* HookPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "OnUnlockHook");
-
-	Params::HookComponent_OnUnlockHook Parms{};
-
-	Parms.HookPoint = HookPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.HookComponent.ResetOverrideHookPoint
-// (Final, Native, Public, BlueprintCallable)
-
-void UHookComponent::ResetOverrideHookPoint()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "ResetOverrideHookPoint");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookComponent.ResetOverrideHookWorldLocation
-// (Final, Native, Public, BlueprintCallable)
-
-void UHookComponent::ResetOverrideHookWorldLocation()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "ResetOverrideHookWorldLocation");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookComponent.SetOverrideHookPoint
+// Function Zion.IKBonesComponent.GetIKBone
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class AHookPoint*                       NewHookPoint                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EIKBoneDriver                           IKBoneDriver                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class USceneComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UHookComponent::SetOverrideHookPoint(class AHookPoint* NewHookPoint)
+class USceneComponent* UIKBonesComponent::GetIKBone(EIKBoneDriver IKBoneDriver)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "SetOverrideHookPoint");
+		Func = Class->GetFunction("IKBonesComponent", "GetIKBone");
 
-	Params::HookComponent_SetOverrideHookPoint Parms{};
+	Params::IKBonesComponent_GetIKBone Parms{};
 
-	Parms.NewHookPoint = NewHookPoint;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookComponent.SetOverrideHookWorldLocation
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FVector&                   NewHookWorldLocation                                   (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UHookComponent::SetOverrideHookWorldLocation(const struct FVector& NewHookWorldLocation)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "SetOverrideHookWorldLocation");
-
-	Params::HookComponent_SetOverrideHookWorldLocation Parms{};
-
-	Parms.NewHookWorldLocation = std::move(NewHookWorldLocation);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookComponent.UnlockHook
-// (Final, Native, Public, BlueprintCallable)
-
-void UHookComponent::UnlockHook()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "UnlockHook");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookComponent.CanTargetHook
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EHookType                               HookType                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UHookComponent::CanTargetHook(EHookType HookType) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "CanTargetHook");
-
-	Params::HookComponent_CanTargetHook Parms{};
-
-	Parms.HookType = HookType;
+	Parms.IKBoneDriver = IKBoneDriver;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -21384,85 +22360,23 @@ bool UHookComponent::CanTargetHook(EHookType HookType) const
 }
 
 
-// Function Zion.HookComponent.GetHookWorldLocation
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.IKBonesComponent.ResetIKBone
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EIKBoneDriver                           IKBoneDriver                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bResetIKConstraint                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FVector UHookComponent::GetHookWorldLocation() const
+void UIKBonesComponent::ResetIKBone(EIKBoneDriver IKBoneDriver, bool bResetIKConstraint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("HookComponent", "GetHookWorldLocation");
+		Func = Class->GetFunction("IKBonesComponent", "ResetIKBone");
 
-	Params::HookComponent_GetHookWorldLocation Parms{};
+	Params::IKBonesComponent_ResetIKBone Parms{};
 
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.HookPoint_Moving.OnComponentOverlapBegin
-// (Final, Native, Private, HasOutParams)
-// Parameters:
-// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bFromSweep                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FHitResult&                SweepResult                                            (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void AHookPoint_Moving::OnComponentOverlapBegin(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookPoint_Moving", "OnComponentOverlapBegin");
-
-	Params::HookPoint_Moving_OnComponentOverlapBegin Parms{};
-
-	Parms.OverlapComponent = OverlapComponent;
-	Parms.OtherActor = OtherActor;
-	Parms.OtherComp = OtherComp;
-	Parms.OtherBodyIndex = OtherBodyIndex;
-	Parms.bFromSweep = bFromSweep;
-	Parms.SweepResult = std::move(SweepResult);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.HookPoint_Moving.OnMovementModeChanged
-// (Final, Native, Private)
-// Parameters:
-// class ACharacter*                       Character                                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EMovementMode                           PrevMovementMode                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// uint8                                   PreviousCustomMode                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AHookPoint_Moving::OnMovementModeChanged(class ACharacter* Character, EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HookPoint_Moving", "OnMovementModeChanged");
-
-	Params::HookPoint_Moving_OnMovementModeChanged Parms{};
-
-	Parms.Character = Character;
-	Parms.PrevMovementMode = PrevMovementMode;
-	Parms.PreviousCustomMode = PreviousCustomMode;
+	Parms.IKBoneDriver = IKBoneDriver;
+	Parms.bResetIKConstraint = bResetIKConstraint;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -21718,28 +22632,148 @@ void UInputDeviceCheckerComponent::OnWidgetClosed()
 }
 
 
-// Function Zion.InputSettingsSubsystem.RemapKey
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.Interactable.OnActivateInteractable
+// (Event, Protected, BlueprintEvent)
 // Parameters:
-// const EActionInputType&                 ActionInputType                                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FKey&                      NewKey                                                 (ConstParm, Parm, OutParm, ReferenceParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const TSet<EActionInputType>&           InvalidInputTypes                                      (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// bool                                    bIsGamepadKey                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class APlayerController*                Controller                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AInteractable::OnActivateInteractable(class APlayerController* Controller)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Interactable", "OnActivateInteractable");
+
+	Params::Interactable_OnActivateInteractable Parms{};
+
+	Parms.Controller = Controller;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.Interactable.OnCanBeInteractedChanged
+// (Event, Protected, BlueprintEvent)
+
+void AInteractable::OnCanBeInteractedChanged()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Interactable", "OnCanBeInteractedChanged");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.Interactable.OnDeactivateInteractable
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class APlayerController*                Controller                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AInteractable::OnDeactivateInteractable(class APlayerController* Controller)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Interactable", "OnDeactivateInteractable");
+
+	Params::Interactable_OnDeactivateInteractable Parms{};
+
+	Parms.Controller = Controller;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.Interactable.OnInteract
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// class APlayerController*                Controller                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AInteractable::OnInteract(class APlayerController* Controller)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Interactable", "OnInteract");
+
+	Params::Interactable_OnInteract Parms{};
+
+	Parms.Controller = Controller;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.Interactable.OnInteract_ConditionCheckFailed
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// class APlayerController*                Controller                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AInteractable::OnInteract_ConditionCheckFailed(class APlayerController* Controller)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Interactable", "OnInteract_ConditionCheckFailed");
+
+	Params::Interactable_OnInteract_ConditionCheckFailed Parms{};
+
+	Parms.Controller = Controller;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.Interactable.SetCanBeInteracted
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bCanInteract                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AInteractable::SetCanBeInteracted(bool bCanInteract)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Interactable", "SetCanBeInteracted");
+
+	Params::Interactable_SetCanBeInteracted Parms{};
+
+	Parms.bCanInteract = bCanInteract;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.Interactable.CanBeInteracted
+// (Native, Event, Public, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UInputSettingsSubsystem::RemapKey(const EActionInputType& ActionInputType, const struct FKey& NewKey, const TSet<EActionInputType>& InvalidInputTypes, bool bIsGamepadKey)
+bool AInteractable::CanBeInteracted() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InputSettingsSubsystem", "RemapKey");
+		Func = Class->GetFunction("Interactable", "CanBeInteracted");
 
-	Params::InputSettingsSubsystem_RemapKey Parms{};
-
-	Parms.ActionInputType = ActionInputType;
-	Parms.NewKey = std::move(NewKey);
-	Parms.InvalidInputTypes = std::move(InvalidInputTypes);
-	Parms.bIsGamepadKey = bIsGamepadKey;
+	Params::Interactable_CanBeInteracted Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -21752,104 +22786,19 @@ bool UInputSettingsSubsystem::RemapKey(const EActionInputType& ActionInputType, 
 }
 
 
-// Function Zion.InputSettingsSubsystem.ResetAllInputMappingContextsToDefault
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bIsGamepad                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UInputSettingsSubsystem::ResetAllInputMappingContextsToDefault(bool bIsGamepad)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InputSettingsSubsystem", "ResetAllInputMappingContextsToDefault");
-
-	Params::InputSettingsSubsystem_ResetAllInputMappingContextsToDefault Parms{};
-
-	Parms.bIsGamepad = bIsGamepad;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.InputSettingsSubsystem.ResetInputMappingContextToDefault
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class UInputMappingContext*             InputMappingContext                                    (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bIsGamepad                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UInputSettingsSubsystem::ResetInputMappingContextToDefault(class UInputMappingContext* InputMappingContext, bool bIsGamepad)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InputSettingsSubsystem", "ResetInputMappingContextToDefault");
-
-	Params::InputSettingsSubsystem_ResetInputMappingContextToDefault Parms{};
-
-	Parms.InputMappingContext = InputMappingContext;
-	Parms.bIsGamepad = bIsGamepad;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.InputSettingsSubsystem.GetMappedKey
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName&                      MappingName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FKey                             ReturnValue                                            (Parm, OutParm, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FKey UInputSettingsSubsystem::GetMappedKey(const class FName& MappingName) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InputSettingsSubsystem", "GetMappedKey");
-
-	Params::InputSettingsSubsystem_GetMappedKey Parms{};
-
-	Parms.MappingName = MappingName;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InputSettingsSubsystem.GetMappingNameFromInputAction
+// Function Zion.Interactable.ConditionsChecked
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const class UInputAction*               InputAction                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bIsGamepad                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class FName                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class FName UInputSettingsSubsystem::GetMappingNameFromInputAction(const class UInputAction* InputAction, bool bIsGamepad) const
+bool AInteractable::ConditionsChecked() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InputSettingsSubsystem", "GetMappingNameFromInputAction");
+		Func = Class->GetFunction("Interactable", "ConditionsChecked");
 
-	Params::InputSettingsSubsystem_GetMappingNameFromInputAction Parms{};
-
-	Parms.InputAction = InputAction;
-	Parms.bIsGamepad = bIsGamepad;
+	Params::Interactable_ConditionsChecked Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -21859,6 +22808,81 @@ class FName UInputSettingsSubsystem::GetMappingNameFromInputAction(const class U
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
+}
+
+
+// Function Zion.Interactable.GetInteractingController
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class APlayerController*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class APlayerController* AInteractable::GetInteractingController() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Interactable", "GetInteractingController");
+
+	Params::Interactable_GetInteractingController Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.Interactable.GetInteractionText
+// (Native, Event, Public, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// class FText                             ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+
+class FText AInteractable::GetInteractionText() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Interactable", "GetInteractionText");
+
+	Params::Interactable_GetInteractionText Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.Interactable.PlaySoundEvent
+// (Final, Native, Public, BlueprintCallable, Const)
+// Parameters:
+// class UFMODEvent*                       SoundEffect                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AInteractable::PlaySoundEvent(class UFMODEvent* SoundEffect) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Interactable", "PlaySoundEvent");
+
+	Params::Interactable_PlaySoundEvent Parms{};
+
+	Parms.SoundEffect = SoundEffect;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
 }
 
 
@@ -22168,24 +23192,97 @@ void UInteractComponent::OnOverlapEnd(class UPrimitiveComponent* OverlappedCompo
 }
 
 
-// Function Zion.InventoryComponent.AddCurrency
+// Function Zion.Inventory.GetAllItemsAvailable
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// ECurrencyType                           CurrencyType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   CurrencyToAdd                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TMap<class FName, int32>                ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+
+TMap<class FName, int32> UInventory::GetAllItemsAvailable()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Inventory", "GetAllItemsAvailable");
+
+	Params::Inventory_GetAllItemsAvailable Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.Inventory.MarkItemAsChecked
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const class FName&                      ItemRowName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UInventory::MarkItemAsChecked(const class FName& ItemRowName)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Inventory", "MarkItemAsChecked");
+
+	Params::Inventory_MarkItemAsChecked Parms{};
+
+	Parms.ItemRowName = ItemRowName;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.Inventory.GetAllItems
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const TMap<class FName, int32>          ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+const TMap<class FName, int32> UInventory::GetAllItems() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Inventory", "GetAllItems");
+
+	Params::Inventory_GetAllItems Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.Inventory.GetCountOfItem
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class FName&                      ItemId                                                 (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-int32 UInventoryComponent::AddCurrency(ECurrencyType CurrencyType, int32 CurrencyToAdd)
+int32 UInventory::GetCountOfItem(const class FName& ItemId) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "AddCurrency");
+		Func = Class->GetFunction("Inventory", "GetCountOfItem");
 
-	Params::InventoryComponent_AddCurrency Parms{};
+	Params::Inventory_GetCountOfItem Parms{};
 
-	Parms.CurrencyType = CurrencyType;
-	Parms.CurrencyToAdd = CurrencyToAdd;
+	Parms.ItemId = ItemId;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -22198,24 +23295,19 @@ int32 UInventoryComponent::AddCurrency(ECurrencyType CurrencyType, int32 Currenc
 }
 
 
-// Function Zion.InventoryComponent.AddDrop
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.Inventory.GetDataTable
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const struct FDrop&                     Drop                                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// float                                   DropFactor                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class UDataTable*                 ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UInventoryComponent::AddDrop(const struct FDrop& Drop, float DropFactor)
+const class UDataTable* UInventory::GetDataTable() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "AddDrop");
+		Func = Class->GetFunction("Inventory", "GetDataTable");
 
-	Params::InventoryComponent_AddDrop Parms{};
-
-	Parms.Drop = std::move(Drop);
-	Parms.DropFactor = DropFactor;
+	Params::Inventory_GetDataTable Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -22228,23 +23320,48 @@ bool UInventoryComponent::AddDrop(const struct FDrop& Drop, float DropFactor)
 }
 
 
-// Function Zion.InventoryComponent.AddItem
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.Inventory.GetItemCount
+// (Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UInventory::GetItemCount() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Inventory", "GetItemCount");
+
+	Params::Inventory_GetItemCount Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.Inventory.HasItem
+// (Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class FName&                      ItemRowName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   Count                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UInventoryComponent::AddItem(const struct FDataTableRowHandle& ItemHandle, int32 Count)
+bool UInventory::HasItem(const class FName& ItemRowName, int32 Count) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "AddItem");
+		Func = Class->GetFunction("Inventory", "HasItem");
 
-	Params::InventoryComponent_AddItem Parms{};
+	Params::Inventory_HasItem Parms{};
 
-	Parms.ItemHandle = std::move(ItemHandle);
+	Parms.ItemRowName = ItemRowName;
 	Parms.Count = Count;
 
 	auto Flgs = Func->FunctionFlags;
@@ -22258,24 +23375,19 @@ bool UInventoryComponent::AddItem(const struct FDataTableRowHandle& ItemHandle, 
 }
 
 
-// Function Zion.InventoryComponent.HasItem
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.Inventory.HasNonCheckedItem
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// int32                                   Count                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UInventoryComponent::HasItem(const struct FDataTableRowHandle& ItemHandle, int32 Count)
+bool UInventory::HasNonCheckedItem() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "HasItem");
+		Func = Class->GetFunction("Inventory", "HasNonCheckedItem");
 
-	Params::InventoryComponent_HasItem Parms{};
-
-	Parms.ItemHandle = std::move(ItemHandle);
-	Parms.Count = Count;
+	Params::Inventory_HasNonCheckedItem Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -22288,49 +23400,22 @@ bool UInventoryComponent::HasItem(const struct FDataTableRowHandle& ItemHandle, 
 }
 
 
-// Function Zion.InventoryComponent.MarkItemAsChecked
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.Inventory.IsItemChecked
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-
-void UInventoryComponent::MarkItemAsChecked(const struct FDataTableRowHandle& ItemHandle)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "MarkItemAsChecked");
-
-	Params::InventoryComponent_MarkItemAsChecked Parms{};
-
-	Parms.ItemHandle = std::move(ItemHandle);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.InventoryComponent.RemoveItem
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// int32                                   Count                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FName&                      ItemRowName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UInventoryComponent::RemoveItem(const struct FDataTableRowHandle& ItemHandle, int32 Count)
+bool UInventory::IsItemChecked(const class FName& ItemRowName) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "RemoveItem");
+		Func = Class->GetFunction("Inventory", "IsItemChecked");
 
-	Params::InventoryComponent_RemoveItem Parms{};
+	Params::Inventory_IsItemChecked Parms{};
 
-	Parms.ItemHandle = std::move(ItemHandle);
-	Parms.Count = Count;
+	Parms.ItemRowName = ItemRowName;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -22343,27 +23428,24 @@ bool UInventoryComponent::RemoveItem(const struct FDataTableRowHandle& ItemHandl
 }
 
 
-// Function Zion.InventoryComponent.SpendCurrency
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.InventorySkill.GetMaxSkillLevel
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
-// const struct FCurrencyValue&            CurrencyValue                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-int32 UInventoryComponent::SpendCurrency(const struct FCurrencyValue& CurrencyValue)
+int32 UInventorySkill::GetMaxSkillLevel()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "SpendCurrency");
+		Func = StaticClass()->GetFunction("InventorySkill", "GetMaxSkillLevel");
 
-	Params::InventoryComponent_SpendCurrency Parms{};
-
-	Parms.CurrencyValue = std::move(CurrencyValue);
+	Params::InventorySkill_GetMaxSkillLevel Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -22371,130 +23453,24 @@ int32 UInventoryComponent::SpendCurrency(const struct FCurrencyValue& CurrencyVa
 }
 
 
-// Function Zion.InventoryComponent.CanSpendCurrency
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.InventorySkill.GetMinSkillLevel
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
-// const struct FCurrencyValue&            CurrencyValue                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UInventoryComponent::CanSpendCurrency(const struct FCurrencyValue& CurrencyValue) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "CanSpendCurrency");
-
-	Params::InventoryComponent_CanSpendCurrency Parms{};
-
-	Parms.CurrencyValue = std::move(CurrencyValue);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetAptitudeInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventoryAptitude*               ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventoryAptitude* UInventoryComponent::GetAptitudeInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetAptitudeInventory");
-
-	Params::InventoryComponent_GetAptitudeInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetAssistInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetAssistInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetAssistInventory");
-
-	Params::InventoryComponent_GetAssistInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetCostumeInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetCostumeInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetCostumeInventory");
-
-	Params::InventoryComponent_GetCostumeInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetCountOfItem
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-int32 UInventoryComponent::GetCountOfItem(const struct FDataTableRowHandle& ItemHandle) const
+int32 UInventorySkill::GetMinSkillLevel()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetCountOfItem");
+		Func = StaticClass()->GetFunction("InventorySkill", "GetMinSkillLevel");
 
-	Params::InventoryComponent_GetCountOfItem Parms{};
-
-	Parms.ItemHandle = std::move(ItemHandle);
+	Params::InventorySkill_GetMinSkillLevel Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -22502,22 +23478,24 @@ int32 UInventoryComponent::GetCountOfItem(const struct FDataTableRowHandle& Item
 }
 
 
-// Function Zion.InventoryComponent.GetCurrency
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.InventorySkill.SetSkillLevel
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// ECurrencyType                           CurrencyType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   NewLevel                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-int32 UInventoryComponent::GetCurrency(ECurrencyType CurrencyType) const
+int32 UInventorySkill::SetSkillLevel(const class FName& SkillID, int32 NewLevel)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetCurrency");
+		Func = Class->GetFunction("InventorySkill", "SetSkillLevel");
 
-	Params::InventoryComponent_GetCurrency Parms{};
+	Params::InventorySkill_SetSkillLevel Parms{};
 
-	Parms.CurrencyType = CurrencyType;
+	Parms.SkillID = SkillID;
+	Parms.NewLevel = NewLevel;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -22530,325 +23508,22 @@ int32 UInventoryComponent::GetCurrency(ECurrencyType CurrencyType) const
 }
 
 
-// Function Zion.InventoryComponent.GetCurrencyInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetCurrencyInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetCurrencyInventory");
-
-	Params::InventoryComponent_GetCurrencyInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetEnemyInfoInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetEnemyInfoInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetEnemyInfoInventory");
-
-	Params::InventoryComponent_GetEnemyInfoInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetEquipmentInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetEquipmentInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetEquipmentInventory");
-
-	Params::InventoryComponent_GetEquipmentInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetGalleryInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetGalleryInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetGalleryInventory");
-
-	Params::InventoryComponent_GetGalleryInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetInventoryFromItemType
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EInventoryItemType                      ItemType                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetInventoryFromItemType(EInventoryItemType ItemType) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetInventoryFromItemType");
-
-	Params::InventoryComponent_GetInventoryFromItemType Parms{};
-
-	Parms.ItemType = ItemType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetNPCInfoInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetNPCInfoInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetNPCInfoInventory");
-
-	Params::InventoryComponent_GetNPCInfoInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetPassiveInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetPassiveInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetPassiveInventory");
-
-	Params::InventoryComponent_GetPassiveInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetSkillInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventorySkill*                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventorySkill* UInventoryComponent::GetSkillInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetSkillInventory");
-
-	Params::InventoryComponent_GetSkillInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetSpiritInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetSpiritInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetSpiritInventory");
-
-	Params::InventoryComponent_GetSpiritInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetStatsInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetStatsInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetStatsInventory");
-
-	Params::InventoryComponent_GetStatsInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetTipInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetTipInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetTipInventory");
-
-	Params::InventoryComponent_GetTipInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.GetTutorialInventory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UInventory*                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UInventory* UInventoryComponent::GetTutorialInventory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "GetTutorialInventory");
-
-	Params::InventoryComponent_GetTutorialInventory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.HasAptitude
+// Function Zion.InventorySkill.GetInitialSkillLevel
 // (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const EAptitudeType&                    AptitudeType                                           (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UInventoryComponent::HasAptitude(const EAptitudeType& AptitudeType) const
+int32 UInventorySkill::GetInitialSkillLevel(const class FName& SkillID) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "HasAptitude");
+		Func = Class->GetFunction("InventorySkill", "GetInitialSkillLevel");
 
-	Params::InventoryComponent_HasAptitude Parms{};
+	Params::InventorySkill_GetInitialSkillLevel Parms{};
 
-	Parms.AptitudeType = AptitudeType;
+	Parms.SkillID = SkillID;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -22861,50 +23536,167 @@ bool UInventoryComponent::HasAptitude(const EAptitudeType& AptitudeType) const
 }
 
 
-// Function Zion.InventoryComponent.HasNonCheckedItem
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EInventoryItemType                      ItemType                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UInventoryComponent::HasNonCheckedItem(EInventoryItemType ItemType) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "HasNonCheckedItem");
-
-	Params::InventoryComponent_HasNonCheckedItem Parms{};
-
-	Parms.ItemType = ItemType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.InventoryComponent.IsItemChecked
+// Function Zion.InventorySkill.GetSkillLevel
 // (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const struct FDataTableRowHandle&       ItemHandle                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bFallbackInitialLevel                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UInventoryComponent::IsItemChecked(const struct FDataTableRowHandle& ItemHandle) const
+int32 UInventorySkill::GetSkillLevel(const class FName& SkillID, bool bFallbackInitialLevel) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("InventoryComponent", "IsItemChecked");
+		Func = Class->GetFunction("InventorySkill", "GetSkillLevel");
 
-	Params::InventoryComponent_IsItemChecked Parms{};
+	Params::InventorySkill_GetSkillLevel Parms{};
 
-	Parms.ItemHandle = std::move(ItemHandle);
+	Parms.SkillID = SkillID;
+	Parms.bFallbackInitialLevel = bFallbackInitialLevel;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.InventorySkill.IsMaxSkillLevel
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UInventorySkill::IsMaxSkillLevel(const class FName& SkillID) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("InventorySkill", "IsMaxSkillLevel");
+
+	Params::InventorySkill_IsMaxSkillLevel Parms{};
+
+	Parms.SkillID = SkillID;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.KnockbackComponent.OnLandingAnimationFinished
+// (Final, Native, Private)
+
+void UKnockbackComponent::OnLandingAnimationFinished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("KnockbackComponent", "OnLandingAnimationFinished");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.KnockbackComponent.OnPreStartCommand
+// (Final, Native, Private)
+// Parameters:
+// const class UCommand*                   Command                                                (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UKnockbackComponent::OnPreStartCommand(const class UCommand* Command)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("KnockbackComponent", "OnPreStartCommand");
+
+	Params::KnockbackComponent_OnPreStartCommand Parms{};
+
+	Parms.Command = Command;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.KnockbackComponent.OnRecoveryAnimationFinished
+// (Final, Native, Private)
+
+void UKnockbackComponent::OnRecoveryAnimationFinished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("KnockbackComponent", "OnRecoveryAnimationFinished");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.KnockbackComponent.StartKnockback
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// const struct FKnockbackData&            KnockbackData                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// const struct FVector&                   KnockbackDirection                                     (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UKnockbackComponent::StartKnockback(const struct FKnockbackData& KnockbackData, const struct FVector& KnockbackDirection)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("KnockbackComponent", "StartKnockback");
+
+	Params::KnockbackComponent_StartKnockback Parms{};
+
+	Parms.KnockbackData = std::move(KnockbackData);
+	Parms.KnockbackDirection = std::move(KnockbackDirection);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.KnockbackComponent.IsInKnockback
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UKnockbackComponent::IsInKnockback() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("KnockbackComponent", "IsInKnockback");
+
+	Params::KnockbackComponent_IsInKnockback Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -23008,225 +23800,6 @@ void ULocalizationBPFLibrary::SetLanguageToSystemLanguage()
 	GetDefaultObj()->ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.LocomotionComponent.SetFacing
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EFacingType                             FacingType                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ULocomotionComponent::SetFacing(EFacingType FacingType)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LocomotionComponent", "SetFacing");
-
-	Params::LocomotionComponent_SetFacing Parms{};
-
-	Parms.FacingType = FacingType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.LocomotionComponent.SetFacingFromVector
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FVector&                   Vector                                                 (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ULocomotionComponent::SetFacingFromVector(const struct FVector& Vector)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LocomotionComponent", "SetFacingFromVector");
-
-	Params::LocomotionComponent_SetFacingFromVector Parms{};
-
-	Parms.Vector = std::move(Vector);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.LocomotionComponent.SetUpdateFacing
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bNewUpdateFacing                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ULocomotionComponent::SetUpdateFacing(bool bNewUpdateFacing)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LocomotionComponent", "SetUpdateFacing");
-
-	Params::LocomotionComponent_SetUpdateFacing Parms{};
-
-	Parms.bNewUpdateFacing = bNewUpdateFacing;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.LocomotionComponent.SetUpVector
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FVector&                   NewUpVector                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ULocomotionComponent::SetUpVector(const struct FVector& NewUpVector)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LocomotionComponent", "SetUpVector");
-
-	Params::LocomotionComponent_SetUpVector Parms{};
-
-	Parms.NewUpVector = std::move(NewUpVector);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.LocomotionComponent.ToggleFacing
-// (Final, Native, Public, BlueprintCallable)
-
-void ULocomotionComponent::ToggleFacing()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LocomotionComponent", "ToggleFacing");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.LocomotionComponent.GetFacing
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EFacingType                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EFacingType ULocomotionComponent::GetFacing() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LocomotionComponent", "GetFacing");
-
-	Params::LocomotionComponent_GetFacing Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.LocomotionComponent.GetUpdateFacing
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool ULocomotionComponent::GetUpdateFacing() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LocomotionComponent", "GetUpdateFacing");
-
-	Params::LocomotionComponent_GetUpdateFacing Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.LocomotionComponent.GetUpVector
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FVector                    ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-const struct FVector ULocomotionComponent::GetUpVector() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LocomotionComponent", "GetUpVector");
-
-	Params::LocomotionComponent_GetUpVector Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.LocomotionComponent.GetWorldUpToUpRotation
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FQuat                            ReturnValue                                            (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FQuat ULocomotionComponent::GetWorldUpToUpRotation() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LocomotionComponent", "GetWorldUpToUpRotation");
-
-	Params::LocomotionComponent_GetWorldUpToUpRotation Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -23463,40 +24036,21 @@ int32 UMathBPFLibrary::LoopAround(int32 Value, int32 Min, int32 Max)
 }
 
 
-// Function Zion.MoveComponent.Reset
+// Function Zion.MovingBlock_Elevator.CallToDestination
 // (Final, Native, Public, BlueprintCallable)
-
-void UMoveComponent::Reset()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MoveComponent", "Reset");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.MoveComponent.SetVelocity
-// (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
-// const struct FVector&                   NewVelocity                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UMoveComponent::SetVelocity(const struct FVector& NewVelocity)
+void AMovingBlock_Elevator::CallToDestination(bool bInstant)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("MoveComponent", "SetVelocity");
+		Func = Class->GetFunction("MovingBlock_Elevator", "CallToDestination");
 
-	Params::MoveComponent_SetVelocity Parms{};
+	Params::MovingBlock_Elevator_CallToDestination Parms{};
 
-	Parms.NewVelocity = std::move(NewVelocity);
+	Parms.bInstant = bInstant;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -23507,31 +24061,21 @@ void UMoveComponent::SetVelocity(const struct FVector& NewVelocity)
 }
 
 
-// Function Zion.OneWayPlatform.OnComponentOverlapBegin
-// (Final, Native, Private, HasOutParams)
+// Function Zion.MovingBlock_Elevator.CallToOrigin
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bFromSweep                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FHitResult&                SweepResult                                            (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void AOneWayPlatform::OnComponentOverlapBegin(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
+void AMovingBlock_Elevator::CallToOrigin(bool bInstant)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("OneWayPlatform", "OnComponentOverlapBegin");
+		Func = Class->GetFunction("MovingBlock_Elevator", "CallToOrigin");
 
-	Params::OneWayPlatform_OnComponentOverlapBegin Parms{};
+	Params::MovingBlock_Elevator_CallToOrigin Parms{};
 
-	Parms.OverlapComponent = OverlapComponent;
-	Parms.OtherActor = OtherActor;
-	Parms.OtherComp = OtherComp;
-	Parms.OtherBodyIndex = OtherBodyIndex;
-	Parms.bFromSweep = bFromSweep;
-	Parms.SweepResult = std::move(SweepResult);
+	Parms.bInstant = bInstant;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -23542,27 +24086,23 @@ void AOneWayPlatform::OnComponentOverlapBegin(class UPrimitiveComponent* Overlap
 }
 
 
-// Function Zion.OneWayPlatform.OnComponentOverlapEnd
+// Function Zion.MovingBlock_Elevator.OnFinishMovement
 // (Final, Native, Private)
 // Parameters:
-// class UPrimitiveComponent*              OverlapComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bWasMoving                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void AOneWayPlatform::OnComponentOverlapEnd(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void AMovingBlock_Elevator::OnFinishMovement(bool bInstant, bool bWasMoving)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("OneWayPlatform", "OnComponentOverlapEnd");
+		Func = Class->GetFunction("MovingBlock_Elevator", "OnFinishMovement");
 
-	Params::OneWayPlatform_OnComponentOverlapEnd Parms{};
+	Params::MovingBlock_Elevator_OnFinishMovement Parms{};
 
-	Parms.OverlapComponent = OverlapComponent;
-	Parms.OtherActor = OtherActor;
-	Parms.OtherComp = OtherComp;
-	Parms.OtherBodyIndex = OtherBodyIndex;
+	Parms.bInstant = bInstant;
+	Parms.bWasMoving = bWasMoving;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -23573,19 +24113,23 @@ void AOneWayPlatform::OnComponentOverlapEnd(class UPrimitiveComponent* OverlapCo
 }
 
 
-// Function Zion.OneWayPlatform.IsFallThrough
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.MovingBlock_Elevator.OnStartMovement
+// (Final, Native, Private)
 // Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bWasMoving                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool AOneWayPlatform::IsFallThrough() const
+void AMovingBlock_Elevator::OnStartMovement(bool bInstant, bool bWasMoving)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("OneWayPlatform", "IsFallThrough");
+		Func = Class->GetFunction("MovingBlock_Elevator", "OnStartMovement");
 
-	Params::OneWayPlatform_IsFallThrough Parms{};
+	Params::MovingBlock_Elevator_OnStartMovement Parms{};
+
+	Parms.bInstant = bInstant;
+	Parms.bWasMoving = bWasMoving;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -23593,8 +24137,6 @@ bool AOneWayPlatform::IsFallThrough() const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -23825,6 +24367,59 @@ bool AMovingPlatform_Elevator::IsMoving() const
 }
 
 
+// Function Zion.niagaraBPFLibrary.IsValid
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FSpineFXData&              FXData                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UniagaraBPFLibrary::IsValid(const struct FSpineFXData& FXData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("niagaraBPFLibrary", "IsValid");
+
+	Params::niagaraBPFLibrary_IsValid Parms{};
+
+	Parms.FXData = std::move(FXData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.niagaraBPFLibrary.TryReleaseToPool
+// (Final, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// class UNiagaraComponent*                NiagaraComponent                                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UniagaraBPFLibrary::TryReleaseToPool(class UNiagaraComponent* NiagaraComponent)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("niagaraBPFLibrary", "TryReleaseToPool");
+
+	Params::niagaraBPFLibrary_TryReleaseToPool Parms{};
+
+	Parms.NiagaraComponent = NiagaraComponent;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function Zion.NotificationComponent.OnItemAdded
 // (Final, Native, Protected, HasOutParams)
 // Parameters:
@@ -23924,6 +24519,351 @@ bool UNotificationComponent::CanStartNotification() const
 		Func = Class->GetFunction("NotificationComponent", "CanStartNotification");
 
 	Params::NotificationComponent_CanStartNotification Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.OrientFromFloorComponent.OnFacingChange
+// (Final, Native, Private)
+
+void UOrientFromFloorComponent::OnFacingChange()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("OrientFromFloorComponent", "OnFacingChange");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.PassiveComponent.EquipPassive
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const class FName&                      PassiveID                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bAddToCurrentLoadout                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   InsertIndex                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EPassiveEquipResult                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EPassiveEquipResult UPassiveComponent::EquipPassive(const class FName& PassiveID, bool bAddToCurrentLoadout, int32 InsertIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "EquipPassive");
+
+	Params::PassiveComponent_EquipPassive Parms{};
+
+	Parms.PassiveID = PassiveID;
+	Parms.bAddToCurrentLoadout = bAddToCurrentLoadout;
+	Parms.InsertIndex = InsertIndex;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.PassiveComponent.EquipPassiveLoadout
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// int32                                   LoadoutIndex                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UPassiveComponent::EquipPassiveLoadout(int32 LoadoutIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "EquipPassiveLoadout");
+
+	Params::PassiveComponent_EquipPassiveLoadout Parms{};
+
+	Parms.LoadoutIndex = LoadoutIndex;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.PassiveComponent.OnPossessedPawnChanged
+// (Final, Native, Private)
+// Parameters:
+// class APawn*                            OldPawn                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class APawn*                            NewPawn                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UPassiveComponent::OnPossessedPawnChanged(class APawn* OldPawn, class APawn* NewPawn)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "OnPossessedPawnChanged");
+
+	Params::PassiveComponent_OnPossessedPawnChanged Parms{};
+
+	Parms.OldPawn = OldPawn;
+	Parms.NewPawn = NewPawn;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.PassiveComponent.ReplacePassiveInAllLoadouts
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const class FName&                      PassiveToRemove                                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FName&                      PassiveToAdd                                           (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UPassiveComponent::ReplacePassiveInAllLoadouts(const class FName& PassiveToRemove, const class FName& PassiveToAdd)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "ReplacePassiveInAllLoadouts");
+
+	Params::PassiveComponent_ReplacePassiveInAllLoadouts Parms{};
+
+	Parms.PassiveToRemove = PassiveToRemove;
+	Parms.PassiveToAdd = PassiveToAdd;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.PassiveComponent.UnequipPassive
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const class FName&                      PassiveID                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32*                                  OutPassiveIndex                                        (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bRemoveFromCurrentLoadout                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UPassiveComponent::UnequipPassive(const class FName& PassiveID, int32* OutPassiveIndex, bool bRemoveFromCurrentLoadout)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "UnequipPassive");
+
+	Params::PassiveComponent_UnequipPassive Parms{};
+
+	Parms.PassiveID = PassiveID;
+	Parms.bRemoveFromCurrentLoadout = bRemoveFromCurrentLoadout;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (OutPassiveIndex != nullptr)
+		*OutPassiveIndex = Parms.OutPassiveIndex;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.PassiveComponent.CanEquipPassive
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FInventoryItemPassiveData& ItemPassiveData                                        (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// EPassiveEquipResult                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EPassiveEquipResult UPassiveComponent::CanEquipPassive(const struct FInventoryItemPassiveData& ItemPassiveData) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "CanEquipPassive");
+
+	Params::PassiveComponent_CanEquipPassive Parms{};
+
+	Parms.ItemPassiveData = std::move(ItemPassiveData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.PassiveComponent.GetAvailableSlotCount
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UPassiveComponent::GetAvailableSlotCount() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "GetAvailableSlotCount");
+
+	Params::PassiveComponent_GetAvailableSlotCount Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.PassiveComponent.GetCurrentPassiveLoadoutIndex
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UPassiveComponent::GetCurrentPassiveLoadoutIndex() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "GetCurrentPassiveLoadoutIndex");
+
+	Params::PassiveComponent_GetCurrentPassiveLoadoutIndex Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.PassiveComponent.GetEquippedPassives
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const TArray<struct FPassiveRuntimeData>ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+const TArray<struct FPassiveRuntimeData> UPassiveComponent::GetEquippedPassives() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "GetEquippedPassives");
+
+	Params::PassiveComponent_GetEquippedPassives Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.PassiveComponent.GetSlotCount
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UPassiveComponent::GetSlotCount() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "GetSlotCount");
+
+	Params::PassiveComponent_GetSlotCount Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.PassiveComponent.GetUsedSlotCount
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UPassiveComponent::GetUsedSlotCount() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "GetUsedSlotCount");
+
+	Params::PassiveComponent_GetUsedSlotCount Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.PassiveComponent.IsPassiveEquipped
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class FName&                      PassiveID                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UPassiveComponent::IsPassiveEquipped(const class FName& PassiveID) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PassiveComponent", "IsPassiveEquipped");
+
+	Params::PassiveComponent_IsPassiveEquipped Parms{};
+
+	Parms.PassiveID = PassiveID;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -24370,15 +25310,15 @@ bool UProfileSubsystem::IsUsingProfileSystem() const
 }
 
 
-// Function Zion.RefreshableRichTextBlock.Refresh
+// Function Zion.RecollectionBossRushComponent.ClearBossRush
 // (Final, Native, Public, BlueprintCallable)
 
-void URefreshableRichTextBlock::Refresh()
+void URecollectionBossRushComponent::ClearBossRush()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("RefreshableRichTextBlock", "Refresh");
+		Func = Class->GetFunction("RecollectionBossRushComponent", "ClearBossRush");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -24389,125 +25329,38 @@ void URefreshableRichTextBlock::Refresh()
 }
 
 
-// Function Zion.RefreshableRichTextBlock.SetDecoratorMode
+// Function Zion.RecollectionBossRushComponent.GameMapChangePostFade
+// (Final, Native, Protected)
+
+void URecollectionBossRushComponent::GameMapChangePostFade()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "GameMapChangePostFade");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.GetMaxBossesDefeatedCount
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// ERichTextDecoratorMode                  NewDecoratorMode                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void URefreshableRichTextBlock::SetDecoratorMode(ERichTextDecoratorMode NewDecoratorMode)
+int32 URecollectionBossRushComponent::GetMaxBossesDefeatedCount()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("RefreshableRichTextBlock", "SetDecoratorMode");
+		Func = Class->GetFunction("RecollectionBossRushComponent", "GetMaxBossesDefeatedCount");
 
-	Params::RefreshableRichTextBlock_SetDecoratorMode Parms{};
-
-	Parms.NewDecoratorMode = NewDecoratorMode;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.RefreshableRichTextBlock.SetFormat
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const class FText&                      NewFormat                                              (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-void URefreshableRichTextBlock::SetFormat(const class FText& NewFormat)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RefreshableRichTextBlock", "SetFormat");
-
-	Params::RefreshableRichTextBlock_SetFormat Parms{};
-
-	Parms.NewFormat = std::move(NewFormat);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.RefreshableRichTextBlock.SetFormatElements
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const TArray<struct FRichTextInputElement>&NewFormatElements                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-// const TArray<class FString>&            NewStringElements                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-
-void URefreshableRichTextBlock::SetFormatElements(const TArray<struct FRichTextInputElement>& NewFormatElements, const TArray<class FString>& NewStringElements)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RefreshableRichTextBlock", "SetFormatElements");
-
-	Params::RefreshableRichTextBlock_SetFormatElements Parms{};
-
-	Parms.NewFormatElements = std::move(NewFormatElements);
-	Parms.NewStringElements = std::move(NewStringElements);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.RefreshableRichTextBlock.SetupAndRefresh
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const class FText&                      NewFormat                                              (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const TArray<struct FRichTextInputElement>&NewFormatElements                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-// const TArray<class FString>&            NewStringElements                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-
-void URefreshableRichTextBlock::SetupAndRefresh(const class FText& NewFormat, const TArray<struct FRichTextInputElement>& NewFormatElements, const TArray<class FString>& NewStringElements)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RefreshableRichTextBlock", "SetupAndRefresh");
-
-	Params::RefreshableRichTextBlock_SetupAndRefresh Parms{};
-
-	Parms.NewFormat = std::move(NewFormat);
-	Parms.NewFormatElements = std::move(NewFormatElements);
-	Parms.NewStringElements = std::move(NewStringElements);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.RefreshableRichTextBlock.GetDecoratorMode
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// ERichTextDecoratorMode                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-ERichTextDecoratorMode URefreshableRichTextBlock::GetDecoratorMode() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RefreshableRichTextBlock", "GetDecoratorMode");
-
-	Params::RefreshableRichTextBlock_GetDecoratorMode Parms{};
+	Params::RecollectionBossRushComponent_GetMaxBossesDefeatedCount Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -24520,19 +25373,434 @@ ERichTextDecoratorMode URefreshableRichTextBlock::GetDecoratorMode() const
 }
 
 
-// Function Zion.RefreshableRichTextBlock.GetFormatElements
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Zion.RecollectionBossRushComponent.GetRecordData
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// const TArray<struct FRichTextInputElement>ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const int32                             RecordIndex                                            (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FRecollectionBossRushRecordData  ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
 
-const TArray<struct FRichTextInputElement> URefreshableRichTextBlock::GetFormatElements() const
+struct FRecollectionBossRushRecordData URecollectionBossRushComponent::GetRecordData(const int32 RecordIndex)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("RefreshableRichTextBlock", "GetFormatElements");
+		Func = Class->GetFunction("RecollectionBossRushComponent", "GetRecordData");
 
-	Params::RefreshableRichTextBlock_GetFormatElements Parms{};
+	Params::RecollectionBossRushComponent_GetRecordData Parms{};
+
+	Parms.RecordIndex = RecordIndex;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.GoToNextBoss
+// (Final, Native, Public, BlueprintCallable)
+
+void URecollectionBossRushComponent::GoToNextBoss()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "GoToNextBoss");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.OnClearBossRush
+// (Event, Public, BlueprintEvent)
+
+void URecollectionBossRushComponent::OnClearBossRush()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "OnClearBossRush");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.RecollectionBossRushComponent.OnEndBossRush
+// (Event, Public, BlueprintEvent)
+
+void URecollectionBossRushComponent::OnEndBossRush()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "OnEndBossRush");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.RecollectionBossRushComponent.OnGameMapChanged
+// (Event, Protected, BlueprintEvent)
+
+void URecollectionBossRushComponent::OnGameMapChanged()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "OnGameMapChanged");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.RecollectionBossRushComponent.OnGameMapChangedPostFade
+// (Event, Protected, BlueprintEvent)
+
+void URecollectionBossRushComponent::OnGameMapChangedPostFade()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "OnGameMapChangedPostFade");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.RecollectionBossRushComponent.OnSetTimerPaused
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// bool                                    bIsPaused                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URecollectionBossRushComponent::OnSetTimerPaused(bool bIsPaused)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "OnSetTimerPaused");
+
+	Params::RecollectionBossRushComponent_OnSetTimerPaused Parms{};
+
+	Parms.bIsPaused = bIsPaused;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.RecollectionBossRushComponent.OnStartBossRush
+// (Event, Public, BlueprintEvent)
+
+void URecollectionBossRushComponent::OnStartBossRush()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "OnStartBossRush");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.RecollectionBossRushComponent.ResetCurrentRecords
+// (Final, Native, Public, BlueprintCallable)
+
+void URecollectionBossRushComponent::ResetCurrentRecords()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "ResetCurrentRecords");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.SetTimerPaused
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bIsPaused                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URecollectionBossRushComponent::SetTimerPaused(bool bIsPaused)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "SetTimerPaused");
+
+	Params::RecollectionBossRushComponent_SetTimerPaused Parms{};
+
+	Parms.bIsPaused = bIsPaused;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.TryAddNewRecord
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FRecollectionBossRushRecordData&NewRecordData                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 URecollectionBossRushComponent::TryAddNewRecord(const struct FRecollectionBossRushRecordData& NewRecordData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "TryAddNewRecord");
+
+	Params::RecollectionBossRushComponent_TryAddNewRecord Parms{};
+
+	Parms.NewRecordData = std::move(NewRecordData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.CanUpdateTime
+// (Native, Event, Public, BlueprintEvent, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URecollectionBossRushComponent::CanUpdateTime() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "CanUpdateTime");
+
+	Params::RecollectionBossRushComponent_CanUpdateTime Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.GetBossRushDifficultyPreset
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EDifficultyPreset                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EDifficultyPreset URecollectionBossRushComponent::GetBossRushDifficultyPreset() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "GetBossRushDifficultyPreset");
+
+	Params::RecollectionBossRushComponent_GetBossRushDifficultyPreset Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.GetBossRushTime
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float URecollectionBossRushComponent::GetBossRushTime() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "GetBossRushTime");
+
+	Params::RecollectionBossRushComponent_GetBossRushTime Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.GetCurrentBossIndex
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 URecollectionBossRushComponent::GetCurrentBossIndex() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "GetCurrentBossIndex");
+
+	Params::RecollectionBossRushComponent_GetCurrentBossIndex Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.IsTimerPaused
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URecollectionBossRushComponent::IsTimerPaused() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "IsTimerPaused");
+
+	Params::RecollectionBossRushComponent_IsTimerPaused Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RecollectionBossRushComponent.ShouldDisplayRecollectionBossRush
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URecollectionBossRushComponent::ShouldDisplayRecollectionBossRush() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RecollectionBossRushComponent", "ShouldDisplayRecollectionBossRush");
+
+	Params::RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RenderStateComponent.SetNewBounds
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// const class AActor*                     Actor                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URenderStateComponent::SetNewBounds(const class AActor* Actor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RenderStateComponent", "SetNewBounds");
+
+	Params::RenderStateComponent_SetNewBounds Parms{};
+
+	Parms.Actor = Actor;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.RenderStateComponent.SetVisible
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bIsVisible                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URenderStateComponent::SetVisible(bool bIsVisible)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RenderStateComponent", "SetVisible");
+
+	Params::RenderStateComponent_SetVisible Parms{};
+
+	Parms.bIsVisible = bIsVisible;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.RenderStateComponent.IsVisible
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URenderStateComponent::IsVisible() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RenderStateComponent", "IsVisible");
+
+	Params::RenderStateComponent_IsVisible Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -25157,6 +26425,336 @@ bool USaveSubsystem::IsLoadingGameData() const
 }
 
 
+// Function Zion.ZionCharacterMovementComponent.SetMovementModeCustom
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// EMovementModeCustom                     NewMovementModeCustom                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UZionCharacterMovementComponent::SetMovementModeCustom(EMovementModeCustom NewMovementModeCustom)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "SetMovementModeCustom");
+
+	Params::ZionCharacterMovementComponent_SetMovementModeCustom Parms{};
+
+	Parms.NewMovementModeCustom = NewMovementModeCustom;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.SetMovementSpeedMode
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// EMovementSpeedMode                      NewMovementSpeedMode                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UZionCharacterMovementComponent::SetMovementSpeedMode(EMovementSpeedMode NewMovementSpeedMode)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "SetMovementSpeedMode");
+
+	Params::ZionCharacterMovementComponent_SetMovementSpeedMode Parms{};
+
+	Parms.NewMovementSpeedMode = NewMovementSpeedMode;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.ComputeLaunchVelocityToDestination
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FVector&                   DestinationLocation                                    (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   Duration                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UZionCharacterMovementComponent::ComputeLaunchVelocityToDestination(const struct FVector& DestinationLocation, float Duration) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "ComputeLaunchVelocityToDestination");
+
+	Params::ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination Parms{};
+
+	Parms.DestinationLocation = std::move(DestinationLocation);
+	Parms.Duration = Duration;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.GetLastNonFallingLocation
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UZionCharacterMovementComponent::GetLastNonFallingLocation() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetLastNonFallingLocation");
+
+	Params::ZionCharacterMovementComponent_GetLastNonFallingLocation Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.GetMovementSpeedMode
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EMovementSpeedMode                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EMovementSpeedMode UZionCharacterMovementComponent::GetMovementSpeedMode() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetMovementSpeedMode");
+
+	Params::ZionCharacterMovementComponent_GetMovementSpeedMode Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastGrounded
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UZionCharacterMovementComponent::GetTimeSinceLastGrounded() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetTimeSinceLastGrounded");
+
+	Params::ZionCharacterMovementComponent_GetTimeSinceLastGrounded Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastHookAttach
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UZionCharacterMovementComponent::GetTimeSinceLastHookAttach() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetTimeSinceLastHookAttach");
+
+	Params::ZionCharacterMovementComponent_GetTimeSinceLastHookAttach Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastWallGrab
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UZionCharacterMovementComponent::GetTimeSinceLastWallGrab() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "GetTimeSinceLastWallGrab");
+
+	Params::ZionCharacterMovementComponent_GetTimeSinceLastWallGrab Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.IsAirborne
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZionCharacterMovementComponent::IsAirborne() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsAirborne");
+
+	Params::ZionCharacterMovementComponent_IsAirborne Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.IsHookAttached
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZionCharacterMovementComponent::IsHookAttached() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsHookAttached");
+
+	Params::ZionCharacterMovementComponent_IsHookAttached Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.IsSliding
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZionCharacterMovementComponent::IsSliding() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsSliding");
+
+	Params::ZionCharacterMovementComponent_IsSliding Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.IsWallGrabbing
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZionCharacterMovementComponent::IsWallGrabbing() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsWallGrabbing");
+
+	Params::ZionCharacterMovementComponent_IsWallGrabbing Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionCharacterMovementComponent.IsWallScaling
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZionCharacterMovementComponent::IsWallScaling() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionCharacterMovementComponent", "IsWallScaling");
+
+	Params::ZionCharacterMovementComponent_IsWallScaling Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function Zion.ScrollBoxZion.CopyWidgetNavigation
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -25278,58 +26876,6 @@ void UScrollBoxZion::SimulateNavigation(EUINavigation InNavigation)
 	Params::ScrollBoxZion_SimulateNavigation Parms{};
 
 	Parms.InNavigation = InNavigation;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.ZionInputComponent.AddInputMappingContext
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const class UInputMappingContext*       InputMappingContext                                    (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EInputMappingPriority                   Priority                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UZionInputComponent::AddInputMappingContext(const class UInputMappingContext* InputMappingContext, EInputMappingPriority Priority)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputComponent", "AddInputMappingContext");
-
-	Params::ZionInputComponent_AddInputMappingContext Parms{};
-
-	Parms.InputMappingContext = InputMappingContext;
-	Parms.Priority = Priority;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.ZionInputComponent.RemoveInputMappingContext
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const class UInputMappingContext*       InputMappingContext                                    (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UZionInputComponent::RemoveInputMappingContext(const class UInputMappingContext* InputMappingContext)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZionInputComponent", "RemoveInputMappingContext");
-
-	Params::ZionInputComponent_RemoveInputMappingContext Parms{};
-
-	Parms.InputMappingContext = InputMappingContext;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -25584,27 +27130,31 @@ int32 UShopInfoComponent::GetMinLevel() const
 }
 
 
-// Function Zion.SkillComponent.Equip
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Function Zion.SleepActivatorComponent.OnWakeTriggerOverlapBegin
+// (Final, Native, Private, HasOutParams)
 // Parameters:
-// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bAddToCurrentLoadout                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bAutoLoad                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OverlappedComponent                                    (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bFromSweep                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FHitResult&                SweepResult                                            (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 
-void USkillComponent::Equip(ESkillSlot SkillSlot, const class FName& SkillID, bool bAddToCurrentLoadout, bool bAutoLoad)
+void USleepActivatorComponent::OnWakeTriggerOverlapBegin(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "Equip");
+		Func = Class->GetFunction("SleepActivatorComponent", "OnWakeTriggerOverlapBegin");
 
-	Params::SkillComponent_Equip Parms{};
+	Params::SleepActivatorComponent_OnWakeTriggerOverlapBegin Parms{};
 
-	Parms.SkillSlot = SkillSlot;
-	Parms.SkillID = SkillID;
-	Parms.bAddToCurrentLoadout = bAddToCurrentLoadout;
-	Parms.bAutoLoad = bAutoLoad;
+	Parms.OverlappedComponent = OverlappedComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
+	Parms.bFromSweep = bFromSweep;
+	Parms.SweepResult = std::move(SweepResult);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -25615,23 +27165,27 @@ void USkillComponent::Equip(ESkillSlot SkillSlot, const class FName& SkillID, bo
 }
 
 
-// Function Zion.SkillComponent.EquipSkillLoadout
-// (Final, Native, Public, BlueprintCallable)
+// Function Zion.SleepActivatorComponent.OnWakeTriggerOverlapEnd
+// (Final, Native, Private)
 // Parameters:
-// int32                                   LoadoutIndex                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bAutoLoad                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OverlappedComponent                                    (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           OtherActor                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UPrimitiveComponent*              OtherComp                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   OtherBodyIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void USkillComponent::EquipSkillLoadout(int32 LoadoutIndex, bool bAutoLoad)
+void USleepActivatorComponent::OnWakeTriggerOverlapEnd(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "EquipSkillLoadout");
+		Func = Class->GetFunction("SleepActivatorComponent", "OnWakeTriggerOverlapEnd");
 
-	Params::SkillComponent_EquipSkillLoadout Parms{};
+	Params::SleepActivatorComponent_OnWakeTriggerOverlapEnd Parms{};
 
-	Parms.LoadoutIndex = LoadoutIndex;
-	Parms.bAutoLoad = bAutoLoad;
+	Parms.OverlappedComponent = OverlappedComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -25639,348 +27193,6 @@ void USkillComponent::EquipSkillLoadout(int32 LoadoutIndex, bool bAutoLoad)
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.SkillComponent.LoadEquippedSkills
-// (Final, Native, Public, BlueprintCallable)
-
-void USkillComponent::LoadEquippedSkills()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "LoadEquippedSkills");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.SkillComponent.UnEquip
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bRemoveFromCurrentLoadout                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void USkillComponent::UnEquip(ESkillSlot SkillSlot, bool bRemoveFromCurrentLoadout)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "UnEquip");
-
-	Params::SkillComponent_UnEquip Parms{};
-
-	Parms.SkillSlot = SkillSlot;
-	Parms.bRemoveFromCurrentLoadout = bRemoveFromCurrentLoadout;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.SkillComponent.UnEquipAll
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bRemoveFromCurrentLoadout                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void USkillComponent::UnEquipAll(bool bRemoveFromCurrentLoadout)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "UnEquipAll");
-
-	Params::SkillComponent_UnEquipAll Parms{};
-
-	Parms.bRemoveFromCurrentLoadout = bRemoveFromCurrentLoadout;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.SkillComponent.GetCurrentSkillLoadoutIndex
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 USkillComponent::GetCurrentSkillLoadoutIndex() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "GetCurrentSkillLoadoutIndex");
-
-	Params::SkillComponent_GetCurrentSkillLoadoutIndex Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.SkillComponent.GetEquippedCommandSet
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UCommandSet*                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UCommandSet* USkillComponent::GetEquippedCommandSet(ESkillSlot SkillSlot) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "GetEquippedCommandSet");
-
-	Params::SkillComponent_GetEquippedCommandSet Parms{};
-
-	Parms.SkillSlot = SkillSlot;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.SkillComponent.GetEquippedItemSkillData
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FInventoryItemSkillData    ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-const struct FInventoryItemSkillData USkillComponent::GetEquippedItemSkillData(ESkillSlot SkillSlot) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "GetEquippedItemSkillData");
-
-	Params::SkillComponent_GetEquippedItemSkillData Parms{};
-
-	Parms.SkillSlot = SkillSlot;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.SkillComponent.GetEquippedSkillID
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class FName                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class FName USkillComponent::GetEquippedSkillID(ESkillSlot SkillSlot) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "GetEquippedSkillID");
-
-	Params::SkillComponent_GetEquippedSkillID Parms{};
-
-	Parms.SkillSlot = SkillSlot;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.SkillComponent.GetEquippedSkillInputActionFromSpirit
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FInventoryItemSpiritData&  SpiritData                                             (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const class UInputAction*               ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-const class UInputAction* USkillComponent::GetEquippedSkillInputActionFromSpirit(const struct FInventoryItemSpiritData& SpiritData) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "GetEquippedSkillInputActionFromSpirit");
-
-	Params::SkillComponent_GetEquippedSkillInputActionFromSpirit Parms{};
-
-	Parms.SpiritData = std::move(SpiritData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.SkillComponent.GetEquippedSkillLevelData
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FSkillLevelData            ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-const struct FSkillLevelData USkillComponent::GetEquippedSkillLevelData(ESkillSlot SkillSlot) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "GetEquippedSkillLevelData");
-
-	Params::SkillComponent_GetEquippedSkillLevelData Parms{};
-
-	Parms.SkillSlot = SkillSlot;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.SkillComponent.GetEquippedSkillSlotFromID
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName&                      SkillID                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// ESkillSlot                              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-ESkillSlot USkillComponent::GetEquippedSkillSlotFromID(const class FName& SkillID) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "GetEquippedSkillSlotFromID");
-
-	Params::SkillComponent_GetEquippedSkillSlotFromID Parms{};
-
-	Parms.SkillID = SkillID;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.SkillComponent.GetMinimumEquippedSPCost
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 USkillComponent::GetMinimumEquippedSPCost() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "GetMinimumEquippedSPCost");
-
-	Params::SkillComponent_GetMinimumEquippedSPCost Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.SkillComponent.HasAnyEquippedSkill
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool USkillComponent::HasAnyEquippedSkill() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "HasAnyEquippedSkill");
-
-	Params::SkillComponent_HasAnyEquippedSkill Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.SkillComponent.HasEquippedSkill
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// ESkillSlot                              SkillSlot                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool USkillComponent::HasEquippedSkill(ESkillSlot SkillSlot) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "HasEquippedSkill");
-
-	Params::SkillComponent_HasEquippedSkill Parms{};
-
-	Parms.SkillSlot = SkillSlot;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -27747,6 +28959,98 @@ void USpineHighlightComponent::OnAnimationStart(class UTrackEntry* Entry)
 }
 
 
+// Function Zion.UserWidgetWorldSpaceText_Talk.CompleteTalk
+// (Final, Native, Public, BlueprintCallable)
+
+void UUserWidgetWorldSpaceText_Talk::CompleteTalk()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "CompleteTalk");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetWorldSpaceText_Talk.FinishTalk
+// (Event, Public, BlueprintEvent)
+
+void UUserWidgetWorldSpaceText_Talk::FinishTalk()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "FinishTalk");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetWorldSpaceText_Talk.OnPressConfirm
+// (Event, Public, BlueprintEvent)
+
+void UUserWidgetWorldSpaceText_Talk::OnPressConfirm()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "OnPressConfirm");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetWorldSpaceText_Talk.OnTalk
+// (Event, Public, HasOutParams, BlueprintEvent)
+// Parameters:
+// const struct FTalkParameters&           TalkParameters                                         (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void UUserWidgetWorldSpaceText_Talk::OnTalk(const struct FTalkParameters& TalkParameters)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "OnTalk");
+
+	Params::UserWidgetWorldSpaceText_Talk_OnTalk Parms{};
+
+	Parms.TalkParameters = std::move(TalkParameters);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Zion.UserWidgetWorldSpaceText_Talk.SetSpeakerName
+// (Native, Event, Public, HasOutParams, BlueprintEvent)
+// Parameters:
+// const class FText&                      SpeakerName                                            (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void UUserWidgetWorldSpaceText_Talk::SetSpeakerName(const class FText& SpeakerName)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetWorldSpaceText_Talk", "SetSpeakerName");
+
+	Params::UserWidgetWorldSpaceText_Talk_SetSpeakerName Parms{};
+
+	Parms.SpeakerName = std::move(SpeakerName);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function Zion.SpineSkinFromFacing.OnFacingChanged
 // (Final, Native, Private)
 
@@ -27766,56 +29070,6 @@ void USpineSkinFromFacing::OnFacingChanged()
 }
 
 
-// Function Zion.UserWidgetWorldSpaceGauge.SetCurrentRatio
-// (Native, Event, Public, BlueprintEvent)
-// Parameters:
-// float                                   CurrentRatio                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetWorldSpaceGauge::SetCurrentRatio(float CurrentRatio)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceGauge", "SetCurrentRatio");
-
-	Params::UserWidgetWorldSpaceGauge_SetCurrentRatio Parms{};
-
-	Parms.CurrentRatio = CurrentRatio;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetWorldSpaceGauge.SetTargetActor
-// (Native, Event, Public, BlueprintEvent)
-// Parameters:
-// class AActor*                           Actor                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetWorldSpaceGauge::SetTargetActor(class AActor* Actor)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceGauge", "SetTargetActor");
-
-	Params::UserWidgetWorldSpaceGauge_SetTargetActor Parms{};
-
-	Parms.Actor = Actor;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function Zion.SpiritAutoComponent.OnCommandQueueCleared
 // (Final, Native, Private)
 
@@ -27825,6 +29079,25 @@ void USpiritAutoComponent::OnCommandQueueCleared()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("SpiritAutoComponent", "OnCommandQueueCleared");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.SpiritAutoComponent.OnGameMapChanged
+// (Final, Native, Private)
+
+void USpiritAutoComponent::OnGameMapChanged()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SpiritAutoComponent", "OnGameMapChanged");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -28049,6 +29322,35 @@ void USpiritRepeatComponent::OnSummonerFacingChange()
 }
 
 
+// Function Zion.WallAttachComponent.OnMovementModeChanged
+// (Final, Native, Private)
+// Parameters:
+// class ACharacter*                       InCharacter                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EMovementMode                           PrevMovementMode                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// uint8                                   PreviousCustomMode                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UWallAttachComponent::OnMovementModeChanged(class ACharacter* InCharacter, EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WallAttachComponent", "OnMovementModeChanged");
+
+	Params::WallAttachComponent_OnMovementModeChanged Parms{};
+
+	Parms.InCharacter = InCharacter;
+	Parms.PrevMovementMode = PrevMovementMode;
+	Parms.PreviousCustomMode = PreviousCustomMode;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function Zion.StatComponent.Add
 // (Native, Public, BlueprintCallable)
 // Parameters:
@@ -28212,173 +29514,6 @@ int32 UStatComponent::GetMaxValue() const
 		Func = Class->GetFunction("StatComponent", "GetMaxValue");
 
 	Params::StatComponent_GetMaxValue Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.WallGrabComponent.OnMoveBlocked
-// (Final, Native, Private, HasOutParams)
-// Parameters:
-// const struct FHitResult&                Impact                                                 (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void UWallGrabComponent::OnMoveBlocked(const struct FHitResult& Impact)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WallGrabComponent", "OnMoveBlocked");
-
-	Params::WallGrabComponent_OnMoveBlocked Parms{};
-
-	Parms.Impact = std::move(Impact);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.WallGrabComponent.OnMovementModeChanged
-// (Final, Native, Private)
-// Parameters:
-// class ACharacter*                       InCharacter                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EMovementMode                           PrevMovementMode                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// uint8                                   PreviousCustomMode                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UWallGrabComponent::OnMovementModeChanged(class ACharacter* InCharacter, EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WallGrabComponent", "OnMovementModeChanged");
-
-	Params::WallGrabComponent_OnMovementModeChanged Parms{};
-
-	Parms.InCharacter = InCharacter;
-	Parms.PrevMovementMode = PrevMovementMode;
-	Parms.PreviousCustomMode = PreviousCustomMode;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.WallGrabComponent.OnStartAnimation
-// (Final, Native, Private)
-// Parameters:
-// class UTrackEntry*                      TrackEntry                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UWallGrabComponent::OnStartAnimation(class UTrackEntry* TrackEntry)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WallGrabComponent", "OnStartAnimation");
-
-	Params::WallGrabComponent_OnStartAnimation Parms{};
-
-	Parms.TrackEntry = TrackEntry;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.WallGrabComponent.OnWallGrab
-// (Native, Event, Protected, BlueprintEvent)
-
-void UWallGrabComponent::OnWallGrab()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WallGrabComponent", "OnWallGrab");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.WallGrabComponent.RefreshWallGrab
-// (Final, Native, Public, BlueprintCallable)
-
-void UWallGrabComponent::RefreshWallGrab()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WallGrabComponent", "RefreshWallGrab");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.WallGrabComponent.IsGrabbingWall
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWallGrabComponent::IsGrabbingWall() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WallGrabComponent", "IsGrabbingWall");
-
-	Params::WallGrabComponent_IsGrabbingWall Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.WallGrabComponent.IsWallOnRight
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWallGrabComponent::IsWallOnRight() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WallGrabComponent", "IsWallOnRight");
-
-	Params::WallGrabComponent_IsWallOnRight Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -28973,153 +30108,6 @@ bool UStateComponent::IsStunned() const
 }
 
 
-// Function Zion.ZoneSystemComponent.Get
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class UObject*                    WorldContextObject                                     (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UZoneSystemComponent*             ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UZoneSystemComponent* UZoneSystemComponent::Get(const class UObject* WorldContextObject)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ZoneSystemComponent", "Get");
-
-	Params::ZoneSystemComponent_Get Parms{};
-
-	Parms.WorldContextObject = WorldContextObject;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZoneSystemComponent.BindActorToZone
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class AActor*                           Actor                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UZoneSystemComponent::BindActorToZone(class AActor* Actor)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZoneSystemComponent", "BindActorToZone");
-
-	Params::ZoneSystemComponent_BindActorToZone Parms{};
-
-	Parms.Actor = Actor;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.ZoneSystemComponent.OnFadeOutFinished
-// (Final, Native, Private)
-
-void UZoneSystemComponent::OnFadeOutFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZoneSystemComponent", "OnFadeOutFinished");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.ZoneSystemComponent.GetActiveZoneLevelName
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class FString UZoneSystemComponent::GetActiveZoneLevelName() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZoneSystemComponent", "GetActiveZoneLevelName");
-
-	Params::ZoneSystemComponent_GetActiveZoneLevelName Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZoneSystemComponent.GetActiveZoneName
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class FString UZoneSystemComponent::GetActiveZoneName() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZoneSystemComponent", "GetActiveZoneName");
-
-	Params::ZoneSystemComponent_GetActiveZoneName Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.ZoneSystemComponent.IsInAnyZone
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UZoneSystemComponent::IsInAnyZone() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ZoneSystemComponent", "IsInAnyZone");
-
-	Params::ZoneSystemComponent_IsInAnyZone Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function Zion.StatHPComponent.DoDamage
 // (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
@@ -29388,6 +30376,26 @@ bool AStaticVolume_CameraModifier::IsActive() const
 }
 
 
+// Function Zion.UserWidgetMapLegend.OnLegendInitialized
+// (Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// const TSet<EMapIconType>&               VisibleIconTypes                                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void UUserWidgetMapLegend::OnLegendInitialized(const TSet<EMapIconType>& VisibleIconTypes)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetMapLegend", "OnLegendInitialized");
+
+	Params::UserWidgetMapLegend_OnLegendInitialized Parms{};
+
+	Parms.VisibleIconTypes = std::move(VisibleIconTypes);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function Zion.StaticVolume_Zone.SetZoneLevel
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -29408,134 +30416,6 @@ void AStaticVolume_Zone::SetZoneLevel(class UWorld* InZoneLevel)
 	Func->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetMapTransition.HideMapTransition
-// (Native, Event, Public, BlueprintCallable, BlueprintEvent)
-
-void UUserWidgetMapTransition::HideMapTransition()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMapTransition", "HideMapTransition");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetMapTransition.OnSetIconsVisibility
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// bool                                    bVisible                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetMapTransition::OnSetIconsVisibility(bool bVisible)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMapTransition", "OnSetIconsVisibility");
-
-	Params::UserWidgetMapTransition_OnSetIconsVisibility Parms{};
-
-	Parms.bVisible = bVisible;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetMapTransition.OnSetScale
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// float                                   NewScale                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetMapTransition::OnSetScale(float NewScale)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMapTransition", "OnSetScale");
-
-	Params::UserWidgetMapTransition_OnSetScale Parms{};
-
-	Parms.NewScale = NewScale;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetMapTransition.SetIconsVisibility
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bVisible                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetMapTransition::SetIconsVisibility(bool bVisible)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMapTransition", "SetIconsVisibility");
-
-	Params::UserWidgetMapTransition_SetIconsVisibility Parms{};
-
-	Parms.bVisible = bVisible;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetMapTransition.SetScale
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   NewScale                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetMapTransition::SetScale(float NewScale)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMapTransition", "SetScale");
-
-	Params::UserWidgetMapTransition_SetScale Parms{};
-
-	Parms.NewScale = NewScale;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetMapTransition.ShowMapTransition
-// (Native, Event, Public, BlueprintCallable, BlueprintEvent)
-
-void UUserWidgetMapTransition::ShowMapTransition()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetMapTransition", "ShowMapTransition");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
 }
@@ -29841,410 +30721,6 @@ bool UStatsControllerPlayerComponent::IsMaxLevel() const
 }
 
 
-// Function Zion.UserWidgetPlayerUI.HideUI
-// (Native, Event, Public, BlueprintEvent)
-// Parameters:
-// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetPlayerUI::HideUI(bool bInstant)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "HideUI");
-
-	Params::UserWidgetPlayerUI_HideUI Parms{};
-
-	Parms.bInstant = bInstant;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.OnDisplayPlayerUIChanged
-// (Final, Native, Private)
-
-void UUserWidgetPlayerUI::OnDisplayPlayerUIChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "OnDisplayPlayerUIChanged");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.OnLowHPFeedbackOpacityChanged
-// (Final, Native, Private)
-
-void UUserWidgetPlayerUI::OnLowHPFeedbackOpacityChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "OnLowHPFeedbackOpacityChanged");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.OnPlayerInputLocked
-// (Event, Public, BlueprintEvent)
-
-void UUserWidgetPlayerUI::OnPlayerInputLocked()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "OnPlayerInputLocked");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetPlayerUI.OnPlayerInputUnlocked
-// (Event, Public, BlueprintEvent)
-
-void UUserWidgetPlayerUI::OnPlayerInputUnlocked()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "OnPlayerInputUnlocked");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetPlayerUI.OnRefreshLowHPFeedbackOpacity
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// float                                   Opacity                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetPlayerUI::OnRefreshLowHPFeedbackOpacity(float Opacity)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "OnRefreshLowHPFeedbackOpacity");
-
-	Params::UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity Parms{};
-
-	Parms.Opacity = Opacity;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetPlayerUI.OnRefreshPlayerUIVisibility
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool                                    bVisible                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetPlayerUI::OnRefreshPlayerUIVisibility(bool bVisible)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "OnRefreshPlayerUIVisibility");
-
-	Params::UserWidgetPlayerUI_OnRefreshPlayerUIVisibility Parms{};
-
-	Parms.bVisible = bVisible;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetPlayerUI.RefreshHealVisibility
-// (Native, Event, Public, BlueprintCallable, BlueprintEvent)
-
-void UUserWidgetPlayerUI::RefreshHealVisibility()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "RefreshHealVisibility");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.RefreshSPVisibility
-// (Native, Event, Public, BlueprintCallable, BlueprintEvent)
-
-void UUserWidgetPlayerUI::RefreshSPVisibility()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "RefreshSPVisibility");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.ShowUI
-// (Native, Event, Public, BlueprintEvent)
-
-void UUserWidgetPlayerUI::ShowUI()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "ShowUI");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.TriggerAnimation_HealFailure_FullHP
-// (Event, Public, BlueprintEvent)
-
-void UUserWidgetPlayerUI::TriggerAnimation_HealFailure_FullHP()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "TriggerAnimation_HealFailure_FullHP");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetPlayerUI.TriggerAnimation_HealFailure_NoHeal
-// (Event, Public, BlueprintEvent)
-
-void UUserWidgetPlayerUI::TriggerAnimation_HealFailure_NoHeal()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "TriggerAnimation_HealFailure_NoHeal");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetPlayerUI.CanShowHeal
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetPlayerUI::CanShowHeal() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "CanShowHeal");
-
-	Params::UserWidgetPlayerUI_CanShowHeal Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.CanShowSP
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetPlayerUI::CanShowSP() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "CanShowSP");
-
-	Params::UserWidgetPlayerUI_CanShowSP Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.GetController
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class APlayerController*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class APlayerController* UUserWidgetPlayerUI::GetController() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "GetController");
-
-	Params::UserWidgetPlayerUI_GetController Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.GetFieldTalkHolder
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UUserWidgetFieldTalkHolder*       ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UUserWidgetFieldTalkHolder* UUserWidgetPlayerUI::GetFieldTalkHolder() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "GetFieldTalkHolder");
-
-	Params::UserWidgetPlayerUI_GetFieldTalkHolder Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.GetMinimapWidget
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UUserWidgetMinimap*               ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UUserWidgetMinimap* UUserWidgetPlayerUI::GetMinimapWidget() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "GetMinimapWidget");
-
-	Params::UserWidgetPlayerUI_GetMinimapWidget Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.GetPawn
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class APawn*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class APawn* UUserWidgetPlayerUI::GetPawn() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "GetPawn");
-
-	Params::UserWidgetPlayerUI_GetPawn Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.RefreshCustomMarkers
-// (Final, Native, Public, BlueprintCallable, Const)
-
-void UUserWidgetPlayerUI::RefreshCustomMarkers() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "RefreshCustomMarkers");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetPlayerUI.RefreshMinimap
-// (Final, Native, Public, BlueprintCallable, Const)
-
-void UUserWidgetPlayerUI::RefreshMinimap() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetPlayerUI", "RefreshMinimap");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function Zion.StatSPComponent.AddSPRegenPercentageBonus
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -30326,44 +30802,19 @@ int32 UStatSPComponent::GetFilledGaugeCount() const
 }
 
 
-// Function Zion.UserWidgetRestPointListMapArea.GenerateRestPointListEntries
+// Function Zion.UserWidgetRestPointListEntry.InitializeEntry
 // (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const TArray<class UUserWidgetMapIcon_RestPoint*>&RestPointIcons                                         (Parm, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointListMapArea::GenerateRestPointListEntries(const TArray<class UUserWidgetMapIcon_RestPoint*>& RestPointIcons)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "GenerateRestPointListEntries");
-
-	Params::UserWidgetRestPointListMapArea_GenerateRestPointListEntries Parms{};
-
-	Parms.RestPointIcons = std::move(RestPointIcons);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetRestPointListMapArea.RestPointEntryFocused
-// (Final, Native, Private)
 // Parameters:
 // class UUserWidgetMapIcon_RestPoint*     RestPointIcon                                          (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UUserWidgetRestPointListMapArea::RestPointEntryFocused(class UUserWidgetMapIcon_RestPoint* RestPointIcon)
+void UUserWidgetRestPointListEntry::InitializeEntry(class UUserWidgetMapIcon_RestPoint* RestPointIcon)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "RestPointEntryFocused");
+		Func = Class->GetFunction("UserWidgetRestPointListEntry", "InitializeEntry");
 
-	Params::UserWidgetRestPointListMapArea_RestPointEntryFocused Parms{};
+	Params::UserWidgetRestPointListEntry_InitializeEntry Parms{};
 
 	Parms.RestPointIcon = RestPointIcon;
 
@@ -30376,186 +30827,95 @@ void UUserWidgetRestPointListMapArea::RestPointEntryFocused(class UUserWidgetMap
 }
 
 
-// Function Zion.UserWidgetRestPointListMapArea.RestPointEntryPressed
-// (Final, Native, Private)
-// Parameters:
-// const struct FMapRestPointData&         RestPointData                                          (Parm, NoDestructor, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointListMapArea::RestPointEntryPressed(const struct FMapRestPointData& RestPointData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "RestPointEntryPressed");
-
-	Params::UserWidgetRestPointListMapArea_RestPointEntryPressed Parms{};
-
-	Parms.RestPointData = std::move(RestPointData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetRestPointListMapArea.SetCompleted
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bIsCompleted                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointListMapArea::SetCompleted(bool bIsCompleted)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "SetCompleted");
-
-	Params::UserWidgetRestPointListMapArea_SetCompleted Parms{};
-
-	Parms.bIsCompleted = bIsCompleted;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetRestPointListMapArea.SetMapAreaIndex
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const int32                             NewMapAreaIndex                                        (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointListMapArea::SetMapAreaIndex(const int32 NewMapAreaIndex)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "SetMapAreaIndex");
-
-	Params::UserWidgetRestPointListMapArea_SetMapAreaIndex Parms{};
-
-	Parms.NewMapAreaIndex = NewMapAreaIndex;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetRestPointListMapArea.SetMapAreaName
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const class FText&                      NewMapAreaName                                         (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointListMapArea::SetMapAreaName(const class FText& NewMapAreaName)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointListMapArea", "SetMapAreaName");
-
-	Params::UserWidgetRestPointListMapArea_SetMapAreaName Parms{};
-
-	Parms.NewMapAreaName = std::move(NewMapAreaName);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.StatusEffectComponent.LaunchStatusEffect
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// EStatusEffectType                       StatusEffectType                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UStatusEffectComponent::LaunchStatusEffect(EStatusEffectType StatusEffectType)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("StatusEffectComponent", "LaunchStatusEffect");
-
-	Params::StatusEffectComponent_LaunchStatusEffect Parms{};
-
-	Parms.StatusEffectType = StatusEffectType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.StatusEffectComponent.LaunchStatusEffectFromClass
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const TSubclassOf<class UStatusEffect>& StatusEffectClass                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UStatusEffectComponent::LaunchStatusEffectFromClass(const TSubclassOf<class UStatusEffect>& StatusEffectClass)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("StatusEffectComponent", "LaunchStatusEffectFromClass");
-
-	Params::StatusEffectComponent_LaunchStatusEffectFromClass Parms{};
-
-	Parms.StatusEffectClass = StatusEffectClass;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.StatusEffectComponent.OnDeathProcessStart
-// (Final, Native, Private)
-
-void UStatusEffectComponent::OnDeathProcessStart()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("StatusEffectComponent", "OnDeathProcessStart");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetWorldSpace_InputEvent.OnPressConfirm
+// Function Zion.UserWidgetRestPointListEntry.OnInitializeEntry
 // (Event, Public, BlueprintEvent)
 
-void UUserWidgetWorldSpace_InputEvent::OnPressConfirm()
+void UUserWidgetRestPointListEntry::OnInitializeEntry()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpace_InputEvent", "OnPressConfirm");
+		Func = Class->GetFunction("UserWidgetRestPointListEntry", "OnInitializeEntry");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetRestPointListEntry.IsRestPointIcon
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UUserWidgetMapIcon_RestPoint*     RestPointIcon                                          (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UUserWidgetRestPointListEntry::IsRestPointIcon(class UUserWidgetMapIcon_RestPoint* RestPointIcon) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetRestPointListEntry", "IsRestPointIcon");
+
+	Params::UserWidgetRestPointListEntry_IsRestPointIcon Parms{};
+
+	Parms.RestPointIcon = RestPointIcon;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.StatusEffect.GetDuration
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UStatusEffect::GetDuration() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("StatusEffect", "GetDuration");
+
+	Params::StatusEffect_GetDuration Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.StatusEffect.GetStatusEffectType
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EStatusEffectType                       ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EStatusEffectType UStatusEffect::GetStatusEffectType() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("StatusEffect", "GetStatusEffectType");
+
+	Params::StatusEffect_GetStatusEffectType Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
 }
 
 
@@ -32390,94 +32750,6 @@ void IToggleActorInterface::OnActorToggle()
 }
 
 
-// Function Zion.Trigger_Event.OnEventFinish
-// (Event, Protected, BlueprintEvent)
-
-void ATrigger_Event::OnEventFinish()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Trigger_Event", "OnEventFinish");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.Trigger_Event.OnEventFinished
-// (Final, Native, Private)
-// Parameters:
-// class UEventPlayer*                     InEventPlayer                                          (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bCompletedEvent                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EEventPlayerResult                      EventResult                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ATrigger_Event::OnEventFinished(class UEventPlayer* InEventPlayer, bool bCompletedEvent, EEventPlayerResult EventResult)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Trigger_Event", "OnEventFinished");
-
-	Params::Trigger_Event_OnEventFinished Parms{};
-
-	Parms.InEventPlayer = InEventPlayer;
-	Parms.bCompletedEvent = bCompletedEvent;
-	Parms.EventResult = EventResult;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.Trigger_FieldMessageNPC.OnNPCDestroyed
-// (Final, Native, Private)
-// Parameters:
-// class AActor*                           DestroyedActor                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ATrigger_FieldMessageNPC::OnNPCDestroyed(class AActor* DestroyedActor)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Trigger_FieldMessageNPC", "OnNPCDestroyed");
-
-	Params::Trigger_FieldMessageNPC_OnNPCDestroyed Parms{};
-
-	Parms.DestroyedActor = DestroyedActor;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.Trigger_FieldMessageNPC.GetCollisionComponent
-// (Event, Protected, BlueprintEvent, Const)
-// Parameters:
-// class UShapeComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UShapeComponent* ATrigger_FieldMessageNPC::GetCollisionComponent() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Trigger_FieldMessageNPC", "GetCollisionComponent");
-
-	Params::Trigger_FieldMessageNPC_GetCollisionComponent Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
 // Function Zion.Trigger_RegisterRuntimeCheckpoint.OnPlayerEndOverlap
 // (Event, Protected, BlueprintEvent)
 // Parameters:
@@ -34120,144 +34392,25 @@ class APawn* UUserWidgetEnemyUI::GetPawn() const
 }
 
 
-// Function Zion.UserWidgetEvent.CompleteChoices
-// (Final, Native, Protected, BlueprintCallable)
+// Function Zion.UserWidgetExplanation.SetExplanationText
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// int32                                   SelectedChoiceIndex                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetEvent::CompleteChoices(int32 SelectedChoiceIndex)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "CompleteChoices");
-
-	Params::UserWidgetEvent_CompleteChoices Parms{};
-
-	Parms.SelectedChoiceIndex = SelectedChoiceIndex;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetEvent.CompleteTalk
-// (Final, Native, Protected, BlueprintCallable)
-
-void UUserWidgetEvent::CompleteTalk()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "CompleteTalk");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetEvent.OnNotifyEventStartPlaying
-// (Event, Protected, BlueprintEvent)
-
-void UUserWidgetEvent::OnNotifyEventStartPlaying()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "OnNotifyEventStartPlaying");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetEvent.OnPlayChoices
-// (Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// const class FText&                      SpeakerName                                            (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 // const class FText&                      Text                                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const TArray<class FText>&              Choices                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+// const TArray<struct FRichTextInputElement>&InputElements                                          (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+// const TArray<class FString>&            StringElements                                         (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 
-void UUserWidgetEvent::OnPlayChoices(const class FText& SpeakerName, const class FText& Text, const TArray<class FText>& Choices)
+void UUserWidgetExplanation::SetExplanationText(const class FText& Text, const TArray<struct FRichTextInputElement>& InputElements, const TArray<class FString>& StringElements)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "OnPlayChoices");
+		Func = Class->GetFunction("UserWidgetExplanation", "SetExplanationText");
 
-	Params::UserWidgetEvent_OnPlayChoices Parms{};
+	Params::UserWidgetExplanation_SetExplanationText Parms{};
 
-	Parms.SpeakerName = std::move(SpeakerName);
 	Parms.Text = std::move(Text);
-	Parms.Choices = std::move(Choices);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetEvent.OnRequestRemoveFromParent
-// (Native, Event, Protected, BlueprintEvent)
-
-void UUserWidgetEvent::OnRequestRemoveFromParent()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "OnRequestRemoveFromParent");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetEvent.OnTalk
-// (Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// const class FText&                      SpeakerName                                            (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const class FText&                      Text                                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// float                                   Duration                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetEvent::OnTalk(const class FText& SpeakerName, const class FText& Text, float Duration)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "OnTalk");
-
-	Params::UserWidgetEvent_OnTalk Parms{};
-
-	Parms.SpeakerName = std::move(SpeakerName);
-	Parms.Text = std::move(Text);
-	Parms.Duration = Duration;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetEvent.CanAutoSkipEvent
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetEvent::CanAutoSkipEvent() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "CanAutoSkipEvent");
-
-	Params::UserWidgetEvent_CanAutoSkipEvent Parms{};
+	Parms.InputElements = std::move(InputElements);
+	Parms.StringElements = std::move(StringElements);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -34265,133 +34418,6 @@ bool UUserWidgetEvent::CanAutoSkipEvent() const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetEvent.CanSkipEvent
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetEvent::CanSkipEvent() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "CanSkipEvent");
-
-	Params::UserWidgetEvent_CanSkipEvent Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetEvent.GetEventPlayer
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UEventPlayer*                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UEventPlayer* UUserWidgetEvent::GetEventPlayer() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "GetEventPlayer");
-
-	Params::UserWidgetEvent_GetEventPlayer Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetEvent.IsEventAlreadySeen
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetEvent::IsEventAlreadySeen() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "IsEventAlreadySeen");
-
-	Params::UserWidgetEvent_IsEventAlreadySeen Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetEvent.ShouldUsePostSkipFadeIn
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetEvent::ShouldUsePostSkipFadeIn() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "ShouldUsePostSkipFadeIn");
-
-	Params::UserWidgetEvent_ShouldUsePostSkipFadeIn Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetEvent.ShouldUsePreSkipFadeOut
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetEvent::ShouldUsePreSkipFadeOut() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetEvent", "ShouldUsePreSkipFadeOut");
-
-	Params::UserWidgetEvent_ShouldUsePreSkipFadeOut Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -36942,190 +36968,15 @@ void UUserWidgetMapArea::OnZoneVisited(class AStaticVolume_Zone* ZoneVisited) co
 }
 
 
-// Function Zion.UserWidgetNotificationHolder.OnDisplayHolder
-// (Event, Protected, BlueprintEvent)
-
-void UUserWidgetNotificationHolder::OnDisplayHolder()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetNotificationHolder", "OnDisplayHolder");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetNotificationHolder.OnHide
-// (Event, Protected, BlueprintEvent)
-
-void UUserWidgetNotificationHolder::OnHide()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetNotificationHolder", "OnHide");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Zion.UserWidgetNotificationHolder.OnLaunchNotification
-// (Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// const struct FNotificationData&         NotificationData                                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-void UUserWidgetNotificationHolder::OnLaunchNotification(const struct FNotificationData& NotificationData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetNotificationHolder", "OnLaunchNotification");
-
-	Params::UserWidgetNotificationHolder_OnLaunchNotification Parms{};
-
-	Parms.NotificationData = std::move(NotificationData);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetNotificationHolder.IsUIReady
-// (Event, Public, BlueprintEvent, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetNotificationHolder::IsUIReady() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetNotificationHolder", "IsUIReady");
-
-	Params::UserWidgetNotificationHolder_IsUIReady Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetRestPointList.ChangeMapArea
-// (Final, Native, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// int32                                   IndexOffset                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UUserWidgetMapIcon_RestPoint*     ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UUserWidgetMapIcon_RestPoint* UUserWidgetRestPointList::ChangeMapArea(int32 IndexOffset)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "ChangeMapArea");
-
-	Params::UserWidgetRestPointList_ChangeMapArea Parms{};
-
-	Parms.IndexOffset = IndexOffset;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetRestPointList.Close
+// Function Zion.UserWidgetMinimap.ChangeDisplayMode
 // (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UUserWidgetRestPointList::Close(bool bInstant)
+void UUserWidgetMinimap::ChangeDisplayMode()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "Close");
-
-	Params::UserWidgetRestPointList_Close Parms{};
-
-	Parms.bInstant = bInstant;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetRestPointList.FindNearestRestPointIcon
-// (Final, Native, Protected, HasOutParams, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FVector2D&                 CurrentMapPosition                                     (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32*                                  OutMapAreaIndex                                        (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UUserWidgetMapIcon_RestPoint*     ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UUserWidgetMapIcon_RestPoint* UUserWidgetRestPointList::FindNearestRestPointIcon(const struct FVector2D& CurrentMapPosition, int32* OutMapAreaIndex)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "FindNearestRestPointIcon");
-
-	Params::UserWidgetRestPointList_FindNearestRestPointIcon Parms{};
-
-	Parms.CurrentMapPosition = std::move(CurrentMapPosition);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (OutMapAreaIndex != nullptr)
-		*OutMapAreaIndex = Parms.OutMapAreaIndex;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetRestPointList.GoToMapAreaFromIndex
-// (Event, Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// int32                                   MapAreaIndex                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UUserWidgetMapIcon_RestPoint*     NearestRestPointIcon                                   (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointList::GoToMapAreaFromIndex(int32 MapAreaIndex, class UUserWidgetMapIcon_RestPoint* NearestRestPointIcon)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "GoToMapAreaFromIndex");
-
-	Params::UserWidgetRestPointList_GoToMapAreaFromIndex Parms{};
-
-	Parms.MapAreaIndex = MapAreaIndex;
-	Parms.NearestRestPointIcon = NearestRestPointIcon;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetRestPointList.GoToNextMapArea
-// (Final, Native, Protected, BlueprintCallable)
-
-void UUserWidgetRestPointList::GoToNextMapArea()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "GoToNextMapArea");
+		Func = Class->GetFunction("UserWidgetMinimap", "ChangeDisplayMode");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -37136,15 +36987,15 @@ void UUserWidgetRestPointList::GoToNextMapArea()
 }
 
 
-// Function Zion.UserWidgetRestPointList.GoToPreviousMapArea
-// (Final, Native, Protected, BlueprintCallable)
+// Function Zion.UserWidgetMinimap.InitializeDefaultDisplayValues
+// (Final, Native, Public, BlueprintCallable)
 
-void UUserWidgetRestPointList::GoToPreviousMapArea()
+void UUserWidgetMinimap::InitializeDefaultDisplayValues()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "GoToPreviousMapArea");
+		Func = Class->GetFunction("UserWidgetMinimap", "InitializeDefaultDisplayValues");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -37155,186 +37006,90 @@ void UUserWidgetRestPointList::GoToPreviousMapArea()
 }
 
 
-// Function Zion.UserWidgetRestPointList.InstantiateRestPointList
-// (Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// const TArray<struct FRestPointListData>&ListData                                               (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointList::InstantiateRestPointList(const TArray<struct FRestPointListData>& ListData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "InstantiateRestPointList");
-
-	Params::UserWidgetRestPointList_InstantiateRestPointList Parms{};
-
-	Parms.ListData = std::move(ListData);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetRestPointList.OnClosed
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointList::OnClosed(bool bInstant)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "OnClosed");
-
-	Params::UserWidgetRestPointList_OnClosed Parms{};
-
-	Parms.bInstant = bInstant;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetRestPointList.OnOpened
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointList::OnOpened(bool bInstant)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "OnOpened");
-
-	Params::UserWidgetRestPointList_OnOpened Parms{};
-
-	Parms.bInstant = bInstant;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Zion.UserWidgetRestPointList.Open
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FVector2D&                 CurrentMapPosition                                     (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bInstant                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUserWidgetRestPointList::Open(const struct FVector2D& CurrentMapPosition, bool bInstant)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "Open");
-
-	Params::UserWidgetRestPointList_Open Parms{};
-
-	Parms.CurrentMapPosition = std::move(CurrentMapPosition);
-	Parms.bInstant = bInstant;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetRestPointList.RestPointEntryFocused
+// Function Zion.UserWidgetMinimap.OnGameMapChanged
 // (Final, Native, Private)
-// Parameters:
-// int32                                   MapAreaIndex                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UUserWidgetMapIcon_RestPoint*     RestPointIcon                                          (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UUserWidgetRestPointList::RestPointEntryFocused(int32 MapAreaIndex, class UUserWidgetMapIcon_RestPoint* RestPointIcon)
+void UUserWidgetMinimap::OnGameMapChanged()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "RestPointEntryFocused");
-
-	Params::UserWidgetRestPointList_RestPointEntryFocused Parms{};
-
-	Parms.MapAreaIndex = MapAreaIndex;
-	Parms.RestPointIcon = RestPointIcon;
+		Func = Class->GetFunction("UserWidgetMinimap", "OnGameMapChanged");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
 }
 
 
-// Function Zion.UserWidgetRestPointList.RestPointEntryPressed
+// Function Zion.UserWidgetMinimap.OnRefreshMinimap
+// (Event, Protected, BlueprintEvent)
+
+void UUserWidgetMinimap::OnRefreshMinimap()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetMinimap", "OnRefreshMinimap");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Zion.UserWidgetMinimap.OnStoryLevelChanged
 // (Final, Native, Private)
-// Parameters:
-// const struct FMapRestPointData&         RestPointData                                          (Parm, NoDestructor, NativeAccessSpecifierPublic)
 
-void UUserWidgetRestPointList::RestPointEntryPressed(const struct FMapRestPointData& RestPointData)
+void UUserWidgetMinimap::OnStoryLevelChanged()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "RestPointEntryPressed");
-
-	Params::UserWidgetRestPointList_RestPointEntryPressed Parms{};
-
-	Parms.RestPointData = std::move(RestPointData);
+		Func = Class->GetFunction("UserWidgetMinimap", "OnStoryLevelChanged");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
 }
 
 
-// Function Zion.UserWidgetRestPointList.SetCurrentMapAreaIndex
-// (Final, Native, Protected, BlueprintCallable)
-// Parameters:
-// int32                                   NewMapAreaIndex                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Zion.UserWidgetMinimap.RequestRender
+// (Final, Native, Public, BlueprintCallable)
 
-int32 UUserWidgetRestPointList::SetCurrentMapAreaIndex(int32 NewMapAreaIndex)
+void UUserWidgetMinimap::RequestRender()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "SetCurrentMapAreaIndex");
-
-	Params::UserWidgetRestPointList_SetCurrentMapAreaIndex Parms{};
-
-	Parms.NewMapAreaIndex = NewMapAreaIndex;
+		Func = Class->GetFunction("UserWidgetMinimap", "RequestRender");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
-// Function Zion.UserWidgetRestPointList.CanBeOpened
+// Function Zion.UserWidgetMinimap.HasValidData
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UUserWidgetRestPointList::CanBeOpened() const
+bool UUserWidgetMinimap::HasValidData() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "CanBeOpened");
+		Func = Class->GetFunction("UserWidgetMinimap", "HasValidData");
 
-	Params::UserWidgetRestPointList_CanBeOpened Parms{};
+	Params::UserWidgetMinimap_HasValidData Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -37347,19 +37102,76 @@ bool UUserWidgetRestPointList::CanBeOpened() const
 }
 
 
-// Function Zion.UserWidgetRestPointList.CanChangeMapArea
+// Function Zion.UserWidgetPlayTimeClock.UpdatePlayTime
+// (Final, Native, Public, BlueprintCallable)
+
+void UUserWidgetPlayTimeClock::UpdatePlayTime()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetPlayTimeClock", "UpdatePlayTime");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetStatusEffectIcon.OnStatusEffectFinished
+// (Final, Native, Protected)
+
+void UUserWidgetStatusEffectIcon::OnStatusEffectFinished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "OnStatusEffectFinished");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetStatusEffectIcon.UpdateRemainingDuration
+// (Final, Native, Public, BlueprintCallable)
+
+void UUserWidgetStatusEffectIcon::UpdateRemainingDuration()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "UpdateRemainingDuration");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.UserWidgetStatusEffectIcon.GetCachedStatusEffect
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UStatusEffect*                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UUserWidgetRestPointList::CanChangeMapArea() const
+class UStatusEffect* UUserWidgetStatusEffectIcon::GetCachedStatusEffect() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "CanChangeMapArea");
+		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "GetCachedStatusEffect");
 
-	Params::UserWidgetRestPointList_CanChangeMapArea Parms{};
+	Params::UserWidgetStatusEffectIcon_GetCachedStatusEffect Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -37372,75 +37184,19 @@ bool UUserWidgetRestPointList::CanChangeMapArea() const
 }
 
 
-// Function Zion.UserWidgetRestPointList.GetIndexFromMapAreaName
-// (Final, Native, Protected, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName&                      MapAreaName                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UUserWidgetRestPointList::GetIndexFromMapAreaName(const class FName& MapAreaName) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "GetIndexFromMapAreaName");
-
-	Params::UserWidgetRestPointList_GetIndexFromMapAreaName Parms{};
-
-	Parms.MapAreaName = MapAreaName;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetRestPointList.GetNewMapAreaIndex
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   IndexOffset                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UUserWidgetRestPointList::GetNewMapAreaIndex(int32 IndexOffset) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "GetNewMapAreaIndex");
-
-	Params::UserWidgetRestPointList_GetNewMapAreaIndex Parms{};
-
-	Parms.IndexOffset = IndexOffset;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetRestPointList.IsOpened
+// Function Zion.UserWidgetStatusEffectIcon.GetStatusEffectIconSprite
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TSoftObjectPtr<class UPaperSprite>      ReturnValue                                            (Parm, OutParm, ReturnParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UUserWidgetRestPointList::IsOpened() const
+TSoftObjectPtr<class UPaperSprite> UUserWidgetStatusEffectIcon::GetStatusEffectIconSprite() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetRestPointList", "IsOpened");
+		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "GetStatusEffectIconSprite");
 
-	Params::UserWidgetRestPointList_IsOpened Parms{};
+	Params::UserWidgetStatusEffectIcon_GetStatusEffectIconSprite Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -37453,21 +37209,49 @@ bool UUserWidgetRestPointList::IsOpened() const
 }
 
 
-// Function Zion.UserWidgetWorldSpaceText_Interact.SetAvailable
+// Function Zion.UserWidgetStatusEffectIcon.GetStatusEffectIconSpriteFromType
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const EStatusEffectType&                StatusEffectType                                       (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TSoftObjectPtr<class UPaperSprite>      ReturnValue                                            (Parm, OutParm, ReturnParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+TSoftObjectPtr<class UPaperSprite> UUserWidgetStatusEffectIcon::GetStatusEffectIconSpriteFromType(const EStatusEffectType& StatusEffectType) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UserWidgetStatusEffectIcon", "GetStatusEffectIconSpriteFromType");
+
+	Params::UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType Parms{};
+
+	Parms.StatusEffectType = StatusEffectType;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.UserWidgetWorldSpaceDebug.ClearTextForTag
 // (Native, Event, Public, BlueprintEvent)
 // Parameters:
-// bool                                    bAvailable                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class FName                             Tag                                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UUserWidgetWorldSpaceText_Interact::SetAvailable(bool bAvailable)
+void UUserWidgetWorldSpaceDebug::ClearTextForTag(class FName Tag)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWorldSpaceText_Interact", "SetAvailable");
+		Func = Class->GetFunction("UserWidgetWorldSpaceDebug", "ClearTextForTag");
 
-	Params::UserWidgetWorldSpaceText_Interact_SetAvailable Parms{};
+	Params::UserWidgetWorldSpaceDebug_ClearTextForTag Parms{};
 
-	Parms.bAvailable = bAvailable;
+	Parms.Tag = Tag;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -37478,21 +37262,23 @@ void UUserWidgetWorldSpaceText_Interact::SetAvailable(bool bAvailable)
 }
 
 
-// Function Zion.UserWidgetWrapBox.AddChild
-// (Final, Native, Public, BlueprintCallable)
+// Function Zion.UserWidgetWorldSpaceDebug.SetTextForTag
+// (Native, Event, Public, BlueprintEvent)
 // Parameters:
-// class UWidget*                          Content                                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class FName                             Tag                                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FString&                    Text                                                   (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UUserWidgetWrapBox::AddChild(class UWidget* Content)
+void UUserWidgetWorldSpaceDebug::SetTextForTag(class FName Tag, const class FString& Text)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "AddChild");
+		Func = Class->GetFunction("UserWidgetWorldSpaceDebug", "SetTextForTag");
 
-	Params::UserWidgetWrapBox_AddChild Parms{};
+	Params::UserWidgetWorldSpaceDebug_SetTextForTag Parms{};
 
-	Parms.Content = Content;
+	Parms.Tag = Tag;
+	Parms.Text = std::move(Text);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -37503,284 +37289,24 @@ void UUserWidgetWrapBox::AddChild(class UWidget* Content)
 }
 
 
-// Function Zion.UserWidgetWrapBox.ClearChildren
-// (Final, Native, Public, BlueprintCallable)
-
-void UUserWidgetWrapBox::ClearChildren()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "ClearChildren");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Zion.UserWidgetWrapBox.RemoveChild
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class UWidget*                          Content                                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetWrapBox::RemoveChild(class UWidget* Content)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "RemoveChild");
-
-	Params::UserWidgetWrapBox_RemoveChild Parms{};
-
-	Parms.Content = Content;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetWrapBox.RemoveChildAt
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// int32                                   Index_0                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetWrapBox::RemoveChildAt(int32 Index_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "RemoveChildAt");
-
-	Params::UserWidgetWrapBox_RemoveChildAt Parms{};
-
-	Parms.Index_0 = Index_0;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetWrapBox.GetAllChildren
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// TArray<class UWidget*>                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-TArray<class UWidget*> UUserWidgetWrapBox::GetAllChildren() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "GetAllChildren");
-
-	Params::UserWidgetWrapBox_GetAllChildren Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetWrapBox.GetChildAt
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   Index_0                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UWidget*                          ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UWidget* UUserWidgetWrapBox::GetChildAt(int32 Index_0) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "GetChildAt");
-
-	Params::UserWidgetWrapBox_GetChildAt Parms{};
-
-	Parms.Index_0 = Index_0;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetWrapBox.GetChildIndex
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class UWidget*                    Content                                                (ConstParm, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UUserWidgetWrapBox::GetChildIndex(const class UWidget* Content) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "GetChildIndex");
-
-	Params::UserWidgetWrapBox_GetChildIndex Parms{};
-
-	Parms.Content = Content;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetWrapBox.GetChildrenCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UUserWidgetWrapBox::GetChildrenCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "GetChildrenCount");
-
-	Params::UserWidgetWrapBox_GetChildrenCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetWrapBox.GetWrapNavigationWidget
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    bWrapToTop                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UWidget*                          ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UWidget* UUserWidgetWrapBox::GetWrapNavigationWidget(bool bWrapToTop) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "GetWrapNavigationWidget");
-
-	Params::UserWidgetWrapBox_GetWrapNavigationWidget Parms{};
-
-	Parms.bWrapToTop = bWrapToTop;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetWrapBox.HasAnyChildren
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetWrapBox::HasAnyChildren() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "HasAnyChildren");
-
-	Params::UserWidgetWrapBox_HasAnyChildren Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.UserWidgetWrapBox.HasChild
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UWidget*                          Content                                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UUserWidgetWrapBox::HasChild(class UWidget* Content) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetWrapBox", "HasChild");
-
-	Params::UserWidgetWrapBox_HasChild Parms{};
-
-	Parms.Content = Content;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Zion.WaitGameUnpaused.WaitGameUnpaused
+// Function Zion.WaitGameReadyAsyncAction.WaitGameReady
 // (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
 // const class UObject*                    WorldContextObject                                     (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UWaitGameUnpaused*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bAlsoWaitWorldLoading                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UWaitGameReadyAsyncAction*        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class UWaitGameUnpaused* UWaitGameUnpaused::WaitGameUnpaused(const class UObject* WorldContextObject)
+class UWaitGameReadyAsyncAction* UWaitGameReadyAsyncAction::WaitGameReady(const class UObject* WorldContextObject, bool bAlsoWaitWorldLoading)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("WaitGameUnpaused", "WaitGameUnpaused");
+		Func = StaticClass()->GetFunction("WaitGameReadyAsyncAction", "WaitGameReady");
 
-	Params::WaitGameUnpaused_WaitGameUnpaused Parms{};
+	Params::WaitGameReadyAsyncAction_WaitGameReady Parms{};
 
 	Parms.WorldContextObject = WorldContextObject;
+	Parms.bAlsoWaitWorldLoading = bAlsoWaitWorldLoading;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -37793,31 +37319,549 @@ class UWaitGameUnpaused* UWaitGameUnpaused::WaitGameUnpaused(const class UObject
 }
 
 
-// Function Zion.WorldSpaceWidgetHolder.CreateWorldSpaceWidgetHolder
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const class UObject*                    WorldObjectContext                                     (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const TSubclassOf<class UUserWidgetWorldSpace>&UserWidgetWorldSpaceClass                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EWidgetReleaseMode                      ReleaseMode                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AWorldSpaceWidgetHolder*          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Zion.WorldLoaderSubsystem.OnFadeInFinished
+// (Final, Native, Private)
 
-class AWorldSpaceWidgetHolder* AWorldSpaceWidgetHolder::CreateWorldSpaceWidgetHolder(const class UObject* WorldObjectContext, const TSubclassOf<class UUserWidgetWorldSpace>& UserWidgetWorldSpaceClass, EWidgetReleaseMode ReleaseMode)
+void UWorldLoaderSubsystem::OnFadeInFinished()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("WorldSpaceWidgetHolder", "CreateWorldSpaceWidgetHolder");
-
-	Params::WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder Parms{};
-
-	Parms.WorldObjectContext = WorldObjectContext;
-	Parms.UserWidgetWorldSpaceClass = UserWidgetWorldSpaceClass;
-	Parms.ReleaseMode = ReleaseMode;
+		Func = Class->GetFunction("WorldLoaderSubsystem", "OnFadeInFinished");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.OnFadeOutFinished
+// (Final, Native, Private)
+
+void UWorldLoaderSubsystem::OnFadeOutFinished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "OnFadeOutFinished");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.OnLevelStreamingDynamicLoaded
+// (Final, Native, Private)
+
+void UWorldLoaderSubsystem::OnLevelStreamingDynamicLoaded()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "OnLevelStreamingDynamicLoaded");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.OnPostLoad
+// (Final, Native, Private)
+
+void UWorldLoaderSubsystem::OnPostLoad()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "OnPostLoad");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.OpenGameMap
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FDataTableRowHandle&       GameMapHandle                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// const class FName                       PlayerStartTag                                         (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bForceReload                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FFadeDescriptionData&      FadeOutDescription                                     (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// const struct FFadeDescriptionData&      FadeInDescription                                      (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+
+void UWorldLoaderSubsystem::OpenGameMap(const struct FDataTableRowHandle& GameMapHandle, const class FName PlayerStartTag, bool bForceReload, const struct FFadeDescriptionData& FadeOutDescription, const struct FFadeDescriptionData& FadeInDescription)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "OpenGameMap");
+
+	Params::WorldLoaderSubsystem_OpenGameMap Parms{};
+
+	Parms.GameMapHandle = std::move(GameMapHandle);
+	Parms.PlayerStartTag = PlayerStartTag;
+	Parms.bForceReload = bForceReload;
+	Parms.FadeOutDescription = std::move(FadeOutDescription);
+	Parms.FadeInDescription = std::move(FadeInDescription);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.OpenWorld
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// TSoftObjectPtr<class UWorld>            WorldToLoad                                            (Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class FName                             PlayerStartTag                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FFadeDescriptionData&      FadeOutDescription                                     (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// const struct FFadeDescriptionData&      FadeInDescription                                      (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+
+void UWorldLoaderSubsystem::OpenWorld(TSoftObjectPtr<class UWorld> WorldToLoad, class FName PlayerStartTag, const struct FFadeDescriptionData& FadeOutDescription, const struct FFadeDescriptionData& FadeInDescription)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "OpenWorld");
+
+	Params::WorldLoaderSubsystem_OpenWorld Parms{};
+
+	Parms.WorldToLoad = WorldToLoad;
+	Parms.PlayerStartTag = PlayerStartTag;
+	Parms.FadeOutDescription = std::move(FadeOutDescription);
+	Parms.FadeInDescription = std::move(FadeInDescription);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.SwitchGameMap_PostFadeIn
+// (Final, Native, Private)
+
+void UWorldLoaderSubsystem::SwitchGameMap_PostFadeIn()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "SwitchGameMap_PostFadeIn");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.SwitchGameMap_PostFadeOut
+// (Final, Native, Private)
+
+void UWorldLoaderSubsystem::SwitchGameMap_PostFadeOut()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "SwitchGameMap_PostFadeOut");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.GetCurrentGameMapData
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FGameMapData               ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+const struct FGameMapData UWorldLoaderSubsystem::GetCurrentGameMapData() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "GetCurrentGameMapData");
+
+	Params::WorldLoaderSubsystem_GetCurrentGameMapData Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.GetCurrentGameMapID
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class FName                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FName UWorldLoaderSubsystem::GetCurrentGameMapID() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "GetCurrentGameMapID");
+
+	Params::WorldLoaderSubsystem_GetCurrentGameMapID Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.GetCurrentPlayerStartTag
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class FName                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FName UWorldLoaderSubsystem::GetCurrentPlayerStartTag() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "GetCurrentPlayerStartTag");
+
+	Params::WorldLoaderSubsystem_GetCurrentPlayerStartTag Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.IsAvailable
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWorldLoaderSubsystem::IsAvailable() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "IsAvailable");
+
+	Params::WorldLoaderSubsystem_IsAvailable Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.WorldLoaderSubsystem.IsLoading
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    bConsiderFadeAsLoading                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWorldLoaderSubsystem::IsLoading(bool bConsiderFadeAsLoading) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorldLoaderSubsystem", "IsLoading");
+
+	Params::WorldLoaderSubsystem_IsLoading Parms{};
+
+	Parms.bConsiderFadeAsLoading = bConsiderFadeAsLoading;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.GetActiveControllerID
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UZionInputDeviceSubsystem::GetActiveControllerID()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "GetActiveControllerID");
+
+	Params::ZionInputDeviceSubsystem_GetActiveControllerID Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.LockActiveController
+// (Final, Native, Public, BlueprintCallable)
+
+void UZionInputDeviceSubsystem::LockActiveController()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "LockActiveController");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.SetInputStyleGamepadOverride
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// EInputStyle                             NewInputStyleGamepadOverride                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UZionInputDeviceSubsystem::SetInputStyleGamepadOverride(EInputStyle NewInputStyleGamepadOverride)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "SetInputStyleGamepadOverride");
+
+	Params::ZionInputDeviceSubsystem_SetInputStyleGamepadOverride Parms{};
+
+	Parms.NewInputStyleGamepadOverride = NewInputStyleGamepadOverride;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.UnlockActiveController
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                                    bResetLockCount                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UZionInputDeviceSubsystem::UnlockActiveController(bool bResetLockCount)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "UnlockActiveController");
+
+	Params::ZionInputDeviceSubsystem_UnlockActiveController Parms{};
+
+	Parms.bResetLockCount = bResetLockCount;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.GetInputStyle
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EInputStyle                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EInputStyle UZionInputDeviceSubsystem::GetInputStyle() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "GetInputStyle");
+
+	Params::ZionInputDeviceSubsystem_GetInputStyle Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.GetInputStyleGamepadOverride
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EInputStyle                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EInputStyle UZionInputDeviceSubsystem::GetInputStyleGamepadOverride() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "GetInputStyleGamepadOverride");
+
+	Params::ZionInputDeviceSubsystem_GetInputStyleGamepadOverride Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.IsActiveControllerLocked
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZionInputDeviceSubsystem::IsActiveControllerLocked() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "IsActiveControllerLocked");
+
+	Params::ZionInputDeviceSubsystem_IsActiveControllerLocked Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.IsAnyGamepadConnected
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZionInputDeviceSubsystem::IsAnyGamepadConnected() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "IsAnyGamepadConnected");
+
+	Params::ZionInputDeviceSubsystem_IsAnyGamepadConnected Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.IsCursorVisible
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZionInputDeviceSubsystem::IsCursorVisible() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "IsCursorVisible");
+
+	Params::ZionInputDeviceSubsystem_IsCursorVisible Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Zion.ZionInputDeviceSubsystem.IsUsingGamepad
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UZionInputDeviceSubsystem::IsUsingGamepad() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ZionInputDeviceSubsystem", "IsUsingGamepad");
+
+	Params::ZionInputDeviceSubsystem_IsUsingGamepad Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 

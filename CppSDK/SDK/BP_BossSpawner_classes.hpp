@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "Engine_structs.hpp"
 #include "BP_EnemySpawner_classes.hpp"
 #include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
 #include "EventSystem_structs.hpp"
 #include "Zion_structs.hpp"
 
@@ -22,7 +22,7 @@ namespace SDK
 
 // BlueprintGeneratedClass BP_BossSpawner.BP_BossSpawner_C
 // 0x0230 (0x0720 - 0x04F0)
-class ABP_BossSpawner_C final : public ABP_EnemySpawner_C
+class ABP_BossSpawner_C : public ABP_EnemySpawner_C
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x04F0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)

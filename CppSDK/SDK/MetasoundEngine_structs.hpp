@@ -61,6 +61,14 @@ public:
 static_assert(alignof(FMetaSoundOutput) == 0x000008, "Wrong alignment on FMetaSoundOutput");
 static_assert(sizeof(FMetaSoundOutput) == 0x000010, "Wrong size on FMetaSoundOutput");
 
+// ScriptStruct MetasoundEngine.MetaSoundBuilderNodeOutputHandle
+// 0x0000 (0x0020 - 0x0020)
+struct FMetaSoundBuilderNodeOutputHandle final : public FMetasoundFrontendVertexHandle
+{
+};
+static_assert(alignof(FMetaSoundBuilderNodeOutputHandle) == 0x000004, "Wrong alignment on FMetaSoundBuilderNodeOutputHandle");
+static_assert(sizeof(FMetaSoundBuilderNodeOutputHandle) == 0x000020, "Wrong size on FMetaSoundBuilderNodeOutputHandle");
+
 // ScriptStruct MetasoundEngine.DefaultMetaSoundAssetAutoUpdateSettings
 // 0x0020 (0x0020 - 0x0000)
 struct FDefaultMetaSoundAssetAutoUpdateSettings final
@@ -116,14 +124,6 @@ struct FMetaSoundBuilderNodeInputHandle final : public FMetasoundFrontendVertexH
 };
 static_assert(alignof(FMetaSoundBuilderNodeInputHandle) == 0x000004, "Wrong alignment on FMetaSoundBuilderNodeInputHandle");
 static_assert(sizeof(FMetaSoundBuilderNodeInputHandle) == 0x000020, "Wrong size on FMetaSoundBuilderNodeInputHandle");
-
-// ScriptStruct MetasoundEngine.MetaSoundBuilderNodeOutputHandle
-// 0x0000 (0x0020 - 0x0020)
-struct FMetaSoundBuilderNodeOutputHandle final : public FMetasoundFrontendVertexHandle
-{
-};
-static_assert(alignof(FMetaSoundBuilderNodeOutputHandle) == 0x000004, "Wrong alignment on FMetaSoundBuilderNodeOutputHandle");
-static_assert(sizeof(FMetaSoundBuilderNodeOutputHandle) == 0x000020, "Wrong size on FMetaSoundBuilderNodeOutputHandle");
 
 // ScriptStruct MetasoundEngine.MetaSoundNodeHandle
 // 0x0010 (0x0010 - 0x0000)

@@ -34,15 +34,15 @@ public:
 	EStretch                                      LabelScaleBoxStretch;                              // 0x04A8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void SetLabelScaleBoxStretch(EStretch InStretch);
-	void SetLabelImage(class UPaperSprite* InputPin);
-	void SetLabel(const class FText& InText);
-	void SetFocusDisplay(bool Focused);
-	void PreConstruct(bool IsDesignTime);
-	void OnSetIsEnabled(bool bInIsEnabled);
-	void OnRemovedFromFocusPath(const struct FFocusEvent& InFocusEvent);
-	void OnAddedToFocusPath(const struct FFocusEvent& InFocusEvent);
 	void ExecuteUbergraph_WBP_Settings_Entry_Label(int32 EntryPoint);
+	void OnAddedToFocusPath(const struct FFocusEvent& InFocusEvent);
+	void OnRemovedFromFocusPath(const struct FFocusEvent& InFocusEvent);
+	void OnSetIsEnabled(bool bInIsEnabled);
+	void PreConstruct(bool IsDesignTime);
+	void SetFocusDisplay(bool Focused);
+	void SetLabel(const class FText& InText);
+	void SetLabelImage(class UPaperSprite* InputPin);
+	void SetLabelScaleBoxStretch(EStretch InStretch);
 
 public:
 	static class UClass* StaticClass()

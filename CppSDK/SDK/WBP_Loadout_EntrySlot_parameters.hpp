@@ -14,17 +14,6 @@
 namespace SDK::Params
 {
 
-// Function WBP_Loadout_EntrySlot.WBP_Loadout_EntrySlot_C.ExecuteUbergraph_WBP_Loadout_EntrySlot
-// 0x0004 (0x0004 - 0x0000)
-struct WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot) == 0x000004, "Wrong alignment on WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot");
-static_assert(sizeof(WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot) == 0x000004, "Wrong size on WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot");
-static_assert(offsetof(WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot, EntryPoint) == 0x000000, "Member 'WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot::EntryPoint' has a wrong offset!");
-
 // Function WBP_Loadout_EntrySlot.WBP_Loadout_EntrySlot_C.SetSelected
 // 0x0010 (0x0010 - 0x0000)
 struct WBP_Loadout_EntrySlot_C_SetSelected final
@@ -40,6 +29,17 @@ static_assert(sizeof(WBP_Loadout_EntrySlot_C_SetSelected) == 0x000010, "Wrong si
 static_assert(offsetof(WBP_Loadout_EntrySlot_C_SetSelected, bSelected) == 0x000000, "Member 'WBP_Loadout_EntrySlot_C_SetSelected::bSelected' has a wrong offset!");
 static_assert(offsetof(WBP_Loadout_EntrySlot_C_SetSelected, Temp_bool_Variable) == 0x000001, "Member 'WBP_Loadout_EntrySlot_C_SetSelected::Temp_bool_Variable' has a wrong offset!");
 static_assert(offsetof(WBP_Loadout_EntrySlot_C_SetSelected, K2Node_Select_Default) == 0x000008, "Member 'WBP_Loadout_EntrySlot_C_SetSelected::K2Node_Select_Default' has a wrong offset!");
+
+// Function WBP_Loadout_EntrySlot.WBP_Loadout_EntrySlot_C.ExecuteUbergraph_WBP_Loadout_EntrySlot
+// 0x0004 (0x0004 - 0x0000)
+struct WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot) == 0x000004, "Wrong alignment on WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot");
+static_assert(sizeof(WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot) == 0x000004, "Wrong size on WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot");
+static_assert(offsetof(WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot, EntryPoint) == 0x000000, "Member 'WBP_Loadout_EntrySlot_C_ExecuteUbergraph_WBP_Loadout_EntrySlot::EntryPoint' has a wrong offset!");
 
 }
 

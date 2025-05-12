@@ -17,63 +17,71 @@
 namespace SDK
 {
 
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.Construct
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.Tick
 // (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UWBP_Recollection_BossRush_Timer_C::Construct()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "Construct");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.Destruct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UWBP_Recollection_BossRush_Timer_C::Destruct()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "Destruct");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.ExecuteUbergraph_WBP_Recollection_BossRush_Timer
-// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const struct FGeometry&                 MyGeometry                                             (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+// float                                   InDeltaTime                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Recollection_BossRush_Timer_C::ExecuteUbergraph_WBP_Recollection_BossRush_Timer(int32 EntryPoint)
+void UWBP_Recollection_BossRush_Timer_C::Tick(const struct FGeometry& MyGeometry, float InDeltaTime)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "ExecuteUbergraph_WBP_Recollection_BossRush_Timer");
+		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "Tick");
 
-	Params::WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Recollection_BossRush_Timer Parms{};
+	Params::WBP_Recollection_BossRush_Timer_C_Tick Parms{};
 
-	Parms.EntryPoint = EntryPoint;
+	Parms.MyGeometry = std::move(MyGeometry);
+	Parms.InDeltaTime = InDeltaTime;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.OnDisplayPlayerUIChanged
-// (BlueprintCallable, BlueprintEvent)
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.SetCurrentBossIndex
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int32                                   Index_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Recollection_BossRush_Timer_C::OnDisplayPlayerUIChanged()
+void UWBP_Recollection_BossRush_Timer_C::SetCurrentBossIndex(int32 Index_0)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "OnDisplayPlayerUIChanged");
+		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "SetCurrentBossIndex");
+
+	Params::WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex Parms{};
+
+	Parms.Index_0 = Index_0;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.RefreshVisibility
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWBP_Recollection_BossRush_Timer_C::RefreshVisibility()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "RefreshVisibility");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.RefreshTimerText
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UWBP_Recollection_BossRush_Timer_C::RefreshTimerText()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "RefreshTimerText");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -99,73 +107,65 @@ void UWBP_Recollection_BossRush_Timer_C::PauseTimer(bool bPaused)
 }
 
 
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.RefreshTimerText
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.OnDisplayPlayerUIChanged
+// (BlueprintCallable, BlueprintEvent)
 
-void UWBP_Recollection_BossRush_Timer_C::RefreshTimerText()
+void UWBP_Recollection_BossRush_Timer_C::OnDisplayPlayerUIChanged()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "RefreshTimerText");
+		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "OnDisplayPlayerUIChanged");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.RefreshVisibility
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UWBP_Recollection_BossRush_Timer_C::RefreshVisibility()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "RefreshVisibility");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.SetCurrentBossIndex
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.ExecuteUbergraph_WBP_Recollection_BossRush_Timer
+// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
-// int32                                   Index_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Recollection_BossRush_Timer_C::SetCurrentBossIndex(int32 Index_0)
+void UWBP_Recollection_BossRush_Timer_C::ExecuteUbergraph_WBP_Recollection_BossRush_Timer(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "SetCurrentBossIndex");
+		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "ExecuteUbergraph_WBP_Recollection_BossRush_Timer");
 
-	Params::WBP_Recollection_BossRush_Timer_C_SetCurrentBossIndex Parms{};
+	Params::WBP_Recollection_BossRush_Timer_C_ExecuteUbergraph_WBP_Recollection_BossRush_Timer Parms{};
 
-	Parms.Index_0 = Index_0;
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.Tick
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.Destruct
 // (BlueprintCosmetic, Event, Public, BlueprintEvent)
-// Parameters:
-// const struct FGeometry&                 MyGeometry                                             (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
-// float                                   InDeltaTime                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Recollection_BossRush_Timer_C::Tick(const struct FGeometry& MyGeometry, float InDeltaTime)
+void UWBP_Recollection_BossRush_Timer_C::Destruct()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "Tick");
+		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "Destruct");
 
-	Params::WBP_Recollection_BossRush_Timer_C_Tick Parms{};
+	UObject::ProcessEvent(Func, nullptr);
+}
 
-	Parms.MyGeometry = std::move(MyGeometry);
-	Parms.InDeltaTime = InDeltaTime;
 
-	UObject::ProcessEvent(Func, &Parms);
+// Function WBP_Recollection_BossRush_Timer.WBP_Recollection_BossRush_Timer_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void UWBP_Recollection_BossRush_Timer_C::Construct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Recollection_BossRush_Timer_C", "Construct");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

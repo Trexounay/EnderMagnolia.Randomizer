@@ -18,7 +18,7 @@ namespace SDK
 
 // BlueprintGeneratedClass CameraShake_Small.CameraShake_Small_C
 // 0x0000 (0x00E0 - 0x00E0)
-class UCameraShake_Small_C : public UDefaultCameraShakeBase
+class UCameraShake_Small_C final : public UDefaultCameraShakeBase
 {
 public:
 	static class UClass* StaticClass()

@@ -17,67 +17,19 @@
 namespace SDK
 {
 
-// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.Construct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UWBP_Recollection_BossRush_BossProgression_C::Construct()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "Construct");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression
-// (Final, UbergraphFunction, HasDefaults)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Recollection_BossRush_BossProgression_C::ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression");
-
-	Params::WBP_Recollection_BossRush_BossProgression_C_ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.ResetEntries
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UWBP_Recollection_BossRush_BossProgression_C::ResetEntries()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "ResetEntries");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.SetActiveEntry
+// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.SetDefeatedEntry
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // int32                                   Index_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Recollection_BossRush_BossProgression_C::SetActiveEntry(int32 Index_0)
+void UWBP_Recollection_BossRush_BossProgression_C::SetDefeatedEntry(int32 Index_0)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "SetActiveEntry");
+		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "SetDefeatedEntry");
 
-	Params::WBP_Recollection_BossRush_BossProgression_C_SetActiveEntry Parms{};
+	Params::WBP_Recollection_BossRush_BossProgression_C_SetDefeatedEntry Parms{};
 
 	Parms.Index_0 = Index_0;
 
@@ -105,23 +57,71 @@ void UWBP_Recollection_BossRush_BossProgression_C::SetBossesDefeatedCount(int32 
 }
 
 
-// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.SetDefeatedEntry
+// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.SetActiveEntry
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // int32                                   Index_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Recollection_BossRush_BossProgression_C::SetDefeatedEntry(int32 Index_0)
+void UWBP_Recollection_BossRush_BossProgression_C::SetActiveEntry(int32 Index_0)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "SetDefeatedEntry");
+		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "SetActiveEntry");
 
-	Params::WBP_Recollection_BossRush_BossProgression_C_SetDefeatedEntry Parms{};
+	Params::WBP_Recollection_BossRush_BossProgression_C_SetActiveEntry Parms{};
 
 	Parms.Index_0 = Index_0;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.ResetEntries
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWBP_Recollection_BossRush_BossProgression_C::ResetEntries()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "ResetEntries");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_Recollection_BossRush_BossProgression_C::ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression");
+
+	Params::WBP_Recollection_BossRush_BossProgression_C_ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Recollection_BossRush_BossProgression.WBP_Recollection_BossRush_BossProgression_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void UWBP_Recollection_BossRush_BossProgression_C::Construct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Recollection_BossRush_BossProgression_C", "Construct");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

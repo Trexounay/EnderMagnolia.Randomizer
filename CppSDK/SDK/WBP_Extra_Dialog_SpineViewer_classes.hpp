@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "Zion_structs.hpp"
 #include "Zion_classes.hpp"
-#include "CoreUObject_structs.hpp"
 #include "UMG_structs.hpp"
 
 

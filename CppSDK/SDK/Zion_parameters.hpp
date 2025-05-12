@@ -130,6 +130,20 @@ static_assert(alignof(AbilityEffect_IsFrontalAbility) == 0x000001, "Wrong alignm
 static_assert(sizeof(AbilityEffect_IsFrontalAbility) == 0x000001, "Wrong size on AbilityEffect_IsFrontalAbility");
 static_assert(offsetof(AbilityEffect_IsFrontalAbility, ReturnValue) == 0x000000, "Member 'AbilityEffect_IsFrontalAbility::ReturnValue' has a wrong offset!");
 
+// Function Zion.EventAction_MoveTo_TalkDistance.OnMoveCompleted
+// 0x0008 (0x0008 - 0x0000)
+struct EventAction_MoveTo_TalkDistance_OnMoveCompleted final
+{
+public:
+	struct FAIRequestID                           RequestID;                                         // 0x0000(0x0004)(Parm, NoDestructor, NativeAccessSpecifierPublic)
+	EPathFollowingResult                          Result;                                            // 0x0004(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(EventAction_MoveTo_TalkDistance_OnMoveCompleted) == 0x000004, "Wrong alignment on EventAction_MoveTo_TalkDistance_OnMoveCompleted");
+static_assert(sizeof(EventAction_MoveTo_TalkDistance_OnMoveCompleted) == 0x000008, "Wrong size on EventAction_MoveTo_TalkDistance_OnMoveCompleted");
+static_assert(offsetof(EventAction_MoveTo_TalkDistance_OnMoveCompleted, RequestID) == 0x000000, "Member 'EventAction_MoveTo_TalkDistance_OnMoveCompleted::RequestID' has a wrong offset!");
+static_assert(offsetof(EventAction_MoveTo_TalkDistance_OnMoveCompleted, Result) == 0x000004, "Member 'EventAction_MoveTo_TalkDistance_OnMoveCompleted::Result' has a wrong offset!");
+
 // Function Zion.AbilityEffectTimed.OnUpdate
 // 0x000C (0x000C - 0x0000)
 struct AbilityEffectTimed_OnUpdate final
@@ -244,133 +258,6 @@ public:
 static_assert(alignof(RecollectionBossBaseComponent_IsStarted) == 0x000001, "Wrong alignment on RecollectionBossBaseComponent_IsStarted");
 static_assert(sizeof(RecollectionBossBaseComponent_IsStarted) == 0x000001, "Wrong size on RecollectionBossBaseComponent_IsStarted");
 static_assert(offsetof(RecollectionBossBaseComponent_IsStarted, ReturnValue) == 0x000000, "Member 'RecollectionBossBaseComponent_IsStarted::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.GetMaxBossesDefeatedCount
-// 0x0004 (0x0004 - 0x0000)
-struct RecollectionBossRushComponent_GetMaxBossesDefeatedCount final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_GetMaxBossesDefeatedCount) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_GetMaxBossesDefeatedCount");
-static_assert(sizeof(RecollectionBossRushComponent_GetMaxBossesDefeatedCount) == 0x000004, "Wrong size on RecollectionBossRushComponent_GetMaxBossesDefeatedCount");
-static_assert(offsetof(RecollectionBossRushComponent_GetMaxBossesDefeatedCount, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_GetMaxBossesDefeatedCount::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.GetRecordData
-// 0x0008 (0x0008 - 0x0000)
-struct RecollectionBossRushComponent_GetRecordData final
-{
-public:
-	int32                                         RecordIndex;                                       // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRecollectionBossRushRecordData        ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_GetRecordData) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_GetRecordData");
-static_assert(sizeof(RecollectionBossRushComponent_GetRecordData) == 0x000008, "Wrong size on RecollectionBossRushComponent_GetRecordData");
-static_assert(offsetof(RecollectionBossRushComponent_GetRecordData, RecordIndex) == 0x000000, "Member 'RecollectionBossRushComponent_GetRecordData::RecordIndex' has a wrong offset!");
-static_assert(offsetof(RecollectionBossRushComponent_GetRecordData, ReturnValue) == 0x000004, "Member 'RecollectionBossRushComponent_GetRecordData::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.OnSetTimerPaused
-// 0x0001 (0x0001 - 0x0000)
-struct RecollectionBossRushComponent_OnSetTimerPaused final
-{
-public:
-	bool                                          bIsPaused;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_OnSetTimerPaused) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_OnSetTimerPaused");
-static_assert(sizeof(RecollectionBossRushComponent_OnSetTimerPaused) == 0x000001, "Wrong size on RecollectionBossRushComponent_OnSetTimerPaused");
-static_assert(offsetof(RecollectionBossRushComponent_OnSetTimerPaused, bIsPaused) == 0x000000, "Member 'RecollectionBossRushComponent_OnSetTimerPaused::bIsPaused' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.SetTimerPaused
-// 0x0002 (0x0002 - 0x0000)
-struct RecollectionBossRushComponent_SetTimerPaused final
-{
-public:
-	bool                                          bIsPaused;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_SetTimerPaused) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_SetTimerPaused");
-static_assert(sizeof(RecollectionBossRushComponent_SetTimerPaused) == 0x000002, "Wrong size on RecollectionBossRushComponent_SetTimerPaused");
-static_assert(offsetof(RecollectionBossRushComponent_SetTimerPaused, bIsPaused) == 0x000000, "Member 'RecollectionBossRushComponent_SetTimerPaused::bIsPaused' has a wrong offset!");
-static_assert(offsetof(RecollectionBossRushComponent_SetTimerPaused, ReturnValue) == 0x000001, "Member 'RecollectionBossRushComponent_SetTimerPaused::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.TryAddNewRecord
-// 0x0008 (0x0008 - 0x0000)
-struct RecollectionBossRushComponent_TryAddNewRecord final
-{
-public:
-	struct FRecollectionBossRushRecordData        NewRecordData;                                     // 0x0000(0x0004)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_TryAddNewRecord) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_TryAddNewRecord");
-static_assert(sizeof(RecollectionBossRushComponent_TryAddNewRecord) == 0x000008, "Wrong size on RecollectionBossRushComponent_TryAddNewRecord");
-static_assert(offsetof(RecollectionBossRushComponent_TryAddNewRecord, NewRecordData) == 0x000000, "Member 'RecollectionBossRushComponent_TryAddNewRecord::NewRecordData' has a wrong offset!");
-static_assert(offsetof(RecollectionBossRushComponent_TryAddNewRecord, ReturnValue) == 0x000004, "Member 'RecollectionBossRushComponent_TryAddNewRecord::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.CanUpdateTime
-// 0x0001 (0x0001 - 0x0000)
-struct RecollectionBossRushComponent_CanUpdateTime final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_CanUpdateTime) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_CanUpdateTime");
-static_assert(sizeof(RecollectionBossRushComponent_CanUpdateTime) == 0x000001, "Wrong size on RecollectionBossRushComponent_CanUpdateTime");
-static_assert(offsetof(RecollectionBossRushComponent_CanUpdateTime, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_CanUpdateTime::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.GetBossRushDifficultyPreset
-// 0x0001 (0x0001 - 0x0000)
-struct RecollectionBossRushComponent_GetBossRushDifficultyPreset final
-{
-public:
-	EDifficultyPreset                             ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_GetBossRushDifficultyPreset) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_GetBossRushDifficultyPreset");
-static_assert(sizeof(RecollectionBossRushComponent_GetBossRushDifficultyPreset) == 0x000001, "Wrong size on RecollectionBossRushComponent_GetBossRushDifficultyPreset");
-static_assert(offsetof(RecollectionBossRushComponent_GetBossRushDifficultyPreset, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_GetBossRushDifficultyPreset::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.GetBossRushTime
-// 0x0004 (0x0004 - 0x0000)
-struct RecollectionBossRushComponent_GetBossRushTime final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_GetBossRushTime) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_GetBossRushTime");
-static_assert(sizeof(RecollectionBossRushComponent_GetBossRushTime) == 0x000004, "Wrong size on RecollectionBossRushComponent_GetBossRushTime");
-static_assert(offsetof(RecollectionBossRushComponent_GetBossRushTime, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_GetBossRushTime::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.GetCurrentBossIndex
-// 0x0004 (0x0004 - 0x0000)
-struct RecollectionBossRushComponent_GetCurrentBossIndex final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_GetCurrentBossIndex) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_GetCurrentBossIndex");
-static_assert(sizeof(RecollectionBossRushComponent_GetCurrentBossIndex) == 0x000004, "Wrong size on RecollectionBossRushComponent_GetCurrentBossIndex");
-static_assert(offsetof(RecollectionBossRushComponent_GetCurrentBossIndex, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_GetCurrentBossIndex::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.IsTimerPaused
-// 0x0001 (0x0001 - 0x0000)
-struct RecollectionBossRushComponent_IsTimerPaused final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_IsTimerPaused) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_IsTimerPaused");
-static_assert(sizeof(RecollectionBossRushComponent_IsTimerPaused) == 0x000001, "Wrong size on RecollectionBossRushComponent_IsTimerPaused");
-static_assert(offsetof(RecollectionBossRushComponent_IsTimerPaused, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_IsTimerPaused::ReturnValue' has a wrong offset!");
-
-// Function Zion.RecollectionBossRushComponent.ShouldDisplayRecollectionBossRush
-// 0x0001 (0x0001 - 0x0000)
-struct RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush");
-static_assert(sizeof(RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush) == 0x000001, "Wrong size on RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush");
-static_assert(offsetof(RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush::ReturnValue' has a wrong offset!");
 
 // Function Zion.CommandModule.GetCharacter
 // 0x0008 (0x0008 - 0x0000)
@@ -597,27 +484,27 @@ static_assert(alignof(Command_IsInvokedInputPressed) == 0x000001, "Wrong alignme
 static_assert(sizeof(Command_IsInvokedInputPressed) == 0x000001, "Wrong size on Command_IsInvokedInputPressed");
 static_assert(offsetof(Command_IsInvokedInputPressed, ReturnValue) == 0x000000, "Member 'Command_IsInvokedInputPressed::ReturnValue' has a wrong offset!");
 
-// Function Zion.StatusEffect.GetDuration
-// 0x0004 (0x0004 - 0x0000)
-struct StatusEffect_GetDuration final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(StatusEffect_GetDuration) == 0x000004, "Wrong alignment on StatusEffect_GetDuration");
-static_assert(sizeof(StatusEffect_GetDuration) == 0x000004, "Wrong size on StatusEffect_GetDuration");
-static_assert(offsetof(StatusEffect_GetDuration, ReturnValue) == 0x000000, "Member 'StatusEffect_GetDuration::ReturnValue' has a wrong offset!");
-
-// Function Zion.StatusEffect.GetStatusEffectType
+// Function Zion.StatusEffectComponent.LaunchStatusEffect
 // 0x0001 (0x0001 - 0x0000)
-struct StatusEffect_GetStatusEffectType final
+struct StatusEffectComponent_LaunchStatusEffect final
 {
 public:
-	EStatusEffectType                             ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EStatusEffectType                             StatusEffectType;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(StatusEffect_GetStatusEffectType) == 0x000001, "Wrong alignment on StatusEffect_GetStatusEffectType");
-static_assert(sizeof(StatusEffect_GetStatusEffectType) == 0x000001, "Wrong size on StatusEffect_GetStatusEffectType");
-static_assert(offsetof(StatusEffect_GetStatusEffectType, ReturnValue) == 0x000000, "Member 'StatusEffect_GetStatusEffectType::ReturnValue' has a wrong offset!");
+static_assert(alignof(StatusEffectComponent_LaunchStatusEffect) == 0x000001, "Wrong alignment on StatusEffectComponent_LaunchStatusEffect");
+static_assert(sizeof(StatusEffectComponent_LaunchStatusEffect) == 0x000001, "Wrong size on StatusEffectComponent_LaunchStatusEffect");
+static_assert(offsetof(StatusEffectComponent_LaunchStatusEffect, StatusEffectType) == 0x000000, "Member 'StatusEffectComponent_LaunchStatusEffect::StatusEffectType' has a wrong offset!");
+
+// Function Zion.StatusEffectComponent.LaunchStatusEffectFromClass
+// 0x0008 (0x0008 - 0x0000)
+struct StatusEffectComponent_LaunchStatusEffectFromClass final
+{
+public:
+	TSubclassOf<class UStatusEffect>              StatusEffectClass;                                 // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(StatusEffectComponent_LaunchStatusEffectFromClass) == 0x000008, "Wrong alignment on StatusEffectComponent_LaunchStatusEffectFromClass");
+static_assert(sizeof(StatusEffectComponent_LaunchStatusEffectFromClass) == 0x000008, "Wrong size on StatusEffectComponent_LaunchStatusEffectFromClass");
+static_assert(offsetof(StatusEffectComponent_LaunchStatusEffectFromClass, StatusEffectClass) == 0x000000, "Member 'StatusEffectComponent_LaunchStatusEffectFromClass::StatusEffectClass' has a wrong offset!");
 
 // Function Zion.AbilityHitboxTarget.GetTarget
 // 0x0008 (0x0008 - 0x0000)
@@ -630,38 +517,871 @@ static_assert(alignof(AbilityHitboxTarget_GetTarget) == 0x000008, "Wrong alignme
 static_assert(sizeof(AbilityHitboxTarget_GetTarget) == 0x000008, "Wrong size on AbilityHitboxTarget_GetTarget");
 static_assert(offsetof(AbilityHitboxTarget_GetTarget, ReturnValue) == 0x000000, "Member 'AbilityHitboxTarget_GetTarget::ReturnValue' has a wrong offset!");
 
-// Function Zion.GameStatsComponent.SetPause
+// Function Zion.GameSettingsSubsystem.GetMaxResolutionScale
 // 0x0004 (0x0004 - 0x0000)
-struct GameStatsComponent_SetPause final
+struct GameSettingsSubsystem_GetMaxResolutionScale final
 {
 public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameStatsComponent_SetPause) == 0x000004, "Wrong alignment on GameStatsComponent_SetPause");
-static_assert(sizeof(GameStatsComponent_SetPause) == 0x000004, "Wrong size on GameStatsComponent_SetPause");
-static_assert(offsetof(GameStatsComponent_SetPause, ReturnValue) == 0x000000, "Member 'GameStatsComponent_SetPause::ReturnValue' has a wrong offset!");
+static_assert(alignof(GameSettingsSubsystem_GetMaxResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetMaxResolutionScale");
+static_assert(sizeof(GameSettingsSubsystem_GetMaxResolutionScale) == 0x000004, "Wrong size on GameSettingsSubsystem_GetMaxResolutionScale");
+static_assert(offsetof(GameSettingsSubsystem_GetMaxResolutionScale, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetMaxResolutionScale::ReturnValue' has a wrong offset!");
 
-// Function Zion.GameStatsComponent.UnsetPause
+// Function Zion.GameSettingsSubsystem.GetMinResolutionScale
 // 0x0004 (0x0004 - 0x0000)
-struct GameStatsComponent_UnsetPause final
+struct GameSettingsSubsystem_GetMinResolutionScale final
 {
 public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameStatsComponent_UnsetPause) == 0x000004, "Wrong alignment on GameStatsComponent_UnsetPause");
-static_assert(sizeof(GameStatsComponent_UnsetPause) == 0x000004, "Wrong size on GameStatsComponent_UnsetPause");
-static_assert(offsetof(GameStatsComponent_UnsetPause, ReturnValue) == 0x000000, "Member 'GameStatsComponent_UnsetPause::ReturnValue' has a wrong offset!");
+static_assert(alignof(GameSettingsSubsystem_GetMinResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetMinResolutionScale");
+static_assert(sizeof(GameSettingsSubsystem_GetMinResolutionScale) == 0x000004, "Wrong size on GameSettingsSubsystem_GetMinResolutionScale");
+static_assert(offsetof(GameSettingsSubsystem_GetMinResolutionScale, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetMinResolutionScale::ReturnValue' has a wrong offset!");
 
-// Function Zion.GameStatsComponent.GetPlayTimeAsString
+// Function Zion.GameSettingsSubsystem.ResetAutoClimbDirectionMode
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetAutoClimbDirectionMode final
+{
+public:
+	EAutoClimbDirectionMode                       ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetAutoClimbDirectionMode) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetAutoClimbDirectionMode");
+static_assert(sizeof(GameSettingsSubsystem_ResetAutoClimbDirectionMode) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetAutoClimbDirectionMode");
+static_assert(offsetof(GameSettingsSubsystem_ResetAutoClimbDirectionMode, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetAutoClimbDirectionMode::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetAutoSkipAlreadySeenEvents
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents");
+static_assert(sizeof(GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents");
+static_assert(offsetof(GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetCameraOscillation
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetCameraOscillation final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetCameraOscillation) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetCameraOscillation");
+static_assert(sizeof(GameSettingsSubsystem_ResetCameraOscillation) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetCameraOscillation");
+static_assert(offsetof(GameSettingsSubsystem_ResetCameraOscillation, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetCameraOscillation::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetCameraShake
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_ResetCameraShake final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetCameraShake) == 0x000004, "Wrong alignment on GameSettingsSubsystem_ResetCameraShake");
+static_assert(sizeof(GameSettingsSubsystem_ResetCameraShake) == 0x000004, "Wrong size on GameSettingsSubsystem_ResetCameraShake");
+static_assert(offsetof(GameSettingsSubsystem_ResetCameraShake, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetCameraShake::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetControllerVibration
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_ResetControllerVibration final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetControllerVibration) == 0x000004, "Wrong alignment on GameSettingsSubsystem_ResetControllerVibration");
+static_assert(sizeof(GameSettingsSubsystem_ResetControllerVibration) == 0x000004, "Wrong size on GameSettingsSubsystem_ResetControllerVibration");
+static_assert(offsetof(GameSettingsSubsystem_ResetControllerVibration, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetControllerVibration::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayAchievementNotifications
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetDisplayAchievementNotifications final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetDisplayAchievementNotifications) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayAchievementNotifications");
+static_assert(sizeof(GameSettingsSubsystem_ResetDisplayAchievementNotifications) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayAchievementNotifications");
+static_assert(offsetof(GameSettingsSubsystem_ResetDisplayAchievementNotifications, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayAchievementNotifications::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayDamageValues
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetDisplayDamageValues final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetDisplayDamageValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayDamageValues");
+static_assert(sizeof(GameSettingsSubsystem_ResetDisplayDamageValues) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayDamageValues");
+static_assert(offsetof(GameSettingsSubsystem_ResetDisplayDamageValues, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayDamageValues::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayEnemyGauges
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetDisplayEnemyGauges final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetDisplayEnemyGauges) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayEnemyGauges");
+static_assert(sizeof(GameSettingsSubsystem_ResetDisplayEnemyGauges) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayEnemyGauges");
+static_assert(offsetof(GameSettingsSubsystem_ResetDisplayEnemyGauges, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayEnemyGauges::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayHealValues
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetDisplayHealValues final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetDisplayHealValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayHealValues");
+static_assert(sizeof(GameSettingsSubsystem_ResetDisplayHealValues) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayHealValues");
+static_assert(offsetof(GameSettingsSubsystem_ResetDisplayHealValues, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayHealValues::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayHPAboveGauge
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetDisplayHPAboveGauge final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetDisplayHPAboveGauge) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayHPAboveGauge");
+static_assert(sizeof(GameSettingsSubsystem_ResetDisplayHPAboveGauge) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayHPAboveGauge");
+static_assert(offsetof(GameSettingsSubsystem_ResetDisplayHPAboveGauge, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayHPAboveGauge::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayPlayerUI
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetDisplayPlayerUI final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetDisplayPlayerUI) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayPlayerUI");
+static_assert(sizeof(GameSettingsSubsystem_ResetDisplayPlayerUI) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayPlayerUI");
+static_assert(offsetof(GameSettingsSubsystem_ResetDisplayPlayerUI, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayPlayerUI::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetDisplayTutorials
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetDisplayTutorials final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetDisplayTutorials) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayTutorials");
+static_assert(sizeof(GameSettingsSubsystem_ResetDisplayTutorials) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayTutorials");
+static_assert(offsetof(GameSettingsSubsystem_ResetDisplayTutorials, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayTutorials::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetHoldDownToDodgeStill
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetHoldDownToDodgeStill final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetHoldDownToDodgeStill) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetHoldDownToDodgeStill");
+static_assert(sizeof(GameSettingsSubsystem_ResetHoldDownToDodgeStill) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetHoldDownToDodgeStill");
+static_assert(offsetof(GameSettingsSubsystem_ResetHoldDownToDodgeStill, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetHoldDownToDodgeStill::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetLowHPFeedbackOpacity
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_ResetLowHPFeedbackOpacity final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetLowHPFeedbackOpacity) == 0x000004, "Wrong alignment on GameSettingsSubsystem_ResetLowHPFeedbackOpacity");
+static_assert(sizeof(GameSettingsSubsystem_ResetLowHPFeedbackOpacity) == 0x000004, "Wrong size on GameSettingsSubsystem_ResetLowHPFeedbackOpacity");
+static_assert(offsetof(GameSettingsSubsystem_ResetLowHPFeedbackOpacity, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetLowHPFeedbackOpacity::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetResolutionScale
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_ResetResolutionScale final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_ResetResolutionScale");
+static_assert(sizeof(GameSettingsSubsystem_ResetResolutionScale) == 0x000004, "Wrong size on GameSettingsSubsystem_ResetResolutionScale");
+static_assert(offsetof(GameSettingsSubsystem_ResetResolutionScale, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetResolutionScale::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.ResetToDefault
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_ResetToDefault final
+{
+public:
+	EGameSettingsType                             GameSettingsToReset;                               // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_ResetToDefault) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetToDefault");
+static_assert(sizeof(GameSettingsSubsystem_ResetToDefault) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetToDefault");
+static_assert(offsetof(GameSettingsSubsystem_ResetToDefault, GameSettingsToReset) == 0x000000, "Member 'GameSettingsSubsystem_ResetToDefault::GameSettingsToReset' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetAntiAliasingMethod
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetAntiAliasingMethod final
+{
+public:
+	EAntiAliasingMethod                           NewAntiAliasingMethod;                             // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAntiAliasingMethod                           ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetAntiAliasingMethod) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetAntiAliasingMethod");
+static_assert(sizeof(GameSettingsSubsystem_SetAntiAliasingMethod) == 0x000002, "Wrong size on GameSettingsSubsystem_SetAntiAliasingMethod");
+static_assert(offsetof(GameSettingsSubsystem_SetAntiAliasingMethod, NewAntiAliasingMethod) == 0x000000, "Member 'GameSettingsSubsystem_SetAntiAliasingMethod::NewAntiAliasingMethod' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetAntiAliasingMethod, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetAntiAliasingMethod::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetAutoClimbDirectionMode
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetAutoClimbDirectionMode final
+{
+public:
+	EAutoClimbDirectionMode                       NewMode;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAutoClimbDirectionMode                       ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetAutoClimbDirectionMode) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetAutoClimbDirectionMode");
+static_assert(sizeof(GameSettingsSubsystem_SetAutoClimbDirectionMode) == 0x000002, "Wrong size on GameSettingsSubsystem_SetAutoClimbDirectionMode");
+static_assert(offsetof(GameSettingsSubsystem_SetAutoClimbDirectionMode, NewMode) == 0x000000, "Member 'GameSettingsSubsystem_SetAutoClimbDirectionMode::NewMode' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetAutoClimbDirectionMode, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetAutoClimbDirectionMode::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetAutoSkipAlreadySeenEvents
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents final
+{
+public:
+	bool                                          bAutoSkip;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents");
+static_assert(sizeof(GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents) == 0x000002, "Wrong size on GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents");
+static_assert(offsetof(GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents, bAutoSkip) == 0x000000, "Member 'GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents::bAutoSkip' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetAutoUploadCrashReport
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_SetAutoUploadCrashReport final
+{
+public:
+	bool                                          bNewAutoUploadCrashReport;                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetAutoUploadCrashReport) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetAutoUploadCrashReport");
+static_assert(sizeof(GameSettingsSubsystem_SetAutoUploadCrashReport) == 0x000001, "Wrong size on GameSettingsSubsystem_SetAutoUploadCrashReport");
+static_assert(offsetof(GameSettingsSubsystem_SetAutoUploadCrashReport, bNewAutoUploadCrashReport) == 0x000000, "Member 'GameSettingsSubsystem_SetAutoUploadCrashReport::bNewAutoUploadCrashReport' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetCameraOscillation
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetCameraOscillation final
+{
+public:
+	bool                                          bEnable;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetCameraOscillation) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetCameraOscillation");
+static_assert(sizeof(GameSettingsSubsystem_SetCameraOscillation) == 0x000002, "Wrong size on GameSettingsSubsystem_SetCameraOscillation");
+static_assert(offsetof(GameSettingsSubsystem_SetCameraOscillation, bEnable) == 0x000000, "Member 'GameSettingsSubsystem_SetCameraOscillation::bEnable' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetCameraOscillation, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetCameraOscillation::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetCameraShake
+// 0x0008 (0x0008 - 0x0000)
+struct GameSettingsSubsystem_SetCameraShake final
+{
+public:
+	float                                         NewCameraShake;                                    // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetCameraShake) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetCameraShake");
+static_assert(sizeof(GameSettingsSubsystem_SetCameraShake) == 0x000008, "Wrong size on GameSettingsSubsystem_SetCameraShake");
+static_assert(offsetof(GameSettingsSubsystem_SetCameraShake, NewCameraShake) == 0x000000, "Member 'GameSettingsSubsystem_SetCameraShake::NewCameraShake' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetCameraShake, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetCameraShake::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetConstraintCameraAspectRatio
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetConstraintCameraAspectRatio final
+{
+public:
+	EConstraintCameraAspectRatio                  NewConstraintCameraAspectRatio;                    // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EConstraintCameraAspectRatio                  ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetConstraintCameraAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetConstraintCameraAspectRatio");
+static_assert(sizeof(GameSettingsSubsystem_SetConstraintCameraAspectRatio) == 0x000002, "Wrong size on GameSettingsSubsystem_SetConstraintCameraAspectRatio");
+static_assert(offsetof(GameSettingsSubsystem_SetConstraintCameraAspectRatio, NewConstraintCameraAspectRatio) == 0x000000, "Member 'GameSettingsSubsystem_SetConstraintCameraAspectRatio::NewConstraintCameraAspectRatio' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetConstraintCameraAspectRatio, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetConstraintCameraAspectRatio::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetConstraintHUDAspectRatio
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetConstraintHUDAspectRatio final
+{
+public:
+	bool                                          bNewConstraintHUDAspectRatio;                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetConstraintHUDAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetConstraintHUDAspectRatio");
+static_assert(sizeof(GameSettingsSubsystem_SetConstraintHUDAspectRatio) == 0x000002, "Wrong size on GameSettingsSubsystem_SetConstraintHUDAspectRatio");
+static_assert(offsetof(GameSettingsSubsystem_SetConstraintHUDAspectRatio, bNewConstraintHUDAspectRatio) == 0x000000, "Member 'GameSettingsSubsystem_SetConstraintHUDAspectRatio::bNewConstraintHUDAspectRatio' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetConstraintHUDAspectRatio, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetConstraintHUDAspectRatio::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetControllerVibration
+// 0x0008 (0x0008 - 0x0000)
+struct GameSettingsSubsystem_SetControllerVibration final
+{
+public:
+	float                                         NewControllerVibration;                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetControllerVibration) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetControllerVibration");
+static_assert(sizeof(GameSettingsSubsystem_SetControllerVibration) == 0x000008, "Wrong size on GameSettingsSubsystem_SetControllerVibration");
+static_assert(offsetof(GameSettingsSubsystem_SetControllerVibration, NewControllerVibration) == 0x000000, "Member 'GameSettingsSubsystem_SetControllerVibration::NewControllerVibration' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetControllerVibration, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetControllerVibration::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetDisplayAchievementNotifications
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetDisplayAchievementNotifications final
+{
+public:
+	bool                                          bDisplay;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetDisplayAchievementNotifications) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayAchievementNotifications");
+static_assert(sizeof(GameSettingsSubsystem_SetDisplayAchievementNotifications) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayAchievementNotifications");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayAchievementNotifications, bDisplay) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayAchievementNotifications::bDisplay' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayAchievementNotifications, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayAchievementNotifications::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetDisplayDamageValues
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetDisplayDamageValues final
+{
+public:
+	bool                                          bDisplayDamageValues;                              // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetDisplayDamageValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayDamageValues");
+static_assert(sizeof(GameSettingsSubsystem_SetDisplayDamageValues) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayDamageValues");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayDamageValues, bDisplayDamageValues) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayDamageValues::bDisplayDamageValues' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayDamageValues, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayDamageValues::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetDisplayEnemyGauges
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetDisplayEnemyGauges final
+{
+public:
+	bool                                          bDisplay;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetDisplayEnemyGauges) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayEnemyGauges");
+static_assert(sizeof(GameSettingsSubsystem_SetDisplayEnemyGauges) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayEnemyGauges");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayEnemyGauges, bDisplay) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayEnemyGauges::bDisplay' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayEnemyGauges, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayEnemyGauges::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetDisplayHealValues
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetDisplayHealValues final
+{
+public:
+	bool                                          bDisplayHealValues;                                // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetDisplayHealValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayHealValues");
+static_assert(sizeof(GameSettingsSubsystem_SetDisplayHealValues) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayHealValues");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayHealValues, bDisplayHealValues) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayHealValues::bDisplayHealValues' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayHealValues, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayHealValues::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetDisplayHPAboveGauge
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetDisplayHPAboveGauge final
+{
+public:
+	bool                                          bDisplayHPAboveGauge;                              // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetDisplayHPAboveGauge) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayHPAboveGauge");
+static_assert(sizeof(GameSettingsSubsystem_SetDisplayHPAboveGauge) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayHPAboveGauge");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayHPAboveGauge, bDisplayHPAboveGauge) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayHPAboveGauge::bDisplayHPAboveGauge' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayHPAboveGauge, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayHPAboveGauge::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetDisplayPlayerUI
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetDisplayPlayerUI final
+{
+public:
+	bool                                          bDisplay;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetDisplayPlayerUI) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayPlayerUI");
+static_assert(sizeof(GameSettingsSubsystem_SetDisplayPlayerUI) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayPlayerUI");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayPlayerUI, bDisplay) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayPlayerUI::bDisplay' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayPlayerUI, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayPlayerUI::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetDisplayTutorials
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetDisplayTutorials final
+{
+public:
+	bool                                          bDisplay;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetDisplayTutorials) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayTutorials");
+static_assert(sizeof(GameSettingsSubsystem_SetDisplayTutorials) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayTutorials");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayTutorials, bDisplay) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayTutorials::bDisplay' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetDisplayTutorials, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayTutorials::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetGamma
+// 0x0008 (0x0008 - 0x0000)
+struct GameSettingsSubsystem_SetGamma final
+{
+public:
+	float                                         NewGamma;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetGamma) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetGamma");
+static_assert(sizeof(GameSettingsSubsystem_SetGamma) == 0x000008, "Wrong size on GameSettingsSubsystem_SetGamma");
+static_assert(offsetof(GameSettingsSubsystem_SetGamma, NewGamma) == 0x000000, "Member 'GameSettingsSubsystem_SetGamma::NewGamma' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetGamma, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetGamma::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetGammaPercentage
+// 0x0008 (0x0008 - 0x0000)
+struct GameSettingsSubsystem_SetGammaPercentage final
+{
+public:
+	float                                         NewGammaPercentage;                                // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetGammaPercentage) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetGammaPercentage");
+static_assert(sizeof(GameSettingsSubsystem_SetGammaPercentage) == 0x000008, "Wrong size on GameSettingsSubsystem_SetGammaPercentage");
+static_assert(offsetof(GameSettingsSubsystem_SetGammaPercentage, NewGammaPercentage) == 0x000000, "Member 'GameSettingsSubsystem_SetGammaPercentage::NewGammaPercentage' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetGammaPercentage, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetGammaPercentage::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetHoldDownToDodgeStill
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetHoldDownToDodgeStill final
+{
+public:
+	bool                                          bEnable;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetHoldDownToDodgeStill) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetHoldDownToDodgeStill");
+static_assert(sizeof(GameSettingsSubsystem_SetHoldDownToDodgeStill) == 0x000002, "Wrong size on GameSettingsSubsystem_SetHoldDownToDodgeStill");
+static_assert(offsetof(GameSettingsSubsystem_SetHoldDownToDodgeStill, bEnable) == 0x000000, "Member 'GameSettingsSubsystem_SetHoldDownToDodgeStill::bEnable' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetHoldDownToDodgeStill, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetHoldDownToDodgeStill::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetLanguage
 // 0x0010 (0x0010 - 0x0000)
-struct GameStatsComponent_GetPlayTimeAsString final
+struct GameSettingsSubsystem_SetLanguage final
+{
+public:
+	class FString                                 Language;                                          // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetLanguage) == 0x000008, "Wrong alignment on GameSettingsSubsystem_SetLanguage");
+static_assert(sizeof(GameSettingsSubsystem_SetLanguage) == 0x000010, "Wrong size on GameSettingsSubsystem_SetLanguage");
+static_assert(offsetof(GameSettingsSubsystem_SetLanguage, Language) == 0x000000, "Member 'GameSettingsSubsystem_SetLanguage::Language' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetLowHPFeedbackOpacity
+// 0x0008 (0x0008 - 0x0000)
+struct GameSettingsSubsystem_SetLowHPFeedbackOpacity final
+{
+public:
+	float                                         NewLowHPFeedbackOpacity;                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetLowHPFeedbackOpacity) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetLowHPFeedbackOpacity");
+static_assert(sizeof(GameSettingsSubsystem_SetLowHPFeedbackOpacity) == 0x000008, "Wrong size on GameSettingsSubsystem_SetLowHPFeedbackOpacity");
+static_assert(offsetof(GameSettingsSubsystem_SetLowHPFeedbackOpacity, NewLowHPFeedbackOpacity) == 0x000000, "Member 'GameSettingsSubsystem_SetLowHPFeedbackOpacity::NewLowHPFeedbackOpacity' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetLowHPFeedbackOpacity, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetLowHPFeedbackOpacity::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetResolutionScale
+// 0x0008 (0x0008 - 0x0000)
+struct GameSettingsSubsystem_SetResolutionScale final
+{
+public:
+	float                                         NewResolutionScale;                                // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetResolutionScale");
+static_assert(sizeof(GameSettingsSubsystem_SetResolutionScale) == 0x000008, "Wrong size on GameSettingsSubsystem_SetResolutionScale");
+static_assert(offsetof(GameSettingsSubsystem_SetResolutionScale, NewResolutionScale) == 0x000000, "Member 'GameSettingsSubsystem_SetResolutionScale::NewResolutionScale' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetResolutionScale, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetResolutionScale::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetStickDeadZone
+// 0x000C (0x000C - 0x0000)
+struct GameSettingsSubsystem_SetStickDeadZone final
+{
+public:
+	EInputStick                                   InputStick;                                        // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         NewDeadZone;                                       // 0x0004(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetStickDeadZone) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetStickDeadZone");
+static_assert(sizeof(GameSettingsSubsystem_SetStickDeadZone) == 0x00000C, "Wrong size on GameSettingsSubsystem_SetStickDeadZone");
+static_assert(offsetof(GameSettingsSubsystem_SetStickDeadZone, InputStick) == 0x000000, "Member 'GameSettingsSubsystem_SetStickDeadZone::InputStick' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetStickDeadZone, NewDeadZone) == 0x000004, "Member 'GameSettingsSubsystem_SetStickDeadZone::NewDeadZone' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetStickDeadZone, ReturnValue) == 0x000008, "Member 'GameSettingsSubsystem_SetStickDeadZone::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetTitleType
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_SetTitleType final
+{
+public:
+	EGameEndingType                               TitleType;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetTitleType) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetTitleType");
+static_assert(sizeof(GameSettingsSubsystem_SetTitleType) == 0x000001, "Wrong size on GameSettingsSubsystem_SetTitleType");
+static_assert(offsetof(GameSettingsSubsystem_SetTitleType, TitleType) == 0x000000, "Member 'GameSettingsSubsystem_SetTitleType::TitleType' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.SetUIAspectRatio
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_SetUIAspectRatio final
+{
+public:
+	EConstraintCameraAspectRatio                  NewUIAspectRatio;                                  // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EConstraintCameraAspectRatio                  ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_SetUIAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetUIAspectRatio");
+static_assert(sizeof(GameSettingsSubsystem_SetUIAspectRatio) == 0x000002, "Wrong size on GameSettingsSubsystem_SetUIAspectRatio");
+static_assert(offsetof(GameSettingsSubsystem_SetUIAspectRatio, NewUIAspectRatio) == 0x000000, "Member 'GameSettingsSubsystem_SetUIAspectRatio::NewUIAspectRatio' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_SetUIAspectRatio, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetUIAspectRatio::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.DidReachAnyGameEnding
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_DidReachAnyGameEnding final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_DidReachAnyGameEnding) == 0x000001, "Wrong alignment on GameSettingsSubsystem_DidReachAnyGameEnding");
+static_assert(sizeof(GameSettingsSubsystem_DidReachAnyGameEnding) == 0x000001, "Wrong size on GameSettingsSubsystem_DidReachAnyGameEnding");
+static_assert(offsetof(GameSettingsSubsystem_DidReachAnyGameEnding, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_DidReachAnyGameEnding::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.DidReachGameEnding
+// 0x0002 (0x0002 - 0x0000)
+struct GameSettingsSubsystem_DidReachGameEnding final
+{
+public:
+	EGameEndingType                               GameEndingType;                                    // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_DidReachGameEnding) == 0x000001, "Wrong alignment on GameSettingsSubsystem_DidReachGameEnding");
+static_assert(sizeof(GameSettingsSubsystem_DidReachGameEnding) == 0x000002, "Wrong size on GameSettingsSubsystem_DidReachGameEnding");
+static_assert(offsetof(GameSettingsSubsystem_DidReachGameEnding, GameEndingType) == 0x000000, "Member 'GameSettingsSubsystem_DidReachGameEnding::GameEndingType' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_DidReachGameEnding, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_DidReachGameEnding::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetAntiAliasingMethod
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetAntiAliasingMethod final
+{
+public:
+	EAntiAliasingMethod                           ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetAntiAliasingMethod) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetAntiAliasingMethod");
+static_assert(sizeof(GameSettingsSubsystem_GetAntiAliasingMethod) == 0x000001, "Wrong size on GameSettingsSubsystem_GetAntiAliasingMethod");
+static_assert(offsetof(GameSettingsSubsystem_GetAntiAliasingMethod, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetAntiAliasingMethod::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetAutoClimbDirectionMode
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetAutoClimbDirectionMode final
+{
+public:
+	EAutoClimbDirectionMode                       ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetAutoClimbDirectionMode) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetAutoClimbDirectionMode");
+static_assert(sizeof(GameSettingsSubsystem_GetAutoClimbDirectionMode) == 0x000001, "Wrong size on GameSettingsSubsystem_GetAutoClimbDirectionMode");
+static_assert(offsetof(GameSettingsSubsystem_GetAutoClimbDirectionMode, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetAutoClimbDirectionMode::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetAutoSkipAlreadySeenEvents
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents");
+static_assert(sizeof(GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong size on GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents");
+static_assert(offsetof(GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetAutoUploadCrashReport
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetAutoUploadCrashReport final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetAutoUploadCrashReport) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetAutoUploadCrashReport");
+static_assert(sizeof(GameSettingsSubsystem_GetAutoUploadCrashReport) == 0x000001, "Wrong size on GameSettingsSubsystem_GetAutoUploadCrashReport");
+static_assert(offsetof(GameSettingsSubsystem_GetAutoUploadCrashReport, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetAutoUploadCrashReport::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetCameraOscillation
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetCameraOscillation final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetCameraOscillation) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetCameraOscillation");
+static_assert(sizeof(GameSettingsSubsystem_GetCameraOscillation) == 0x000001, "Wrong size on GameSettingsSubsystem_GetCameraOscillation");
+static_assert(offsetof(GameSettingsSubsystem_GetCameraOscillation, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetCameraOscillation::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetCameraShake
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_GetCameraShake final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetCameraShake) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetCameraShake");
+static_assert(sizeof(GameSettingsSubsystem_GetCameraShake) == 0x000004, "Wrong size on GameSettingsSubsystem_GetCameraShake");
+static_assert(offsetof(GameSettingsSubsystem_GetCameraShake, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetCameraShake::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetConstraintCameraAspectRatio
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetConstraintCameraAspectRatio final
+{
+public:
+	EConstraintCameraAspectRatio                  ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetConstraintCameraAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetConstraintCameraAspectRatio");
+static_assert(sizeof(GameSettingsSubsystem_GetConstraintCameraAspectRatio) == 0x000001, "Wrong size on GameSettingsSubsystem_GetConstraintCameraAspectRatio");
+static_assert(offsetof(GameSettingsSubsystem_GetConstraintCameraAspectRatio, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetConstraintCameraAspectRatio::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetConstraintHUDAspectRatio
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetConstraintHUDAspectRatio final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetConstraintHUDAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetConstraintHUDAspectRatio");
+static_assert(sizeof(GameSettingsSubsystem_GetConstraintHUDAspectRatio) == 0x000001, "Wrong size on GameSettingsSubsystem_GetConstraintHUDAspectRatio");
+static_assert(offsetof(GameSettingsSubsystem_GetConstraintHUDAspectRatio, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetConstraintHUDAspectRatio::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetControllerVibration
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_GetControllerVibration final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetControllerVibration) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetControllerVibration");
+static_assert(sizeof(GameSettingsSubsystem_GetControllerVibration) == 0x000004, "Wrong size on GameSettingsSubsystem_GetControllerVibration");
+static_assert(offsetof(GameSettingsSubsystem_GetControllerVibration, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetControllerVibration::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetDisplayAchievementNotifications
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetDisplayAchievementNotifications final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetDisplayAchievementNotifications) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayAchievementNotifications");
+static_assert(sizeof(GameSettingsSubsystem_GetDisplayAchievementNotifications) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayAchievementNotifications");
+static_assert(offsetof(GameSettingsSubsystem_GetDisplayAchievementNotifications, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayAchievementNotifications::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetDisplayDamageValues
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetDisplayDamageValues final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetDisplayDamageValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayDamageValues");
+static_assert(sizeof(GameSettingsSubsystem_GetDisplayDamageValues) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayDamageValues");
+static_assert(offsetof(GameSettingsSubsystem_GetDisplayDamageValues, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayDamageValues::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetDisplayEnemyGauges
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetDisplayEnemyGauges final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetDisplayEnemyGauges) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayEnemyGauges");
+static_assert(sizeof(GameSettingsSubsystem_GetDisplayEnemyGauges) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayEnemyGauges");
+static_assert(offsetof(GameSettingsSubsystem_GetDisplayEnemyGauges, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayEnemyGauges::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetDisplayHealValues
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetDisplayHealValues final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetDisplayHealValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayHealValues");
+static_assert(sizeof(GameSettingsSubsystem_GetDisplayHealValues) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayHealValues");
+static_assert(offsetof(GameSettingsSubsystem_GetDisplayHealValues, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayHealValues::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetDisplayHPAboveGauge
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetDisplayHPAboveGauge final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetDisplayHPAboveGauge) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayHPAboveGauge");
+static_assert(sizeof(GameSettingsSubsystem_GetDisplayHPAboveGauge) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayHPAboveGauge");
+static_assert(offsetof(GameSettingsSubsystem_GetDisplayHPAboveGauge, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayHPAboveGauge::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetDisplayPlayerUI
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetDisplayPlayerUI final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetDisplayPlayerUI) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayPlayerUI");
+static_assert(sizeof(GameSettingsSubsystem_GetDisplayPlayerUI) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayPlayerUI");
+static_assert(offsetof(GameSettingsSubsystem_GetDisplayPlayerUI, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayPlayerUI::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetDisplayTutorials
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetDisplayTutorials final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetDisplayTutorials) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayTutorials");
+static_assert(sizeof(GameSettingsSubsystem_GetDisplayTutorials) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayTutorials");
+static_assert(offsetof(GameSettingsSubsystem_GetDisplayTutorials, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayTutorials::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetGamma
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_GetGamma final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetGamma) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGamma");
+static_assert(sizeof(GameSettingsSubsystem_GetGamma) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGamma");
+static_assert(offsetof(GameSettingsSubsystem_GetGamma, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGamma::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetGammaDefault
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_GetGammaDefault final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetGammaDefault) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGammaDefault");
+static_assert(sizeof(GameSettingsSubsystem_GetGammaDefault) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGammaDefault");
+static_assert(offsetof(GameSettingsSubsystem_GetGammaDefault, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGammaDefault::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetGammaMax
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_GetGammaMax final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetGammaMax) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGammaMax");
+static_assert(sizeof(GameSettingsSubsystem_GetGammaMax) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGammaMax");
+static_assert(offsetof(GameSettingsSubsystem_GetGammaMax, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGammaMax::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetGammaMin
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_GetGammaMin final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetGammaMin) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGammaMin");
+static_assert(sizeof(GameSettingsSubsystem_GetGammaMin) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGammaMin");
+static_assert(offsetof(GameSettingsSubsystem_GetGammaMin, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGammaMin::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetGammaPercentage
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_GetGammaPercentage final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetGammaPercentage) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGammaPercentage");
+static_assert(sizeof(GameSettingsSubsystem_GetGammaPercentage) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGammaPercentage");
+static_assert(offsetof(GameSettingsSubsystem_GetGammaPercentage, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGammaPercentage::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetHoldDownToDodgeStill
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetHoldDownToDodgeStill final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetHoldDownToDodgeStill) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetHoldDownToDodgeStill");
+static_assert(sizeof(GameSettingsSubsystem_GetHoldDownToDodgeStill) == 0x000001, "Wrong size on GameSettingsSubsystem_GetHoldDownToDodgeStill");
+static_assert(offsetof(GameSettingsSubsystem_GetHoldDownToDodgeStill, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetHoldDownToDodgeStill::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetLanguage
+// 0x0010 (0x0010 - 0x0000)
+struct GameSettingsSubsystem_GetLanguage final
 {
 public:
 	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameStatsComponent_GetPlayTimeAsString) == 0x000008, "Wrong alignment on GameStatsComponent_GetPlayTimeAsString");
-static_assert(sizeof(GameStatsComponent_GetPlayTimeAsString) == 0x000010, "Wrong size on GameStatsComponent_GetPlayTimeAsString");
-static_assert(offsetof(GameStatsComponent_GetPlayTimeAsString, ReturnValue) == 0x000000, "Member 'GameStatsComponent_GetPlayTimeAsString::ReturnValue' has a wrong offset!");
+static_assert(alignof(GameSettingsSubsystem_GetLanguage) == 0x000008, "Wrong alignment on GameSettingsSubsystem_GetLanguage");
+static_assert(sizeof(GameSettingsSubsystem_GetLanguage) == 0x000010, "Wrong size on GameSettingsSubsystem_GetLanguage");
+static_assert(offsetof(GameSettingsSubsystem_GetLanguage, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetLanguage::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetLowHPFeedbackOpacity
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_GetLowHPFeedbackOpacity final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetLowHPFeedbackOpacity) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetLowHPFeedbackOpacity");
+static_assert(sizeof(GameSettingsSubsystem_GetLowHPFeedbackOpacity) == 0x000004, "Wrong size on GameSettingsSubsystem_GetLowHPFeedbackOpacity");
+static_assert(offsetof(GameSettingsSubsystem_GetLowHPFeedbackOpacity, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetLowHPFeedbackOpacity::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetResolutionScale
+// 0x0004 (0x0004 - 0x0000)
+struct GameSettingsSubsystem_GetResolutionScale final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetResolutionScale");
+static_assert(sizeof(GameSettingsSubsystem_GetResolutionScale) == 0x000004, "Wrong size on GameSettingsSubsystem_GetResolutionScale");
+static_assert(offsetof(GameSettingsSubsystem_GetResolutionScale, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetResolutionScale::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetStickDeadZone
+// 0x0008 (0x0008 - 0x0000)
+struct GameSettingsSubsystem_GetStickDeadZone final
+{
+public:
+	EInputStick                                   InputStick;                                        // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetStickDeadZone) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetStickDeadZone");
+static_assert(sizeof(GameSettingsSubsystem_GetStickDeadZone) == 0x000008, "Wrong size on GameSettingsSubsystem_GetStickDeadZone");
+static_assert(offsetof(GameSettingsSubsystem_GetStickDeadZone, InputStick) == 0x000000, "Member 'GameSettingsSubsystem_GetStickDeadZone::InputStick' has a wrong offset!");
+static_assert(offsetof(GameSettingsSubsystem_GetStickDeadZone, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_GetStickDeadZone::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetTitleType
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetTitleType final
+{
+public:
+	EGameEndingType                               ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetTitleType) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetTitleType");
+static_assert(sizeof(GameSettingsSubsystem_GetTitleType) == 0x000001, "Wrong size on GameSettingsSubsystem_GetTitleType");
+static_assert(offsetof(GameSettingsSubsystem_GetTitleType, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetTitleType::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.GetUIAspectRatio
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_GetUIAspectRatio final
+{
+public:
+	EConstraintCameraAspectRatio                  ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_GetUIAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetUIAspectRatio");
+static_assert(sizeof(GameSettingsSubsystem_GetUIAspectRatio) == 0x000001, "Wrong size on GameSettingsSubsystem_GetUIAspectRatio");
+static_assert(offsetof(GameSettingsSubsystem_GetUIAspectRatio, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetUIAspectRatio::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameSettingsSubsystem.IsInitialSettingsDone
+// 0x0001 (0x0001 - 0x0000)
+struct GameSettingsSubsystem_IsInitialSettingsDone final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameSettingsSubsystem_IsInitialSettingsDone) == 0x000001, "Wrong alignment on GameSettingsSubsystem_IsInitialSettingsDone");
+static_assert(sizeof(GameSettingsSubsystem_IsInitialSettingsDone) == 0x000001, "Wrong size on GameSettingsSubsystem_IsInitialSettingsDone");
+static_assert(offsetof(GameSettingsSubsystem_IsInitialSettingsDone, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_IsInitialSettingsDone::ReturnValue' has a wrong offset!");
 
 // Function Zion.DeathProcess.Initialize
 // 0x0008 (0x0008 - 0x0000)
@@ -698,6 +1418,61 @@ static_assert(alignof(DeathProcess_Update) == 0x000008, "Wrong alignment on Deat
 static_assert(sizeof(DeathProcess_Update) == 0x000010, "Wrong size on DeathProcess_Update");
 static_assert(offsetof(DeathProcess_Update, Actor) == 0x000000, "Member 'DeathProcess_Update::Actor' has a wrong offset!");
 static_assert(offsetof(DeathProcess_Update, DeltaTime) == 0x000008, "Member 'DeathProcess_Update::DeltaTime' has a wrong offset!");
+
+// Function Zion.Trigger_FieldMessage.LaunchFieldMessage
+// 0x0008 (0x0008 - 0x0000)
+struct Trigger_FieldMessage_LaunchFieldMessage final
+{
+public:
+	class UFieldMessageAsset*                     FieldMessageAssetOverride;                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Trigger_FieldMessage_LaunchFieldMessage) == 0x000008, "Wrong alignment on Trigger_FieldMessage_LaunchFieldMessage");
+static_assert(sizeof(Trigger_FieldMessage_LaunchFieldMessage) == 0x000008, "Wrong size on Trigger_FieldMessage_LaunchFieldMessage");
+static_assert(offsetof(Trigger_FieldMessage_LaunchFieldMessage, FieldMessageAssetOverride) == 0x000000, "Member 'Trigger_FieldMessage_LaunchFieldMessage::FieldMessageAssetOverride' has a wrong offset!");
+
+// Function Zion.Trigger_FieldMessage.OnClearStatusChecked
+// 0x0001 (0x0001 - 0x0000)
+struct Trigger_FieldMessage_OnClearStatusChecked final
+{
+public:
+	EClearStatus                                  ClearStatus;                                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Trigger_FieldMessage_OnClearStatusChecked) == 0x000001, "Wrong alignment on Trigger_FieldMessage_OnClearStatusChecked");
+static_assert(sizeof(Trigger_FieldMessage_OnClearStatusChecked) == 0x000001, "Wrong size on Trigger_FieldMessage_OnClearStatusChecked");
+static_assert(offsetof(Trigger_FieldMessage_OnClearStatusChecked, ClearStatus) == 0x000000, "Member 'Trigger_FieldMessage_OnClearStatusChecked::ClearStatus' has a wrong offset!");
+
+// Function Zion.Trigger_FieldMessage.GetTargetActor
+// 0x0008 (0x0008 - 0x0000)
+struct Trigger_FieldMessage_GetTargetActor final
+{
+public:
+	class AActor*                                 ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Trigger_FieldMessage_GetTargetActor) == 0x000008, "Wrong alignment on Trigger_FieldMessage_GetTargetActor");
+static_assert(sizeof(Trigger_FieldMessage_GetTargetActor) == 0x000008, "Wrong size on Trigger_FieldMessage_GetTargetActor");
+static_assert(offsetof(Trigger_FieldMessage_GetTargetActor, ReturnValue) == 0x000000, "Member 'Trigger_FieldMessage_GetTargetActor::ReturnValue' has a wrong offset!");
+
+// Function Zion.Trigger_FieldMessageNPC.OnNPCDestroyed
+// 0x0008 (0x0008 - 0x0000)
+struct Trigger_FieldMessageNPC_OnNPCDestroyed final
+{
+public:
+	class AActor*                                 DestroyedActor;                                    // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Trigger_FieldMessageNPC_OnNPCDestroyed) == 0x000008, "Wrong alignment on Trigger_FieldMessageNPC_OnNPCDestroyed");
+static_assert(sizeof(Trigger_FieldMessageNPC_OnNPCDestroyed) == 0x000008, "Wrong size on Trigger_FieldMessageNPC_OnNPCDestroyed");
+static_assert(offsetof(Trigger_FieldMessageNPC_OnNPCDestroyed, DestroyedActor) == 0x000000, "Member 'Trigger_FieldMessageNPC_OnNPCDestroyed::DestroyedActor' has a wrong offset!");
+
+// Function Zion.Trigger_FieldMessageNPC.GetCollisionComponent
+// 0x0008 (0x0008 - 0x0000)
+struct Trigger_FieldMessageNPC_GetCollisionComponent final
+{
+public:
+	class UShapeComponent*                        ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Trigger_FieldMessageNPC_GetCollisionComponent) == 0x000008, "Wrong alignment on Trigger_FieldMessageNPC_GetCollisionComponent");
+static_assert(sizeof(Trigger_FieldMessageNPC_GetCollisionComponent) == 0x000008, "Wrong size on Trigger_FieldMessageNPC_GetCollisionComponent");
+static_assert(offsetof(Trigger_FieldMessageNPC_GetCollisionComponent, ReturnValue) == 0x000000, "Member 'Trigger_FieldMessageNPC_GetCollisionComponent::ReturnValue' has a wrong offset!");
 
 // Function Zion.CommandCondition.GetCharacter
 // 0x0008 (0x0008 - 0x0000)
@@ -1045,20 +1820,113 @@ static_assert(alignof(UserWidgetZion_PlaySoundEvent) == 0x000008, "Wrong alignme
 static_assert(sizeof(UserWidgetZion_PlaySoundEvent) == 0x000008, "Wrong size on UserWidgetZion_PlaySoundEvent");
 static_assert(offsetof(UserWidgetZion_PlaySoundEvent, SoundEffect) == 0x000000, "Member 'UserWidgetZion_PlaySoundEvent::SoundEffect' has a wrong offset!");
 
-// Function Zion.UserWidgetExplanation.SetExplanationText
-// 0x0030 (0x0030 - 0x0000)
-struct UserWidgetExplanation_SetExplanationText final
+// Function Zion.UserWidgetEvent.CompleteChoices
+// 0x0004 (0x0004 - 0x0000)
+struct UserWidgetEvent_CompleteChoices final
 {
 public:
-	class FText                                   Text;                                              // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	TArray<struct FRichTextInputElement>          InputElements;                                     // 0x0010(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-	TArray<class FString>                         StringElements;                                    // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+	int32                                         SelectedChoiceIndex;                               // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetExplanation_SetExplanationText) == 0x000008, "Wrong alignment on UserWidgetExplanation_SetExplanationText");
-static_assert(sizeof(UserWidgetExplanation_SetExplanationText) == 0x000030, "Wrong size on UserWidgetExplanation_SetExplanationText");
-static_assert(offsetof(UserWidgetExplanation_SetExplanationText, Text) == 0x000000, "Member 'UserWidgetExplanation_SetExplanationText::Text' has a wrong offset!");
-static_assert(offsetof(UserWidgetExplanation_SetExplanationText, InputElements) == 0x000010, "Member 'UserWidgetExplanation_SetExplanationText::InputElements' has a wrong offset!");
-static_assert(offsetof(UserWidgetExplanation_SetExplanationText, StringElements) == 0x000020, "Member 'UserWidgetExplanation_SetExplanationText::StringElements' has a wrong offset!");
+static_assert(alignof(UserWidgetEvent_CompleteChoices) == 0x000004, "Wrong alignment on UserWidgetEvent_CompleteChoices");
+static_assert(sizeof(UserWidgetEvent_CompleteChoices) == 0x000004, "Wrong size on UserWidgetEvent_CompleteChoices");
+static_assert(offsetof(UserWidgetEvent_CompleteChoices, SelectedChoiceIndex) == 0x000000, "Member 'UserWidgetEvent_CompleteChoices::SelectedChoiceIndex' has a wrong offset!");
+
+// Function Zion.UserWidgetEvent.OnPlayChoices
+// 0x0030 (0x0030 - 0x0000)
+struct UserWidgetEvent_OnPlayChoices final
+{
+public:
+	class FText                                   SpeakerName;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	class FText                                   Text;                                              // 0x0010(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	TArray<class FText>                           Choices;                                           // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetEvent_OnPlayChoices) == 0x000008, "Wrong alignment on UserWidgetEvent_OnPlayChoices");
+static_assert(sizeof(UserWidgetEvent_OnPlayChoices) == 0x000030, "Wrong size on UserWidgetEvent_OnPlayChoices");
+static_assert(offsetof(UserWidgetEvent_OnPlayChoices, SpeakerName) == 0x000000, "Member 'UserWidgetEvent_OnPlayChoices::SpeakerName' has a wrong offset!");
+static_assert(offsetof(UserWidgetEvent_OnPlayChoices, Text) == 0x000010, "Member 'UserWidgetEvent_OnPlayChoices::Text' has a wrong offset!");
+static_assert(offsetof(UserWidgetEvent_OnPlayChoices, Choices) == 0x000020, "Member 'UserWidgetEvent_OnPlayChoices::Choices' has a wrong offset!");
+
+// Function Zion.UserWidgetEvent.OnTalk
+// 0x0028 (0x0028 - 0x0000)
+struct UserWidgetEvent_OnTalk final
+{
+public:
+	class FText                                   SpeakerName;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	class FText                                   Text;                                              // 0x0010(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	float                                         Duration;                                          // 0x0020(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(UserWidgetEvent_OnTalk) == 0x000008, "Wrong alignment on UserWidgetEvent_OnTalk");
+static_assert(sizeof(UserWidgetEvent_OnTalk) == 0x000028, "Wrong size on UserWidgetEvent_OnTalk");
+static_assert(offsetof(UserWidgetEvent_OnTalk, SpeakerName) == 0x000000, "Member 'UserWidgetEvent_OnTalk::SpeakerName' has a wrong offset!");
+static_assert(offsetof(UserWidgetEvent_OnTalk, Text) == 0x000010, "Member 'UserWidgetEvent_OnTalk::Text' has a wrong offset!");
+static_assert(offsetof(UserWidgetEvent_OnTalk, Duration) == 0x000020, "Member 'UserWidgetEvent_OnTalk::Duration' has a wrong offset!");
+
+// Function Zion.UserWidgetEvent.CanAutoSkipEvent
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetEvent_CanAutoSkipEvent final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetEvent_CanAutoSkipEvent) == 0x000001, "Wrong alignment on UserWidgetEvent_CanAutoSkipEvent");
+static_assert(sizeof(UserWidgetEvent_CanAutoSkipEvent) == 0x000001, "Wrong size on UserWidgetEvent_CanAutoSkipEvent");
+static_assert(offsetof(UserWidgetEvent_CanAutoSkipEvent, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_CanAutoSkipEvent::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetEvent.CanSkipEvent
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetEvent_CanSkipEvent final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetEvent_CanSkipEvent) == 0x000001, "Wrong alignment on UserWidgetEvent_CanSkipEvent");
+static_assert(sizeof(UserWidgetEvent_CanSkipEvent) == 0x000001, "Wrong size on UserWidgetEvent_CanSkipEvent");
+static_assert(offsetof(UserWidgetEvent_CanSkipEvent, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_CanSkipEvent::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetEvent.GetEventPlayer
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetEvent_GetEventPlayer final
+{
+public:
+	class UEventPlayer*                           ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetEvent_GetEventPlayer) == 0x000008, "Wrong alignment on UserWidgetEvent_GetEventPlayer");
+static_assert(sizeof(UserWidgetEvent_GetEventPlayer) == 0x000008, "Wrong size on UserWidgetEvent_GetEventPlayer");
+static_assert(offsetof(UserWidgetEvent_GetEventPlayer, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_GetEventPlayer::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetEvent.IsEventAlreadySeen
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetEvent_IsEventAlreadySeen final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetEvent_IsEventAlreadySeen) == 0x000001, "Wrong alignment on UserWidgetEvent_IsEventAlreadySeen");
+static_assert(sizeof(UserWidgetEvent_IsEventAlreadySeen) == 0x000001, "Wrong size on UserWidgetEvent_IsEventAlreadySeen");
+static_assert(offsetof(UserWidgetEvent_IsEventAlreadySeen, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_IsEventAlreadySeen::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetEvent.ShouldUsePostSkipFadeIn
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetEvent_ShouldUsePostSkipFadeIn final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetEvent_ShouldUsePostSkipFadeIn) == 0x000001, "Wrong alignment on UserWidgetEvent_ShouldUsePostSkipFadeIn");
+static_assert(sizeof(UserWidgetEvent_ShouldUsePostSkipFadeIn) == 0x000001, "Wrong size on UserWidgetEvent_ShouldUsePostSkipFadeIn");
+static_assert(offsetof(UserWidgetEvent_ShouldUsePostSkipFadeIn, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_ShouldUsePostSkipFadeIn::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetEvent.ShouldUsePreSkipFadeOut
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetEvent_ShouldUsePreSkipFadeOut final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetEvent_ShouldUsePreSkipFadeOut) == 0x000001, "Wrong alignment on UserWidgetEvent_ShouldUsePreSkipFadeOut");
+static_assert(sizeof(UserWidgetEvent_ShouldUsePreSkipFadeOut) == 0x000001, "Wrong size on UserWidgetEvent_ShouldUsePreSkipFadeOut");
+static_assert(offsetof(UserWidgetEvent_ShouldUsePreSkipFadeOut, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_ShouldUsePreSkipFadeOut::ReturnValue' has a wrong offset!");
 
 // Function Zion.Collectable.Collect
 // 0x0008 (0x0008 - 0x0000)
@@ -1148,40 +2016,77 @@ static_assert(alignof(Collectable_IsActive) == 0x000001, "Wrong alignment on Col
 static_assert(sizeof(Collectable_IsActive) == 0x000001, "Wrong size on Collectable_IsActive");
 static_assert(offsetof(Collectable_IsActive, ReturnValue) == 0x000000, "Member 'Collectable_IsActive::ReturnValue' has a wrong offset!");
 
-// Function Zion.RenderStateComponent.SetNewBounds
-// 0x0008 (0x0008 - 0x0000)
-struct RenderStateComponent_SetNewBounds final
-{
-public:
-	const class AActor*                           Actor;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RenderStateComponent_SetNewBounds) == 0x000008, "Wrong alignment on RenderStateComponent_SetNewBounds");
-static_assert(sizeof(RenderStateComponent_SetNewBounds) == 0x000008, "Wrong size on RenderStateComponent_SetNewBounds");
-static_assert(offsetof(RenderStateComponent_SetNewBounds, Actor) == 0x000000, "Member 'RenderStateComponent_SetNewBounds::Actor' has a wrong offset!");
-
-// Function Zion.RenderStateComponent.SetVisible
-// 0x0002 (0x0002 - 0x0000)
-struct RenderStateComponent_SetVisible final
-{
-public:
-	bool                                          bIsVisible;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RenderStateComponent_SetVisible) == 0x000001, "Wrong alignment on RenderStateComponent_SetVisible");
-static_assert(sizeof(RenderStateComponent_SetVisible) == 0x000002, "Wrong size on RenderStateComponent_SetVisible");
-static_assert(offsetof(RenderStateComponent_SetVisible, bIsVisible) == 0x000000, "Member 'RenderStateComponent_SetVisible::bIsVisible' has a wrong offset!");
-static_assert(offsetof(RenderStateComponent_SetVisible, ReturnValue) == 0x000001, "Member 'RenderStateComponent_SetVisible::ReturnValue' has a wrong offset!");
-
-// Function Zion.RenderStateComponent.IsVisible
+// Function Zion.RefreshableRichTextBlock.SetDecoratorMode
 // 0x0001 (0x0001 - 0x0000)
-struct RenderStateComponent_IsVisible final
+struct RefreshableRichTextBlock_SetDecoratorMode final
 {
 public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ERichTextDecoratorMode                        NewDecoratorMode;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(RenderStateComponent_IsVisible) == 0x000001, "Wrong alignment on RenderStateComponent_IsVisible");
-static_assert(sizeof(RenderStateComponent_IsVisible) == 0x000001, "Wrong size on RenderStateComponent_IsVisible");
-static_assert(offsetof(RenderStateComponent_IsVisible, ReturnValue) == 0x000000, "Member 'RenderStateComponent_IsVisible::ReturnValue' has a wrong offset!");
+static_assert(alignof(RefreshableRichTextBlock_SetDecoratorMode) == 0x000001, "Wrong alignment on RefreshableRichTextBlock_SetDecoratorMode");
+static_assert(sizeof(RefreshableRichTextBlock_SetDecoratorMode) == 0x000001, "Wrong size on RefreshableRichTextBlock_SetDecoratorMode");
+static_assert(offsetof(RefreshableRichTextBlock_SetDecoratorMode, NewDecoratorMode) == 0x000000, "Member 'RefreshableRichTextBlock_SetDecoratorMode::NewDecoratorMode' has a wrong offset!");
+
+// Function Zion.RefreshableRichTextBlock.SetFormat
+// 0x0010 (0x0010 - 0x0000)
+struct RefreshableRichTextBlock_SetFormat final
+{
+public:
+	class FText                                   NewFormat;                                         // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RefreshableRichTextBlock_SetFormat) == 0x000008, "Wrong alignment on RefreshableRichTextBlock_SetFormat");
+static_assert(sizeof(RefreshableRichTextBlock_SetFormat) == 0x000010, "Wrong size on RefreshableRichTextBlock_SetFormat");
+static_assert(offsetof(RefreshableRichTextBlock_SetFormat, NewFormat) == 0x000000, "Member 'RefreshableRichTextBlock_SetFormat::NewFormat' has a wrong offset!");
+
+// Function Zion.RefreshableRichTextBlock.SetFormatElements
+// 0x0020 (0x0020 - 0x0000)
+struct RefreshableRichTextBlock_SetFormatElements final
+{
+public:
+	TArray<struct FRichTextInputElement>          NewFormatElements;                                 // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+	TArray<class FString>                         NewStringElements;                                 // 0x0010(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RefreshableRichTextBlock_SetFormatElements) == 0x000008, "Wrong alignment on RefreshableRichTextBlock_SetFormatElements");
+static_assert(sizeof(RefreshableRichTextBlock_SetFormatElements) == 0x000020, "Wrong size on RefreshableRichTextBlock_SetFormatElements");
+static_assert(offsetof(RefreshableRichTextBlock_SetFormatElements, NewFormatElements) == 0x000000, "Member 'RefreshableRichTextBlock_SetFormatElements::NewFormatElements' has a wrong offset!");
+static_assert(offsetof(RefreshableRichTextBlock_SetFormatElements, NewStringElements) == 0x000010, "Member 'RefreshableRichTextBlock_SetFormatElements::NewStringElements' has a wrong offset!");
+
+// Function Zion.RefreshableRichTextBlock.SetupAndRefresh
+// 0x0030 (0x0030 - 0x0000)
+struct RefreshableRichTextBlock_SetupAndRefresh final
+{
+public:
+	class FText                                   NewFormat;                                         // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	TArray<struct FRichTextInputElement>          NewFormatElements;                                 // 0x0010(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+	TArray<class FString>                         NewStringElements;                                 // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RefreshableRichTextBlock_SetupAndRefresh) == 0x000008, "Wrong alignment on RefreshableRichTextBlock_SetupAndRefresh");
+static_assert(sizeof(RefreshableRichTextBlock_SetupAndRefresh) == 0x000030, "Wrong size on RefreshableRichTextBlock_SetupAndRefresh");
+static_assert(offsetof(RefreshableRichTextBlock_SetupAndRefresh, NewFormat) == 0x000000, "Member 'RefreshableRichTextBlock_SetupAndRefresh::NewFormat' has a wrong offset!");
+static_assert(offsetof(RefreshableRichTextBlock_SetupAndRefresh, NewFormatElements) == 0x000010, "Member 'RefreshableRichTextBlock_SetupAndRefresh::NewFormatElements' has a wrong offset!");
+static_assert(offsetof(RefreshableRichTextBlock_SetupAndRefresh, NewStringElements) == 0x000020, "Member 'RefreshableRichTextBlock_SetupAndRefresh::NewStringElements' has a wrong offset!");
+
+// Function Zion.RefreshableRichTextBlock.GetDecoratorMode
+// 0x0001 (0x0001 - 0x0000)
+struct RefreshableRichTextBlock_GetDecoratorMode final
+{
+public:
+	ERichTextDecoratorMode                        ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RefreshableRichTextBlock_GetDecoratorMode) == 0x000001, "Wrong alignment on RefreshableRichTextBlock_GetDecoratorMode");
+static_assert(sizeof(RefreshableRichTextBlock_GetDecoratorMode) == 0x000001, "Wrong size on RefreshableRichTextBlock_GetDecoratorMode");
+static_assert(offsetof(RefreshableRichTextBlock_GetDecoratorMode, ReturnValue) == 0x000000, "Member 'RefreshableRichTextBlock_GetDecoratorMode::ReturnValue' has a wrong offset!");
+
+// Function Zion.RefreshableRichTextBlock.GetFormatElements
+// 0x0010 (0x0010 - 0x0000)
+struct RefreshableRichTextBlock_GetFormatElements final
+{
+public:
+	TArray<struct FRichTextInputElement>          ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RefreshableRichTextBlock_GetFormatElements) == 0x000008, "Wrong alignment on RefreshableRichTextBlock_GetFormatElements");
+static_assert(sizeof(RefreshableRichTextBlock_GetFormatElements) == 0x000010, "Wrong size on RefreshableRichTextBlock_GetFormatElements");
+static_assert(offsetof(RefreshableRichTextBlock_GetFormatElements, ReturnValue) == 0x000000, "Member 'RefreshableRichTextBlock_GetFormatElements::ReturnValue' has a wrong offset!");
 
 // Function Zion.DebugDisplayComponent.OnAnimationEnd
 // 0x0008 (0x0008 - 0x0000)
@@ -1246,38 +2151,21 @@ static_assert(offsetof(DebugDisplayComponent_OnMovementModeChanged, Character) =
 static_assert(offsetof(DebugDisplayComponent_OnMovementModeChanged, PrevMovementMode) == 0x000008, "Member 'DebugDisplayComponent_OnMovementModeChanged::PrevMovementMode' has a wrong offset!");
 static_assert(offsetof(DebugDisplayComponent_OnMovementModeChanged, PreviousCustomMode) == 0x000009, "Member 'DebugDisplayComponent_OnMovementModeChanged::PreviousCustomMode' has a wrong offset!");
 
-// Function Zion.Trigger_FieldMessage.LaunchFieldMessage
-// 0x0008 (0x0008 - 0x0000)
-struct Trigger_FieldMessage_LaunchFieldMessage final
+// Function Zion.Trigger_Event.OnEventFinished
+// 0x0010 (0x0010 - 0x0000)
+struct Trigger_Event_OnEventFinished final
 {
 public:
-	class UFieldMessageAsset*                     FieldMessageAssetOverride;                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UEventPlayer*                           InEventPlayer;                                     // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bCompletedEvent;                                   // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EEventPlayerResult                            EventResult;                                       // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(Trigger_FieldMessage_LaunchFieldMessage) == 0x000008, "Wrong alignment on Trigger_FieldMessage_LaunchFieldMessage");
-static_assert(sizeof(Trigger_FieldMessage_LaunchFieldMessage) == 0x000008, "Wrong size on Trigger_FieldMessage_LaunchFieldMessage");
-static_assert(offsetof(Trigger_FieldMessage_LaunchFieldMessage, FieldMessageAssetOverride) == 0x000000, "Member 'Trigger_FieldMessage_LaunchFieldMessage::FieldMessageAssetOverride' has a wrong offset!");
-
-// Function Zion.Trigger_FieldMessage.OnClearStatusChecked
-// 0x0001 (0x0001 - 0x0000)
-struct Trigger_FieldMessage_OnClearStatusChecked final
-{
-public:
-	EClearStatus                                  ClearStatus;                                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Trigger_FieldMessage_OnClearStatusChecked) == 0x000001, "Wrong alignment on Trigger_FieldMessage_OnClearStatusChecked");
-static_assert(sizeof(Trigger_FieldMessage_OnClearStatusChecked) == 0x000001, "Wrong size on Trigger_FieldMessage_OnClearStatusChecked");
-static_assert(offsetof(Trigger_FieldMessage_OnClearStatusChecked, ClearStatus) == 0x000000, "Member 'Trigger_FieldMessage_OnClearStatusChecked::ClearStatus' has a wrong offset!");
-
-// Function Zion.Trigger_FieldMessage.GetTargetActor
-// 0x0008 (0x0008 - 0x0000)
-struct Trigger_FieldMessage_GetTargetActor final
-{
-public:
-	class AActor*                                 ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Trigger_FieldMessage_GetTargetActor) == 0x000008, "Wrong alignment on Trigger_FieldMessage_GetTargetActor");
-static_assert(sizeof(Trigger_FieldMessage_GetTargetActor) == 0x000008, "Wrong size on Trigger_FieldMessage_GetTargetActor");
-static_assert(offsetof(Trigger_FieldMessage_GetTargetActor, ReturnValue) == 0x000000, "Member 'Trigger_FieldMessage_GetTargetActor::ReturnValue' has a wrong offset!");
+static_assert(alignof(Trigger_Event_OnEventFinished) == 0x000008, "Wrong alignment on Trigger_Event_OnEventFinished");
+static_assert(sizeof(Trigger_Event_OnEventFinished) == 0x000010, "Wrong size on Trigger_Event_OnEventFinished");
+static_assert(offsetof(Trigger_Event_OnEventFinished, InEventPlayer) == 0x000000, "Member 'Trigger_Event_OnEventFinished::InEventPlayer' has a wrong offset!");
+static_assert(offsetof(Trigger_Event_OnEventFinished, bCompletedEvent) == 0x000008, "Member 'Trigger_Event_OnEventFinished::bCompletedEvent' has a wrong offset!");
+static_assert(offsetof(Trigger_Event_OnEventFinished, EventResult) == 0x000009, "Member 'Trigger_Event_OnEventFinished::EventResult' has a wrong offset!");
 
 // Function Zion.DelayFrameAsyncAction.DelayFrame
 // 0x0018 (0x0018 - 0x0000)
@@ -1382,45 +2270,191 @@ static_assert(alignof(AchievementsSubsystem_IsUsingInternalAchievements) == 0x00
 static_assert(sizeof(AchievementsSubsystem_IsUsingInternalAchievements) == 0x000001, "Wrong size on AchievementsSubsystem_IsUsingInternalAchievements");
 static_assert(offsetof(AchievementsSubsystem_IsUsingInternalAchievements, ReturnValue) == 0x000000, "Member 'AchievementsSubsystem_IsUsingInternalAchievements::ReturnValue' has a wrong offset!");
 
-// Function Zion.SleepActivatorComponent.OnWakeTriggerOverlapBegin
-// 0x0118 (0x0118 - 0x0000)
-struct SleepActivatorComponent_OnWakeTriggerOverlapBegin final
+// Function Zion.SkillComponent.Equip
+// 0x0010 (0x0010 - 0x0000)
+struct SkillComponent_Equip final
 {
 public:
-	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bFromSweep;                                        // 0x001C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             SweepResult;                                       // 0x0020(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   SkillID;                                           // 0x0004(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAddToCurrentLoadout;                              // 0x000C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAutoLoad;                                         // 0x000D(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E[0x2];                                        // 0x000E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(SleepActivatorComponent_OnWakeTriggerOverlapBegin) == 0x000008, "Wrong alignment on SleepActivatorComponent_OnWakeTriggerOverlapBegin");
-static_assert(sizeof(SleepActivatorComponent_OnWakeTriggerOverlapBegin) == 0x000118, "Wrong size on SleepActivatorComponent_OnWakeTriggerOverlapBegin");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, OverlappedComponent) == 0x000000, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::OverlappedComponent' has a wrong offset!");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, OtherActor) == 0x000008, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::OtherActor' has a wrong offset!");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, OtherComp) == 0x000010, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::OtherComp' has a wrong offset!");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, OtherBodyIndex) == 0x000018, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::OtherBodyIndex' has a wrong offset!");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, bFromSweep) == 0x00001C, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::bFromSweep' has a wrong offset!");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, SweepResult) == 0x000020, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::SweepResult' has a wrong offset!");
+static_assert(alignof(SkillComponent_Equip) == 0x000004, "Wrong alignment on SkillComponent_Equip");
+static_assert(sizeof(SkillComponent_Equip) == 0x000010, "Wrong size on SkillComponent_Equip");
+static_assert(offsetof(SkillComponent_Equip, SkillSlot) == 0x000000, "Member 'SkillComponent_Equip::SkillSlot' has a wrong offset!");
+static_assert(offsetof(SkillComponent_Equip, SkillID) == 0x000004, "Member 'SkillComponent_Equip::SkillID' has a wrong offset!");
+static_assert(offsetof(SkillComponent_Equip, bAddToCurrentLoadout) == 0x00000C, "Member 'SkillComponent_Equip::bAddToCurrentLoadout' has a wrong offset!");
+static_assert(offsetof(SkillComponent_Equip, bAutoLoad) == 0x00000D, "Member 'SkillComponent_Equip::bAutoLoad' has a wrong offset!");
 
-// Function Zion.SleepActivatorComponent.OnWakeTriggerOverlapEnd
-// 0x0020 (0x0020 - 0x0000)
-struct SleepActivatorComponent_OnWakeTriggerOverlapEnd final
+// Function Zion.SkillComponent.EquipSkillLoadout
+// 0x0008 (0x0008 - 0x0000)
+struct SkillComponent_EquipSkillLoadout final
 {
 public:
-	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         LoadoutIndex;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAutoLoad;                                         // 0x0004(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(SleepActivatorComponent_OnWakeTriggerOverlapEnd) == 0x000008, "Wrong alignment on SleepActivatorComponent_OnWakeTriggerOverlapEnd");
-static_assert(sizeof(SleepActivatorComponent_OnWakeTriggerOverlapEnd) == 0x000020, "Wrong size on SleepActivatorComponent_OnWakeTriggerOverlapEnd");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapEnd, OverlappedComponent) == 0x000000, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapEnd::OverlappedComponent' has a wrong offset!");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapEnd, OtherActor) == 0x000008, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapEnd::OtherActor' has a wrong offset!");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapEnd, OtherComp) == 0x000010, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapEnd::OtherComp' has a wrong offset!");
-static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapEnd, OtherBodyIndex) == 0x000018, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapEnd::OtherBodyIndex' has a wrong offset!");
+static_assert(alignof(SkillComponent_EquipSkillLoadout) == 0x000004, "Wrong alignment on SkillComponent_EquipSkillLoadout");
+static_assert(sizeof(SkillComponent_EquipSkillLoadout) == 0x000008, "Wrong size on SkillComponent_EquipSkillLoadout");
+static_assert(offsetof(SkillComponent_EquipSkillLoadout, LoadoutIndex) == 0x000000, "Member 'SkillComponent_EquipSkillLoadout::LoadoutIndex' has a wrong offset!");
+static_assert(offsetof(SkillComponent_EquipSkillLoadout, bAutoLoad) == 0x000004, "Member 'SkillComponent_EquipSkillLoadout::bAutoLoad' has a wrong offset!");
+
+// Function Zion.SkillComponent.UnEquip
+// 0x0002 (0x0002 - 0x0000)
+struct SkillComponent_UnEquip final
+{
+public:
+	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bRemoveFromCurrentLoadout;                         // 0x0001(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_UnEquip) == 0x000001, "Wrong alignment on SkillComponent_UnEquip");
+static_assert(sizeof(SkillComponent_UnEquip) == 0x000002, "Wrong size on SkillComponent_UnEquip");
+static_assert(offsetof(SkillComponent_UnEquip, SkillSlot) == 0x000000, "Member 'SkillComponent_UnEquip::SkillSlot' has a wrong offset!");
+static_assert(offsetof(SkillComponent_UnEquip, bRemoveFromCurrentLoadout) == 0x000001, "Member 'SkillComponent_UnEquip::bRemoveFromCurrentLoadout' has a wrong offset!");
+
+// Function Zion.SkillComponent.UnEquipAll
+// 0x0001 (0x0001 - 0x0000)
+struct SkillComponent_UnEquipAll final
+{
+public:
+	bool                                          bRemoveFromCurrentLoadout;                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_UnEquipAll) == 0x000001, "Wrong alignment on SkillComponent_UnEquipAll");
+static_assert(sizeof(SkillComponent_UnEquipAll) == 0x000001, "Wrong size on SkillComponent_UnEquipAll");
+static_assert(offsetof(SkillComponent_UnEquipAll, bRemoveFromCurrentLoadout) == 0x000000, "Member 'SkillComponent_UnEquipAll::bRemoveFromCurrentLoadout' has a wrong offset!");
+
+// Function Zion.SkillComponent.GetCurrentSkillLoadoutIndex
+// 0x0004 (0x0004 - 0x0000)
+struct SkillComponent_GetCurrentSkillLoadoutIndex final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_GetCurrentSkillLoadoutIndex) == 0x000004, "Wrong alignment on SkillComponent_GetCurrentSkillLoadoutIndex");
+static_assert(sizeof(SkillComponent_GetCurrentSkillLoadoutIndex) == 0x000004, "Wrong size on SkillComponent_GetCurrentSkillLoadoutIndex");
+static_assert(offsetof(SkillComponent_GetCurrentSkillLoadoutIndex, ReturnValue) == 0x000000, "Member 'SkillComponent_GetCurrentSkillLoadoutIndex::ReturnValue' has a wrong offset!");
+
+// Function Zion.SkillComponent.GetEquippedCommandSet
+// 0x0010 (0x0010 - 0x0000)
+struct SkillComponent_GetEquippedCommandSet final
+{
+public:
+	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCommandSet*                            ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_GetEquippedCommandSet) == 0x000008, "Wrong alignment on SkillComponent_GetEquippedCommandSet");
+static_assert(sizeof(SkillComponent_GetEquippedCommandSet) == 0x000010, "Wrong size on SkillComponent_GetEquippedCommandSet");
+static_assert(offsetof(SkillComponent_GetEquippedCommandSet, SkillSlot) == 0x000000, "Member 'SkillComponent_GetEquippedCommandSet::SkillSlot' has a wrong offset!");
+static_assert(offsetof(SkillComponent_GetEquippedCommandSet, ReturnValue) == 0x000008, "Member 'SkillComponent_GetEquippedCommandSet::ReturnValue' has a wrong offset!");
+
+// Function Zion.SkillComponent.GetEquippedItemSkillData
+// 0x0290 (0x0290 - 0x0000)
+struct SkillComponent_GetEquippedItemSkillData final
+{
+public:
+	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FInventoryItemSkillData                ReturnValue;                                       // 0x0008(0x0288)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_GetEquippedItemSkillData) == 0x000008, "Wrong alignment on SkillComponent_GetEquippedItemSkillData");
+static_assert(sizeof(SkillComponent_GetEquippedItemSkillData) == 0x000290, "Wrong size on SkillComponent_GetEquippedItemSkillData");
+static_assert(offsetof(SkillComponent_GetEquippedItemSkillData, SkillSlot) == 0x000000, "Member 'SkillComponent_GetEquippedItemSkillData::SkillSlot' has a wrong offset!");
+static_assert(offsetof(SkillComponent_GetEquippedItemSkillData, ReturnValue) == 0x000008, "Member 'SkillComponent_GetEquippedItemSkillData::ReturnValue' has a wrong offset!");
+
+// Function Zion.SkillComponent.GetEquippedSkillID
+// 0x000C (0x000C - 0x0000)
+struct SkillComponent_GetEquippedSkillID final
+{
+public:
+	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   ReturnValue;                                       // 0x0004(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_GetEquippedSkillID) == 0x000004, "Wrong alignment on SkillComponent_GetEquippedSkillID");
+static_assert(sizeof(SkillComponent_GetEquippedSkillID) == 0x00000C, "Wrong size on SkillComponent_GetEquippedSkillID");
+static_assert(offsetof(SkillComponent_GetEquippedSkillID, SkillSlot) == 0x000000, "Member 'SkillComponent_GetEquippedSkillID::SkillSlot' has a wrong offset!");
+static_assert(offsetof(SkillComponent_GetEquippedSkillID, ReturnValue) == 0x000004, "Member 'SkillComponent_GetEquippedSkillID::ReturnValue' has a wrong offset!");
+
+// Function Zion.SkillComponent.GetEquippedSkillInputActionFromSpirit
+// 0x0210 (0x0210 - 0x0000)
+struct SkillComponent_GetEquippedSkillInputActionFromSpirit final
+{
+public:
+	struct FInventoryItemSpiritData               SpiritData;                                        // 0x0000(0x0208)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	const class UInputAction*                     ReturnValue;                                       // 0x0208(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_GetEquippedSkillInputActionFromSpirit) == 0x000008, "Wrong alignment on SkillComponent_GetEquippedSkillInputActionFromSpirit");
+static_assert(sizeof(SkillComponent_GetEquippedSkillInputActionFromSpirit) == 0x000210, "Wrong size on SkillComponent_GetEquippedSkillInputActionFromSpirit");
+static_assert(offsetof(SkillComponent_GetEquippedSkillInputActionFromSpirit, SpiritData) == 0x000000, "Member 'SkillComponent_GetEquippedSkillInputActionFromSpirit::SpiritData' has a wrong offset!");
+static_assert(offsetof(SkillComponent_GetEquippedSkillInputActionFromSpirit, ReturnValue) == 0x000208, "Member 'SkillComponent_GetEquippedSkillInputActionFromSpirit::ReturnValue' has a wrong offset!");
+
+// Function Zion.SkillComponent.GetEquippedSkillLevelData
+// 0x00F0 (0x00F0 - 0x0000)
+struct SkillComponent_GetEquippedSkillLevelData final
+{
+public:
+	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSkillLevelData                        ReturnValue;                                       // 0x0008(0x00E8)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_GetEquippedSkillLevelData) == 0x000008, "Wrong alignment on SkillComponent_GetEquippedSkillLevelData");
+static_assert(sizeof(SkillComponent_GetEquippedSkillLevelData) == 0x0000F0, "Wrong size on SkillComponent_GetEquippedSkillLevelData");
+static_assert(offsetof(SkillComponent_GetEquippedSkillLevelData, SkillSlot) == 0x000000, "Member 'SkillComponent_GetEquippedSkillLevelData::SkillSlot' has a wrong offset!");
+static_assert(offsetof(SkillComponent_GetEquippedSkillLevelData, ReturnValue) == 0x000008, "Member 'SkillComponent_GetEquippedSkillLevelData::ReturnValue' has a wrong offset!");
+
+// Function Zion.SkillComponent.GetEquippedSkillSlotFromID
+// 0x000C (0x000C - 0x0000)
+struct SkillComponent_GetEquippedSkillSlotFromID final
+{
+public:
+	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ESkillSlot                                    ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(SkillComponent_GetEquippedSkillSlotFromID) == 0x000004, "Wrong alignment on SkillComponent_GetEquippedSkillSlotFromID");
+static_assert(sizeof(SkillComponent_GetEquippedSkillSlotFromID) == 0x00000C, "Wrong size on SkillComponent_GetEquippedSkillSlotFromID");
+static_assert(offsetof(SkillComponent_GetEquippedSkillSlotFromID, SkillID) == 0x000000, "Member 'SkillComponent_GetEquippedSkillSlotFromID::SkillID' has a wrong offset!");
+static_assert(offsetof(SkillComponent_GetEquippedSkillSlotFromID, ReturnValue) == 0x000008, "Member 'SkillComponent_GetEquippedSkillSlotFromID::ReturnValue' has a wrong offset!");
+
+// Function Zion.SkillComponent.GetMinimumEquippedSPCost
+// 0x0004 (0x0004 - 0x0000)
+struct SkillComponent_GetMinimumEquippedSPCost final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_GetMinimumEquippedSPCost) == 0x000004, "Wrong alignment on SkillComponent_GetMinimumEquippedSPCost");
+static_assert(sizeof(SkillComponent_GetMinimumEquippedSPCost) == 0x000004, "Wrong size on SkillComponent_GetMinimumEquippedSPCost");
+static_assert(offsetof(SkillComponent_GetMinimumEquippedSPCost, ReturnValue) == 0x000000, "Member 'SkillComponent_GetMinimumEquippedSPCost::ReturnValue' has a wrong offset!");
+
+// Function Zion.SkillComponent.HasAnyEquippedSkill
+// 0x0001 (0x0001 - 0x0000)
+struct SkillComponent_HasAnyEquippedSkill final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_HasAnyEquippedSkill) == 0x000001, "Wrong alignment on SkillComponent_HasAnyEquippedSkill");
+static_assert(sizeof(SkillComponent_HasAnyEquippedSkill) == 0x000001, "Wrong size on SkillComponent_HasAnyEquippedSkill");
+static_assert(offsetof(SkillComponent_HasAnyEquippedSkill, ReturnValue) == 0x000000, "Member 'SkillComponent_HasAnyEquippedSkill::ReturnValue' has a wrong offset!");
+
+// Function Zion.SkillComponent.HasEquippedSkill
+// 0x0002 (0x0002 - 0x0000)
+struct SkillComponent_HasEquippedSkill final
+{
+public:
+	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(SkillComponent_HasEquippedSkill) == 0x000001, "Wrong alignment on SkillComponent_HasEquippedSkill");
+static_assert(sizeof(SkillComponent_HasEquippedSkill) == 0x000002, "Wrong size on SkillComponent_HasEquippedSkill");
+static_assert(offsetof(SkillComponent_HasEquippedSkill, SkillSlot) == 0x000000, "Member 'SkillComponent_HasEquippedSkill::SkillSlot' has a wrong offset!");
+static_assert(offsetof(SkillComponent_HasEquippedSkill, ReturnValue) == 0x000001, "Member 'SkillComponent_HasEquippedSkill::ReturnValue' has a wrong offset!");
 
 // Function Zion.AbilityComponent.LaunchAbility
 // 0x0160 (0x0160 - 0x0000)
@@ -1458,346 +2492,224 @@ static_assert(offsetof(AbilityComponent_LaunchAbilityInstant, Targets) == 0x0000
 static_assert(offsetof(AbilityComponent_LaunchAbilityInstant, AdditionalData) == 0x0000F0, "Member 'AbilityComponent_LaunchAbilityInstant::AdditionalData' has a wrong offset!");
 static_assert(offsetof(AbilityComponent_LaunchAbilityInstant, ReturnValue) == 0x000100, "Member 'AbilityComponent_LaunchAbilityInstant::ReturnValue' has a wrong offset!");
 
-// Function Zion.ZionInputDeviceSubsystem.GetActiveControllerID
-// 0x0004 (0x0004 - 0x0000)
-struct ZionInputDeviceSubsystem_GetActiveControllerID final
+// Function Zion.ZionInputComponent.AddInputMappingContext
+// 0x0010 (0x0010 - 0x0000)
+struct ZionInputComponent_AddInputMappingContext final
 {
 public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	const class UInputMappingContext*             InputMappingContext;                               // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EInputMappingPriority                         Priority;                                          // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(ZionInputDeviceSubsystem_GetActiveControllerID) == 0x000004, "Wrong alignment on ZionInputDeviceSubsystem_GetActiveControllerID");
-static_assert(sizeof(ZionInputDeviceSubsystem_GetActiveControllerID) == 0x000004, "Wrong size on ZionInputDeviceSubsystem_GetActiveControllerID");
-static_assert(offsetof(ZionInputDeviceSubsystem_GetActiveControllerID, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_GetActiveControllerID::ReturnValue' has a wrong offset!");
+static_assert(alignof(ZionInputComponent_AddInputMappingContext) == 0x000008, "Wrong alignment on ZionInputComponent_AddInputMappingContext");
+static_assert(sizeof(ZionInputComponent_AddInputMappingContext) == 0x000010, "Wrong size on ZionInputComponent_AddInputMappingContext");
+static_assert(offsetof(ZionInputComponent_AddInputMappingContext, InputMappingContext) == 0x000000, "Member 'ZionInputComponent_AddInputMappingContext::InputMappingContext' has a wrong offset!");
+static_assert(offsetof(ZionInputComponent_AddInputMappingContext, Priority) == 0x000008, "Member 'ZionInputComponent_AddInputMappingContext::Priority' has a wrong offset!");
 
-// Function Zion.ZionInputDeviceSubsystem.SetInputStyleGamepadOverride
-// 0x0001 (0x0001 - 0x0000)
-struct ZionInputDeviceSubsystem_SetInputStyleGamepadOverride final
-{
-public:
-	EInputStyle                                   NewInputStyleGamepadOverride;                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionInputDeviceSubsystem_SetInputStyleGamepadOverride) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_SetInputStyleGamepadOverride");
-static_assert(sizeof(ZionInputDeviceSubsystem_SetInputStyleGamepadOverride) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_SetInputStyleGamepadOverride");
-static_assert(offsetof(ZionInputDeviceSubsystem_SetInputStyleGamepadOverride, NewInputStyleGamepadOverride) == 0x000000, "Member 'ZionInputDeviceSubsystem_SetInputStyleGamepadOverride::NewInputStyleGamepadOverride' has a wrong offset!");
-
-// Function Zion.ZionInputDeviceSubsystem.UnlockActiveController
-// 0x0001 (0x0001 - 0x0000)
-struct ZionInputDeviceSubsystem_UnlockActiveController final
-{
-public:
-	bool                                          bResetLockCount;                                   // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionInputDeviceSubsystem_UnlockActiveController) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_UnlockActiveController");
-static_assert(sizeof(ZionInputDeviceSubsystem_UnlockActiveController) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_UnlockActiveController");
-static_assert(offsetof(ZionInputDeviceSubsystem_UnlockActiveController, bResetLockCount) == 0x000000, "Member 'ZionInputDeviceSubsystem_UnlockActiveController::bResetLockCount' has a wrong offset!");
-
-// Function Zion.ZionInputDeviceSubsystem.GetInputStyle
-// 0x0001 (0x0001 - 0x0000)
-struct ZionInputDeviceSubsystem_GetInputStyle final
-{
-public:
-	EInputStyle                                   ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionInputDeviceSubsystem_GetInputStyle) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_GetInputStyle");
-static_assert(sizeof(ZionInputDeviceSubsystem_GetInputStyle) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_GetInputStyle");
-static_assert(offsetof(ZionInputDeviceSubsystem_GetInputStyle, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_GetInputStyle::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionInputDeviceSubsystem.GetInputStyleGamepadOverride
-// 0x0001 (0x0001 - 0x0000)
-struct ZionInputDeviceSubsystem_GetInputStyleGamepadOverride final
-{
-public:
-	EInputStyle                                   ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionInputDeviceSubsystem_GetInputStyleGamepadOverride) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_GetInputStyleGamepadOverride");
-static_assert(sizeof(ZionInputDeviceSubsystem_GetInputStyleGamepadOverride) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_GetInputStyleGamepadOverride");
-static_assert(offsetof(ZionInputDeviceSubsystem_GetInputStyleGamepadOverride, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_GetInputStyleGamepadOverride::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionInputDeviceSubsystem.IsActiveControllerLocked
-// 0x0001 (0x0001 - 0x0000)
-struct ZionInputDeviceSubsystem_IsActiveControllerLocked final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionInputDeviceSubsystem_IsActiveControllerLocked) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_IsActiveControllerLocked");
-static_assert(sizeof(ZionInputDeviceSubsystem_IsActiveControllerLocked) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_IsActiveControllerLocked");
-static_assert(offsetof(ZionInputDeviceSubsystem_IsActiveControllerLocked, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_IsActiveControllerLocked::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionInputDeviceSubsystem.IsAnyGamepadConnected
-// 0x0001 (0x0001 - 0x0000)
-struct ZionInputDeviceSubsystem_IsAnyGamepadConnected final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionInputDeviceSubsystem_IsAnyGamepadConnected) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_IsAnyGamepadConnected");
-static_assert(sizeof(ZionInputDeviceSubsystem_IsAnyGamepadConnected) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_IsAnyGamepadConnected");
-static_assert(offsetof(ZionInputDeviceSubsystem_IsAnyGamepadConnected, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_IsAnyGamepadConnected::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionInputDeviceSubsystem.IsCursorVisible
-// 0x0001 (0x0001 - 0x0000)
-struct ZionInputDeviceSubsystem_IsCursorVisible final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionInputDeviceSubsystem_IsCursorVisible) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_IsCursorVisible");
-static_assert(sizeof(ZionInputDeviceSubsystem_IsCursorVisible) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_IsCursorVisible");
-static_assert(offsetof(ZionInputDeviceSubsystem_IsCursorVisible, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_IsCursorVisible::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionInputDeviceSubsystem.IsUsingGamepad
-// 0x0001 (0x0001 - 0x0000)
-struct ZionInputDeviceSubsystem_IsUsingGamepad final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionInputDeviceSubsystem_IsUsingGamepad) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_IsUsingGamepad");
-static_assert(sizeof(ZionInputDeviceSubsystem_IsUsingGamepad) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_IsUsingGamepad");
-static_assert(offsetof(ZionInputDeviceSubsystem_IsUsingGamepad, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_IsUsingGamepad::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.SetMovementModeCustom
-// 0x0001 (0x0001 - 0x0000)
-struct ZionCharacterMovementComponent_SetMovementModeCustom final
-{
-public:
-	EMovementModeCustom                           NewMovementModeCustom;                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_SetMovementModeCustom) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_SetMovementModeCustom");
-static_assert(sizeof(ZionCharacterMovementComponent_SetMovementModeCustom) == 0x000001, "Wrong size on ZionCharacterMovementComponent_SetMovementModeCustom");
-static_assert(offsetof(ZionCharacterMovementComponent_SetMovementModeCustom, NewMovementModeCustom) == 0x000000, "Member 'ZionCharacterMovementComponent_SetMovementModeCustom::NewMovementModeCustom' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.SetMovementSpeedMode
-// 0x0001 (0x0001 - 0x0000)
-struct ZionCharacterMovementComponent_SetMovementSpeedMode final
-{
-public:
-	EMovementSpeedMode                            NewMovementSpeedMode;                              // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_SetMovementSpeedMode) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_SetMovementSpeedMode");
-static_assert(sizeof(ZionCharacterMovementComponent_SetMovementSpeedMode) == 0x000001, "Wrong size on ZionCharacterMovementComponent_SetMovementSpeedMode");
-static_assert(offsetof(ZionCharacterMovementComponent_SetMovementSpeedMode, NewMovementSpeedMode) == 0x000000, "Member 'ZionCharacterMovementComponent_SetMovementSpeedMode::NewMovementSpeedMode' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.ComputeLaunchVelocityToDestination
-// 0x0038 (0x0038 - 0x0000)
-struct ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination final
-{
-public:
-	struct FVector                                DestinationLocation;                               // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Duration;                                          // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                ReturnValue;                                       // 0x0020(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination) == 0x000008, "Wrong alignment on ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination");
-static_assert(sizeof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination) == 0x000038, "Wrong size on ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination");
-static_assert(offsetof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination, DestinationLocation) == 0x000000, "Member 'ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination::DestinationLocation' has a wrong offset!");
-static_assert(offsetof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination, Duration) == 0x000018, "Member 'ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination::Duration' has a wrong offset!");
-static_assert(offsetof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination, ReturnValue) == 0x000020, "Member 'ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.GetLastNonFallingLocation
-// 0x0018 (0x0018 - 0x0000)
-struct ZionCharacterMovementComponent_GetLastNonFallingLocation final
-{
-public:
-	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_GetLastNonFallingLocation) == 0x000008, "Wrong alignment on ZionCharacterMovementComponent_GetLastNonFallingLocation");
-static_assert(sizeof(ZionCharacterMovementComponent_GetLastNonFallingLocation) == 0x000018, "Wrong size on ZionCharacterMovementComponent_GetLastNonFallingLocation");
-static_assert(offsetof(ZionCharacterMovementComponent_GetLastNonFallingLocation, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetLastNonFallingLocation::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.GetMovementSpeedMode
-// 0x0001 (0x0001 - 0x0000)
-struct ZionCharacterMovementComponent_GetMovementSpeedMode final
-{
-public:
-	EMovementSpeedMode                            ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_GetMovementSpeedMode) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_GetMovementSpeedMode");
-static_assert(sizeof(ZionCharacterMovementComponent_GetMovementSpeedMode) == 0x000001, "Wrong size on ZionCharacterMovementComponent_GetMovementSpeedMode");
-static_assert(offsetof(ZionCharacterMovementComponent_GetMovementSpeedMode, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetMovementSpeedMode::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastGrounded
-// 0x0004 (0x0004 - 0x0000)
-struct ZionCharacterMovementComponent_GetTimeSinceLastGrounded final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_GetTimeSinceLastGrounded) == 0x000004, "Wrong alignment on ZionCharacterMovementComponent_GetTimeSinceLastGrounded");
-static_assert(sizeof(ZionCharacterMovementComponent_GetTimeSinceLastGrounded) == 0x000004, "Wrong size on ZionCharacterMovementComponent_GetTimeSinceLastGrounded");
-static_assert(offsetof(ZionCharacterMovementComponent_GetTimeSinceLastGrounded, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetTimeSinceLastGrounded::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastHookAttach
-// 0x0004 (0x0004 - 0x0000)
-struct ZionCharacterMovementComponent_GetTimeSinceLastHookAttach final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_GetTimeSinceLastHookAttach) == 0x000004, "Wrong alignment on ZionCharacterMovementComponent_GetTimeSinceLastHookAttach");
-static_assert(sizeof(ZionCharacterMovementComponent_GetTimeSinceLastHookAttach) == 0x000004, "Wrong size on ZionCharacterMovementComponent_GetTimeSinceLastHookAttach");
-static_assert(offsetof(ZionCharacterMovementComponent_GetTimeSinceLastHookAttach, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetTimeSinceLastHookAttach::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastWallGrab
-// 0x0004 (0x0004 - 0x0000)
-struct ZionCharacterMovementComponent_GetTimeSinceLastWallGrab final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_GetTimeSinceLastWallGrab) == 0x000004, "Wrong alignment on ZionCharacterMovementComponent_GetTimeSinceLastWallGrab");
-static_assert(sizeof(ZionCharacterMovementComponent_GetTimeSinceLastWallGrab) == 0x000004, "Wrong size on ZionCharacterMovementComponent_GetTimeSinceLastWallGrab");
-static_assert(offsetof(ZionCharacterMovementComponent_GetTimeSinceLastWallGrab, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetTimeSinceLastWallGrab::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.IsAirborne
-// 0x0001 (0x0001 - 0x0000)
-struct ZionCharacterMovementComponent_IsAirborne final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_IsAirborne) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsAirborne");
-static_assert(sizeof(ZionCharacterMovementComponent_IsAirborne) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsAirborne");
-static_assert(offsetof(ZionCharacterMovementComponent_IsAirborne, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsAirborne::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.IsHookAttached
-// 0x0001 (0x0001 - 0x0000)
-struct ZionCharacterMovementComponent_IsHookAttached final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_IsHookAttached) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsHookAttached");
-static_assert(sizeof(ZionCharacterMovementComponent_IsHookAttached) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsHookAttached");
-static_assert(offsetof(ZionCharacterMovementComponent_IsHookAttached, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsHookAttached::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.IsSliding
-// 0x0001 (0x0001 - 0x0000)
-struct ZionCharacterMovementComponent_IsSliding final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_IsSliding) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsSliding");
-static_assert(sizeof(ZionCharacterMovementComponent_IsSliding) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsSliding");
-static_assert(offsetof(ZionCharacterMovementComponent_IsSliding, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsSliding::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.IsWallGrabbing
-// 0x0001 (0x0001 - 0x0000)
-struct ZionCharacterMovementComponent_IsWallGrabbing final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_IsWallGrabbing) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsWallGrabbing");
-static_assert(sizeof(ZionCharacterMovementComponent_IsWallGrabbing) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsWallGrabbing");
-static_assert(offsetof(ZionCharacterMovementComponent_IsWallGrabbing, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsWallGrabbing::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZionCharacterMovementComponent.IsWallScaling
-// 0x0001 (0x0001 - 0x0000)
-struct ZionCharacterMovementComponent_IsWallScaling final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionCharacterMovementComponent_IsWallScaling) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsWallScaling");
-static_assert(sizeof(ZionCharacterMovementComponent_IsWallScaling) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsWallScaling");
-static_assert(offsetof(ZionCharacterMovementComponent_IsWallScaling, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsWallScaling::ReturnValue' has a wrong offset!");
-
-// Function Zion.KnockbackComponent.OnPreStartCommand
+// Function Zion.ZionInputComponent.RemoveInputMappingContext
 // 0x0008 (0x0008 - 0x0000)
-struct KnockbackComponent_OnPreStartCommand final
+struct ZionInputComponent_RemoveInputMappingContext final
+{
+public:
+	const class UInputMappingContext*             InputMappingContext;                               // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionInputComponent_RemoveInputMappingContext) == 0x000008, "Wrong alignment on ZionInputComponent_RemoveInputMappingContext");
+static_assert(sizeof(ZionInputComponent_RemoveInputMappingContext) == 0x000008, "Wrong size on ZionInputComponent_RemoveInputMappingContext");
+static_assert(offsetof(ZionInputComponent_RemoveInputMappingContext, InputMappingContext) == 0x000000, "Member 'ZionInputComponent_RemoveInputMappingContext::InputMappingContext' has a wrong offset!");
+
+// Function Zion.LocomotionComponent.SetFacing
+// 0x0001 (0x0001 - 0x0000)
+struct LocomotionComponent_SetFacing final
+{
+public:
+	EFacingType                                   FacingType;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(LocomotionComponent_SetFacing) == 0x000001, "Wrong alignment on LocomotionComponent_SetFacing");
+static_assert(sizeof(LocomotionComponent_SetFacing) == 0x000001, "Wrong size on LocomotionComponent_SetFacing");
+static_assert(offsetof(LocomotionComponent_SetFacing, FacingType) == 0x000000, "Member 'LocomotionComponent_SetFacing::FacingType' has a wrong offset!");
+
+// Function Zion.LocomotionComponent.SetFacingFromVector
+// 0x0018 (0x0018 - 0x0000)
+struct LocomotionComponent_SetFacingFromVector final
+{
+public:
+	struct FVector                                Vector;                                            // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(LocomotionComponent_SetFacingFromVector) == 0x000008, "Wrong alignment on LocomotionComponent_SetFacingFromVector");
+static_assert(sizeof(LocomotionComponent_SetFacingFromVector) == 0x000018, "Wrong size on LocomotionComponent_SetFacingFromVector");
+static_assert(offsetof(LocomotionComponent_SetFacingFromVector, Vector) == 0x000000, "Member 'LocomotionComponent_SetFacingFromVector::Vector' has a wrong offset!");
+
+// Function Zion.LocomotionComponent.SetUpdateFacing
+// 0x0001 (0x0001 - 0x0000)
+struct LocomotionComponent_SetUpdateFacing final
+{
+public:
+	bool                                          bNewUpdateFacing;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(LocomotionComponent_SetUpdateFacing) == 0x000001, "Wrong alignment on LocomotionComponent_SetUpdateFacing");
+static_assert(sizeof(LocomotionComponent_SetUpdateFacing) == 0x000001, "Wrong size on LocomotionComponent_SetUpdateFacing");
+static_assert(offsetof(LocomotionComponent_SetUpdateFacing, bNewUpdateFacing) == 0x000000, "Member 'LocomotionComponent_SetUpdateFacing::bNewUpdateFacing' has a wrong offset!");
+
+// Function Zion.LocomotionComponent.SetUpVector
+// 0x0018 (0x0018 - 0x0000)
+struct LocomotionComponent_SetUpVector final
+{
+public:
+	struct FVector                                NewUpVector;                                       // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(LocomotionComponent_SetUpVector) == 0x000008, "Wrong alignment on LocomotionComponent_SetUpVector");
+static_assert(sizeof(LocomotionComponent_SetUpVector) == 0x000018, "Wrong size on LocomotionComponent_SetUpVector");
+static_assert(offsetof(LocomotionComponent_SetUpVector, NewUpVector) == 0x000000, "Member 'LocomotionComponent_SetUpVector::NewUpVector' has a wrong offset!");
+
+// Function Zion.LocomotionComponent.GetFacing
+// 0x0001 (0x0001 - 0x0000)
+struct LocomotionComponent_GetFacing final
+{
+public:
+	EFacingType                                   ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(LocomotionComponent_GetFacing) == 0x000001, "Wrong alignment on LocomotionComponent_GetFacing");
+static_assert(sizeof(LocomotionComponent_GetFacing) == 0x000001, "Wrong size on LocomotionComponent_GetFacing");
+static_assert(offsetof(LocomotionComponent_GetFacing, ReturnValue) == 0x000000, "Member 'LocomotionComponent_GetFacing::ReturnValue' has a wrong offset!");
+
+// Function Zion.LocomotionComponent.GetUpdateFacing
+// 0x0001 (0x0001 - 0x0000)
+struct LocomotionComponent_GetUpdateFacing final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(LocomotionComponent_GetUpdateFacing) == 0x000001, "Wrong alignment on LocomotionComponent_GetUpdateFacing");
+static_assert(sizeof(LocomotionComponent_GetUpdateFacing) == 0x000001, "Wrong size on LocomotionComponent_GetUpdateFacing");
+static_assert(offsetof(LocomotionComponent_GetUpdateFacing, ReturnValue) == 0x000000, "Member 'LocomotionComponent_GetUpdateFacing::ReturnValue' has a wrong offset!");
+
+// Function Zion.LocomotionComponent.GetUpVector
+// 0x0018 (0x0018 - 0x0000)
+struct LocomotionComponent_GetUpVector final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(LocomotionComponent_GetUpVector) == 0x000008, "Wrong alignment on LocomotionComponent_GetUpVector");
+static_assert(sizeof(LocomotionComponent_GetUpVector) == 0x000018, "Wrong size on LocomotionComponent_GetUpVector");
+static_assert(offsetof(LocomotionComponent_GetUpVector, ReturnValue) == 0x000000, "Member 'LocomotionComponent_GetUpVector::ReturnValue' has a wrong offset!");
+
+// Function Zion.LocomotionComponent.GetWorldUpToUpRotation
+// 0x0020 (0x0020 - 0x0000)
+struct LocomotionComponent_GetWorldUpToUpRotation final
+{
+public:
+	struct FQuat                                  ReturnValue;                                       // 0x0000(0x0020)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(LocomotionComponent_GetWorldUpToUpRotation) == 0x000010, "Wrong alignment on LocomotionComponent_GetWorldUpToUpRotation");
+static_assert(sizeof(LocomotionComponent_GetWorldUpToUpRotation) == 0x000020, "Wrong size on LocomotionComponent_GetWorldUpToUpRotation");
+static_assert(offsetof(LocomotionComponent_GetWorldUpToUpRotation, ReturnValue) == 0x000000, "Member 'LocomotionComponent_GetWorldUpToUpRotation::ReturnValue' has a wrong offset!");
+
+// Function Zion.FXComponent.ActivateAuraFXs
+// 0x0008 (0x0008 - 0x0000)
+struct FXComponent_ActivateAuraFXs final
+{
+public:
+	class FName                                   AuraFXTag;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FXComponent_ActivateAuraFXs) == 0x000004, "Wrong alignment on FXComponent_ActivateAuraFXs");
+static_assert(sizeof(FXComponent_ActivateAuraFXs) == 0x000008, "Wrong size on FXComponent_ActivateAuraFXs");
+static_assert(offsetof(FXComponent_ActivateAuraFXs, AuraFXTag) == 0x000000, "Member 'FXComponent_ActivateAuraFXs::AuraFXTag' has a wrong offset!");
+
+// Function Zion.FXComponent.DeactivateAuraFXs
+// 0x0008 (0x0008 - 0x0000)
+struct FXComponent_DeactivateAuraFXs final
+{
+public:
+	class FName                                   AuraFXTag;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FXComponent_DeactivateAuraFXs) == 0x000004, "Wrong alignment on FXComponent_DeactivateAuraFXs");
+static_assert(sizeof(FXComponent_DeactivateAuraFXs) == 0x000008, "Wrong size on FXComponent_DeactivateAuraFXs");
+static_assert(offsetof(FXComponent_DeactivateAuraFXs, AuraFXTag) == 0x000000, "Member 'FXComponent_DeactivateAuraFXs::AuraFXTag' has a wrong offset!");
+
+// Function Zion.FXComponent.OnFinishCommand
+// 0x0010 (0x0010 - 0x0000)
+struct FXComponent_OnFinishCommand final
 {
 public:
 	const class UCommand*                         Command;                                           // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ECommandFinishType                            FinishType;                                        // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(KnockbackComponent_OnPreStartCommand) == 0x000008, "Wrong alignment on KnockbackComponent_OnPreStartCommand");
-static_assert(sizeof(KnockbackComponent_OnPreStartCommand) == 0x000008, "Wrong size on KnockbackComponent_OnPreStartCommand");
-static_assert(offsetof(KnockbackComponent_OnPreStartCommand, Command) == 0x000000, "Member 'KnockbackComponent_OnPreStartCommand::Command' has a wrong offset!");
+static_assert(alignof(FXComponent_OnFinishCommand) == 0x000008, "Wrong alignment on FXComponent_OnFinishCommand");
+static_assert(sizeof(FXComponent_OnFinishCommand) == 0x000010, "Wrong size on FXComponent_OnFinishCommand");
+static_assert(offsetof(FXComponent_OnFinishCommand, Command) == 0x000000, "Member 'FXComponent_OnFinishCommand::Command' has a wrong offset!");
+static_assert(offsetof(FXComponent_OnFinishCommand, FinishType) == 0x000008, "Member 'FXComponent_OnFinishCommand::FinishType' has a wrong offset!");
 
-// Function Zion.KnockbackComponent.StartKnockback
-// 0x0070 (0x0070 - 0x0000)
-struct KnockbackComponent_StartKnockback final
+// Function Zion.FXComponent.OnGuarded
+// 0x0010 (0x0010 - 0x0000)
+struct FXComponent_OnGuarded final
 {
 public:
-	struct FKnockbackData                         KnockbackData;                                     // 0x0000(0x0058)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	struct FVector                                KnockbackDirection;                                // 0x0058(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AAbility*                               Ability;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 Source;                                            // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(KnockbackComponent_StartKnockback) == 0x000008, "Wrong alignment on KnockbackComponent_StartKnockback");
-static_assert(sizeof(KnockbackComponent_StartKnockback) == 0x000070, "Wrong size on KnockbackComponent_StartKnockback");
-static_assert(offsetof(KnockbackComponent_StartKnockback, KnockbackData) == 0x000000, "Member 'KnockbackComponent_StartKnockback::KnockbackData' has a wrong offset!");
-static_assert(offsetof(KnockbackComponent_StartKnockback, KnockbackDirection) == 0x000058, "Member 'KnockbackComponent_StartKnockback::KnockbackDirection' has a wrong offset!");
+static_assert(alignof(FXComponent_OnGuarded) == 0x000008, "Wrong alignment on FXComponent_OnGuarded");
+static_assert(sizeof(FXComponent_OnGuarded) == 0x000010, "Wrong size on FXComponent_OnGuarded");
+static_assert(offsetof(FXComponent_OnGuarded, Ability) == 0x000000, "Member 'FXComponent_OnGuarded::Ability' has a wrong offset!");
+static_assert(offsetof(FXComponent_OnGuarded, Source) == 0x000008, "Member 'FXComponent_OnGuarded::Source' has a wrong offset!");
 
-// Function Zion.KnockbackComponent.IsInKnockback
-// 0x0001 (0x0001 - 0x0000)
-struct KnockbackComponent_IsInKnockback final
+// Function Zion.FXComponent.OnLanded
+// 0x00F8 (0x00F8 - 0x0000)
+struct FXComponent_OnLanded final
 {
 public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FHitResult                             Hit;                                               // 0x0000(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(KnockbackComponent_IsInKnockback) == 0x000001, "Wrong alignment on KnockbackComponent_IsInKnockback");
-static_assert(sizeof(KnockbackComponent_IsInKnockback) == 0x000001, "Wrong size on KnockbackComponent_IsInKnockback");
-static_assert(offsetof(KnockbackComponent_IsInKnockback, ReturnValue) == 0x000000, "Member 'KnockbackComponent_IsInKnockback::ReturnValue' has a wrong offset!");
+static_assert(alignof(FXComponent_OnLanded) == 0x000008, "Wrong alignment on FXComponent_OnLanded");
+static_assert(sizeof(FXComponent_OnLanded) == 0x0000F8, "Wrong size on FXComponent_OnLanded");
+static_assert(offsetof(FXComponent_OnLanded, Hit) == 0x000000, "Member 'FXComponent_OnLanded::Hit' has a wrong offset!");
 
-// Function Zion.GameEngineZion.Get
+// Function Zion.FXComponent.OnParried
+// 0x0010 (0x0010 - 0x0000)
+struct FXComponent_OnParried final
+{
+public:
+	class AAbility*                               Ability;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 Source;                                            // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FXComponent_OnParried) == 0x000008, "Wrong alignment on FXComponent_OnParried");
+static_assert(sizeof(FXComponent_OnParried) == 0x000010, "Wrong size on FXComponent_OnParried");
+static_assert(offsetof(FXComponent_OnParried, Ability) == 0x000000, "Member 'FXComponent_OnParried::Ability' has a wrong offset!");
+static_assert(offsetof(FXComponent_OnParried, Source) == 0x000008, "Member 'FXComponent_OnParried::Source' has a wrong offset!");
+
+// Function Zion.FXComponent.OnStatusEffectLaunched
 // 0x0008 (0x0008 - 0x0000)
-struct GameEngineZion_Get final
+struct FXComponent_OnStatusEffectLaunched final
 {
 public:
-	class UGameEngineZion*                        ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UStatusEffect*                          StatusEffect;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameEngineZion_Get) == 0x000008, "Wrong alignment on GameEngineZion_Get");
-static_assert(sizeof(GameEngineZion_Get) == 0x000008, "Wrong size on GameEngineZion_Get");
-static_assert(offsetof(GameEngineZion_Get, ReturnValue) == 0x000000, "Member 'GameEngineZion_Get::ReturnValue' has a wrong offset!");
+static_assert(alignof(FXComponent_OnStatusEffectLaunched) == 0x000008, "Wrong alignment on FXComponent_OnStatusEffectLaunched");
+static_assert(sizeof(FXComponent_OnStatusEffectLaunched) == 0x000008, "Wrong size on FXComponent_OnStatusEffectLaunched");
+static_assert(offsetof(FXComponent_OnStatusEffectLaunched, StatusEffect) == 0x000000, "Member 'FXComponent_OnStatusEffectLaunched::StatusEffect' has a wrong offset!");
 
-// Function Zion.MovingBlock_Elevator.CallToDestination
-// 0x0001 (0x0001 - 0x0000)
-struct MovingBlock_Elevator_CallToDestination final
+// Function Zion.FXComponent.OnStatusEffectStopped
+// 0x0008 (0x0008 - 0x0000)
+struct FXComponent_OnStatusEffectStopped final
 {
 public:
-	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UStatusEffect*                          StatusEffect;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(MovingBlock_Elevator_CallToDestination) == 0x000001, "Wrong alignment on MovingBlock_Elevator_CallToDestination");
-static_assert(sizeof(MovingBlock_Elevator_CallToDestination) == 0x000001, "Wrong size on MovingBlock_Elevator_CallToDestination");
-static_assert(offsetof(MovingBlock_Elevator_CallToDestination, bInstant) == 0x000000, "Member 'MovingBlock_Elevator_CallToDestination::bInstant' has a wrong offset!");
+static_assert(alignof(FXComponent_OnStatusEffectStopped) == 0x000008, "Wrong alignment on FXComponent_OnStatusEffectStopped");
+static_assert(sizeof(FXComponent_OnStatusEffectStopped) == 0x000008, "Wrong size on FXComponent_OnStatusEffectStopped");
+static_assert(offsetof(FXComponent_OnStatusEffectStopped, StatusEffect) == 0x000000, "Member 'FXComponent_OnStatusEffectStopped::StatusEffect' has a wrong offset!");
 
-// Function Zion.MovingBlock_Elevator.CallToOrigin
-// 0x0001 (0x0001 - 0x0000)
-struct MovingBlock_Elevator_CallToOrigin final
+// Function Zion.MoveComponent.SetVelocity
+// 0x0018 (0x0018 - 0x0000)
+struct MoveComponent_SetVelocity final
 {
 public:
-	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                NewVelocity;                                       // 0x0000(0x0018)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(MovingBlock_Elevator_CallToOrigin) == 0x000001, "Wrong alignment on MovingBlock_Elevator_CallToOrigin");
-static_assert(sizeof(MovingBlock_Elevator_CallToOrigin) == 0x000001, "Wrong size on MovingBlock_Elevator_CallToOrigin");
-static_assert(offsetof(MovingBlock_Elevator_CallToOrigin, bInstant) == 0x000000, "Member 'MovingBlock_Elevator_CallToOrigin::bInstant' has a wrong offset!");
-
-// Function Zion.MovingBlock_Elevator.OnFinishMovement
-// 0x0002 (0x0002 - 0x0000)
-struct MovingBlock_Elevator_OnFinishMovement final
-{
-public:
-	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bWasMoving;                                        // 0x0001(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MovingBlock_Elevator_OnFinishMovement) == 0x000001, "Wrong alignment on MovingBlock_Elevator_OnFinishMovement");
-static_assert(sizeof(MovingBlock_Elevator_OnFinishMovement) == 0x000002, "Wrong size on MovingBlock_Elevator_OnFinishMovement");
-static_assert(offsetof(MovingBlock_Elevator_OnFinishMovement, bInstant) == 0x000000, "Member 'MovingBlock_Elevator_OnFinishMovement::bInstant' has a wrong offset!");
-static_assert(offsetof(MovingBlock_Elevator_OnFinishMovement, bWasMoving) == 0x000001, "Member 'MovingBlock_Elevator_OnFinishMovement::bWasMoving' has a wrong offset!");
-
-// Function Zion.MovingBlock_Elevator.OnStartMovement
-// 0x0002 (0x0002 - 0x0000)
-struct MovingBlock_Elevator_OnStartMovement final
-{
-public:
-	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bWasMoving;                                        // 0x0001(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MovingBlock_Elevator_OnStartMovement) == 0x000001, "Wrong alignment on MovingBlock_Elevator_OnStartMovement");
-static_assert(sizeof(MovingBlock_Elevator_OnStartMovement) == 0x000002, "Wrong size on MovingBlock_Elevator_OnStartMovement");
-static_assert(offsetof(MovingBlock_Elevator_OnStartMovement, bInstant) == 0x000000, "Member 'MovingBlock_Elevator_OnStartMovement::bInstant' has a wrong offset!");
-static_assert(offsetof(MovingBlock_Elevator_OnStartMovement, bWasMoving) == 0x000001, "Member 'MovingBlock_Elevator_OnStartMovement::bWasMoving' has a wrong offset!");
+static_assert(alignof(MoveComponent_SetVelocity) == 0x000008, "Wrong alignment on MoveComponent_SetVelocity");
+static_assert(sizeof(MoveComponent_SetVelocity) == 0x000018, "Wrong size on MoveComponent_SetVelocity");
+static_assert(offsetof(MoveComponent_SetVelocity, NewVelocity) == 0x000000, "Member 'MoveComponent_SetVelocity::NewVelocity' has a wrong offset!");
 
 // Function Zion.AbilityHitboxBounce.OnProjectileBounce
 // 0x0110 (0x0110 - 0x0000)
@@ -1812,115 +2724,81 @@ static_assert(sizeof(AbilityHitboxBounce_OnProjectileBounce) == 0x000110, "Wrong
 static_assert(offsetof(AbilityHitboxBounce_OnProjectileBounce, ImpactResult) == 0x000000, "Member 'AbilityHitboxBounce_OnProjectileBounce::ImpactResult' has a wrong offset!");
 static_assert(offsetof(AbilityHitboxBounce_OnProjectileBounce, ImpactVelocity) == 0x0000F8, "Member 'AbilityHitboxBounce_OnProjectileBounce::ImpactVelocity' has a wrong offset!");
 
-// Function Zion.Interactable.OnActivateInteractable
-// 0x0008 (0x0008 - 0x0000)
-struct Interactable_OnActivateInteractable final
+// Function Zion.InputSettingsSubsystem.RemapKey
+// 0x0078 (0x0078 - 0x0000)
+struct InputSettingsSubsystem_RemapKey final
 {
 public:
-	class APlayerController*                      Controller;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EActionInputType                              ActionInputType;                                   // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FKey                                   NewKey;                                            // 0x0008(0x0018)(ConstParm, Parm, OutParm, ReferenceParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSet<EActionInputType>                        InvalidInputTypes;                                 // 0x0020(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          bIsGamepadKey;                                     // 0x0070(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0071(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_72[0x6];                                       // 0x0072(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(Interactable_OnActivateInteractable) == 0x000008, "Wrong alignment on Interactable_OnActivateInteractable");
-static_assert(sizeof(Interactable_OnActivateInteractable) == 0x000008, "Wrong size on Interactable_OnActivateInteractable");
-static_assert(offsetof(Interactable_OnActivateInteractable, Controller) == 0x000000, "Member 'Interactable_OnActivateInteractable::Controller' has a wrong offset!");
+static_assert(alignof(InputSettingsSubsystem_RemapKey) == 0x000008, "Wrong alignment on InputSettingsSubsystem_RemapKey");
+static_assert(sizeof(InputSettingsSubsystem_RemapKey) == 0x000078, "Wrong size on InputSettingsSubsystem_RemapKey");
+static_assert(offsetof(InputSettingsSubsystem_RemapKey, ActionInputType) == 0x000000, "Member 'InputSettingsSubsystem_RemapKey::ActionInputType' has a wrong offset!");
+static_assert(offsetof(InputSettingsSubsystem_RemapKey, NewKey) == 0x000008, "Member 'InputSettingsSubsystem_RemapKey::NewKey' has a wrong offset!");
+static_assert(offsetof(InputSettingsSubsystem_RemapKey, InvalidInputTypes) == 0x000020, "Member 'InputSettingsSubsystem_RemapKey::InvalidInputTypes' has a wrong offset!");
+static_assert(offsetof(InputSettingsSubsystem_RemapKey, bIsGamepadKey) == 0x000070, "Member 'InputSettingsSubsystem_RemapKey::bIsGamepadKey' has a wrong offset!");
+static_assert(offsetof(InputSettingsSubsystem_RemapKey, ReturnValue) == 0x000071, "Member 'InputSettingsSubsystem_RemapKey::ReturnValue' has a wrong offset!");
 
-// Function Zion.Interactable.OnDeactivateInteractable
-// 0x0008 (0x0008 - 0x0000)
-struct Interactable_OnDeactivateInteractable final
-{
-public:
-	class APlayerController*                      Controller;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Interactable_OnDeactivateInteractable) == 0x000008, "Wrong alignment on Interactable_OnDeactivateInteractable");
-static_assert(sizeof(Interactable_OnDeactivateInteractable) == 0x000008, "Wrong size on Interactable_OnDeactivateInteractable");
-static_assert(offsetof(Interactable_OnDeactivateInteractable, Controller) == 0x000000, "Member 'Interactable_OnDeactivateInteractable::Controller' has a wrong offset!");
-
-// Function Zion.Interactable.OnInteract
-// 0x0008 (0x0008 - 0x0000)
-struct Interactable_OnInteract final
-{
-public:
-	class APlayerController*                      Controller;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Interactable_OnInteract) == 0x000008, "Wrong alignment on Interactable_OnInteract");
-static_assert(sizeof(Interactable_OnInteract) == 0x000008, "Wrong size on Interactable_OnInteract");
-static_assert(offsetof(Interactable_OnInteract, Controller) == 0x000000, "Member 'Interactable_OnInteract::Controller' has a wrong offset!");
-
-// Function Zion.Interactable.OnInteract_ConditionCheckFailed
-// 0x0008 (0x0008 - 0x0000)
-struct Interactable_OnInteract_ConditionCheckFailed final
-{
-public:
-	class APlayerController*                      Controller;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Interactable_OnInteract_ConditionCheckFailed) == 0x000008, "Wrong alignment on Interactable_OnInteract_ConditionCheckFailed");
-static_assert(sizeof(Interactable_OnInteract_ConditionCheckFailed) == 0x000008, "Wrong size on Interactable_OnInteract_ConditionCheckFailed");
-static_assert(offsetof(Interactable_OnInteract_ConditionCheckFailed, Controller) == 0x000000, "Member 'Interactable_OnInteract_ConditionCheckFailed::Controller' has a wrong offset!");
-
-// Function Zion.Interactable.SetCanBeInteracted
+// Function Zion.InputSettingsSubsystem.ResetAllInputMappingContextsToDefault
 // 0x0001 (0x0001 - 0x0000)
-struct Interactable_SetCanBeInteracted final
+struct InputSettingsSubsystem_ResetAllInputMappingContextsToDefault final
 {
 public:
-	bool                                          bCanInteract;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsGamepad;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(Interactable_SetCanBeInteracted) == 0x000001, "Wrong alignment on Interactable_SetCanBeInteracted");
-static_assert(sizeof(Interactable_SetCanBeInteracted) == 0x000001, "Wrong size on Interactable_SetCanBeInteracted");
-static_assert(offsetof(Interactable_SetCanBeInteracted, bCanInteract) == 0x000000, "Member 'Interactable_SetCanBeInteracted::bCanInteract' has a wrong offset!");
+static_assert(alignof(InputSettingsSubsystem_ResetAllInputMappingContextsToDefault) == 0x000001, "Wrong alignment on InputSettingsSubsystem_ResetAllInputMappingContextsToDefault");
+static_assert(sizeof(InputSettingsSubsystem_ResetAllInputMappingContextsToDefault) == 0x000001, "Wrong size on InputSettingsSubsystem_ResetAllInputMappingContextsToDefault");
+static_assert(offsetof(InputSettingsSubsystem_ResetAllInputMappingContextsToDefault, bIsGamepad) == 0x000000, "Member 'InputSettingsSubsystem_ResetAllInputMappingContextsToDefault::bIsGamepad' has a wrong offset!");
 
-// Function Zion.Interactable.CanBeInteracted
-// 0x0001 (0x0001 - 0x0000)
-struct Interactable_CanBeInteracted final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Interactable_CanBeInteracted) == 0x000001, "Wrong alignment on Interactable_CanBeInteracted");
-static_assert(sizeof(Interactable_CanBeInteracted) == 0x000001, "Wrong size on Interactable_CanBeInteracted");
-static_assert(offsetof(Interactable_CanBeInteracted, ReturnValue) == 0x000000, "Member 'Interactable_CanBeInteracted::ReturnValue' has a wrong offset!");
-
-// Function Zion.Interactable.ConditionsChecked
-// 0x0001 (0x0001 - 0x0000)
-struct Interactable_ConditionsChecked final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Interactable_ConditionsChecked) == 0x000001, "Wrong alignment on Interactable_ConditionsChecked");
-static_assert(sizeof(Interactable_ConditionsChecked) == 0x000001, "Wrong size on Interactable_ConditionsChecked");
-static_assert(offsetof(Interactable_ConditionsChecked, ReturnValue) == 0x000000, "Member 'Interactable_ConditionsChecked::ReturnValue' has a wrong offset!");
-
-// Function Zion.Interactable.GetInteractingController
-// 0x0008 (0x0008 - 0x0000)
-struct Interactable_GetInteractingController final
-{
-public:
-	class APlayerController*                      ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Interactable_GetInteractingController) == 0x000008, "Wrong alignment on Interactable_GetInteractingController");
-static_assert(sizeof(Interactable_GetInteractingController) == 0x000008, "Wrong size on Interactable_GetInteractingController");
-static_assert(offsetof(Interactable_GetInteractingController, ReturnValue) == 0x000000, "Member 'Interactable_GetInteractingController::ReturnValue' has a wrong offset!");
-
-// Function Zion.Interactable.GetInteractionText
+// Function Zion.InputSettingsSubsystem.ResetInputMappingContextToDefault
 // 0x0010 (0x0010 - 0x0000)
-struct Interactable_GetInteractionText final
+struct InputSettingsSubsystem_ResetInputMappingContextToDefault final
 {
 public:
-	class FText                                   ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+	class UInputMappingContext*                   InputMappingContext;                               // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsGamepad;                                        // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(Interactable_GetInteractionText) == 0x000008, "Wrong alignment on Interactable_GetInteractionText");
-static_assert(sizeof(Interactable_GetInteractionText) == 0x000010, "Wrong size on Interactable_GetInteractionText");
-static_assert(offsetof(Interactable_GetInteractionText, ReturnValue) == 0x000000, "Member 'Interactable_GetInteractionText::ReturnValue' has a wrong offset!");
+static_assert(alignof(InputSettingsSubsystem_ResetInputMappingContextToDefault) == 0x000008, "Wrong alignment on InputSettingsSubsystem_ResetInputMappingContextToDefault");
+static_assert(sizeof(InputSettingsSubsystem_ResetInputMappingContextToDefault) == 0x000010, "Wrong size on InputSettingsSubsystem_ResetInputMappingContextToDefault");
+static_assert(offsetof(InputSettingsSubsystem_ResetInputMappingContextToDefault, InputMappingContext) == 0x000000, "Member 'InputSettingsSubsystem_ResetInputMappingContextToDefault::InputMappingContext' has a wrong offset!");
+static_assert(offsetof(InputSettingsSubsystem_ResetInputMappingContextToDefault, bIsGamepad) == 0x000008, "Member 'InputSettingsSubsystem_ResetInputMappingContextToDefault::bIsGamepad' has a wrong offset!");
 
-// Function Zion.Interactable.PlaySoundEvent
-// 0x0008 (0x0008 - 0x0000)
-struct Interactable_PlaySoundEvent final
+// Function Zion.InputSettingsSubsystem.GetMappedKey
+// 0x0020 (0x0020 - 0x0000)
+struct InputSettingsSubsystem_GetMappedKey final
 {
 public:
-	class UFMODEvent*                             SoundEffect;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   MappingName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FKey                                   ReturnValue;                                       // 0x0008(0x0018)(Parm, OutParm, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(Interactable_PlaySoundEvent) == 0x000008, "Wrong alignment on Interactable_PlaySoundEvent");
-static_assert(sizeof(Interactable_PlaySoundEvent) == 0x000008, "Wrong size on Interactable_PlaySoundEvent");
-static_assert(offsetof(Interactable_PlaySoundEvent, SoundEffect) == 0x000000, "Member 'Interactable_PlaySoundEvent::SoundEffect' has a wrong offset!");
+static_assert(alignof(InputSettingsSubsystem_GetMappedKey) == 0x000008, "Wrong alignment on InputSettingsSubsystem_GetMappedKey");
+static_assert(sizeof(InputSettingsSubsystem_GetMappedKey) == 0x000020, "Wrong size on InputSettingsSubsystem_GetMappedKey");
+static_assert(offsetof(InputSettingsSubsystem_GetMappedKey, MappingName) == 0x000000, "Member 'InputSettingsSubsystem_GetMappedKey::MappingName' has a wrong offset!");
+static_assert(offsetof(InputSettingsSubsystem_GetMappedKey, ReturnValue) == 0x000008, "Member 'InputSettingsSubsystem_GetMappedKey::ReturnValue' has a wrong offset!");
+
+// Function Zion.InputSettingsSubsystem.GetMappingNameFromInputAction
+// 0x0018 (0x0018 - 0x0000)
+struct InputSettingsSubsystem_GetMappingNameFromInputAction final
+{
+public:
+	const class UInputAction*                     InputAction;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsGamepad;                                        // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   ReturnValue;                                       // 0x000C(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(InputSettingsSubsystem_GetMappingNameFromInputAction) == 0x000008, "Wrong alignment on InputSettingsSubsystem_GetMappingNameFromInputAction");
+static_assert(sizeof(InputSettingsSubsystem_GetMappingNameFromInputAction) == 0x000018, "Wrong size on InputSettingsSubsystem_GetMappingNameFromInputAction");
+static_assert(offsetof(InputSettingsSubsystem_GetMappingNameFromInputAction, InputAction) == 0x000000, "Member 'InputSettingsSubsystem_GetMappingNameFromInputAction::InputAction' has a wrong offset!");
+static_assert(offsetof(InputSettingsSubsystem_GetMappingNameFromInputAction, bIsGamepad) == 0x000008, "Member 'InputSettingsSubsystem_GetMappingNameFromInputAction::bIsGamepad' has a wrong offset!");
+static_assert(offsetof(InputSettingsSubsystem_GetMappingNameFromInputAction, ReturnValue) == 0x00000C, "Member 'InputSettingsSubsystem_GetMappingNameFromInputAction::ReturnValue' has a wrong offset!");
 
 // Function Zion.CommandModule_Summon.GetSpirit
 // 0x0008 (0x0008 - 0x0000)
@@ -1933,194 +2811,359 @@ static_assert(alignof(CommandModule_Summon_GetSpirit) == 0x000008, "Wrong alignm
 static_assert(sizeof(CommandModule_Summon_GetSpirit) == 0x000008, "Wrong size on CommandModule_Summon_GetSpirit");
 static_assert(offsetof(CommandModule_Summon_GetSpirit, ReturnValue) == 0x000000, "Member 'CommandModule_Summon_GetSpirit::ReturnValue' has a wrong offset!");
 
-// Function Zion.Inventory.GetAllItemsAvailable
-// 0x0050 (0x0050 - 0x0000)
-struct Inventory_GetAllItemsAvailable final
-{
-public:
-	TMap<class FName, int32>                      ReturnValue;                                       // 0x0000(0x0050)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Inventory_GetAllItemsAvailable) == 0x000008, "Wrong alignment on Inventory_GetAllItemsAvailable");
-static_assert(sizeof(Inventory_GetAllItemsAvailable) == 0x000050, "Wrong size on Inventory_GetAllItemsAvailable");
-static_assert(offsetof(Inventory_GetAllItemsAvailable, ReturnValue) == 0x000000, "Member 'Inventory_GetAllItemsAvailable::ReturnValue' has a wrong offset!");
-
-// Function Zion.Inventory.MarkItemAsChecked
-// 0x0008 (0x0008 - 0x0000)
-struct Inventory_MarkItemAsChecked final
-{
-public:
-	class FName                                   ItemRowName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Inventory_MarkItemAsChecked) == 0x000004, "Wrong alignment on Inventory_MarkItemAsChecked");
-static_assert(sizeof(Inventory_MarkItemAsChecked) == 0x000008, "Wrong size on Inventory_MarkItemAsChecked");
-static_assert(offsetof(Inventory_MarkItemAsChecked, ItemRowName) == 0x000000, "Member 'Inventory_MarkItemAsChecked::ItemRowName' has a wrong offset!");
-
-// Function Zion.Inventory.GetAllItems
-// 0x0050 (0x0050 - 0x0000)
-struct Inventory_GetAllItems final
-{
-public:
-	TMap<class FName, int32>                      ReturnValue;                                       // 0x0000(0x0050)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Inventory_GetAllItems) == 0x000008, "Wrong alignment on Inventory_GetAllItems");
-static_assert(sizeof(Inventory_GetAllItems) == 0x000050, "Wrong size on Inventory_GetAllItems");
-static_assert(offsetof(Inventory_GetAllItems, ReturnValue) == 0x000000, "Member 'Inventory_GetAllItems::ReturnValue' has a wrong offset!");
-
-// Function Zion.Inventory.GetCountOfItem
+// Function Zion.InventoryComponent.AddCurrency
 // 0x000C (0x000C - 0x0000)
-struct Inventory_GetCountOfItem final
+struct InventoryComponent_AddCurrency final
 {
 public:
-	class FName                                   ItemId;                                            // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ECurrencyType                                 CurrencyType;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CurrencyToAdd;                                     // 0x0004(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(Inventory_GetCountOfItem) == 0x000004, "Wrong alignment on Inventory_GetCountOfItem");
-static_assert(sizeof(Inventory_GetCountOfItem) == 0x00000C, "Wrong size on Inventory_GetCountOfItem");
-static_assert(offsetof(Inventory_GetCountOfItem, ItemId) == 0x000000, "Member 'Inventory_GetCountOfItem::ItemId' has a wrong offset!");
-static_assert(offsetof(Inventory_GetCountOfItem, ReturnValue) == 0x000008, "Member 'Inventory_GetCountOfItem::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_AddCurrency) == 0x000004, "Wrong alignment on InventoryComponent_AddCurrency");
+static_assert(sizeof(InventoryComponent_AddCurrency) == 0x00000C, "Wrong size on InventoryComponent_AddCurrency");
+static_assert(offsetof(InventoryComponent_AddCurrency, CurrencyType) == 0x000000, "Member 'InventoryComponent_AddCurrency::CurrencyType' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_AddCurrency, CurrencyToAdd) == 0x000004, "Member 'InventoryComponent_AddCurrency::CurrencyToAdd' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_AddCurrency, ReturnValue) == 0x000008, "Member 'InventoryComponent_AddCurrency::ReturnValue' has a wrong offset!");
 
-// Function Zion.Inventory.GetDataTable
-// 0x0008 (0x0008 - 0x0000)
-struct Inventory_GetDataTable final
+// Function Zion.InventoryComponent.AddDrop
+// 0x01F8 (0x01F8 - 0x0000)
+struct InventoryComponent_AddDrop final
 {
 public:
-	const class UDataTable*                       ReturnValue;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FDrop                                  Drop;                                              // 0x0000(0x01F0)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	float                                         DropFactor;                                        // 0x01F0(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x01F4(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1F5[0x3];                                      // 0x01F5(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(Inventory_GetDataTable) == 0x000008, "Wrong alignment on Inventory_GetDataTable");
-static_assert(sizeof(Inventory_GetDataTable) == 0x000008, "Wrong size on Inventory_GetDataTable");
-static_assert(offsetof(Inventory_GetDataTable, ReturnValue) == 0x000000, "Member 'Inventory_GetDataTable::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_AddDrop) == 0x000008, "Wrong alignment on InventoryComponent_AddDrop");
+static_assert(sizeof(InventoryComponent_AddDrop) == 0x0001F8, "Wrong size on InventoryComponent_AddDrop");
+static_assert(offsetof(InventoryComponent_AddDrop, Drop) == 0x000000, "Member 'InventoryComponent_AddDrop::Drop' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_AddDrop, DropFactor) == 0x0001F0, "Member 'InventoryComponent_AddDrop::DropFactor' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_AddDrop, ReturnValue) == 0x0001F4, "Member 'InventoryComponent_AddDrop::ReturnValue' has a wrong offset!");
 
-// Function Zion.Inventory.GetItemCount
-// 0x0004 (0x0004 - 0x0000)
-struct Inventory_GetItemCount final
+// Function Zion.InventoryComponent.AddItem
+// 0x0018 (0x0018 - 0x0000)
+struct InventoryComponent_AddItem final
 {
 public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         Count;                                             // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0014(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(Inventory_GetItemCount) == 0x000004, "Wrong alignment on Inventory_GetItemCount");
-static_assert(sizeof(Inventory_GetItemCount) == 0x000004, "Wrong size on Inventory_GetItemCount");
-static_assert(offsetof(Inventory_GetItemCount, ReturnValue) == 0x000000, "Member 'Inventory_GetItemCount::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_AddItem) == 0x000008, "Wrong alignment on InventoryComponent_AddItem");
+static_assert(sizeof(InventoryComponent_AddItem) == 0x000018, "Wrong size on InventoryComponent_AddItem");
+static_assert(offsetof(InventoryComponent_AddItem, ItemHandle) == 0x000000, "Member 'InventoryComponent_AddItem::ItemHandle' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_AddItem, Count) == 0x000010, "Member 'InventoryComponent_AddItem::Count' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_AddItem, ReturnValue) == 0x000014, "Member 'InventoryComponent_AddItem::ReturnValue' has a wrong offset!");
 
-// Function Zion.Inventory.HasItem
+// Function Zion.InventoryComponent.HasItem
+// 0x0018 (0x0018 - 0x0000)
+struct InventoryComponent_HasItem final
+{
+public:
+	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         Count;                                             // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0014(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(InventoryComponent_HasItem) == 0x000008, "Wrong alignment on InventoryComponent_HasItem");
+static_assert(sizeof(InventoryComponent_HasItem) == 0x000018, "Wrong size on InventoryComponent_HasItem");
+static_assert(offsetof(InventoryComponent_HasItem, ItemHandle) == 0x000000, "Member 'InventoryComponent_HasItem::ItemHandle' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_HasItem, Count) == 0x000010, "Member 'InventoryComponent_HasItem::Count' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_HasItem, ReturnValue) == 0x000014, "Member 'InventoryComponent_HasItem::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.MarkItemAsChecked
 // 0x0010 (0x0010 - 0x0000)
-struct Inventory_HasItem final
+struct InventoryComponent_MarkItemAsChecked final
 {
 public:
-	class FName                                   ItemRowName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Count;                                             // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x000C(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(Inventory_HasItem) == 0x000004, "Wrong alignment on Inventory_HasItem");
-static_assert(sizeof(Inventory_HasItem) == 0x000010, "Wrong size on Inventory_HasItem");
-static_assert(offsetof(Inventory_HasItem, ItemRowName) == 0x000000, "Member 'Inventory_HasItem::ItemRowName' has a wrong offset!");
-static_assert(offsetof(Inventory_HasItem, Count) == 0x000008, "Member 'Inventory_HasItem::Count' has a wrong offset!");
-static_assert(offsetof(Inventory_HasItem, ReturnValue) == 0x00000C, "Member 'Inventory_HasItem::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_MarkItemAsChecked) == 0x000008, "Wrong alignment on InventoryComponent_MarkItemAsChecked");
+static_assert(sizeof(InventoryComponent_MarkItemAsChecked) == 0x000010, "Wrong size on InventoryComponent_MarkItemAsChecked");
+static_assert(offsetof(InventoryComponent_MarkItemAsChecked, ItemHandle) == 0x000000, "Member 'InventoryComponent_MarkItemAsChecked::ItemHandle' has a wrong offset!");
 
-// Function Zion.Inventory.HasNonCheckedItem
-// 0x0001 (0x0001 - 0x0000)
-struct Inventory_HasNonCheckedItem final
+// Function Zion.InventoryComponent.RemoveItem
+// 0x0018 (0x0018 - 0x0000)
+struct InventoryComponent_RemoveItem final
 {
 public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         Count;                                             // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0014(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(Inventory_HasNonCheckedItem) == 0x000001, "Wrong alignment on Inventory_HasNonCheckedItem");
-static_assert(sizeof(Inventory_HasNonCheckedItem) == 0x000001, "Wrong size on Inventory_HasNonCheckedItem");
-static_assert(offsetof(Inventory_HasNonCheckedItem, ReturnValue) == 0x000000, "Member 'Inventory_HasNonCheckedItem::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_RemoveItem) == 0x000008, "Wrong alignment on InventoryComponent_RemoveItem");
+static_assert(sizeof(InventoryComponent_RemoveItem) == 0x000018, "Wrong size on InventoryComponent_RemoveItem");
+static_assert(offsetof(InventoryComponent_RemoveItem, ItemHandle) == 0x000000, "Member 'InventoryComponent_RemoveItem::ItemHandle' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_RemoveItem, Count) == 0x000010, "Member 'InventoryComponent_RemoveItem::Count' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_RemoveItem, ReturnValue) == 0x000014, "Member 'InventoryComponent_RemoveItem::ReturnValue' has a wrong offset!");
 
-// Function Zion.Inventory.IsItemChecked
+// Function Zion.InventoryComponent.SpendCurrency
 // 0x000C (0x000C - 0x0000)
-struct Inventory_IsItemChecked final
+struct InventoryComponent_SpendCurrency final
 {
 public:
-	class FName                                   ItemRowName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FCurrencyValue                         CurrencyValue;                                     // 0x0000(0x0008)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_SpendCurrency) == 0x000004, "Wrong alignment on InventoryComponent_SpendCurrency");
+static_assert(sizeof(InventoryComponent_SpendCurrency) == 0x00000C, "Wrong size on InventoryComponent_SpendCurrency");
+static_assert(offsetof(InventoryComponent_SpendCurrency, CurrencyValue) == 0x000000, "Member 'InventoryComponent_SpendCurrency::CurrencyValue' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_SpendCurrency, ReturnValue) == 0x000008, "Member 'InventoryComponent_SpendCurrency::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.CanSpendCurrency
+// 0x000C (0x000C - 0x0000)
+struct InventoryComponent_CanSpendCurrency final
+{
+public:
+	struct FCurrencyValue                         CurrencyValue;                                     // 0x0000(0x0008)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
 	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(Inventory_IsItemChecked) == 0x000004, "Wrong alignment on Inventory_IsItemChecked");
-static_assert(sizeof(Inventory_IsItemChecked) == 0x00000C, "Wrong size on Inventory_IsItemChecked");
-static_assert(offsetof(Inventory_IsItemChecked, ItemRowName) == 0x000000, "Member 'Inventory_IsItemChecked::ItemRowName' has a wrong offset!");
-static_assert(offsetof(Inventory_IsItemChecked, ReturnValue) == 0x000008, "Member 'Inventory_IsItemChecked::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_CanSpendCurrency) == 0x000004, "Wrong alignment on InventoryComponent_CanSpendCurrency");
+static_assert(sizeof(InventoryComponent_CanSpendCurrency) == 0x00000C, "Wrong size on InventoryComponent_CanSpendCurrency");
+static_assert(offsetof(InventoryComponent_CanSpendCurrency, CurrencyValue) == 0x000000, "Member 'InventoryComponent_CanSpendCurrency::CurrencyValue' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_CanSpendCurrency, ReturnValue) == 0x000008, "Member 'InventoryComponent_CanSpendCurrency::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventorySkill.GetMaxSkillLevel
-// 0x0004 (0x0004 - 0x0000)
-struct InventorySkill_GetMaxSkillLevel final
+// Function Zion.InventoryComponent.GetAptitudeInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetAptitudeInventory final
 {
 public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UInventoryAptitude*                     ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventorySkill_GetMaxSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_GetMaxSkillLevel");
-static_assert(sizeof(InventorySkill_GetMaxSkillLevel) == 0x000004, "Wrong size on InventorySkill_GetMaxSkillLevel");
-static_assert(offsetof(InventorySkill_GetMaxSkillLevel, ReturnValue) == 0x000000, "Member 'InventorySkill_GetMaxSkillLevel::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_GetAptitudeInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetAptitudeInventory");
+static_assert(sizeof(InventoryComponent_GetAptitudeInventory) == 0x000008, "Wrong size on InventoryComponent_GetAptitudeInventory");
+static_assert(offsetof(InventoryComponent_GetAptitudeInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetAptitudeInventory::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventorySkill.GetMinSkillLevel
-// 0x0004 (0x0004 - 0x0000)
-struct InventorySkill_GetMinSkillLevel final
+// Function Zion.InventoryComponent.GetAssistInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetAssistInventory final
 {
 public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventorySkill_GetMinSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_GetMinSkillLevel");
-static_assert(sizeof(InventorySkill_GetMinSkillLevel) == 0x000004, "Wrong size on InventorySkill_GetMinSkillLevel");
-static_assert(offsetof(InventorySkill_GetMinSkillLevel, ReturnValue) == 0x000000, "Member 'InventorySkill_GetMinSkillLevel::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_GetAssistInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetAssistInventory");
+static_assert(sizeof(InventoryComponent_GetAssistInventory) == 0x000008, "Wrong size on InventoryComponent_GetAssistInventory");
+static_assert(offsetof(InventoryComponent_GetAssistInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetAssistInventory::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventorySkill.SetSkillLevel
+// Function Zion.InventoryComponent.GetCostumeInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetCostumeInventory final
+{
+public:
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetCostumeInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetCostumeInventory");
+static_assert(sizeof(InventoryComponent_GetCostumeInventory) == 0x000008, "Wrong size on InventoryComponent_GetCostumeInventory");
+static_assert(offsetof(InventoryComponent_GetCostumeInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetCostumeInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetCountOfItem
+// 0x0018 (0x0018 - 0x0000)
+struct InventoryComponent_GetCountOfItem final
+{
+public:
+	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(InventoryComponent_GetCountOfItem) == 0x000008, "Wrong alignment on InventoryComponent_GetCountOfItem");
+static_assert(sizeof(InventoryComponent_GetCountOfItem) == 0x000018, "Wrong size on InventoryComponent_GetCountOfItem");
+static_assert(offsetof(InventoryComponent_GetCountOfItem, ItemHandle) == 0x000000, "Member 'InventoryComponent_GetCountOfItem::ItemHandle' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_GetCountOfItem, ReturnValue) == 0x000010, "Member 'InventoryComponent_GetCountOfItem::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetCurrency
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetCurrency final
+{
+public:
+	ECurrencyType                                 CurrencyType;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetCurrency) == 0x000004, "Wrong alignment on InventoryComponent_GetCurrency");
+static_assert(sizeof(InventoryComponent_GetCurrency) == 0x000008, "Wrong size on InventoryComponent_GetCurrency");
+static_assert(offsetof(InventoryComponent_GetCurrency, CurrencyType) == 0x000000, "Member 'InventoryComponent_GetCurrency::CurrencyType' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_GetCurrency, ReturnValue) == 0x000004, "Member 'InventoryComponent_GetCurrency::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetCurrencyInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetCurrencyInventory final
+{
+public:
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetCurrencyInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetCurrencyInventory");
+static_assert(sizeof(InventoryComponent_GetCurrencyInventory) == 0x000008, "Wrong size on InventoryComponent_GetCurrencyInventory");
+static_assert(offsetof(InventoryComponent_GetCurrencyInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetCurrencyInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetEnemyInfoInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetEnemyInfoInventory final
+{
+public:
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetEnemyInfoInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetEnemyInfoInventory");
+static_assert(sizeof(InventoryComponent_GetEnemyInfoInventory) == 0x000008, "Wrong size on InventoryComponent_GetEnemyInfoInventory");
+static_assert(offsetof(InventoryComponent_GetEnemyInfoInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetEnemyInfoInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetEquipmentInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetEquipmentInventory final
+{
+public:
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetEquipmentInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetEquipmentInventory");
+static_assert(sizeof(InventoryComponent_GetEquipmentInventory) == 0x000008, "Wrong size on InventoryComponent_GetEquipmentInventory");
+static_assert(offsetof(InventoryComponent_GetEquipmentInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetEquipmentInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetGalleryInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetGalleryInventory final
+{
+public:
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetGalleryInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetGalleryInventory");
+static_assert(sizeof(InventoryComponent_GetGalleryInventory) == 0x000008, "Wrong size on InventoryComponent_GetGalleryInventory");
+static_assert(offsetof(InventoryComponent_GetGalleryInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetGalleryInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetInventoryFromItemType
 // 0x0010 (0x0010 - 0x0000)
-struct InventorySkill_SetSkillLevel final
+struct InventoryComponent_GetInventoryFromItemType final
 {
 public:
-	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         NewLevel;                                          // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EInventoryItemType                            ItemType;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UInventory*                             ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventorySkill_SetSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_SetSkillLevel");
-static_assert(sizeof(InventorySkill_SetSkillLevel) == 0x000010, "Wrong size on InventorySkill_SetSkillLevel");
-static_assert(offsetof(InventorySkill_SetSkillLevel, SkillID) == 0x000000, "Member 'InventorySkill_SetSkillLevel::SkillID' has a wrong offset!");
-static_assert(offsetof(InventorySkill_SetSkillLevel, NewLevel) == 0x000008, "Member 'InventorySkill_SetSkillLevel::NewLevel' has a wrong offset!");
-static_assert(offsetof(InventorySkill_SetSkillLevel, ReturnValue) == 0x00000C, "Member 'InventorySkill_SetSkillLevel::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_GetInventoryFromItemType) == 0x000008, "Wrong alignment on InventoryComponent_GetInventoryFromItemType");
+static_assert(sizeof(InventoryComponent_GetInventoryFromItemType) == 0x000010, "Wrong size on InventoryComponent_GetInventoryFromItemType");
+static_assert(offsetof(InventoryComponent_GetInventoryFromItemType, ItemType) == 0x000000, "Member 'InventoryComponent_GetInventoryFromItemType::ItemType' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_GetInventoryFromItemType, ReturnValue) == 0x000008, "Member 'InventoryComponent_GetInventoryFromItemType::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventorySkill.GetInitialSkillLevel
-// 0x000C (0x000C - 0x0000)
-struct InventorySkill_GetInitialSkillLevel final
+// Function Zion.InventoryComponent.GetNPCInfoInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetNPCInfoInventory final
 {
 public:
-	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventorySkill_GetInitialSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_GetInitialSkillLevel");
-static_assert(sizeof(InventorySkill_GetInitialSkillLevel) == 0x00000C, "Wrong size on InventorySkill_GetInitialSkillLevel");
-static_assert(offsetof(InventorySkill_GetInitialSkillLevel, SkillID) == 0x000000, "Member 'InventorySkill_GetInitialSkillLevel::SkillID' has a wrong offset!");
-static_assert(offsetof(InventorySkill_GetInitialSkillLevel, ReturnValue) == 0x000008, "Member 'InventorySkill_GetInitialSkillLevel::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_GetNPCInfoInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetNPCInfoInventory");
+static_assert(sizeof(InventoryComponent_GetNPCInfoInventory) == 0x000008, "Wrong size on InventoryComponent_GetNPCInfoInventory");
+static_assert(offsetof(InventoryComponent_GetNPCInfoInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetNPCInfoInventory::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventorySkill.GetSkillLevel
-// 0x0010 (0x0010 - 0x0000)
-struct InventorySkill_GetSkillLevel final
+// Function Zion.InventoryComponent.GetPassiveInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetPassiveInventory final
 {
 public:
-	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bFallbackInitialLevel;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventorySkill_GetSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_GetSkillLevel");
-static_assert(sizeof(InventorySkill_GetSkillLevel) == 0x000010, "Wrong size on InventorySkill_GetSkillLevel");
-static_assert(offsetof(InventorySkill_GetSkillLevel, SkillID) == 0x000000, "Member 'InventorySkill_GetSkillLevel::SkillID' has a wrong offset!");
-static_assert(offsetof(InventorySkill_GetSkillLevel, bFallbackInitialLevel) == 0x000008, "Member 'InventorySkill_GetSkillLevel::bFallbackInitialLevel' has a wrong offset!");
-static_assert(offsetof(InventorySkill_GetSkillLevel, ReturnValue) == 0x00000C, "Member 'InventorySkill_GetSkillLevel::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_GetPassiveInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetPassiveInventory");
+static_assert(sizeof(InventoryComponent_GetPassiveInventory) == 0x000008, "Wrong size on InventoryComponent_GetPassiveInventory");
+static_assert(offsetof(InventoryComponent_GetPassiveInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetPassiveInventory::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventorySkill.IsMaxSkillLevel
-// 0x000C (0x000C - 0x0000)
-struct InventorySkill_IsMaxSkillLevel final
+// Function Zion.InventoryComponent.GetSkillInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetSkillInventory final
 {
 public:
-	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UInventorySkill*                        ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventorySkill_IsMaxSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_IsMaxSkillLevel");
-static_assert(sizeof(InventorySkill_IsMaxSkillLevel) == 0x00000C, "Wrong size on InventorySkill_IsMaxSkillLevel");
-static_assert(offsetof(InventorySkill_IsMaxSkillLevel, SkillID) == 0x000000, "Member 'InventorySkill_IsMaxSkillLevel::SkillID' has a wrong offset!");
-static_assert(offsetof(InventorySkill_IsMaxSkillLevel, ReturnValue) == 0x000008, "Member 'InventorySkill_IsMaxSkillLevel::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventoryComponent_GetSkillInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetSkillInventory");
+static_assert(sizeof(InventoryComponent_GetSkillInventory) == 0x000008, "Wrong size on InventoryComponent_GetSkillInventory");
+static_assert(offsetof(InventoryComponent_GetSkillInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetSkillInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetSpiritInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetSpiritInventory final
+{
+public:
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetSpiritInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetSpiritInventory");
+static_assert(sizeof(InventoryComponent_GetSpiritInventory) == 0x000008, "Wrong size on InventoryComponent_GetSpiritInventory");
+static_assert(offsetof(InventoryComponent_GetSpiritInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetSpiritInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetStatsInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetStatsInventory final
+{
+public:
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetStatsInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetStatsInventory");
+static_assert(sizeof(InventoryComponent_GetStatsInventory) == 0x000008, "Wrong size on InventoryComponent_GetStatsInventory");
+static_assert(offsetof(InventoryComponent_GetStatsInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetStatsInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetTipInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetTipInventory final
+{
+public:
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetTipInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetTipInventory");
+static_assert(sizeof(InventoryComponent_GetTipInventory) == 0x000008, "Wrong size on InventoryComponent_GetTipInventory");
+static_assert(offsetof(InventoryComponent_GetTipInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetTipInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.GetTutorialInventory
+// 0x0008 (0x0008 - 0x0000)
+struct InventoryComponent_GetTutorialInventory final
+{
+public:
+	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_GetTutorialInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetTutorialInventory");
+static_assert(sizeof(InventoryComponent_GetTutorialInventory) == 0x000008, "Wrong size on InventoryComponent_GetTutorialInventory");
+static_assert(offsetof(InventoryComponent_GetTutorialInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetTutorialInventory::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.HasAptitude
+// 0x0002 (0x0002 - 0x0000)
+struct InventoryComponent_HasAptitude final
+{
+public:
+	EAptitudeType                                 AptitudeType;                                      // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_HasAptitude) == 0x000001, "Wrong alignment on InventoryComponent_HasAptitude");
+static_assert(sizeof(InventoryComponent_HasAptitude) == 0x000002, "Wrong size on InventoryComponent_HasAptitude");
+static_assert(offsetof(InventoryComponent_HasAptitude, AptitudeType) == 0x000000, "Member 'InventoryComponent_HasAptitude::AptitudeType' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_HasAptitude, ReturnValue) == 0x000001, "Member 'InventoryComponent_HasAptitude::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.HasNonCheckedItem
+// 0x0002 (0x0002 - 0x0000)
+struct InventoryComponent_HasNonCheckedItem final
+{
+public:
+	EInventoryItemType                            ItemType;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventoryComponent_HasNonCheckedItem) == 0x000001, "Wrong alignment on InventoryComponent_HasNonCheckedItem");
+static_assert(sizeof(InventoryComponent_HasNonCheckedItem) == 0x000002, "Wrong size on InventoryComponent_HasNonCheckedItem");
+static_assert(offsetof(InventoryComponent_HasNonCheckedItem, ItemType) == 0x000000, "Member 'InventoryComponent_HasNonCheckedItem::ItemType' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_HasNonCheckedItem, ReturnValue) == 0x000001, "Member 'InventoryComponent_HasNonCheckedItem::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventoryComponent.IsItemChecked
+// 0x0018 (0x0018 - 0x0000)
+struct InventoryComponent_IsItemChecked final
+{
+public:
+	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(InventoryComponent_IsItemChecked) == 0x000008, "Wrong alignment on InventoryComponent_IsItemChecked");
+static_assert(sizeof(InventoryComponent_IsItemChecked) == 0x000018, "Wrong size on InventoryComponent_IsItemChecked");
+static_assert(offsetof(InventoryComponent_IsItemChecked, ItemHandle) == 0x000000, "Member 'InventoryComponent_IsItemChecked::ItemHandle' has a wrong offset!");
+static_assert(offsetof(InventoryComponent_IsItemChecked, ReturnValue) == 0x000010, "Member 'InventoryComponent_IsItemChecked::ReturnValue' has a wrong offset!");
 
 // Function Zion.AbilityInstant.SetTargets
 // 0x0010 (0x0010 - 0x0000)
@@ -2306,65 +3349,113 @@ static_assert(alignof(ActorBPFLibrary_ToggleActor) == 0x000008, "Wrong alignment
 static_assert(sizeof(ActorBPFLibrary_ToggleActor) == 0x000008, "Wrong size on ActorBPFLibrary_ToggleActor");
 static_assert(offsetof(ActorBPFLibrary_ToggleActor, Actor) == 0x000000, "Member 'ActorBPFLibrary_ToggleActor::Actor' has a wrong offset!");
 
-// Function Zion.HookPoint.GetHookAttachComponent
-// 0x0008 (0x0008 - 0x0000)
-struct HookPoint_GetHookAttachComponent final
+// Function Zion.HookComponent.OnComponentOverlapBegin
+// 0x0118 (0x0118 - 0x0000)
+struct HookComponent_OnComponentOverlapBegin final
 {
 public:
-	class USceneComponent*                        ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bFromSweep;                                        // 0x001C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             SweepResult;                                       // 0x0020(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(HookPoint_GetHookAttachComponent) == 0x000008, "Wrong alignment on HookPoint_GetHookAttachComponent");
-static_assert(sizeof(HookPoint_GetHookAttachComponent) == 0x000008, "Wrong size on HookPoint_GetHookAttachComponent");
-static_assert(offsetof(HookPoint_GetHookAttachComponent, ReturnValue) == 0x000000, "Member 'HookPoint_GetHookAttachComponent::ReturnValue' has a wrong offset!");
+static_assert(alignof(HookComponent_OnComponentOverlapBegin) == 0x000008, "Wrong alignment on HookComponent_OnComponentOverlapBegin");
+static_assert(sizeof(HookComponent_OnComponentOverlapBegin) == 0x000118, "Wrong size on HookComponent_OnComponentOverlapBegin");
+static_assert(offsetof(HookComponent_OnComponentOverlapBegin, OverlapComponent) == 0x000000, "Member 'HookComponent_OnComponentOverlapBegin::OverlapComponent' has a wrong offset!");
+static_assert(offsetof(HookComponent_OnComponentOverlapBegin, OtherActor) == 0x000008, "Member 'HookComponent_OnComponentOverlapBegin::OtherActor' has a wrong offset!");
+static_assert(offsetof(HookComponent_OnComponentOverlapBegin, OtherComp) == 0x000010, "Member 'HookComponent_OnComponentOverlapBegin::OtherComp' has a wrong offset!");
+static_assert(offsetof(HookComponent_OnComponentOverlapBegin, OtherBodyIndex) == 0x000018, "Member 'HookComponent_OnComponentOverlapBegin::OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(HookComponent_OnComponentOverlapBegin, bFromSweep) == 0x00001C, "Member 'HookComponent_OnComponentOverlapBegin::bFromSweep' has a wrong offset!");
+static_assert(offsetof(HookComponent_OnComponentOverlapBegin, SweepResult) == 0x000020, "Member 'HookComponent_OnComponentOverlapBegin::SweepResult' has a wrong offset!");
 
-// Function Zion.HookPoint.GetHookLocation
+// Function Zion.HookComponent.OnComponentOverlapEnd
+// 0x0020 (0x0020 - 0x0000)
+struct HookComponent_OnComponentOverlapEnd final
+{
+public:
+	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(HookComponent_OnComponentOverlapEnd) == 0x000008, "Wrong alignment on HookComponent_OnComponentOverlapEnd");
+static_assert(sizeof(HookComponent_OnComponentOverlapEnd) == 0x000020, "Wrong size on HookComponent_OnComponentOverlapEnd");
+static_assert(offsetof(HookComponent_OnComponentOverlapEnd, OverlapComponent) == 0x000000, "Member 'HookComponent_OnComponentOverlapEnd::OverlapComponent' has a wrong offset!");
+static_assert(offsetof(HookComponent_OnComponentOverlapEnd, OtherActor) == 0x000008, "Member 'HookComponent_OnComponentOverlapEnd::OtherActor' has a wrong offset!");
+static_assert(offsetof(HookComponent_OnComponentOverlapEnd, OtherComp) == 0x000010, "Member 'HookComponent_OnComponentOverlapEnd::OtherComp' has a wrong offset!");
+static_assert(offsetof(HookComponent_OnComponentOverlapEnd, OtherBodyIndex) == 0x000018, "Member 'HookComponent_OnComponentOverlapEnd::OtherBodyIndex' has a wrong offset!");
+
+// Function Zion.HookComponent.OnLockHook
+// 0x0008 (0x0008 - 0x0000)
+struct HookComponent_OnLockHook final
+{
+public:
+	class AHookPoint*                             HookPoint;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookComponent_OnLockHook) == 0x000008, "Wrong alignment on HookComponent_OnLockHook");
+static_assert(sizeof(HookComponent_OnLockHook) == 0x000008, "Wrong size on HookComponent_OnLockHook");
+static_assert(offsetof(HookComponent_OnLockHook, HookPoint) == 0x000000, "Member 'HookComponent_OnLockHook::HookPoint' has a wrong offset!");
+
+// Function Zion.HookComponent.OnUnlockHook
+// 0x0008 (0x0008 - 0x0000)
+struct HookComponent_OnUnlockHook final
+{
+public:
+	class AHookPoint*                             HookPoint;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookComponent_OnUnlockHook) == 0x000008, "Wrong alignment on HookComponent_OnUnlockHook");
+static_assert(sizeof(HookComponent_OnUnlockHook) == 0x000008, "Wrong size on HookComponent_OnUnlockHook");
+static_assert(offsetof(HookComponent_OnUnlockHook, HookPoint) == 0x000000, "Member 'HookComponent_OnUnlockHook::HookPoint' has a wrong offset!");
+
+// Function Zion.HookComponent.SetOverrideHookPoint
+// 0x0008 (0x0008 - 0x0000)
+struct HookComponent_SetOverrideHookPoint final
+{
+public:
+	class AHookPoint*                             NewHookPoint;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookComponent_SetOverrideHookPoint) == 0x000008, "Wrong alignment on HookComponent_SetOverrideHookPoint");
+static_assert(sizeof(HookComponent_SetOverrideHookPoint) == 0x000008, "Wrong size on HookComponent_SetOverrideHookPoint");
+static_assert(offsetof(HookComponent_SetOverrideHookPoint, NewHookPoint) == 0x000000, "Member 'HookComponent_SetOverrideHookPoint::NewHookPoint' has a wrong offset!");
+
+// Function Zion.HookComponent.SetOverrideHookWorldLocation
 // 0x0018 (0x0018 - 0x0000)
-struct HookPoint_GetHookLocation final
+struct HookComponent_SetOverrideHookWorldLocation final
+{
+public:
+	struct FVector                                NewHookWorldLocation;                              // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookComponent_SetOverrideHookWorldLocation) == 0x000008, "Wrong alignment on HookComponent_SetOverrideHookWorldLocation");
+static_assert(sizeof(HookComponent_SetOverrideHookWorldLocation) == 0x000018, "Wrong size on HookComponent_SetOverrideHookWorldLocation");
+static_assert(offsetof(HookComponent_SetOverrideHookWorldLocation, NewHookWorldLocation) == 0x000000, "Member 'HookComponent_SetOverrideHookWorldLocation::NewHookWorldLocation' has a wrong offset!");
+
+// Function Zion.HookComponent.CanTargetHook
+// 0x0002 (0x0002 - 0x0000)
+struct HookComponent_CanTargetHook final
+{
+public:
+	EHookType                                     HookType;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookComponent_CanTargetHook) == 0x000001, "Wrong alignment on HookComponent_CanTargetHook");
+static_assert(sizeof(HookComponent_CanTargetHook) == 0x000002, "Wrong size on HookComponent_CanTargetHook");
+static_assert(offsetof(HookComponent_CanTargetHook, HookType) == 0x000000, "Member 'HookComponent_CanTargetHook::HookType' has a wrong offset!");
+static_assert(offsetof(HookComponent_CanTargetHook, ReturnValue) == 0x000001, "Member 'HookComponent_CanTargetHook::ReturnValue' has a wrong offset!");
+
+// Function Zion.HookComponent.GetHookWorldLocation
+// 0x0018 (0x0018 - 0x0000)
+struct HookComponent_GetHookWorldLocation final
 {
 public:
 	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(HookPoint_GetHookLocation) == 0x000008, "Wrong alignment on HookPoint_GetHookLocation");
-static_assert(sizeof(HookPoint_GetHookLocation) == 0x000018, "Wrong size on HookPoint_GetHookLocation");
-static_assert(offsetof(HookPoint_GetHookLocation, ReturnValue) == 0x000000, "Member 'HookPoint_GetHookLocation::ReturnValue' has a wrong offset!");
-
-// Function Zion.HookPoint.GetHookTransform
-// 0x0060 (0x0060 - 0x0000)
-struct HookPoint_GetHookTransform final
-{
-public:
-	struct FTransform                             ReturnValue;                                       // 0x0000(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookPoint_GetHookTransform) == 0x000010, "Wrong alignment on HookPoint_GetHookTransform");
-static_assert(sizeof(HookPoint_GetHookTransform) == 0x000060, "Wrong size on HookPoint_GetHookTransform");
-static_assert(offsetof(HookPoint_GetHookTransform, ReturnValue) == 0x000000, "Member 'HookPoint_GetHookTransform::ReturnValue' has a wrong offset!");
-
-// Function Zion.HookPoint.GetHookType
-// 0x0001 (0x0001 - 0x0000)
-struct HookPoint_GetHookType final
-{
-public:
-	EHookType                                     ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookPoint_GetHookType) == 0x000001, "Wrong alignment on HookPoint_GetHookType");
-static_assert(sizeof(HookPoint_GetHookType) == 0x000001, "Wrong size on HookPoint_GetHookType");
-static_assert(offsetof(HookPoint_GetHookType, ReturnValue) == 0x000000, "Member 'HookPoint_GetHookType::ReturnValue' has a wrong offset!");
-
-// Function Zion.WaitGameReadyAsyncAction.WaitGameReady
-// 0x0018 (0x0018 - 0x0000)
-struct WaitGameReadyAsyncAction_WaitGameReady final
-{
-public:
-	const class UObject*                          WorldContextObject;                                // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAlsoWaitWorldLoading;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWaitGameReadyAsyncAction*              ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(WaitGameReadyAsyncAction_WaitGameReady) == 0x000008, "Wrong alignment on WaitGameReadyAsyncAction_WaitGameReady");
-static_assert(sizeof(WaitGameReadyAsyncAction_WaitGameReady) == 0x000018, "Wrong size on WaitGameReadyAsyncAction_WaitGameReady");
-static_assert(offsetof(WaitGameReadyAsyncAction_WaitGameReady, WorldContextObject) == 0x000000, "Member 'WaitGameReadyAsyncAction_WaitGameReady::WorldContextObject' has a wrong offset!");
-static_assert(offsetof(WaitGameReadyAsyncAction_WaitGameReady, bAlsoWaitWorldLoading) == 0x000008, "Member 'WaitGameReadyAsyncAction_WaitGameReady::bAlsoWaitWorldLoading' has a wrong offset!");
-static_assert(offsetof(WaitGameReadyAsyncAction_WaitGameReady, ReturnValue) == 0x000010, "Member 'WaitGameReadyAsyncAction_WaitGameReady::ReturnValue' has a wrong offset!");
+static_assert(alignof(HookComponent_GetHookWorldLocation) == 0x000008, "Wrong alignment on HookComponent_GetHookWorldLocation");
+static_assert(sizeof(HookComponent_GetHookWorldLocation) == 0x000018, "Wrong size on HookComponent_GetHookWorldLocation");
+static_assert(offsetof(HookComponent_GetHookWorldLocation, ReturnValue) == 0x000000, "Member 'HookComponent_GetHookWorldLocation::ReturnValue' has a wrong offset!");
 
 // Function Zion.ActorSpawner.OnPostSpawnActor
 // 0x0010 (0x0010 - 0x0000)
@@ -2498,6 +3589,88 @@ static_assert(alignof(AICommandClassProviderInterface_GetIdlePeaceCommandClass) 
 static_assert(sizeof(AICommandClassProviderInterface_GetIdlePeaceCommandClass) == 0x000008, "Wrong size on AICommandClassProviderInterface_GetIdlePeaceCommandClass");
 static_assert(offsetof(AICommandClassProviderInterface_GetIdlePeaceCommandClass, out_CommandClass) == 0x000000, "Member 'AICommandClassProviderInterface_GetIdlePeaceCommandClass::out_CommandClass' has a wrong offset!");
 
+// Function Zion.HookPoint.GetHookAttachComponent
+// 0x0008 (0x0008 - 0x0000)
+struct HookPoint_GetHookAttachComponent final
+{
+public:
+	class USceneComponent*                        ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookPoint_GetHookAttachComponent) == 0x000008, "Wrong alignment on HookPoint_GetHookAttachComponent");
+static_assert(sizeof(HookPoint_GetHookAttachComponent) == 0x000008, "Wrong size on HookPoint_GetHookAttachComponent");
+static_assert(offsetof(HookPoint_GetHookAttachComponent, ReturnValue) == 0x000000, "Member 'HookPoint_GetHookAttachComponent::ReturnValue' has a wrong offset!");
+
+// Function Zion.HookPoint.GetHookLocation
+// 0x0018 (0x0018 - 0x0000)
+struct HookPoint_GetHookLocation final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookPoint_GetHookLocation) == 0x000008, "Wrong alignment on HookPoint_GetHookLocation");
+static_assert(sizeof(HookPoint_GetHookLocation) == 0x000018, "Wrong size on HookPoint_GetHookLocation");
+static_assert(offsetof(HookPoint_GetHookLocation, ReturnValue) == 0x000000, "Member 'HookPoint_GetHookLocation::ReturnValue' has a wrong offset!");
+
+// Function Zion.HookPoint.GetHookTransform
+// 0x0060 (0x0060 - 0x0000)
+struct HookPoint_GetHookTransform final
+{
+public:
+	struct FTransform                             ReturnValue;                                       // 0x0000(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookPoint_GetHookTransform) == 0x000010, "Wrong alignment on HookPoint_GetHookTransform");
+static_assert(sizeof(HookPoint_GetHookTransform) == 0x000060, "Wrong size on HookPoint_GetHookTransform");
+static_assert(offsetof(HookPoint_GetHookTransform, ReturnValue) == 0x000000, "Member 'HookPoint_GetHookTransform::ReturnValue' has a wrong offset!");
+
+// Function Zion.HookPoint.GetHookType
+// 0x0001 (0x0001 - 0x0000)
+struct HookPoint_GetHookType final
+{
+public:
+	EHookType                                     ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookPoint_GetHookType) == 0x000001, "Wrong alignment on HookPoint_GetHookType");
+static_assert(sizeof(HookPoint_GetHookType) == 0x000001, "Wrong size on HookPoint_GetHookType");
+static_assert(offsetof(HookPoint_GetHookType, ReturnValue) == 0x000000, "Member 'HookPoint_GetHookType::ReturnValue' has a wrong offset!");
+
+// Function Zion.HookPoint_Moving.OnComponentOverlapBegin
+// 0x0118 (0x0118 - 0x0000)
+struct HookPoint_Moving_OnComponentOverlapBegin final
+{
+public:
+	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bFromSweep;                                        // 0x001C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             SweepResult;                                       // 0x0020(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HookPoint_Moving_OnComponentOverlapBegin) == 0x000008, "Wrong alignment on HookPoint_Moving_OnComponentOverlapBegin");
+static_assert(sizeof(HookPoint_Moving_OnComponentOverlapBegin) == 0x000118, "Wrong size on HookPoint_Moving_OnComponentOverlapBegin");
+static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, OverlapComponent) == 0x000000, "Member 'HookPoint_Moving_OnComponentOverlapBegin::OverlapComponent' has a wrong offset!");
+static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, OtherActor) == 0x000008, "Member 'HookPoint_Moving_OnComponentOverlapBegin::OtherActor' has a wrong offset!");
+static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, OtherComp) == 0x000010, "Member 'HookPoint_Moving_OnComponentOverlapBegin::OtherComp' has a wrong offset!");
+static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, OtherBodyIndex) == 0x000018, "Member 'HookPoint_Moving_OnComponentOverlapBegin::OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, bFromSweep) == 0x00001C, "Member 'HookPoint_Moving_OnComponentOverlapBegin::bFromSweep' has a wrong offset!");
+static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, SweepResult) == 0x000020, "Member 'HookPoint_Moving_OnComponentOverlapBegin::SweepResult' has a wrong offset!");
+
+// Function Zion.HookPoint_Moving.OnMovementModeChanged
+// 0x0010 (0x0010 - 0x0000)
+struct HookPoint_Moving_OnMovementModeChanged final
+{
+public:
+	class ACharacter*                             Character;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EMovementMode                                 PrevMovementMode;                                  // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         PreviousCustomMode;                                // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(HookPoint_Moving_OnMovementModeChanged) == 0x000008, "Wrong alignment on HookPoint_Moving_OnMovementModeChanged");
+static_assert(sizeof(HookPoint_Moving_OnMovementModeChanged) == 0x000010, "Wrong size on HookPoint_Moving_OnMovementModeChanged");
+static_assert(offsetof(HookPoint_Moving_OnMovementModeChanged, Character) == 0x000000, "Member 'HookPoint_Moving_OnMovementModeChanged::Character' has a wrong offset!");
+static_assert(offsetof(HookPoint_Moving_OnMovementModeChanged, PrevMovementMode) == 0x000008, "Member 'HookPoint_Moving_OnMovementModeChanged::PrevMovementMode' has a wrong offset!");
+static_assert(offsetof(HookPoint_Moving_OnMovementModeChanged, PreviousCustomMode) == 0x000009, "Member 'HookPoint_Moving_OnMovementModeChanged::PreviousCustomMode' has a wrong offset!");
+
 // Function Zion.AIControllerZion.OnChangeTarget
 // 0x0008 (0x0008 - 0x0000)
 struct AIControllerZion_OnChangeTarget final
@@ -2508,6 +3681,134 @@ public:
 static_assert(alignof(AIControllerZion_OnChangeTarget) == 0x000008, "Wrong alignment on AIControllerZion_OnChangeTarget");
 static_assert(sizeof(AIControllerZion_OnChangeTarget) == 0x000008, "Wrong size on AIControllerZion_OnChangeTarget");
 static_assert(offsetof(AIControllerZion_OnChangeTarget, NewTarget) == 0x000000, "Member 'AIControllerZion_OnChangeTarget::NewTarget' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.AddChild
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetWrapBox_AddChild final
+{
+public:
+	class UWidget*                                Content;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetWrapBox_AddChild) == 0x000008, "Wrong alignment on UserWidgetWrapBox_AddChild");
+static_assert(sizeof(UserWidgetWrapBox_AddChild) == 0x000008, "Wrong size on UserWidgetWrapBox_AddChild");
+static_assert(offsetof(UserWidgetWrapBox_AddChild, Content) == 0x000000, "Member 'UserWidgetWrapBox_AddChild::Content' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.RemoveChild
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetWrapBox_RemoveChild final
+{
+public:
+	class UWidget*                                Content;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(UserWidgetWrapBox_RemoveChild) == 0x000008, "Wrong alignment on UserWidgetWrapBox_RemoveChild");
+static_assert(sizeof(UserWidgetWrapBox_RemoveChild) == 0x000010, "Wrong size on UserWidgetWrapBox_RemoveChild");
+static_assert(offsetof(UserWidgetWrapBox_RemoveChild, Content) == 0x000000, "Member 'UserWidgetWrapBox_RemoveChild::Content' has a wrong offset!");
+static_assert(offsetof(UserWidgetWrapBox_RemoveChild, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_RemoveChild::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.RemoveChildAt
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetWrapBox_RemoveChildAt final
+{
+public:
+	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(UserWidgetWrapBox_RemoveChildAt) == 0x000004, "Wrong alignment on UserWidgetWrapBox_RemoveChildAt");
+static_assert(sizeof(UserWidgetWrapBox_RemoveChildAt) == 0x000008, "Wrong size on UserWidgetWrapBox_RemoveChildAt");
+static_assert(offsetof(UserWidgetWrapBox_RemoveChildAt, Index_0) == 0x000000, "Member 'UserWidgetWrapBox_RemoveChildAt::Index_0' has a wrong offset!");
+static_assert(offsetof(UserWidgetWrapBox_RemoveChildAt, ReturnValue) == 0x000004, "Member 'UserWidgetWrapBox_RemoveChildAt::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.GetAllChildren
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetWrapBox_GetAllChildren final
+{
+public:
+	TArray<class UWidget*>                        ReturnValue;                                       // 0x0000(0x0010)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetWrapBox_GetAllChildren) == 0x000008, "Wrong alignment on UserWidgetWrapBox_GetAllChildren");
+static_assert(sizeof(UserWidgetWrapBox_GetAllChildren) == 0x000010, "Wrong size on UserWidgetWrapBox_GetAllChildren");
+static_assert(offsetof(UserWidgetWrapBox_GetAllChildren, ReturnValue) == 0x000000, "Member 'UserWidgetWrapBox_GetAllChildren::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.GetChildAt
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetWrapBox_GetChildAt final
+{
+public:
+	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWidget*                                ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetWrapBox_GetChildAt) == 0x000008, "Wrong alignment on UserWidgetWrapBox_GetChildAt");
+static_assert(sizeof(UserWidgetWrapBox_GetChildAt) == 0x000010, "Wrong size on UserWidgetWrapBox_GetChildAt");
+static_assert(offsetof(UserWidgetWrapBox_GetChildAt, Index_0) == 0x000000, "Member 'UserWidgetWrapBox_GetChildAt::Index_0' has a wrong offset!");
+static_assert(offsetof(UserWidgetWrapBox_GetChildAt, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_GetChildAt::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.GetChildIndex
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetWrapBox_GetChildIndex final
+{
+public:
+	const class UWidget*                          Content;                                           // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(UserWidgetWrapBox_GetChildIndex) == 0x000008, "Wrong alignment on UserWidgetWrapBox_GetChildIndex");
+static_assert(sizeof(UserWidgetWrapBox_GetChildIndex) == 0x000010, "Wrong size on UserWidgetWrapBox_GetChildIndex");
+static_assert(offsetof(UserWidgetWrapBox_GetChildIndex, Content) == 0x000000, "Member 'UserWidgetWrapBox_GetChildIndex::Content' has a wrong offset!");
+static_assert(offsetof(UserWidgetWrapBox_GetChildIndex, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_GetChildIndex::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.GetChildrenCount
+// 0x0004 (0x0004 - 0x0000)
+struct UserWidgetWrapBox_GetChildrenCount final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetWrapBox_GetChildrenCount) == 0x000004, "Wrong alignment on UserWidgetWrapBox_GetChildrenCount");
+static_assert(sizeof(UserWidgetWrapBox_GetChildrenCount) == 0x000004, "Wrong size on UserWidgetWrapBox_GetChildrenCount");
+static_assert(offsetof(UserWidgetWrapBox_GetChildrenCount, ReturnValue) == 0x000000, "Member 'UserWidgetWrapBox_GetChildrenCount::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.GetWrapNavigationWidget
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetWrapBox_GetWrapNavigationWidget final
+{
+public:
+	bool                                          bWrapToTop;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWidget*                                ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetWrapBox_GetWrapNavigationWidget) == 0x000008, "Wrong alignment on UserWidgetWrapBox_GetWrapNavigationWidget");
+static_assert(sizeof(UserWidgetWrapBox_GetWrapNavigationWidget) == 0x000010, "Wrong size on UserWidgetWrapBox_GetWrapNavigationWidget");
+static_assert(offsetof(UserWidgetWrapBox_GetWrapNavigationWidget, bWrapToTop) == 0x000000, "Member 'UserWidgetWrapBox_GetWrapNavigationWidget::bWrapToTop' has a wrong offset!");
+static_assert(offsetof(UserWidgetWrapBox_GetWrapNavigationWidget, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_GetWrapNavigationWidget::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.HasAnyChildren
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetWrapBox_HasAnyChildren final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetWrapBox_HasAnyChildren) == 0x000001, "Wrong alignment on UserWidgetWrapBox_HasAnyChildren");
+static_assert(sizeof(UserWidgetWrapBox_HasAnyChildren) == 0x000001, "Wrong size on UserWidgetWrapBox_HasAnyChildren");
+static_assert(offsetof(UserWidgetWrapBox_HasAnyChildren, ReturnValue) == 0x000000, "Member 'UserWidgetWrapBox_HasAnyChildren::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetWrapBox.HasChild
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetWrapBox_HasChild final
+{
+public:
+	class UWidget*                                Content;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(UserWidgetWrapBox_HasChild) == 0x000008, "Wrong alignment on UserWidgetWrapBox_HasChild");
+static_assert(sizeof(UserWidgetWrapBox_HasChild) == 0x000010, "Wrong size on UserWidgetWrapBox_HasChild");
+static_assert(offsetof(UserWidgetWrapBox_HasChild, Content) == 0x000000, "Member 'UserWidgetWrapBox_HasChild::Content' has a wrong offset!");
+static_assert(offsetof(UserWidgetWrapBox_HasChild, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_HasChild::ReturnValue' has a wrong offset!");
 
 // Function Zion.ArrayBPFLibrary.SortNames
 // 0x0020 (0x0020 - 0x0000)
@@ -2534,6 +3835,24 @@ static_assert(alignof(ArrayBPFLibrary_SortTextIntStructs) == 0x000008, "Wrong al
 static_assert(sizeof(ArrayBPFLibrary_SortTextIntStructs) == 0x000020, "Wrong size on ArrayBPFLibrary_SortTextIntStructs");
 static_assert(offsetof(ArrayBPFLibrary_SortTextIntStructs, Array) == 0x000000, "Member 'ArrayBPFLibrary_SortTextIntStructs::Array' has a wrong offset!");
 static_assert(offsetof(ArrayBPFLibrary_SortTextIntStructs, ReturnValue) == 0x000010, "Member 'ArrayBPFLibrary_SortTextIntStructs::ReturnValue' has a wrong offset!");
+
+// Function Zion.WorldSpaceWidgetHolder.CreateWorldSpaceWidgetHolder
+// 0x0020 (0x0020 - 0x0000)
+struct WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder final
+{
+public:
+	const class UObject*                          WorldObjectContext;                                // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSubclassOf<class UUserWidgetWorldSpace>      UserWidgetWorldSpaceClass;                         // 0x0008(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EWidgetReleaseMode                            ReleaseMode;                                       // 0x0010(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AWorldSpaceWidgetHolder*                ReturnValue;                                       // 0x0018(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder) == 0x000008, "Wrong alignment on WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder");
+static_assert(sizeof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder) == 0x000020, "Wrong size on WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder");
+static_assert(offsetof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder, WorldObjectContext) == 0x000000, "Member 'WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder::WorldObjectContext' has a wrong offset!");
+static_assert(offsetof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder, UserWidgetWorldSpaceClass) == 0x000008, "Member 'WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder::UserWidgetWorldSpaceClass' has a wrong offset!");
+static_assert(offsetof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder, ReleaseMode) == 0x000010, "Member 'WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder::ReleaseMode' has a wrong offset!");
+static_assert(offsetof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder, ReturnValue) == 0x000018, "Member 'WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder::ReturnValue' has a wrong offset!");
 
 // Function Zion.EventAction_MoveTo.OnMoveCompleted
 // 0x0008 (0x0008 - 0x0000)
@@ -2745,6 +4064,63 @@ static_assert(alignof(EnemySpawner_ShouldSpawnEvenWhenCleared) == 0x000001, "Wro
 static_assert(sizeof(EnemySpawner_ShouldSpawnEvenWhenCleared) == 0x000001, "Wrong size on EnemySpawner_ShouldSpawnEvenWhenCleared");
 static_assert(offsetof(EnemySpawner_ShouldSpawnEvenWhenCleared, ReturnValue) == 0x000000, "Member 'EnemySpawner_ShouldSpawnEvenWhenCleared::ReturnValue' has a wrong offset!");
 
+// Function Zion.ZoneSystemComponent.Get
+// 0x0010 (0x0010 - 0x0000)
+struct ZoneSystemComponent_Get final
+{
+public:
+	const class UObject*                          WorldContextObject;                                // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UZoneSystemComponent*                   ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZoneSystemComponent_Get) == 0x000008, "Wrong alignment on ZoneSystemComponent_Get");
+static_assert(sizeof(ZoneSystemComponent_Get) == 0x000010, "Wrong size on ZoneSystemComponent_Get");
+static_assert(offsetof(ZoneSystemComponent_Get, WorldContextObject) == 0x000000, "Member 'ZoneSystemComponent_Get::WorldContextObject' has a wrong offset!");
+static_assert(offsetof(ZoneSystemComponent_Get, ReturnValue) == 0x000008, "Member 'ZoneSystemComponent_Get::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZoneSystemComponent.BindActorToZone
+// 0x0008 (0x0008 - 0x0000)
+struct ZoneSystemComponent_BindActorToZone final
+{
+public:
+	class AActor*                                 Actor;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZoneSystemComponent_BindActorToZone) == 0x000008, "Wrong alignment on ZoneSystemComponent_BindActorToZone");
+static_assert(sizeof(ZoneSystemComponent_BindActorToZone) == 0x000008, "Wrong size on ZoneSystemComponent_BindActorToZone");
+static_assert(offsetof(ZoneSystemComponent_BindActorToZone, Actor) == 0x000000, "Member 'ZoneSystemComponent_BindActorToZone::Actor' has a wrong offset!");
+
+// Function Zion.ZoneSystemComponent.GetActiveZoneLevelName
+// 0x0010 (0x0010 - 0x0000)
+struct ZoneSystemComponent_GetActiveZoneLevelName final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZoneSystemComponent_GetActiveZoneLevelName) == 0x000008, "Wrong alignment on ZoneSystemComponent_GetActiveZoneLevelName");
+static_assert(sizeof(ZoneSystemComponent_GetActiveZoneLevelName) == 0x000010, "Wrong size on ZoneSystemComponent_GetActiveZoneLevelName");
+static_assert(offsetof(ZoneSystemComponent_GetActiveZoneLevelName, ReturnValue) == 0x000000, "Member 'ZoneSystemComponent_GetActiveZoneLevelName::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZoneSystemComponent.GetActiveZoneName
+// 0x0010 (0x0010 - 0x0000)
+struct ZoneSystemComponent_GetActiveZoneName final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZoneSystemComponent_GetActiveZoneName) == 0x000008, "Wrong alignment on ZoneSystemComponent_GetActiveZoneName");
+static_assert(sizeof(ZoneSystemComponent_GetActiveZoneName) == 0x000010, "Wrong size on ZoneSystemComponent_GetActiveZoneName");
+static_assert(offsetof(ZoneSystemComponent_GetActiveZoneName, ReturnValue) == 0x000000, "Member 'ZoneSystemComponent_GetActiveZoneName::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZoneSystemComponent.IsInAnyZone
+// 0x0001 (0x0001 - 0x0000)
+struct ZoneSystemComponent_IsInAnyZone final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZoneSystemComponent_IsInAnyZone) == 0x000001, "Wrong alignment on ZoneSystemComponent_IsInAnyZone");
+static_assert(sizeof(ZoneSystemComponent_IsInAnyZone) == 0x000001, "Wrong size on ZoneSystemComponent_IsInAnyZone");
+static_assert(offsetof(ZoneSystemComponent_IsInAnyZone, ReturnValue) == 0x000000, "Member 'ZoneSystemComponent_IsInAnyZone::ReturnValue' has a wrong offset!");
+
 // Function Zion.AssistTrigger_ParrySuccess.OnParried
 // 0x0010 (0x0010 - 0x0000)
 struct AssistTrigger_ParrySuccess_OnParried final
@@ -2812,17 +4188,6 @@ public:
 static_assert(alignof(UserWidgetZionShowHide_Show) == 0x000001, "Wrong alignment on UserWidgetZionShowHide_Show");
 static_assert(sizeof(UserWidgetZionShowHide_Show) == 0x000001, "Wrong size on UserWidgetZionShowHide_Show");
 static_assert(offsetof(UserWidgetZionShowHide_Show, bInstant) == 0x000000, "Member 'UserWidgetZionShowHide_Show::bInstant' has a wrong offset!");
-
-// Function Zion.UserWidgetMapLegend.OnLegendInitialized
-// 0x0050 (0x0050 - 0x0000)
-struct UserWidgetMapLegend_OnLegendInitialized final
-{
-public:
-	TSet<EMapIconType>                            VisibleIconTypes;                                  // 0x0000(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetMapLegend_OnLegendInitialized) == 0x000008, "Wrong alignment on UserWidgetMapLegend_OnLegendInitialized");
-static_assert(sizeof(UserWidgetMapLegend_OnLegendInitialized) == 0x000050, "Wrong size on UserWidgetMapLegend_OnLegendInitialized");
-static_assert(offsetof(UserWidgetMapLegend_OnLegendInitialized, VisibleIconTypes) == 0x000000, "Member 'UserWidgetMapLegend_OnLegendInitialized::VisibleIconTypes' has a wrong offset!");
 
 // Function Zion.AutoClimbComponent.MarkActorAsIgnored
 // 0x0008 (0x0008 - 0x0000)
@@ -3023,188 +4388,254 @@ static_assert(sizeof(BreakPartStateManagerComponent_GetBreakPartState) == 0x0000
 static_assert(offsetof(BreakPartStateManagerComponent_GetBreakPartState, EnemySpawner) == 0x000000, "Member 'BreakPartStateManagerComponent_GetBreakPartState::EnemySpawner' has a wrong offset!");
 static_assert(offsetof(BreakPartStateManagerComponent_GetBreakPartState, ReturnValue) == 0x000008, "Member 'BreakPartStateManagerComponent_GetBreakPartState::ReturnValue' has a wrong offset!");
 
-// Function Zion.HealComponent.AddHealCountBonus
-// 0x0008 (0x0008 - 0x0000)
-struct HealComponent_AddHealCountBonus final
-{
-public:
-	int32                                         HealCountBonusToAdd;                               // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HealComponent_AddHealCountBonus) == 0x000004, "Wrong alignment on HealComponent_AddHealCountBonus");
-static_assert(sizeof(HealComponent_AddHealCountBonus) == 0x000008, "Wrong size on HealComponent_AddHealCountBonus");
-static_assert(offsetof(HealComponent_AddHealCountBonus, HealCountBonusToAdd) == 0x000000, "Member 'HealComponent_AddHealCountBonus::HealCountBonusToAdd' has a wrong offset!");
-static_assert(offsetof(HealComponent_AddHealCountBonus, ReturnValue) == 0x000004, "Member 'HealComponent_AddHealCountBonus::ReturnValue' has a wrong offset!");
-
-// Function Zion.HealComponent.AddHealPowerPercentageBonus
-// 0x0008 (0x0008 - 0x0000)
-struct HealComponent_AddHealPowerPercentageBonus final
-{
-public:
-	int32                                         HealPercentBonusToAdd;                             // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HealComponent_AddHealPowerPercentageBonus) == 0x000004, "Wrong alignment on HealComponent_AddHealPowerPercentageBonus");
-static_assert(sizeof(HealComponent_AddHealPowerPercentageBonus) == 0x000008, "Wrong size on HealComponent_AddHealPowerPercentageBonus");
-static_assert(offsetof(HealComponent_AddHealPowerPercentageBonus, HealPercentBonusToAdd) == 0x000000, "Member 'HealComponent_AddHealPowerPercentageBonus::HealPercentBonusToAdd' has a wrong offset!");
-static_assert(offsetof(HealComponent_AddHealPowerPercentageBonus, ReturnValue) == 0x000004, "Member 'HealComponent_AddHealPowerPercentageBonus::ReturnValue' has a wrong offset!");
-
-// Function Zion.HealComponent.FullyRestoreHeals
+// Function Zion.GunmanIKBoneTargetComponent.OnSpiritActivationChanged
 // 0x0001 (0x0001 - 0x0000)
-struct HealComponent_FullyRestoreHeals final
+struct GunmanIKBoneTargetComponent_OnSpiritActivationChanged final
+{
+public:
+	bool                                          bNewActive;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GunmanIKBoneTargetComponent_OnSpiritActivationChanged) == 0x000001, "Wrong alignment on GunmanIKBoneTargetComponent_OnSpiritActivationChanged");
+static_assert(sizeof(GunmanIKBoneTargetComponent_OnSpiritActivationChanged) == 0x000001, "Wrong size on GunmanIKBoneTargetComponent_OnSpiritActivationChanged");
+static_assert(offsetof(GunmanIKBoneTargetComponent_OnSpiritActivationChanged, bNewActive) == 0x000000, "Member 'GunmanIKBoneTargetComponent_OnSpiritActivationChanged::bNewActive' has a wrong offset!");
+
+// Function Zion.GunmanIKBoneTargetComponent.GetAbilityGlobalOffset
+// 0x0060 (0x0060 - 0x0000)
+struct GunmanIKBoneTargetComponent_GetAbilityGlobalOffset final
+{
+public:
+	struct FTransform                             ReturnValue;                                       // 0x0000(0x0060)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GunmanIKBoneTargetComponent_GetAbilityGlobalOffset) == 0x000010, "Wrong alignment on GunmanIKBoneTargetComponent_GetAbilityGlobalOffset");
+static_assert(sizeof(GunmanIKBoneTargetComponent_GetAbilityGlobalOffset) == 0x000060, "Wrong size on GunmanIKBoneTargetComponent_GetAbilityGlobalOffset");
+static_assert(offsetof(GunmanIKBoneTargetComponent_GetAbilityGlobalOffset, ReturnValue) == 0x000000, "Member 'GunmanIKBoneTargetComponent_GetAbilityGlobalOffset::ReturnValue' has a wrong offset!");
+
+// Function Zion.OneWayPlatform.OnComponentOverlapBegin
+// 0x0118 (0x0118 - 0x0000)
+struct OneWayPlatform_OnComponentOverlapBegin final
+{
+public:
+	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bFromSweep;                                        // 0x001C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             SweepResult;                                       // 0x0020(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(OneWayPlatform_OnComponentOverlapBegin) == 0x000008, "Wrong alignment on OneWayPlatform_OnComponentOverlapBegin");
+static_assert(sizeof(OneWayPlatform_OnComponentOverlapBegin) == 0x000118, "Wrong size on OneWayPlatform_OnComponentOverlapBegin");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, OverlapComponent) == 0x000000, "Member 'OneWayPlatform_OnComponentOverlapBegin::OverlapComponent' has a wrong offset!");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, OtherActor) == 0x000008, "Member 'OneWayPlatform_OnComponentOverlapBegin::OtherActor' has a wrong offset!");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, OtherComp) == 0x000010, "Member 'OneWayPlatform_OnComponentOverlapBegin::OtherComp' has a wrong offset!");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, OtherBodyIndex) == 0x000018, "Member 'OneWayPlatform_OnComponentOverlapBegin::OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, bFromSweep) == 0x00001C, "Member 'OneWayPlatform_OnComponentOverlapBegin::bFromSweep' has a wrong offset!");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, SweepResult) == 0x000020, "Member 'OneWayPlatform_OnComponentOverlapBegin::SweepResult' has a wrong offset!");
+
+// Function Zion.OneWayPlatform.OnComponentOverlapEnd
+// 0x0020 (0x0020 - 0x0000)
+struct OneWayPlatform_OnComponentOverlapEnd final
+{
+public:
+	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(OneWayPlatform_OnComponentOverlapEnd) == 0x000008, "Wrong alignment on OneWayPlatform_OnComponentOverlapEnd");
+static_assert(sizeof(OneWayPlatform_OnComponentOverlapEnd) == 0x000020, "Wrong size on OneWayPlatform_OnComponentOverlapEnd");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapEnd, OverlapComponent) == 0x000000, "Member 'OneWayPlatform_OnComponentOverlapEnd::OverlapComponent' has a wrong offset!");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapEnd, OtherActor) == 0x000008, "Member 'OneWayPlatform_OnComponentOverlapEnd::OtherActor' has a wrong offset!");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapEnd, OtherComp) == 0x000010, "Member 'OneWayPlatform_OnComponentOverlapEnd::OtherComp' has a wrong offset!");
+static_assert(offsetof(OneWayPlatform_OnComponentOverlapEnd, OtherBodyIndex) == 0x000018, "Member 'OneWayPlatform_OnComponentOverlapEnd::OtherBodyIndex' has a wrong offset!");
+
+// Function Zion.OneWayPlatform.IsFallThrough
+// 0x0001 (0x0001 - 0x0000)
+struct OneWayPlatform_IsFallThrough final
 {
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(HealComponent_FullyRestoreHeals) == 0x000001, "Wrong alignment on HealComponent_FullyRestoreHeals");
-static_assert(sizeof(HealComponent_FullyRestoreHeals) == 0x000001, "Wrong size on HealComponent_FullyRestoreHeals");
-static_assert(offsetof(HealComponent_FullyRestoreHeals, ReturnValue) == 0x000000, "Member 'HealComponent_FullyRestoreHeals::ReturnValue' has a wrong offset!");
+static_assert(alignof(OneWayPlatform_IsFallThrough) == 0x000001, "Wrong alignment on OneWayPlatform_IsFallThrough");
+static_assert(sizeof(OneWayPlatform_IsFallThrough) == 0x000001, "Wrong size on OneWayPlatform_IsFallThrough");
+static_assert(offsetof(OneWayPlatform_IsFallThrough, ReturnValue) == 0x000000, "Member 'OneWayPlatform_IsFallThrough::ReturnValue' has a wrong offset!");
 
-// Function Zion.HealComponent.RestoreHeals
+// Function Zion.GameplayCamera.RegisterEnemyPawn
 // 0x0008 (0x0008 - 0x0000)
-struct HealComponent_RestoreHeals final
+struct GameplayCamera_RegisterEnemyPawn final
 {
 public:
-	int32                                         RestoreCount;                                      // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class APawn*                                  EnemyPawnToAdd;                                    // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(HealComponent_RestoreHeals) == 0x000004, "Wrong alignment on HealComponent_RestoreHeals");
-static_assert(sizeof(HealComponent_RestoreHeals) == 0x000008, "Wrong size on HealComponent_RestoreHeals");
-static_assert(offsetof(HealComponent_RestoreHeals, RestoreCount) == 0x000000, "Member 'HealComponent_RestoreHeals::RestoreCount' has a wrong offset!");
-static_assert(offsetof(HealComponent_RestoreHeals, ReturnValue) == 0x000004, "Member 'HealComponent_RestoreHeals::ReturnValue' has a wrong offset!");
+static_assert(alignof(GameplayCamera_RegisterEnemyPawn) == 0x000008, "Wrong alignment on GameplayCamera_RegisterEnemyPawn");
+static_assert(sizeof(GameplayCamera_RegisterEnemyPawn) == 0x000008, "Wrong size on GameplayCamera_RegisterEnemyPawn");
+static_assert(offsetof(GameplayCamera_RegisterEnemyPawn, EnemyPawnToAdd) == 0x000000, "Member 'GameplayCamera_RegisterEnemyPawn::EnemyPawnToAdd' has a wrong offset!");
 
-// Function Zion.HealComponent.SubHealCountBonus
+// Function Zion.GameplayCamera.RegisterEnemyPawns
+// 0x0010 (0x0010 - 0x0000)
+struct GameplayCamera_RegisterEnemyPawns final
+{
+public:
+	TArray<class APawn*>                          EnemyPawnsToAdd;                                   // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameplayCamera_RegisterEnemyPawns) == 0x000008, "Wrong alignment on GameplayCamera_RegisterEnemyPawns");
+static_assert(sizeof(GameplayCamera_RegisterEnemyPawns) == 0x000010, "Wrong size on GameplayCamera_RegisterEnemyPawns");
+static_assert(offsetof(GameplayCamera_RegisterEnemyPawns, EnemyPawnsToAdd) == 0x000000, "Member 'GameplayCamera_RegisterEnemyPawns::EnemyPawnsToAdd' has a wrong offset!");
+
+// Function Zion.GameplayCamera.SetSettings
+// 0x0078 (0x0078 - 0x0000)
+struct GameplayCamera_SetSettings final
+{
+public:
+	struct FGameplayCameraSettings                NewSettings;                                       // 0x0000(0x0078)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameplayCamera_SetSettings) == 0x000008, "Wrong alignment on GameplayCamera_SetSettings");
+static_assert(sizeof(GameplayCamera_SetSettings) == 0x000078, "Wrong size on GameplayCamera_SetSettings");
+static_assert(offsetof(GameplayCamera_SetSettings, NewSettings) == 0x000000, "Member 'GameplayCamera_SetSettings::NewSettings' has a wrong offset!");
+
+// Function Zion.GameplayCamera.UnregisterEnemyPawn
 // 0x0008 (0x0008 - 0x0000)
-struct HealComponent_SubHealCountBonus final
+struct GameplayCamera_UnregisterEnemyPawn final
 {
 public:
-	int32                                         HealCountBonusToSub;                               // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class APawn*                                  EnemyPawnToRemove;                                 // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(HealComponent_SubHealCountBonus) == 0x000004, "Wrong alignment on HealComponent_SubHealCountBonus");
-static_assert(sizeof(HealComponent_SubHealCountBonus) == 0x000008, "Wrong size on HealComponent_SubHealCountBonus");
-static_assert(offsetof(HealComponent_SubHealCountBonus, HealCountBonusToSub) == 0x000000, "Member 'HealComponent_SubHealCountBonus::HealCountBonusToSub' has a wrong offset!");
-static_assert(offsetof(HealComponent_SubHealCountBonus, ReturnValue) == 0x000004, "Member 'HealComponent_SubHealCountBonus::ReturnValue' has a wrong offset!");
+static_assert(alignof(GameplayCamera_UnregisterEnemyPawn) == 0x000008, "Wrong alignment on GameplayCamera_UnregisterEnemyPawn");
+static_assert(sizeof(GameplayCamera_UnregisterEnemyPawn) == 0x000008, "Wrong size on GameplayCamera_UnregisterEnemyPawn");
+static_assert(offsetof(GameplayCamera_UnregisterEnemyPawn, EnemyPawnToRemove) == 0x000000, "Member 'GameplayCamera_UnregisterEnemyPawn::EnemyPawnToRemove' has a wrong offset!");
 
-// Function Zion.HealComponent.SubHealPowerPercentageBonus
-// 0x0008 (0x0008 - 0x0000)
-struct HealComponent_SubHealPowerPercentageBonus final
+// Function Zion.GameplayCamera.UnregisterEnemyPawns
+// 0x0010 (0x0010 - 0x0000)
+struct GameplayCamera_UnregisterEnemyPawns final
 {
 public:
-	int32                                         HealPercentBonusToSub;                             // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class APawn*>                          EnemyPawnsToRemove;                                // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(HealComponent_SubHealPowerPercentageBonus) == 0x000004, "Wrong alignment on HealComponent_SubHealPowerPercentageBonus");
-static_assert(sizeof(HealComponent_SubHealPowerPercentageBonus) == 0x000008, "Wrong size on HealComponent_SubHealPowerPercentageBonus");
-static_assert(offsetof(HealComponent_SubHealPowerPercentageBonus, HealPercentBonusToSub) == 0x000000, "Member 'HealComponent_SubHealPowerPercentageBonus::HealPercentBonusToSub' has a wrong offset!");
-static_assert(offsetof(HealComponent_SubHealPowerPercentageBonus, ReturnValue) == 0x000004, "Member 'HealComponent_SubHealPowerPercentageBonus::ReturnValue' has a wrong offset!");
+static_assert(alignof(GameplayCamera_UnregisterEnemyPawns) == 0x000008, "Wrong alignment on GameplayCamera_UnregisterEnemyPawns");
+static_assert(sizeof(GameplayCamera_UnregisterEnemyPawns) == 0x000010, "Wrong size on GameplayCamera_UnregisterEnemyPawns");
+static_assert(offsetof(GameplayCamera_UnregisterEnemyPawns, EnemyPawnsToRemove) == 0x000000, "Member 'GameplayCamera_UnregisterEnemyPawns::EnemyPawnsToRemove' has a wrong offset!");
 
-// Function Zion.HealComponent.GetHealValue
-// 0x0004 (0x0004 - 0x0000)
-struct HealComponent_GetHealValue final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HealComponent_GetHealValue) == 0x000004, "Wrong alignment on HealComponent_GetHealValue");
-static_assert(sizeof(HealComponent_GetHealValue) == 0x000004, "Wrong size on HealComponent_GetHealValue");
-static_assert(offsetof(HealComponent_GetHealValue, ReturnValue) == 0x000000, "Member 'HealComponent_GetHealValue::ReturnValue' has a wrong offset!");
-
-// Function Zion.HealComponent.GetMaxHealCount
-// 0x0004 (0x0004 - 0x0000)
-struct HealComponent_GetMaxHealCount final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HealComponent_GetMaxHealCount) == 0x000004, "Wrong alignment on HealComponent_GetMaxHealCount");
-static_assert(sizeof(HealComponent_GetMaxHealCount) == 0x000004, "Wrong size on HealComponent_GetMaxHealCount");
-static_assert(offsetof(HealComponent_GetMaxHealCount, ReturnValue) == 0x000000, "Member 'HealComponent_GetMaxHealCount::ReturnValue' has a wrong offset!");
-
-// Function Zion.HealComponent.GetRemainingHealCount
-// 0x0004 (0x0004 - 0x0000)
-struct HealComponent_GetRemainingHealCount final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HealComponent_GetRemainingHealCount) == 0x000004, "Wrong alignment on HealComponent_GetRemainingHealCount");
-static_assert(sizeof(HealComponent_GetRemainingHealCount) == 0x000004, "Wrong size on HealComponent_GetRemainingHealCount");
-static_assert(offsetof(HealComponent_GetRemainingHealCount, ReturnValue) == 0x000000, "Member 'HealComponent_GetRemainingHealCount::ReturnValue' has a wrong offset!");
-
-// Function Zion.HealComponent.IsHealCountMax
+// Function Zion.UserWidgetPlayerUI.HideUI
 // 0x0001 (0x0001 - 0x0000)
-struct HealComponent_IsHealCountMax final
+struct UserWidgetPlayerUI_HideUI final
+{
+public:
+	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetPlayerUI_HideUI) == 0x000001, "Wrong alignment on UserWidgetPlayerUI_HideUI");
+static_assert(sizeof(UserWidgetPlayerUI_HideUI) == 0x000001, "Wrong size on UserWidgetPlayerUI_HideUI");
+static_assert(offsetof(UserWidgetPlayerUI_HideUI, bInstant) == 0x000000, "Member 'UserWidgetPlayerUI_HideUI::bInstant' has a wrong offset!");
+
+// Function Zion.UserWidgetPlayerUI.OnRefreshLowHPFeedbackOpacity
+// 0x0004 (0x0004 - 0x0000)
+struct UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity final
+{
+public:
+	float                                         Opacity;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity) == 0x000004, "Wrong alignment on UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity");
+static_assert(sizeof(UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity) == 0x000004, "Wrong size on UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity");
+static_assert(offsetof(UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity, Opacity) == 0x000000, "Member 'UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity::Opacity' has a wrong offset!");
+
+// Function Zion.UserWidgetPlayerUI.OnRefreshPlayerUIVisibility
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetPlayerUI_OnRefreshPlayerUIVisibility final
+{
+public:
+	bool                                          bVisible;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetPlayerUI_OnRefreshPlayerUIVisibility) == 0x000001, "Wrong alignment on UserWidgetPlayerUI_OnRefreshPlayerUIVisibility");
+static_assert(sizeof(UserWidgetPlayerUI_OnRefreshPlayerUIVisibility) == 0x000001, "Wrong size on UserWidgetPlayerUI_OnRefreshPlayerUIVisibility");
+static_assert(offsetof(UserWidgetPlayerUI_OnRefreshPlayerUIVisibility, bVisible) == 0x000000, "Member 'UserWidgetPlayerUI_OnRefreshPlayerUIVisibility::bVisible' has a wrong offset!");
+
+// Function Zion.UserWidgetPlayerUI.CanShowHeal
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetPlayerUI_CanShowHeal final
 {
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(HealComponent_IsHealCountMax) == 0x000001, "Wrong alignment on HealComponent_IsHealCountMax");
-static_assert(sizeof(HealComponent_IsHealCountMax) == 0x000001, "Wrong size on HealComponent_IsHealCountMax");
-static_assert(offsetof(HealComponent_IsHealCountMax, ReturnValue) == 0x000000, "Member 'HealComponent_IsHealCountMax::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetPlayerUI_CanShowHeal) == 0x000001, "Wrong alignment on UserWidgetPlayerUI_CanShowHeal");
+static_assert(sizeof(UserWidgetPlayerUI_CanShowHeal) == 0x000001, "Wrong size on UserWidgetPlayerUI_CanShowHeal");
+static_assert(offsetof(UserWidgetPlayerUI_CanShowHeal, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_CanShowHeal::ReturnValue' has a wrong offset!");
 
-// Function Zion.niagaraBPFLibrary.IsValid
-// 0x0110 (0x0110 - 0x0000)
-struct niagaraBPFLibrary_IsValid final
+// Function Zion.UserWidgetPlayerUI.CanShowSP
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetPlayerUI_CanShowSP final
 {
 public:
-	struct FSpineFXData                           FXData;                                            // 0x0000(0x0100)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0100(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_101[0xF];                                      // 0x0101(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(niagaraBPFLibrary_IsValid) == 0x000010, "Wrong alignment on niagaraBPFLibrary_IsValid");
-static_assert(sizeof(niagaraBPFLibrary_IsValid) == 0x000110, "Wrong size on niagaraBPFLibrary_IsValid");
-static_assert(offsetof(niagaraBPFLibrary_IsValid, FXData) == 0x000000, "Member 'niagaraBPFLibrary_IsValid::FXData' has a wrong offset!");
-static_assert(offsetof(niagaraBPFLibrary_IsValid, ReturnValue) == 0x000100, "Member 'niagaraBPFLibrary_IsValid::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetPlayerUI_CanShowSP) == 0x000001, "Wrong alignment on UserWidgetPlayerUI_CanShowSP");
+static_assert(sizeof(UserWidgetPlayerUI_CanShowSP) == 0x000001, "Wrong size on UserWidgetPlayerUI_CanShowSP");
+static_assert(offsetof(UserWidgetPlayerUI_CanShowSP, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_CanShowSP::ReturnValue' has a wrong offset!");
 
-// Function Zion.niagaraBPFLibrary.TryReleaseToPool
+// Function Zion.UserWidgetPlayerUI.GetController
 // 0x0008 (0x0008 - 0x0000)
-struct niagaraBPFLibrary_TryReleaseToPool final
+struct UserWidgetPlayerUI_GetController final
 {
 public:
-	class UNiagaraComponent*                      NiagaraComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class APlayerController*                      ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(niagaraBPFLibrary_TryReleaseToPool) == 0x000008, "Wrong alignment on niagaraBPFLibrary_TryReleaseToPool");
-static_assert(sizeof(niagaraBPFLibrary_TryReleaseToPool) == 0x000008, "Wrong size on niagaraBPFLibrary_TryReleaseToPool");
-static_assert(offsetof(niagaraBPFLibrary_TryReleaseToPool, NiagaraComponent) == 0x000000, "Member 'niagaraBPFLibrary_TryReleaseToPool::NiagaraComponent' has a wrong offset!");
+static_assert(alignof(UserWidgetPlayerUI_GetController) == 0x000008, "Wrong alignment on UserWidgetPlayerUI_GetController");
+static_assert(sizeof(UserWidgetPlayerUI_GetController) == 0x000008, "Wrong size on UserWidgetPlayerUI_GetController");
+static_assert(offsetof(UserWidgetPlayerUI_GetController, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_GetController::ReturnValue' has a wrong offset!");
 
-// Function Zion.IKBonesComponent.GetIKBone
-// 0x0010 (0x0010 - 0x0000)
-struct IKBonesComponent_GetIKBone final
+// Function Zion.UserWidgetPlayerUI.GetFieldTalkHolder
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetPlayerUI_GetFieldTalkHolder final
 {
 public:
-	EIKBoneDriver                                 IKBoneDriver;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class USceneComponent*                        ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UUserWidgetFieldTalkHolder*             ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(IKBonesComponent_GetIKBone) == 0x000008, "Wrong alignment on IKBonesComponent_GetIKBone");
-static_assert(sizeof(IKBonesComponent_GetIKBone) == 0x000010, "Wrong size on IKBonesComponent_GetIKBone");
-static_assert(offsetof(IKBonesComponent_GetIKBone, IKBoneDriver) == 0x000000, "Member 'IKBonesComponent_GetIKBone::IKBoneDriver' has a wrong offset!");
-static_assert(offsetof(IKBonesComponent_GetIKBone, ReturnValue) == 0x000008, "Member 'IKBonesComponent_GetIKBone::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetPlayerUI_GetFieldTalkHolder) == 0x000008, "Wrong alignment on UserWidgetPlayerUI_GetFieldTalkHolder");
+static_assert(sizeof(UserWidgetPlayerUI_GetFieldTalkHolder) == 0x000008, "Wrong size on UserWidgetPlayerUI_GetFieldTalkHolder");
+static_assert(offsetof(UserWidgetPlayerUI_GetFieldTalkHolder, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_GetFieldTalkHolder::ReturnValue' has a wrong offset!");
 
-// Function Zion.IKBonesComponent.ResetIKBone
-// 0x0002 (0x0002 - 0x0000)
-struct IKBonesComponent_ResetIKBone final
+// Function Zion.UserWidgetPlayerUI.GetMinimapWidget
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetPlayerUI_GetMinimapWidget final
 {
 public:
-	EIKBoneDriver                                 IKBoneDriver;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bResetIKConstraint;                                // 0x0001(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UUserWidgetMinimap*                     ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(IKBonesComponent_ResetIKBone) == 0x000001, "Wrong alignment on IKBonesComponent_ResetIKBone");
-static_assert(sizeof(IKBonesComponent_ResetIKBone) == 0x000002, "Wrong size on IKBonesComponent_ResetIKBone");
-static_assert(offsetof(IKBonesComponent_ResetIKBone, IKBoneDriver) == 0x000000, "Member 'IKBonesComponent_ResetIKBone::IKBoneDriver' has a wrong offset!");
-static_assert(offsetof(IKBonesComponent_ResetIKBone, bResetIKConstraint) == 0x000001, "Member 'IKBonesComponent_ResetIKBone::bResetIKConstraint' has a wrong offset!");
+static_assert(alignof(UserWidgetPlayerUI_GetMinimapWidget) == 0x000008, "Wrong alignment on UserWidgetPlayerUI_GetMinimapWidget");
+static_assert(sizeof(UserWidgetPlayerUI_GetMinimapWidget) == 0x000008, "Wrong size on UserWidgetPlayerUI_GetMinimapWidget");
+static_assert(offsetof(UserWidgetPlayerUI_GetMinimapWidget, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_GetMinimapWidget::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetWorldSpaceText.SetText
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetWorldSpaceText_SetText final
+// Function Zion.UserWidgetPlayerUI.GetPawn
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetPlayerUI_GetPawn final
 {
 public:
-	class FText                                   Text;                                              // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	class APawn*                                  ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetWorldSpaceText_SetText) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceText_SetText");
-static_assert(sizeof(UserWidgetWorldSpaceText_SetText) == 0x000010, "Wrong size on UserWidgetWorldSpaceText_SetText");
-static_assert(offsetof(UserWidgetWorldSpaceText_SetText, Text) == 0x000000, "Member 'UserWidgetWorldSpaceText_SetText::Text' has a wrong offset!");
+static_assert(alignof(UserWidgetPlayerUI_GetPawn) == 0x000008, "Wrong alignment on UserWidgetPlayerUI_GetPawn");
+static_assert(sizeof(UserWidgetPlayerUI_GetPawn) == 0x000008, "Wrong size on UserWidgetPlayerUI_GetPawn");
+static_assert(offsetof(UserWidgetPlayerUI_GetPawn, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_GetPawn::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetNotificationHolder.OnLaunchNotification
+// 0x0040 (0x0040 - 0x0000)
+struct UserWidgetNotificationHolder_OnLaunchNotification final
+{
+public:
+	struct FNotificationData                      NotificationData;                                  // 0x0000(0x0040)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetNotificationHolder_OnLaunchNotification) == 0x000008, "Wrong alignment on UserWidgetNotificationHolder_OnLaunchNotification");
+static_assert(sizeof(UserWidgetNotificationHolder_OnLaunchNotification) == 0x000040, "Wrong size on UserWidgetNotificationHolder_OnLaunchNotification");
+static_assert(offsetof(UserWidgetNotificationHolder_OnLaunchNotification, NotificationData) == 0x000000, "Member 'UserWidgetNotificationHolder_OnLaunchNotification::NotificationData' has a wrong offset!");
+
+// Function Zion.UserWidgetNotificationHolder.IsUIReady
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetNotificationHolder_IsUIReady final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetNotificationHolder_IsUIReady) == 0x000001, "Wrong alignment on UserWidgetNotificationHolder_IsUIReady");
+static_assert(sizeof(UserWidgetNotificationHolder_IsUIReady) == 0x000001, "Wrong size on UserWidgetNotificationHolder_IsUIReady");
+static_assert(offsetof(UserWidgetNotificationHolder_IsUIReady, ReturnValue) == 0x000000, "Member 'UserWidgetNotificationHolder_IsUIReady::ReturnValue' has a wrong offset!");
 
 // Function Zion.Command_AI_DashTo.OnMoveBlocked
 // 0x00F8 (0x00F8 - 0x0000)
@@ -3217,18 +4648,73 @@ static_assert(alignof(Command_AI_DashTo_OnMoveBlocked) == 0x000008, "Wrong align
 static_assert(sizeof(Command_AI_DashTo_OnMoveBlocked) == 0x0000F8, "Wrong size on Command_AI_DashTo_OnMoveBlocked");
 static_assert(offsetof(Command_AI_DashTo_OnMoveBlocked, Hit) == 0x000000, "Member 'Command_AI_DashTo_OnMoveBlocked::Hit' has a wrong offset!");
 
-// Function Zion.GuardComponent.OnGuarded
-// 0x0010 (0x0010 - 0x0000)
-struct GuardComponent_OnGuarded final
+// Function Zion.GameViewportZion.Get
+// 0x0008 (0x0008 - 0x0000)
+struct GameViewportZion_Get final
 {
 public:
-	class AAbility*                               Ability;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 Source;                                            // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UGameViewportZion*                      ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GuardComponent_OnGuarded) == 0x000008, "Wrong alignment on GuardComponent_OnGuarded");
-static_assert(sizeof(GuardComponent_OnGuarded) == 0x000010, "Wrong size on GuardComponent_OnGuarded");
-static_assert(offsetof(GuardComponent_OnGuarded, Ability) == 0x000000, "Member 'GuardComponent_OnGuarded::Ability' has a wrong offset!");
-static_assert(offsetof(GuardComponent_OnGuarded, Source) == 0x000008, "Member 'GuardComponent_OnGuarded::Source' has a wrong offset!");
+static_assert(alignof(GameViewportZion_Get) == 0x000008, "Wrong alignment on GameViewportZion_Get");
+static_assert(sizeof(GameViewportZion_Get) == 0x000008, "Wrong size on GameViewportZion_Get");
+static_assert(offsetof(GameViewportZion_Get, ReturnValue) == 0x000000, "Member 'GameViewportZion_Get::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameViewportZion.SetViewportOverlayRenderOpacity
+// 0x0004 (0x0004 - 0x0000)
+struct GameViewportZion_SetViewportOverlayRenderOpacity final
+{
+public:
+	float                                         Opacity;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameViewportZion_SetViewportOverlayRenderOpacity) == 0x000004, "Wrong alignment on GameViewportZion_SetViewportOverlayRenderOpacity");
+static_assert(sizeof(GameViewportZion_SetViewportOverlayRenderOpacity) == 0x000004, "Wrong size on GameViewportZion_SetViewportOverlayRenderOpacity");
+static_assert(offsetof(GameViewportZion_SetViewportOverlayRenderOpacity, Opacity) == 0x000000, "Member 'GameViewportZion_SetViewportOverlayRenderOpacity::Opacity' has a wrong offset!");
+
+// Function Zion.GameViewportZion.SetViewportOverlayWidgetVisible
+// 0x0001 (0x0001 - 0x0000)
+struct GameViewportZion_SetViewportOverlayWidgetVisible final
+{
+public:
+	bool                                          bVisible;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameViewportZion_SetViewportOverlayWidgetVisible) == 0x000001, "Wrong alignment on GameViewportZion_SetViewportOverlayWidgetVisible");
+static_assert(sizeof(GameViewportZion_SetViewportOverlayWidgetVisible) == 0x000001, "Wrong size on GameViewportZion_SetViewportOverlayWidgetVisible");
+static_assert(offsetof(GameViewportZion_SetViewportOverlayWidgetVisible, bVisible) == 0x000000, "Member 'GameViewportZion_SetViewportOverlayWidgetVisible::bVisible' has a wrong offset!");
+
+// Function Zion.GameViewportZion.SetWorldRenderingEnable
+// 0x0001 (0x0001 - 0x0000)
+struct GameViewportZion_SetWorldRenderingEnable final
+{
+public:
+	bool                                          bEnableWorldRendering;                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameViewportZion_SetWorldRenderingEnable) == 0x000001, "Wrong alignment on GameViewportZion_SetWorldRenderingEnable");
+static_assert(sizeof(GameViewportZion_SetWorldRenderingEnable) == 0x000001, "Wrong size on GameViewportZion_SetWorldRenderingEnable");
+static_assert(offsetof(GameViewportZion_SetWorldRenderingEnable, bEnableWorldRendering) == 0x000000, "Member 'GameViewportZion_SetWorldRenderingEnable::bEnableWorldRendering' has a wrong offset!");
+
+// Function Zion.GameViewportZion.GetUserWidgetInStack
+// 0x0010 (0x0010 - 0x0000)
+struct GameViewportZion_GetUserWidgetInStack final
+{
+public:
+	TSubclassOf<class UUserWidget>                ClassToFind;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UUserWidget*                            ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameViewportZion_GetUserWidgetInStack) == 0x000008, "Wrong alignment on GameViewportZion_GetUserWidgetInStack");
+static_assert(sizeof(GameViewportZion_GetUserWidgetInStack) == 0x000010, "Wrong size on GameViewportZion_GetUserWidgetInStack");
+static_assert(offsetof(GameViewportZion_GetUserWidgetInStack, ClassToFind) == 0x000000, "Member 'GameViewportZion_GetUserWidgetInStack::ClassToFind' has a wrong offset!");
+static_assert(offsetof(GameViewportZion_GetUserWidgetInStack, ReturnValue) == 0x000008, "Member 'GameViewportZion_GetUserWidgetInStack::ReturnValue' has a wrong offset!");
+
+// Function Zion.GameViewportZion.IsShowingCollision
+// 0x0001 (0x0001 - 0x0000)
+struct GameViewportZion_IsShowingCollision final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameViewportZion_IsShowingCollision) == 0x000001, "Wrong alignment on GameViewportZion_IsShowingCollision");
+static_assert(sizeof(GameViewportZion_IsShowingCollision) == 0x000001, "Wrong size on GameViewportZion_IsShowingCollision");
+static_assert(offsetof(GameViewportZion_IsShowingCollision, ReturnValue) == 0x000000, "Member 'GameViewportZion_IsShowingCollision::ReturnValue' has a wrong offset!");
 
 // Function Zion.BTTask_Execute.OnFinishCommand
 // 0x0010 (0x0010 - 0x0000)
@@ -3260,76 +4746,16 @@ static_assert(offsetof(DeathProcess_Transform_OnMovementModeChanged, Character) 
 static_assert(offsetof(DeathProcess_Transform_OnMovementModeChanged, PrevMovementMode) == 0x000008, "Member 'DeathProcess_Transform_OnMovementModeChanged::PrevMovementMode' has a wrong offset!");
 static_assert(offsetof(DeathProcess_Transform_OnMovementModeChanged, PreviousCustomMode) == 0x000009, "Member 'DeathProcess_Transform_OnMovementModeChanged::PreviousCustomMode' has a wrong offset!");
 
-// Function Zion.FollowTargetComponent.SetFollowTarget
-// 0x0010 (0x0010 - 0x0000)
-struct FollowTargetComponent_SetFollowTarget final
+// Function Zion.FollowSplineComponent.IsClosedLoop
+// 0x0001 (0x0001 - 0x0000)
+struct FollowSplineComponent_IsClosedLoop final
 {
 public:
-	class USceneComponent*                        NewFollowTarget;                                   // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSnapToTarget;                                     // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FollowTargetComponent_SetFollowTarget) == 0x000008, "Wrong alignment on FollowTargetComponent_SetFollowTarget");
-static_assert(sizeof(FollowTargetComponent_SetFollowTarget) == 0x000010, "Wrong size on FollowTargetComponent_SetFollowTarget");
-static_assert(offsetof(FollowTargetComponent_SetFollowTarget, NewFollowTarget) == 0x000000, "Member 'FollowTargetComponent_SetFollowTarget::NewFollowTarget' has a wrong offset!");
-static_assert(offsetof(FollowTargetComponent_SetFollowTarget, bSnapToTarget) == 0x000008, "Member 'FollowTargetComponent_SetFollowTarget::bSnapToTarget' has a wrong offset!");
-
-// Function Zion.FollowTargetComponent.GetFollowTarget
-// 0x0008 (0x0008 - 0x0000)
-struct FollowTargetComponent_GetFollowTarget final
-{
-public:
-	class USceneComponent*                        ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FollowTargetComponent_GetFollowTarget) == 0x000008, "Wrong alignment on FollowTargetComponent_GetFollowTarget");
-static_assert(sizeof(FollowTargetComponent_GetFollowTarget) == 0x000008, "Wrong size on FollowTargetComponent_GetFollowTarget");
-static_assert(offsetof(FollowTargetComponent_GetFollowTarget, ReturnValue) == 0x000000, "Member 'FollowTargetComponent_GetFollowTarget::ReturnValue' has a wrong offset!");
-
-// Function Zion.FollowTargetComponent.GetFollowTargetDeltaLocation
-// 0x0018 (0x0018 - 0x0000)
-struct FollowTargetComponent_GetFollowTargetDeltaLocation final
-{
-public:
-	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FollowTargetComponent_GetFollowTargetDeltaLocation) == 0x000008, "Wrong alignment on FollowTargetComponent_GetFollowTargetDeltaLocation");
-static_assert(sizeof(FollowTargetComponent_GetFollowTargetDeltaLocation) == 0x000018, "Wrong size on FollowTargetComponent_GetFollowTargetDeltaLocation");
-static_assert(offsetof(FollowTargetComponent_GetFollowTargetDeltaLocation, ReturnValue) == 0x000000, "Member 'FollowTargetComponent_GetFollowTargetDeltaLocation::ReturnValue' has a wrong offset!");
-
-// Function Zion.FollowTargetComponent.GetFollowTargetForward
-// 0x0018 (0x0018 - 0x0000)
-struct FollowTargetComponent_GetFollowTargetForward final
-{
-public:
-	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FollowTargetComponent_GetFollowTargetForward) == 0x000008, "Wrong alignment on FollowTargetComponent_GetFollowTargetForward");
-static_assert(sizeof(FollowTargetComponent_GetFollowTargetForward) == 0x000018, "Wrong size on FollowTargetComponent_GetFollowTargetForward");
-static_assert(offsetof(FollowTargetComponent_GetFollowTargetForward, ReturnValue) == 0x000000, "Member 'FollowTargetComponent_GetFollowTargetForward::ReturnValue' has a wrong offset!");
-
-// Function Zion.FollowTargetComponent.GetFollowTargetLocation
-// 0x0018 (0x0018 - 0x0000)
-struct FollowTargetComponent_GetFollowTargetLocation final
-{
-public:
-	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FollowTargetComponent_GetFollowTargetLocation) == 0x000008, "Wrong alignment on FollowTargetComponent_GetFollowTargetLocation");
-static_assert(sizeof(FollowTargetComponent_GetFollowTargetLocation) == 0x000018, "Wrong size on FollowTargetComponent_GetFollowTargetLocation");
-static_assert(offsetof(FollowTargetComponent_GetFollowTargetLocation, ReturnValue) == 0x000000, "Member 'FollowTargetComponent_GetFollowTargetLocation::ReturnValue' has a wrong offset!");
-
-// Function Zion.FollowTargetComponent.GetTargetLocation
-// 0x0020 (0x0020 - 0x0000)
-struct FollowTargetComponent_GetTargetLocation final
-{
-public:
-	const class USceneComponent*                  PinnedTarget;                                      // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                ReturnValue;                                       // 0x0008(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FollowTargetComponent_GetTargetLocation) == 0x000008, "Wrong alignment on FollowTargetComponent_GetTargetLocation");
-static_assert(sizeof(FollowTargetComponent_GetTargetLocation) == 0x000020, "Wrong size on FollowTargetComponent_GetTargetLocation");
-static_assert(offsetof(FollowTargetComponent_GetTargetLocation, PinnedTarget) == 0x000000, "Member 'FollowTargetComponent_GetTargetLocation::PinnedTarget' has a wrong offset!");
-static_assert(offsetof(FollowTargetComponent_GetTargetLocation, ReturnValue) == 0x000008, "Member 'FollowTargetComponent_GetTargetLocation::ReturnValue' has a wrong offset!");
+static_assert(alignof(FollowSplineComponent_IsClosedLoop) == 0x000001, "Wrong alignment on FollowSplineComponent_IsClosedLoop");
+static_assert(sizeof(FollowSplineComponent_IsClosedLoop) == 0x000001, "Wrong size on FollowSplineComponent_IsClosedLoop");
+static_assert(offsetof(FollowSplineComponent_IsClosedLoop, ReturnValue) == 0x000000, "Member 'FollowSplineComponent_IsClosedLoop::ReturnValue' has a wrong offset!");
 
 // Function Zion.ContactDamageComponent.OnHitboxBeginOverlap
 // 0x0118 (0x0118 - 0x0000)
@@ -3371,6 +4797,17 @@ static_assert(offsetof(ContactDamageComponent_OnHitboxEndOverlap, OtherActor) ==
 static_assert(offsetof(ContactDamageComponent_OnHitboxEndOverlap, OtherComp) == 0x000010, "Member 'ContactDamageComponent_OnHitboxEndOverlap::OtherComp' has a wrong offset!");
 static_assert(offsetof(ContactDamageComponent_OnHitboxEndOverlap, OtherBodyIndex) == 0x000018, "Member 'ContactDamageComponent_OnHitboxEndOverlap::OtherBodyIndex' has a wrong offset!");
 
+// Function Zion.GameMapChangeDataProviderInterface.GetGameMapChangeProviderData
+// 0x0040 (0x0040 - 0x0000)
+struct GameMapChangeDataProviderInterface_GetGameMapChangeProviderData final
+{
+public:
+	struct FGameMapChangeProviderData             OutGameMapChangeProviderData;                      // 0x0000(0x0040)(Parm, OutParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(GameMapChangeDataProviderInterface_GetGameMapChangeProviderData) == 0x000008, "Wrong alignment on GameMapChangeDataProviderInterface_GetGameMapChangeProviderData");
+static_assert(sizeof(GameMapChangeDataProviderInterface_GetGameMapChangeProviderData) == 0x000040, "Wrong size on GameMapChangeDataProviderInterface_GetGameMapChangeProviderData");
+static_assert(offsetof(GameMapChangeDataProviderInterface_GetGameMapChangeProviderData, OutGameMapChangeProviderData) == 0x000000, "Member 'GameMapChangeDataProviderInterface_GetGameMapChangeProviderData::OutGameMapChangeProviderData' has a wrong offset!");
+
 // Function Zion.DashChargeComponent.OnCommandStart
 // 0x0008 (0x0008 - 0x0000)
 struct DashChargeComponent_OnCommandStart final
@@ -3403,58 +4840,6 @@ public:
 static_assert(alignof(DashChargeComponent_IsDashCharged) == 0x000001, "Wrong alignment on DashChargeComponent_IsDashCharged");
 static_assert(sizeof(DashChargeComponent_IsDashCharged) == 0x000001, "Wrong size on DashChargeComponent_IsDashCharged");
 static_assert(offsetof(DashChargeComponent_IsDashCharged, ReturnValue) == 0x000000, "Member 'DashChargeComponent_IsDashCharged::ReturnValue' has a wrong offset!");
-
-// Function Zion.EventAction_MoveTo_TalkDistance.OnMoveCompleted
-// 0x0008 (0x0008 - 0x0000)
-struct EventAction_MoveTo_TalkDistance_OnMoveCompleted final
-{
-public:
-	struct FAIRequestID                           RequestID;                                         // 0x0000(0x0004)(Parm, NoDestructor, NativeAccessSpecifierPublic)
-	EPathFollowingResult                          Result;                                            // 0x0004(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(EventAction_MoveTo_TalkDistance_OnMoveCompleted) == 0x000004, "Wrong alignment on EventAction_MoveTo_TalkDistance_OnMoveCompleted");
-static_assert(sizeof(EventAction_MoveTo_TalkDistance_OnMoveCompleted) == 0x000008, "Wrong size on EventAction_MoveTo_TalkDistance_OnMoveCompleted");
-static_assert(offsetof(EventAction_MoveTo_TalkDistance_OnMoveCompleted, RequestID) == 0x000000, "Member 'EventAction_MoveTo_TalkDistance_OnMoveCompleted::RequestID' has a wrong offset!");
-static_assert(offsetof(EventAction_MoveTo_TalkDistance_OnMoveCompleted, Result) == 0x000004, "Member 'EventAction_MoveTo_TalkDistance_OnMoveCompleted::Result' has a wrong offset!");
-
-// Function Zion.EventAction_PlayFX.OnSystemCompleted
-// 0x0008 (0x0008 - 0x0000)
-struct EventAction_PlayFX_OnSystemCompleted final
-{
-public:
-	class UNiagaraComponent*                      PSystem;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(EventAction_PlayFX_OnSystemCompleted) == 0x000008, "Wrong alignment on EventAction_PlayFX_OnSystemCompleted");
-static_assert(sizeof(EventAction_PlayFX_OnSystemCompleted) == 0x000008, "Wrong size on EventAction_PlayFX_OnSystemCompleted");
-static_assert(offsetof(EventAction_PlayFX_OnSystemCompleted, PSystem) == 0x000000, "Member 'EventAction_PlayFX_OnSystemCompleted::PSystem' has a wrong offset!");
-
-// Function Zion.FieldTalkComponent.StartFieldTalk
-// 0x0010 (0x0010 - 0x0000)
-struct FieldTalkComponent_StartFieldTalk final
-{
-public:
-	class UFieldTalkAsset*                        FieldTalkAsset;                                    // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSkipActiveFieldTalkAsset;                         // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FieldTalkComponent_StartFieldTalk) == 0x000008, "Wrong alignment on FieldTalkComponent_StartFieldTalk");
-static_assert(sizeof(FieldTalkComponent_StartFieldTalk) == 0x000010, "Wrong size on FieldTalkComponent_StartFieldTalk");
-static_assert(offsetof(FieldTalkComponent_StartFieldTalk, FieldTalkAsset) == 0x000000, "Member 'FieldTalkComponent_StartFieldTalk::FieldTalkAsset' has a wrong offset!");
-static_assert(offsetof(FieldTalkComponent_StartFieldTalk, bSkipActiveFieldTalkAsset) == 0x000008, "Member 'FieldTalkComponent_StartFieldTalk::bSkipActiveFieldTalkAsset' has a wrong offset!");
-static_assert(offsetof(FieldTalkComponent_StartFieldTalk, ReturnValue) == 0x000009, "Member 'FieldTalkComponent_StartFieldTalk::ReturnValue' has a wrong offset!");
-
-// Function Zion.FieldTalkComponent.CanStartFieldTalk
-// 0x0001 (0x0001 - 0x0000)
-struct FieldTalkComponent_CanStartFieldTalk final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FieldTalkComponent_CanStartFieldTalk) == 0x000001, "Wrong alignment on FieldTalkComponent_CanStartFieldTalk");
-static_assert(sizeof(FieldTalkComponent_CanStartFieldTalk) == 0x000001, "Wrong size on FieldTalkComponent_CanStartFieldTalk");
-static_assert(offsetof(FieldTalkComponent_CanStartFieldTalk, ReturnValue) == 0x000000, "Member 'FieldTalkComponent_CanStartFieldTalk::ReturnValue' has a wrong offset!");
 
 // Function Zion.CharacterZion.OnGuarded
 // 0x0010 (0x0010 - 0x0000)
@@ -3796,41 +5181,248 @@ static_assert(sizeof(ClearManagerComponent_Get) == 0x000010, "Wrong size on Clea
 static_assert(offsetof(ClearManagerComponent_Get, WorldContextObject) == 0x000000, "Member 'ClearManagerComponent_Get::WorldContextObject' has a wrong offset!");
 static_assert(offsetof(ClearManagerComponent_Get, ReturnValue) == 0x000008, "Member 'ClearManagerComponent_Get::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointListEntry.InitializeEntry
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetRestPointListEntry_InitializeEntry final
-{
-public:
-	class UUserWidgetMapIcon_RestPoint*           RestPointIcon;                                     // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointListEntry_InitializeEntry) == 0x000008, "Wrong alignment on UserWidgetRestPointListEntry_InitializeEntry");
-static_assert(sizeof(UserWidgetRestPointListEntry_InitializeEntry) == 0x000008, "Wrong size on UserWidgetRestPointListEntry_InitializeEntry");
-static_assert(offsetof(UserWidgetRestPointListEntry_InitializeEntry, RestPointIcon) == 0x000000, "Member 'UserWidgetRestPointListEntry_InitializeEntry::RestPointIcon' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointListEntry.IsRestPointIcon
+// Function Zion.UserWidgetRestPointList.ChangeMapArea
 // 0x0010 (0x0010 - 0x0000)
-struct UserWidgetRestPointListEntry_IsRestPointIcon final
+struct UserWidgetRestPointList_ChangeMapArea final
 {
 public:
-	class UUserWidgetMapIcon_RestPoint*           RestPointIcon;                                     // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         IndexOffset;                                       // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUserWidgetMapIcon_RestPoint*           ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointListEntry_IsRestPointIcon) == 0x000008, "Wrong alignment on UserWidgetRestPointListEntry_IsRestPointIcon");
-static_assert(sizeof(UserWidgetRestPointListEntry_IsRestPointIcon) == 0x000010, "Wrong size on UserWidgetRestPointListEntry_IsRestPointIcon");
-static_assert(offsetof(UserWidgetRestPointListEntry_IsRestPointIcon, RestPointIcon) == 0x000000, "Member 'UserWidgetRestPointListEntry_IsRestPointIcon::RestPointIcon' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointListEntry_IsRestPointIcon, ReturnValue) == 0x000008, "Member 'UserWidgetRestPointListEntry_IsRestPointIcon::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetRestPointList_ChangeMapArea) == 0x000008, "Wrong alignment on UserWidgetRestPointList_ChangeMapArea");
+static_assert(sizeof(UserWidgetRestPointList_ChangeMapArea) == 0x000010, "Wrong size on UserWidgetRestPointList_ChangeMapArea");
+static_assert(offsetof(UserWidgetRestPointList_ChangeMapArea, IndexOffset) == 0x000000, "Member 'UserWidgetRestPointList_ChangeMapArea::IndexOffset' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointList_ChangeMapArea, ReturnValue) == 0x000008, "Member 'UserWidgetRestPointList_ChangeMapArea::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetMinimap.HasValidData
+// Function Zion.UserWidgetRestPointList.Close
 // 0x0001 (0x0001 - 0x0000)
-struct UserWidgetMinimap_HasValidData final
+struct UserWidgetRestPointList_Close final
+{
+public:
+	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_Close) == 0x000001, "Wrong alignment on UserWidgetRestPointList_Close");
+static_assert(sizeof(UserWidgetRestPointList_Close) == 0x000001, "Wrong size on UserWidgetRestPointList_Close");
+static_assert(offsetof(UserWidgetRestPointList_Close, bInstant) == 0x000000, "Member 'UserWidgetRestPointList_Close::bInstant' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.FindNearestRestPointIcon
+// 0x0020 (0x0020 - 0x0000)
+struct UserWidgetRestPointList_FindNearestRestPointIcon final
+{
+public:
+	struct FVector2D                              CurrentMapPosition;                                // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OutMapAreaIndex;                                   // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUserWidgetMapIcon_RestPoint*           ReturnValue;                                       // 0x0018(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_FindNearestRestPointIcon) == 0x000008, "Wrong alignment on UserWidgetRestPointList_FindNearestRestPointIcon");
+static_assert(sizeof(UserWidgetRestPointList_FindNearestRestPointIcon) == 0x000020, "Wrong size on UserWidgetRestPointList_FindNearestRestPointIcon");
+static_assert(offsetof(UserWidgetRestPointList_FindNearestRestPointIcon, CurrentMapPosition) == 0x000000, "Member 'UserWidgetRestPointList_FindNearestRestPointIcon::CurrentMapPosition' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointList_FindNearestRestPointIcon, OutMapAreaIndex) == 0x000010, "Member 'UserWidgetRestPointList_FindNearestRestPointIcon::OutMapAreaIndex' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointList_FindNearestRestPointIcon, ReturnValue) == 0x000018, "Member 'UserWidgetRestPointList_FindNearestRestPointIcon::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.GoToMapAreaFromIndex
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetRestPointList_GoToMapAreaFromIndex final
+{
+public:
+	int32                                         MapAreaIndex;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUserWidgetMapIcon_RestPoint*           NearestRestPointIcon;                              // 0x0008(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_GoToMapAreaFromIndex) == 0x000008, "Wrong alignment on UserWidgetRestPointList_GoToMapAreaFromIndex");
+static_assert(sizeof(UserWidgetRestPointList_GoToMapAreaFromIndex) == 0x000010, "Wrong size on UserWidgetRestPointList_GoToMapAreaFromIndex");
+static_assert(offsetof(UserWidgetRestPointList_GoToMapAreaFromIndex, MapAreaIndex) == 0x000000, "Member 'UserWidgetRestPointList_GoToMapAreaFromIndex::MapAreaIndex' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointList_GoToMapAreaFromIndex, NearestRestPointIcon) == 0x000008, "Member 'UserWidgetRestPointList_GoToMapAreaFromIndex::NearestRestPointIcon' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.InstantiateRestPointList
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetRestPointList_InstantiateRestPointList final
+{
+public:
+	TArray<struct FRestPointListData>             ListData;                                          // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_InstantiateRestPointList) == 0x000008, "Wrong alignment on UserWidgetRestPointList_InstantiateRestPointList");
+static_assert(sizeof(UserWidgetRestPointList_InstantiateRestPointList) == 0x000010, "Wrong size on UserWidgetRestPointList_InstantiateRestPointList");
+static_assert(offsetof(UserWidgetRestPointList_InstantiateRestPointList, ListData) == 0x000000, "Member 'UserWidgetRestPointList_InstantiateRestPointList::ListData' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.OnClosed
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetRestPointList_OnClosed final
+{
+public:
+	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_OnClosed) == 0x000001, "Wrong alignment on UserWidgetRestPointList_OnClosed");
+static_assert(sizeof(UserWidgetRestPointList_OnClosed) == 0x000001, "Wrong size on UserWidgetRestPointList_OnClosed");
+static_assert(offsetof(UserWidgetRestPointList_OnClosed, bInstant) == 0x000000, "Member 'UserWidgetRestPointList_OnClosed::bInstant' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.OnOpened
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetRestPointList_OnOpened final
+{
+public:
+	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_OnOpened) == 0x000001, "Wrong alignment on UserWidgetRestPointList_OnOpened");
+static_assert(sizeof(UserWidgetRestPointList_OnOpened) == 0x000001, "Wrong size on UserWidgetRestPointList_OnOpened");
+static_assert(offsetof(UserWidgetRestPointList_OnOpened, bInstant) == 0x000000, "Member 'UserWidgetRestPointList_OnOpened::bInstant' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.Open
+// 0x0018 (0x0018 - 0x0000)
+struct UserWidgetRestPointList_Open final
+{
+public:
+	struct FVector2D                              CurrentMapPosition;                                // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bInstant;                                          // 0x0010(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(UserWidgetRestPointList_Open) == 0x000008, "Wrong alignment on UserWidgetRestPointList_Open");
+static_assert(sizeof(UserWidgetRestPointList_Open) == 0x000018, "Wrong size on UserWidgetRestPointList_Open");
+static_assert(offsetof(UserWidgetRestPointList_Open, CurrentMapPosition) == 0x000000, "Member 'UserWidgetRestPointList_Open::CurrentMapPosition' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointList_Open, bInstant) == 0x000010, "Member 'UserWidgetRestPointList_Open::bInstant' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.RestPointEntryFocused
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetRestPointList_RestPointEntryFocused final
+{
+public:
+	int32                                         MapAreaIndex;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUserWidgetMapIcon_RestPoint*           RestPointIcon;                                     // 0x0008(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_RestPointEntryFocused) == 0x000008, "Wrong alignment on UserWidgetRestPointList_RestPointEntryFocused");
+static_assert(sizeof(UserWidgetRestPointList_RestPointEntryFocused) == 0x000010, "Wrong size on UserWidgetRestPointList_RestPointEntryFocused");
+static_assert(offsetof(UserWidgetRestPointList_RestPointEntryFocused, MapAreaIndex) == 0x000000, "Member 'UserWidgetRestPointList_RestPointEntryFocused::MapAreaIndex' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointList_RestPointEntryFocused, RestPointIcon) == 0x000008, "Member 'UserWidgetRestPointList_RestPointEntryFocused::RestPointIcon' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.RestPointEntryPressed
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetRestPointList_RestPointEntryPressed final
+{
+public:
+	struct FMapRestPointData                      RestPointData;                                     // 0x0000(0x0008)(Parm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_RestPointEntryPressed) == 0x000004, "Wrong alignment on UserWidgetRestPointList_RestPointEntryPressed");
+static_assert(sizeof(UserWidgetRestPointList_RestPointEntryPressed) == 0x000008, "Wrong size on UserWidgetRestPointList_RestPointEntryPressed");
+static_assert(offsetof(UserWidgetRestPointList_RestPointEntryPressed, RestPointData) == 0x000000, "Member 'UserWidgetRestPointList_RestPointEntryPressed::RestPointData' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.SetCurrentMapAreaIndex
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetRestPointList_SetCurrentMapAreaIndex final
+{
+public:
+	int32                                         NewMapAreaIndex;                                   // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_SetCurrentMapAreaIndex) == 0x000004, "Wrong alignment on UserWidgetRestPointList_SetCurrentMapAreaIndex");
+static_assert(sizeof(UserWidgetRestPointList_SetCurrentMapAreaIndex) == 0x000008, "Wrong size on UserWidgetRestPointList_SetCurrentMapAreaIndex");
+static_assert(offsetof(UserWidgetRestPointList_SetCurrentMapAreaIndex, NewMapAreaIndex) == 0x000000, "Member 'UserWidgetRestPointList_SetCurrentMapAreaIndex::NewMapAreaIndex' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointList_SetCurrentMapAreaIndex, ReturnValue) == 0x000004, "Member 'UserWidgetRestPointList_SetCurrentMapAreaIndex::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.CanBeOpened
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetRestPointList_CanBeOpened final
 {
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetMinimap_HasValidData) == 0x000001, "Wrong alignment on UserWidgetMinimap_HasValidData");
-static_assert(sizeof(UserWidgetMinimap_HasValidData) == 0x000001, "Wrong size on UserWidgetMinimap_HasValidData");
-static_assert(offsetof(UserWidgetMinimap_HasValidData, ReturnValue) == 0x000000, "Member 'UserWidgetMinimap_HasValidData::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetRestPointList_CanBeOpened) == 0x000001, "Wrong alignment on UserWidgetRestPointList_CanBeOpened");
+static_assert(sizeof(UserWidgetRestPointList_CanBeOpened) == 0x000001, "Wrong size on UserWidgetRestPointList_CanBeOpened");
+static_assert(offsetof(UserWidgetRestPointList_CanBeOpened, ReturnValue) == 0x000000, "Member 'UserWidgetRestPointList_CanBeOpened::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.CanChangeMapArea
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetRestPointList_CanChangeMapArea final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_CanChangeMapArea) == 0x000001, "Wrong alignment on UserWidgetRestPointList_CanChangeMapArea");
+static_assert(sizeof(UserWidgetRestPointList_CanChangeMapArea) == 0x000001, "Wrong size on UserWidgetRestPointList_CanChangeMapArea");
+static_assert(offsetof(UserWidgetRestPointList_CanChangeMapArea, ReturnValue) == 0x000000, "Member 'UserWidgetRestPointList_CanChangeMapArea::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.GetIndexFromMapAreaName
+// 0x000C (0x000C - 0x0000)
+struct UserWidgetRestPointList_GetIndexFromMapAreaName final
+{
+public:
+	class FName                                   MapAreaName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_GetIndexFromMapAreaName) == 0x000004, "Wrong alignment on UserWidgetRestPointList_GetIndexFromMapAreaName");
+static_assert(sizeof(UserWidgetRestPointList_GetIndexFromMapAreaName) == 0x00000C, "Wrong size on UserWidgetRestPointList_GetIndexFromMapAreaName");
+static_assert(offsetof(UserWidgetRestPointList_GetIndexFromMapAreaName, MapAreaName) == 0x000000, "Member 'UserWidgetRestPointList_GetIndexFromMapAreaName::MapAreaName' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointList_GetIndexFromMapAreaName, ReturnValue) == 0x000008, "Member 'UserWidgetRestPointList_GetIndexFromMapAreaName::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.GetNewMapAreaIndex
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetRestPointList_GetNewMapAreaIndex final
+{
+public:
+	int32                                         IndexOffset;                                       // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_GetNewMapAreaIndex) == 0x000004, "Wrong alignment on UserWidgetRestPointList_GetNewMapAreaIndex");
+static_assert(sizeof(UserWidgetRestPointList_GetNewMapAreaIndex) == 0x000008, "Wrong size on UserWidgetRestPointList_GetNewMapAreaIndex");
+static_assert(offsetof(UserWidgetRestPointList_GetNewMapAreaIndex, IndexOffset) == 0x000000, "Member 'UserWidgetRestPointList_GetNewMapAreaIndex::IndexOffset' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointList_GetNewMapAreaIndex, ReturnValue) == 0x000004, "Member 'UserWidgetRestPointList_GetNewMapAreaIndex::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointList.IsOpened
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetRestPointList_IsOpened final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointList_IsOpened) == 0x000001, "Wrong alignment on UserWidgetRestPointList_IsOpened");
+static_assert(sizeof(UserWidgetRestPointList_IsOpened) == 0x000001, "Wrong size on UserWidgetRestPointList_IsOpened");
+static_assert(offsetof(UserWidgetRestPointList_IsOpened, ReturnValue) == 0x000000, "Member 'UserWidgetRestPointList_IsOpened::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetMapTransition.OnSetIconsVisibility
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetMapTransition_OnSetIconsVisibility final
+{
+public:
+	bool                                          bVisible;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetMapTransition_OnSetIconsVisibility) == 0x000001, "Wrong alignment on UserWidgetMapTransition_OnSetIconsVisibility");
+static_assert(sizeof(UserWidgetMapTransition_OnSetIconsVisibility) == 0x000001, "Wrong size on UserWidgetMapTransition_OnSetIconsVisibility");
+static_assert(offsetof(UserWidgetMapTransition_OnSetIconsVisibility, bVisible) == 0x000000, "Member 'UserWidgetMapTransition_OnSetIconsVisibility::bVisible' has a wrong offset!");
+
+// Function Zion.UserWidgetMapTransition.OnSetScale
+// 0x0004 (0x0004 - 0x0000)
+struct UserWidgetMapTransition_OnSetScale final
+{
+public:
+	float                                         NewScale;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetMapTransition_OnSetScale) == 0x000004, "Wrong alignment on UserWidgetMapTransition_OnSetScale");
+static_assert(sizeof(UserWidgetMapTransition_OnSetScale) == 0x000004, "Wrong size on UserWidgetMapTransition_OnSetScale");
+static_assert(offsetof(UserWidgetMapTransition_OnSetScale, NewScale) == 0x000000, "Member 'UserWidgetMapTransition_OnSetScale::NewScale' has a wrong offset!");
+
+// Function Zion.UserWidgetMapTransition.SetIconsVisibility
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetMapTransition_SetIconsVisibility final
+{
+public:
+	bool                                          bVisible;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetMapTransition_SetIconsVisibility) == 0x000001, "Wrong alignment on UserWidgetMapTransition_SetIconsVisibility");
+static_assert(sizeof(UserWidgetMapTransition_SetIconsVisibility) == 0x000001, "Wrong size on UserWidgetMapTransition_SetIconsVisibility");
+static_assert(offsetof(UserWidgetMapTransition_SetIconsVisibility, bVisible) == 0x000000, "Member 'UserWidgetMapTransition_SetIconsVisibility::bVisible' has a wrong offset!");
+
+// Function Zion.UserWidgetMapTransition.SetScale
+// 0x0004 (0x0004 - 0x0000)
+struct UserWidgetMapTransition_SetScale final
+{
+public:
+	float                                         NewScale;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetMapTransition_SetScale) == 0x000004, "Wrong alignment on UserWidgetMapTransition_SetScale");
+static_assert(sizeof(UserWidgetMapTransition_SetScale) == 0x000004, "Wrong size on UserWidgetMapTransition_SetScale");
+static_assert(offsetof(UserWidgetMapTransition_SetScale, NewScale) == 0x000000, "Member 'UserWidgetMapTransition_SetScale::NewScale' has a wrong offset!");
 
 // Function Zion.ComboBoxStringZion.AddOptions
 // 0x0010 (0x0010 - 0x0000)
@@ -3974,199 +5566,128 @@ static_assert(alignof(CommandComponent_HasCommand) == 0x000001, "Wrong alignment
 static_assert(sizeof(CommandComponent_HasCommand) == 0x000001, "Wrong size on CommandComponent_HasCommand");
 static_assert(offsetof(CommandComponent_HasCommand, ReturnValue) == 0x000000, "Member 'CommandComponent_HasCommand::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetWorldSpaceText_Talk.OnTalk
-// 0x0028 (0x0028 - 0x0000)
-struct UserWidgetWorldSpaceText_Talk_OnTalk final
-{
-public:
-	struct FTalkParameters                        TalkParameters;                                    // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetWorldSpaceText_Talk_OnTalk) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceText_Talk_OnTalk");
-static_assert(sizeof(UserWidgetWorldSpaceText_Talk_OnTalk) == 0x000028, "Wrong size on UserWidgetWorldSpaceText_Talk_OnTalk");
-static_assert(offsetof(UserWidgetWorldSpaceText_Talk_OnTalk, TalkParameters) == 0x000000, "Member 'UserWidgetWorldSpaceText_Talk_OnTalk::TalkParameters' has a wrong offset!");
-
-// Function Zion.UserWidgetWorldSpaceText_Talk.SetSpeakerName
+// Function Zion.UserWidgetWorldSpaceText.SetText
 // 0x0010 (0x0010 - 0x0000)
-struct UserWidgetWorldSpaceText_Talk_SetSpeakerName final
+struct UserWidgetWorldSpaceText_SetText final
 {
 public:
-	class FText                                   SpeakerName;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	class FText                                   Text;                                              // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetWorldSpaceText_Talk_SetSpeakerName) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceText_Talk_SetSpeakerName");
-static_assert(sizeof(UserWidgetWorldSpaceText_Talk_SetSpeakerName) == 0x000010, "Wrong size on UserWidgetWorldSpaceText_Talk_SetSpeakerName");
-static_assert(offsetof(UserWidgetWorldSpaceText_Talk_SetSpeakerName, SpeakerName) == 0x000000, "Member 'UserWidgetWorldSpaceText_Talk_SetSpeakerName::SpeakerName' has a wrong offset!");
+static_assert(alignof(UserWidgetWorldSpaceText_SetText) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceText_SetText");
+static_assert(sizeof(UserWidgetWorldSpaceText_SetText) == 0x000010, "Wrong size on UserWidgetWorldSpaceText_SetText");
+static_assert(offsetof(UserWidgetWorldSpaceText_SetText, Text) == 0x000000, "Member 'UserWidgetWorldSpaceText_SetText::Text' has a wrong offset!");
 
-// Function Zion.UserWidgetStatusEffectIcon.GetCachedStatusEffect
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetStatusEffectIcon_GetCachedStatusEffect final
-{
-public:
-	class UStatusEffect*                          ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetStatusEffectIcon_GetCachedStatusEffect) == 0x000008, "Wrong alignment on UserWidgetStatusEffectIcon_GetCachedStatusEffect");
-static_assert(sizeof(UserWidgetStatusEffectIcon_GetCachedStatusEffect) == 0x000008, "Wrong size on UserWidgetStatusEffectIcon_GetCachedStatusEffect");
-static_assert(offsetof(UserWidgetStatusEffectIcon_GetCachedStatusEffect, ReturnValue) == 0x000000, "Member 'UserWidgetStatusEffectIcon_GetCachedStatusEffect::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetStatusEffectIcon.GetStatusEffectIconSprite
-// 0x0028 (0x0028 - 0x0000)
-struct UserWidgetStatusEffectIcon_GetStatusEffectIconSprite final
-{
-public:
-	TSoftObjectPtr<class UPaperSprite>            ReturnValue;                                       // 0x0000(0x0028)(Parm, OutParm, ReturnParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetStatusEffectIcon_GetStatusEffectIconSprite) == 0x000008, "Wrong alignment on UserWidgetStatusEffectIcon_GetStatusEffectIconSprite");
-static_assert(sizeof(UserWidgetStatusEffectIcon_GetStatusEffectIconSprite) == 0x000028, "Wrong size on UserWidgetStatusEffectIcon_GetStatusEffectIconSprite");
-static_assert(offsetof(UserWidgetStatusEffectIcon_GetStatusEffectIconSprite, ReturnValue) == 0x000000, "Member 'UserWidgetStatusEffectIcon_GetStatusEffectIconSprite::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetStatusEffectIcon.GetStatusEffectIconSpriteFromType
-// 0x0030 (0x0030 - 0x0000)
-struct UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType final
-{
-public:
-	EStatusEffectType                             StatusEffectType;                                  // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UPaperSprite>            ReturnValue;                                       // 0x0008(0x0028)(Parm, OutParm, ReturnParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType) == 0x000008, "Wrong alignment on UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType");
-static_assert(sizeof(UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType) == 0x000030, "Wrong size on UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType");
-static_assert(offsetof(UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType, StatusEffectType) == 0x000000, "Member 'UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType::StatusEffectType' has a wrong offset!");
-static_assert(offsetof(UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType, ReturnValue) == 0x000008, "Member 'UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType::ReturnValue' has a wrong offset!");
-
-// Function Zion.WallAttachComponent.OnMovementModeChanged
-// 0x0010 (0x0010 - 0x0000)
-struct WallAttachComponent_OnMovementModeChanged final
-{
-public:
-	class ACharacter*                             InCharacter;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EMovementMode                                 PrevMovementMode;                                  // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         PreviousCustomMode;                                // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(WallAttachComponent_OnMovementModeChanged) == 0x000008, "Wrong alignment on WallAttachComponent_OnMovementModeChanged");
-static_assert(sizeof(WallAttachComponent_OnMovementModeChanged) == 0x000010, "Wrong size on WallAttachComponent_OnMovementModeChanged");
-static_assert(offsetof(WallAttachComponent_OnMovementModeChanged, InCharacter) == 0x000000, "Member 'WallAttachComponent_OnMovementModeChanged::InCharacter' has a wrong offset!");
-static_assert(offsetof(WallAttachComponent_OnMovementModeChanged, PrevMovementMode) == 0x000008, "Member 'WallAttachComponent_OnMovementModeChanged::PrevMovementMode' has a wrong offset!");
-static_assert(offsetof(WallAttachComponent_OnMovementModeChanged, PreviousCustomMode) == 0x000009, "Member 'WallAttachComponent_OnMovementModeChanged::PreviousCustomMode' has a wrong offset!");
-
-// Function Zion.UserWidgetWorldSpaceDebug.ClearTextForTag
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetWorldSpaceDebug_ClearTextForTag final
-{
-public:
-	class FName                                   Tag;                                               // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetWorldSpaceDebug_ClearTextForTag) == 0x000004, "Wrong alignment on UserWidgetWorldSpaceDebug_ClearTextForTag");
-static_assert(sizeof(UserWidgetWorldSpaceDebug_ClearTextForTag) == 0x000008, "Wrong size on UserWidgetWorldSpaceDebug_ClearTextForTag");
-static_assert(offsetof(UserWidgetWorldSpaceDebug_ClearTextForTag, Tag) == 0x000000, "Member 'UserWidgetWorldSpaceDebug_ClearTextForTag::Tag' has a wrong offset!");
-
-// Function Zion.UserWidgetWorldSpaceDebug.SetTextForTag
-// 0x0018 (0x0018 - 0x0000)
-struct UserWidgetWorldSpaceDebug_SetTextForTag final
-{
-public:
-	class FName                                   Tag;                                               // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 Text;                                              // 0x0008(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetWorldSpaceDebug_SetTextForTag) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceDebug_SetTextForTag");
-static_assert(sizeof(UserWidgetWorldSpaceDebug_SetTextForTag) == 0x000018, "Wrong size on UserWidgetWorldSpaceDebug_SetTextForTag");
-static_assert(offsetof(UserWidgetWorldSpaceDebug_SetTextForTag, Tag) == 0x000000, "Member 'UserWidgetWorldSpaceDebug_SetTextForTag::Tag' has a wrong offset!");
-static_assert(offsetof(UserWidgetWorldSpaceDebug_SetTextForTag, Text) == 0x000008, "Member 'UserWidgetWorldSpaceDebug_SetTextForTag::Text' has a wrong offset!");
-
-// Function Zion.FadeSubsystem.LaunchFadeIn
-// 0x0038 (0x0038 - 0x0000)
-struct FadeSubsystem_LaunchFadeIn final
-{
-public:
-	struct FFadeDescriptionData                   FadeDescription;                                   // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	TDelegate<void()>                             OnFadeFinishedDelegate;                            // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EFadeLayer                                    FadeLayer;                                         // 0x0030(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FadeSubsystem_LaunchFadeIn) == 0x000008, "Wrong alignment on FadeSubsystem_LaunchFadeIn");
-static_assert(sizeof(FadeSubsystem_LaunchFadeIn) == 0x000038, "Wrong size on FadeSubsystem_LaunchFadeIn");
-static_assert(offsetof(FadeSubsystem_LaunchFadeIn, FadeDescription) == 0x000000, "Member 'FadeSubsystem_LaunchFadeIn::FadeDescription' has a wrong offset!");
-static_assert(offsetof(FadeSubsystem_LaunchFadeIn, OnFadeFinishedDelegate) == 0x000020, "Member 'FadeSubsystem_LaunchFadeIn::OnFadeFinishedDelegate' has a wrong offset!");
-static_assert(offsetof(FadeSubsystem_LaunchFadeIn, FadeLayer) == 0x000030, "Member 'FadeSubsystem_LaunchFadeIn::FadeLayer' has a wrong offset!");
-
-// Function Zion.FadeSubsystem.LaunchFadeOut
-// 0x0038 (0x0038 - 0x0000)
-struct FadeSubsystem_LaunchFadeOut final
-{
-public:
-	struct FFadeDescriptionData                   FadeDescription;                                   // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	TDelegate<void()>                             OnFadeFinishedDelegate;                            // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EFadeLayer                                    FadeLayer;                                         // 0x0030(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FadeSubsystem_LaunchFadeOut) == 0x000008, "Wrong alignment on FadeSubsystem_LaunchFadeOut");
-static_assert(sizeof(FadeSubsystem_LaunchFadeOut) == 0x000038, "Wrong size on FadeSubsystem_LaunchFadeOut");
-static_assert(offsetof(FadeSubsystem_LaunchFadeOut, FadeDescription) == 0x000000, "Member 'FadeSubsystem_LaunchFadeOut::FadeDescription' has a wrong offset!");
-static_assert(offsetof(FadeSubsystem_LaunchFadeOut, OnFadeFinishedDelegate) == 0x000020, "Member 'FadeSubsystem_LaunchFadeOut::OnFadeFinishedDelegate' has a wrong offset!");
-static_assert(offsetof(FadeSubsystem_LaunchFadeOut, FadeLayer) == 0x000030, "Member 'FadeSubsystem_LaunchFadeOut::FadeLayer' has a wrong offset!");
-
-// Function Zion.FadeSubsystem.SetupFadeIn
-// 0x0028 (0x0028 - 0x0000)
-struct FadeSubsystem_SetupFadeIn final
-{
-public:
-	struct FFadeDescriptionData                   FadeDescription;                                   // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	EFadeLayer                                    FadeLayer;                                         // 0x0020(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FadeSubsystem_SetupFadeIn) == 0x000008, "Wrong alignment on FadeSubsystem_SetupFadeIn");
-static_assert(sizeof(FadeSubsystem_SetupFadeIn) == 0x000028, "Wrong size on FadeSubsystem_SetupFadeIn");
-static_assert(offsetof(FadeSubsystem_SetupFadeIn, FadeDescription) == 0x000000, "Member 'FadeSubsystem_SetupFadeIn::FadeDescription' has a wrong offset!");
-static_assert(offsetof(FadeSubsystem_SetupFadeIn, FadeLayer) == 0x000020, "Member 'FadeSubsystem_SetupFadeIn::FadeLayer' has a wrong offset!");
-
-// Function Zion.FadeSubsystem.GetFadeState
-// 0x0002 (0x0002 - 0x0000)
-struct FadeSubsystem_GetFadeState final
-{
-public:
-	EFadeLayer                                    FadeLayer;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EFadeState                                    ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FadeSubsystem_GetFadeState) == 0x000001, "Wrong alignment on FadeSubsystem_GetFadeState");
-static_assert(sizeof(FadeSubsystem_GetFadeState) == 0x000002, "Wrong size on FadeSubsystem_GetFadeState");
-static_assert(offsetof(FadeSubsystem_GetFadeState, FadeLayer) == 0x000000, "Member 'FadeSubsystem_GetFadeState::FadeLayer' has a wrong offset!");
-static_assert(offsetof(FadeSubsystem_GetFadeState, ReturnValue) == 0x000001, "Member 'FadeSubsystem_GetFadeState::ReturnValue' has a wrong offset!");
-
-// Function Zion.FadeSubsystem.IsAnyFadeVisible
+// Function Zion.UserWidgetWorldSpaceText_Interact.SetAvailable
 // 0x0001 (0x0001 - 0x0000)
-struct FadeSubsystem_IsAnyFadeVisible final
+struct UserWidgetWorldSpaceText_Interact_SetAvailable final
 {
 public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAvailable;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FadeSubsystem_IsAnyFadeVisible) == 0x000001, "Wrong alignment on FadeSubsystem_IsAnyFadeVisible");
-static_assert(sizeof(FadeSubsystem_IsAnyFadeVisible) == 0x000001, "Wrong size on FadeSubsystem_IsAnyFadeVisible");
-static_assert(offsetof(FadeSubsystem_IsAnyFadeVisible, ReturnValue) == 0x000000, "Member 'FadeSubsystem_IsAnyFadeVisible::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetWorldSpaceText_Interact_SetAvailable) == 0x000001, "Wrong alignment on UserWidgetWorldSpaceText_Interact_SetAvailable");
+static_assert(sizeof(UserWidgetWorldSpaceText_Interact_SetAvailable) == 0x000001, "Wrong size on UserWidgetWorldSpaceText_Interact_SetAvailable");
+static_assert(offsetof(UserWidgetWorldSpaceText_Interact_SetAvailable, bAvailable) == 0x000000, "Member 'UserWidgetWorldSpaceText_Interact_SetAvailable::bAvailable' has a wrong offset!");
 
-// Function Zion.FadeSubsystem.IsFadeVisible
-// 0x0002 (0x0002 - 0x0000)
-struct FadeSubsystem_IsFadeVisible final
+// Function Zion.UserWidgetRestPointListMapArea.GenerateRestPointListEntries
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetRestPointListMapArea_GenerateRestPointListEntries final
 {
 public:
-	EFadeLayer                                    FadeLayer;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class UUserWidgetMapIcon_RestPoint*>   RestPointIcons;                                    // 0x0000(0x0010)(Parm, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FadeSubsystem_IsFadeVisible) == 0x000001, "Wrong alignment on FadeSubsystem_IsFadeVisible");
-static_assert(sizeof(FadeSubsystem_IsFadeVisible) == 0x000002, "Wrong size on FadeSubsystem_IsFadeVisible");
-static_assert(offsetof(FadeSubsystem_IsFadeVisible, FadeLayer) == 0x000000, "Member 'FadeSubsystem_IsFadeVisible::FadeLayer' has a wrong offset!");
-static_assert(offsetof(FadeSubsystem_IsFadeVisible, ReturnValue) == 0x000001, "Member 'FadeSubsystem_IsFadeVisible::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetRestPointListMapArea_GenerateRestPointListEntries) == 0x000008, "Wrong alignment on UserWidgetRestPointListMapArea_GenerateRestPointListEntries");
+static_assert(sizeof(UserWidgetRestPointListMapArea_GenerateRestPointListEntries) == 0x000010, "Wrong size on UserWidgetRestPointListMapArea_GenerateRestPointListEntries");
+static_assert(offsetof(UserWidgetRestPointListMapArea_GenerateRestPointListEntries, RestPointIcons) == 0x000000, "Member 'UserWidgetRestPointListMapArea_GenerateRestPointListEntries::RestPointIcons' has a wrong offset!");
 
-// Function Zion.FadeSubsystem.IsFading
-// 0x0002 (0x0002 - 0x0000)
-struct FadeSubsystem_IsFading final
+// Function Zion.UserWidgetRestPointListMapArea.RestPointEntryFocused
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetRestPointListMapArea_RestPointEntryFocused final
 {
 public:
-	EFadeLayer                                    FadeLayer;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UUserWidgetMapIcon_RestPoint*           RestPointIcon;                                     // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FadeSubsystem_IsFading) == 0x000001, "Wrong alignment on FadeSubsystem_IsFading");
-static_assert(sizeof(FadeSubsystem_IsFading) == 0x000002, "Wrong size on FadeSubsystem_IsFading");
-static_assert(offsetof(FadeSubsystem_IsFading, FadeLayer) == 0x000000, "Member 'FadeSubsystem_IsFading::FadeLayer' has a wrong offset!");
-static_assert(offsetof(FadeSubsystem_IsFading, ReturnValue) == 0x000001, "Member 'FadeSubsystem_IsFading::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetRestPointListMapArea_RestPointEntryFocused) == 0x000008, "Wrong alignment on UserWidgetRestPointListMapArea_RestPointEntryFocused");
+static_assert(sizeof(UserWidgetRestPointListMapArea_RestPointEntryFocused) == 0x000008, "Wrong size on UserWidgetRestPointListMapArea_RestPointEntryFocused");
+static_assert(offsetof(UserWidgetRestPointListMapArea_RestPointEntryFocused, RestPointIcon) == 0x000000, "Member 'UserWidgetRestPointListMapArea_RestPointEntryFocused::RestPointIcon' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointListMapArea.RestPointEntryPressed
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetRestPointListMapArea_RestPointEntryPressed final
+{
+public:
+	struct FMapRestPointData                      RestPointData;                                     // 0x0000(0x0008)(Parm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointListMapArea_RestPointEntryPressed) == 0x000004, "Wrong alignment on UserWidgetRestPointListMapArea_RestPointEntryPressed");
+static_assert(sizeof(UserWidgetRestPointListMapArea_RestPointEntryPressed) == 0x000008, "Wrong size on UserWidgetRestPointListMapArea_RestPointEntryPressed");
+static_assert(offsetof(UserWidgetRestPointListMapArea_RestPointEntryPressed, RestPointData) == 0x000000, "Member 'UserWidgetRestPointListMapArea_RestPointEntryPressed::RestPointData' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointListMapArea.SetCompleted
+// 0x0001 (0x0001 - 0x0000)
+struct UserWidgetRestPointListMapArea_SetCompleted final
+{
+public:
+	bool                                          bIsCompleted;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointListMapArea_SetCompleted) == 0x000001, "Wrong alignment on UserWidgetRestPointListMapArea_SetCompleted");
+static_assert(sizeof(UserWidgetRestPointListMapArea_SetCompleted) == 0x000001, "Wrong size on UserWidgetRestPointListMapArea_SetCompleted");
+static_assert(offsetof(UserWidgetRestPointListMapArea_SetCompleted, bIsCompleted) == 0x000000, "Member 'UserWidgetRestPointListMapArea_SetCompleted::bIsCompleted' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointListMapArea.SetMapAreaIndex
+// 0x0004 (0x0004 - 0x0000)
+struct UserWidgetRestPointListMapArea_SetMapAreaIndex final
+{
+public:
+	int32                                         NewMapAreaIndex;                                   // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointListMapArea_SetMapAreaIndex) == 0x000004, "Wrong alignment on UserWidgetRestPointListMapArea_SetMapAreaIndex");
+static_assert(sizeof(UserWidgetRestPointListMapArea_SetMapAreaIndex) == 0x000004, "Wrong size on UserWidgetRestPointListMapArea_SetMapAreaIndex");
+static_assert(offsetof(UserWidgetRestPointListMapArea_SetMapAreaIndex, NewMapAreaIndex) == 0x000000, "Member 'UserWidgetRestPointListMapArea_SetMapAreaIndex::NewMapAreaIndex' has a wrong offset!");
+
+// Function Zion.UserWidgetRestPointListMapArea.SetMapAreaName
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetRestPointListMapArea_SetMapAreaName final
+{
+public:
+	class FText                                   NewMapAreaName;                                    // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetRestPointListMapArea_SetMapAreaName) == 0x000008, "Wrong alignment on UserWidgetRestPointListMapArea_SetMapAreaName");
+static_assert(sizeof(UserWidgetRestPointListMapArea_SetMapAreaName) == 0x000010, "Wrong size on UserWidgetRestPointListMapArea_SetMapAreaName");
+static_assert(offsetof(UserWidgetRestPointListMapArea_SetMapAreaName, NewMapAreaName) == 0x000000, "Member 'UserWidgetRestPointListMapArea_SetMapAreaName::NewMapAreaName' has a wrong offset!");
+
+// Function Zion.WaitGameUnpaused.WaitGameUnpaused
+// 0x0010 (0x0010 - 0x0000)
+struct WaitGameUnpaused_WaitGameUnpaused final
+{
+public:
+	const class UObject*                          WorldContextObject;                                // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UWaitGameUnpaused*                      ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(WaitGameUnpaused_WaitGameUnpaused) == 0x000008, "Wrong alignment on WaitGameUnpaused_WaitGameUnpaused");
+static_assert(sizeof(WaitGameUnpaused_WaitGameUnpaused) == 0x000010, "Wrong size on WaitGameUnpaused_WaitGameUnpaused");
+static_assert(offsetof(WaitGameUnpaused_WaitGameUnpaused, WorldContextObject) == 0x000000, "Member 'WaitGameUnpaused_WaitGameUnpaused::WorldContextObject' has a wrong offset!");
+static_assert(offsetof(WaitGameUnpaused_WaitGameUnpaused, ReturnValue) == 0x000008, "Member 'WaitGameUnpaused_WaitGameUnpaused::ReturnValue' has a wrong offset!");
+
+// Function Zion.UserWidgetWorldSpaceGauge.SetCurrentRatio
+// 0x0004 (0x0004 - 0x0000)
+struct UserWidgetWorldSpaceGauge_SetCurrentRatio final
+{
+public:
+	float                                         CurrentRatio;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetWorldSpaceGauge_SetCurrentRatio) == 0x000004, "Wrong alignment on UserWidgetWorldSpaceGauge_SetCurrentRatio");
+static_assert(sizeof(UserWidgetWorldSpaceGauge_SetCurrentRatio) == 0x000004, "Wrong size on UserWidgetWorldSpaceGauge_SetCurrentRatio");
+static_assert(offsetof(UserWidgetWorldSpaceGauge_SetCurrentRatio, CurrentRatio) == 0x000000, "Member 'UserWidgetWorldSpaceGauge_SetCurrentRatio::CurrentRatio' has a wrong offset!");
+
+// Function Zion.UserWidgetWorldSpaceGauge.SetTargetActor
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetWorldSpaceGauge_SetTargetActor final
+{
+public:
+	class AActor*                                 Actor;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetWorldSpaceGauge_SetTargetActor) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceGauge_SetTargetActor");
+static_assert(sizeof(UserWidgetWorldSpaceGauge_SetTargetActor) == 0x000008, "Wrong size on UserWidgetWorldSpaceGauge_SetTargetActor");
+static_assert(offsetof(UserWidgetWorldSpaceGauge_SetTargetActor, Actor) == 0x000000, "Member 'UserWidgetWorldSpaceGauge_SetTargetActor::Actor' has a wrong offset!");
 
 // Function Zion.DeathComponent.IsDead
 // 0x0001 (0x0001 - 0x0000)
@@ -4179,99 +5700,65 @@ static_assert(alignof(DeathComponent_IsDead) == 0x000001, "Wrong alignment on De
 static_assert(sizeof(DeathComponent_IsDead) == 0x000001, "Wrong size on DeathComponent_IsDead");
 static_assert(offsetof(DeathComponent_IsDead, ReturnValue) == 0x000000, "Member 'DeathComponent_IsDead::ReturnValue' has a wrong offset!");
 
-// Function Zion.WorldLoaderSubsystem.OpenGameMap
-// 0x0060 (0x0060 - 0x0000)
-struct WorldLoaderSubsystem_OpenGameMap final
+// Function Zion.WallGrabComponent.OnMoveBlocked
+// 0x00F8 (0x00F8 - 0x0000)
+struct WallGrabComponent_OnMoveBlocked final
 {
 public:
-	struct FDataTableRowHandle                    GameMapHandle;                                     // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	class FName                                   PlayerStartTag;                                    // 0x0010(0x0008)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bForceReload;                                      // 0x0018(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFadeDescriptionData                   FadeOutDescription;                                // 0x0020(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	struct FFadeDescriptionData                   FadeInDescription;                                 // 0x0040(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	struct FHitResult                             Impact;                                            // 0x0000(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(WorldLoaderSubsystem_OpenGameMap) == 0x000008, "Wrong alignment on WorldLoaderSubsystem_OpenGameMap");
-static_assert(sizeof(WorldLoaderSubsystem_OpenGameMap) == 0x000060, "Wrong size on WorldLoaderSubsystem_OpenGameMap");
-static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, GameMapHandle) == 0x000000, "Member 'WorldLoaderSubsystem_OpenGameMap::GameMapHandle' has a wrong offset!");
-static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, PlayerStartTag) == 0x000010, "Member 'WorldLoaderSubsystem_OpenGameMap::PlayerStartTag' has a wrong offset!");
-static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, bForceReload) == 0x000018, "Member 'WorldLoaderSubsystem_OpenGameMap::bForceReload' has a wrong offset!");
-static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, FadeOutDescription) == 0x000020, "Member 'WorldLoaderSubsystem_OpenGameMap::FadeOutDescription' has a wrong offset!");
-static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, FadeInDescription) == 0x000040, "Member 'WorldLoaderSubsystem_OpenGameMap::FadeInDescription' has a wrong offset!");
+static_assert(alignof(WallGrabComponent_OnMoveBlocked) == 0x000008, "Wrong alignment on WallGrabComponent_OnMoveBlocked");
+static_assert(sizeof(WallGrabComponent_OnMoveBlocked) == 0x0000F8, "Wrong size on WallGrabComponent_OnMoveBlocked");
+static_assert(offsetof(WallGrabComponent_OnMoveBlocked, Impact) == 0x000000, "Member 'WallGrabComponent_OnMoveBlocked::Impact' has a wrong offset!");
 
-// Function Zion.WorldLoaderSubsystem.OpenWorld
-// 0x0070 (0x0070 - 0x0000)
-struct WorldLoaderSubsystem_OpenWorld final
+// Function Zion.WallGrabComponent.OnMovementModeChanged
+// 0x0010 (0x0010 - 0x0000)
+struct WallGrabComponent_OnMovementModeChanged final
 {
 public:
-	TSoftObjectPtr<class UWorld>                  WorldToLoad;                                       // 0x0000(0x0028)(Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   PlayerStartTag;                                    // 0x0028(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FFadeDescriptionData                   FadeOutDescription;                                // 0x0030(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	struct FFadeDescriptionData                   FadeInDescription;                                 // 0x0050(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	class ACharacter*                             InCharacter;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EMovementMode                                 PrevMovementMode;                                  // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         PreviousCustomMode;                                // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(WorldLoaderSubsystem_OpenWorld) == 0x000008, "Wrong alignment on WorldLoaderSubsystem_OpenWorld");
-static_assert(sizeof(WorldLoaderSubsystem_OpenWorld) == 0x000070, "Wrong size on WorldLoaderSubsystem_OpenWorld");
-static_assert(offsetof(WorldLoaderSubsystem_OpenWorld, WorldToLoad) == 0x000000, "Member 'WorldLoaderSubsystem_OpenWorld::WorldToLoad' has a wrong offset!");
-static_assert(offsetof(WorldLoaderSubsystem_OpenWorld, PlayerStartTag) == 0x000028, "Member 'WorldLoaderSubsystem_OpenWorld::PlayerStartTag' has a wrong offset!");
-static_assert(offsetof(WorldLoaderSubsystem_OpenWorld, FadeOutDescription) == 0x000030, "Member 'WorldLoaderSubsystem_OpenWorld::FadeOutDescription' has a wrong offset!");
-static_assert(offsetof(WorldLoaderSubsystem_OpenWorld, FadeInDescription) == 0x000050, "Member 'WorldLoaderSubsystem_OpenWorld::FadeInDescription' has a wrong offset!");
+static_assert(alignof(WallGrabComponent_OnMovementModeChanged) == 0x000008, "Wrong alignment on WallGrabComponent_OnMovementModeChanged");
+static_assert(sizeof(WallGrabComponent_OnMovementModeChanged) == 0x000010, "Wrong size on WallGrabComponent_OnMovementModeChanged");
+static_assert(offsetof(WallGrabComponent_OnMovementModeChanged, InCharacter) == 0x000000, "Member 'WallGrabComponent_OnMovementModeChanged::InCharacter' has a wrong offset!");
+static_assert(offsetof(WallGrabComponent_OnMovementModeChanged, PrevMovementMode) == 0x000008, "Member 'WallGrabComponent_OnMovementModeChanged::PrevMovementMode' has a wrong offset!");
+static_assert(offsetof(WallGrabComponent_OnMovementModeChanged, PreviousCustomMode) == 0x000009, "Member 'WallGrabComponent_OnMovementModeChanged::PreviousCustomMode' has a wrong offset!");
 
-// Function Zion.WorldLoaderSubsystem.GetCurrentGameMapData
-// 0x0140 (0x0140 - 0x0000)
-struct WorldLoaderSubsystem_GetCurrentGameMapData final
-{
-public:
-	struct FGameMapData                           ReturnValue;                                       // 0x0000(0x0140)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(WorldLoaderSubsystem_GetCurrentGameMapData) == 0x000008, "Wrong alignment on WorldLoaderSubsystem_GetCurrentGameMapData");
-static_assert(sizeof(WorldLoaderSubsystem_GetCurrentGameMapData) == 0x000140, "Wrong size on WorldLoaderSubsystem_GetCurrentGameMapData");
-static_assert(offsetof(WorldLoaderSubsystem_GetCurrentGameMapData, ReturnValue) == 0x000000, "Member 'WorldLoaderSubsystem_GetCurrentGameMapData::ReturnValue' has a wrong offset!");
-
-// Function Zion.WorldLoaderSubsystem.GetCurrentGameMapID
+// Function Zion.WallGrabComponent.OnStartAnimation
 // 0x0008 (0x0008 - 0x0000)
-struct WorldLoaderSubsystem_GetCurrentGameMapID final
+struct WallGrabComponent_OnStartAnimation final
 {
 public:
-	class FName                                   ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTrackEntry*                            TrackEntry;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(WorldLoaderSubsystem_GetCurrentGameMapID) == 0x000004, "Wrong alignment on WorldLoaderSubsystem_GetCurrentGameMapID");
-static_assert(sizeof(WorldLoaderSubsystem_GetCurrentGameMapID) == 0x000008, "Wrong size on WorldLoaderSubsystem_GetCurrentGameMapID");
-static_assert(offsetof(WorldLoaderSubsystem_GetCurrentGameMapID, ReturnValue) == 0x000000, "Member 'WorldLoaderSubsystem_GetCurrentGameMapID::ReturnValue' has a wrong offset!");
+static_assert(alignof(WallGrabComponent_OnStartAnimation) == 0x000008, "Wrong alignment on WallGrabComponent_OnStartAnimation");
+static_assert(sizeof(WallGrabComponent_OnStartAnimation) == 0x000008, "Wrong size on WallGrabComponent_OnStartAnimation");
+static_assert(offsetof(WallGrabComponent_OnStartAnimation, TrackEntry) == 0x000000, "Member 'WallGrabComponent_OnStartAnimation::TrackEntry' has a wrong offset!");
 
-// Function Zion.WorldLoaderSubsystem.GetCurrentPlayerStartTag
-// 0x0008 (0x0008 - 0x0000)
-struct WorldLoaderSubsystem_GetCurrentPlayerStartTag final
-{
-public:
-	class FName                                   ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(WorldLoaderSubsystem_GetCurrentPlayerStartTag) == 0x000004, "Wrong alignment on WorldLoaderSubsystem_GetCurrentPlayerStartTag");
-static_assert(sizeof(WorldLoaderSubsystem_GetCurrentPlayerStartTag) == 0x000008, "Wrong size on WorldLoaderSubsystem_GetCurrentPlayerStartTag");
-static_assert(offsetof(WorldLoaderSubsystem_GetCurrentPlayerStartTag, ReturnValue) == 0x000000, "Member 'WorldLoaderSubsystem_GetCurrentPlayerStartTag::ReturnValue' has a wrong offset!");
-
-// Function Zion.WorldLoaderSubsystem.IsAvailable
+// Function Zion.WallGrabComponent.IsGrabbingWall
 // 0x0001 (0x0001 - 0x0000)
-struct WorldLoaderSubsystem_IsAvailable final
+struct WallGrabComponent_IsGrabbingWall final
 {
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(WorldLoaderSubsystem_IsAvailable) == 0x000001, "Wrong alignment on WorldLoaderSubsystem_IsAvailable");
-static_assert(sizeof(WorldLoaderSubsystem_IsAvailable) == 0x000001, "Wrong size on WorldLoaderSubsystem_IsAvailable");
-static_assert(offsetof(WorldLoaderSubsystem_IsAvailable, ReturnValue) == 0x000000, "Member 'WorldLoaderSubsystem_IsAvailable::ReturnValue' has a wrong offset!");
+static_assert(alignof(WallGrabComponent_IsGrabbingWall) == 0x000001, "Wrong alignment on WallGrabComponent_IsGrabbingWall");
+static_assert(sizeof(WallGrabComponent_IsGrabbingWall) == 0x000001, "Wrong size on WallGrabComponent_IsGrabbingWall");
+static_assert(offsetof(WallGrabComponent_IsGrabbingWall, ReturnValue) == 0x000000, "Member 'WallGrabComponent_IsGrabbingWall::ReturnValue' has a wrong offset!");
 
-// Function Zion.WorldLoaderSubsystem.IsLoading
-// 0x0002 (0x0002 - 0x0000)
-struct WorldLoaderSubsystem_IsLoading final
+// Function Zion.WallGrabComponent.IsWallOnRight
+// 0x0001 (0x0001 - 0x0000)
+struct WallGrabComponent_IsWallOnRight final
 {
 public:
-	bool                                          bConsiderFadeAsLoading;                            // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(WorldLoaderSubsystem_IsLoading) == 0x000001, "Wrong alignment on WorldLoaderSubsystem_IsLoading");
-static_assert(sizeof(WorldLoaderSubsystem_IsLoading) == 0x000002, "Wrong size on WorldLoaderSubsystem_IsLoading");
-static_assert(offsetof(WorldLoaderSubsystem_IsLoading, bConsiderFadeAsLoading) == 0x000000, "Member 'WorldLoaderSubsystem_IsLoading::bConsiderFadeAsLoading' has a wrong offset!");
-static_assert(offsetof(WorldLoaderSubsystem_IsLoading, ReturnValue) == 0x000001, "Member 'WorldLoaderSubsystem_IsLoading::ReturnValue' has a wrong offset!");
+static_assert(alignof(WallGrabComponent_IsWallOnRight) == 0x000001, "Wrong alignment on WallGrabComponent_IsWallOnRight");
+static_assert(sizeof(WallGrabComponent_IsWallOnRight) == 0x000001, "Wrong size on WallGrabComponent_IsWallOnRight");
+static_assert(offsetof(WallGrabComponent_IsWallOnRight, ReturnValue) == 0x000000, "Member 'WallGrabComponent_IsWallOnRight::ReturnValue' has a wrong offset!");
 
 // Function Zion.CommandModule_Timeline_Move.OnMovementModeChanged
 // 0x0010 (0x0010 - 0x0000)
@@ -5820,6 +7307,17 @@ static_assert(offsetof(EquipmentComponent_IsEquippedOnSlot, EquipmentSlot) == 0x
 static_assert(offsetof(EquipmentComponent_IsEquippedOnSlot, EquipmentID) == 0x000004, "Member 'EquipmentComponent_IsEquippedOnSlot::EquipmentID' has a wrong offset!");
 static_assert(offsetof(EquipmentComponent_IsEquippedOnSlot, ReturnValue) == 0x00000C, "Member 'EquipmentComponent_IsEquippedOnSlot::ReturnValue' has a wrong offset!");
 
+// Function Zion.EventAction_PlayFX.OnSystemCompleted
+// 0x0008 (0x0008 - 0x0000)
+struct EventAction_PlayFX_OnSystemCompleted final
+{
+public:
+	class UNiagaraComponent*                      PSystem;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(EventAction_PlayFX_OnSystemCompleted) == 0x000008, "Wrong alignment on EventAction_PlayFX_OnSystemCompleted");
+static_assert(sizeof(EventAction_PlayFX_OnSystemCompleted) == 0x000008, "Wrong size on EventAction_PlayFX_OnSystemCompleted");
+static_assert(offsetof(EventAction_PlayFX_OnSystemCompleted, PSystem) == 0x000000, "Member 'EventAction_PlayFX_OnSystemCompleted::PSystem' has a wrong offset!");
+
 // Function Zion.EventAction_SaveGame.OnSaveFinished
 // 0x0001 (0x0001 - 0x0000)
 struct EventAction_SaveGame_OnSaveFinished final
@@ -5830,163 +7328,6 @@ public:
 static_assert(alignof(EventAction_SaveGame_OnSaveFinished) == 0x000001, "Wrong alignment on EventAction_SaveGame_OnSaveFinished");
 static_assert(sizeof(EventAction_SaveGame_OnSaveFinished) == 0x000001, "Wrong size on EventAction_SaveGame_OnSaveFinished");
 static_assert(offsetof(EventAction_SaveGame_OnSaveFinished, bResult) == 0x000000, "Member 'EventAction_SaveGame_OnSaveFinished::bResult' has a wrong offset!");
-
-// Function Zion.PassiveComponent.EquipPassive
-// 0x0014 (0x0014 - 0x0000)
-struct PassiveComponent_EquipPassive final
-{
-public:
-	class FName                                   PassiveID;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAddToCurrentLoadout;                              // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         InsertIndex;                                       // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EPassiveEquipResult                           ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(PassiveComponent_EquipPassive) == 0x000004, "Wrong alignment on PassiveComponent_EquipPassive");
-static_assert(sizeof(PassiveComponent_EquipPassive) == 0x000014, "Wrong size on PassiveComponent_EquipPassive");
-static_assert(offsetof(PassiveComponent_EquipPassive, PassiveID) == 0x000000, "Member 'PassiveComponent_EquipPassive::PassiveID' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_EquipPassive, bAddToCurrentLoadout) == 0x000008, "Member 'PassiveComponent_EquipPassive::bAddToCurrentLoadout' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_EquipPassive, InsertIndex) == 0x00000C, "Member 'PassiveComponent_EquipPassive::InsertIndex' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_EquipPassive, ReturnValue) == 0x000010, "Member 'PassiveComponent_EquipPassive::ReturnValue' has a wrong offset!");
-
-// Function Zion.PassiveComponent.EquipPassiveLoadout
-// 0x0004 (0x0004 - 0x0000)
-struct PassiveComponent_EquipPassiveLoadout final
-{
-public:
-	int32                                         LoadoutIndex;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(PassiveComponent_EquipPassiveLoadout) == 0x000004, "Wrong alignment on PassiveComponent_EquipPassiveLoadout");
-static_assert(sizeof(PassiveComponent_EquipPassiveLoadout) == 0x000004, "Wrong size on PassiveComponent_EquipPassiveLoadout");
-static_assert(offsetof(PassiveComponent_EquipPassiveLoadout, LoadoutIndex) == 0x000000, "Member 'PassiveComponent_EquipPassiveLoadout::LoadoutIndex' has a wrong offset!");
-
-// Function Zion.PassiveComponent.OnPossessedPawnChanged
-// 0x0010 (0x0010 - 0x0000)
-struct PassiveComponent_OnPossessedPawnChanged final
-{
-public:
-	class APawn*                                  OldPawn;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class APawn*                                  NewPawn;                                           // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(PassiveComponent_OnPossessedPawnChanged) == 0x000008, "Wrong alignment on PassiveComponent_OnPossessedPawnChanged");
-static_assert(sizeof(PassiveComponent_OnPossessedPawnChanged) == 0x000010, "Wrong size on PassiveComponent_OnPossessedPawnChanged");
-static_assert(offsetof(PassiveComponent_OnPossessedPawnChanged, OldPawn) == 0x000000, "Member 'PassiveComponent_OnPossessedPawnChanged::OldPawn' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_OnPossessedPawnChanged, NewPawn) == 0x000008, "Member 'PassiveComponent_OnPossessedPawnChanged::NewPawn' has a wrong offset!");
-
-// Function Zion.PassiveComponent.ReplacePassiveInAllLoadouts
-// 0x0010 (0x0010 - 0x0000)
-struct PassiveComponent_ReplacePassiveInAllLoadouts final
-{
-public:
-	class FName                                   PassiveToRemove;                                   // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   PassiveToAdd;                                      // 0x0008(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(PassiveComponent_ReplacePassiveInAllLoadouts) == 0x000004, "Wrong alignment on PassiveComponent_ReplacePassiveInAllLoadouts");
-static_assert(sizeof(PassiveComponent_ReplacePassiveInAllLoadouts) == 0x000010, "Wrong size on PassiveComponent_ReplacePassiveInAllLoadouts");
-static_assert(offsetof(PassiveComponent_ReplacePassiveInAllLoadouts, PassiveToRemove) == 0x000000, "Member 'PassiveComponent_ReplacePassiveInAllLoadouts::PassiveToRemove' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_ReplacePassiveInAllLoadouts, PassiveToAdd) == 0x000008, "Member 'PassiveComponent_ReplacePassiveInAllLoadouts::PassiveToAdd' has a wrong offset!");
-
-// Function Zion.PassiveComponent.UnequipPassive
-// 0x0010 (0x0010 - 0x0000)
-struct PassiveComponent_UnequipPassive final
-{
-public:
-	class FName                                   PassiveID;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OutPassiveIndex;                                   // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bRemoveFromCurrentLoadout;                         // 0x000C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x000D(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E[0x2];                                        // 0x000E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(PassiveComponent_UnequipPassive) == 0x000004, "Wrong alignment on PassiveComponent_UnequipPassive");
-static_assert(sizeof(PassiveComponent_UnequipPassive) == 0x000010, "Wrong size on PassiveComponent_UnequipPassive");
-static_assert(offsetof(PassiveComponent_UnequipPassive, PassiveID) == 0x000000, "Member 'PassiveComponent_UnequipPassive::PassiveID' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_UnequipPassive, OutPassiveIndex) == 0x000008, "Member 'PassiveComponent_UnequipPassive::OutPassiveIndex' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_UnequipPassive, bRemoveFromCurrentLoadout) == 0x00000C, "Member 'PassiveComponent_UnequipPassive::bRemoveFromCurrentLoadout' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_UnequipPassive, ReturnValue) == 0x00000D, "Member 'PassiveComponent_UnequipPassive::ReturnValue' has a wrong offset!");
-
-// Function Zion.PassiveComponent.CanEquipPassive
-// 0x0270 (0x0270 - 0x0000)
-struct PassiveComponent_CanEquipPassive final
-{
-public:
-	struct FInventoryItemPassiveData              ItemPassiveData;                                   // 0x0000(0x0268)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	EPassiveEquipResult                           ReturnValue;                                       // 0x0268(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_269[0x7];                                      // 0x0269(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(PassiveComponent_CanEquipPassive) == 0x000008, "Wrong alignment on PassiveComponent_CanEquipPassive");
-static_assert(sizeof(PassiveComponent_CanEquipPassive) == 0x000270, "Wrong size on PassiveComponent_CanEquipPassive");
-static_assert(offsetof(PassiveComponent_CanEquipPassive, ItemPassiveData) == 0x000000, "Member 'PassiveComponent_CanEquipPassive::ItemPassiveData' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_CanEquipPassive, ReturnValue) == 0x000268, "Member 'PassiveComponent_CanEquipPassive::ReturnValue' has a wrong offset!");
-
-// Function Zion.PassiveComponent.GetAvailableSlotCount
-// 0x0004 (0x0004 - 0x0000)
-struct PassiveComponent_GetAvailableSlotCount final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(PassiveComponent_GetAvailableSlotCount) == 0x000004, "Wrong alignment on PassiveComponent_GetAvailableSlotCount");
-static_assert(sizeof(PassiveComponent_GetAvailableSlotCount) == 0x000004, "Wrong size on PassiveComponent_GetAvailableSlotCount");
-static_assert(offsetof(PassiveComponent_GetAvailableSlotCount, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetAvailableSlotCount::ReturnValue' has a wrong offset!");
-
-// Function Zion.PassiveComponent.GetCurrentPassiveLoadoutIndex
-// 0x0004 (0x0004 - 0x0000)
-struct PassiveComponent_GetCurrentPassiveLoadoutIndex final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(PassiveComponent_GetCurrentPassiveLoadoutIndex) == 0x000004, "Wrong alignment on PassiveComponent_GetCurrentPassiveLoadoutIndex");
-static_assert(sizeof(PassiveComponent_GetCurrentPassiveLoadoutIndex) == 0x000004, "Wrong size on PassiveComponent_GetCurrentPassiveLoadoutIndex");
-static_assert(offsetof(PassiveComponent_GetCurrentPassiveLoadoutIndex, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetCurrentPassiveLoadoutIndex::ReturnValue' has a wrong offset!");
-
-// Function Zion.PassiveComponent.GetEquippedPassives
-// 0x0010 (0x0010 - 0x0000)
-struct PassiveComponent_GetEquippedPassives final
-{
-public:
-	TArray<struct FPassiveRuntimeData>            ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(PassiveComponent_GetEquippedPassives) == 0x000008, "Wrong alignment on PassiveComponent_GetEquippedPassives");
-static_assert(sizeof(PassiveComponent_GetEquippedPassives) == 0x000010, "Wrong size on PassiveComponent_GetEquippedPassives");
-static_assert(offsetof(PassiveComponent_GetEquippedPassives, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetEquippedPassives::ReturnValue' has a wrong offset!");
-
-// Function Zion.PassiveComponent.GetSlotCount
-// 0x0004 (0x0004 - 0x0000)
-struct PassiveComponent_GetSlotCount final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(PassiveComponent_GetSlotCount) == 0x000004, "Wrong alignment on PassiveComponent_GetSlotCount");
-static_assert(sizeof(PassiveComponent_GetSlotCount) == 0x000004, "Wrong size on PassiveComponent_GetSlotCount");
-static_assert(offsetof(PassiveComponent_GetSlotCount, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetSlotCount::ReturnValue' has a wrong offset!");
-
-// Function Zion.PassiveComponent.GetUsedSlotCount
-// 0x0004 (0x0004 - 0x0000)
-struct PassiveComponent_GetUsedSlotCount final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(PassiveComponent_GetUsedSlotCount) == 0x000004, "Wrong alignment on PassiveComponent_GetUsedSlotCount");
-static_assert(sizeof(PassiveComponent_GetUsedSlotCount) == 0x000004, "Wrong size on PassiveComponent_GetUsedSlotCount");
-static_assert(offsetof(PassiveComponent_GetUsedSlotCount, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetUsedSlotCount::ReturnValue' has a wrong offset!");
-
-// Function Zion.PassiveComponent.IsPassiveEquipped
-// 0x000C (0x000C - 0x0000)
-struct PassiveComponent_IsPassiveEquipped final
-{
-public:
-	class FName                                   PassiveID;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(PassiveComponent_IsPassiveEquipped) == 0x000004, "Wrong alignment on PassiveComponent_IsPassiveEquipped");
-static_assert(sizeof(PassiveComponent_IsPassiveEquipped) == 0x00000C, "Wrong size on PassiveComponent_IsPassiveEquipped");
-static_assert(offsetof(PassiveComponent_IsPassiveEquipped, PassiveID) == 0x000000, "Member 'PassiveComponent_IsPassiveEquipped::PassiveID' has a wrong offset!");
-static_assert(offsetof(PassiveComponent_IsPassiveEquipped, ReturnValue) == 0x000008, "Member 'PassiveComponent_IsPassiveEquipped::ReturnValue' has a wrong offset!");
 
 // Function Zion.EventAction_WaitMove.OnMoveCompleted
 // 0x0008 (0x0008 - 0x0000)
@@ -6042,6 +7383,102 @@ static_assert(alignof(EventBPFLibrary_GenerateActorBindingsFromSpawners) == 0x00
 static_assert(sizeof(EventBPFLibrary_GenerateActorBindingsFromSpawners) == 0x0000A0, "Wrong size on EventBPFLibrary_GenerateActorBindingsFromSpawners");
 static_assert(offsetof(EventBPFLibrary_GenerateActorBindingsFromSpawners, SpawnerBindings) == 0x000000, "Member 'EventBPFLibrary_GenerateActorBindingsFromSpawners::SpawnerBindings' has a wrong offset!");
 static_assert(offsetof(EventBPFLibrary_GenerateActorBindingsFromSpawners, ReturnValue) == 0x000050, "Member 'EventBPFLibrary_GenerateActorBindingsFromSpawners::ReturnValue' has a wrong offset!");
+
+// Function Zion.FadeSubsystem.LaunchFadeIn
+// 0x0038 (0x0038 - 0x0000)
+struct FadeSubsystem_LaunchFadeIn final
+{
+public:
+	struct FFadeDescriptionData                   FadeDescription;                                   // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	TDelegate<void()>                             OnFadeFinishedDelegate;                            // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EFadeLayer                                    FadeLayer;                                         // 0x0030(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FadeSubsystem_LaunchFadeIn) == 0x000008, "Wrong alignment on FadeSubsystem_LaunchFadeIn");
+static_assert(sizeof(FadeSubsystem_LaunchFadeIn) == 0x000038, "Wrong size on FadeSubsystem_LaunchFadeIn");
+static_assert(offsetof(FadeSubsystem_LaunchFadeIn, FadeDescription) == 0x000000, "Member 'FadeSubsystem_LaunchFadeIn::FadeDescription' has a wrong offset!");
+static_assert(offsetof(FadeSubsystem_LaunchFadeIn, OnFadeFinishedDelegate) == 0x000020, "Member 'FadeSubsystem_LaunchFadeIn::OnFadeFinishedDelegate' has a wrong offset!");
+static_assert(offsetof(FadeSubsystem_LaunchFadeIn, FadeLayer) == 0x000030, "Member 'FadeSubsystem_LaunchFadeIn::FadeLayer' has a wrong offset!");
+
+// Function Zion.FadeSubsystem.LaunchFadeOut
+// 0x0038 (0x0038 - 0x0000)
+struct FadeSubsystem_LaunchFadeOut final
+{
+public:
+	struct FFadeDescriptionData                   FadeDescription;                                   // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	TDelegate<void()>                             OnFadeFinishedDelegate;                            // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EFadeLayer                                    FadeLayer;                                         // 0x0030(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FadeSubsystem_LaunchFadeOut) == 0x000008, "Wrong alignment on FadeSubsystem_LaunchFadeOut");
+static_assert(sizeof(FadeSubsystem_LaunchFadeOut) == 0x000038, "Wrong size on FadeSubsystem_LaunchFadeOut");
+static_assert(offsetof(FadeSubsystem_LaunchFadeOut, FadeDescription) == 0x000000, "Member 'FadeSubsystem_LaunchFadeOut::FadeDescription' has a wrong offset!");
+static_assert(offsetof(FadeSubsystem_LaunchFadeOut, OnFadeFinishedDelegate) == 0x000020, "Member 'FadeSubsystem_LaunchFadeOut::OnFadeFinishedDelegate' has a wrong offset!");
+static_assert(offsetof(FadeSubsystem_LaunchFadeOut, FadeLayer) == 0x000030, "Member 'FadeSubsystem_LaunchFadeOut::FadeLayer' has a wrong offset!");
+
+// Function Zion.FadeSubsystem.SetupFadeIn
+// 0x0028 (0x0028 - 0x0000)
+struct FadeSubsystem_SetupFadeIn final
+{
+public:
+	struct FFadeDescriptionData                   FadeDescription;                                   // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	EFadeLayer                                    FadeLayer;                                         // 0x0020(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FadeSubsystem_SetupFadeIn) == 0x000008, "Wrong alignment on FadeSubsystem_SetupFadeIn");
+static_assert(sizeof(FadeSubsystem_SetupFadeIn) == 0x000028, "Wrong size on FadeSubsystem_SetupFadeIn");
+static_assert(offsetof(FadeSubsystem_SetupFadeIn, FadeDescription) == 0x000000, "Member 'FadeSubsystem_SetupFadeIn::FadeDescription' has a wrong offset!");
+static_assert(offsetof(FadeSubsystem_SetupFadeIn, FadeLayer) == 0x000020, "Member 'FadeSubsystem_SetupFadeIn::FadeLayer' has a wrong offset!");
+
+// Function Zion.FadeSubsystem.GetFadeState
+// 0x0002 (0x0002 - 0x0000)
+struct FadeSubsystem_GetFadeState final
+{
+public:
+	EFadeLayer                                    FadeLayer;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EFadeState                                    ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FadeSubsystem_GetFadeState) == 0x000001, "Wrong alignment on FadeSubsystem_GetFadeState");
+static_assert(sizeof(FadeSubsystem_GetFadeState) == 0x000002, "Wrong size on FadeSubsystem_GetFadeState");
+static_assert(offsetof(FadeSubsystem_GetFadeState, FadeLayer) == 0x000000, "Member 'FadeSubsystem_GetFadeState::FadeLayer' has a wrong offset!");
+static_assert(offsetof(FadeSubsystem_GetFadeState, ReturnValue) == 0x000001, "Member 'FadeSubsystem_GetFadeState::ReturnValue' has a wrong offset!");
+
+// Function Zion.FadeSubsystem.IsAnyFadeVisible
+// 0x0001 (0x0001 - 0x0000)
+struct FadeSubsystem_IsAnyFadeVisible final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FadeSubsystem_IsAnyFadeVisible) == 0x000001, "Wrong alignment on FadeSubsystem_IsAnyFadeVisible");
+static_assert(sizeof(FadeSubsystem_IsAnyFadeVisible) == 0x000001, "Wrong size on FadeSubsystem_IsAnyFadeVisible");
+static_assert(offsetof(FadeSubsystem_IsAnyFadeVisible, ReturnValue) == 0x000000, "Member 'FadeSubsystem_IsAnyFadeVisible::ReturnValue' has a wrong offset!");
+
+// Function Zion.FadeSubsystem.IsFadeVisible
+// 0x0002 (0x0002 - 0x0000)
+struct FadeSubsystem_IsFadeVisible final
+{
+public:
+	EFadeLayer                                    FadeLayer;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FadeSubsystem_IsFadeVisible) == 0x000001, "Wrong alignment on FadeSubsystem_IsFadeVisible");
+static_assert(sizeof(FadeSubsystem_IsFadeVisible) == 0x000002, "Wrong size on FadeSubsystem_IsFadeVisible");
+static_assert(offsetof(FadeSubsystem_IsFadeVisible, FadeLayer) == 0x000000, "Member 'FadeSubsystem_IsFadeVisible::FadeLayer' has a wrong offset!");
+static_assert(offsetof(FadeSubsystem_IsFadeVisible, ReturnValue) == 0x000001, "Member 'FadeSubsystem_IsFadeVisible::ReturnValue' has a wrong offset!");
+
+// Function Zion.FadeSubsystem.IsFading
+// 0x0002 (0x0002 - 0x0000)
+struct FadeSubsystem_IsFading final
+{
+public:
+	EFadeLayer                                    FadeLayer;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FadeSubsystem_IsFading) == 0x000001, "Wrong alignment on FadeSubsystem_IsFading");
+static_assert(sizeof(FadeSubsystem_IsFading) == 0x000002, "Wrong size on FadeSubsystem_IsFading");
+static_assert(offsetof(FadeSubsystem_IsFading, FadeLayer) == 0x000000, "Member 'FadeSubsystem_IsFading::FadeLayer' has a wrong offset!");
+static_assert(offsetof(FadeSubsystem_IsFading, ReturnValue) == 0x000001, "Member 'FadeSubsystem_IsFading::ReturnValue' has a wrong offset!");
 
 // Function Zion.FakeWall.Hide
 // 0x0001 (0x0001 - 0x0000)
@@ -6144,6 +7581,33 @@ public:
 static_assert(alignof(FieldMessageComponent_IsProcessingFieldMessage) == 0x000001, "Wrong alignment on FieldMessageComponent_IsProcessingFieldMessage");
 static_assert(sizeof(FieldMessageComponent_IsProcessingFieldMessage) == 0x000001, "Wrong size on FieldMessageComponent_IsProcessingFieldMessage");
 static_assert(offsetof(FieldMessageComponent_IsProcessingFieldMessage, ReturnValue) == 0x000000, "Member 'FieldMessageComponent_IsProcessingFieldMessage::ReturnValue' has a wrong offset!");
+
+// Function Zion.FieldTalkComponent.StartFieldTalk
+// 0x0010 (0x0010 - 0x0000)
+struct FieldTalkComponent_StartFieldTalk final
+{
+public:
+	class UFieldTalkAsset*                        FieldTalkAsset;                                    // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSkipActiveFieldTalkAsset;                         // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FieldTalkComponent_StartFieldTalk) == 0x000008, "Wrong alignment on FieldTalkComponent_StartFieldTalk");
+static_assert(sizeof(FieldTalkComponent_StartFieldTalk) == 0x000010, "Wrong size on FieldTalkComponent_StartFieldTalk");
+static_assert(offsetof(FieldTalkComponent_StartFieldTalk, FieldTalkAsset) == 0x000000, "Member 'FieldTalkComponent_StartFieldTalk::FieldTalkAsset' has a wrong offset!");
+static_assert(offsetof(FieldTalkComponent_StartFieldTalk, bSkipActiveFieldTalkAsset) == 0x000008, "Member 'FieldTalkComponent_StartFieldTalk::bSkipActiveFieldTalkAsset' has a wrong offset!");
+static_assert(offsetof(FieldTalkComponent_StartFieldTalk, ReturnValue) == 0x000009, "Member 'FieldTalkComponent_StartFieldTalk::ReturnValue' has a wrong offset!");
+
+// Function Zion.FieldTalkComponent.CanStartFieldTalk
+// 0x0001 (0x0001 - 0x0000)
+struct FieldTalkComponent_CanStartFieldTalk final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FieldTalkComponent_CanStartFieldTalk) == 0x000001, "Wrong alignment on FieldTalkComponent_CanStartFieldTalk");
+static_assert(sizeof(FieldTalkComponent_CanStartFieldTalk) == 0x000001, "Wrong size on FieldTalkComponent_CanStartFieldTalk");
+static_assert(offsetof(FieldTalkComponent_CanStartFieldTalk, ReturnValue) == 0x000000, "Member 'FieldTalkComponent_CanStartFieldTalk::ReturnValue' has a wrong offset!");
 
 // Function Zion.FluidBody.GenerateSplash
 // 0x0028 (0x0028 - 0x0000)
@@ -6275,16 +7739,76 @@ static_assert(alignof(FollowGeometryMovementComponent_IsMoving) == 0x000001, "Wr
 static_assert(sizeof(FollowGeometryMovementComponent_IsMoving) == 0x000001, "Wrong size on FollowGeometryMovementComponent_IsMoving");
 static_assert(offsetof(FollowGeometryMovementComponent_IsMoving, ReturnValue) == 0x000000, "Member 'FollowGeometryMovementComponent_IsMoving::ReturnValue' has a wrong offset!");
 
-// Function Zion.FollowSplineComponent.IsClosedLoop
-// 0x0001 (0x0001 - 0x0000)
-struct FollowSplineComponent_IsClosedLoop final
+// Function Zion.FollowTargetComponent.SetFollowTarget
+// 0x0010 (0x0010 - 0x0000)
+struct FollowTargetComponent_SetFollowTarget final
 {
 public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class USceneComponent*                        NewFollowTarget;                                   // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSnapToTarget;                                     // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FollowSplineComponent_IsClosedLoop) == 0x000001, "Wrong alignment on FollowSplineComponent_IsClosedLoop");
-static_assert(sizeof(FollowSplineComponent_IsClosedLoop) == 0x000001, "Wrong size on FollowSplineComponent_IsClosedLoop");
-static_assert(offsetof(FollowSplineComponent_IsClosedLoop, ReturnValue) == 0x000000, "Member 'FollowSplineComponent_IsClosedLoop::ReturnValue' has a wrong offset!");
+static_assert(alignof(FollowTargetComponent_SetFollowTarget) == 0x000008, "Wrong alignment on FollowTargetComponent_SetFollowTarget");
+static_assert(sizeof(FollowTargetComponent_SetFollowTarget) == 0x000010, "Wrong size on FollowTargetComponent_SetFollowTarget");
+static_assert(offsetof(FollowTargetComponent_SetFollowTarget, NewFollowTarget) == 0x000000, "Member 'FollowTargetComponent_SetFollowTarget::NewFollowTarget' has a wrong offset!");
+static_assert(offsetof(FollowTargetComponent_SetFollowTarget, bSnapToTarget) == 0x000008, "Member 'FollowTargetComponent_SetFollowTarget::bSnapToTarget' has a wrong offset!");
+
+// Function Zion.FollowTargetComponent.GetFollowTarget
+// 0x0008 (0x0008 - 0x0000)
+struct FollowTargetComponent_GetFollowTarget final
+{
+public:
+	class USceneComponent*                        ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FollowTargetComponent_GetFollowTarget) == 0x000008, "Wrong alignment on FollowTargetComponent_GetFollowTarget");
+static_assert(sizeof(FollowTargetComponent_GetFollowTarget) == 0x000008, "Wrong size on FollowTargetComponent_GetFollowTarget");
+static_assert(offsetof(FollowTargetComponent_GetFollowTarget, ReturnValue) == 0x000000, "Member 'FollowTargetComponent_GetFollowTarget::ReturnValue' has a wrong offset!");
+
+// Function Zion.FollowTargetComponent.GetFollowTargetDeltaLocation
+// 0x0018 (0x0018 - 0x0000)
+struct FollowTargetComponent_GetFollowTargetDeltaLocation final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FollowTargetComponent_GetFollowTargetDeltaLocation) == 0x000008, "Wrong alignment on FollowTargetComponent_GetFollowTargetDeltaLocation");
+static_assert(sizeof(FollowTargetComponent_GetFollowTargetDeltaLocation) == 0x000018, "Wrong size on FollowTargetComponent_GetFollowTargetDeltaLocation");
+static_assert(offsetof(FollowTargetComponent_GetFollowTargetDeltaLocation, ReturnValue) == 0x000000, "Member 'FollowTargetComponent_GetFollowTargetDeltaLocation::ReturnValue' has a wrong offset!");
+
+// Function Zion.FollowTargetComponent.GetFollowTargetForward
+// 0x0018 (0x0018 - 0x0000)
+struct FollowTargetComponent_GetFollowTargetForward final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FollowTargetComponent_GetFollowTargetForward) == 0x000008, "Wrong alignment on FollowTargetComponent_GetFollowTargetForward");
+static_assert(sizeof(FollowTargetComponent_GetFollowTargetForward) == 0x000018, "Wrong size on FollowTargetComponent_GetFollowTargetForward");
+static_assert(offsetof(FollowTargetComponent_GetFollowTargetForward, ReturnValue) == 0x000000, "Member 'FollowTargetComponent_GetFollowTargetForward::ReturnValue' has a wrong offset!");
+
+// Function Zion.FollowTargetComponent.GetFollowTargetLocation
+// 0x0018 (0x0018 - 0x0000)
+struct FollowTargetComponent_GetFollowTargetLocation final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FollowTargetComponent_GetFollowTargetLocation) == 0x000008, "Wrong alignment on FollowTargetComponent_GetFollowTargetLocation");
+static_assert(sizeof(FollowTargetComponent_GetFollowTargetLocation) == 0x000018, "Wrong size on FollowTargetComponent_GetFollowTargetLocation");
+static_assert(offsetof(FollowTargetComponent_GetFollowTargetLocation, ReturnValue) == 0x000000, "Member 'FollowTargetComponent_GetFollowTargetLocation::ReturnValue' has a wrong offset!");
+
+// Function Zion.FollowTargetComponent.GetTargetLocation
+// 0x0020 (0x0020 - 0x0000)
+struct FollowTargetComponent_GetTargetLocation final
+{
+public:
+	const class USceneComponent*                  PinnedTarget;                                      // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                ReturnValue;                                       // 0x0008(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FollowTargetComponent_GetTargetLocation) == 0x000008, "Wrong alignment on FollowTargetComponent_GetTargetLocation");
+static_assert(sizeof(FollowTargetComponent_GetTargetLocation) == 0x000020, "Wrong size on FollowTargetComponent_GetTargetLocation");
+static_assert(offsetof(FollowTargetComponent_GetTargetLocation, PinnedTarget) == 0x000000, "Member 'FollowTargetComponent_GetTargetLocation::PinnedTarget' has a wrong offset!");
+static_assert(offsetof(FollowTargetComponent_GetTargetLocation, ReturnValue) == 0x000008, "Member 'FollowTargetComponent_GetTargetLocation::ReturnValue' has a wrong offset!");
 
 // Function Zion.FootIKComponent.OnAnimationStart
 // 0x0008 (0x0008 - 0x0000)
@@ -6308,100 +7832,16 @@ static_assert(alignof(FootIKComponent_OnBeforeUpdateWorldTransform) == 0x000008,
 static_assert(sizeof(FootIKComponent_OnBeforeUpdateWorldTransform) == 0x000008, "Wrong size on FootIKComponent_OnBeforeUpdateWorldTransform");
 static_assert(offsetof(FootIKComponent_OnBeforeUpdateWorldTransform, Skeleton) == 0x000000, "Member 'FootIKComponent_OnBeforeUpdateWorldTransform::Skeleton' has a wrong offset!");
 
-// Function Zion.FXComponent.ActivateAuraFXs
+// Function Zion.GameEngineZion.Get
 // 0x0008 (0x0008 - 0x0000)
-struct FXComponent_ActivateAuraFXs final
+struct GameEngineZion_Get final
 {
 public:
-	class FName                                   AuraFXTag;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UGameEngineZion*                        ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FXComponent_ActivateAuraFXs) == 0x000004, "Wrong alignment on FXComponent_ActivateAuraFXs");
-static_assert(sizeof(FXComponent_ActivateAuraFXs) == 0x000008, "Wrong size on FXComponent_ActivateAuraFXs");
-static_assert(offsetof(FXComponent_ActivateAuraFXs, AuraFXTag) == 0x000000, "Member 'FXComponent_ActivateAuraFXs::AuraFXTag' has a wrong offset!");
-
-// Function Zion.FXComponent.DeactivateAuraFXs
-// 0x0008 (0x0008 - 0x0000)
-struct FXComponent_DeactivateAuraFXs final
-{
-public:
-	class FName                                   AuraFXTag;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FXComponent_DeactivateAuraFXs) == 0x000004, "Wrong alignment on FXComponent_DeactivateAuraFXs");
-static_assert(sizeof(FXComponent_DeactivateAuraFXs) == 0x000008, "Wrong size on FXComponent_DeactivateAuraFXs");
-static_assert(offsetof(FXComponent_DeactivateAuraFXs, AuraFXTag) == 0x000000, "Member 'FXComponent_DeactivateAuraFXs::AuraFXTag' has a wrong offset!");
-
-// Function Zion.FXComponent.OnFinishCommand
-// 0x0010 (0x0010 - 0x0000)
-struct FXComponent_OnFinishCommand final
-{
-public:
-	const class UCommand*                         Command;                                           // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ECommandFinishType                            FinishType;                                        // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FXComponent_OnFinishCommand) == 0x000008, "Wrong alignment on FXComponent_OnFinishCommand");
-static_assert(sizeof(FXComponent_OnFinishCommand) == 0x000010, "Wrong size on FXComponent_OnFinishCommand");
-static_assert(offsetof(FXComponent_OnFinishCommand, Command) == 0x000000, "Member 'FXComponent_OnFinishCommand::Command' has a wrong offset!");
-static_assert(offsetof(FXComponent_OnFinishCommand, FinishType) == 0x000008, "Member 'FXComponent_OnFinishCommand::FinishType' has a wrong offset!");
-
-// Function Zion.FXComponent.OnGuarded
-// 0x0010 (0x0010 - 0x0000)
-struct FXComponent_OnGuarded final
-{
-public:
-	class AAbility*                               Ability;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 Source;                                            // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FXComponent_OnGuarded) == 0x000008, "Wrong alignment on FXComponent_OnGuarded");
-static_assert(sizeof(FXComponent_OnGuarded) == 0x000010, "Wrong size on FXComponent_OnGuarded");
-static_assert(offsetof(FXComponent_OnGuarded, Ability) == 0x000000, "Member 'FXComponent_OnGuarded::Ability' has a wrong offset!");
-static_assert(offsetof(FXComponent_OnGuarded, Source) == 0x000008, "Member 'FXComponent_OnGuarded::Source' has a wrong offset!");
-
-// Function Zion.FXComponent.OnLanded
-// 0x00F8 (0x00F8 - 0x0000)
-struct FXComponent_OnLanded final
-{
-public:
-	struct FHitResult                             Hit;                                               // 0x0000(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FXComponent_OnLanded) == 0x000008, "Wrong alignment on FXComponent_OnLanded");
-static_assert(sizeof(FXComponent_OnLanded) == 0x0000F8, "Wrong size on FXComponent_OnLanded");
-static_assert(offsetof(FXComponent_OnLanded, Hit) == 0x000000, "Member 'FXComponent_OnLanded::Hit' has a wrong offset!");
-
-// Function Zion.FXComponent.OnParried
-// 0x0010 (0x0010 - 0x0000)
-struct FXComponent_OnParried final
-{
-public:
-	class AAbility*                               Ability;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 Source;                                            // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FXComponent_OnParried) == 0x000008, "Wrong alignment on FXComponent_OnParried");
-static_assert(sizeof(FXComponent_OnParried) == 0x000010, "Wrong size on FXComponent_OnParried");
-static_assert(offsetof(FXComponent_OnParried, Ability) == 0x000000, "Member 'FXComponent_OnParried::Ability' has a wrong offset!");
-static_assert(offsetof(FXComponent_OnParried, Source) == 0x000008, "Member 'FXComponent_OnParried::Source' has a wrong offset!");
-
-// Function Zion.FXComponent.OnStatusEffectLaunched
-// 0x0008 (0x0008 - 0x0000)
-struct FXComponent_OnStatusEffectLaunched final
-{
-public:
-	class UStatusEffect*                          StatusEffect;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FXComponent_OnStatusEffectLaunched) == 0x000008, "Wrong alignment on FXComponent_OnStatusEffectLaunched");
-static_assert(sizeof(FXComponent_OnStatusEffectLaunched) == 0x000008, "Wrong size on FXComponent_OnStatusEffectLaunched");
-static_assert(offsetof(FXComponent_OnStatusEffectLaunched, StatusEffect) == 0x000000, "Member 'FXComponent_OnStatusEffectLaunched::StatusEffect' has a wrong offset!");
-
-// Function Zion.FXComponent.OnStatusEffectStopped
-// 0x0008 (0x0008 - 0x0000)
-struct FXComponent_OnStatusEffectStopped final
-{
-public:
-	class UStatusEffect*                          StatusEffect;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FXComponent_OnStatusEffectStopped) == 0x000008, "Wrong alignment on FXComponent_OnStatusEffectStopped");
-static_assert(sizeof(FXComponent_OnStatusEffectStopped) == 0x000008, "Wrong size on FXComponent_OnStatusEffectStopped");
-static_assert(offsetof(FXComponent_OnStatusEffectStopped, StatusEffect) == 0x000000, "Member 'FXComponent_OnStatusEffectStopped::StatusEffect' has a wrong offset!");
+static_assert(alignof(GameEngineZion_Get) == 0x000008, "Wrong alignment on GameEngineZion_Get");
+static_assert(sizeof(GameEngineZion_Get) == 0x000008, "Wrong size on GameEngineZion_Get");
+static_assert(offsetof(GameEngineZion_Get, ReturnValue) == 0x000000, "Member 'GameEngineZion_Get::ReturnValue' has a wrong offset!");
 
 // Function Zion.GameInstanceZion.Get
 // 0x0010 (0x0010 - 0x0000)
@@ -6776,17 +8216,6 @@ static_assert(alignof(GameMapBPFLibrary_WorldToPixelLocation) == 0x000008, "Wron
 static_assert(sizeof(GameMapBPFLibrary_WorldToPixelLocation) == 0x000030, "Wrong size on GameMapBPFLibrary_WorldToPixelLocation");
 static_assert(offsetof(GameMapBPFLibrary_WorldToPixelLocation, WorldLocation) == 0x000000, "Member 'GameMapBPFLibrary_WorldToPixelLocation::WorldLocation' has a wrong offset!");
 static_assert(offsetof(GameMapBPFLibrary_WorldToPixelLocation, ReturnValue) == 0x000018, "Member 'GameMapBPFLibrary_WorldToPixelLocation::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameMapChangeDataProviderInterface.GetGameMapChangeProviderData
-// 0x0040 (0x0040 - 0x0000)
-struct GameMapChangeDataProviderInterface_GetGameMapChangeProviderData final
-{
-public:
-	struct FGameMapChangeProviderData             OutGameMapChangeProviderData;                      // 0x0000(0x0040)(Parm, OutParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameMapChangeDataProviderInterface_GetGameMapChangeProviderData) == 0x000008, "Wrong alignment on GameMapChangeDataProviderInterface_GetGameMapChangeProviderData");
-static_assert(sizeof(GameMapChangeDataProviderInterface_GetGameMapChangeProviderData) == 0x000040, "Wrong size on GameMapChangeDataProviderInterface_GetGameMapChangeProviderData");
-static_assert(offsetof(GameMapChangeDataProviderInterface_GetGameMapChangeProviderData, OutGameMapChangeProviderData) == 0x000000, "Member 'GameMapChangeDataProviderInterface_GetGameMapChangeProviderData::OutGameMapChangeProviderData' has a wrong offset!");
 
 // Function Zion.GameModeZion.Get
 // 0x0010 (0x0010 - 0x0000)
@@ -7423,60 +8852,16 @@ static_assert(alignof(GameModeZion_IsInNewGamePlus) == 0x000001, "Wrong alignmen
 static_assert(sizeof(GameModeZion_IsInNewGamePlus) == 0x000001, "Wrong size on GameModeZion_IsInNewGamePlus");
 static_assert(offsetof(GameModeZion_IsInNewGamePlus, ReturnValue) == 0x000000, "Member 'GameModeZion_IsInNewGamePlus::ReturnValue' has a wrong offset!");
 
-// Function Zion.GameplayCamera.RegisterEnemyPawn
-// 0x0008 (0x0008 - 0x0000)
-struct GameplayCamera_RegisterEnemyPawn final
+// Function Zion.GameModeZion.IsInRespawnProcess
+// 0x0001 (0x0001 - 0x0000)
+struct GameModeZion_IsInRespawnProcess final
 {
 public:
-	class APawn*                                  EnemyPawnToAdd;                                    // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameplayCamera_RegisterEnemyPawn) == 0x000008, "Wrong alignment on GameplayCamera_RegisterEnemyPawn");
-static_assert(sizeof(GameplayCamera_RegisterEnemyPawn) == 0x000008, "Wrong size on GameplayCamera_RegisterEnemyPawn");
-static_assert(offsetof(GameplayCamera_RegisterEnemyPawn, EnemyPawnToAdd) == 0x000000, "Member 'GameplayCamera_RegisterEnemyPawn::EnemyPawnToAdd' has a wrong offset!");
-
-// Function Zion.GameplayCamera.RegisterEnemyPawns
-// 0x0010 (0x0010 - 0x0000)
-struct GameplayCamera_RegisterEnemyPawns final
-{
-public:
-	TArray<class APawn*>                          EnemyPawnsToAdd;                                   // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameplayCamera_RegisterEnemyPawns) == 0x000008, "Wrong alignment on GameplayCamera_RegisterEnemyPawns");
-static_assert(sizeof(GameplayCamera_RegisterEnemyPawns) == 0x000010, "Wrong size on GameplayCamera_RegisterEnemyPawns");
-static_assert(offsetof(GameplayCamera_RegisterEnemyPawns, EnemyPawnsToAdd) == 0x000000, "Member 'GameplayCamera_RegisterEnemyPawns::EnemyPawnsToAdd' has a wrong offset!");
-
-// Function Zion.GameplayCamera.SetSettings
-// 0x0078 (0x0078 - 0x0000)
-struct GameplayCamera_SetSettings final
-{
-public:
-	struct FGameplayCameraSettings                NewSettings;                                       // 0x0000(0x0078)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameplayCamera_SetSettings) == 0x000008, "Wrong alignment on GameplayCamera_SetSettings");
-static_assert(sizeof(GameplayCamera_SetSettings) == 0x000078, "Wrong size on GameplayCamera_SetSettings");
-static_assert(offsetof(GameplayCamera_SetSettings, NewSettings) == 0x000000, "Member 'GameplayCamera_SetSettings::NewSettings' has a wrong offset!");
-
-// Function Zion.GameplayCamera.UnregisterEnemyPawn
-// 0x0008 (0x0008 - 0x0000)
-struct GameplayCamera_UnregisterEnemyPawn final
-{
-public:
-	class APawn*                                  EnemyPawnToRemove;                                 // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameplayCamera_UnregisterEnemyPawn) == 0x000008, "Wrong alignment on GameplayCamera_UnregisterEnemyPawn");
-static_assert(sizeof(GameplayCamera_UnregisterEnemyPawn) == 0x000008, "Wrong size on GameplayCamera_UnregisterEnemyPawn");
-static_assert(offsetof(GameplayCamera_UnregisterEnemyPawn, EnemyPawnToRemove) == 0x000000, "Member 'GameplayCamera_UnregisterEnemyPawn::EnemyPawnToRemove' has a wrong offset!");
-
-// Function Zion.GameplayCamera.UnregisterEnemyPawns
-// 0x0010 (0x0010 - 0x0000)
-struct GameplayCamera_UnregisterEnemyPawns final
-{
-public:
-	TArray<class APawn*>                          EnemyPawnsToRemove;                                // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameplayCamera_UnregisterEnemyPawns) == 0x000008, "Wrong alignment on GameplayCamera_UnregisterEnemyPawns");
-static_assert(sizeof(GameplayCamera_UnregisterEnemyPawns) == 0x000010, "Wrong size on GameplayCamera_UnregisterEnemyPawns");
-static_assert(offsetof(GameplayCamera_UnregisterEnemyPawns, EnemyPawnsToRemove) == 0x000000, "Member 'GameplayCamera_UnregisterEnemyPawns::EnemyPawnsToRemove' has a wrong offset!");
+static_assert(alignof(GameModeZion_IsInRespawnProcess) == 0x000001, "Wrong alignment on GameModeZion_IsInRespawnProcess");
+static_assert(sizeof(GameModeZion_IsInRespawnProcess) == 0x000001, "Wrong size on GameModeZion_IsInRespawnProcess");
+static_assert(offsetof(GameModeZion_IsInRespawnProcess, ReturnValue) == 0x000000, "Member 'GameModeZion_IsInRespawnProcess::ReturnValue' has a wrong offset!");
 
 // Function Zion.GameplayConditionCheckerAsset.CheckGameplayConditionAsset
 // 0x0018 (0x0018 - 0x0000)
@@ -7508,961 +8893,171 @@ static_assert(sizeof(GameplayConditionCheckerAsset_CheckCondition) == 0x000010, 
 static_assert(offsetof(GameplayConditionCheckerAsset_CheckCondition, PlayerController) == 0x000000, "Member 'GameplayConditionCheckerAsset_CheckCondition::PlayerController' has a wrong offset!");
 static_assert(offsetof(GameplayConditionCheckerAsset_CheckCondition, ReturnValue) == 0x000008, "Member 'GameplayConditionCheckerAsset_CheckCondition::ReturnValue' has a wrong offset!");
 
-// Function Zion.GameSettingsSubsystem.GetMaxResolutionScale
+// Function Zion.GameStatsComponent.SetPause
 // 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetMaxResolutionScale final
+struct GameStatsComponent_SetPause final
 {
 public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameSettingsSubsystem_GetMaxResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetMaxResolutionScale");
-static_assert(sizeof(GameSettingsSubsystem_GetMaxResolutionScale) == 0x000004, "Wrong size on GameSettingsSubsystem_GetMaxResolutionScale");
-static_assert(offsetof(GameSettingsSubsystem_GetMaxResolutionScale, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetMaxResolutionScale::ReturnValue' has a wrong offset!");
+static_assert(alignof(GameStatsComponent_SetPause) == 0x000004, "Wrong alignment on GameStatsComponent_SetPause");
+static_assert(sizeof(GameStatsComponent_SetPause) == 0x000004, "Wrong size on GameStatsComponent_SetPause");
+static_assert(offsetof(GameStatsComponent_SetPause, ReturnValue) == 0x000000, "Member 'GameStatsComponent_SetPause::ReturnValue' has a wrong offset!");
 
-// Function Zion.GameSettingsSubsystem.GetMinResolutionScale
+// Function Zion.GameStatsComponent.UnsetPause
 // 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetMinResolutionScale final
+struct GameStatsComponent_UnsetPause final
 {
 public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameSettingsSubsystem_GetMinResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetMinResolutionScale");
-static_assert(sizeof(GameSettingsSubsystem_GetMinResolutionScale) == 0x000004, "Wrong size on GameSettingsSubsystem_GetMinResolutionScale");
-static_assert(offsetof(GameSettingsSubsystem_GetMinResolutionScale, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetMinResolutionScale::ReturnValue' has a wrong offset!");
+static_assert(alignof(GameStatsComponent_UnsetPause) == 0x000004, "Wrong alignment on GameStatsComponent_UnsetPause");
+static_assert(sizeof(GameStatsComponent_UnsetPause) == 0x000004, "Wrong size on GameStatsComponent_UnsetPause");
+static_assert(offsetof(GameStatsComponent_UnsetPause, ReturnValue) == 0x000000, "Member 'GameStatsComponent_UnsetPause::ReturnValue' has a wrong offset!");
 
-// Function Zion.GameSettingsSubsystem.ResetAutoClimbDirectionMode
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetAutoClimbDirectionMode final
-{
-public:
-	EAutoClimbDirectionMode                       ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetAutoClimbDirectionMode) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetAutoClimbDirectionMode");
-static_assert(sizeof(GameSettingsSubsystem_ResetAutoClimbDirectionMode) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetAutoClimbDirectionMode");
-static_assert(offsetof(GameSettingsSubsystem_ResetAutoClimbDirectionMode, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetAutoClimbDirectionMode::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetAutoSkipAlreadySeenEvents
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents");
-static_assert(sizeof(GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents");
-static_assert(offsetof(GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetAutoSkipAlreadySeenEvents::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetCameraOscillation
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetCameraOscillation final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetCameraOscillation) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetCameraOscillation");
-static_assert(sizeof(GameSettingsSubsystem_ResetCameraOscillation) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetCameraOscillation");
-static_assert(offsetof(GameSettingsSubsystem_ResetCameraOscillation, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetCameraOscillation::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetCameraShake
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_ResetCameraShake final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetCameraShake) == 0x000004, "Wrong alignment on GameSettingsSubsystem_ResetCameraShake");
-static_assert(sizeof(GameSettingsSubsystem_ResetCameraShake) == 0x000004, "Wrong size on GameSettingsSubsystem_ResetCameraShake");
-static_assert(offsetof(GameSettingsSubsystem_ResetCameraShake, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetCameraShake::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetControllerVibration
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_ResetControllerVibration final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetControllerVibration) == 0x000004, "Wrong alignment on GameSettingsSubsystem_ResetControllerVibration");
-static_assert(sizeof(GameSettingsSubsystem_ResetControllerVibration) == 0x000004, "Wrong size on GameSettingsSubsystem_ResetControllerVibration");
-static_assert(offsetof(GameSettingsSubsystem_ResetControllerVibration, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetControllerVibration::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayAchievementNotifications
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetDisplayAchievementNotifications final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetDisplayAchievementNotifications) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayAchievementNotifications");
-static_assert(sizeof(GameSettingsSubsystem_ResetDisplayAchievementNotifications) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayAchievementNotifications");
-static_assert(offsetof(GameSettingsSubsystem_ResetDisplayAchievementNotifications, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayAchievementNotifications::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayDamageValues
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetDisplayDamageValues final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetDisplayDamageValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayDamageValues");
-static_assert(sizeof(GameSettingsSubsystem_ResetDisplayDamageValues) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayDamageValues");
-static_assert(offsetof(GameSettingsSubsystem_ResetDisplayDamageValues, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayDamageValues::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayEnemyGauges
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetDisplayEnemyGauges final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetDisplayEnemyGauges) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayEnemyGauges");
-static_assert(sizeof(GameSettingsSubsystem_ResetDisplayEnemyGauges) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayEnemyGauges");
-static_assert(offsetof(GameSettingsSubsystem_ResetDisplayEnemyGauges, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayEnemyGauges::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayHealValues
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetDisplayHealValues final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetDisplayHealValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayHealValues");
-static_assert(sizeof(GameSettingsSubsystem_ResetDisplayHealValues) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayHealValues");
-static_assert(offsetof(GameSettingsSubsystem_ResetDisplayHealValues, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayHealValues::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayHPAboveGauge
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetDisplayHPAboveGauge final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetDisplayHPAboveGauge) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayHPAboveGauge");
-static_assert(sizeof(GameSettingsSubsystem_ResetDisplayHPAboveGauge) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayHPAboveGauge");
-static_assert(offsetof(GameSettingsSubsystem_ResetDisplayHPAboveGauge, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayHPAboveGauge::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayPlayerUI
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetDisplayPlayerUI final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetDisplayPlayerUI) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayPlayerUI");
-static_assert(sizeof(GameSettingsSubsystem_ResetDisplayPlayerUI) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayPlayerUI");
-static_assert(offsetof(GameSettingsSubsystem_ResetDisplayPlayerUI, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayPlayerUI::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetDisplayTutorials
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetDisplayTutorials final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetDisplayTutorials) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetDisplayTutorials");
-static_assert(sizeof(GameSettingsSubsystem_ResetDisplayTutorials) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetDisplayTutorials");
-static_assert(offsetof(GameSettingsSubsystem_ResetDisplayTutorials, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetDisplayTutorials::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetHoldDownToDodgeStill
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetHoldDownToDodgeStill final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetHoldDownToDodgeStill) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetHoldDownToDodgeStill");
-static_assert(sizeof(GameSettingsSubsystem_ResetHoldDownToDodgeStill) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetHoldDownToDodgeStill");
-static_assert(offsetof(GameSettingsSubsystem_ResetHoldDownToDodgeStill, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetHoldDownToDodgeStill::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetLowHPFeedbackOpacity
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_ResetLowHPFeedbackOpacity final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetLowHPFeedbackOpacity) == 0x000004, "Wrong alignment on GameSettingsSubsystem_ResetLowHPFeedbackOpacity");
-static_assert(sizeof(GameSettingsSubsystem_ResetLowHPFeedbackOpacity) == 0x000004, "Wrong size on GameSettingsSubsystem_ResetLowHPFeedbackOpacity");
-static_assert(offsetof(GameSettingsSubsystem_ResetLowHPFeedbackOpacity, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetLowHPFeedbackOpacity::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetResolutionScale
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_ResetResolutionScale final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_ResetResolutionScale");
-static_assert(sizeof(GameSettingsSubsystem_ResetResolutionScale) == 0x000004, "Wrong size on GameSettingsSubsystem_ResetResolutionScale");
-static_assert(offsetof(GameSettingsSubsystem_ResetResolutionScale, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_ResetResolutionScale::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.ResetToDefault
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_ResetToDefault final
-{
-public:
-	EGameSettingsType                             GameSettingsToReset;                               // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_ResetToDefault) == 0x000001, "Wrong alignment on GameSettingsSubsystem_ResetToDefault");
-static_assert(sizeof(GameSettingsSubsystem_ResetToDefault) == 0x000001, "Wrong size on GameSettingsSubsystem_ResetToDefault");
-static_assert(offsetof(GameSettingsSubsystem_ResetToDefault, GameSettingsToReset) == 0x000000, "Member 'GameSettingsSubsystem_ResetToDefault::GameSettingsToReset' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetAntiAliasingMethod
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetAntiAliasingMethod final
-{
-public:
-	EAntiAliasingMethod                           NewAntiAliasingMethod;                             // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAntiAliasingMethod                           ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetAntiAliasingMethod) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetAntiAliasingMethod");
-static_assert(sizeof(GameSettingsSubsystem_SetAntiAliasingMethod) == 0x000002, "Wrong size on GameSettingsSubsystem_SetAntiAliasingMethod");
-static_assert(offsetof(GameSettingsSubsystem_SetAntiAliasingMethod, NewAntiAliasingMethod) == 0x000000, "Member 'GameSettingsSubsystem_SetAntiAliasingMethod::NewAntiAliasingMethod' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetAntiAliasingMethod, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetAntiAliasingMethod::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetAutoClimbDirectionMode
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetAutoClimbDirectionMode final
-{
-public:
-	EAutoClimbDirectionMode                       NewMode;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAutoClimbDirectionMode                       ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetAutoClimbDirectionMode) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetAutoClimbDirectionMode");
-static_assert(sizeof(GameSettingsSubsystem_SetAutoClimbDirectionMode) == 0x000002, "Wrong size on GameSettingsSubsystem_SetAutoClimbDirectionMode");
-static_assert(offsetof(GameSettingsSubsystem_SetAutoClimbDirectionMode, NewMode) == 0x000000, "Member 'GameSettingsSubsystem_SetAutoClimbDirectionMode::NewMode' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetAutoClimbDirectionMode, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetAutoClimbDirectionMode::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetAutoSkipAlreadySeenEvents
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents final
-{
-public:
-	bool                                          bAutoSkip;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents");
-static_assert(sizeof(GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents) == 0x000002, "Wrong size on GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents");
-static_assert(offsetof(GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents, bAutoSkip) == 0x000000, "Member 'GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents::bAutoSkip' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetAutoSkipAlreadySeenEvents::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetAutoUploadCrashReport
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_SetAutoUploadCrashReport final
-{
-public:
-	bool                                          bNewAutoUploadCrashReport;                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetAutoUploadCrashReport) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetAutoUploadCrashReport");
-static_assert(sizeof(GameSettingsSubsystem_SetAutoUploadCrashReport) == 0x000001, "Wrong size on GameSettingsSubsystem_SetAutoUploadCrashReport");
-static_assert(offsetof(GameSettingsSubsystem_SetAutoUploadCrashReport, bNewAutoUploadCrashReport) == 0x000000, "Member 'GameSettingsSubsystem_SetAutoUploadCrashReport::bNewAutoUploadCrashReport' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetCameraOscillation
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetCameraOscillation final
-{
-public:
-	bool                                          bEnable;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetCameraOscillation) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetCameraOscillation");
-static_assert(sizeof(GameSettingsSubsystem_SetCameraOscillation) == 0x000002, "Wrong size on GameSettingsSubsystem_SetCameraOscillation");
-static_assert(offsetof(GameSettingsSubsystem_SetCameraOscillation, bEnable) == 0x000000, "Member 'GameSettingsSubsystem_SetCameraOscillation::bEnable' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetCameraOscillation, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetCameraOscillation::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetCameraShake
-// 0x0008 (0x0008 - 0x0000)
-struct GameSettingsSubsystem_SetCameraShake final
-{
-public:
-	float                                         NewCameraShake;                                    // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetCameraShake) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetCameraShake");
-static_assert(sizeof(GameSettingsSubsystem_SetCameraShake) == 0x000008, "Wrong size on GameSettingsSubsystem_SetCameraShake");
-static_assert(offsetof(GameSettingsSubsystem_SetCameraShake, NewCameraShake) == 0x000000, "Member 'GameSettingsSubsystem_SetCameraShake::NewCameraShake' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetCameraShake, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetCameraShake::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetConstraintCameraAspectRatio
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetConstraintCameraAspectRatio final
-{
-public:
-	EConstraintCameraAspectRatio                  NewConstraintCameraAspectRatio;                    // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EConstraintCameraAspectRatio                  ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetConstraintCameraAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetConstraintCameraAspectRatio");
-static_assert(sizeof(GameSettingsSubsystem_SetConstraintCameraAspectRatio) == 0x000002, "Wrong size on GameSettingsSubsystem_SetConstraintCameraAspectRatio");
-static_assert(offsetof(GameSettingsSubsystem_SetConstraintCameraAspectRatio, NewConstraintCameraAspectRatio) == 0x000000, "Member 'GameSettingsSubsystem_SetConstraintCameraAspectRatio::NewConstraintCameraAspectRatio' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetConstraintCameraAspectRatio, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetConstraintCameraAspectRatio::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetConstraintHUDAspectRatio
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetConstraintHUDAspectRatio final
-{
-public:
-	bool                                          bNewConstraintHUDAspectRatio;                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetConstraintHUDAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetConstraintHUDAspectRatio");
-static_assert(sizeof(GameSettingsSubsystem_SetConstraintHUDAspectRatio) == 0x000002, "Wrong size on GameSettingsSubsystem_SetConstraintHUDAspectRatio");
-static_assert(offsetof(GameSettingsSubsystem_SetConstraintHUDAspectRatio, bNewConstraintHUDAspectRatio) == 0x000000, "Member 'GameSettingsSubsystem_SetConstraintHUDAspectRatio::bNewConstraintHUDAspectRatio' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetConstraintHUDAspectRatio, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetConstraintHUDAspectRatio::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetControllerVibration
-// 0x0008 (0x0008 - 0x0000)
-struct GameSettingsSubsystem_SetControllerVibration final
-{
-public:
-	float                                         NewControllerVibration;                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetControllerVibration) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetControllerVibration");
-static_assert(sizeof(GameSettingsSubsystem_SetControllerVibration) == 0x000008, "Wrong size on GameSettingsSubsystem_SetControllerVibration");
-static_assert(offsetof(GameSettingsSubsystem_SetControllerVibration, NewControllerVibration) == 0x000000, "Member 'GameSettingsSubsystem_SetControllerVibration::NewControllerVibration' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetControllerVibration, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetControllerVibration::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetDisplayAchievementNotifications
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetDisplayAchievementNotifications final
-{
-public:
-	bool                                          bDisplay;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetDisplayAchievementNotifications) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayAchievementNotifications");
-static_assert(sizeof(GameSettingsSubsystem_SetDisplayAchievementNotifications) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayAchievementNotifications");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayAchievementNotifications, bDisplay) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayAchievementNotifications::bDisplay' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayAchievementNotifications, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayAchievementNotifications::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetDisplayDamageValues
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetDisplayDamageValues final
-{
-public:
-	bool                                          bDisplayDamageValues;                              // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetDisplayDamageValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayDamageValues");
-static_assert(sizeof(GameSettingsSubsystem_SetDisplayDamageValues) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayDamageValues");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayDamageValues, bDisplayDamageValues) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayDamageValues::bDisplayDamageValues' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayDamageValues, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayDamageValues::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetDisplayEnemyGauges
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetDisplayEnemyGauges final
-{
-public:
-	bool                                          bDisplay;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetDisplayEnemyGauges) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayEnemyGauges");
-static_assert(sizeof(GameSettingsSubsystem_SetDisplayEnemyGauges) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayEnemyGauges");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayEnemyGauges, bDisplay) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayEnemyGauges::bDisplay' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayEnemyGauges, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayEnemyGauges::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetDisplayHealValues
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetDisplayHealValues final
-{
-public:
-	bool                                          bDisplayHealValues;                                // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetDisplayHealValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayHealValues");
-static_assert(sizeof(GameSettingsSubsystem_SetDisplayHealValues) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayHealValues");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayHealValues, bDisplayHealValues) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayHealValues::bDisplayHealValues' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayHealValues, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayHealValues::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetDisplayHPAboveGauge
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetDisplayHPAboveGauge final
-{
-public:
-	bool                                          bDisplayHPAboveGauge;                              // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetDisplayHPAboveGauge) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayHPAboveGauge");
-static_assert(sizeof(GameSettingsSubsystem_SetDisplayHPAboveGauge) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayHPAboveGauge");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayHPAboveGauge, bDisplayHPAboveGauge) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayHPAboveGauge::bDisplayHPAboveGauge' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayHPAboveGauge, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayHPAboveGauge::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetDisplayPlayerUI
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetDisplayPlayerUI final
-{
-public:
-	bool                                          bDisplay;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetDisplayPlayerUI) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayPlayerUI");
-static_assert(sizeof(GameSettingsSubsystem_SetDisplayPlayerUI) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayPlayerUI");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayPlayerUI, bDisplay) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayPlayerUI::bDisplay' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayPlayerUI, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayPlayerUI::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetDisplayTutorials
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetDisplayTutorials final
-{
-public:
-	bool                                          bDisplay;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetDisplayTutorials) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetDisplayTutorials");
-static_assert(sizeof(GameSettingsSubsystem_SetDisplayTutorials) == 0x000002, "Wrong size on GameSettingsSubsystem_SetDisplayTutorials");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayTutorials, bDisplay) == 0x000000, "Member 'GameSettingsSubsystem_SetDisplayTutorials::bDisplay' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetDisplayTutorials, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetDisplayTutorials::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetGamma
-// 0x0008 (0x0008 - 0x0000)
-struct GameSettingsSubsystem_SetGamma final
-{
-public:
-	float                                         NewGamma;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetGamma) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetGamma");
-static_assert(sizeof(GameSettingsSubsystem_SetGamma) == 0x000008, "Wrong size on GameSettingsSubsystem_SetGamma");
-static_assert(offsetof(GameSettingsSubsystem_SetGamma, NewGamma) == 0x000000, "Member 'GameSettingsSubsystem_SetGamma::NewGamma' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetGamma, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetGamma::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetGammaPercentage
-// 0x0008 (0x0008 - 0x0000)
-struct GameSettingsSubsystem_SetGammaPercentage final
-{
-public:
-	float                                         NewGammaPercentage;                                // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetGammaPercentage) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetGammaPercentage");
-static_assert(sizeof(GameSettingsSubsystem_SetGammaPercentage) == 0x000008, "Wrong size on GameSettingsSubsystem_SetGammaPercentage");
-static_assert(offsetof(GameSettingsSubsystem_SetGammaPercentage, NewGammaPercentage) == 0x000000, "Member 'GameSettingsSubsystem_SetGammaPercentage::NewGammaPercentage' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetGammaPercentage, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetGammaPercentage::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetHoldDownToDodgeStill
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetHoldDownToDodgeStill final
-{
-public:
-	bool                                          bEnable;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetHoldDownToDodgeStill) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetHoldDownToDodgeStill");
-static_assert(sizeof(GameSettingsSubsystem_SetHoldDownToDodgeStill) == 0x000002, "Wrong size on GameSettingsSubsystem_SetHoldDownToDodgeStill");
-static_assert(offsetof(GameSettingsSubsystem_SetHoldDownToDodgeStill, bEnable) == 0x000000, "Member 'GameSettingsSubsystem_SetHoldDownToDodgeStill::bEnable' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetHoldDownToDodgeStill, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetHoldDownToDodgeStill::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetLanguage
+// Function Zion.GameStatsComponent.GetPlayTimeAsString
 // 0x0010 (0x0010 - 0x0000)
-struct GameSettingsSubsystem_SetLanguage final
-{
-public:
-	class FString                                 Language;                                          // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetLanguage) == 0x000008, "Wrong alignment on GameSettingsSubsystem_SetLanguage");
-static_assert(sizeof(GameSettingsSubsystem_SetLanguage) == 0x000010, "Wrong size on GameSettingsSubsystem_SetLanguage");
-static_assert(offsetof(GameSettingsSubsystem_SetLanguage, Language) == 0x000000, "Member 'GameSettingsSubsystem_SetLanguage::Language' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetLowHPFeedbackOpacity
-// 0x0008 (0x0008 - 0x0000)
-struct GameSettingsSubsystem_SetLowHPFeedbackOpacity final
-{
-public:
-	float                                         NewLowHPFeedbackOpacity;                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetLowHPFeedbackOpacity) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetLowHPFeedbackOpacity");
-static_assert(sizeof(GameSettingsSubsystem_SetLowHPFeedbackOpacity) == 0x000008, "Wrong size on GameSettingsSubsystem_SetLowHPFeedbackOpacity");
-static_assert(offsetof(GameSettingsSubsystem_SetLowHPFeedbackOpacity, NewLowHPFeedbackOpacity) == 0x000000, "Member 'GameSettingsSubsystem_SetLowHPFeedbackOpacity::NewLowHPFeedbackOpacity' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetLowHPFeedbackOpacity, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetLowHPFeedbackOpacity::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetResolutionScale
-// 0x0008 (0x0008 - 0x0000)
-struct GameSettingsSubsystem_SetResolutionScale final
-{
-public:
-	float                                         NewResolutionScale;                                // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetResolutionScale");
-static_assert(sizeof(GameSettingsSubsystem_SetResolutionScale) == 0x000008, "Wrong size on GameSettingsSubsystem_SetResolutionScale");
-static_assert(offsetof(GameSettingsSubsystem_SetResolutionScale, NewResolutionScale) == 0x000000, "Member 'GameSettingsSubsystem_SetResolutionScale::NewResolutionScale' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetResolutionScale, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_SetResolutionScale::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetStickDeadZone
-// 0x000C (0x000C - 0x0000)
-struct GameSettingsSubsystem_SetStickDeadZone final
-{
-public:
-	EInputStick                                   InputStick;                                        // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         NewDeadZone;                                       // 0x0004(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetStickDeadZone) == 0x000004, "Wrong alignment on GameSettingsSubsystem_SetStickDeadZone");
-static_assert(sizeof(GameSettingsSubsystem_SetStickDeadZone) == 0x00000C, "Wrong size on GameSettingsSubsystem_SetStickDeadZone");
-static_assert(offsetof(GameSettingsSubsystem_SetStickDeadZone, InputStick) == 0x000000, "Member 'GameSettingsSubsystem_SetStickDeadZone::InputStick' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetStickDeadZone, NewDeadZone) == 0x000004, "Member 'GameSettingsSubsystem_SetStickDeadZone::NewDeadZone' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetStickDeadZone, ReturnValue) == 0x000008, "Member 'GameSettingsSubsystem_SetStickDeadZone::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetTitleType
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_SetTitleType final
-{
-public:
-	EGameEndingType                               TitleType;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetTitleType) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetTitleType");
-static_assert(sizeof(GameSettingsSubsystem_SetTitleType) == 0x000001, "Wrong size on GameSettingsSubsystem_SetTitleType");
-static_assert(offsetof(GameSettingsSubsystem_SetTitleType, TitleType) == 0x000000, "Member 'GameSettingsSubsystem_SetTitleType::TitleType' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.SetUIAspectRatio
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_SetUIAspectRatio final
-{
-public:
-	EConstraintCameraAspectRatio                  NewUIAspectRatio;                                  // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EConstraintCameraAspectRatio                  ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_SetUIAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_SetUIAspectRatio");
-static_assert(sizeof(GameSettingsSubsystem_SetUIAspectRatio) == 0x000002, "Wrong size on GameSettingsSubsystem_SetUIAspectRatio");
-static_assert(offsetof(GameSettingsSubsystem_SetUIAspectRatio, NewUIAspectRatio) == 0x000000, "Member 'GameSettingsSubsystem_SetUIAspectRatio::NewUIAspectRatio' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_SetUIAspectRatio, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_SetUIAspectRatio::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.DidReachAnyGameEnding
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_DidReachAnyGameEnding final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_DidReachAnyGameEnding) == 0x000001, "Wrong alignment on GameSettingsSubsystem_DidReachAnyGameEnding");
-static_assert(sizeof(GameSettingsSubsystem_DidReachAnyGameEnding) == 0x000001, "Wrong size on GameSettingsSubsystem_DidReachAnyGameEnding");
-static_assert(offsetof(GameSettingsSubsystem_DidReachAnyGameEnding, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_DidReachAnyGameEnding::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.DidReachGameEnding
-// 0x0002 (0x0002 - 0x0000)
-struct GameSettingsSubsystem_DidReachGameEnding final
-{
-public:
-	EGameEndingType                               GameEndingType;                                    // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_DidReachGameEnding) == 0x000001, "Wrong alignment on GameSettingsSubsystem_DidReachGameEnding");
-static_assert(sizeof(GameSettingsSubsystem_DidReachGameEnding) == 0x000002, "Wrong size on GameSettingsSubsystem_DidReachGameEnding");
-static_assert(offsetof(GameSettingsSubsystem_DidReachGameEnding, GameEndingType) == 0x000000, "Member 'GameSettingsSubsystem_DidReachGameEnding::GameEndingType' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_DidReachGameEnding, ReturnValue) == 0x000001, "Member 'GameSettingsSubsystem_DidReachGameEnding::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetAntiAliasingMethod
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetAntiAliasingMethod final
-{
-public:
-	EAntiAliasingMethod                           ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetAntiAliasingMethod) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetAntiAliasingMethod");
-static_assert(sizeof(GameSettingsSubsystem_GetAntiAliasingMethod) == 0x000001, "Wrong size on GameSettingsSubsystem_GetAntiAliasingMethod");
-static_assert(offsetof(GameSettingsSubsystem_GetAntiAliasingMethod, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetAntiAliasingMethod::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetAutoClimbDirectionMode
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetAutoClimbDirectionMode final
-{
-public:
-	EAutoClimbDirectionMode                       ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetAutoClimbDirectionMode) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetAutoClimbDirectionMode");
-static_assert(sizeof(GameSettingsSubsystem_GetAutoClimbDirectionMode) == 0x000001, "Wrong size on GameSettingsSubsystem_GetAutoClimbDirectionMode");
-static_assert(offsetof(GameSettingsSubsystem_GetAutoClimbDirectionMode, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetAutoClimbDirectionMode::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetAutoSkipAlreadySeenEvents
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents");
-static_assert(sizeof(GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents) == 0x000001, "Wrong size on GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents");
-static_assert(offsetof(GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetAutoSkipAlreadySeenEvents::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetAutoUploadCrashReport
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetAutoUploadCrashReport final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetAutoUploadCrashReport) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetAutoUploadCrashReport");
-static_assert(sizeof(GameSettingsSubsystem_GetAutoUploadCrashReport) == 0x000001, "Wrong size on GameSettingsSubsystem_GetAutoUploadCrashReport");
-static_assert(offsetof(GameSettingsSubsystem_GetAutoUploadCrashReport, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetAutoUploadCrashReport::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetCameraOscillation
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetCameraOscillation final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetCameraOscillation) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetCameraOscillation");
-static_assert(sizeof(GameSettingsSubsystem_GetCameraOscillation) == 0x000001, "Wrong size on GameSettingsSubsystem_GetCameraOscillation");
-static_assert(offsetof(GameSettingsSubsystem_GetCameraOscillation, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetCameraOscillation::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetCameraShake
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetCameraShake final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetCameraShake) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetCameraShake");
-static_assert(sizeof(GameSettingsSubsystem_GetCameraShake) == 0x000004, "Wrong size on GameSettingsSubsystem_GetCameraShake");
-static_assert(offsetof(GameSettingsSubsystem_GetCameraShake, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetCameraShake::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetConstraintCameraAspectRatio
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetConstraintCameraAspectRatio final
-{
-public:
-	EConstraintCameraAspectRatio                  ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetConstraintCameraAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetConstraintCameraAspectRatio");
-static_assert(sizeof(GameSettingsSubsystem_GetConstraintCameraAspectRatio) == 0x000001, "Wrong size on GameSettingsSubsystem_GetConstraintCameraAspectRatio");
-static_assert(offsetof(GameSettingsSubsystem_GetConstraintCameraAspectRatio, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetConstraintCameraAspectRatio::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetConstraintHUDAspectRatio
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetConstraintHUDAspectRatio final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetConstraintHUDAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetConstraintHUDAspectRatio");
-static_assert(sizeof(GameSettingsSubsystem_GetConstraintHUDAspectRatio) == 0x000001, "Wrong size on GameSettingsSubsystem_GetConstraintHUDAspectRatio");
-static_assert(offsetof(GameSettingsSubsystem_GetConstraintHUDAspectRatio, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetConstraintHUDAspectRatio::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetControllerVibration
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetControllerVibration final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetControllerVibration) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetControllerVibration");
-static_assert(sizeof(GameSettingsSubsystem_GetControllerVibration) == 0x000004, "Wrong size on GameSettingsSubsystem_GetControllerVibration");
-static_assert(offsetof(GameSettingsSubsystem_GetControllerVibration, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetControllerVibration::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetDisplayAchievementNotifications
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetDisplayAchievementNotifications final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetDisplayAchievementNotifications) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayAchievementNotifications");
-static_assert(sizeof(GameSettingsSubsystem_GetDisplayAchievementNotifications) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayAchievementNotifications");
-static_assert(offsetof(GameSettingsSubsystem_GetDisplayAchievementNotifications, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayAchievementNotifications::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetDisplayDamageValues
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetDisplayDamageValues final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetDisplayDamageValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayDamageValues");
-static_assert(sizeof(GameSettingsSubsystem_GetDisplayDamageValues) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayDamageValues");
-static_assert(offsetof(GameSettingsSubsystem_GetDisplayDamageValues, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayDamageValues::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetDisplayEnemyGauges
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetDisplayEnemyGauges final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetDisplayEnemyGauges) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayEnemyGauges");
-static_assert(sizeof(GameSettingsSubsystem_GetDisplayEnemyGauges) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayEnemyGauges");
-static_assert(offsetof(GameSettingsSubsystem_GetDisplayEnemyGauges, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayEnemyGauges::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetDisplayHealValues
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetDisplayHealValues final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetDisplayHealValues) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayHealValues");
-static_assert(sizeof(GameSettingsSubsystem_GetDisplayHealValues) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayHealValues");
-static_assert(offsetof(GameSettingsSubsystem_GetDisplayHealValues, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayHealValues::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetDisplayHPAboveGauge
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetDisplayHPAboveGauge final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetDisplayHPAboveGauge) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayHPAboveGauge");
-static_assert(sizeof(GameSettingsSubsystem_GetDisplayHPAboveGauge) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayHPAboveGauge");
-static_assert(offsetof(GameSettingsSubsystem_GetDisplayHPAboveGauge, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayHPAboveGauge::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetDisplayPlayerUI
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetDisplayPlayerUI final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetDisplayPlayerUI) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayPlayerUI");
-static_assert(sizeof(GameSettingsSubsystem_GetDisplayPlayerUI) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayPlayerUI");
-static_assert(offsetof(GameSettingsSubsystem_GetDisplayPlayerUI, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayPlayerUI::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetDisplayTutorials
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetDisplayTutorials final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetDisplayTutorials) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetDisplayTutorials");
-static_assert(sizeof(GameSettingsSubsystem_GetDisplayTutorials) == 0x000001, "Wrong size on GameSettingsSubsystem_GetDisplayTutorials");
-static_assert(offsetof(GameSettingsSubsystem_GetDisplayTutorials, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetDisplayTutorials::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetGamma
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetGamma final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetGamma) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGamma");
-static_assert(sizeof(GameSettingsSubsystem_GetGamma) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGamma");
-static_assert(offsetof(GameSettingsSubsystem_GetGamma, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGamma::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetGammaDefault
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetGammaDefault final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetGammaDefault) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGammaDefault");
-static_assert(sizeof(GameSettingsSubsystem_GetGammaDefault) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGammaDefault");
-static_assert(offsetof(GameSettingsSubsystem_GetGammaDefault, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGammaDefault::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetGammaMax
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetGammaMax final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetGammaMax) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGammaMax");
-static_assert(sizeof(GameSettingsSubsystem_GetGammaMax) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGammaMax");
-static_assert(offsetof(GameSettingsSubsystem_GetGammaMax, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGammaMax::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetGammaMin
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetGammaMin final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetGammaMin) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGammaMin");
-static_assert(sizeof(GameSettingsSubsystem_GetGammaMin) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGammaMin");
-static_assert(offsetof(GameSettingsSubsystem_GetGammaMin, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGammaMin::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetGammaPercentage
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetGammaPercentage final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetGammaPercentage) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetGammaPercentage");
-static_assert(sizeof(GameSettingsSubsystem_GetGammaPercentage) == 0x000004, "Wrong size on GameSettingsSubsystem_GetGammaPercentage");
-static_assert(offsetof(GameSettingsSubsystem_GetGammaPercentage, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetGammaPercentage::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetHoldDownToDodgeStill
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetHoldDownToDodgeStill final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetHoldDownToDodgeStill) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetHoldDownToDodgeStill");
-static_assert(sizeof(GameSettingsSubsystem_GetHoldDownToDodgeStill) == 0x000001, "Wrong size on GameSettingsSubsystem_GetHoldDownToDodgeStill");
-static_assert(offsetof(GameSettingsSubsystem_GetHoldDownToDodgeStill, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetHoldDownToDodgeStill::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetLanguage
-// 0x0010 (0x0010 - 0x0000)
-struct GameSettingsSubsystem_GetLanguage final
+struct GameStatsComponent_GetPlayTimeAsString final
 {
 public:
 	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameSettingsSubsystem_GetLanguage) == 0x000008, "Wrong alignment on GameSettingsSubsystem_GetLanguage");
-static_assert(sizeof(GameSettingsSubsystem_GetLanguage) == 0x000010, "Wrong size on GameSettingsSubsystem_GetLanguage");
-static_assert(offsetof(GameSettingsSubsystem_GetLanguage, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetLanguage::ReturnValue' has a wrong offset!");
+static_assert(alignof(GameStatsComponent_GetPlayTimeAsString) == 0x000008, "Wrong alignment on GameStatsComponent_GetPlayTimeAsString");
+static_assert(sizeof(GameStatsComponent_GetPlayTimeAsString) == 0x000010, "Wrong size on GameStatsComponent_GetPlayTimeAsString");
+static_assert(offsetof(GameStatsComponent_GetPlayTimeAsString, ReturnValue) == 0x000000, "Member 'GameStatsComponent_GetPlayTimeAsString::ReturnValue' has a wrong offset!");
 
-// Function Zion.GameSettingsSubsystem.GetLowHPFeedbackOpacity
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetLowHPFeedbackOpacity final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetLowHPFeedbackOpacity) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetLowHPFeedbackOpacity");
-static_assert(sizeof(GameSettingsSubsystem_GetLowHPFeedbackOpacity) == 0x000004, "Wrong size on GameSettingsSubsystem_GetLowHPFeedbackOpacity");
-static_assert(offsetof(GameSettingsSubsystem_GetLowHPFeedbackOpacity, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetLowHPFeedbackOpacity::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetResolutionScale
-// 0x0004 (0x0004 - 0x0000)
-struct GameSettingsSubsystem_GetResolutionScale final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetResolutionScale) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetResolutionScale");
-static_assert(sizeof(GameSettingsSubsystem_GetResolutionScale) == 0x000004, "Wrong size on GameSettingsSubsystem_GetResolutionScale");
-static_assert(offsetof(GameSettingsSubsystem_GetResolutionScale, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetResolutionScale::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetStickDeadZone
-// 0x0008 (0x0008 - 0x0000)
-struct GameSettingsSubsystem_GetStickDeadZone final
-{
-public:
-	EInputStick                                   InputStick;                                        // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetStickDeadZone) == 0x000004, "Wrong alignment on GameSettingsSubsystem_GetStickDeadZone");
-static_assert(sizeof(GameSettingsSubsystem_GetStickDeadZone) == 0x000008, "Wrong size on GameSettingsSubsystem_GetStickDeadZone");
-static_assert(offsetof(GameSettingsSubsystem_GetStickDeadZone, InputStick) == 0x000000, "Member 'GameSettingsSubsystem_GetStickDeadZone::InputStick' has a wrong offset!");
-static_assert(offsetof(GameSettingsSubsystem_GetStickDeadZone, ReturnValue) == 0x000004, "Member 'GameSettingsSubsystem_GetStickDeadZone::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetTitleType
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetTitleType final
-{
-public:
-	EGameEndingType                               ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetTitleType) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetTitleType");
-static_assert(sizeof(GameSettingsSubsystem_GetTitleType) == 0x000001, "Wrong size on GameSettingsSubsystem_GetTitleType");
-static_assert(offsetof(GameSettingsSubsystem_GetTitleType, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetTitleType::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.GetUIAspectRatio
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_GetUIAspectRatio final
-{
-public:
-	EConstraintCameraAspectRatio                  ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_GetUIAspectRatio) == 0x000001, "Wrong alignment on GameSettingsSubsystem_GetUIAspectRatio");
-static_assert(sizeof(GameSettingsSubsystem_GetUIAspectRatio) == 0x000001, "Wrong size on GameSettingsSubsystem_GetUIAspectRatio");
-static_assert(offsetof(GameSettingsSubsystem_GetUIAspectRatio, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_GetUIAspectRatio::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameSettingsSubsystem.IsInitialSettingsDone
-// 0x0001 (0x0001 - 0x0000)
-struct GameSettingsSubsystem_IsInitialSettingsDone final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameSettingsSubsystem_IsInitialSettingsDone) == 0x000001, "Wrong alignment on GameSettingsSubsystem_IsInitialSettingsDone");
-static_assert(sizeof(GameSettingsSubsystem_IsInitialSettingsDone) == 0x000001, "Wrong size on GameSettingsSubsystem_IsInitialSettingsDone");
-static_assert(offsetof(GameSettingsSubsystem_IsInitialSettingsDone, ReturnValue) == 0x000000, "Member 'GameSettingsSubsystem_IsInitialSettingsDone::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameViewportZion.Get
-// 0x0008 (0x0008 - 0x0000)
-struct GameViewportZion_Get final
-{
-public:
-	class UGameViewportZion*                      ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameViewportZion_Get) == 0x000008, "Wrong alignment on GameViewportZion_Get");
-static_assert(sizeof(GameViewportZion_Get) == 0x000008, "Wrong size on GameViewportZion_Get");
-static_assert(offsetof(GameViewportZion_Get, ReturnValue) == 0x000000, "Member 'GameViewportZion_Get::ReturnValue' has a wrong offset!");
-
-// Function Zion.GameViewportZion.SetViewportOverlayRenderOpacity
-// 0x0004 (0x0004 - 0x0000)
-struct GameViewportZion_SetViewportOverlayRenderOpacity final
-{
-public:
-	float                                         Opacity;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameViewportZion_SetViewportOverlayRenderOpacity) == 0x000004, "Wrong alignment on GameViewportZion_SetViewportOverlayRenderOpacity");
-static_assert(sizeof(GameViewportZion_SetViewportOverlayRenderOpacity) == 0x000004, "Wrong size on GameViewportZion_SetViewportOverlayRenderOpacity");
-static_assert(offsetof(GameViewportZion_SetViewportOverlayRenderOpacity, Opacity) == 0x000000, "Member 'GameViewportZion_SetViewportOverlayRenderOpacity::Opacity' has a wrong offset!");
-
-// Function Zion.GameViewportZion.SetViewportOverlayWidgetVisible
-// 0x0001 (0x0001 - 0x0000)
-struct GameViewportZion_SetViewportOverlayWidgetVisible final
-{
-public:
-	bool                                          bVisible;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameViewportZion_SetViewportOverlayWidgetVisible) == 0x000001, "Wrong alignment on GameViewportZion_SetViewportOverlayWidgetVisible");
-static_assert(sizeof(GameViewportZion_SetViewportOverlayWidgetVisible) == 0x000001, "Wrong size on GameViewportZion_SetViewportOverlayWidgetVisible");
-static_assert(offsetof(GameViewportZion_SetViewportOverlayWidgetVisible, bVisible) == 0x000000, "Member 'GameViewportZion_SetViewportOverlayWidgetVisible::bVisible' has a wrong offset!");
-
-// Function Zion.GameViewportZion.SetWorldRenderingEnable
-// 0x0001 (0x0001 - 0x0000)
-struct GameViewportZion_SetWorldRenderingEnable final
-{
-public:
-	bool                                          bEnableWorldRendering;                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GameViewportZion_SetWorldRenderingEnable) == 0x000001, "Wrong alignment on GameViewportZion_SetWorldRenderingEnable");
-static_assert(sizeof(GameViewportZion_SetWorldRenderingEnable) == 0x000001, "Wrong size on GameViewportZion_SetWorldRenderingEnable");
-static_assert(offsetof(GameViewportZion_SetWorldRenderingEnable, bEnableWorldRendering) == 0x000000, "Member 'GameViewportZion_SetWorldRenderingEnable::bEnableWorldRendering' has a wrong offset!");
-
-// Function Zion.GameViewportZion.GetUserWidgetInStack
+// Function Zion.GuardComponent.OnGuarded
 // 0x0010 (0x0010 - 0x0000)
-struct GameViewportZion_GetUserWidgetInStack final
+struct GuardComponent_OnGuarded final
 {
 public:
-	TSubclassOf<class UUserWidget>                ClassToFind;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UUserWidget*                            ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AAbility*                               Ability;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 Source;                                            // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameViewportZion_GetUserWidgetInStack) == 0x000008, "Wrong alignment on GameViewportZion_GetUserWidgetInStack");
-static_assert(sizeof(GameViewportZion_GetUserWidgetInStack) == 0x000010, "Wrong size on GameViewportZion_GetUserWidgetInStack");
-static_assert(offsetof(GameViewportZion_GetUserWidgetInStack, ClassToFind) == 0x000000, "Member 'GameViewportZion_GetUserWidgetInStack::ClassToFind' has a wrong offset!");
-static_assert(offsetof(GameViewportZion_GetUserWidgetInStack, ReturnValue) == 0x000008, "Member 'GameViewportZion_GetUserWidgetInStack::ReturnValue' has a wrong offset!");
+static_assert(alignof(GuardComponent_OnGuarded) == 0x000008, "Wrong alignment on GuardComponent_OnGuarded");
+static_assert(sizeof(GuardComponent_OnGuarded) == 0x000010, "Wrong size on GuardComponent_OnGuarded");
+static_assert(offsetof(GuardComponent_OnGuarded, Ability) == 0x000000, "Member 'GuardComponent_OnGuarded::Ability' has a wrong offset!");
+static_assert(offsetof(GuardComponent_OnGuarded, Source) == 0x000008, "Member 'GuardComponent_OnGuarded::Source' has a wrong offset!");
 
-// Function Zion.GameViewportZion.IsShowingCollision
+// Function Zion.HealComponent.AddHealCountBonus
+// 0x0008 (0x0008 - 0x0000)
+struct HealComponent_AddHealCountBonus final
+{
+public:
+	int32                                         HealCountBonusToAdd;                               // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HealComponent_AddHealCountBonus) == 0x000004, "Wrong alignment on HealComponent_AddHealCountBonus");
+static_assert(sizeof(HealComponent_AddHealCountBonus) == 0x000008, "Wrong size on HealComponent_AddHealCountBonus");
+static_assert(offsetof(HealComponent_AddHealCountBonus, HealCountBonusToAdd) == 0x000000, "Member 'HealComponent_AddHealCountBonus::HealCountBonusToAdd' has a wrong offset!");
+static_assert(offsetof(HealComponent_AddHealCountBonus, ReturnValue) == 0x000004, "Member 'HealComponent_AddHealCountBonus::ReturnValue' has a wrong offset!");
+
+// Function Zion.HealComponent.AddHealPowerPercentageBonus
+// 0x0008 (0x0008 - 0x0000)
+struct HealComponent_AddHealPowerPercentageBonus final
+{
+public:
+	int32                                         HealPercentBonusToAdd;                             // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HealComponent_AddHealPowerPercentageBonus) == 0x000004, "Wrong alignment on HealComponent_AddHealPowerPercentageBonus");
+static_assert(sizeof(HealComponent_AddHealPowerPercentageBonus) == 0x000008, "Wrong size on HealComponent_AddHealPowerPercentageBonus");
+static_assert(offsetof(HealComponent_AddHealPowerPercentageBonus, HealPercentBonusToAdd) == 0x000000, "Member 'HealComponent_AddHealPowerPercentageBonus::HealPercentBonusToAdd' has a wrong offset!");
+static_assert(offsetof(HealComponent_AddHealPowerPercentageBonus, ReturnValue) == 0x000004, "Member 'HealComponent_AddHealPowerPercentageBonus::ReturnValue' has a wrong offset!");
+
+// Function Zion.HealComponent.FullyRestoreHeals
 // 0x0001 (0x0001 - 0x0000)
-struct GameViewportZion_IsShowingCollision final
+struct HealComponent_FullyRestoreHeals final
 {
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GameViewportZion_IsShowingCollision) == 0x000001, "Wrong alignment on GameViewportZion_IsShowingCollision");
-static_assert(sizeof(GameViewportZion_IsShowingCollision) == 0x000001, "Wrong size on GameViewportZion_IsShowingCollision");
-static_assert(offsetof(GameViewportZion_IsShowingCollision, ReturnValue) == 0x000000, "Member 'GameViewportZion_IsShowingCollision::ReturnValue' has a wrong offset!");
+static_assert(alignof(HealComponent_FullyRestoreHeals) == 0x000001, "Wrong alignment on HealComponent_FullyRestoreHeals");
+static_assert(sizeof(HealComponent_FullyRestoreHeals) == 0x000001, "Wrong size on HealComponent_FullyRestoreHeals");
+static_assert(offsetof(HealComponent_FullyRestoreHeals, ReturnValue) == 0x000000, "Member 'HealComponent_FullyRestoreHeals::ReturnValue' has a wrong offset!");
 
-// Function Zion.GunmanIKBoneTargetComponent.OnSpiritActivationChanged
+// Function Zion.HealComponent.RestoreHeals
+// 0x0008 (0x0008 - 0x0000)
+struct HealComponent_RestoreHeals final
+{
+public:
+	int32                                         RestoreCount;                                      // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HealComponent_RestoreHeals) == 0x000004, "Wrong alignment on HealComponent_RestoreHeals");
+static_assert(sizeof(HealComponent_RestoreHeals) == 0x000008, "Wrong size on HealComponent_RestoreHeals");
+static_assert(offsetof(HealComponent_RestoreHeals, RestoreCount) == 0x000000, "Member 'HealComponent_RestoreHeals::RestoreCount' has a wrong offset!");
+static_assert(offsetof(HealComponent_RestoreHeals, ReturnValue) == 0x000004, "Member 'HealComponent_RestoreHeals::ReturnValue' has a wrong offset!");
+
+// Function Zion.HealComponent.SubHealCountBonus
+// 0x0008 (0x0008 - 0x0000)
+struct HealComponent_SubHealCountBonus final
+{
+public:
+	int32                                         HealCountBonusToSub;                               // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HealComponent_SubHealCountBonus) == 0x000004, "Wrong alignment on HealComponent_SubHealCountBonus");
+static_assert(sizeof(HealComponent_SubHealCountBonus) == 0x000008, "Wrong size on HealComponent_SubHealCountBonus");
+static_assert(offsetof(HealComponent_SubHealCountBonus, HealCountBonusToSub) == 0x000000, "Member 'HealComponent_SubHealCountBonus::HealCountBonusToSub' has a wrong offset!");
+static_assert(offsetof(HealComponent_SubHealCountBonus, ReturnValue) == 0x000004, "Member 'HealComponent_SubHealCountBonus::ReturnValue' has a wrong offset!");
+
+// Function Zion.HealComponent.SubHealPowerPercentageBonus
+// 0x0008 (0x0008 - 0x0000)
+struct HealComponent_SubHealPowerPercentageBonus final
+{
+public:
+	int32                                         HealPercentBonusToSub;                             // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HealComponent_SubHealPowerPercentageBonus) == 0x000004, "Wrong alignment on HealComponent_SubHealPowerPercentageBonus");
+static_assert(sizeof(HealComponent_SubHealPowerPercentageBonus) == 0x000008, "Wrong size on HealComponent_SubHealPowerPercentageBonus");
+static_assert(offsetof(HealComponent_SubHealPowerPercentageBonus, HealPercentBonusToSub) == 0x000000, "Member 'HealComponent_SubHealPowerPercentageBonus::HealPercentBonusToSub' has a wrong offset!");
+static_assert(offsetof(HealComponent_SubHealPowerPercentageBonus, ReturnValue) == 0x000004, "Member 'HealComponent_SubHealPowerPercentageBonus::ReturnValue' has a wrong offset!");
+
+// Function Zion.HealComponent.GetHealValue
+// 0x0004 (0x0004 - 0x0000)
+struct HealComponent_GetHealValue final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HealComponent_GetHealValue) == 0x000004, "Wrong alignment on HealComponent_GetHealValue");
+static_assert(sizeof(HealComponent_GetHealValue) == 0x000004, "Wrong size on HealComponent_GetHealValue");
+static_assert(offsetof(HealComponent_GetHealValue, ReturnValue) == 0x000000, "Member 'HealComponent_GetHealValue::ReturnValue' has a wrong offset!");
+
+// Function Zion.HealComponent.GetMaxHealCount
+// 0x0004 (0x0004 - 0x0000)
+struct HealComponent_GetMaxHealCount final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HealComponent_GetMaxHealCount) == 0x000004, "Wrong alignment on HealComponent_GetMaxHealCount");
+static_assert(sizeof(HealComponent_GetMaxHealCount) == 0x000004, "Wrong size on HealComponent_GetMaxHealCount");
+static_assert(offsetof(HealComponent_GetMaxHealCount, ReturnValue) == 0x000000, "Member 'HealComponent_GetMaxHealCount::ReturnValue' has a wrong offset!");
+
+// Function Zion.HealComponent.GetRemainingHealCount
+// 0x0004 (0x0004 - 0x0000)
+struct HealComponent_GetRemainingHealCount final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(HealComponent_GetRemainingHealCount) == 0x000004, "Wrong alignment on HealComponent_GetRemainingHealCount");
+static_assert(sizeof(HealComponent_GetRemainingHealCount) == 0x000004, "Wrong size on HealComponent_GetRemainingHealCount");
+static_assert(offsetof(HealComponent_GetRemainingHealCount, ReturnValue) == 0x000000, "Member 'HealComponent_GetRemainingHealCount::ReturnValue' has a wrong offset!");
+
+// Function Zion.HealComponent.IsHealCountMax
 // 0x0001 (0x0001 - 0x0000)
-struct GunmanIKBoneTargetComponent_OnSpiritActivationChanged final
+struct HealComponent_IsHealCountMax final
 {
 public:
-	bool                                          bNewActive;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GunmanIKBoneTargetComponent_OnSpiritActivationChanged) == 0x000001, "Wrong alignment on GunmanIKBoneTargetComponent_OnSpiritActivationChanged");
-static_assert(sizeof(GunmanIKBoneTargetComponent_OnSpiritActivationChanged) == 0x000001, "Wrong size on GunmanIKBoneTargetComponent_OnSpiritActivationChanged");
-static_assert(offsetof(GunmanIKBoneTargetComponent_OnSpiritActivationChanged, bNewActive) == 0x000000, "Member 'GunmanIKBoneTargetComponent_OnSpiritActivationChanged::bNewActive' has a wrong offset!");
-
-// Function Zion.GunmanIKBoneTargetComponent.GetAbilityGlobalOffset
-// 0x0060 (0x0060 - 0x0000)
-struct GunmanIKBoneTargetComponent_GetAbilityGlobalOffset final
-{
-public:
-	struct FTransform                             ReturnValue;                                       // 0x0000(0x0060)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(GunmanIKBoneTargetComponent_GetAbilityGlobalOffset) == 0x000010, "Wrong alignment on GunmanIKBoneTargetComponent_GetAbilityGlobalOffset");
-static_assert(sizeof(GunmanIKBoneTargetComponent_GetAbilityGlobalOffset) == 0x000060, "Wrong size on GunmanIKBoneTargetComponent_GetAbilityGlobalOffset");
-static_assert(offsetof(GunmanIKBoneTargetComponent_GetAbilityGlobalOffset, ReturnValue) == 0x000000, "Member 'GunmanIKBoneTargetComponent_GetAbilityGlobalOffset::ReturnValue' has a wrong offset!");
+static_assert(alignof(HealComponent_IsHealCountMax) == 0x000001, "Wrong alignment on HealComponent_IsHealCountMax");
+static_assert(sizeof(HealComponent_IsHealCountMax) == 0x000001, "Wrong size on HealComponent_IsHealCountMax");
+static_assert(offsetof(HealComponent_IsHealCountMax, ReturnValue) == 0x000000, "Member 'HealComponent_IsHealCountMax::ReturnValue' has a wrong offset!");
 
 // Function Zion.HitStopComponent.LaunchHitStop
 // 0x0004 (0x0004 - 0x0000)
@@ -8525,151 +9120,32 @@ static_assert(alignof(HomingComponent_GetTarget) == 0x000008, "Wrong alignment o
 static_assert(sizeof(HomingComponent_GetTarget) == 0x000008, "Wrong size on HomingComponent_GetTarget");
 static_assert(offsetof(HomingComponent_GetTarget, ReturnValue) == 0x000000, "Member 'HomingComponent_GetTarget::ReturnValue' has a wrong offset!");
 
-// Function Zion.HookComponent.OnComponentOverlapBegin
-// 0x0118 (0x0118 - 0x0000)
-struct HookComponent_OnComponentOverlapBegin final
-{
-public:
-	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bFromSweep;                                        // 0x001C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             SweepResult;                                       // 0x0020(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookComponent_OnComponentOverlapBegin) == 0x000008, "Wrong alignment on HookComponent_OnComponentOverlapBegin");
-static_assert(sizeof(HookComponent_OnComponentOverlapBegin) == 0x000118, "Wrong size on HookComponent_OnComponentOverlapBegin");
-static_assert(offsetof(HookComponent_OnComponentOverlapBegin, OverlapComponent) == 0x000000, "Member 'HookComponent_OnComponentOverlapBegin::OverlapComponent' has a wrong offset!");
-static_assert(offsetof(HookComponent_OnComponentOverlapBegin, OtherActor) == 0x000008, "Member 'HookComponent_OnComponentOverlapBegin::OtherActor' has a wrong offset!");
-static_assert(offsetof(HookComponent_OnComponentOverlapBegin, OtherComp) == 0x000010, "Member 'HookComponent_OnComponentOverlapBegin::OtherComp' has a wrong offset!");
-static_assert(offsetof(HookComponent_OnComponentOverlapBegin, OtherBodyIndex) == 0x000018, "Member 'HookComponent_OnComponentOverlapBegin::OtherBodyIndex' has a wrong offset!");
-static_assert(offsetof(HookComponent_OnComponentOverlapBegin, bFromSweep) == 0x00001C, "Member 'HookComponent_OnComponentOverlapBegin::bFromSweep' has a wrong offset!");
-static_assert(offsetof(HookComponent_OnComponentOverlapBegin, SweepResult) == 0x000020, "Member 'HookComponent_OnComponentOverlapBegin::SweepResult' has a wrong offset!");
-
-// Function Zion.HookComponent.OnComponentOverlapEnd
-// 0x0020 (0x0020 - 0x0000)
-struct HookComponent_OnComponentOverlapEnd final
-{
-public:
-	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(HookComponent_OnComponentOverlapEnd) == 0x000008, "Wrong alignment on HookComponent_OnComponentOverlapEnd");
-static_assert(sizeof(HookComponent_OnComponentOverlapEnd) == 0x000020, "Wrong size on HookComponent_OnComponentOverlapEnd");
-static_assert(offsetof(HookComponent_OnComponentOverlapEnd, OverlapComponent) == 0x000000, "Member 'HookComponent_OnComponentOverlapEnd::OverlapComponent' has a wrong offset!");
-static_assert(offsetof(HookComponent_OnComponentOverlapEnd, OtherActor) == 0x000008, "Member 'HookComponent_OnComponentOverlapEnd::OtherActor' has a wrong offset!");
-static_assert(offsetof(HookComponent_OnComponentOverlapEnd, OtherComp) == 0x000010, "Member 'HookComponent_OnComponentOverlapEnd::OtherComp' has a wrong offset!");
-static_assert(offsetof(HookComponent_OnComponentOverlapEnd, OtherBodyIndex) == 0x000018, "Member 'HookComponent_OnComponentOverlapEnd::OtherBodyIndex' has a wrong offset!");
-
-// Function Zion.HookComponent.OnLockHook
-// 0x0008 (0x0008 - 0x0000)
-struct HookComponent_OnLockHook final
-{
-public:
-	class AHookPoint*                             HookPoint;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookComponent_OnLockHook) == 0x000008, "Wrong alignment on HookComponent_OnLockHook");
-static_assert(sizeof(HookComponent_OnLockHook) == 0x000008, "Wrong size on HookComponent_OnLockHook");
-static_assert(offsetof(HookComponent_OnLockHook, HookPoint) == 0x000000, "Member 'HookComponent_OnLockHook::HookPoint' has a wrong offset!");
-
-// Function Zion.HookComponent.OnUnlockHook
-// 0x0008 (0x0008 - 0x0000)
-struct HookComponent_OnUnlockHook final
-{
-public:
-	class AHookPoint*                             HookPoint;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookComponent_OnUnlockHook) == 0x000008, "Wrong alignment on HookComponent_OnUnlockHook");
-static_assert(sizeof(HookComponent_OnUnlockHook) == 0x000008, "Wrong size on HookComponent_OnUnlockHook");
-static_assert(offsetof(HookComponent_OnUnlockHook, HookPoint) == 0x000000, "Member 'HookComponent_OnUnlockHook::HookPoint' has a wrong offset!");
-
-// Function Zion.HookComponent.SetOverrideHookPoint
-// 0x0008 (0x0008 - 0x0000)
-struct HookComponent_SetOverrideHookPoint final
-{
-public:
-	class AHookPoint*                             NewHookPoint;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookComponent_SetOverrideHookPoint) == 0x000008, "Wrong alignment on HookComponent_SetOverrideHookPoint");
-static_assert(sizeof(HookComponent_SetOverrideHookPoint) == 0x000008, "Wrong size on HookComponent_SetOverrideHookPoint");
-static_assert(offsetof(HookComponent_SetOverrideHookPoint, NewHookPoint) == 0x000000, "Member 'HookComponent_SetOverrideHookPoint::NewHookPoint' has a wrong offset!");
-
-// Function Zion.HookComponent.SetOverrideHookWorldLocation
-// 0x0018 (0x0018 - 0x0000)
-struct HookComponent_SetOverrideHookWorldLocation final
-{
-public:
-	struct FVector                                NewHookWorldLocation;                              // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookComponent_SetOverrideHookWorldLocation) == 0x000008, "Wrong alignment on HookComponent_SetOverrideHookWorldLocation");
-static_assert(sizeof(HookComponent_SetOverrideHookWorldLocation) == 0x000018, "Wrong size on HookComponent_SetOverrideHookWorldLocation");
-static_assert(offsetof(HookComponent_SetOverrideHookWorldLocation, NewHookWorldLocation) == 0x000000, "Member 'HookComponent_SetOverrideHookWorldLocation::NewHookWorldLocation' has a wrong offset!");
-
-// Function Zion.HookComponent.CanTargetHook
-// 0x0002 (0x0002 - 0x0000)
-struct HookComponent_CanTargetHook final
-{
-public:
-	EHookType                                     HookType;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookComponent_CanTargetHook) == 0x000001, "Wrong alignment on HookComponent_CanTargetHook");
-static_assert(sizeof(HookComponent_CanTargetHook) == 0x000002, "Wrong size on HookComponent_CanTargetHook");
-static_assert(offsetof(HookComponent_CanTargetHook, HookType) == 0x000000, "Member 'HookComponent_CanTargetHook::HookType' has a wrong offset!");
-static_assert(offsetof(HookComponent_CanTargetHook, ReturnValue) == 0x000001, "Member 'HookComponent_CanTargetHook::ReturnValue' has a wrong offset!");
-
-// Function Zion.HookComponent.GetHookWorldLocation
-// 0x0018 (0x0018 - 0x0000)
-struct HookComponent_GetHookWorldLocation final
-{
-public:
-	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookComponent_GetHookWorldLocation) == 0x000008, "Wrong alignment on HookComponent_GetHookWorldLocation");
-static_assert(sizeof(HookComponent_GetHookWorldLocation) == 0x000018, "Wrong size on HookComponent_GetHookWorldLocation");
-static_assert(offsetof(HookComponent_GetHookWorldLocation, ReturnValue) == 0x000000, "Member 'HookComponent_GetHookWorldLocation::ReturnValue' has a wrong offset!");
-
-// Function Zion.HookPoint_Moving.OnComponentOverlapBegin
-// 0x0118 (0x0118 - 0x0000)
-struct HookPoint_Moving_OnComponentOverlapBegin final
-{
-public:
-	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bFromSweep;                                        // 0x001C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             SweepResult;                                       // 0x0020(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(HookPoint_Moving_OnComponentOverlapBegin) == 0x000008, "Wrong alignment on HookPoint_Moving_OnComponentOverlapBegin");
-static_assert(sizeof(HookPoint_Moving_OnComponentOverlapBegin) == 0x000118, "Wrong size on HookPoint_Moving_OnComponentOverlapBegin");
-static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, OverlapComponent) == 0x000000, "Member 'HookPoint_Moving_OnComponentOverlapBegin::OverlapComponent' has a wrong offset!");
-static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, OtherActor) == 0x000008, "Member 'HookPoint_Moving_OnComponentOverlapBegin::OtherActor' has a wrong offset!");
-static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, OtherComp) == 0x000010, "Member 'HookPoint_Moving_OnComponentOverlapBegin::OtherComp' has a wrong offset!");
-static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, OtherBodyIndex) == 0x000018, "Member 'HookPoint_Moving_OnComponentOverlapBegin::OtherBodyIndex' has a wrong offset!");
-static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, bFromSweep) == 0x00001C, "Member 'HookPoint_Moving_OnComponentOverlapBegin::bFromSweep' has a wrong offset!");
-static_assert(offsetof(HookPoint_Moving_OnComponentOverlapBegin, SweepResult) == 0x000020, "Member 'HookPoint_Moving_OnComponentOverlapBegin::SweepResult' has a wrong offset!");
-
-// Function Zion.HookPoint_Moving.OnMovementModeChanged
+// Function Zion.IKBonesComponent.GetIKBone
 // 0x0010 (0x0010 - 0x0000)
-struct HookPoint_Moving_OnMovementModeChanged final
+struct IKBonesComponent_GetIKBone final
 {
 public:
-	class ACharacter*                             Character;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EMovementMode                                 PrevMovementMode;                                  // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         PreviousCustomMode;                                // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	EIKBoneDriver                                 IKBoneDriver;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class USceneComponent*                        ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(HookPoint_Moving_OnMovementModeChanged) == 0x000008, "Wrong alignment on HookPoint_Moving_OnMovementModeChanged");
-static_assert(sizeof(HookPoint_Moving_OnMovementModeChanged) == 0x000010, "Wrong size on HookPoint_Moving_OnMovementModeChanged");
-static_assert(offsetof(HookPoint_Moving_OnMovementModeChanged, Character) == 0x000000, "Member 'HookPoint_Moving_OnMovementModeChanged::Character' has a wrong offset!");
-static_assert(offsetof(HookPoint_Moving_OnMovementModeChanged, PrevMovementMode) == 0x000008, "Member 'HookPoint_Moving_OnMovementModeChanged::PrevMovementMode' has a wrong offset!");
-static_assert(offsetof(HookPoint_Moving_OnMovementModeChanged, PreviousCustomMode) == 0x000009, "Member 'HookPoint_Moving_OnMovementModeChanged::PreviousCustomMode' has a wrong offset!");
+static_assert(alignof(IKBonesComponent_GetIKBone) == 0x000008, "Wrong alignment on IKBonesComponent_GetIKBone");
+static_assert(sizeof(IKBonesComponent_GetIKBone) == 0x000010, "Wrong size on IKBonesComponent_GetIKBone");
+static_assert(offsetof(IKBonesComponent_GetIKBone, IKBoneDriver) == 0x000000, "Member 'IKBonesComponent_GetIKBone::IKBoneDriver' has a wrong offset!");
+static_assert(offsetof(IKBonesComponent_GetIKBone, ReturnValue) == 0x000008, "Member 'IKBonesComponent_GetIKBone::ReturnValue' has a wrong offset!");
+
+// Function Zion.IKBonesComponent.ResetIKBone
+// 0x0002 (0x0002 - 0x0000)
+struct IKBonesComponent_ResetIKBone final
+{
+public:
+	EIKBoneDriver                                 IKBoneDriver;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bResetIKConstraint;                                // 0x0001(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(IKBonesComponent_ResetIKBone) == 0x000001, "Wrong alignment on IKBonesComponent_ResetIKBone");
+static_assert(sizeof(IKBonesComponent_ResetIKBone) == 0x000002, "Wrong size on IKBonesComponent_ResetIKBone");
+static_assert(offsetof(IKBonesComponent_ResetIKBone, IKBoneDriver) == 0x000000, "Member 'IKBonesComponent_ResetIKBone::IKBoneDriver' has a wrong offset!");
+static_assert(offsetof(IKBonesComponent_ResetIKBone, bResetIKConstraint) == 0x000001, "Member 'IKBonesComponent_ResetIKBone::bResetIKConstraint' has a wrong offset!");
 
 // Function Zion.InputBPFLibrary.IsEqual
 // 0x0178 (0x0178 - 0x0000)
@@ -8778,81 +9254,115 @@ static_assert(alignof(InputBufferComponent_GetInputSnapshotCount) == 0x000004, "
 static_assert(sizeof(InputBufferComponent_GetInputSnapshotCount) == 0x000004, "Wrong size on InputBufferComponent_GetInputSnapshotCount");
 static_assert(offsetof(InputBufferComponent_GetInputSnapshotCount, ReturnValue) == 0x000000, "Member 'InputBufferComponent_GetInputSnapshotCount::ReturnValue' has a wrong offset!");
 
-// Function Zion.InputSettingsSubsystem.RemapKey
-// 0x0078 (0x0078 - 0x0000)
-struct InputSettingsSubsystem_RemapKey final
+// Function Zion.Interactable.OnActivateInteractable
+// 0x0008 (0x0008 - 0x0000)
+struct Interactable_OnActivateInteractable final
 {
 public:
-	EActionInputType                              ActionInputType;                                   // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FKey                                   NewKey;                                            // 0x0008(0x0018)(ConstParm, Parm, OutParm, ReferenceParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TSet<EActionInputType>                        InvalidInputTypes;                                 // 0x0020(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	bool                                          bIsGamepadKey;                                     // 0x0070(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0071(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_72[0x6];                                       // 0x0072(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      Controller;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InputSettingsSubsystem_RemapKey) == 0x000008, "Wrong alignment on InputSettingsSubsystem_RemapKey");
-static_assert(sizeof(InputSettingsSubsystem_RemapKey) == 0x000078, "Wrong size on InputSettingsSubsystem_RemapKey");
-static_assert(offsetof(InputSettingsSubsystem_RemapKey, ActionInputType) == 0x000000, "Member 'InputSettingsSubsystem_RemapKey::ActionInputType' has a wrong offset!");
-static_assert(offsetof(InputSettingsSubsystem_RemapKey, NewKey) == 0x000008, "Member 'InputSettingsSubsystem_RemapKey::NewKey' has a wrong offset!");
-static_assert(offsetof(InputSettingsSubsystem_RemapKey, InvalidInputTypes) == 0x000020, "Member 'InputSettingsSubsystem_RemapKey::InvalidInputTypes' has a wrong offset!");
-static_assert(offsetof(InputSettingsSubsystem_RemapKey, bIsGamepadKey) == 0x000070, "Member 'InputSettingsSubsystem_RemapKey::bIsGamepadKey' has a wrong offset!");
-static_assert(offsetof(InputSettingsSubsystem_RemapKey, ReturnValue) == 0x000071, "Member 'InputSettingsSubsystem_RemapKey::ReturnValue' has a wrong offset!");
+static_assert(alignof(Interactable_OnActivateInteractable) == 0x000008, "Wrong alignment on Interactable_OnActivateInteractable");
+static_assert(sizeof(Interactable_OnActivateInteractable) == 0x000008, "Wrong size on Interactable_OnActivateInteractable");
+static_assert(offsetof(Interactable_OnActivateInteractable, Controller) == 0x000000, "Member 'Interactable_OnActivateInteractable::Controller' has a wrong offset!");
 
-// Function Zion.InputSettingsSubsystem.ResetAllInputMappingContextsToDefault
+// Function Zion.Interactable.OnDeactivateInteractable
+// 0x0008 (0x0008 - 0x0000)
+struct Interactable_OnDeactivateInteractable final
+{
+public:
+	class APlayerController*                      Controller;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Interactable_OnDeactivateInteractable) == 0x000008, "Wrong alignment on Interactable_OnDeactivateInteractable");
+static_assert(sizeof(Interactable_OnDeactivateInteractable) == 0x000008, "Wrong size on Interactable_OnDeactivateInteractable");
+static_assert(offsetof(Interactable_OnDeactivateInteractable, Controller) == 0x000000, "Member 'Interactable_OnDeactivateInteractable::Controller' has a wrong offset!");
+
+// Function Zion.Interactable.OnInteract
+// 0x0008 (0x0008 - 0x0000)
+struct Interactable_OnInteract final
+{
+public:
+	class APlayerController*                      Controller;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Interactable_OnInteract) == 0x000008, "Wrong alignment on Interactable_OnInteract");
+static_assert(sizeof(Interactable_OnInteract) == 0x000008, "Wrong size on Interactable_OnInteract");
+static_assert(offsetof(Interactable_OnInteract, Controller) == 0x000000, "Member 'Interactable_OnInteract::Controller' has a wrong offset!");
+
+// Function Zion.Interactable.OnInteract_ConditionCheckFailed
+// 0x0008 (0x0008 - 0x0000)
+struct Interactable_OnInteract_ConditionCheckFailed final
+{
+public:
+	class APlayerController*                      Controller;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Interactable_OnInteract_ConditionCheckFailed) == 0x000008, "Wrong alignment on Interactable_OnInteract_ConditionCheckFailed");
+static_assert(sizeof(Interactable_OnInteract_ConditionCheckFailed) == 0x000008, "Wrong size on Interactable_OnInteract_ConditionCheckFailed");
+static_assert(offsetof(Interactable_OnInteract_ConditionCheckFailed, Controller) == 0x000000, "Member 'Interactable_OnInteract_ConditionCheckFailed::Controller' has a wrong offset!");
+
+// Function Zion.Interactable.SetCanBeInteracted
 // 0x0001 (0x0001 - 0x0000)
-struct InputSettingsSubsystem_ResetAllInputMappingContextsToDefault final
+struct Interactable_SetCanBeInteracted final
 {
 public:
-	bool                                          bIsGamepad;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bCanInteract;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InputSettingsSubsystem_ResetAllInputMappingContextsToDefault) == 0x000001, "Wrong alignment on InputSettingsSubsystem_ResetAllInputMappingContextsToDefault");
-static_assert(sizeof(InputSettingsSubsystem_ResetAllInputMappingContextsToDefault) == 0x000001, "Wrong size on InputSettingsSubsystem_ResetAllInputMappingContextsToDefault");
-static_assert(offsetof(InputSettingsSubsystem_ResetAllInputMappingContextsToDefault, bIsGamepad) == 0x000000, "Member 'InputSettingsSubsystem_ResetAllInputMappingContextsToDefault::bIsGamepad' has a wrong offset!");
+static_assert(alignof(Interactable_SetCanBeInteracted) == 0x000001, "Wrong alignment on Interactable_SetCanBeInteracted");
+static_assert(sizeof(Interactable_SetCanBeInteracted) == 0x000001, "Wrong size on Interactable_SetCanBeInteracted");
+static_assert(offsetof(Interactable_SetCanBeInteracted, bCanInteract) == 0x000000, "Member 'Interactable_SetCanBeInteracted::bCanInteract' has a wrong offset!");
 
-// Function Zion.InputSettingsSubsystem.ResetInputMappingContextToDefault
+// Function Zion.Interactable.CanBeInteracted
+// 0x0001 (0x0001 - 0x0000)
+struct Interactable_CanBeInteracted final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Interactable_CanBeInteracted) == 0x000001, "Wrong alignment on Interactable_CanBeInteracted");
+static_assert(sizeof(Interactable_CanBeInteracted) == 0x000001, "Wrong size on Interactable_CanBeInteracted");
+static_assert(offsetof(Interactable_CanBeInteracted, ReturnValue) == 0x000000, "Member 'Interactable_CanBeInteracted::ReturnValue' has a wrong offset!");
+
+// Function Zion.Interactable.ConditionsChecked
+// 0x0001 (0x0001 - 0x0000)
+struct Interactable_ConditionsChecked final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Interactable_ConditionsChecked) == 0x000001, "Wrong alignment on Interactable_ConditionsChecked");
+static_assert(sizeof(Interactable_ConditionsChecked) == 0x000001, "Wrong size on Interactable_ConditionsChecked");
+static_assert(offsetof(Interactable_ConditionsChecked, ReturnValue) == 0x000000, "Member 'Interactable_ConditionsChecked::ReturnValue' has a wrong offset!");
+
+// Function Zion.Interactable.GetInteractingController
+// 0x0008 (0x0008 - 0x0000)
+struct Interactable_GetInteractingController final
+{
+public:
+	class APlayerController*                      ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Interactable_GetInteractingController) == 0x000008, "Wrong alignment on Interactable_GetInteractingController");
+static_assert(sizeof(Interactable_GetInteractingController) == 0x000008, "Wrong size on Interactable_GetInteractingController");
+static_assert(offsetof(Interactable_GetInteractingController, ReturnValue) == 0x000000, "Member 'Interactable_GetInteractingController::ReturnValue' has a wrong offset!");
+
+// Function Zion.Interactable.GetInteractionText
 // 0x0010 (0x0010 - 0x0000)
-struct InputSettingsSubsystem_ResetInputMappingContextToDefault final
+struct Interactable_GetInteractionText final
 {
 public:
-	class UInputMappingContext*                   InputMappingContext;                               // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bIsGamepad;                                        // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FText                                   ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InputSettingsSubsystem_ResetInputMappingContextToDefault) == 0x000008, "Wrong alignment on InputSettingsSubsystem_ResetInputMappingContextToDefault");
-static_assert(sizeof(InputSettingsSubsystem_ResetInputMappingContextToDefault) == 0x000010, "Wrong size on InputSettingsSubsystem_ResetInputMappingContextToDefault");
-static_assert(offsetof(InputSettingsSubsystem_ResetInputMappingContextToDefault, InputMappingContext) == 0x000000, "Member 'InputSettingsSubsystem_ResetInputMappingContextToDefault::InputMappingContext' has a wrong offset!");
-static_assert(offsetof(InputSettingsSubsystem_ResetInputMappingContextToDefault, bIsGamepad) == 0x000008, "Member 'InputSettingsSubsystem_ResetInputMappingContextToDefault::bIsGamepad' has a wrong offset!");
+static_assert(alignof(Interactable_GetInteractionText) == 0x000008, "Wrong alignment on Interactable_GetInteractionText");
+static_assert(sizeof(Interactable_GetInteractionText) == 0x000010, "Wrong size on Interactable_GetInteractionText");
+static_assert(offsetof(Interactable_GetInteractionText, ReturnValue) == 0x000000, "Member 'Interactable_GetInteractionText::ReturnValue' has a wrong offset!");
 
-// Function Zion.InputSettingsSubsystem.GetMappedKey
-// 0x0020 (0x0020 - 0x0000)
-struct InputSettingsSubsystem_GetMappedKey final
+// Function Zion.Interactable.PlaySoundEvent
+// 0x0008 (0x0008 - 0x0000)
+struct Interactable_PlaySoundEvent final
 {
 public:
-	class FName                                   MappingName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FKey                                   ReturnValue;                                       // 0x0008(0x0018)(Parm, OutParm, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UFMODEvent*                             SoundEffect;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InputSettingsSubsystem_GetMappedKey) == 0x000008, "Wrong alignment on InputSettingsSubsystem_GetMappedKey");
-static_assert(sizeof(InputSettingsSubsystem_GetMappedKey) == 0x000020, "Wrong size on InputSettingsSubsystem_GetMappedKey");
-static_assert(offsetof(InputSettingsSubsystem_GetMappedKey, MappingName) == 0x000000, "Member 'InputSettingsSubsystem_GetMappedKey::MappingName' has a wrong offset!");
-static_assert(offsetof(InputSettingsSubsystem_GetMappedKey, ReturnValue) == 0x000008, "Member 'InputSettingsSubsystem_GetMappedKey::ReturnValue' has a wrong offset!");
-
-// Function Zion.InputSettingsSubsystem.GetMappingNameFromInputAction
-// 0x0018 (0x0018 - 0x0000)
-struct InputSettingsSubsystem_GetMappingNameFromInputAction final
-{
-public:
-	const class UInputAction*                     InputAction;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bIsGamepad;                                        // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   ReturnValue;                                       // 0x000C(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(InputSettingsSubsystem_GetMappingNameFromInputAction) == 0x000008, "Wrong alignment on InputSettingsSubsystem_GetMappingNameFromInputAction");
-static_assert(sizeof(InputSettingsSubsystem_GetMappingNameFromInputAction) == 0x000018, "Wrong size on InputSettingsSubsystem_GetMappingNameFromInputAction");
-static_assert(offsetof(InputSettingsSubsystem_GetMappingNameFromInputAction, InputAction) == 0x000000, "Member 'InputSettingsSubsystem_GetMappingNameFromInputAction::InputAction' has a wrong offset!");
-static_assert(offsetof(InputSettingsSubsystem_GetMappingNameFromInputAction, bIsGamepad) == 0x000008, "Member 'InputSettingsSubsystem_GetMappingNameFromInputAction::bIsGamepad' has a wrong offset!");
-static_assert(offsetof(InputSettingsSubsystem_GetMappingNameFromInputAction, ReturnValue) == 0x00000C, "Member 'InputSettingsSubsystem_GetMappingNameFromInputAction::ReturnValue' has a wrong offset!");
+static_assert(alignof(Interactable_PlaySoundEvent) == 0x000008, "Wrong alignment on Interactable_PlaySoundEvent");
+static_assert(sizeof(Interactable_PlaySoundEvent) == 0x000008, "Wrong size on Interactable_PlaySoundEvent");
+static_assert(offsetof(Interactable_PlaySoundEvent, SoundEffect) == 0x000000, "Member 'Interactable_PlaySoundEvent::SoundEffect' has a wrong offset!");
 
 // Function Zion.Interactable_Event.OnClearStatusChecked
 // 0x0001 (0x0001 - 0x0000)
@@ -8987,359 +9497,229 @@ static_assert(offsetof(InteractComponent_OnOverlapEnd, OtherActor) == 0x000008, 
 static_assert(offsetof(InteractComponent_OnOverlapEnd, OtherComp) == 0x000010, "Member 'InteractComponent_OnOverlapEnd::OtherComp' has a wrong offset!");
 static_assert(offsetof(InteractComponent_OnOverlapEnd, OtherBodyIndex) == 0x000018, "Member 'InteractComponent_OnOverlapEnd::OtherBodyIndex' has a wrong offset!");
 
-// Function Zion.InventoryComponent.AddCurrency
-// 0x000C (0x000C - 0x0000)
-struct InventoryComponent_AddCurrency final
+// Function Zion.Inventory.GetAllItemsAvailable
+// 0x0050 (0x0050 - 0x0000)
+struct Inventory_GetAllItemsAvailable final
 {
 public:
-	ECurrencyType                                 CurrencyType;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CurrencyToAdd;                                     // 0x0004(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TMap<class FName, int32>                      ReturnValue;                                       // 0x0000(0x0050)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Inventory_GetAllItemsAvailable) == 0x000008, "Wrong alignment on Inventory_GetAllItemsAvailable");
+static_assert(sizeof(Inventory_GetAllItemsAvailable) == 0x000050, "Wrong size on Inventory_GetAllItemsAvailable");
+static_assert(offsetof(Inventory_GetAllItemsAvailable, ReturnValue) == 0x000000, "Member 'Inventory_GetAllItemsAvailable::ReturnValue' has a wrong offset!");
+
+// Function Zion.Inventory.MarkItemAsChecked
+// 0x0008 (0x0008 - 0x0000)
+struct Inventory_MarkItemAsChecked final
+{
+public:
+	class FName                                   ItemRowName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Inventory_MarkItemAsChecked) == 0x000004, "Wrong alignment on Inventory_MarkItemAsChecked");
+static_assert(sizeof(Inventory_MarkItemAsChecked) == 0x000008, "Wrong size on Inventory_MarkItemAsChecked");
+static_assert(offsetof(Inventory_MarkItemAsChecked, ItemRowName) == 0x000000, "Member 'Inventory_MarkItemAsChecked::ItemRowName' has a wrong offset!");
+
+// Function Zion.Inventory.GetAllItems
+// 0x0050 (0x0050 - 0x0000)
+struct Inventory_GetAllItems final
+{
+public:
+	TMap<class FName, int32>                      ReturnValue;                                       // 0x0000(0x0050)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(Inventory_GetAllItems) == 0x000008, "Wrong alignment on Inventory_GetAllItems");
+static_assert(sizeof(Inventory_GetAllItems) == 0x000050, "Wrong size on Inventory_GetAllItems");
+static_assert(offsetof(Inventory_GetAllItems, ReturnValue) == 0x000000, "Member 'Inventory_GetAllItems::ReturnValue' has a wrong offset!");
+
+// Function Zion.Inventory.GetCountOfItem
+// 0x000C (0x000C - 0x0000)
+struct Inventory_GetCountOfItem final
+{
+public:
+	class FName                                   ItemId;                                            // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_AddCurrency) == 0x000004, "Wrong alignment on InventoryComponent_AddCurrency");
-static_assert(sizeof(InventoryComponent_AddCurrency) == 0x00000C, "Wrong size on InventoryComponent_AddCurrency");
-static_assert(offsetof(InventoryComponent_AddCurrency, CurrencyType) == 0x000000, "Member 'InventoryComponent_AddCurrency::CurrencyType' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_AddCurrency, CurrencyToAdd) == 0x000004, "Member 'InventoryComponent_AddCurrency::CurrencyToAdd' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_AddCurrency, ReturnValue) == 0x000008, "Member 'InventoryComponent_AddCurrency::ReturnValue' has a wrong offset!");
+static_assert(alignof(Inventory_GetCountOfItem) == 0x000004, "Wrong alignment on Inventory_GetCountOfItem");
+static_assert(sizeof(Inventory_GetCountOfItem) == 0x00000C, "Wrong size on Inventory_GetCountOfItem");
+static_assert(offsetof(Inventory_GetCountOfItem, ItemId) == 0x000000, "Member 'Inventory_GetCountOfItem::ItemId' has a wrong offset!");
+static_assert(offsetof(Inventory_GetCountOfItem, ReturnValue) == 0x000008, "Member 'Inventory_GetCountOfItem::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventoryComponent.AddDrop
-// 0x01F8 (0x01F8 - 0x0000)
-struct InventoryComponent_AddDrop final
+// Function Zion.Inventory.GetDataTable
+// 0x0008 (0x0008 - 0x0000)
+struct Inventory_GetDataTable final
 {
 public:
-	struct FDrop                                  Drop;                                              // 0x0000(0x01F0)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	float                                         DropFactor;                                        // 0x01F0(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x01F4(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1F5[0x3];                                      // 0x01F5(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	const class UDataTable*                       ReturnValue;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_AddDrop) == 0x000008, "Wrong alignment on InventoryComponent_AddDrop");
-static_assert(sizeof(InventoryComponent_AddDrop) == 0x0001F8, "Wrong size on InventoryComponent_AddDrop");
-static_assert(offsetof(InventoryComponent_AddDrop, Drop) == 0x000000, "Member 'InventoryComponent_AddDrop::Drop' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_AddDrop, DropFactor) == 0x0001F0, "Member 'InventoryComponent_AddDrop::DropFactor' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_AddDrop, ReturnValue) == 0x0001F4, "Member 'InventoryComponent_AddDrop::ReturnValue' has a wrong offset!");
+static_assert(alignof(Inventory_GetDataTable) == 0x000008, "Wrong alignment on Inventory_GetDataTable");
+static_assert(sizeof(Inventory_GetDataTable) == 0x000008, "Wrong size on Inventory_GetDataTable");
+static_assert(offsetof(Inventory_GetDataTable, ReturnValue) == 0x000000, "Member 'Inventory_GetDataTable::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventoryComponent.AddItem
-// 0x0018 (0x0018 - 0x0000)
-struct InventoryComponent_AddItem final
+// Function Zion.Inventory.GetItemCount
+// 0x0004 (0x0004 - 0x0000)
+struct Inventory_GetItemCount final
 {
 public:
-	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         Count;                                             // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0014(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_AddItem) == 0x000008, "Wrong alignment on InventoryComponent_AddItem");
-static_assert(sizeof(InventoryComponent_AddItem) == 0x000018, "Wrong size on InventoryComponent_AddItem");
-static_assert(offsetof(InventoryComponent_AddItem, ItemHandle) == 0x000000, "Member 'InventoryComponent_AddItem::ItemHandle' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_AddItem, Count) == 0x000010, "Member 'InventoryComponent_AddItem::Count' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_AddItem, ReturnValue) == 0x000014, "Member 'InventoryComponent_AddItem::ReturnValue' has a wrong offset!");
+static_assert(alignof(Inventory_GetItemCount) == 0x000004, "Wrong alignment on Inventory_GetItemCount");
+static_assert(sizeof(Inventory_GetItemCount) == 0x000004, "Wrong size on Inventory_GetItemCount");
+static_assert(offsetof(Inventory_GetItemCount, ReturnValue) == 0x000000, "Member 'Inventory_GetItemCount::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventoryComponent.HasItem
-// 0x0018 (0x0018 - 0x0000)
-struct InventoryComponent_HasItem final
-{
-public:
-	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         Count;                                             // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0014(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(InventoryComponent_HasItem) == 0x000008, "Wrong alignment on InventoryComponent_HasItem");
-static_assert(sizeof(InventoryComponent_HasItem) == 0x000018, "Wrong size on InventoryComponent_HasItem");
-static_assert(offsetof(InventoryComponent_HasItem, ItemHandle) == 0x000000, "Member 'InventoryComponent_HasItem::ItemHandle' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_HasItem, Count) == 0x000010, "Member 'InventoryComponent_HasItem::Count' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_HasItem, ReturnValue) == 0x000014, "Member 'InventoryComponent_HasItem::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.MarkItemAsChecked
+// Function Zion.Inventory.HasItem
 // 0x0010 (0x0010 - 0x0000)
-struct InventoryComponent_MarkItemAsChecked final
+struct Inventory_HasItem final
 {
 public:
-	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	class FName                                   ItemRowName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Count;                                             // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x000C(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(InventoryComponent_MarkItemAsChecked) == 0x000008, "Wrong alignment on InventoryComponent_MarkItemAsChecked");
-static_assert(sizeof(InventoryComponent_MarkItemAsChecked) == 0x000010, "Wrong size on InventoryComponent_MarkItemAsChecked");
-static_assert(offsetof(InventoryComponent_MarkItemAsChecked, ItemHandle) == 0x000000, "Member 'InventoryComponent_MarkItemAsChecked::ItemHandle' has a wrong offset!");
+static_assert(alignof(Inventory_HasItem) == 0x000004, "Wrong alignment on Inventory_HasItem");
+static_assert(sizeof(Inventory_HasItem) == 0x000010, "Wrong size on Inventory_HasItem");
+static_assert(offsetof(Inventory_HasItem, ItemRowName) == 0x000000, "Member 'Inventory_HasItem::ItemRowName' has a wrong offset!");
+static_assert(offsetof(Inventory_HasItem, Count) == 0x000008, "Member 'Inventory_HasItem::Count' has a wrong offset!");
+static_assert(offsetof(Inventory_HasItem, ReturnValue) == 0x00000C, "Member 'Inventory_HasItem::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventoryComponent.RemoveItem
-// 0x0018 (0x0018 - 0x0000)
-struct InventoryComponent_RemoveItem final
+// Function Zion.Inventory.HasNonCheckedItem
+// 0x0001 (0x0001 - 0x0000)
+struct Inventory_HasNonCheckedItem final
 {
 public:
-	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         Count;                                             // 0x0010(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0014(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_RemoveItem) == 0x000008, "Wrong alignment on InventoryComponent_RemoveItem");
-static_assert(sizeof(InventoryComponent_RemoveItem) == 0x000018, "Wrong size on InventoryComponent_RemoveItem");
-static_assert(offsetof(InventoryComponent_RemoveItem, ItemHandle) == 0x000000, "Member 'InventoryComponent_RemoveItem::ItemHandle' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_RemoveItem, Count) == 0x000010, "Member 'InventoryComponent_RemoveItem::Count' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_RemoveItem, ReturnValue) == 0x000014, "Member 'InventoryComponent_RemoveItem::ReturnValue' has a wrong offset!");
+static_assert(alignof(Inventory_HasNonCheckedItem) == 0x000001, "Wrong alignment on Inventory_HasNonCheckedItem");
+static_assert(sizeof(Inventory_HasNonCheckedItem) == 0x000001, "Wrong size on Inventory_HasNonCheckedItem");
+static_assert(offsetof(Inventory_HasNonCheckedItem, ReturnValue) == 0x000000, "Member 'Inventory_HasNonCheckedItem::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventoryComponent.SpendCurrency
+// Function Zion.Inventory.IsItemChecked
 // 0x000C (0x000C - 0x0000)
-struct InventoryComponent_SpendCurrency final
+struct Inventory_IsItemChecked final
 {
 public:
-	struct FCurrencyValue                         CurrencyValue;                                     // 0x0000(0x0008)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_SpendCurrency) == 0x000004, "Wrong alignment on InventoryComponent_SpendCurrency");
-static_assert(sizeof(InventoryComponent_SpendCurrency) == 0x00000C, "Wrong size on InventoryComponent_SpendCurrency");
-static_assert(offsetof(InventoryComponent_SpendCurrency, CurrencyValue) == 0x000000, "Member 'InventoryComponent_SpendCurrency::CurrencyValue' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_SpendCurrency, ReturnValue) == 0x000008, "Member 'InventoryComponent_SpendCurrency::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.CanSpendCurrency
-// 0x000C (0x000C - 0x0000)
-struct InventoryComponent_CanSpendCurrency final
-{
-public:
-	struct FCurrencyValue                         CurrencyValue;                                     // 0x0000(0x0008)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	class FName                                   ItemRowName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(InventoryComponent_CanSpendCurrency) == 0x000004, "Wrong alignment on InventoryComponent_CanSpendCurrency");
-static_assert(sizeof(InventoryComponent_CanSpendCurrency) == 0x00000C, "Wrong size on InventoryComponent_CanSpendCurrency");
-static_assert(offsetof(InventoryComponent_CanSpendCurrency, CurrencyValue) == 0x000000, "Member 'InventoryComponent_CanSpendCurrency::CurrencyValue' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_CanSpendCurrency, ReturnValue) == 0x000008, "Member 'InventoryComponent_CanSpendCurrency::ReturnValue' has a wrong offset!");
+static_assert(alignof(Inventory_IsItemChecked) == 0x000004, "Wrong alignment on Inventory_IsItemChecked");
+static_assert(sizeof(Inventory_IsItemChecked) == 0x00000C, "Wrong size on Inventory_IsItemChecked");
+static_assert(offsetof(Inventory_IsItemChecked, ItemRowName) == 0x000000, "Member 'Inventory_IsItemChecked::ItemRowName' has a wrong offset!");
+static_assert(offsetof(Inventory_IsItemChecked, ReturnValue) == 0x000008, "Member 'Inventory_IsItemChecked::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventoryComponent.GetAptitudeInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetAptitudeInventory final
+// Function Zion.InventorySkill.GetMaxSkillLevel
+// 0x0004 (0x0004 - 0x0000)
+struct InventorySkill_GetMaxSkillLevel final
 {
 public:
-	class UInventoryAptitude*                     ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_GetAptitudeInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetAptitudeInventory");
-static_assert(sizeof(InventoryComponent_GetAptitudeInventory) == 0x000008, "Wrong size on InventoryComponent_GetAptitudeInventory");
-static_assert(offsetof(InventoryComponent_GetAptitudeInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetAptitudeInventory::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventorySkill_GetMaxSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_GetMaxSkillLevel");
+static_assert(sizeof(InventorySkill_GetMaxSkillLevel) == 0x000004, "Wrong size on InventorySkill_GetMaxSkillLevel");
+static_assert(offsetof(InventorySkill_GetMaxSkillLevel, ReturnValue) == 0x000000, "Member 'InventorySkill_GetMaxSkillLevel::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventoryComponent.GetAssistInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetAssistInventory final
+// Function Zion.InventorySkill.GetMinSkillLevel
+// 0x0004 (0x0004 - 0x0000)
+struct InventorySkill_GetMinSkillLevel final
 {
 public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_GetAssistInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetAssistInventory");
-static_assert(sizeof(InventoryComponent_GetAssistInventory) == 0x000008, "Wrong size on InventoryComponent_GetAssistInventory");
-static_assert(offsetof(InventoryComponent_GetAssistInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetAssistInventory::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventorySkill_GetMinSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_GetMinSkillLevel");
+static_assert(sizeof(InventorySkill_GetMinSkillLevel) == 0x000004, "Wrong size on InventorySkill_GetMinSkillLevel");
+static_assert(offsetof(InventorySkill_GetMinSkillLevel, ReturnValue) == 0x000000, "Member 'InventorySkill_GetMinSkillLevel::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventoryComponent.GetCostumeInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetCostumeInventory final
-{
-public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetCostumeInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetCostumeInventory");
-static_assert(sizeof(InventoryComponent_GetCostumeInventory) == 0x000008, "Wrong size on InventoryComponent_GetCostumeInventory");
-static_assert(offsetof(InventoryComponent_GetCostumeInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetCostumeInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetCountOfItem
-// 0x0018 (0x0018 - 0x0000)
-struct InventoryComponent_GetCountOfItem final
-{
-public:
-	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(InventoryComponent_GetCountOfItem) == 0x000008, "Wrong alignment on InventoryComponent_GetCountOfItem");
-static_assert(sizeof(InventoryComponent_GetCountOfItem) == 0x000018, "Wrong size on InventoryComponent_GetCountOfItem");
-static_assert(offsetof(InventoryComponent_GetCountOfItem, ItemHandle) == 0x000000, "Member 'InventoryComponent_GetCountOfItem::ItemHandle' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_GetCountOfItem, ReturnValue) == 0x000010, "Member 'InventoryComponent_GetCountOfItem::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetCurrency
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetCurrency final
-{
-public:
-	ECurrencyType                                 CurrencyType;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetCurrency) == 0x000004, "Wrong alignment on InventoryComponent_GetCurrency");
-static_assert(sizeof(InventoryComponent_GetCurrency) == 0x000008, "Wrong size on InventoryComponent_GetCurrency");
-static_assert(offsetof(InventoryComponent_GetCurrency, CurrencyType) == 0x000000, "Member 'InventoryComponent_GetCurrency::CurrencyType' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_GetCurrency, ReturnValue) == 0x000004, "Member 'InventoryComponent_GetCurrency::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetCurrencyInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetCurrencyInventory final
-{
-public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetCurrencyInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetCurrencyInventory");
-static_assert(sizeof(InventoryComponent_GetCurrencyInventory) == 0x000008, "Wrong size on InventoryComponent_GetCurrencyInventory");
-static_assert(offsetof(InventoryComponent_GetCurrencyInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetCurrencyInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetEnemyInfoInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetEnemyInfoInventory final
-{
-public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetEnemyInfoInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetEnemyInfoInventory");
-static_assert(sizeof(InventoryComponent_GetEnemyInfoInventory) == 0x000008, "Wrong size on InventoryComponent_GetEnemyInfoInventory");
-static_assert(offsetof(InventoryComponent_GetEnemyInfoInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetEnemyInfoInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetEquipmentInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetEquipmentInventory final
-{
-public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetEquipmentInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetEquipmentInventory");
-static_assert(sizeof(InventoryComponent_GetEquipmentInventory) == 0x000008, "Wrong size on InventoryComponent_GetEquipmentInventory");
-static_assert(offsetof(InventoryComponent_GetEquipmentInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetEquipmentInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetGalleryInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetGalleryInventory final
-{
-public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetGalleryInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetGalleryInventory");
-static_assert(sizeof(InventoryComponent_GetGalleryInventory) == 0x000008, "Wrong size on InventoryComponent_GetGalleryInventory");
-static_assert(offsetof(InventoryComponent_GetGalleryInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetGalleryInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetInventoryFromItemType
+// Function Zion.InventorySkill.SetSkillLevel
 // 0x0010 (0x0010 - 0x0000)
-struct InventoryComponent_GetInventoryFromItemType final
+struct InventorySkill_SetSkillLevel final
 {
 public:
-	EInventoryItemType                            ItemType;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UInventory*                             ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         NewLevel;                                          // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_GetInventoryFromItemType) == 0x000008, "Wrong alignment on InventoryComponent_GetInventoryFromItemType");
-static_assert(sizeof(InventoryComponent_GetInventoryFromItemType) == 0x000010, "Wrong size on InventoryComponent_GetInventoryFromItemType");
-static_assert(offsetof(InventoryComponent_GetInventoryFromItemType, ItemType) == 0x000000, "Member 'InventoryComponent_GetInventoryFromItemType::ItemType' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_GetInventoryFromItemType, ReturnValue) == 0x000008, "Member 'InventoryComponent_GetInventoryFromItemType::ReturnValue' has a wrong offset!");
+static_assert(alignof(InventorySkill_SetSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_SetSkillLevel");
+static_assert(sizeof(InventorySkill_SetSkillLevel) == 0x000010, "Wrong size on InventorySkill_SetSkillLevel");
+static_assert(offsetof(InventorySkill_SetSkillLevel, SkillID) == 0x000000, "Member 'InventorySkill_SetSkillLevel::SkillID' has a wrong offset!");
+static_assert(offsetof(InventorySkill_SetSkillLevel, NewLevel) == 0x000008, "Member 'InventorySkill_SetSkillLevel::NewLevel' has a wrong offset!");
+static_assert(offsetof(InventorySkill_SetSkillLevel, ReturnValue) == 0x00000C, "Member 'InventorySkill_SetSkillLevel::ReturnValue' has a wrong offset!");
 
-// Function Zion.InventoryComponent.GetNPCInfoInventory
+// Function Zion.InventorySkill.GetInitialSkillLevel
+// 0x000C (0x000C - 0x0000)
+struct InventorySkill_GetInitialSkillLevel final
+{
+public:
+	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventorySkill_GetInitialSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_GetInitialSkillLevel");
+static_assert(sizeof(InventorySkill_GetInitialSkillLevel) == 0x00000C, "Wrong size on InventorySkill_GetInitialSkillLevel");
+static_assert(offsetof(InventorySkill_GetInitialSkillLevel, SkillID) == 0x000000, "Member 'InventorySkill_GetInitialSkillLevel::SkillID' has a wrong offset!");
+static_assert(offsetof(InventorySkill_GetInitialSkillLevel, ReturnValue) == 0x000008, "Member 'InventorySkill_GetInitialSkillLevel::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventorySkill.GetSkillLevel
+// 0x0010 (0x0010 - 0x0000)
+struct InventorySkill_GetSkillLevel final
+{
+public:
+	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bFallbackInitialLevel;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(InventorySkill_GetSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_GetSkillLevel");
+static_assert(sizeof(InventorySkill_GetSkillLevel) == 0x000010, "Wrong size on InventorySkill_GetSkillLevel");
+static_assert(offsetof(InventorySkill_GetSkillLevel, SkillID) == 0x000000, "Member 'InventorySkill_GetSkillLevel::SkillID' has a wrong offset!");
+static_assert(offsetof(InventorySkill_GetSkillLevel, bFallbackInitialLevel) == 0x000008, "Member 'InventorySkill_GetSkillLevel::bFallbackInitialLevel' has a wrong offset!");
+static_assert(offsetof(InventorySkill_GetSkillLevel, ReturnValue) == 0x00000C, "Member 'InventorySkill_GetSkillLevel::ReturnValue' has a wrong offset!");
+
+// Function Zion.InventorySkill.IsMaxSkillLevel
+// 0x000C (0x000C - 0x0000)
+struct InventorySkill_IsMaxSkillLevel final
+{
+public:
+	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(InventorySkill_IsMaxSkillLevel) == 0x000004, "Wrong alignment on InventorySkill_IsMaxSkillLevel");
+static_assert(sizeof(InventorySkill_IsMaxSkillLevel) == 0x00000C, "Wrong size on InventorySkill_IsMaxSkillLevel");
+static_assert(offsetof(InventorySkill_IsMaxSkillLevel, SkillID) == 0x000000, "Member 'InventorySkill_IsMaxSkillLevel::SkillID' has a wrong offset!");
+static_assert(offsetof(InventorySkill_IsMaxSkillLevel, ReturnValue) == 0x000008, "Member 'InventorySkill_IsMaxSkillLevel::ReturnValue' has a wrong offset!");
+
+// Function Zion.KnockbackComponent.OnPreStartCommand
 // 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetNPCInfoInventory final
+struct KnockbackComponent_OnPreStartCommand final
 {
 public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	const class UCommand*                         Command;                                           // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_GetNPCInfoInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetNPCInfoInventory");
-static_assert(sizeof(InventoryComponent_GetNPCInfoInventory) == 0x000008, "Wrong size on InventoryComponent_GetNPCInfoInventory");
-static_assert(offsetof(InventoryComponent_GetNPCInfoInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetNPCInfoInventory::ReturnValue' has a wrong offset!");
+static_assert(alignof(KnockbackComponent_OnPreStartCommand) == 0x000008, "Wrong alignment on KnockbackComponent_OnPreStartCommand");
+static_assert(sizeof(KnockbackComponent_OnPreStartCommand) == 0x000008, "Wrong size on KnockbackComponent_OnPreStartCommand");
+static_assert(offsetof(KnockbackComponent_OnPreStartCommand, Command) == 0x000000, "Member 'KnockbackComponent_OnPreStartCommand::Command' has a wrong offset!");
 
-// Function Zion.InventoryComponent.GetPassiveInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetPassiveInventory final
+// Function Zion.KnockbackComponent.StartKnockback
+// 0x0070 (0x0070 - 0x0000)
+struct KnockbackComponent_StartKnockback final
 {
 public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FKnockbackData                         KnockbackData;                                     // 0x0000(0x0058)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                KnockbackDirection;                                // 0x0058(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_GetPassiveInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetPassiveInventory");
-static_assert(sizeof(InventoryComponent_GetPassiveInventory) == 0x000008, "Wrong size on InventoryComponent_GetPassiveInventory");
-static_assert(offsetof(InventoryComponent_GetPassiveInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetPassiveInventory::ReturnValue' has a wrong offset!");
+static_assert(alignof(KnockbackComponent_StartKnockback) == 0x000008, "Wrong alignment on KnockbackComponent_StartKnockback");
+static_assert(sizeof(KnockbackComponent_StartKnockback) == 0x000070, "Wrong size on KnockbackComponent_StartKnockback");
+static_assert(offsetof(KnockbackComponent_StartKnockback, KnockbackData) == 0x000000, "Member 'KnockbackComponent_StartKnockback::KnockbackData' has a wrong offset!");
+static_assert(offsetof(KnockbackComponent_StartKnockback, KnockbackDirection) == 0x000058, "Member 'KnockbackComponent_StartKnockback::KnockbackDirection' has a wrong offset!");
 
-// Function Zion.InventoryComponent.GetSkillInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetSkillInventory final
+// Function Zion.KnockbackComponent.IsInKnockback
+// 0x0001 (0x0001 - 0x0000)
+struct KnockbackComponent_IsInKnockback final
 {
 public:
-	class UInventorySkill*                        ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(InventoryComponent_GetSkillInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetSkillInventory");
-static_assert(sizeof(InventoryComponent_GetSkillInventory) == 0x000008, "Wrong size on InventoryComponent_GetSkillInventory");
-static_assert(offsetof(InventoryComponent_GetSkillInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetSkillInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetSpiritInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetSpiritInventory final
-{
-public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetSpiritInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetSpiritInventory");
-static_assert(sizeof(InventoryComponent_GetSpiritInventory) == 0x000008, "Wrong size on InventoryComponent_GetSpiritInventory");
-static_assert(offsetof(InventoryComponent_GetSpiritInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetSpiritInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetStatsInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetStatsInventory final
-{
-public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetStatsInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetStatsInventory");
-static_assert(sizeof(InventoryComponent_GetStatsInventory) == 0x000008, "Wrong size on InventoryComponent_GetStatsInventory");
-static_assert(offsetof(InventoryComponent_GetStatsInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetStatsInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetTipInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetTipInventory final
-{
-public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetTipInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetTipInventory");
-static_assert(sizeof(InventoryComponent_GetTipInventory) == 0x000008, "Wrong size on InventoryComponent_GetTipInventory");
-static_assert(offsetof(InventoryComponent_GetTipInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetTipInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.GetTutorialInventory
-// 0x0008 (0x0008 - 0x0000)
-struct InventoryComponent_GetTutorialInventory final
-{
-public:
-	class UInventory*                             ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_GetTutorialInventory) == 0x000008, "Wrong alignment on InventoryComponent_GetTutorialInventory");
-static_assert(sizeof(InventoryComponent_GetTutorialInventory) == 0x000008, "Wrong size on InventoryComponent_GetTutorialInventory");
-static_assert(offsetof(InventoryComponent_GetTutorialInventory, ReturnValue) == 0x000000, "Member 'InventoryComponent_GetTutorialInventory::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.HasAptitude
-// 0x0002 (0x0002 - 0x0000)
-struct InventoryComponent_HasAptitude final
-{
-public:
-	EAptitudeType                                 AptitudeType;                                      // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_HasAptitude) == 0x000001, "Wrong alignment on InventoryComponent_HasAptitude");
-static_assert(sizeof(InventoryComponent_HasAptitude) == 0x000002, "Wrong size on InventoryComponent_HasAptitude");
-static_assert(offsetof(InventoryComponent_HasAptitude, AptitudeType) == 0x000000, "Member 'InventoryComponent_HasAptitude::AptitudeType' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_HasAptitude, ReturnValue) == 0x000001, "Member 'InventoryComponent_HasAptitude::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.HasNonCheckedItem
-// 0x0002 (0x0002 - 0x0000)
-struct InventoryComponent_HasNonCheckedItem final
-{
-public:
-	EInventoryItemType                            ItemType;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(InventoryComponent_HasNonCheckedItem) == 0x000001, "Wrong alignment on InventoryComponent_HasNonCheckedItem");
-static_assert(sizeof(InventoryComponent_HasNonCheckedItem) == 0x000002, "Wrong size on InventoryComponent_HasNonCheckedItem");
-static_assert(offsetof(InventoryComponent_HasNonCheckedItem, ItemType) == 0x000000, "Member 'InventoryComponent_HasNonCheckedItem::ItemType' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_HasNonCheckedItem, ReturnValue) == 0x000001, "Member 'InventoryComponent_HasNonCheckedItem::ReturnValue' has a wrong offset!");
-
-// Function Zion.InventoryComponent.IsItemChecked
-// 0x0018 (0x0018 - 0x0000)
-struct InventoryComponent_IsItemChecked final
-{
-public:
-	struct FDataTableRowHandle                    ItemHandle;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(InventoryComponent_IsItemChecked) == 0x000008, "Wrong alignment on InventoryComponent_IsItemChecked");
-static_assert(sizeof(InventoryComponent_IsItemChecked) == 0x000018, "Wrong size on InventoryComponent_IsItemChecked");
-static_assert(offsetof(InventoryComponent_IsItemChecked, ItemHandle) == 0x000000, "Member 'InventoryComponent_IsItemChecked::ItemHandle' has a wrong offset!");
-static_assert(offsetof(InventoryComponent_IsItemChecked, ReturnValue) == 0x000010, "Member 'InventoryComponent_IsItemChecked::ReturnValue' has a wrong offset!");
+static_assert(alignof(KnockbackComponent_IsInKnockback) == 0x000001, "Wrong alignment on KnockbackComponent_IsInKnockback");
+static_assert(sizeof(KnockbackComponent_IsInKnockback) == 0x000001, "Wrong size on KnockbackComponent_IsInKnockback");
+static_assert(offsetof(KnockbackComponent_IsInKnockback, ReturnValue) == 0x000000, "Member 'KnockbackComponent_IsInKnockback::ReturnValue' has a wrong offset!");
 
 // Function Zion.LocalizationBPFLibrary.GetAvailableLanguages
 // 0x0010 (0x0010 - 0x0000)
@@ -9373,94 +9753,6 @@ public:
 static_assert(alignof(LocalizationBPFLibrary_SetLanguage) == 0x000008, "Wrong alignment on LocalizationBPFLibrary_SetLanguage");
 static_assert(sizeof(LocalizationBPFLibrary_SetLanguage) == 0x000010, "Wrong size on LocalizationBPFLibrary_SetLanguage");
 static_assert(offsetof(LocalizationBPFLibrary_SetLanguage, Language) == 0x000000, "Member 'LocalizationBPFLibrary_SetLanguage::Language' has a wrong offset!");
-
-// Function Zion.LocomotionComponent.SetFacing
-// 0x0001 (0x0001 - 0x0000)
-struct LocomotionComponent_SetFacing final
-{
-public:
-	EFacingType                                   FacingType;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(LocomotionComponent_SetFacing) == 0x000001, "Wrong alignment on LocomotionComponent_SetFacing");
-static_assert(sizeof(LocomotionComponent_SetFacing) == 0x000001, "Wrong size on LocomotionComponent_SetFacing");
-static_assert(offsetof(LocomotionComponent_SetFacing, FacingType) == 0x000000, "Member 'LocomotionComponent_SetFacing::FacingType' has a wrong offset!");
-
-// Function Zion.LocomotionComponent.SetFacingFromVector
-// 0x0018 (0x0018 - 0x0000)
-struct LocomotionComponent_SetFacingFromVector final
-{
-public:
-	struct FVector                                Vector;                                            // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(LocomotionComponent_SetFacingFromVector) == 0x000008, "Wrong alignment on LocomotionComponent_SetFacingFromVector");
-static_assert(sizeof(LocomotionComponent_SetFacingFromVector) == 0x000018, "Wrong size on LocomotionComponent_SetFacingFromVector");
-static_assert(offsetof(LocomotionComponent_SetFacingFromVector, Vector) == 0x000000, "Member 'LocomotionComponent_SetFacingFromVector::Vector' has a wrong offset!");
-
-// Function Zion.LocomotionComponent.SetUpdateFacing
-// 0x0001 (0x0001 - 0x0000)
-struct LocomotionComponent_SetUpdateFacing final
-{
-public:
-	bool                                          bNewUpdateFacing;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(LocomotionComponent_SetUpdateFacing) == 0x000001, "Wrong alignment on LocomotionComponent_SetUpdateFacing");
-static_assert(sizeof(LocomotionComponent_SetUpdateFacing) == 0x000001, "Wrong size on LocomotionComponent_SetUpdateFacing");
-static_assert(offsetof(LocomotionComponent_SetUpdateFacing, bNewUpdateFacing) == 0x000000, "Member 'LocomotionComponent_SetUpdateFacing::bNewUpdateFacing' has a wrong offset!");
-
-// Function Zion.LocomotionComponent.SetUpVector
-// 0x0018 (0x0018 - 0x0000)
-struct LocomotionComponent_SetUpVector final
-{
-public:
-	struct FVector                                NewUpVector;                                       // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(LocomotionComponent_SetUpVector) == 0x000008, "Wrong alignment on LocomotionComponent_SetUpVector");
-static_assert(sizeof(LocomotionComponent_SetUpVector) == 0x000018, "Wrong size on LocomotionComponent_SetUpVector");
-static_assert(offsetof(LocomotionComponent_SetUpVector, NewUpVector) == 0x000000, "Member 'LocomotionComponent_SetUpVector::NewUpVector' has a wrong offset!");
-
-// Function Zion.LocomotionComponent.GetFacing
-// 0x0001 (0x0001 - 0x0000)
-struct LocomotionComponent_GetFacing final
-{
-public:
-	EFacingType                                   ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(LocomotionComponent_GetFacing) == 0x000001, "Wrong alignment on LocomotionComponent_GetFacing");
-static_assert(sizeof(LocomotionComponent_GetFacing) == 0x000001, "Wrong size on LocomotionComponent_GetFacing");
-static_assert(offsetof(LocomotionComponent_GetFacing, ReturnValue) == 0x000000, "Member 'LocomotionComponent_GetFacing::ReturnValue' has a wrong offset!");
-
-// Function Zion.LocomotionComponent.GetUpdateFacing
-// 0x0001 (0x0001 - 0x0000)
-struct LocomotionComponent_GetUpdateFacing final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(LocomotionComponent_GetUpdateFacing) == 0x000001, "Wrong alignment on LocomotionComponent_GetUpdateFacing");
-static_assert(sizeof(LocomotionComponent_GetUpdateFacing) == 0x000001, "Wrong size on LocomotionComponent_GetUpdateFacing");
-static_assert(offsetof(LocomotionComponent_GetUpdateFacing, ReturnValue) == 0x000000, "Member 'LocomotionComponent_GetUpdateFacing::ReturnValue' has a wrong offset!");
-
-// Function Zion.LocomotionComponent.GetUpVector
-// 0x0018 (0x0018 - 0x0000)
-struct LocomotionComponent_GetUpVector final
-{
-public:
-	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(LocomotionComponent_GetUpVector) == 0x000008, "Wrong alignment on LocomotionComponent_GetUpVector");
-static_assert(sizeof(LocomotionComponent_GetUpVector) == 0x000018, "Wrong size on LocomotionComponent_GetUpVector");
-static_assert(offsetof(LocomotionComponent_GetUpVector, ReturnValue) == 0x000000, "Member 'LocomotionComponent_GetUpVector::ReturnValue' has a wrong offset!");
-
-// Function Zion.LocomotionComponent.GetWorldUpToUpRotation
-// 0x0020 (0x0020 - 0x0000)
-struct LocomotionComponent_GetWorldUpToUpRotation final
-{
-public:
-	struct FQuat                                  ReturnValue;                                       // 0x0000(0x0020)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(LocomotionComponent_GetWorldUpToUpRotation) == 0x000010, "Wrong alignment on LocomotionComponent_GetWorldUpToUpRotation");
-static_assert(sizeof(LocomotionComponent_GetWorldUpToUpRotation) == 0x000020, "Wrong size on LocomotionComponent_GetWorldUpToUpRotation");
-static_assert(offsetof(LocomotionComponent_GetWorldUpToUpRotation, ReturnValue) == 0x000000, "Member 'LocomotionComponent_GetWorldUpToUpRotation::ReturnValue' has a wrong offset!");
 
 // Function Zion.MapIconProviderInterface.GetMapIconActorWithDependencies
 // 0x0018 (0x0018 - 0x0000)
@@ -9579,67 +9871,53 @@ static_assert(offsetof(MathBPFLibrary_LoopAround, Min) == 0x000004, "Member 'Mat
 static_assert(offsetof(MathBPFLibrary_LoopAround, Max) == 0x000008, "Member 'MathBPFLibrary_LoopAround::Max' has a wrong offset!");
 static_assert(offsetof(MathBPFLibrary_LoopAround, ReturnValue) == 0x00000C, "Member 'MathBPFLibrary_LoopAround::ReturnValue' has a wrong offset!");
 
-// Function Zion.MoveComponent.SetVelocity
-// 0x0018 (0x0018 - 0x0000)
-struct MoveComponent_SetVelocity final
-{
-public:
-	struct FVector                                NewVelocity;                                       // 0x0000(0x0018)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(MoveComponent_SetVelocity) == 0x000008, "Wrong alignment on MoveComponent_SetVelocity");
-static_assert(sizeof(MoveComponent_SetVelocity) == 0x000018, "Wrong size on MoveComponent_SetVelocity");
-static_assert(offsetof(MoveComponent_SetVelocity, NewVelocity) == 0x000000, "Member 'MoveComponent_SetVelocity::NewVelocity' has a wrong offset!");
-
-// Function Zion.OneWayPlatform.OnComponentOverlapBegin
-// 0x0118 (0x0118 - 0x0000)
-struct OneWayPlatform_OnComponentOverlapBegin final
-{
-public:
-	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bFromSweep;                                        // 0x001C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHitResult                             SweepResult;                                       // 0x0020(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(OneWayPlatform_OnComponentOverlapBegin) == 0x000008, "Wrong alignment on OneWayPlatform_OnComponentOverlapBegin");
-static_assert(sizeof(OneWayPlatform_OnComponentOverlapBegin) == 0x000118, "Wrong size on OneWayPlatform_OnComponentOverlapBegin");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, OverlapComponent) == 0x000000, "Member 'OneWayPlatform_OnComponentOverlapBegin::OverlapComponent' has a wrong offset!");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, OtherActor) == 0x000008, "Member 'OneWayPlatform_OnComponentOverlapBegin::OtherActor' has a wrong offset!");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, OtherComp) == 0x000010, "Member 'OneWayPlatform_OnComponentOverlapBegin::OtherComp' has a wrong offset!");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, OtherBodyIndex) == 0x000018, "Member 'OneWayPlatform_OnComponentOverlapBegin::OtherBodyIndex' has a wrong offset!");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, bFromSweep) == 0x00001C, "Member 'OneWayPlatform_OnComponentOverlapBegin::bFromSweep' has a wrong offset!");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapBegin, SweepResult) == 0x000020, "Member 'OneWayPlatform_OnComponentOverlapBegin::SweepResult' has a wrong offset!");
-
-// Function Zion.OneWayPlatform.OnComponentOverlapEnd
-// 0x0020 (0x0020 - 0x0000)
-struct OneWayPlatform_OnComponentOverlapEnd final
-{
-public:
-	class UPrimitiveComponent*                    OverlapComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(OneWayPlatform_OnComponentOverlapEnd) == 0x000008, "Wrong alignment on OneWayPlatform_OnComponentOverlapEnd");
-static_assert(sizeof(OneWayPlatform_OnComponentOverlapEnd) == 0x000020, "Wrong size on OneWayPlatform_OnComponentOverlapEnd");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapEnd, OverlapComponent) == 0x000000, "Member 'OneWayPlatform_OnComponentOverlapEnd::OverlapComponent' has a wrong offset!");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapEnd, OtherActor) == 0x000008, "Member 'OneWayPlatform_OnComponentOverlapEnd::OtherActor' has a wrong offset!");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapEnd, OtherComp) == 0x000010, "Member 'OneWayPlatform_OnComponentOverlapEnd::OtherComp' has a wrong offset!");
-static_assert(offsetof(OneWayPlatform_OnComponentOverlapEnd, OtherBodyIndex) == 0x000018, "Member 'OneWayPlatform_OnComponentOverlapEnd::OtherBodyIndex' has a wrong offset!");
-
-// Function Zion.OneWayPlatform.IsFallThrough
+// Function Zion.MovingBlock_Elevator.CallToDestination
 // 0x0001 (0x0001 - 0x0000)
-struct OneWayPlatform_IsFallThrough final
+struct MovingBlock_Elevator_CallToDestination final
 {
 public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(OneWayPlatform_IsFallThrough) == 0x000001, "Wrong alignment on OneWayPlatform_IsFallThrough");
-static_assert(sizeof(OneWayPlatform_IsFallThrough) == 0x000001, "Wrong size on OneWayPlatform_IsFallThrough");
-static_assert(offsetof(OneWayPlatform_IsFallThrough, ReturnValue) == 0x000000, "Member 'OneWayPlatform_IsFallThrough::ReturnValue' has a wrong offset!");
+static_assert(alignof(MovingBlock_Elevator_CallToDestination) == 0x000001, "Wrong alignment on MovingBlock_Elevator_CallToDestination");
+static_assert(sizeof(MovingBlock_Elevator_CallToDestination) == 0x000001, "Wrong size on MovingBlock_Elevator_CallToDestination");
+static_assert(offsetof(MovingBlock_Elevator_CallToDestination, bInstant) == 0x000000, "Member 'MovingBlock_Elevator_CallToDestination::bInstant' has a wrong offset!");
+
+// Function Zion.MovingBlock_Elevator.CallToOrigin
+// 0x0001 (0x0001 - 0x0000)
+struct MovingBlock_Elevator_CallToOrigin final
+{
+public:
+	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MovingBlock_Elevator_CallToOrigin) == 0x000001, "Wrong alignment on MovingBlock_Elevator_CallToOrigin");
+static_assert(sizeof(MovingBlock_Elevator_CallToOrigin) == 0x000001, "Wrong size on MovingBlock_Elevator_CallToOrigin");
+static_assert(offsetof(MovingBlock_Elevator_CallToOrigin, bInstant) == 0x000000, "Member 'MovingBlock_Elevator_CallToOrigin::bInstant' has a wrong offset!");
+
+// Function Zion.MovingBlock_Elevator.OnFinishMovement
+// 0x0002 (0x0002 - 0x0000)
+struct MovingBlock_Elevator_OnFinishMovement final
+{
+public:
+	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bWasMoving;                                        // 0x0001(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MovingBlock_Elevator_OnFinishMovement) == 0x000001, "Wrong alignment on MovingBlock_Elevator_OnFinishMovement");
+static_assert(sizeof(MovingBlock_Elevator_OnFinishMovement) == 0x000002, "Wrong size on MovingBlock_Elevator_OnFinishMovement");
+static_assert(offsetof(MovingBlock_Elevator_OnFinishMovement, bInstant) == 0x000000, "Member 'MovingBlock_Elevator_OnFinishMovement::bInstant' has a wrong offset!");
+static_assert(offsetof(MovingBlock_Elevator_OnFinishMovement, bWasMoving) == 0x000001, "Member 'MovingBlock_Elevator_OnFinishMovement::bWasMoving' has a wrong offset!");
+
+// Function Zion.MovingBlock_Elevator.OnStartMovement
+// 0x0002 (0x0002 - 0x0000)
+struct MovingBlock_Elevator_OnStartMovement final
+{
+public:
+	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bWasMoving;                                        // 0x0001(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(MovingBlock_Elevator_OnStartMovement) == 0x000001, "Wrong alignment on MovingBlock_Elevator_OnStartMovement");
+static_assert(sizeof(MovingBlock_Elevator_OnStartMovement) == 0x000002, "Wrong size on MovingBlock_Elevator_OnStartMovement");
+static_assert(offsetof(MovingBlock_Elevator_OnStartMovement, bInstant) == 0x000000, "Member 'MovingBlock_Elevator_OnStartMovement::bInstant' has a wrong offset!");
+static_assert(offsetof(MovingBlock_Elevator_OnStartMovement, bWasMoving) == 0x000001, "Member 'MovingBlock_Elevator_OnStartMovement::bWasMoving' has a wrong offset!");
 
 // Function Zion.MovingPlatform_Elevator.OnFinishMovement
 // 0x0002 (0x0002 - 0x0000)
@@ -9729,6 +10007,31 @@ static_assert(alignof(MovingPlatform_Elevator_IsMoving) == 0x000001, "Wrong alig
 static_assert(sizeof(MovingPlatform_Elevator_IsMoving) == 0x000001, "Wrong size on MovingPlatform_Elevator_IsMoving");
 static_assert(offsetof(MovingPlatform_Elevator_IsMoving, ReturnValue) == 0x000000, "Member 'MovingPlatform_Elevator_IsMoving::ReturnValue' has a wrong offset!");
 
+// Function Zion.niagaraBPFLibrary.IsValid
+// 0x0110 (0x0110 - 0x0000)
+struct niagaraBPFLibrary_IsValid final
+{
+public:
+	struct FSpineFXData                           FXData;                                            // 0x0000(0x0100)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0100(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_101[0xF];                                      // 0x0101(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(niagaraBPFLibrary_IsValid) == 0x000010, "Wrong alignment on niagaraBPFLibrary_IsValid");
+static_assert(sizeof(niagaraBPFLibrary_IsValid) == 0x000110, "Wrong size on niagaraBPFLibrary_IsValid");
+static_assert(offsetof(niagaraBPFLibrary_IsValid, FXData) == 0x000000, "Member 'niagaraBPFLibrary_IsValid::FXData' has a wrong offset!");
+static_assert(offsetof(niagaraBPFLibrary_IsValid, ReturnValue) == 0x000100, "Member 'niagaraBPFLibrary_IsValid::ReturnValue' has a wrong offset!");
+
+// Function Zion.niagaraBPFLibrary.TryReleaseToPool
+// 0x0008 (0x0008 - 0x0000)
+struct niagaraBPFLibrary_TryReleaseToPool final
+{
+public:
+	class UNiagaraComponent*                      NiagaraComponent;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(niagaraBPFLibrary_TryReleaseToPool) == 0x000008, "Wrong alignment on niagaraBPFLibrary_TryReleaseToPool");
+static_assert(sizeof(niagaraBPFLibrary_TryReleaseToPool) == 0x000008, "Wrong size on niagaraBPFLibrary_TryReleaseToPool");
+static_assert(offsetof(niagaraBPFLibrary_TryReleaseToPool, NiagaraComponent) == 0x000000, "Member 'niagaraBPFLibrary_TryReleaseToPool::NiagaraComponent' has a wrong offset!");
+
 // Function Zion.NotificationComponent.OnItemAdded
 // 0x0018 (0x0018 - 0x0000)
 struct NotificationComponent_OnItemAdded final
@@ -9755,6 +10058,163 @@ public:
 static_assert(alignof(NotificationComponent_CanStartNotification) == 0x000001, "Wrong alignment on NotificationComponent_CanStartNotification");
 static_assert(sizeof(NotificationComponent_CanStartNotification) == 0x000001, "Wrong size on NotificationComponent_CanStartNotification");
 static_assert(offsetof(NotificationComponent_CanStartNotification, ReturnValue) == 0x000000, "Member 'NotificationComponent_CanStartNotification::ReturnValue' has a wrong offset!");
+
+// Function Zion.PassiveComponent.EquipPassive
+// 0x0014 (0x0014 - 0x0000)
+struct PassiveComponent_EquipPassive final
+{
+public:
+	class FName                                   PassiveID;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAddToCurrentLoadout;                              // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         InsertIndex;                                       // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EPassiveEquipResult                           ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(PassiveComponent_EquipPassive) == 0x000004, "Wrong alignment on PassiveComponent_EquipPassive");
+static_assert(sizeof(PassiveComponent_EquipPassive) == 0x000014, "Wrong size on PassiveComponent_EquipPassive");
+static_assert(offsetof(PassiveComponent_EquipPassive, PassiveID) == 0x000000, "Member 'PassiveComponent_EquipPassive::PassiveID' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_EquipPassive, bAddToCurrentLoadout) == 0x000008, "Member 'PassiveComponent_EquipPassive::bAddToCurrentLoadout' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_EquipPassive, InsertIndex) == 0x00000C, "Member 'PassiveComponent_EquipPassive::InsertIndex' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_EquipPassive, ReturnValue) == 0x000010, "Member 'PassiveComponent_EquipPassive::ReturnValue' has a wrong offset!");
+
+// Function Zion.PassiveComponent.EquipPassiveLoadout
+// 0x0004 (0x0004 - 0x0000)
+struct PassiveComponent_EquipPassiveLoadout final
+{
+public:
+	int32                                         LoadoutIndex;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(PassiveComponent_EquipPassiveLoadout) == 0x000004, "Wrong alignment on PassiveComponent_EquipPassiveLoadout");
+static_assert(sizeof(PassiveComponent_EquipPassiveLoadout) == 0x000004, "Wrong size on PassiveComponent_EquipPassiveLoadout");
+static_assert(offsetof(PassiveComponent_EquipPassiveLoadout, LoadoutIndex) == 0x000000, "Member 'PassiveComponent_EquipPassiveLoadout::LoadoutIndex' has a wrong offset!");
+
+// Function Zion.PassiveComponent.OnPossessedPawnChanged
+// 0x0010 (0x0010 - 0x0000)
+struct PassiveComponent_OnPossessedPawnChanged final
+{
+public:
+	class APawn*                                  OldPawn;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class APawn*                                  NewPawn;                                           // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(PassiveComponent_OnPossessedPawnChanged) == 0x000008, "Wrong alignment on PassiveComponent_OnPossessedPawnChanged");
+static_assert(sizeof(PassiveComponent_OnPossessedPawnChanged) == 0x000010, "Wrong size on PassiveComponent_OnPossessedPawnChanged");
+static_assert(offsetof(PassiveComponent_OnPossessedPawnChanged, OldPawn) == 0x000000, "Member 'PassiveComponent_OnPossessedPawnChanged::OldPawn' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_OnPossessedPawnChanged, NewPawn) == 0x000008, "Member 'PassiveComponent_OnPossessedPawnChanged::NewPawn' has a wrong offset!");
+
+// Function Zion.PassiveComponent.ReplacePassiveInAllLoadouts
+// 0x0010 (0x0010 - 0x0000)
+struct PassiveComponent_ReplacePassiveInAllLoadouts final
+{
+public:
+	class FName                                   PassiveToRemove;                                   // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   PassiveToAdd;                                      // 0x0008(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(PassiveComponent_ReplacePassiveInAllLoadouts) == 0x000004, "Wrong alignment on PassiveComponent_ReplacePassiveInAllLoadouts");
+static_assert(sizeof(PassiveComponent_ReplacePassiveInAllLoadouts) == 0x000010, "Wrong size on PassiveComponent_ReplacePassiveInAllLoadouts");
+static_assert(offsetof(PassiveComponent_ReplacePassiveInAllLoadouts, PassiveToRemove) == 0x000000, "Member 'PassiveComponent_ReplacePassiveInAllLoadouts::PassiveToRemove' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_ReplacePassiveInAllLoadouts, PassiveToAdd) == 0x000008, "Member 'PassiveComponent_ReplacePassiveInAllLoadouts::PassiveToAdd' has a wrong offset!");
+
+// Function Zion.PassiveComponent.UnequipPassive
+// 0x0010 (0x0010 - 0x0000)
+struct PassiveComponent_UnequipPassive final
+{
+public:
+	class FName                                   PassiveID;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OutPassiveIndex;                                   // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bRemoveFromCurrentLoadout;                         // 0x000C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x000D(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E[0x2];                                        // 0x000E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(PassiveComponent_UnequipPassive) == 0x000004, "Wrong alignment on PassiveComponent_UnequipPassive");
+static_assert(sizeof(PassiveComponent_UnequipPassive) == 0x000010, "Wrong size on PassiveComponent_UnequipPassive");
+static_assert(offsetof(PassiveComponent_UnequipPassive, PassiveID) == 0x000000, "Member 'PassiveComponent_UnequipPassive::PassiveID' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_UnequipPassive, OutPassiveIndex) == 0x000008, "Member 'PassiveComponent_UnequipPassive::OutPassiveIndex' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_UnequipPassive, bRemoveFromCurrentLoadout) == 0x00000C, "Member 'PassiveComponent_UnequipPassive::bRemoveFromCurrentLoadout' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_UnequipPassive, ReturnValue) == 0x00000D, "Member 'PassiveComponent_UnequipPassive::ReturnValue' has a wrong offset!");
+
+// Function Zion.PassiveComponent.CanEquipPassive
+// 0x0270 (0x0270 - 0x0000)
+struct PassiveComponent_CanEquipPassive final
+{
+public:
+	struct FInventoryItemPassiveData              ItemPassiveData;                                   // 0x0000(0x0268)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	EPassiveEquipResult                           ReturnValue;                                       // 0x0268(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_269[0x7];                                      // 0x0269(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(PassiveComponent_CanEquipPassive) == 0x000008, "Wrong alignment on PassiveComponent_CanEquipPassive");
+static_assert(sizeof(PassiveComponent_CanEquipPassive) == 0x000270, "Wrong size on PassiveComponent_CanEquipPassive");
+static_assert(offsetof(PassiveComponent_CanEquipPassive, ItemPassiveData) == 0x000000, "Member 'PassiveComponent_CanEquipPassive::ItemPassiveData' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_CanEquipPassive, ReturnValue) == 0x000268, "Member 'PassiveComponent_CanEquipPassive::ReturnValue' has a wrong offset!");
+
+// Function Zion.PassiveComponent.GetAvailableSlotCount
+// 0x0004 (0x0004 - 0x0000)
+struct PassiveComponent_GetAvailableSlotCount final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(PassiveComponent_GetAvailableSlotCount) == 0x000004, "Wrong alignment on PassiveComponent_GetAvailableSlotCount");
+static_assert(sizeof(PassiveComponent_GetAvailableSlotCount) == 0x000004, "Wrong size on PassiveComponent_GetAvailableSlotCount");
+static_assert(offsetof(PassiveComponent_GetAvailableSlotCount, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetAvailableSlotCount::ReturnValue' has a wrong offset!");
+
+// Function Zion.PassiveComponent.GetCurrentPassiveLoadoutIndex
+// 0x0004 (0x0004 - 0x0000)
+struct PassiveComponent_GetCurrentPassiveLoadoutIndex final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(PassiveComponent_GetCurrentPassiveLoadoutIndex) == 0x000004, "Wrong alignment on PassiveComponent_GetCurrentPassiveLoadoutIndex");
+static_assert(sizeof(PassiveComponent_GetCurrentPassiveLoadoutIndex) == 0x000004, "Wrong size on PassiveComponent_GetCurrentPassiveLoadoutIndex");
+static_assert(offsetof(PassiveComponent_GetCurrentPassiveLoadoutIndex, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetCurrentPassiveLoadoutIndex::ReturnValue' has a wrong offset!");
+
+// Function Zion.PassiveComponent.GetEquippedPassives
+// 0x0010 (0x0010 - 0x0000)
+struct PassiveComponent_GetEquippedPassives final
+{
+public:
+	TArray<struct FPassiveRuntimeData>            ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(PassiveComponent_GetEquippedPassives) == 0x000008, "Wrong alignment on PassiveComponent_GetEquippedPassives");
+static_assert(sizeof(PassiveComponent_GetEquippedPassives) == 0x000010, "Wrong size on PassiveComponent_GetEquippedPassives");
+static_assert(offsetof(PassiveComponent_GetEquippedPassives, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetEquippedPassives::ReturnValue' has a wrong offset!");
+
+// Function Zion.PassiveComponent.GetSlotCount
+// 0x0004 (0x0004 - 0x0000)
+struct PassiveComponent_GetSlotCount final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(PassiveComponent_GetSlotCount) == 0x000004, "Wrong alignment on PassiveComponent_GetSlotCount");
+static_assert(sizeof(PassiveComponent_GetSlotCount) == 0x000004, "Wrong size on PassiveComponent_GetSlotCount");
+static_assert(offsetof(PassiveComponent_GetSlotCount, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetSlotCount::ReturnValue' has a wrong offset!");
+
+// Function Zion.PassiveComponent.GetUsedSlotCount
+// 0x0004 (0x0004 - 0x0000)
+struct PassiveComponent_GetUsedSlotCount final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(PassiveComponent_GetUsedSlotCount) == 0x000004, "Wrong alignment on PassiveComponent_GetUsedSlotCount");
+static_assert(sizeof(PassiveComponent_GetUsedSlotCount) == 0x000004, "Wrong size on PassiveComponent_GetUsedSlotCount");
+static_assert(offsetof(PassiveComponent_GetUsedSlotCount, ReturnValue) == 0x000000, "Member 'PassiveComponent_GetUsedSlotCount::ReturnValue' has a wrong offset!");
+
+// Function Zion.PassiveComponent.IsPassiveEquipped
+// 0x000C (0x000C - 0x0000)
+struct PassiveComponent_IsPassiveEquipped final
+{
+public:
+	class FName                                   PassiveID;                                         // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(PassiveComponent_IsPassiveEquipped) == 0x000004, "Wrong alignment on PassiveComponent_IsPassiveEquipped");
+static_assert(sizeof(PassiveComponent_IsPassiveEquipped) == 0x00000C, "Wrong size on PassiveComponent_IsPassiveEquipped");
+static_assert(offsetof(PassiveComponent_IsPassiveEquipped, PassiveID) == 0x000000, "Member 'PassiveComponent_IsPassiveEquipped::PassiveID' has a wrong offset!");
+static_assert(offsetof(PassiveComponent_IsPassiveEquipped, ReturnValue) == 0x000008, "Member 'PassiveComponent_IsPassiveEquipped::ReturnValue' has a wrong offset!");
 
 // Function Zion.PhysicsReactionComponent.OnGotAbilityApplied
 // 0x02E0 (0x02E0 - 0x0000)
@@ -9942,77 +10402,167 @@ static_assert(alignof(ProfileSubsystem_IsUsingProfileSystem) == 0x000001, "Wrong
 static_assert(sizeof(ProfileSubsystem_IsUsingProfileSystem) == 0x000001, "Wrong size on ProfileSubsystem_IsUsingProfileSystem");
 static_assert(offsetof(ProfileSubsystem_IsUsingProfileSystem, ReturnValue) == 0x000000, "Member 'ProfileSubsystem_IsUsingProfileSystem::ReturnValue' has a wrong offset!");
 
-// Function Zion.RefreshableRichTextBlock.SetDecoratorMode
+// Function Zion.RecollectionBossRushComponent.GetMaxBossesDefeatedCount
+// 0x0004 (0x0004 - 0x0000)
+struct RecollectionBossRushComponent_GetMaxBossesDefeatedCount final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RecollectionBossRushComponent_GetMaxBossesDefeatedCount) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_GetMaxBossesDefeatedCount");
+static_assert(sizeof(RecollectionBossRushComponent_GetMaxBossesDefeatedCount) == 0x000004, "Wrong size on RecollectionBossRushComponent_GetMaxBossesDefeatedCount");
+static_assert(offsetof(RecollectionBossRushComponent_GetMaxBossesDefeatedCount, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_GetMaxBossesDefeatedCount::ReturnValue' has a wrong offset!");
+
+// Function Zion.RecollectionBossRushComponent.GetRecordData
+// 0x0008 (0x0008 - 0x0000)
+struct RecollectionBossRushComponent_GetRecordData final
+{
+public:
+	int32                                         RecordIndex;                                       // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRecollectionBossRushRecordData        ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RecollectionBossRushComponent_GetRecordData) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_GetRecordData");
+static_assert(sizeof(RecollectionBossRushComponent_GetRecordData) == 0x000008, "Wrong size on RecollectionBossRushComponent_GetRecordData");
+static_assert(offsetof(RecollectionBossRushComponent_GetRecordData, RecordIndex) == 0x000000, "Member 'RecollectionBossRushComponent_GetRecordData::RecordIndex' has a wrong offset!");
+static_assert(offsetof(RecollectionBossRushComponent_GetRecordData, ReturnValue) == 0x000004, "Member 'RecollectionBossRushComponent_GetRecordData::ReturnValue' has a wrong offset!");
+
+// Function Zion.RecollectionBossRushComponent.OnSetTimerPaused
 // 0x0001 (0x0001 - 0x0000)
-struct RefreshableRichTextBlock_SetDecoratorMode final
+struct RecollectionBossRushComponent_OnSetTimerPaused final
 {
 public:
-	ERichTextDecoratorMode                        NewDecoratorMode;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsPaused;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(RefreshableRichTextBlock_SetDecoratorMode) == 0x000001, "Wrong alignment on RefreshableRichTextBlock_SetDecoratorMode");
-static_assert(sizeof(RefreshableRichTextBlock_SetDecoratorMode) == 0x000001, "Wrong size on RefreshableRichTextBlock_SetDecoratorMode");
-static_assert(offsetof(RefreshableRichTextBlock_SetDecoratorMode, NewDecoratorMode) == 0x000000, "Member 'RefreshableRichTextBlock_SetDecoratorMode::NewDecoratorMode' has a wrong offset!");
+static_assert(alignof(RecollectionBossRushComponent_OnSetTimerPaused) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_OnSetTimerPaused");
+static_assert(sizeof(RecollectionBossRushComponent_OnSetTimerPaused) == 0x000001, "Wrong size on RecollectionBossRushComponent_OnSetTimerPaused");
+static_assert(offsetof(RecollectionBossRushComponent_OnSetTimerPaused, bIsPaused) == 0x000000, "Member 'RecollectionBossRushComponent_OnSetTimerPaused::bIsPaused' has a wrong offset!");
 
-// Function Zion.RefreshableRichTextBlock.SetFormat
-// 0x0010 (0x0010 - 0x0000)
-struct RefreshableRichTextBlock_SetFormat final
+// Function Zion.RecollectionBossRushComponent.SetTimerPaused
+// 0x0002 (0x0002 - 0x0000)
+struct RecollectionBossRushComponent_SetTimerPaused final
 {
 public:
-	class FText                                   NewFormat;                                         // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          bIsPaused;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(RefreshableRichTextBlock_SetFormat) == 0x000008, "Wrong alignment on RefreshableRichTextBlock_SetFormat");
-static_assert(sizeof(RefreshableRichTextBlock_SetFormat) == 0x000010, "Wrong size on RefreshableRichTextBlock_SetFormat");
-static_assert(offsetof(RefreshableRichTextBlock_SetFormat, NewFormat) == 0x000000, "Member 'RefreshableRichTextBlock_SetFormat::NewFormat' has a wrong offset!");
+static_assert(alignof(RecollectionBossRushComponent_SetTimerPaused) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_SetTimerPaused");
+static_assert(sizeof(RecollectionBossRushComponent_SetTimerPaused) == 0x000002, "Wrong size on RecollectionBossRushComponent_SetTimerPaused");
+static_assert(offsetof(RecollectionBossRushComponent_SetTimerPaused, bIsPaused) == 0x000000, "Member 'RecollectionBossRushComponent_SetTimerPaused::bIsPaused' has a wrong offset!");
+static_assert(offsetof(RecollectionBossRushComponent_SetTimerPaused, ReturnValue) == 0x000001, "Member 'RecollectionBossRushComponent_SetTimerPaused::ReturnValue' has a wrong offset!");
 
-// Function Zion.RefreshableRichTextBlock.SetFormatElements
-// 0x0020 (0x0020 - 0x0000)
-struct RefreshableRichTextBlock_SetFormatElements final
+// Function Zion.RecollectionBossRushComponent.TryAddNewRecord
+// 0x0008 (0x0008 - 0x0000)
+struct RecollectionBossRushComponent_TryAddNewRecord final
 {
 public:
-	TArray<struct FRichTextInputElement>          NewFormatElements;                                 // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-	TArray<class FString>                         NewStringElements;                                 // 0x0010(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FRecollectionBossRushRecordData        NewRecordData;                                     // 0x0000(0x0004)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(RefreshableRichTextBlock_SetFormatElements) == 0x000008, "Wrong alignment on RefreshableRichTextBlock_SetFormatElements");
-static_assert(sizeof(RefreshableRichTextBlock_SetFormatElements) == 0x000020, "Wrong size on RefreshableRichTextBlock_SetFormatElements");
-static_assert(offsetof(RefreshableRichTextBlock_SetFormatElements, NewFormatElements) == 0x000000, "Member 'RefreshableRichTextBlock_SetFormatElements::NewFormatElements' has a wrong offset!");
-static_assert(offsetof(RefreshableRichTextBlock_SetFormatElements, NewStringElements) == 0x000010, "Member 'RefreshableRichTextBlock_SetFormatElements::NewStringElements' has a wrong offset!");
+static_assert(alignof(RecollectionBossRushComponent_TryAddNewRecord) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_TryAddNewRecord");
+static_assert(sizeof(RecollectionBossRushComponent_TryAddNewRecord) == 0x000008, "Wrong size on RecollectionBossRushComponent_TryAddNewRecord");
+static_assert(offsetof(RecollectionBossRushComponent_TryAddNewRecord, NewRecordData) == 0x000000, "Member 'RecollectionBossRushComponent_TryAddNewRecord::NewRecordData' has a wrong offset!");
+static_assert(offsetof(RecollectionBossRushComponent_TryAddNewRecord, ReturnValue) == 0x000004, "Member 'RecollectionBossRushComponent_TryAddNewRecord::ReturnValue' has a wrong offset!");
 
-// Function Zion.RefreshableRichTextBlock.SetupAndRefresh
-// 0x0030 (0x0030 - 0x0000)
-struct RefreshableRichTextBlock_SetupAndRefresh final
-{
-public:
-	class FText                                   NewFormat;                                         // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	TArray<struct FRichTextInputElement>          NewFormatElements;                                 // 0x0010(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-	TArray<class FString>                         NewStringElements;                                 // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(RefreshableRichTextBlock_SetupAndRefresh) == 0x000008, "Wrong alignment on RefreshableRichTextBlock_SetupAndRefresh");
-static_assert(sizeof(RefreshableRichTextBlock_SetupAndRefresh) == 0x000030, "Wrong size on RefreshableRichTextBlock_SetupAndRefresh");
-static_assert(offsetof(RefreshableRichTextBlock_SetupAndRefresh, NewFormat) == 0x000000, "Member 'RefreshableRichTextBlock_SetupAndRefresh::NewFormat' has a wrong offset!");
-static_assert(offsetof(RefreshableRichTextBlock_SetupAndRefresh, NewFormatElements) == 0x000010, "Member 'RefreshableRichTextBlock_SetupAndRefresh::NewFormatElements' has a wrong offset!");
-static_assert(offsetof(RefreshableRichTextBlock_SetupAndRefresh, NewStringElements) == 0x000020, "Member 'RefreshableRichTextBlock_SetupAndRefresh::NewStringElements' has a wrong offset!");
-
-// Function Zion.RefreshableRichTextBlock.GetDecoratorMode
+// Function Zion.RecollectionBossRushComponent.CanUpdateTime
 // 0x0001 (0x0001 - 0x0000)
-struct RefreshableRichTextBlock_GetDecoratorMode final
+struct RecollectionBossRushComponent_CanUpdateTime final
 {
 public:
-	ERichTextDecoratorMode                        ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(RefreshableRichTextBlock_GetDecoratorMode) == 0x000001, "Wrong alignment on RefreshableRichTextBlock_GetDecoratorMode");
-static_assert(sizeof(RefreshableRichTextBlock_GetDecoratorMode) == 0x000001, "Wrong size on RefreshableRichTextBlock_GetDecoratorMode");
-static_assert(offsetof(RefreshableRichTextBlock_GetDecoratorMode, ReturnValue) == 0x000000, "Member 'RefreshableRichTextBlock_GetDecoratorMode::ReturnValue' has a wrong offset!");
+static_assert(alignof(RecollectionBossRushComponent_CanUpdateTime) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_CanUpdateTime");
+static_assert(sizeof(RecollectionBossRushComponent_CanUpdateTime) == 0x000001, "Wrong size on RecollectionBossRushComponent_CanUpdateTime");
+static_assert(offsetof(RecollectionBossRushComponent_CanUpdateTime, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_CanUpdateTime::ReturnValue' has a wrong offset!");
 
-// Function Zion.RefreshableRichTextBlock.GetFormatElements
-// 0x0010 (0x0010 - 0x0000)
-struct RefreshableRichTextBlock_GetFormatElements final
+// Function Zion.RecollectionBossRushComponent.GetBossRushDifficultyPreset
+// 0x0001 (0x0001 - 0x0000)
+struct RecollectionBossRushComponent_GetBossRushDifficultyPreset final
 {
 public:
-	TArray<struct FRichTextInputElement>          ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+	EDifficultyPreset                             ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(RefreshableRichTextBlock_GetFormatElements) == 0x000008, "Wrong alignment on RefreshableRichTextBlock_GetFormatElements");
-static_assert(sizeof(RefreshableRichTextBlock_GetFormatElements) == 0x000010, "Wrong size on RefreshableRichTextBlock_GetFormatElements");
-static_assert(offsetof(RefreshableRichTextBlock_GetFormatElements, ReturnValue) == 0x000000, "Member 'RefreshableRichTextBlock_GetFormatElements::ReturnValue' has a wrong offset!");
+static_assert(alignof(RecollectionBossRushComponent_GetBossRushDifficultyPreset) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_GetBossRushDifficultyPreset");
+static_assert(sizeof(RecollectionBossRushComponent_GetBossRushDifficultyPreset) == 0x000001, "Wrong size on RecollectionBossRushComponent_GetBossRushDifficultyPreset");
+static_assert(offsetof(RecollectionBossRushComponent_GetBossRushDifficultyPreset, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_GetBossRushDifficultyPreset::ReturnValue' has a wrong offset!");
+
+// Function Zion.RecollectionBossRushComponent.GetBossRushTime
+// 0x0004 (0x0004 - 0x0000)
+struct RecollectionBossRushComponent_GetBossRushTime final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RecollectionBossRushComponent_GetBossRushTime) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_GetBossRushTime");
+static_assert(sizeof(RecollectionBossRushComponent_GetBossRushTime) == 0x000004, "Wrong size on RecollectionBossRushComponent_GetBossRushTime");
+static_assert(offsetof(RecollectionBossRushComponent_GetBossRushTime, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_GetBossRushTime::ReturnValue' has a wrong offset!");
+
+// Function Zion.RecollectionBossRushComponent.GetCurrentBossIndex
+// 0x0004 (0x0004 - 0x0000)
+struct RecollectionBossRushComponent_GetCurrentBossIndex final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RecollectionBossRushComponent_GetCurrentBossIndex) == 0x000004, "Wrong alignment on RecollectionBossRushComponent_GetCurrentBossIndex");
+static_assert(sizeof(RecollectionBossRushComponent_GetCurrentBossIndex) == 0x000004, "Wrong size on RecollectionBossRushComponent_GetCurrentBossIndex");
+static_assert(offsetof(RecollectionBossRushComponent_GetCurrentBossIndex, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_GetCurrentBossIndex::ReturnValue' has a wrong offset!");
+
+// Function Zion.RecollectionBossRushComponent.IsTimerPaused
+// 0x0001 (0x0001 - 0x0000)
+struct RecollectionBossRushComponent_IsTimerPaused final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RecollectionBossRushComponent_IsTimerPaused) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_IsTimerPaused");
+static_assert(sizeof(RecollectionBossRushComponent_IsTimerPaused) == 0x000001, "Wrong size on RecollectionBossRushComponent_IsTimerPaused");
+static_assert(offsetof(RecollectionBossRushComponent_IsTimerPaused, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_IsTimerPaused::ReturnValue' has a wrong offset!");
+
+// Function Zion.RecollectionBossRushComponent.ShouldDisplayRecollectionBossRush
+// 0x0001 (0x0001 - 0x0000)
+struct RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush) == 0x000001, "Wrong alignment on RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush");
+static_assert(sizeof(RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush) == 0x000001, "Wrong size on RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush");
+static_assert(offsetof(RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush, ReturnValue) == 0x000000, "Member 'RecollectionBossRushComponent_ShouldDisplayRecollectionBossRush::ReturnValue' has a wrong offset!");
+
+// Function Zion.RenderStateComponent.SetNewBounds
+// 0x0008 (0x0008 - 0x0000)
+struct RenderStateComponent_SetNewBounds final
+{
+public:
+	const class AActor*                           Actor;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RenderStateComponent_SetNewBounds) == 0x000008, "Wrong alignment on RenderStateComponent_SetNewBounds");
+static_assert(sizeof(RenderStateComponent_SetNewBounds) == 0x000008, "Wrong size on RenderStateComponent_SetNewBounds");
+static_assert(offsetof(RenderStateComponent_SetNewBounds, Actor) == 0x000000, "Member 'RenderStateComponent_SetNewBounds::Actor' has a wrong offset!");
+
+// Function Zion.RenderStateComponent.SetVisible
+// 0x0002 (0x0002 - 0x0000)
+struct RenderStateComponent_SetVisible final
+{
+public:
+	bool                                          bIsVisible;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RenderStateComponent_SetVisible) == 0x000001, "Wrong alignment on RenderStateComponent_SetVisible");
+static_assert(sizeof(RenderStateComponent_SetVisible) == 0x000002, "Wrong size on RenderStateComponent_SetVisible");
+static_assert(offsetof(RenderStateComponent_SetVisible, bIsVisible) == 0x000000, "Member 'RenderStateComponent_SetVisible::bIsVisible' has a wrong offset!");
+static_assert(offsetof(RenderStateComponent_SetVisible, ReturnValue) == 0x000001, "Member 'RenderStateComponent_SetVisible::ReturnValue' has a wrong offset!");
+
+// Function Zion.RenderStateComponent.IsVisible
+// 0x0001 (0x0001 - 0x0000)
+struct RenderStateComponent_IsVisible final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(RenderStateComponent_IsVisible) == 0x000001, "Wrong alignment on RenderStateComponent_IsVisible");
+static_assert(sizeof(RenderStateComponent_IsVisible) == 0x000001, "Wrong size on RenderStateComponent_IsVisible");
+static_assert(offsetof(RenderStateComponent_IsVisible, ReturnValue) == 0x000000, "Member 'RenderStateComponent_IsVisible::ReturnValue' has a wrong offset!");
 
 // Function Zion.RenderStateManagerComponent.Get
 // 0x0010 (0x0010 - 0x0000)
@@ -10262,6 +10812,154 @@ static_assert(alignof(SaveSubsystem_IsLoadingGameData) == 0x000001, "Wrong align
 static_assert(sizeof(SaveSubsystem_IsLoadingGameData) == 0x000001, "Wrong size on SaveSubsystem_IsLoadingGameData");
 static_assert(offsetof(SaveSubsystem_IsLoadingGameData, ReturnValue) == 0x000000, "Member 'SaveSubsystem_IsLoadingGameData::ReturnValue' has a wrong offset!");
 
+// Function Zion.ZionCharacterMovementComponent.SetMovementModeCustom
+// 0x0001 (0x0001 - 0x0000)
+struct ZionCharacterMovementComponent_SetMovementModeCustom final
+{
+public:
+	EMovementModeCustom                           NewMovementModeCustom;                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_SetMovementModeCustom) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_SetMovementModeCustom");
+static_assert(sizeof(ZionCharacterMovementComponent_SetMovementModeCustom) == 0x000001, "Wrong size on ZionCharacterMovementComponent_SetMovementModeCustom");
+static_assert(offsetof(ZionCharacterMovementComponent_SetMovementModeCustom, NewMovementModeCustom) == 0x000000, "Member 'ZionCharacterMovementComponent_SetMovementModeCustom::NewMovementModeCustom' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.SetMovementSpeedMode
+// 0x0001 (0x0001 - 0x0000)
+struct ZionCharacterMovementComponent_SetMovementSpeedMode final
+{
+public:
+	EMovementSpeedMode                            NewMovementSpeedMode;                              // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_SetMovementSpeedMode) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_SetMovementSpeedMode");
+static_assert(sizeof(ZionCharacterMovementComponent_SetMovementSpeedMode) == 0x000001, "Wrong size on ZionCharacterMovementComponent_SetMovementSpeedMode");
+static_assert(offsetof(ZionCharacterMovementComponent_SetMovementSpeedMode, NewMovementSpeedMode) == 0x000000, "Member 'ZionCharacterMovementComponent_SetMovementSpeedMode::NewMovementSpeedMode' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.ComputeLaunchVelocityToDestination
+// 0x0038 (0x0038 - 0x0000)
+struct ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination final
+{
+public:
+	struct FVector                                DestinationLocation;                               // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Duration;                                          // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                ReturnValue;                                       // 0x0020(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination) == 0x000008, "Wrong alignment on ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination");
+static_assert(sizeof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination) == 0x000038, "Wrong size on ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination");
+static_assert(offsetof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination, DestinationLocation) == 0x000000, "Member 'ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination::DestinationLocation' has a wrong offset!");
+static_assert(offsetof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination, Duration) == 0x000018, "Member 'ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination::Duration' has a wrong offset!");
+static_assert(offsetof(ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination, ReturnValue) == 0x000020, "Member 'ZionCharacterMovementComponent_ComputeLaunchVelocityToDestination::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.GetLastNonFallingLocation
+// 0x0018 (0x0018 - 0x0000)
+struct ZionCharacterMovementComponent_GetLastNonFallingLocation final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_GetLastNonFallingLocation) == 0x000008, "Wrong alignment on ZionCharacterMovementComponent_GetLastNonFallingLocation");
+static_assert(sizeof(ZionCharacterMovementComponent_GetLastNonFallingLocation) == 0x000018, "Wrong size on ZionCharacterMovementComponent_GetLastNonFallingLocation");
+static_assert(offsetof(ZionCharacterMovementComponent_GetLastNonFallingLocation, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetLastNonFallingLocation::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.GetMovementSpeedMode
+// 0x0001 (0x0001 - 0x0000)
+struct ZionCharacterMovementComponent_GetMovementSpeedMode final
+{
+public:
+	EMovementSpeedMode                            ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_GetMovementSpeedMode) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_GetMovementSpeedMode");
+static_assert(sizeof(ZionCharacterMovementComponent_GetMovementSpeedMode) == 0x000001, "Wrong size on ZionCharacterMovementComponent_GetMovementSpeedMode");
+static_assert(offsetof(ZionCharacterMovementComponent_GetMovementSpeedMode, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetMovementSpeedMode::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastGrounded
+// 0x0004 (0x0004 - 0x0000)
+struct ZionCharacterMovementComponent_GetTimeSinceLastGrounded final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_GetTimeSinceLastGrounded) == 0x000004, "Wrong alignment on ZionCharacterMovementComponent_GetTimeSinceLastGrounded");
+static_assert(sizeof(ZionCharacterMovementComponent_GetTimeSinceLastGrounded) == 0x000004, "Wrong size on ZionCharacterMovementComponent_GetTimeSinceLastGrounded");
+static_assert(offsetof(ZionCharacterMovementComponent_GetTimeSinceLastGrounded, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetTimeSinceLastGrounded::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastHookAttach
+// 0x0004 (0x0004 - 0x0000)
+struct ZionCharacterMovementComponent_GetTimeSinceLastHookAttach final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_GetTimeSinceLastHookAttach) == 0x000004, "Wrong alignment on ZionCharacterMovementComponent_GetTimeSinceLastHookAttach");
+static_assert(sizeof(ZionCharacterMovementComponent_GetTimeSinceLastHookAttach) == 0x000004, "Wrong size on ZionCharacterMovementComponent_GetTimeSinceLastHookAttach");
+static_assert(offsetof(ZionCharacterMovementComponent_GetTimeSinceLastHookAttach, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetTimeSinceLastHookAttach::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.GetTimeSinceLastWallGrab
+// 0x0004 (0x0004 - 0x0000)
+struct ZionCharacterMovementComponent_GetTimeSinceLastWallGrab final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_GetTimeSinceLastWallGrab) == 0x000004, "Wrong alignment on ZionCharacterMovementComponent_GetTimeSinceLastWallGrab");
+static_assert(sizeof(ZionCharacterMovementComponent_GetTimeSinceLastWallGrab) == 0x000004, "Wrong size on ZionCharacterMovementComponent_GetTimeSinceLastWallGrab");
+static_assert(offsetof(ZionCharacterMovementComponent_GetTimeSinceLastWallGrab, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_GetTimeSinceLastWallGrab::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.IsAirborne
+// 0x0001 (0x0001 - 0x0000)
+struct ZionCharacterMovementComponent_IsAirborne final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_IsAirborne) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsAirborne");
+static_assert(sizeof(ZionCharacterMovementComponent_IsAirborne) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsAirborne");
+static_assert(offsetof(ZionCharacterMovementComponent_IsAirborne, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsAirborne::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.IsHookAttached
+// 0x0001 (0x0001 - 0x0000)
+struct ZionCharacterMovementComponent_IsHookAttached final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_IsHookAttached) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsHookAttached");
+static_assert(sizeof(ZionCharacterMovementComponent_IsHookAttached) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsHookAttached");
+static_assert(offsetof(ZionCharacterMovementComponent_IsHookAttached, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsHookAttached::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.IsSliding
+// 0x0001 (0x0001 - 0x0000)
+struct ZionCharacterMovementComponent_IsSliding final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_IsSliding) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsSliding");
+static_assert(sizeof(ZionCharacterMovementComponent_IsSliding) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsSliding");
+static_assert(offsetof(ZionCharacterMovementComponent_IsSliding, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsSliding::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.IsWallGrabbing
+// 0x0001 (0x0001 - 0x0000)
+struct ZionCharacterMovementComponent_IsWallGrabbing final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_IsWallGrabbing) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsWallGrabbing");
+static_assert(sizeof(ZionCharacterMovementComponent_IsWallGrabbing) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsWallGrabbing");
+static_assert(offsetof(ZionCharacterMovementComponent_IsWallGrabbing, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsWallGrabbing::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionCharacterMovementComponent.IsWallScaling
+// 0x0001 (0x0001 - 0x0000)
+struct ZionCharacterMovementComponent_IsWallScaling final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionCharacterMovementComponent_IsWallScaling) == 0x000001, "Wrong alignment on ZionCharacterMovementComponent_IsWallScaling");
+static_assert(sizeof(ZionCharacterMovementComponent_IsWallScaling) == 0x000001, "Wrong size on ZionCharacterMovementComponent_IsWallScaling");
+static_assert(offsetof(ZionCharacterMovementComponent_IsWallScaling, ReturnValue) == 0x000000, "Member 'ZionCharacterMovementComponent_IsWallScaling::ReturnValue' has a wrong offset!");
+
 // Function Zion.ScrollBoxZion.CopyWidgetNavigation
 // 0x0008 (0x0008 - 0x0000)
 struct ScrollBoxZion_CopyWidgetNavigation final
@@ -10323,31 +11021,6 @@ public:
 static_assert(alignof(ScrollBoxZion_SimulateNavigation) == 0x000001, "Wrong alignment on ScrollBoxZion_SimulateNavigation");
 static_assert(sizeof(ScrollBoxZion_SimulateNavigation) == 0x000001, "Wrong size on ScrollBoxZion_SimulateNavigation");
 static_assert(offsetof(ScrollBoxZion_SimulateNavigation, InNavigation) == 0x000000, "Member 'ScrollBoxZion_SimulateNavigation::InNavigation' has a wrong offset!");
-
-// Function Zion.ZionInputComponent.AddInputMappingContext
-// 0x0010 (0x0010 - 0x0000)
-struct ZionInputComponent_AddInputMappingContext final
-{
-public:
-	const class UInputMappingContext*             InputMappingContext;                               // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EInputMappingPriority                         Priority;                                          // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(ZionInputComponent_AddInputMappingContext) == 0x000008, "Wrong alignment on ZionInputComponent_AddInputMappingContext");
-static_assert(sizeof(ZionInputComponent_AddInputMappingContext) == 0x000010, "Wrong size on ZionInputComponent_AddInputMappingContext");
-static_assert(offsetof(ZionInputComponent_AddInputMappingContext, InputMappingContext) == 0x000000, "Member 'ZionInputComponent_AddInputMappingContext::InputMappingContext' has a wrong offset!");
-static_assert(offsetof(ZionInputComponent_AddInputMappingContext, Priority) == 0x000008, "Member 'ZionInputComponent_AddInputMappingContext::Priority' has a wrong offset!");
-
-// Function Zion.ZionInputComponent.RemoveInputMappingContext
-// 0x0008 (0x0008 - 0x0000)
-struct ZionInputComponent_RemoveInputMappingContext final
-{
-public:
-	const class UInputMappingContext*             InputMappingContext;                               // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZionInputComponent_RemoveInputMappingContext) == 0x000008, "Wrong alignment on ZionInputComponent_RemoveInputMappingContext");
-static_assert(sizeof(ZionInputComponent_RemoveInputMappingContext) == 0x000008, "Wrong size on ZionInputComponent_RemoveInputMappingContext");
-static_assert(offsetof(ZionInputComponent_RemoveInputMappingContext, InputMappingContext) == 0x000000, "Member 'ZionInputComponent_RemoveInputMappingContext::InputMappingContext' has a wrong offset!");
 
 // Function Zion.ShakeComponent.LaunchShake
 // 0x0030 (0x0030 - 0x0000)
@@ -10466,191 +11139,45 @@ static_assert(alignof(ShopInfoComponent_GetMinLevel) == 0x000004, "Wrong alignme
 static_assert(sizeof(ShopInfoComponent_GetMinLevel) == 0x000004, "Wrong size on ShopInfoComponent_GetMinLevel");
 static_assert(offsetof(ShopInfoComponent_GetMinLevel, ReturnValue) == 0x000000, "Member 'ShopInfoComponent_GetMinLevel::ReturnValue' has a wrong offset!");
 
-// Function Zion.SkillComponent.Equip
-// 0x0010 (0x0010 - 0x0000)
-struct SkillComponent_Equip final
+// Function Zion.SleepActivatorComponent.OnWakeTriggerOverlapBegin
+// 0x0118 (0x0118 - 0x0000)
+struct SleepActivatorComponent_OnWakeTriggerOverlapBegin final
 {
 public:
-	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   SkillID;                                           // 0x0004(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAddToCurrentLoadout;                              // 0x000C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAutoLoad;                                         // 0x000D(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E[0x2];                                        // 0x000E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bFromSweep;                                        // 0x001C(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHitResult                             SweepResult;                                       // 0x0020(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(SkillComponent_Equip) == 0x000004, "Wrong alignment on SkillComponent_Equip");
-static_assert(sizeof(SkillComponent_Equip) == 0x000010, "Wrong size on SkillComponent_Equip");
-static_assert(offsetof(SkillComponent_Equip, SkillSlot) == 0x000000, "Member 'SkillComponent_Equip::SkillSlot' has a wrong offset!");
-static_assert(offsetof(SkillComponent_Equip, SkillID) == 0x000004, "Member 'SkillComponent_Equip::SkillID' has a wrong offset!");
-static_assert(offsetof(SkillComponent_Equip, bAddToCurrentLoadout) == 0x00000C, "Member 'SkillComponent_Equip::bAddToCurrentLoadout' has a wrong offset!");
-static_assert(offsetof(SkillComponent_Equip, bAutoLoad) == 0x00000D, "Member 'SkillComponent_Equip::bAutoLoad' has a wrong offset!");
+static_assert(alignof(SleepActivatorComponent_OnWakeTriggerOverlapBegin) == 0x000008, "Wrong alignment on SleepActivatorComponent_OnWakeTriggerOverlapBegin");
+static_assert(sizeof(SleepActivatorComponent_OnWakeTriggerOverlapBegin) == 0x000118, "Wrong size on SleepActivatorComponent_OnWakeTriggerOverlapBegin");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, OverlappedComponent) == 0x000000, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::OverlappedComponent' has a wrong offset!");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, OtherActor) == 0x000008, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::OtherActor' has a wrong offset!");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, OtherComp) == 0x000010, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::OtherComp' has a wrong offset!");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, OtherBodyIndex) == 0x000018, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::OtherBodyIndex' has a wrong offset!");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, bFromSweep) == 0x00001C, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::bFromSweep' has a wrong offset!");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapBegin, SweepResult) == 0x000020, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapBegin::SweepResult' has a wrong offset!");
 
-// Function Zion.SkillComponent.EquipSkillLoadout
-// 0x0008 (0x0008 - 0x0000)
-struct SkillComponent_EquipSkillLoadout final
+// Function Zion.SleepActivatorComponent.OnWakeTriggerOverlapEnd
+// 0x0020 (0x0020 - 0x0000)
+struct SleepActivatorComponent_OnWakeTriggerOverlapEnd final
 {
 public:
-	int32                                         LoadoutIndex;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAutoLoad;                                         // 0x0004(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UPrimitiveComponent*                    OverlappedComponent;                               // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 OtherActor;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UPrimitiveComponent*                    OtherComp;                                         // 0x0010(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OtherBodyIndex;                                    // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(SkillComponent_EquipSkillLoadout) == 0x000004, "Wrong alignment on SkillComponent_EquipSkillLoadout");
-static_assert(sizeof(SkillComponent_EquipSkillLoadout) == 0x000008, "Wrong size on SkillComponent_EquipSkillLoadout");
-static_assert(offsetof(SkillComponent_EquipSkillLoadout, LoadoutIndex) == 0x000000, "Member 'SkillComponent_EquipSkillLoadout::LoadoutIndex' has a wrong offset!");
-static_assert(offsetof(SkillComponent_EquipSkillLoadout, bAutoLoad) == 0x000004, "Member 'SkillComponent_EquipSkillLoadout::bAutoLoad' has a wrong offset!");
-
-// Function Zion.SkillComponent.UnEquip
-// 0x0002 (0x0002 - 0x0000)
-struct SkillComponent_UnEquip final
-{
-public:
-	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bRemoveFromCurrentLoadout;                         // 0x0001(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_UnEquip) == 0x000001, "Wrong alignment on SkillComponent_UnEquip");
-static_assert(sizeof(SkillComponent_UnEquip) == 0x000002, "Wrong size on SkillComponent_UnEquip");
-static_assert(offsetof(SkillComponent_UnEquip, SkillSlot) == 0x000000, "Member 'SkillComponent_UnEquip::SkillSlot' has a wrong offset!");
-static_assert(offsetof(SkillComponent_UnEquip, bRemoveFromCurrentLoadout) == 0x000001, "Member 'SkillComponent_UnEquip::bRemoveFromCurrentLoadout' has a wrong offset!");
-
-// Function Zion.SkillComponent.UnEquipAll
-// 0x0001 (0x0001 - 0x0000)
-struct SkillComponent_UnEquipAll final
-{
-public:
-	bool                                          bRemoveFromCurrentLoadout;                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_UnEquipAll) == 0x000001, "Wrong alignment on SkillComponent_UnEquipAll");
-static_assert(sizeof(SkillComponent_UnEquipAll) == 0x000001, "Wrong size on SkillComponent_UnEquipAll");
-static_assert(offsetof(SkillComponent_UnEquipAll, bRemoveFromCurrentLoadout) == 0x000000, "Member 'SkillComponent_UnEquipAll::bRemoveFromCurrentLoadout' has a wrong offset!");
-
-// Function Zion.SkillComponent.GetCurrentSkillLoadoutIndex
-// 0x0004 (0x0004 - 0x0000)
-struct SkillComponent_GetCurrentSkillLoadoutIndex final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_GetCurrentSkillLoadoutIndex) == 0x000004, "Wrong alignment on SkillComponent_GetCurrentSkillLoadoutIndex");
-static_assert(sizeof(SkillComponent_GetCurrentSkillLoadoutIndex) == 0x000004, "Wrong size on SkillComponent_GetCurrentSkillLoadoutIndex");
-static_assert(offsetof(SkillComponent_GetCurrentSkillLoadoutIndex, ReturnValue) == 0x000000, "Member 'SkillComponent_GetCurrentSkillLoadoutIndex::ReturnValue' has a wrong offset!");
-
-// Function Zion.SkillComponent.GetEquippedCommandSet
-// 0x0010 (0x0010 - 0x0000)
-struct SkillComponent_GetEquippedCommandSet final
-{
-public:
-	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCommandSet*                            ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_GetEquippedCommandSet) == 0x000008, "Wrong alignment on SkillComponent_GetEquippedCommandSet");
-static_assert(sizeof(SkillComponent_GetEquippedCommandSet) == 0x000010, "Wrong size on SkillComponent_GetEquippedCommandSet");
-static_assert(offsetof(SkillComponent_GetEquippedCommandSet, SkillSlot) == 0x000000, "Member 'SkillComponent_GetEquippedCommandSet::SkillSlot' has a wrong offset!");
-static_assert(offsetof(SkillComponent_GetEquippedCommandSet, ReturnValue) == 0x000008, "Member 'SkillComponent_GetEquippedCommandSet::ReturnValue' has a wrong offset!");
-
-// Function Zion.SkillComponent.GetEquippedItemSkillData
-// 0x0290 (0x0290 - 0x0000)
-struct SkillComponent_GetEquippedItemSkillData final
-{
-public:
-	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FInventoryItemSkillData                ReturnValue;                                       // 0x0008(0x0288)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_GetEquippedItemSkillData) == 0x000008, "Wrong alignment on SkillComponent_GetEquippedItemSkillData");
-static_assert(sizeof(SkillComponent_GetEquippedItemSkillData) == 0x000290, "Wrong size on SkillComponent_GetEquippedItemSkillData");
-static_assert(offsetof(SkillComponent_GetEquippedItemSkillData, SkillSlot) == 0x000000, "Member 'SkillComponent_GetEquippedItemSkillData::SkillSlot' has a wrong offset!");
-static_assert(offsetof(SkillComponent_GetEquippedItemSkillData, ReturnValue) == 0x000008, "Member 'SkillComponent_GetEquippedItemSkillData::ReturnValue' has a wrong offset!");
-
-// Function Zion.SkillComponent.GetEquippedSkillID
-// 0x000C (0x000C - 0x0000)
-struct SkillComponent_GetEquippedSkillID final
-{
-public:
-	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   ReturnValue;                                       // 0x0004(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_GetEquippedSkillID) == 0x000004, "Wrong alignment on SkillComponent_GetEquippedSkillID");
-static_assert(sizeof(SkillComponent_GetEquippedSkillID) == 0x00000C, "Wrong size on SkillComponent_GetEquippedSkillID");
-static_assert(offsetof(SkillComponent_GetEquippedSkillID, SkillSlot) == 0x000000, "Member 'SkillComponent_GetEquippedSkillID::SkillSlot' has a wrong offset!");
-static_assert(offsetof(SkillComponent_GetEquippedSkillID, ReturnValue) == 0x000004, "Member 'SkillComponent_GetEquippedSkillID::ReturnValue' has a wrong offset!");
-
-// Function Zion.SkillComponent.GetEquippedSkillInputActionFromSpirit
-// 0x0210 (0x0210 - 0x0000)
-struct SkillComponent_GetEquippedSkillInputActionFromSpirit final
-{
-public:
-	struct FInventoryItemSpiritData               SpiritData;                                        // 0x0000(0x0208)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	const class UInputAction*                     ReturnValue;                                       // 0x0208(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_GetEquippedSkillInputActionFromSpirit) == 0x000008, "Wrong alignment on SkillComponent_GetEquippedSkillInputActionFromSpirit");
-static_assert(sizeof(SkillComponent_GetEquippedSkillInputActionFromSpirit) == 0x000210, "Wrong size on SkillComponent_GetEquippedSkillInputActionFromSpirit");
-static_assert(offsetof(SkillComponent_GetEquippedSkillInputActionFromSpirit, SpiritData) == 0x000000, "Member 'SkillComponent_GetEquippedSkillInputActionFromSpirit::SpiritData' has a wrong offset!");
-static_assert(offsetof(SkillComponent_GetEquippedSkillInputActionFromSpirit, ReturnValue) == 0x000208, "Member 'SkillComponent_GetEquippedSkillInputActionFromSpirit::ReturnValue' has a wrong offset!");
-
-// Function Zion.SkillComponent.GetEquippedSkillLevelData
-// 0x00F0 (0x00F0 - 0x0000)
-struct SkillComponent_GetEquippedSkillLevelData final
-{
-public:
-	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSkillLevelData                        ReturnValue;                                       // 0x0008(0x00E8)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_GetEquippedSkillLevelData) == 0x000008, "Wrong alignment on SkillComponent_GetEquippedSkillLevelData");
-static_assert(sizeof(SkillComponent_GetEquippedSkillLevelData) == 0x0000F0, "Wrong size on SkillComponent_GetEquippedSkillLevelData");
-static_assert(offsetof(SkillComponent_GetEquippedSkillLevelData, SkillSlot) == 0x000000, "Member 'SkillComponent_GetEquippedSkillLevelData::SkillSlot' has a wrong offset!");
-static_assert(offsetof(SkillComponent_GetEquippedSkillLevelData, ReturnValue) == 0x000008, "Member 'SkillComponent_GetEquippedSkillLevelData::ReturnValue' has a wrong offset!");
-
-// Function Zion.SkillComponent.GetEquippedSkillSlotFromID
-// 0x000C (0x000C - 0x0000)
-struct SkillComponent_GetEquippedSkillSlotFromID final
-{
-public:
-	class FName                                   SkillID;                                           // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESkillSlot                                    ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(SkillComponent_GetEquippedSkillSlotFromID) == 0x000004, "Wrong alignment on SkillComponent_GetEquippedSkillSlotFromID");
-static_assert(sizeof(SkillComponent_GetEquippedSkillSlotFromID) == 0x00000C, "Wrong size on SkillComponent_GetEquippedSkillSlotFromID");
-static_assert(offsetof(SkillComponent_GetEquippedSkillSlotFromID, SkillID) == 0x000000, "Member 'SkillComponent_GetEquippedSkillSlotFromID::SkillID' has a wrong offset!");
-static_assert(offsetof(SkillComponent_GetEquippedSkillSlotFromID, ReturnValue) == 0x000008, "Member 'SkillComponent_GetEquippedSkillSlotFromID::ReturnValue' has a wrong offset!");
-
-// Function Zion.SkillComponent.GetMinimumEquippedSPCost
-// 0x0004 (0x0004 - 0x0000)
-struct SkillComponent_GetMinimumEquippedSPCost final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_GetMinimumEquippedSPCost) == 0x000004, "Wrong alignment on SkillComponent_GetMinimumEquippedSPCost");
-static_assert(sizeof(SkillComponent_GetMinimumEquippedSPCost) == 0x000004, "Wrong size on SkillComponent_GetMinimumEquippedSPCost");
-static_assert(offsetof(SkillComponent_GetMinimumEquippedSPCost, ReturnValue) == 0x000000, "Member 'SkillComponent_GetMinimumEquippedSPCost::ReturnValue' has a wrong offset!");
-
-// Function Zion.SkillComponent.HasAnyEquippedSkill
-// 0x0001 (0x0001 - 0x0000)
-struct SkillComponent_HasAnyEquippedSkill final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_HasAnyEquippedSkill) == 0x000001, "Wrong alignment on SkillComponent_HasAnyEquippedSkill");
-static_assert(sizeof(SkillComponent_HasAnyEquippedSkill) == 0x000001, "Wrong size on SkillComponent_HasAnyEquippedSkill");
-static_assert(offsetof(SkillComponent_HasAnyEquippedSkill, ReturnValue) == 0x000000, "Member 'SkillComponent_HasAnyEquippedSkill::ReturnValue' has a wrong offset!");
-
-// Function Zion.SkillComponent.HasEquippedSkill
-// 0x0002 (0x0002 - 0x0000)
-struct SkillComponent_HasEquippedSkill final
-{
-public:
-	ESkillSlot                                    SkillSlot;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(SkillComponent_HasEquippedSkill) == 0x000001, "Wrong alignment on SkillComponent_HasEquippedSkill");
-static_assert(sizeof(SkillComponent_HasEquippedSkill) == 0x000002, "Wrong size on SkillComponent_HasEquippedSkill");
-static_assert(offsetof(SkillComponent_HasEquippedSkill, SkillSlot) == 0x000000, "Member 'SkillComponent_HasEquippedSkill::SkillSlot' has a wrong offset!");
-static_assert(offsetof(SkillComponent_HasEquippedSkill, ReturnValue) == 0x000001, "Member 'SkillComponent_HasEquippedSkill::ReturnValue' has a wrong offset!");
+static_assert(alignof(SleepActivatorComponent_OnWakeTriggerOverlapEnd) == 0x000008, "Wrong alignment on SleepActivatorComponent_OnWakeTriggerOverlapEnd");
+static_assert(sizeof(SleepActivatorComponent_OnWakeTriggerOverlapEnd) == 0x000020, "Wrong size on SleepActivatorComponent_OnWakeTriggerOverlapEnd");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapEnd, OverlappedComponent) == 0x000000, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapEnd::OverlappedComponent' has a wrong offset!");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapEnd, OtherActor) == 0x000008, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapEnd::OtherActor' has a wrong offset!");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapEnd, OtherComp) == 0x000010, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapEnd::OtherComp' has a wrong offset!");
+static_assert(offsetof(SleepActivatorComponent_OnWakeTriggerOverlapEnd, OtherBodyIndex) == 0x000018, "Member 'SleepActivatorComponent_OnWakeTriggerOverlapEnd::OtherBodyIndex' has a wrong offset!");
 
 // Function Zion.SoundComponent.OnMovementModeChanged
 // 0x0010 (0x0010 - 0x0000)
@@ -11342,27 +11869,27 @@ static_assert(alignof(SpineHighlightComponent_OnAnimationStart) == 0x000008, "Wr
 static_assert(sizeof(SpineHighlightComponent_OnAnimationStart) == 0x000008, "Wrong size on SpineHighlightComponent_OnAnimationStart");
 static_assert(offsetof(SpineHighlightComponent_OnAnimationStart, Entry) == 0x000000, "Member 'SpineHighlightComponent_OnAnimationStart::Entry' has a wrong offset!");
 
-// Function Zion.UserWidgetWorldSpaceGauge.SetCurrentRatio
-// 0x0004 (0x0004 - 0x0000)
-struct UserWidgetWorldSpaceGauge_SetCurrentRatio final
+// Function Zion.UserWidgetWorldSpaceText_Talk.OnTalk
+// 0x0028 (0x0028 - 0x0000)
+struct UserWidgetWorldSpaceText_Talk_OnTalk final
 {
 public:
-	float                                         CurrentRatio;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FTalkParameters                        TalkParameters;                                    // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetWorldSpaceGauge_SetCurrentRatio) == 0x000004, "Wrong alignment on UserWidgetWorldSpaceGauge_SetCurrentRatio");
-static_assert(sizeof(UserWidgetWorldSpaceGauge_SetCurrentRatio) == 0x000004, "Wrong size on UserWidgetWorldSpaceGauge_SetCurrentRatio");
-static_assert(offsetof(UserWidgetWorldSpaceGauge_SetCurrentRatio, CurrentRatio) == 0x000000, "Member 'UserWidgetWorldSpaceGauge_SetCurrentRatio::CurrentRatio' has a wrong offset!");
+static_assert(alignof(UserWidgetWorldSpaceText_Talk_OnTalk) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceText_Talk_OnTalk");
+static_assert(sizeof(UserWidgetWorldSpaceText_Talk_OnTalk) == 0x000028, "Wrong size on UserWidgetWorldSpaceText_Talk_OnTalk");
+static_assert(offsetof(UserWidgetWorldSpaceText_Talk_OnTalk, TalkParameters) == 0x000000, "Member 'UserWidgetWorldSpaceText_Talk_OnTalk::TalkParameters' has a wrong offset!");
 
-// Function Zion.UserWidgetWorldSpaceGauge.SetTargetActor
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetWorldSpaceGauge_SetTargetActor final
+// Function Zion.UserWidgetWorldSpaceText_Talk.SetSpeakerName
+// 0x0010 (0x0010 - 0x0000)
+struct UserWidgetWorldSpaceText_Talk_SetSpeakerName final
 {
 public:
-	class AActor*                                 Actor;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FText                                   SpeakerName;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetWorldSpaceGauge_SetTargetActor) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceGauge_SetTargetActor");
-static_assert(sizeof(UserWidgetWorldSpaceGauge_SetTargetActor) == 0x000008, "Wrong size on UserWidgetWorldSpaceGauge_SetTargetActor");
-static_assert(offsetof(UserWidgetWorldSpaceGauge_SetTargetActor, Actor) == 0x000000, "Member 'UserWidgetWorldSpaceGauge_SetTargetActor::Actor' has a wrong offset!");
+static_assert(alignof(UserWidgetWorldSpaceText_Talk_SetSpeakerName) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceText_Talk_SetSpeakerName");
+static_assert(sizeof(UserWidgetWorldSpaceText_Talk_SetSpeakerName) == 0x000010, "Wrong size on UserWidgetWorldSpaceText_Talk_SetSpeakerName");
+static_assert(offsetof(UserWidgetWorldSpaceText_Talk_SetSpeakerName, SpeakerName) == 0x000000, "Member 'UserWidgetWorldSpaceText_Talk_SetSpeakerName::SpeakerName' has a wrong offset!");
 
 // Function Zion.SpiritCooldown.OnCommandFinishCooldown
 // 0x0010 (0x0010 - 0x0000)
@@ -11399,6 +11926,22 @@ public:
 static_assert(alignof(SpiritCooldown_OnUnPossessPlayer) == 0x000008, "Wrong alignment on SpiritCooldown_OnUnPossessPlayer");
 static_assert(sizeof(SpiritCooldown_OnUnPossessPlayer) == 0x000008, "Wrong size on SpiritCooldown_OnUnPossessPlayer");
 static_assert(offsetof(SpiritCooldown_OnUnPossessPlayer, Pawn) == 0x000000, "Member 'SpiritCooldown_OnUnPossessPlayer::Pawn' has a wrong offset!");
+
+// Function Zion.WallAttachComponent.OnMovementModeChanged
+// 0x0010 (0x0010 - 0x0000)
+struct WallAttachComponent_OnMovementModeChanged final
+{
+public:
+	class ACharacter*                             InCharacter;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EMovementMode                                 PrevMovementMode;                                  // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         PreviousCustomMode;                                // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(WallAttachComponent_OnMovementModeChanged) == 0x000008, "Wrong alignment on WallAttachComponent_OnMovementModeChanged");
+static_assert(sizeof(WallAttachComponent_OnMovementModeChanged) == 0x000010, "Wrong size on WallAttachComponent_OnMovementModeChanged");
+static_assert(offsetof(WallAttachComponent_OnMovementModeChanged, InCharacter) == 0x000000, "Member 'WallAttachComponent_OnMovementModeChanged::InCharacter' has a wrong offset!");
+static_assert(offsetof(WallAttachComponent_OnMovementModeChanged, PrevMovementMode) == 0x000008, "Member 'WallAttachComponent_OnMovementModeChanged::PrevMovementMode' has a wrong offset!");
+static_assert(offsetof(WallAttachComponent_OnMovementModeChanged, PreviousCustomMode) == 0x000009, "Member 'WallAttachComponent_OnMovementModeChanged::PreviousCustomMode' has a wrong offset!");
 
 // Function Zion.StatComponent.Add
 // 0x0008 (0x0008 - 0x0000)
@@ -11469,66 +12012,6 @@ public:
 static_assert(alignof(StatComponent_GetMaxValue) == 0x000004, "Wrong alignment on StatComponent_GetMaxValue");
 static_assert(sizeof(StatComponent_GetMaxValue) == 0x000004, "Wrong size on StatComponent_GetMaxValue");
 static_assert(offsetof(StatComponent_GetMaxValue, ReturnValue) == 0x000000, "Member 'StatComponent_GetMaxValue::ReturnValue' has a wrong offset!");
-
-// Function Zion.WallGrabComponent.OnMoveBlocked
-// 0x00F8 (0x00F8 - 0x0000)
-struct WallGrabComponent_OnMoveBlocked final
-{
-public:
-	struct FHitResult                             Impact;                                            // 0x0000(0x00F8)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(WallGrabComponent_OnMoveBlocked) == 0x000008, "Wrong alignment on WallGrabComponent_OnMoveBlocked");
-static_assert(sizeof(WallGrabComponent_OnMoveBlocked) == 0x0000F8, "Wrong size on WallGrabComponent_OnMoveBlocked");
-static_assert(offsetof(WallGrabComponent_OnMoveBlocked, Impact) == 0x000000, "Member 'WallGrabComponent_OnMoveBlocked::Impact' has a wrong offset!");
-
-// Function Zion.WallGrabComponent.OnMovementModeChanged
-// 0x0010 (0x0010 - 0x0000)
-struct WallGrabComponent_OnMovementModeChanged final
-{
-public:
-	class ACharacter*                             InCharacter;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EMovementMode                                 PrevMovementMode;                                  // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         PreviousCustomMode;                                // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(WallGrabComponent_OnMovementModeChanged) == 0x000008, "Wrong alignment on WallGrabComponent_OnMovementModeChanged");
-static_assert(sizeof(WallGrabComponent_OnMovementModeChanged) == 0x000010, "Wrong size on WallGrabComponent_OnMovementModeChanged");
-static_assert(offsetof(WallGrabComponent_OnMovementModeChanged, InCharacter) == 0x000000, "Member 'WallGrabComponent_OnMovementModeChanged::InCharacter' has a wrong offset!");
-static_assert(offsetof(WallGrabComponent_OnMovementModeChanged, PrevMovementMode) == 0x000008, "Member 'WallGrabComponent_OnMovementModeChanged::PrevMovementMode' has a wrong offset!");
-static_assert(offsetof(WallGrabComponent_OnMovementModeChanged, PreviousCustomMode) == 0x000009, "Member 'WallGrabComponent_OnMovementModeChanged::PreviousCustomMode' has a wrong offset!");
-
-// Function Zion.WallGrabComponent.OnStartAnimation
-// 0x0008 (0x0008 - 0x0000)
-struct WallGrabComponent_OnStartAnimation final
-{
-public:
-	class UTrackEntry*                            TrackEntry;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(WallGrabComponent_OnStartAnimation) == 0x000008, "Wrong alignment on WallGrabComponent_OnStartAnimation");
-static_assert(sizeof(WallGrabComponent_OnStartAnimation) == 0x000008, "Wrong size on WallGrabComponent_OnStartAnimation");
-static_assert(offsetof(WallGrabComponent_OnStartAnimation, TrackEntry) == 0x000000, "Member 'WallGrabComponent_OnStartAnimation::TrackEntry' has a wrong offset!");
-
-// Function Zion.WallGrabComponent.IsGrabbingWall
-// 0x0001 (0x0001 - 0x0000)
-struct WallGrabComponent_IsGrabbingWall final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(WallGrabComponent_IsGrabbingWall) == 0x000001, "Wrong alignment on WallGrabComponent_IsGrabbingWall");
-static_assert(sizeof(WallGrabComponent_IsGrabbingWall) == 0x000001, "Wrong size on WallGrabComponent_IsGrabbingWall");
-static_assert(offsetof(WallGrabComponent_IsGrabbingWall, ReturnValue) == 0x000000, "Member 'WallGrabComponent_IsGrabbingWall::ReturnValue' has a wrong offset!");
-
-// Function Zion.WallGrabComponent.IsWallOnRight
-// 0x0001 (0x0001 - 0x0000)
-struct WallGrabComponent_IsWallOnRight final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(WallGrabComponent_IsWallOnRight) == 0x000001, "Wrong alignment on WallGrabComponent_IsWallOnRight");
-static_assert(sizeof(WallGrabComponent_IsWallOnRight) == 0x000001, "Wrong size on WallGrabComponent_IsWallOnRight");
-static_assert(offsetof(WallGrabComponent_IsWallOnRight, ReturnValue) == 0x000000, "Member 'WallGrabComponent_IsWallOnRight::ReturnValue' has a wrong offset!");
 
 // Function Zion.StatBreakableComponent.SetIsImmune
 // 0x0002 (0x0002 - 0x0000)
@@ -11781,63 +12264,6 @@ static_assert(alignof(StateComponent_IsStunned) == 0x000001, "Wrong alignment on
 static_assert(sizeof(StateComponent_IsStunned) == 0x000001, "Wrong size on StateComponent_IsStunned");
 static_assert(offsetof(StateComponent_IsStunned, ReturnValue) == 0x000000, "Member 'StateComponent_IsStunned::ReturnValue' has a wrong offset!");
 
-// Function Zion.ZoneSystemComponent.Get
-// 0x0010 (0x0010 - 0x0000)
-struct ZoneSystemComponent_Get final
-{
-public:
-	const class UObject*                          WorldContextObject;                                // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UZoneSystemComponent*                   ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZoneSystemComponent_Get) == 0x000008, "Wrong alignment on ZoneSystemComponent_Get");
-static_assert(sizeof(ZoneSystemComponent_Get) == 0x000010, "Wrong size on ZoneSystemComponent_Get");
-static_assert(offsetof(ZoneSystemComponent_Get, WorldContextObject) == 0x000000, "Member 'ZoneSystemComponent_Get::WorldContextObject' has a wrong offset!");
-static_assert(offsetof(ZoneSystemComponent_Get, ReturnValue) == 0x000008, "Member 'ZoneSystemComponent_Get::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZoneSystemComponent.BindActorToZone
-// 0x0008 (0x0008 - 0x0000)
-struct ZoneSystemComponent_BindActorToZone final
-{
-public:
-	class AActor*                                 Actor;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZoneSystemComponent_BindActorToZone) == 0x000008, "Wrong alignment on ZoneSystemComponent_BindActorToZone");
-static_assert(sizeof(ZoneSystemComponent_BindActorToZone) == 0x000008, "Wrong size on ZoneSystemComponent_BindActorToZone");
-static_assert(offsetof(ZoneSystemComponent_BindActorToZone, Actor) == 0x000000, "Member 'ZoneSystemComponent_BindActorToZone::Actor' has a wrong offset!");
-
-// Function Zion.ZoneSystemComponent.GetActiveZoneLevelName
-// 0x0010 (0x0010 - 0x0000)
-struct ZoneSystemComponent_GetActiveZoneLevelName final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZoneSystemComponent_GetActiveZoneLevelName) == 0x000008, "Wrong alignment on ZoneSystemComponent_GetActiveZoneLevelName");
-static_assert(sizeof(ZoneSystemComponent_GetActiveZoneLevelName) == 0x000010, "Wrong size on ZoneSystemComponent_GetActiveZoneLevelName");
-static_assert(offsetof(ZoneSystemComponent_GetActiveZoneLevelName, ReturnValue) == 0x000000, "Member 'ZoneSystemComponent_GetActiveZoneLevelName::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZoneSystemComponent.GetActiveZoneName
-// 0x0010 (0x0010 - 0x0000)
-struct ZoneSystemComponent_GetActiveZoneName final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZoneSystemComponent_GetActiveZoneName) == 0x000008, "Wrong alignment on ZoneSystemComponent_GetActiveZoneName");
-static_assert(sizeof(ZoneSystemComponent_GetActiveZoneName) == 0x000010, "Wrong size on ZoneSystemComponent_GetActiveZoneName");
-static_assert(offsetof(ZoneSystemComponent_GetActiveZoneName, ReturnValue) == 0x000000, "Member 'ZoneSystemComponent_GetActiveZoneName::ReturnValue' has a wrong offset!");
-
-// Function Zion.ZoneSystemComponent.IsInAnyZone
-// 0x0001 (0x0001 - 0x0000)
-struct ZoneSystemComponent_IsInAnyZone final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(ZoneSystemComponent_IsInAnyZone) == 0x000001, "Wrong alignment on ZoneSystemComponent_IsInAnyZone");
-static_assert(sizeof(ZoneSystemComponent_IsInAnyZone) == 0x000001, "Wrong size on ZoneSystemComponent_IsInAnyZone");
-static_assert(offsetof(ZoneSystemComponent_IsInAnyZone, ReturnValue) == 0x000000, "Member 'ZoneSystemComponent_IsInAnyZone::ReturnValue' has a wrong offset!");
-
 // Function Zion.StatHPComponent.DoDamage
 // 0x0068 (0x0068 - 0x0000)
 struct StatHPComponent_DoDamage final
@@ -11959,6 +12385,17 @@ static_assert(alignof(StaticVolume_CameraModifier_IsActive) == 0x000001, "Wrong 
 static_assert(sizeof(StaticVolume_CameraModifier_IsActive) == 0x000001, "Wrong size on StaticVolume_CameraModifier_IsActive");
 static_assert(offsetof(StaticVolume_CameraModifier_IsActive, ReturnValue) == 0x000000, "Member 'StaticVolume_CameraModifier_IsActive::ReturnValue' has a wrong offset!");
 
+// Function Zion.UserWidgetMapLegend.OnLegendInitialized
+// 0x0050 (0x0050 - 0x0000)
+struct UserWidgetMapLegend_OnLegendInitialized final
+{
+public:
+	TSet<EMapIconType>                            VisibleIconTypes;                                  // 0x0000(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(UserWidgetMapLegend_OnLegendInitialized) == 0x000008, "Wrong alignment on UserWidgetMapLegend_OnLegendInitialized");
+static_assert(sizeof(UserWidgetMapLegend_OnLegendInitialized) == 0x000050, "Wrong size on UserWidgetMapLegend_OnLegendInitialized");
+static_assert(offsetof(UserWidgetMapLegend_OnLegendInitialized, VisibleIconTypes) == 0x000000, "Member 'UserWidgetMapLegend_OnLegendInitialized::VisibleIconTypes' has a wrong offset!");
+
 // Function Zion.StaticVolume_Zone.SetZoneLevel
 // 0x0008 (0x0008 - 0x0000)
 struct StaticVolume_Zone_SetZoneLevel final
@@ -11969,50 +12406,6 @@ public:
 static_assert(alignof(StaticVolume_Zone_SetZoneLevel) == 0x000008, "Wrong alignment on StaticVolume_Zone_SetZoneLevel");
 static_assert(sizeof(StaticVolume_Zone_SetZoneLevel) == 0x000008, "Wrong size on StaticVolume_Zone_SetZoneLevel");
 static_assert(offsetof(StaticVolume_Zone_SetZoneLevel, InZoneLevel) == 0x000000, "Member 'StaticVolume_Zone_SetZoneLevel::InZoneLevel' has a wrong offset!");
-
-// Function Zion.UserWidgetMapTransition.OnSetIconsVisibility
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetMapTransition_OnSetIconsVisibility final
-{
-public:
-	bool                                          bVisible;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetMapTransition_OnSetIconsVisibility) == 0x000001, "Wrong alignment on UserWidgetMapTransition_OnSetIconsVisibility");
-static_assert(sizeof(UserWidgetMapTransition_OnSetIconsVisibility) == 0x000001, "Wrong size on UserWidgetMapTransition_OnSetIconsVisibility");
-static_assert(offsetof(UserWidgetMapTransition_OnSetIconsVisibility, bVisible) == 0x000000, "Member 'UserWidgetMapTransition_OnSetIconsVisibility::bVisible' has a wrong offset!");
-
-// Function Zion.UserWidgetMapTransition.OnSetScale
-// 0x0004 (0x0004 - 0x0000)
-struct UserWidgetMapTransition_OnSetScale final
-{
-public:
-	float                                         NewScale;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetMapTransition_OnSetScale) == 0x000004, "Wrong alignment on UserWidgetMapTransition_OnSetScale");
-static_assert(sizeof(UserWidgetMapTransition_OnSetScale) == 0x000004, "Wrong size on UserWidgetMapTransition_OnSetScale");
-static_assert(offsetof(UserWidgetMapTransition_OnSetScale, NewScale) == 0x000000, "Member 'UserWidgetMapTransition_OnSetScale::NewScale' has a wrong offset!");
-
-// Function Zion.UserWidgetMapTransition.SetIconsVisibility
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetMapTransition_SetIconsVisibility final
-{
-public:
-	bool                                          bVisible;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetMapTransition_SetIconsVisibility) == 0x000001, "Wrong alignment on UserWidgetMapTransition_SetIconsVisibility");
-static_assert(sizeof(UserWidgetMapTransition_SetIconsVisibility) == 0x000001, "Wrong size on UserWidgetMapTransition_SetIconsVisibility");
-static_assert(offsetof(UserWidgetMapTransition_SetIconsVisibility, bVisible) == 0x000000, "Member 'UserWidgetMapTransition_SetIconsVisibility::bVisible' has a wrong offset!");
-
-// Function Zion.UserWidgetMapTransition.SetScale
-// 0x0004 (0x0004 - 0x0000)
-struct UserWidgetMapTransition_SetScale final
-{
-public:
-	float                                         NewScale;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetMapTransition_SetScale) == 0x000004, "Wrong alignment on UserWidgetMapTransition_SetScale");
-static_assert(sizeof(UserWidgetMapTransition_SetScale) == 0x000004, "Wrong size on UserWidgetMapTransition_SetScale");
-static_assert(offsetof(UserWidgetMapTransition_SetScale, NewScale) == 0x000000, "Member 'UserWidgetMapTransition_SetScale::NewScale' has a wrong offset!");
 
 // Function Zion.StatsControllerComponent.GetAppliedLevel
 // 0x0004 (0x0004 - 0x0000)
@@ -12146,105 +12539,6 @@ static_assert(alignof(StatsControllerPlayerComponent_IsMaxLevel) == 0x000001, "W
 static_assert(sizeof(StatsControllerPlayerComponent_IsMaxLevel) == 0x000001, "Wrong size on StatsControllerPlayerComponent_IsMaxLevel");
 static_assert(offsetof(StatsControllerPlayerComponent_IsMaxLevel, ReturnValue) == 0x000000, "Member 'StatsControllerPlayerComponent_IsMaxLevel::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetPlayerUI.HideUI
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetPlayerUI_HideUI final
-{
-public:
-	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetPlayerUI_HideUI) == 0x000001, "Wrong alignment on UserWidgetPlayerUI_HideUI");
-static_assert(sizeof(UserWidgetPlayerUI_HideUI) == 0x000001, "Wrong size on UserWidgetPlayerUI_HideUI");
-static_assert(offsetof(UserWidgetPlayerUI_HideUI, bInstant) == 0x000000, "Member 'UserWidgetPlayerUI_HideUI::bInstant' has a wrong offset!");
-
-// Function Zion.UserWidgetPlayerUI.OnRefreshLowHPFeedbackOpacity
-// 0x0004 (0x0004 - 0x0000)
-struct UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity final
-{
-public:
-	float                                         Opacity;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity) == 0x000004, "Wrong alignment on UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity");
-static_assert(sizeof(UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity) == 0x000004, "Wrong size on UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity");
-static_assert(offsetof(UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity, Opacity) == 0x000000, "Member 'UserWidgetPlayerUI_OnRefreshLowHPFeedbackOpacity::Opacity' has a wrong offset!");
-
-// Function Zion.UserWidgetPlayerUI.OnRefreshPlayerUIVisibility
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetPlayerUI_OnRefreshPlayerUIVisibility final
-{
-public:
-	bool                                          bVisible;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetPlayerUI_OnRefreshPlayerUIVisibility) == 0x000001, "Wrong alignment on UserWidgetPlayerUI_OnRefreshPlayerUIVisibility");
-static_assert(sizeof(UserWidgetPlayerUI_OnRefreshPlayerUIVisibility) == 0x000001, "Wrong size on UserWidgetPlayerUI_OnRefreshPlayerUIVisibility");
-static_assert(offsetof(UserWidgetPlayerUI_OnRefreshPlayerUIVisibility, bVisible) == 0x000000, "Member 'UserWidgetPlayerUI_OnRefreshPlayerUIVisibility::bVisible' has a wrong offset!");
-
-// Function Zion.UserWidgetPlayerUI.CanShowHeal
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetPlayerUI_CanShowHeal final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetPlayerUI_CanShowHeal) == 0x000001, "Wrong alignment on UserWidgetPlayerUI_CanShowHeal");
-static_assert(sizeof(UserWidgetPlayerUI_CanShowHeal) == 0x000001, "Wrong size on UserWidgetPlayerUI_CanShowHeal");
-static_assert(offsetof(UserWidgetPlayerUI_CanShowHeal, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_CanShowHeal::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetPlayerUI.CanShowSP
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetPlayerUI_CanShowSP final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetPlayerUI_CanShowSP) == 0x000001, "Wrong alignment on UserWidgetPlayerUI_CanShowSP");
-static_assert(sizeof(UserWidgetPlayerUI_CanShowSP) == 0x000001, "Wrong size on UserWidgetPlayerUI_CanShowSP");
-static_assert(offsetof(UserWidgetPlayerUI_CanShowSP, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_CanShowSP::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetPlayerUI.GetController
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetPlayerUI_GetController final
-{
-public:
-	class APlayerController*                      ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetPlayerUI_GetController) == 0x000008, "Wrong alignment on UserWidgetPlayerUI_GetController");
-static_assert(sizeof(UserWidgetPlayerUI_GetController) == 0x000008, "Wrong size on UserWidgetPlayerUI_GetController");
-static_assert(offsetof(UserWidgetPlayerUI_GetController, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_GetController::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetPlayerUI.GetFieldTalkHolder
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetPlayerUI_GetFieldTalkHolder final
-{
-public:
-	class UUserWidgetFieldTalkHolder*             ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetPlayerUI_GetFieldTalkHolder) == 0x000008, "Wrong alignment on UserWidgetPlayerUI_GetFieldTalkHolder");
-static_assert(sizeof(UserWidgetPlayerUI_GetFieldTalkHolder) == 0x000008, "Wrong size on UserWidgetPlayerUI_GetFieldTalkHolder");
-static_assert(offsetof(UserWidgetPlayerUI_GetFieldTalkHolder, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_GetFieldTalkHolder::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetPlayerUI.GetMinimapWidget
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetPlayerUI_GetMinimapWidget final
-{
-public:
-	class UUserWidgetMinimap*                     ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetPlayerUI_GetMinimapWidget) == 0x000008, "Wrong alignment on UserWidgetPlayerUI_GetMinimapWidget");
-static_assert(sizeof(UserWidgetPlayerUI_GetMinimapWidget) == 0x000008, "Wrong size on UserWidgetPlayerUI_GetMinimapWidget");
-static_assert(offsetof(UserWidgetPlayerUI_GetMinimapWidget, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_GetMinimapWidget::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetPlayerUI.GetPawn
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetPlayerUI_GetPawn final
-{
-public:
-	class APawn*                                  ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetPlayerUI_GetPawn) == 0x000008, "Wrong alignment on UserWidgetPlayerUI_GetPawn");
-static_assert(sizeof(UserWidgetPlayerUI_GetPawn) == 0x000008, "Wrong size on UserWidgetPlayerUI_GetPawn");
-static_assert(offsetof(UserWidgetPlayerUI_GetPawn, ReturnValue) == 0x000000, "Member 'UserWidgetPlayerUI_GetPawn::ReturnValue' has a wrong offset!");
-
 // Function Zion.StatSPComponent.AddSPRegenPercentageBonus
 // 0x0008 (0x0008 - 0x0000)
 struct StatSPComponent_AddSPRegenPercentageBonus final
@@ -12282,93 +12576,52 @@ static_assert(alignof(StatSPComponent_GetFilledGaugeCount) == 0x000004, "Wrong a
 static_assert(sizeof(StatSPComponent_GetFilledGaugeCount) == 0x000004, "Wrong size on StatSPComponent_GetFilledGaugeCount");
 static_assert(offsetof(StatSPComponent_GetFilledGaugeCount, ReturnValue) == 0x000000, "Member 'StatSPComponent_GetFilledGaugeCount::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointListMapArea.GenerateRestPointListEntries
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetRestPointListMapArea_GenerateRestPointListEntries final
-{
-public:
-	TArray<class UUserWidgetMapIcon_RestPoint*>   RestPointIcons;                                    // 0x0000(0x0010)(Parm, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointListMapArea_GenerateRestPointListEntries) == 0x000008, "Wrong alignment on UserWidgetRestPointListMapArea_GenerateRestPointListEntries");
-static_assert(sizeof(UserWidgetRestPointListMapArea_GenerateRestPointListEntries) == 0x000010, "Wrong size on UserWidgetRestPointListMapArea_GenerateRestPointListEntries");
-static_assert(offsetof(UserWidgetRestPointListMapArea_GenerateRestPointListEntries, RestPointIcons) == 0x000000, "Member 'UserWidgetRestPointListMapArea_GenerateRestPointListEntries::RestPointIcons' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointListMapArea.RestPointEntryFocused
+// Function Zion.UserWidgetRestPointListEntry.InitializeEntry
 // 0x0008 (0x0008 - 0x0000)
-struct UserWidgetRestPointListMapArea_RestPointEntryFocused final
+struct UserWidgetRestPointListEntry_InitializeEntry final
 {
 public:
 	class UUserWidgetMapIcon_RestPoint*           RestPointIcon;                                     // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointListMapArea_RestPointEntryFocused) == 0x000008, "Wrong alignment on UserWidgetRestPointListMapArea_RestPointEntryFocused");
-static_assert(sizeof(UserWidgetRestPointListMapArea_RestPointEntryFocused) == 0x000008, "Wrong size on UserWidgetRestPointListMapArea_RestPointEntryFocused");
-static_assert(offsetof(UserWidgetRestPointListMapArea_RestPointEntryFocused, RestPointIcon) == 0x000000, "Member 'UserWidgetRestPointListMapArea_RestPointEntryFocused::RestPointIcon' has a wrong offset!");
+static_assert(alignof(UserWidgetRestPointListEntry_InitializeEntry) == 0x000008, "Wrong alignment on UserWidgetRestPointListEntry_InitializeEntry");
+static_assert(sizeof(UserWidgetRestPointListEntry_InitializeEntry) == 0x000008, "Wrong size on UserWidgetRestPointListEntry_InitializeEntry");
+static_assert(offsetof(UserWidgetRestPointListEntry_InitializeEntry, RestPointIcon) == 0x000000, "Member 'UserWidgetRestPointListEntry_InitializeEntry::RestPointIcon' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointListMapArea.RestPointEntryPressed
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetRestPointListMapArea_RestPointEntryPressed final
-{
-public:
-	struct FMapRestPointData                      RestPointData;                                     // 0x0000(0x0008)(Parm, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointListMapArea_RestPointEntryPressed) == 0x000004, "Wrong alignment on UserWidgetRestPointListMapArea_RestPointEntryPressed");
-static_assert(sizeof(UserWidgetRestPointListMapArea_RestPointEntryPressed) == 0x000008, "Wrong size on UserWidgetRestPointListMapArea_RestPointEntryPressed");
-static_assert(offsetof(UserWidgetRestPointListMapArea_RestPointEntryPressed, RestPointData) == 0x000000, "Member 'UserWidgetRestPointListMapArea_RestPointEntryPressed::RestPointData' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointListMapArea.SetCompleted
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetRestPointListMapArea_SetCompleted final
-{
-public:
-	bool                                          bIsCompleted;                                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointListMapArea_SetCompleted) == 0x000001, "Wrong alignment on UserWidgetRestPointListMapArea_SetCompleted");
-static_assert(sizeof(UserWidgetRestPointListMapArea_SetCompleted) == 0x000001, "Wrong size on UserWidgetRestPointListMapArea_SetCompleted");
-static_assert(offsetof(UserWidgetRestPointListMapArea_SetCompleted, bIsCompleted) == 0x000000, "Member 'UserWidgetRestPointListMapArea_SetCompleted::bIsCompleted' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointListMapArea.SetMapAreaIndex
-// 0x0004 (0x0004 - 0x0000)
-struct UserWidgetRestPointListMapArea_SetMapAreaIndex final
-{
-public:
-	int32                                         NewMapAreaIndex;                                   // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointListMapArea_SetMapAreaIndex) == 0x000004, "Wrong alignment on UserWidgetRestPointListMapArea_SetMapAreaIndex");
-static_assert(sizeof(UserWidgetRestPointListMapArea_SetMapAreaIndex) == 0x000004, "Wrong size on UserWidgetRestPointListMapArea_SetMapAreaIndex");
-static_assert(offsetof(UserWidgetRestPointListMapArea_SetMapAreaIndex, NewMapAreaIndex) == 0x000000, "Member 'UserWidgetRestPointListMapArea_SetMapAreaIndex::NewMapAreaIndex' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointListMapArea.SetMapAreaName
+// Function Zion.UserWidgetRestPointListEntry.IsRestPointIcon
 // 0x0010 (0x0010 - 0x0000)
-struct UserWidgetRestPointListMapArea_SetMapAreaName final
+struct UserWidgetRestPointListEntry_IsRestPointIcon final
 {
 public:
-	class FText                                   NewMapAreaName;                                    // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	class UUserWidgetMapIcon_RestPoint*           RestPointIcon;                                     // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(UserWidgetRestPointListMapArea_SetMapAreaName) == 0x000008, "Wrong alignment on UserWidgetRestPointListMapArea_SetMapAreaName");
-static_assert(sizeof(UserWidgetRestPointListMapArea_SetMapAreaName) == 0x000010, "Wrong size on UserWidgetRestPointListMapArea_SetMapAreaName");
-static_assert(offsetof(UserWidgetRestPointListMapArea_SetMapAreaName, NewMapAreaName) == 0x000000, "Member 'UserWidgetRestPointListMapArea_SetMapAreaName::NewMapAreaName' has a wrong offset!");
+static_assert(alignof(UserWidgetRestPointListEntry_IsRestPointIcon) == 0x000008, "Wrong alignment on UserWidgetRestPointListEntry_IsRestPointIcon");
+static_assert(sizeof(UserWidgetRestPointListEntry_IsRestPointIcon) == 0x000010, "Wrong size on UserWidgetRestPointListEntry_IsRestPointIcon");
+static_assert(offsetof(UserWidgetRestPointListEntry_IsRestPointIcon, RestPointIcon) == 0x000000, "Member 'UserWidgetRestPointListEntry_IsRestPointIcon::RestPointIcon' has a wrong offset!");
+static_assert(offsetof(UserWidgetRestPointListEntry_IsRestPointIcon, ReturnValue) == 0x000008, "Member 'UserWidgetRestPointListEntry_IsRestPointIcon::ReturnValue' has a wrong offset!");
 
-// Function Zion.StatusEffectComponent.LaunchStatusEffect
+// Function Zion.StatusEffect.GetDuration
+// 0x0004 (0x0004 - 0x0000)
+struct StatusEffect_GetDuration final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(StatusEffect_GetDuration) == 0x000004, "Wrong alignment on StatusEffect_GetDuration");
+static_assert(sizeof(StatusEffect_GetDuration) == 0x000004, "Wrong size on StatusEffect_GetDuration");
+static_assert(offsetof(StatusEffect_GetDuration, ReturnValue) == 0x000000, "Member 'StatusEffect_GetDuration::ReturnValue' has a wrong offset!");
+
+// Function Zion.StatusEffect.GetStatusEffectType
 // 0x0001 (0x0001 - 0x0000)
-struct StatusEffectComponent_LaunchStatusEffect final
+struct StatusEffect_GetStatusEffectType final
 {
 public:
-	EStatusEffectType                             StatusEffectType;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EStatusEffectType                             ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(StatusEffectComponent_LaunchStatusEffect) == 0x000001, "Wrong alignment on StatusEffectComponent_LaunchStatusEffect");
-static_assert(sizeof(StatusEffectComponent_LaunchStatusEffect) == 0x000001, "Wrong size on StatusEffectComponent_LaunchStatusEffect");
-static_assert(offsetof(StatusEffectComponent_LaunchStatusEffect, StatusEffectType) == 0x000000, "Member 'StatusEffectComponent_LaunchStatusEffect::StatusEffectType' has a wrong offset!");
-
-// Function Zion.StatusEffectComponent.LaunchStatusEffectFromClass
-// 0x0008 (0x0008 - 0x0000)
-struct StatusEffectComponent_LaunchStatusEffectFromClass final
-{
-public:
-	TSubclassOf<class UStatusEffect>              StatusEffectClass;                                 // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(StatusEffectComponent_LaunchStatusEffectFromClass) == 0x000008, "Wrong alignment on StatusEffectComponent_LaunchStatusEffectFromClass");
-static_assert(sizeof(StatusEffectComponent_LaunchStatusEffectFromClass) == 0x000008, "Wrong size on StatusEffectComponent_LaunchStatusEffectFromClass");
-static_assert(offsetof(StatusEffectComponent_LaunchStatusEffectFromClass, StatusEffectClass) == 0x000000, "Member 'StatusEffectComponent_LaunchStatusEffectFromClass::StatusEffectClass' has a wrong offset!");
+static_assert(alignof(StatusEffect_GetStatusEffectType) == 0x000001, "Wrong alignment on StatusEffect_GetStatusEffectType");
+static_assert(sizeof(StatusEffect_GetStatusEffectType) == 0x000001, "Wrong size on StatusEffect_GetStatusEffectType");
+static_assert(offsetof(StatusEffect_GetStatusEffectType, ReturnValue) == 0x000000, "Member 'StatusEffect_GetStatusEffectType::ReturnValue' has a wrong offset!");
 
 // Function Zion.StatusEffect_BurnPlayer.OnMovementModeChanged
 // 0x0010 (0x0010 - 0x0000)
@@ -13116,44 +13369,6 @@ static_assert(sizeof(TimeManagerComponent_IsTimeDilationActive) == 0x00000C, "Wr
 static_assert(offsetof(TimeManagerComponent_IsTimeDilationActive, Tag) == 0x000000, "Member 'TimeManagerComponent_IsTimeDilationActive::Tag' has a wrong offset!");
 static_assert(offsetof(TimeManagerComponent_IsTimeDilationActive, ReturnValue) == 0x000008, "Member 'TimeManagerComponent_IsTimeDilationActive::ReturnValue' has a wrong offset!");
 
-// Function Zion.Trigger_Event.OnEventFinished
-// 0x0010 (0x0010 - 0x0000)
-struct Trigger_Event_OnEventFinished final
-{
-public:
-	class UEventPlayer*                           InEventPlayer;                                     // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bCompletedEvent;                                   // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EEventPlayerResult                            EventResult;                                       // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(Trigger_Event_OnEventFinished) == 0x000008, "Wrong alignment on Trigger_Event_OnEventFinished");
-static_assert(sizeof(Trigger_Event_OnEventFinished) == 0x000010, "Wrong size on Trigger_Event_OnEventFinished");
-static_assert(offsetof(Trigger_Event_OnEventFinished, InEventPlayer) == 0x000000, "Member 'Trigger_Event_OnEventFinished::InEventPlayer' has a wrong offset!");
-static_assert(offsetof(Trigger_Event_OnEventFinished, bCompletedEvent) == 0x000008, "Member 'Trigger_Event_OnEventFinished::bCompletedEvent' has a wrong offset!");
-static_assert(offsetof(Trigger_Event_OnEventFinished, EventResult) == 0x000009, "Member 'Trigger_Event_OnEventFinished::EventResult' has a wrong offset!");
-
-// Function Zion.Trigger_FieldMessageNPC.OnNPCDestroyed
-// 0x0008 (0x0008 - 0x0000)
-struct Trigger_FieldMessageNPC_OnNPCDestroyed final
-{
-public:
-	class AActor*                                 DestroyedActor;                                    // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Trigger_FieldMessageNPC_OnNPCDestroyed) == 0x000008, "Wrong alignment on Trigger_FieldMessageNPC_OnNPCDestroyed");
-static_assert(sizeof(Trigger_FieldMessageNPC_OnNPCDestroyed) == 0x000008, "Wrong size on Trigger_FieldMessageNPC_OnNPCDestroyed");
-static_assert(offsetof(Trigger_FieldMessageNPC_OnNPCDestroyed, DestroyedActor) == 0x000000, "Member 'Trigger_FieldMessageNPC_OnNPCDestroyed::DestroyedActor' has a wrong offset!");
-
-// Function Zion.Trigger_FieldMessageNPC.GetCollisionComponent
-// 0x0008 (0x0008 - 0x0000)
-struct Trigger_FieldMessageNPC_GetCollisionComponent final
-{
-public:
-	class UShapeComponent*                        ReturnValue;                                       // 0x0000(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(Trigger_FieldMessageNPC_GetCollisionComponent) == 0x000008, "Wrong alignment on Trigger_FieldMessageNPC_GetCollisionComponent");
-static_assert(sizeof(Trigger_FieldMessageNPC_GetCollisionComponent) == 0x000008, "Wrong size on Trigger_FieldMessageNPC_GetCollisionComponent");
-static_assert(offsetof(Trigger_FieldMessageNPC_GetCollisionComponent, ReturnValue) == 0x000000, "Member 'Trigger_FieldMessageNPC_GetCollisionComponent::ReturnValue' has a wrong offset!");
-
 // Function Zion.Trigger_RegisterRuntimeCheckpoint.OnPlayerEndOverlap
 // 0x0008 (0x0008 - 0x0000)
 struct Trigger_RegisterRuntimeCheckpoint_OnPlayerEndOverlap final
@@ -13802,113 +14017,20 @@ static_assert(alignof(UserWidgetEnemyUI_GetPawn) == 0x000008, "Wrong alignment o
 static_assert(sizeof(UserWidgetEnemyUI_GetPawn) == 0x000008, "Wrong size on UserWidgetEnemyUI_GetPawn");
 static_assert(offsetof(UserWidgetEnemyUI_GetPawn, ReturnValue) == 0x000000, "Member 'UserWidgetEnemyUI_GetPawn::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetEvent.CompleteChoices
-// 0x0004 (0x0004 - 0x0000)
-struct UserWidgetEvent_CompleteChoices final
-{
-public:
-	int32                                         SelectedChoiceIndex;                               // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetEvent_CompleteChoices) == 0x000004, "Wrong alignment on UserWidgetEvent_CompleteChoices");
-static_assert(sizeof(UserWidgetEvent_CompleteChoices) == 0x000004, "Wrong size on UserWidgetEvent_CompleteChoices");
-static_assert(offsetof(UserWidgetEvent_CompleteChoices, SelectedChoiceIndex) == 0x000000, "Member 'UserWidgetEvent_CompleteChoices::SelectedChoiceIndex' has a wrong offset!");
-
-// Function Zion.UserWidgetEvent.OnPlayChoices
+// Function Zion.UserWidgetExplanation.SetExplanationText
 // 0x0030 (0x0030 - 0x0000)
-struct UserWidgetEvent_OnPlayChoices final
+struct UserWidgetExplanation_SetExplanationText final
 {
 public:
-	class FText                                   SpeakerName;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	class FText                                   Text;                                              // 0x0010(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	TArray<class FText>                           Choices;                                           // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+	class FText                                   Text;                                              // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	TArray<struct FRichTextInputElement>          InputElements;                                     // 0x0010(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+	TArray<class FString>                         StringElements;                                    // 0x0020(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetEvent_OnPlayChoices) == 0x000008, "Wrong alignment on UserWidgetEvent_OnPlayChoices");
-static_assert(sizeof(UserWidgetEvent_OnPlayChoices) == 0x000030, "Wrong size on UserWidgetEvent_OnPlayChoices");
-static_assert(offsetof(UserWidgetEvent_OnPlayChoices, SpeakerName) == 0x000000, "Member 'UserWidgetEvent_OnPlayChoices::SpeakerName' has a wrong offset!");
-static_assert(offsetof(UserWidgetEvent_OnPlayChoices, Text) == 0x000010, "Member 'UserWidgetEvent_OnPlayChoices::Text' has a wrong offset!");
-static_assert(offsetof(UserWidgetEvent_OnPlayChoices, Choices) == 0x000020, "Member 'UserWidgetEvent_OnPlayChoices::Choices' has a wrong offset!");
-
-// Function Zion.UserWidgetEvent.OnTalk
-// 0x0028 (0x0028 - 0x0000)
-struct UserWidgetEvent_OnTalk final
-{
-public:
-	class FText                                   SpeakerName;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	class FText                                   Text;                                              // 0x0010(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	float                                         Duration;                                          // 0x0020(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(UserWidgetEvent_OnTalk) == 0x000008, "Wrong alignment on UserWidgetEvent_OnTalk");
-static_assert(sizeof(UserWidgetEvent_OnTalk) == 0x000028, "Wrong size on UserWidgetEvent_OnTalk");
-static_assert(offsetof(UserWidgetEvent_OnTalk, SpeakerName) == 0x000000, "Member 'UserWidgetEvent_OnTalk::SpeakerName' has a wrong offset!");
-static_assert(offsetof(UserWidgetEvent_OnTalk, Text) == 0x000010, "Member 'UserWidgetEvent_OnTalk::Text' has a wrong offset!");
-static_assert(offsetof(UserWidgetEvent_OnTalk, Duration) == 0x000020, "Member 'UserWidgetEvent_OnTalk::Duration' has a wrong offset!");
-
-// Function Zion.UserWidgetEvent.CanAutoSkipEvent
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetEvent_CanAutoSkipEvent final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetEvent_CanAutoSkipEvent) == 0x000001, "Wrong alignment on UserWidgetEvent_CanAutoSkipEvent");
-static_assert(sizeof(UserWidgetEvent_CanAutoSkipEvent) == 0x000001, "Wrong size on UserWidgetEvent_CanAutoSkipEvent");
-static_assert(offsetof(UserWidgetEvent_CanAutoSkipEvent, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_CanAutoSkipEvent::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetEvent.CanSkipEvent
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetEvent_CanSkipEvent final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetEvent_CanSkipEvent) == 0x000001, "Wrong alignment on UserWidgetEvent_CanSkipEvent");
-static_assert(sizeof(UserWidgetEvent_CanSkipEvent) == 0x000001, "Wrong size on UserWidgetEvent_CanSkipEvent");
-static_assert(offsetof(UserWidgetEvent_CanSkipEvent, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_CanSkipEvent::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetEvent.GetEventPlayer
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetEvent_GetEventPlayer final
-{
-public:
-	class UEventPlayer*                           ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetEvent_GetEventPlayer) == 0x000008, "Wrong alignment on UserWidgetEvent_GetEventPlayer");
-static_assert(sizeof(UserWidgetEvent_GetEventPlayer) == 0x000008, "Wrong size on UserWidgetEvent_GetEventPlayer");
-static_assert(offsetof(UserWidgetEvent_GetEventPlayer, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_GetEventPlayer::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetEvent.IsEventAlreadySeen
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetEvent_IsEventAlreadySeen final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetEvent_IsEventAlreadySeen) == 0x000001, "Wrong alignment on UserWidgetEvent_IsEventAlreadySeen");
-static_assert(sizeof(UserWidgetEvent_IsEventAlreadySeen) == 0x000001, "Wrong size on UserWidgetEvent_IsEventAlreadySeen");
-static_assert(offsetof(UserWidgetEvent_IsEventAlreadySeen, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_IsEventAlreadySeen::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetEvent.ShouldUsePostSkipFadeIn
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetEvent_ShouldUsePostSkipFadeIn final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetEvent_ShouldUsePostSkipFadeIn) == 0x000001, "Wrong alignment on UserWidgetEvent_ShouldUsePostSkipFadeIn");
-static_assert(sizeof(UserWidgetEvent_ShouldUsePostSkipFadeIn) == 0x000001, "Wrong size on UserWidgetEvent_ShouldUsePostSkipFadeIn");
-static_assert(offsetof(UserWidgetEvent_ShouldUsePostSkipFadeIn, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_ShouldUsePostSkipFadeIn::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetEvent.ShouldUsePreSkipFadeOut
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetEvent_ShouldUsePreSkipFadeOut final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetEvent_ShouldUsePreSkipFadeOut) == 0x000001, "Wrong alignment on UserWidgetEvent_ShouldUsePreSkipFadeOut");
-static_assert(sizeof(UserWidgetEvent_ShouldUsePreSkipFadeOut) == 0x000001, "Wrong size on UserWidgetEvent_ShouldUsePreSkipFadeOut");
-static_assert(offsetof(UserWidgetEvent_ShouldUsePreSkipFadeOut, ReturnValue) == 0x000000, "Member 'UserWidgetEvent_ShouldUsePreSkipFadeOut::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetExplanation_SetExplanationText) == 0x000008, "Wrong alignment on UserWidgetExplanation_SetExplanationText");
+static_assert(sizeof(UserWidgetExplanation_SetExplanationText) == 0x000030, "Wrong size on UserWidgetExplanation_SetExplanationText");
+static_assert(offsetof(UserWidgetExplanation_SetExplanationText, Text) == 0x000000, "Member 'UserWidgetExplanation_SetExplanationText::Text' has a wrong offset!");
+static_assert(offsetof(UserWidgetExplanation_SetExplanationText, InputElements) == 0x000010, "Member 'UserWidgetExplanation_SetExplanationText::InputElements' has a wrong offset!");
+static_assert(offsetof(UserWidgetExplanation_SetExplanationText, StringElements) == 0x000020, "Member 'UserWidgetExplanation_SetExplanationText::StringElements' has a wrong offset!");
 
 // Function Zion.UserWidgetExtraDialogGalleryImage.MoveImage
 // 0x0010 (0x0010 - 0x0000)
@@ -14836,396 +14958,285 @@ static_assert(alignof(UserWidgetMapArea_OnZoneVisited) == 0x000008, "Wrong align
 static_assert(sizeof(UserWidgetMapArea_OnZoneVisited) == 0x000008, "Wrong size on UserWidgetMapArea_OnZoneVisited");
 static_assert(offsetof(UserWidgetMapArea_OnZoneVisited, ZoneVisited) == 0x000000, "Member 'UserWidgetMapArea_OnZoneVisited::ZoneVisited' has a wrong offset!");
 
-// Function Zion.UserWidgetNotificationHolder.OnLaunchNotification
-// 0x0040 (0x0040 - 0x0000)
-struct UserWidgetNotificationHolder_OnLaunchNotification final
-{
-public:
-	struct FNotificationData                      NotificationData;                                  // 0x0000(0x0040)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetNotificationHolder_OnLaunchNotification) == 0x000008, "Wrong alignment on UserWidgetNotificationHolder_OnLaunchNotification");
-static_assert(sizeof(UserWidgetNotificationHolder_OnLaunchNotification) == 0x000040, "Wrong size on UserWidgetNotificationHolder_OnLaunchNotification");
-static_assert(offsetof(UserWidgetNotificationHolder_OnLaunchNotification, NotificationData) == 0x000000, "Member 'UserWidgetNotificationHolder_OnLaunchNotification::NotificationData' has a wrong offset!");
-
-// Function Zion.UserWidgetNotificationHolder.IsUIReady
+// Function Zion.UserWidgetMinimap.HasValidData
 // 0x0001 (0x0001 - 0x0000)
-struct UserWidgetNotificationHolder_IsUIReady final
+struct UserWidgetMinimap_HasValidData final
 {
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetNotificationHolder_IsUIReady) == 0x000001, "Wrong alignment on UserWidgetNotificationHolder_IsUIReady");
-static_assert(sizeof(UserWidgetNotificationHolder_IsUIReady) == 0x000001, "Wrong size on UserWidgetNotificationHolder_IsUIReady");
-static_assert(offsetof(UserWidgetNotificationHolder_IsUIReady, ReturnValue) == 0x000000, "Member 'UserWidgetNotificationHolder_IsUIReady::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetMinimap_HasValidData) == 0x000001, "Wrong alignment on UserWidgetMinimap_HasValidData");
+static_assert(sizeof(UserWidgetMinimap_HasValidData) == 0x000001, "Wrong size on UserWidgetMinimap_HasValidData");
+static_assert(offsetof(UserWidgetMinimap_HasValidData, ReturnValue) == 0x000000, "Member 'UserWidgetMinimap_HasValidData::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.ChangeMapArea
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetRestPointList_ChangeMapArea final
+// Function Zion.UserWidgetStatusEffectIcon.GetCachedStatusEffect
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetStatusEffectIcon_GetCachedStatusEffect final
 {
 public:
-	int32                                         IndexOffset;                                       // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUserWidgetMapIcon_RestPoint*           ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UStatusEffect*                          ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_ChangeMapArea) == 0x000008, "Wrong alignment on UserWidgetRestPointList_ChangeMapArea");
-static_assert(sizeof(UserWidgetRestPointList_ChangeMapArea) == 0x000010, "Wrong size on UserWidgetRestPointList_ChangeMapArea");
-static_assert(offsetof(UserWidgetRestPointList_ChangeMapArea, IndexOffset) == 0x000000, "Member 'UserWidgetRestPointList_ChangeMapArea::IndexOffset' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointList_ChangeMapArea, ReturnValue) == 0x000008, "Member 'UserWidgetRestPointList_ChangeMapArea::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetStatusEffectIcon_GetCachedStatusEffect) == 0x000008, "Wrong alignment on UserWidgetStatusEffectIcon_GetCachedStatusEffect");
+static_assert(sizeof(UserWidgetStatusEffectIcon_GetCachedStatusEffect) == 0x000008, "Wrong size on UserWidgetStatusEffectIcon_GetCachedStatusEffect");
+static_assert(offsetof(UserWidgetStatusEffectIcon_GetCachedStatusEffect, ReturnValue) == 0x000000, "Member 'UserWidgetStatusEffectIcon_GetCachedStatusEffect::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.Close
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetRestPointList_Close final
+// Function Zion.UserWidgetStatusEffectIcon.GetStatusEffectIconSprite
+// 0x0028 (0x0028 - 0x0000)
+struct UserWidgetStatusEffectIcon_GetStatusEffectIconSprite final
 {
 public:
-	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSoftObjectPtr<class UPaperSprite>            ReturnValue;                                       // 0x0000(0x0028)(Parm, OutParm, ReturnParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_Close) == 0x000001, "Wrong alignment on UserWidgetRestPointList_Close");
-static_assert(sizeof(UserWidgetRestPointList_Close) == 0x000001, "Wrong size on UserWidgetRestPointList_Close");
-static_assert(offsetof(UserWidgetRestPointList_Close, bInstant) == 0x000000, "Member 'UserWidgetRestPointList_Close::bInstant' has a wrong offset!");
+static_assert(alignof(UserWidgetStatusEffectIcon_GetStatusEffectIconSprite) == 0x000008, "Wrong alignment on UserWidgetStatusEffectIcon_GetStatusEffectIconSprite");
+static_assert(sizeof(UserWidgetStatusEffectIcon_GetStatusEffectIconSprite) == 0x000028, "Wrong size on UserWidgetStatusEffectIcon_GetStatusEffectIconSprite");
+static_assert(offsetof(UserWidgetStatusEffectIcon_GetStatusEffectIconSprite, ReturnValue) == 0x000000, "Member 'UserWidgetStatusEffectIcon_GetStatusEffectIconSprite::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.FindNearestRestPointIcon
-// 0x0020 (0x0020 - 0x0000)
-struct UserWidgetRestPointList_FindNearestRestPointIcon final
+// Function Zion.UserWidgetStatusEffectIcon.GetStatusEffectIconSpriteFromType
+// 0x0030 (0x0030 - 0x0000)
+struct UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType final
 {
 public:
-	struct FVector2D                              CurrentMapPosition;                                // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OutMapAreaIndex;                                   // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUserWidgetMapIcon_RestPoint*           ReturnValue;                                       // 0x0018(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EStatusEffectType                             StatusEffectType;                                  // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UPaperSprite>            ReturnValue;                                       // 0x0008(0x0028)(Parm, OutParm, ReturnParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_FindNearestRestPointIcon) == 0x000008, "Wrong alignment on UserWidgetRestPointList_FindNearestRestPointIcon");
-static_assert(sizeof(UserWidgetRestPointList_FindNearestRestPointIcon) == 0x000020, "Wrong size on UserWidgetRestPointList_FindNearestRestPointIcon");
-static_assert(offsetof(UserWidgetRestPointList_FindNearestRestPointIcon, CurrentMapPosition) == 0x000000, "Member 'UserWidgetRestPointList_FindNearestRestPointIcon::CurrentMapPosition' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointList_FindNearestRestPointIcon, OutMapAreaIndex) == 0x000010, "Member 'UserWidgetRestPointList_FindNearestRestPointIcon::OutMapAreaIndex' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointList_FindNearestRestPointIcon, ReturnValue) == 0x000018, "Member 'UserWidgetRestPointList_FindNearestRestPointIcon::ReturnValue' has a wrong offset!");
+static_assert(alignof(UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType) == 0x000008, "Wrong alignment on UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType");
+static_assert(sizeof(UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType) == 0x000030, "Wrong size on UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType");
+static_assert(offsetof(UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType, StatusEffectType) == 0x000000, "Member 'UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType::StatusEffectType' has a wrong offset!");
+static_assert(offsetof(UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType, ReturnValue) == 0x000008, "Member 'UserWidgetStatusEffectIcon_GetStatusEffectIconSpriteFromType::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.GoToMapAreaFromIndex
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetRestPointList_GoToMapAreaFromIndex final
+// Function Zion.UserWidgetWorldSpaceDebug.ClearTextForTag
+// 0x0008 (0x0008 - 0x0000)
+struct UserWidgetWorldSpaceDebug_ClearTextForTag final
 {
 public:
-	int32                                         MapAreaIndex;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUserWidgetMapIcon_RestPoint*           NearestRestPointIcon;                              // 0x0008(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   Tag;                                               // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_GoToMapAreaFromIndex) == 0x000008, "Wrong alignment on UserWidgetRestPointList_GoToMapAreaFromIndex");
-static_assert(sizeof(UserWidgetRestPointList_GoToMapAreaFromIndex) == 0x000010, "Wrong size on UserWidgetRestPointList_GoToMapAreaFromIndex");
-static_assert(offsetof(UserWidgetRestPointList_GoToMapAreaFromIndex, MapAreaIndex) == 0x000000, "Member 'UserWidgetRestPointList_GoToMapAreaFromIndex::MapAreaIndex' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointList_GoToMapAreaFromIndex, NearestRestPointIcon) == 0x000008, "Member 'UserWidgetRestPointList_GoToMapAreaFromIndex::NearestRestPointIcon' has a wrong offset!");
+static_assert(alignof(UserWidgetWorldSpaceDebug_ClearTextForTag) == 0x000004, "Wrong alignment on UserWidgetWorldSpaceDebug_ClearTextForTag");
+static_assert(sizeof(UserWidgetWorldSpaceDebug_ClearTextForTag) == 0x000008, "Wrong size on UserWidgetWorldSpaceDebug_ClearTextForTag");
+static_assert(offsetof(UserWidgetWorldSpaceDebug_ClearTextForTag, Tag) == 0x000000, "Member 'UserWidgetWorldSpaceDebug_ClearTextForTag::Tag' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.InstantiateRestPointList
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetRestPointList_InstantiateRestPointList final
-{
-public:
-	TArray<struct FRestPointListData>             ListData;                                          // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointList_InstantiateRestPointList) == 0x000008, "Wrong alignment on UserWidgetRestPointList_InstantiateRestPointList");
-static_assert(sizeof(UserWidgetRestPointList_InstantiateRestPointList) == 0x000010, "Wrong size on UserWidgetRestPointList_InstantiateRestPointList");
-static_assert(offsetof(UserWidgetRestPointList_InstantiateRestPointList, ListData) == 0x000000, "Member 'UserWidgetRestPointList_InstantiateRestPointList::ListData' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointList.OnClosed
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetRestPointList_OnClosed final
-{
-public:
-	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointList_OnClosed) == 0x000001, "Wrong alignment on UserWidgetRestPointList_OnClosed");
-static_assert(sizeof(UserWidgetRestPointList_OnClosed) == 0x000001, "Wrong size on UserWidgetRestPointList_OnClosed");
-static_assert(offsetof(UserWidgetRestPointList_OnClosed, bInstant) == 0x000000, "Member 'UserWidgetRestPointList_OnClosed::bInstant' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointList.OnOpened
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetRestPointList_OnOpened final
-{
-public:
-	bool                                          bInstant;                                          // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointList_OnOpened) == 0x000001, "Wrong alignment on UserWidgetRestPointList_OnOpened");
-static_assert(sizeof(UserWidgetRestPointList_OnOpened) == 0x000001, "Wrong size on UserWidgetRestPointList_OnOpened");
-static_assert(offsetof(UserWidgetRestPointList_OnOpened, bInstant) == 0x000000, "Member 'UserWidgetRestPointList_OnOpened::bInstant' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointList.Open
+// Function Zion.UserWidgetWorldSpaceDebug.SetTextForTag
 // 0x0018 (0x0018 - 0x0000)
-struct UserWidgetRestPointList_Open final
+struct UserWidgetWorldSpaceDebug_SetTextForTag final
 {
 public:
-	struct FVector2D                              CurrentMapPosition;                                // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bInstant;                                          // 0x0010(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   Tag;                                               // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 Text;                                              // 0x0008(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_Open) == 0x000008, "Wrong alignment on UserWidgetRestPointList_Open");
-static_assert(sizeof(UserWidgetRestPointList_Open) == 0x000018, "Wrong size on UserWidgetRestPointList_Open");
-static_assert(offsetof(UserWidgetRestPointList_Open, CurrentMapPosition) == 0x000000, "Member 'UserWidgetRestPointList_Open::CurrentMapPosition' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointList_Open, bInstant) == 0x000010, "Member 'UserWidgetRestPointList_Open::bInstant' has a wrong offset!");
+static_assert(alignof(UserWidgetWorldSpaceDebug_SetTextForTag) == 0x000008, "Wrong alignment on UserWidgetWorldSpaceDebug_SetTextForTag");
+static_assert(sizeof(UserWidgetWorldSpaceDebug_SetTextForTag) == 0x000018, "Wrong size on UserWidgetWorldSpaceDebug_SetTextForTag");
+static_assert(offsetof(UserWidgetWorldSpaceDebug_SetTextForTag, Tag) == 0x000000, "Member 'UserWidgetWorldSpaceDebug_SetTextForTag::Tag' has a wrong offset!");
+static_assert(offsetof(UserWidgetWorldSpaceDebug_SetTextForTag, Text) == 0x000008, "Member 'UserWidgetWorldSpaceDebug_SetTextForTag::Text' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.RestPointEntryFocused
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetRestPointList_RestPointEntryFocused final
+// Function Zion.WaitGameReadyAsyncAction.WaitGameReady
+// 0x0018 (0x0018 - 0x0000)
+struct WaitGameReadyAsyncAction_WaitGameReady final
 {
 public:
-	int32                                         MapAreaIndex;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUserWidgetMapIcon_RestPoint*           RestPointIcon;                                     // 0x0008(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	const class UObject*                          WorldContextObject;                                // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAlsoWaitWorldLoading;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWaitGameReadyAsyncAction*              ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_RestPointEntryFocused) == 0x000008, "Wrong alignment on UserWidgetRestPointList_RestPointEntryFocused");
-static_assert(sizeof(UserWidgetRestPointList_RestPointEntryFocused) == 0x000010, "Wrong size on UserWidgetRestPointList_RestPointEntryFocused");
-static_assert(offsetof(UserWidgetRestPointList_RestPointEntryFocused, MapAreaIndex) == 0x000000, "Member 'UserWidgetRestPointList_RestPointEntryFocused::MapAreaIndex' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointList_RestPointEntryFocused, RestPointIcon) == 0x000008, "Member 'UserWidgetRestPointList_RestPointEntryFocused::RestPointIcon' has a wrong offset!");
+static_assert(alignof(WaitGameReadyAsyncAction_WaitGameReady) == 0x000008, "Wrong alignment on WaitGameReadyAsyncAction_WaitGameReady");
+static_assert(sizeof(WaitGameReadyAsyncAction_WaitGameReady) == 0x000018, "Wrong size on WaitGameReadyAsyncAction_WaitGameReady");
+static_assert(offsetof(WaitGameReadyAsyncAction_WaitGameReady, WorldContextObject) == 0x000000, "Member 'WaitGameReadyAsyncAction_WaitGameReady::WorldContextObject' has a wrong offset!");
+static_assert(offsetof(WaitGameReadyAsyncAction_WaitGameReady, bAlsoWaitWorldLoading) == 0x000008, "Member 'WaitGameReadyAsyncAction_WaitGameReady::bAlsoWaitWorldLoading' has a wrong offset!");
+static_assert(offsetof(WaitGameReadyAsyncAction_WaitGameReady, ReturnValue) == 0x000010, "Member 'WaitGameReadyAsyncAction_WaitGameReady::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.RestPointEntryPressed
+// Function Zion.WorldLoaderSubsystem.OpenGameMap
+// 0x0060 (0x0060 - 0x0000)
+struct WorldLoaderSubsystem_OpenGameMap final
+{
+public:
+	struct FDataTableRowHandle                    GameMapHandle;                                     // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	class FName                                   PlayerStartTag;                                    // 0x0010(0x0008)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bForceReload;                                      // 0x0018(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFadeDescriptionData                   FadeOutDescription;                                // 0x0020(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	struct FFadeDescriptionData                   FadeInDescription;                                 // 0x0040(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(WorldLoaderSubsystem_OpenGameMap) == 0x000008, "Wrong alignment on WorldLoaderSubsystem_OpenGameMap");
+static_assert(sizeof(WorldLoaderSubsystem_OpenGameMap) == 0x000060, "Wrong size on WorldLoaderSubsystem_OpenGameMap");
+static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, GameMapHandle) == 0x000000, "Member 'WorldLoaderSubsystem_OpenGameMap::GameMapHandle' has a wrong offset!");
+static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, PlayerStartTag) == 0x000010, "Member 'WorldLoaderSubsystem_OpenGameMap::PlayerStartTag' has a wrong offset!");
+static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, bForceReload) == 0x000018, "Member 'WorldLoaderSubsystem_OpenGameMap::bForceReload' has a wrong offset!");
+static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, FadeOutDescription) == 0x000020, "Member 'WorldLoaderSubsystem_OpenGameMap::FadeOutDescription' has a wrong offset!");
+static_assert(offsetof(WorldLoaderSubsystem_OpenGameMap, FadeInDescription) == 0x000040, "Member 'WorldLoaderSubsystem_OpenGameMap::FadeInDescription' has a wrong offset!");
+
+// Function Zion.WorldLoaderSubsystem.OpenWorld
+// 0x0070 (0x0070 - 0x0000)
+struct WorldLoaderSubsystem_OpenWorld final
+{
+public:
+	TSoftObjectPtr<class UWorld>                  WorldToLoad;                                       // 0x0000(0x0028)(Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   PlayerStartTag;                                    // 0x0028(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FFadeDescriptionData                   FadeOutDescription;                                // 0x0030(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	struct FFadeDescriptionData                   FadeInDescription;                                 // 0x0050(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(WorldLoaderSubsystem_OpenWorld) == 0x000008, "Wrong alignment on WorldLoaderSubsystem_OpenWorld");
+static_assert(sizeof(WorldLoaderSubsystem_OpenWorld) == 0x000070, "Wrong size on WorldLoaderSubsystem_OpenWorld");
+static_assert(offsetof(WorldLoaderSubsystem_OpenWorld, WorldToLoad) == 0x000000, "Member 'WorldLoaderSubsystem_OpenWorld::WorldToLoad' has a wrong offset!");
+static_assert(offsetof(WorldLoaderSubsystem_OpenWorld, PlayerStartTag) == 0x000028, "Member 'WorldLoaderSubsystem_OpenWorld::PlayerStartTag' has a wrong offset!");
+static_assert(offsetof(WorldLoaderSubsystem_OpenWorld, FadeOutDescription) == 0x000030, "Member 'WorldLoaderSubsystem_OpenWorld::FadeOutDescription' has a wrong offset!");
+static_assert(offsetof(WorldLoaderSubsystem_OpenWorld, FadeInDescription) == 0x000050, "Member 'WorldLoaderSubsystem_OpenWorld::FadeInDescription' has a wrong offset!");
+
+// Function Zion.WorldLoaderSubsystem.GetCurrentGameMapData
+// 0x0140 (0x0140 - 0x0000)
+struct WorldLoaderSubsystem_GetCurrentGameMapData final
+{
+public:
+	struct FGameMapData                           ReturnValue;                                       // 0x0000(0x0140)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(WorldLoaderSubsystem_GetCurrentGameMapData) == 0x000008, "Wrong alignment on WorldLoaderSubsystem_GetCurrentGameMapData");
+static_assert(sizeof(WorldLoaderSubsystem_GetCurrentGameMapData) == 0x000140, "Wrong size on WorldLoaderSubsystem_GetCurrentGameMapData");
+static_assert(offsetof(WorldLoaderSubsystem_GetCurrentGameMapData, ReturnValue) == 0x000000, "Member 'WorldLoaderSubsystem_GetCurrentGameMapData::ReturnValue' has a wrong offset!");
+
+// Function Zion.WorldLoaderSubsystem.GetCurrentGameMapID
 // 0x0008 (0x0008 - 0x0000)
-struct UserWidgetRestPointList_RestPointEntryPressed final
+struct WorldLoaderSubsystem_GetCurrentGameMapID final
 {
 public:
-	struct FMapRestPointData                      RestPointData;                                     // 0x0000(0x0008)(Parm, NoDestructor, NativeAccessSpecifierPublic)
+	class FName                                   ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_RestPointEntryPressed) == 0x000004, "Wrong alignment on UserWidgetRestPointList_RestPointEntryPressed");
-static_assert(sizeof(UserWidgetRestPointList_RestPointEntryPressed) == 0x000008, "Wrong size on UserWidgetRestPointList_RestPointEntryPressed");
-static_assert(offsetof(UserWidgetRestPointList_RestPointEntryPressed, RestPointData) == 0x000000, "Member 'UserWidgetRestPointList_RestPointEntryPressed::RestPointData' has a wrong offset!");
+static_assert(alignof(WorldLoaderSubsystem_GetCurrentGameMapID) == 0x000004, "Wrong alignment on WorldLoaderSubsystem_GetCurrentGameMapID");
+static_assert(sizeof(WorldLoaderSubsystem_GetCurrentGameMapID) == 0x000008, "Wrong size on WorldLoaderSubsystem_GetCurrentGameMapID");
+static_assert(offsetof(WorldLoaderSubsystem_GetCurrentGameMapID, ReturnValue) == 0x000000, "Member 'WorldLoaderSubsystem_GetCurrentGameMapID::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.SetCurrentMapAreaIndex
+// Function Zion.WorldLoaderSubsystem.GetCurrentPlayerStartTag
 // 0x0008 (0x0008 - 0x0000)
-struct UserWidgetRestPointList_SetCurrentMapAreaIndex final
+struct WorldLoaderSubsystem_GetCurrentPlayerStartTag final
 {
 public:
-	int32                                         NewMapAreaIndex;                                   // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_SetCurrentMapAreaIndex) == 0x000004, "Wrong alignment on UserWidgetRestPointList_SetCurrentMapAreaIndex");
-static_assert(sizeof(UserWidgetRestPointList_SetCurrentMapAreaIndex) == 0x000008, "Wrong size on UserWidgetRestPointList_SetCurrentMapAreaIndex");
-static_assert(offsetof(UserWidgetRestPointList_SetCurrentMapAreaIndex, NewMapAreaIndex) == 0x000000, "Member 'UserWidgetRestPointList_SetCurrentMapAreaIndex::NewMapAreaIndex' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointList_SetCurrentMapAreaIndex, ReturnValue) == 0x000004, "Member 'UserWidgetRestPointList_SetCurrentMapAreaIndex::ReturnValue' has a wrong offset!");
+static_assert(alignof(WorldLoaderSubsystem_GetCurrentPlayerStartTag) == 0x000004, "Wrong alignment on WorldLoaderSubsystem_GetCurrentPlayerStartTag");
+static_assert(sizeof(WorldLoaderSubsystem_GetCurrentPlayerStartTag) == 0x000008, "Wrong size on WorldLoaderSubsystem_GetCurrentPlayerStartTag");
+static_assert(offsetof(WorldLoaderSubsystem_GetCurrentPlayerStartTag, ReturnValue) == 0x000000, "Member 'WorldLoaderSubsystem_GetCurrentPlayerStartTag::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.CanBeOpened
+// Function Zion.WorldLoaderSubsystem.IsAvailable
 // 0x0001 (0x0001 - 0x0000)
-struct UserWidgetRestPointList_CanBeOpened final
+struct WorldLoaderSubsystem_IsAvailable final
 {
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_CanBeOpened) == 0x000001, "Wrong alignment on UserWidgetRestPointList_CanBeOpened");
-static_assert(sizeof(UserWidgetRestPointList_CanBeOpened) == 0x000001, "Wrong size on UserWidgetRestPointList_CanBeOpened");
-static_assert(offsetof(UserWidgetRestPointList_CanBeOpened, ReturnValue) == 0x000000, "Member 'UserWidgetRestPointList_CanBeOpened::ReturnValue' has a wrong offset!");
+static_assert(alignof(WorldLoaderSubsystem_IsAvailable) == 0x000001, "Wrong alignment on WorldLoaderSubsystem_IsAvailable");
+static_assert(sizeof(WorldLoaderSubsystem_IsAvailable) == 0x000001, "Wrong size on WorldLoaderSubsystem_IsAvailable");
+static_assert(offsetof(WorldLoaderSubsystem_IsAvailable, ReturnValue) == 0x000000, "Member 'WorldLoaderSubsystem_IsAvailable::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.CanChangeMapArea
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetRestPointList_CanChangeMapArea final
+// Function Zion.WorldLoaderSubsystem.IsLoading
+// 0x0002 (0x0002 - 0x0000)
+struct WorldLoaderSubsystem_IsLoading final
 {
 public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bConsiderFadeAsLoading;                            // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetRestPointList_CanChangeMapArea) == 0x000001, "Wrong alignment on UserWidgetRestPointList_CanChangeMapArea");
-static_assert(sizeof(UserWidgetRestPointList_CanChangeMapArea) == 0x000001, "Wrong size on UserWidgetRestPointList_CanChangeMapArea");
-static_assert(offsetof(UserWidgetRestPointList_CanChangeMapArea, ReturnValue) == 0x000000, "Member 'UserWidgetRestPointList_CanChangeMapArea::ReturnValue' has a wrong offset!");
+static_assert(alignof(WorldLoaderSubsystem_IsLoading) == 0x000001, "Wrong alignment on WorldLoaderSubsystem_IsLoading");
+static_assert(sizeof(WorldLoaderSubsystem_IsLoading) == 0x000002, "Wrong size on WorldLoaderSubsystem_IsLoading");
+static_assert(offsetof(WorldLoaderSubsystem_IsLoading, bConsiderFadeAsLoading) == 0x000000, "Member 'WorldLoaderSubsystem_IsLoading::bConsiderFadeAsLoading' has a wrong offset!");
+static_assert(offsetof(WorldLoaderSubsystem_IsLoading, ReturnValue) == 0x000001, "Member 'WorldLoaderSubsystem_IsLoading::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetRestPointList.GetIndexFromMapAreaName
-// 0x000C (0x000C - 0x0000)
-struct UserWidgetRestPointList_GetIndexFromMapAreaName final
-{
-public:
-	class FName                                   MapAreaName;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointList_GetIndexFromMapAreaName) == 0x000004, "Wrong alignment on UserWidgetRestPointList_GetIndexFromMapAreaName");
-static_assert(sizeof(UserWidgetRestPointList_GetIndexFromMapAreaName) == 0x00000C, "Wrong size on UserWidgetRestPointList_GetIndexFromMapAreaName");
-static_assert(offsetof(UserWidgetRestPointList_GetIndexFromMapAreaName, MapAreaName) == 0x000000, "Member 'UserWidgetRestPointList_GetIndexFromMapAreaName::MapAreaName' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointList_GetIndexFromMapAreaName, ReturnValue) == 0x000008, "Member 'UserWidgetRestPointList_GetIndexFromMapAreaName::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointList.GetNewMapAreaIndex
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetRestPointList_GetNewMapAreaIndex final
-{
-public:
-	int32                                         IndexOffset;                                       // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointList_GetNewMapAreaIndex) == 0x000004, "Wrong alignment on UserWidgetRestPointList_GetNewMapAreaIndex");
-static_assert(sizeof(UserWidgetRestPointList_GetNewMapAreaIndex) == 0x000008, "Wrong size on UserWidgetRestPointList_GetNewMapAreaIndex");
-static_assert(offsetof(UserWidgetRestPointList_GetNewMapAreaIndex, IndexOffset) == 0x000000, "Member 'UserWidgetRestPointList_GetNewMapAreaIndex::IndexOffset' has a wrong offset!");
-static_assert(offsetof(UserWidgetRestPointList_GetNewMapAreaIndex, ReturnValue) == 0x000004, "Member 'UserWidgetRestPointList_GetNewMapAreaIndex::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetRestPointList.IsOpened
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetRestPointList_IsOpened final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetRestPointList_IsOpened) == 0x000001, "Wrong alignment on UserWidgetRestPointList_IsOpened");
-static_assert(sizeof(UserWidgetRestPointList_IsOpened) == 0x000001, "Wrong size on UserWidgetRestPointList_IsOpened");
-static_assert(offsetof(UserWidgetRestPointList_IsOpened, ReturnValue) == 0x000000, "Member 'UserWidgetRestPointList_IsOpened::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetWorldSpaceText_Interact.SetAvailable
-// 0x0001 (0x0001 - 0x0000)
-struct UserWidgetWorldSpaceText_Interact_SetAvailable final
-{
-public:
-	bool                                          bAvailable;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetWorldSpaceText_Interact_SetAvailable) == 0x000001, "Wrong alignment on UserWidgetWorldSpaceText_Interact_SetAvailable");
-static_assert(sizeof(UserWidgetWorldSpaceText_Interact_SetAvailable) == 0x000001, "Wrong size on UserWidgetWorldSpaceText_Interact_SetAvailable");
-static_assert(offsetof(UserWidgetWorldSpaceText_Interact_SetAvailable, bAvailable) == 0x000000, "Member 'UserWidgetWorldSpaceText_Interact_SetAvailable::bAvailable' has a wrong offset!");
-
-// Function Zion.UserWidgetWrapBox.AddChild
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetWrapBox_AddChild final
-{
-public:
-	class UWidget*                                Content;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetWrapBox_AddChild) == 0x000008, "Wrong alignment on UserWidgetWrapBox_AddChild");
-static_assert(sizeof(UserWidgetWrapBox_AddChild) == 0x000008, "Wrong size on UserWidgetWrapBox_AddChild");
-static_assert(offsetof(UserWidgetWrapBox_AddChild, Content) == 0x000000, "Member 'UserWidgetWrapBox_AddChild::Content' has a wrong offset!");
-
-// Function Zion.UserWidgetWrapBox.RemoveChild
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetWrapBox_RemoveChild final
-{
-public:
-	class UWidget*                                Content;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(UserWidgetWrapBox_RemoveChild) == 0x000008, "Wrong alignment on UserWidgetWrapBox_RemoveChild");
-static_assert(sizeof(UserWidgetWrapBox_RemoveChild) == 0x000010, "Wrong size on UserWidgetWrapBox_RemoveChild");
-static_assert(offsetof(UserWidgetWrapBox_RemoveChild, Content) == 0x000000, "Member 'UserWidgetWrapBox_RemoveChild::Content' has a wrong offset!");
-static_assert(offsetof(UserWidgetWrapBox_RemoveChild, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_RemoveChild::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetWrapBox.RemoveChildAt
-// 0x0008 (0x0008 - 0x0000)
-struct UserWidgetWrapBox_RemoveChildAt final
-{
-public:
-	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(UserWidgetWrapBox_RemoveChildAt) == 0x000004, "Wrong alignment on UserWidgetWrapBox_RemoveChildAt");
-static_assert(sizeof(UserWidgetWrapBox_RemoveChildAt) == 0x000008, "Wrong size on UserWidgetWrapBox_RemoveChildAt");
-static_assert(offsetof(UserWidgetWrapBox_RemoveChildAt, Index_0) == 0x000000, "Member 'UserWidgetWrapBox_RemoveChildAt::Index_0' has a wrong offset!");
-static_assert(offsetof(UserWidgetWrapBox_RemoveChildAt, ReturnValue) == 0x000004, "Member 'UserWidgetWrapBox_RemoveChildAt::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetWrapBox.GetAllChildren
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetWrapBox_GetAllChildren final
-{
-public:
-	TArray<class UWidget*>                        ReturnValue;                                       // 0x0000(0x0010)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetWrapBox_GetAllChildren) == 0x000008, "Wrong alignment on UserWidgetWrapBox_GetAllChildren");
-static_assert(sizeof(UserWidgetWrapBox_GetAllChildren) == 0x000010, "Wrong size on UserWidgetWrapBox_GetAllChildren");
-static_assert(offsetof(UserWidgetWrapBox_GetAllChildren, ReturnValue) == 0x000000, "Member 'UserWidgetWrapBox_GetAllChildren::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetWrapBox.GetChildAt
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetWrapBox_GetChildAt final
-{
-public:
-	int32                                         Index_0;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWidget*                                ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(UserWidgetWrapBox_GetChildAt) == 0x000008, "Wrong alignment on UserWidgetWrapBox_GetChildAt");
-static_assert(sizeof(UserWidgetWrapBox_GetChildAt) == 0x000010, "Wrong size on UserWidgetWrapBox_GetChildAt");
-static_assert(offsetof(UserWidgetWrapBox_GetChildAt, Index_0) == 0x000000, "Member 'UserWidgetWrapBox_GetChildAt::Index_0' has a wrong offset!");
-static_assert(offsetof(UserWidgetWrapBox_GetChildAt, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_GetChildAt::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetWrapBox.GetChildIndex
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetWrapBox_GetChildIndex final
-{
-public:
-	const class UWidget*                          Content;                                           // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(UserWidgetWrapBox_GetChildIndex) == 0x000008, "Wrong alignment on UserWidgetWrapBox_GetChildIndex");
-static_assert(sizeof(UserWidgetWrapBox_GetChildIndex) == 0x000010, "Wrong size on UserWidgetWrapBox_GetChildIndex");
-static_assert(offsetof(UserWidgetWrapBox_GetChildIndex, Content) == 0x000000, "Member 'UserWidgetWrapBox_GetChildIndex::Content' has a wrong offset!");
-static_assert(offsetof(UserWidgetWrapBox_GetChildIndex, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_GetChildIndex::ReturnValue' has a wrong offset!");
-
-// Function Zion.UserWidgetWrapBox.GetChildrenCount
+// Function Zion.ZionInputDeviceSubsystem.GetActiveControllerID
 // 0x0004 (0x0004 - 0x0000)
-struct UserWidgetWrapBox_GetChildrenCount final
+struct ZionInputDeviceSubsystem_GetActiveControllerID final
 {
 public:
 	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetWrapBox_GetChildrenCount) == 0x000004, "Wrong alignment on UserWidgetWrapBox_GetChildrenCount");
-static_assert(sizeof(UserWidgetWrapBox_GetChildrenCount) == 0x000004, "Wrong size on UserWidgetWrapBox_GetChildrenCount");
-static_assert(offsetof(UserWidgetWrapBox_GetChildrenCount, ReturnValue) == 0x000000, "Member 'UserWidgetWrapBox_GetChildrenCount::ReturnValue' has a wrong offset!");
+static_assert(alignof(ZionInputDeviceSubsystem_GetActiveControllerID) == 0x000004, "Wrong alignment on ZionInputDeviceSubsystem_GetActiveControllerID");
+static_assert(sizeof(ZionInputDeviceSubsystem_GetActiveControllerID) == 0x000004, "Wrong size on ZionInputDeviceSubsystem_GetActiveControllerID");
+static_assert(offsetof(ZionInputDeviceSubsystem_GetActiveControllerID, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_GetActiveControllerID::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetWrapBox.GetWrapNavigationWidget
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetWrapBox_GetWrapNavigationWidget final
+// Function Zion.ZionInputDeviceSubsystem.SetInputStyleGamepadOverride
+// 0x0001 (0x0001 - 0x0000)
+struct ZionInputDeviceSubsystem_SetInputStyleGamepadOverride final
 {
 public:
-	bool                                          bWrapToTop;                                        // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWidget*                                ReturnValue;                                       // 0x0008(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EInputStyle                                   NewInputStyleGamepadOverride;                      // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetWrapBox_GetWrapNavigationWidget) == 0x000008, "Wrong alignment on UserWidgetWrapBox_GetWrapNavigationWidget");
-static_assert(sizeof(UserWidgetWrapBox_GetWrapNavigationWidget) == 0x000010, "Wrong size on UserWidgetWrapBox_GetWrapNavigationWidget");
-static_assert(offsetof(UserWidgetWrapBox_GetWrapNavigationWidget, bWrapToTop) == 0x000000, "Member 'UserWidgetWrapBox_GetWrapNavigationWidget::bWrapToTop' has a wrong offset!");
-static_assert(offsetof(UserWidgetWrapBox_GetWrapNavigationWidget, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_GetWrapNavigationWidget::ReturnValue' has a wrong offset!");
+static_assert(alignof(ZionInputDeviceSubsystem_SetInputStyleGamepadOverride) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_SetInputStyleGamepadOverride");
+static_assert(sizeof(ZionInputDeviceSubsystem_SetInputStyleGamepadOverride) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_SetInputStyleGamepadOverride");
+static_assert(offsetof(ZionInputDeviceSubsystem_SetInputStyleGamepadOverride, NewInputStyleGamepadOverride) == 0x000000, "Member 'ZionInputDeviceSubsystem_SetInputStyleGamepadOverride::NewInputStyleGamepadOverride' has a wrong offset!");
 
-// Function Zion.UserWidgetWrapBox.HasAnyChildren
+// Function Zion.ZionInputDeviceSubsystem.UnlockActiveController
 // 0x0001 (0x0001 - 0x0000)
-struct UserWidgetWrapBox_HasAnyChildren final
+struct ZionInputDeviceSubsystem_UnlockActiveController final
+{
+public:
+	bool                                          bResetLockCount;                                   // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionInputDeviceSubsystem_UnlockActiveController) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_UnlockActiveController");
+static_assert(sizeof(ZionInputDeviceSubsystem_UnlockActiveController) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_UnlockActiveController");
+static_assert(offsetof(ZionInputDeviceSubsystem_UnlockActiveController, bResetLockCount) == 0x000000, "Member 'ZionInputDeviceSubsystem_UnlockActiveController::bResetLockCount' has a wrong offset!");
+
+// Function Zion.ZionInputDeviceSubsystem.GetInputStyle
+// 0x0001 (0x0001 - 0x0000)
+struct ZionInputDeviceSubsystem_GetInputStyle final
+{
+public:
+	EInputStyle                                   ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionInputDeviceSubsystem_GetInputStyle) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_GetInputStyle");
+static_assert(sizeof(ZionInputDeviceSubsystem_GetInputStyle) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_GetInputStyle");
+static_assert(offsetof(ZionInputDeviceSubsystem_GetInputStyle, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_GetInputStyle::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionInputDeviceSubsystem.GetInputStyleGamepadOverride
+// 0x0001 (0x0001 - 0x0000)
+struct ZionInputDeviceSubsystem_GetInputStyleGamepadOverride final
+{
+public:
+	EInputStyle                                   ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(ZionInputDeviceSubsystem_GetInputStyleGamepadOverride) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_GetInputStyleGamepadOverride");
+static_assert(sizeof(ZionInputDeviceSubsystem_GetInputStyleGamepadOverride) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_GetInputStyleGamepadOverride");
+static_assert(offsetof(ZionInputDeviceSubsystem_GetInputStyleGamepadOverride, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_GetInputStyleGamepadOverride::ReturnValue' has a wrong offset!");
+
+// Function Zion.ZionInputDeviceSubsystem.IsActiveControllerLocked
+// 0x0001 (0x0001 - 0x0000)
+struct ZionInputDeviceSubsystem_IsActiveControllerLocked final
 {
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetWrapBox_HasAnyChildren) == 0x000001, "Wrong alignment on UserWidgetWrapBox_HasAnyChildren");
-static_assert(sizeof(UserWidgetWrapBox_HasAnyChildren) == 0x000001, "Wrong size on UserWidgetWrapBox_HasAnyChildren");
-static_assert(offsetof(UserWidgetWrapBox_HasAnyChildren, ReturnValue) == 0x000000, "Member 'UserWidgetWrapBox_HasAnyChildren::ReturnValue' has a wrong offset!");
+static_assert(alignof(ZionInputDeviceSubsystem_IsActiveControllerLocked) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_IsActiveControllerLocked");
+static_assert(sizeof(ZionInputDeviceSubsystem_IsActiveControllerLocked) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_IsActiveControllerLocked");
+static_assert(offsetof(ZionInputDeviceSubsystem_IsActiveControllerLocked, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_IsActiveControllerLocked::ReturnValue' has a wrong offset!");
 
-// Function Zion.UserWidgetWrapBox.HasChild
-// 0x0010 (0x0010 - 0x0000)
-struct UserWidgetWrapBox_HasChild final
+// Function Zion.ZionInputDeviceSubsystem.IsAnyGamepadConnected
+// 0x0001 (0x0001 - 0x0000)
+struct ZionInputDeviceSubsystem_IsAnyGamepadConnected final
 {
 public:
-	class UWidget*                                Content;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(UserWidgetWrapBox_HasChild) == 0x000008, "Wrong alignment on UserWidgetWrapBox_HasChild");
-static_assert(sizeof(UserWidgetWrapBox_HasChild) == 0x000010, "Wrong size on UserWidgetWrapBox_HasChild");
-static_assert(offsetof(UserWidgetWrapBox_HasChild, Content) == 0x000000, "Member 'UserWidgetWrapBox_HasChild::Content' has a wrong offset!");
-static_assert(offsetof(UserWidgetWrapBox_HasChild, ReturnValue) == 0x000008, "Member 'UserWidgetWrapBox_HasChild::ReturnValue' has a wrong offset!");
+static_assert(alignof(ZionInputDeviceSubsystem_IsAnyGamepadConnected) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_IsAnyGamepadConnected");
+static_assert(sizeof(ZionInputDeviceSubsystem_IsAnyGamepadConnected) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_IsAnyGamepadConnected");
+static_assert(offsetof(ZionInputDeviceSubsystem_IsAnyGamepadConnected, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_IsAnyGamepadConnected::ReturnValue' has a wrong offset!");
 
-// Function Zion.WaitGameUnpaused.WaitGameUnpaused
-// 0x0010 (0x0010 - 0x0000)
-struct WaitGameUnpaused_WaitGameUnpaused final
+// Function Zion.ZionInputDeviceSubsystem.IsCursorVisible
+// 0x0001 (0x0001 - 0x0000)
+struct ZionInputDeviceSubsystem_IsCursorVisible final
 {
 public:
-	const class UObject*                          WorldContextObject;                                // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UWaitGameUnpaused*                      ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(WaitGameUnpaused_WaitGameUnpaused) == 0x000008, "Wrong alignment on WaitGameUnpaused_WaitGameUnpaused");
-static_assert(sizeof(WaitGameUnpaused_WaitGameUnpaused) == 0x000010, "Wrong size on WaitGameUnpaused_WaitGameUnpaused");
-static_assert(offsetof(WaitGameUnpaused_WaitGameUnpaused, WorldContextObject) == 0x000000, "Member 'WaitGameUnpaused_WaitGameUnpaused::WorldContextObject' has a wrong offset!");
-static_assert(offsetof(WaitGameUnpaused_WaitGameUnpaused, ReturnValue) == 0x000008, "Member 'WaitGameUnpaused_WaitGameUnpaused::ReturnValue' has a wrong offset!");
+static_assert(alignof(ZionInputDeviceSubsystem_IsCursorVisible) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_IsCursorVisible");
+static_assert(sizeof(ZionInputDeviceSubsystem_IsCursorVisible) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_IsCursorVisible");
+static_assert(offsetof(ZionInputDeviceSubsystem_IsCursorVisible, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_IsCursorVisible::ReturnValue' has a wrong offset!");
 
-// Function Zion.WorldSpaceWidgetHolder.CreateWorldSpaceWidgetHolder
-// 0x0020 (0x0020 - 0x0000)
-struct WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder final
+// Function Zion.ZionInputDeviceSubsystem.IsUsingGamepad
+// 0x0001 (0x0001 - 0x0000)
+struct ZionInputDeviceSubsystem_IsUsingGamepad final
 {
 public:
-	const class UObject*                          WorldObjectContext;                                // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TSubclassOf<class UUserWidgetWorldSpace>      UserWidgetWorldSpaceClass;                         // 0x0008(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EWidgetReleaseMode                            ReleaseMode;                                       // 0x0010(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AWorldSpaceWidgetHolder*                ReturnValue;                                       // 0x0018(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder) == 0x000008, "Wrong alignment on WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder");
-static_assert(sizeof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder) == 0x000020, "Wrong size on WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder");
-static_assert(offsetof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder, WorldObjectContext) == 0x000000, "Member 'WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder::WorldObjectContext' has a wrong offset!");
-static_assert(offsetof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder, UserWidgetWorldSpaceClass) == 0x000008, "Member 'WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder::UserWidgetWorldSpaceClass' has a wrong offset!");
-static_assert(offsetof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder, ReleaseMode) == 0x000010, "Member 'WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder::ReleaseMode' has a wrong offset!");
-static_assert(offsetof(WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder, ReturnValue) == 0x000018, "Member 'WorldSpaceWidgetHolder_CreateWorldSpaceWidgetHolder::ReturnValue' has a wrong offset!");
+static_assert(alignof(ZionInputDeviceSubsystem_IsUsingGamepad) == 0x000001, "Wrong alignment on ZionInputDeviceSubsystem_IsUsingGamepad");
+static_assert(sizeof(ZionInputDeviceSubsystem_IsUsingGamepad) == 0x000001, "Wrong size on ZionInputDeviceSubsystem_IsUsingGamepad");
+static_assert(offsetof(ZionInputDeviceSubsystem_IsUsingGamepad, ReturnValue) == 0x000000, "Member 'ZionInputDeviceSubsystem_IsUsingGamepad::ReturnValue' has a wrong offset!");
 
 }
 

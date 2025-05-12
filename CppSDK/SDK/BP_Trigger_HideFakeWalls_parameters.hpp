@@ -14,33 +14,6 @@
 namespace SDK::Params
 {
 
-// Function BP_Trigger_HideFakeWalls.BP_Trigger_HideFakeWalls_C.ReceiveActorBeginOverlap
-// 0x0008 (0x0008 - 0x0000)
-struct BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap final
-{
-public:
-	class AActor*                                 OtherActor;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap) == 0x000008, "Wrong alignment on BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap");
-static_assert(sizeof(BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap) == 0x000008, "Wrong size on BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap");
-static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap, OtherActor) == 0x000000, "Member 'BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap::OtherActor' has a wrong offset!");
-
-// Function BP_Trigger_HideFakeWalls.BP_Trigger_HideFakeWalls_C.ExecuteUbergraph_BP_Trigger_HideFakeWalls
-// 0x0018 (0x0018 - 0x0000)
-struct BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 K2Node_Event_OtherActor;                           // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsPlayer_ReturnValue;                     // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls) == 0x000008, "Wrong alignment on BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls");
-static_assert(sizeof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls) == 0x000018, "Wrong size on BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls");
-static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls, EntryPoint) == 0x000000, "Member 'BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls::EntryPoint' has a wrong offset!");
-static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls, K2Node_Event_OtherActor) == 0x000008, "Member 'BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls::K2Node_Event_OtherActor' has a wrong offset!");
-static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls, CallFunc_IsPlayer_ReturnValue) == 0x000010, "Member 'BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls::CallFunc_IsPlayer_ReturnValue' has a wrong offset!");
-
 // Function BP_Trigger_HideFakeWalls.BP_Trigger_HideFakeWalls_C.ClearFakeWalls
 // 0x0020 (0x0020 - 0x0000)
 struct BP_Trigger_HideFakeWalls_C_ClearFakeWalls final
@@ -63,6 +36,33 @@ static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ClearFakeWalls, CallFunc_Array
 static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ClearFakeWalls, CallFunc_Array_Get_Item) == 0x000010, "Member 'BP_Trigger_HideFakeWalls_C_ClearFakeWalls::CallFunc_Array_Get_Item' has a wrong offset!");
 static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ClearFakeWalls, CallFunc_Less_IntInt_ReturnValue) == 0x000018, "Member 'BP_Trigger_HideFakeWalls_C_ClearFakeWalls::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ClearFakeWalls, CallFunc_IsValid_ReturnValue) == 0x000019, "Member 'BP_Trigger_HideFakeWalls_C_ClearFakeWalls::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+
+// Function BP_Trigger_HideFakeWalls.BP_Trigger_HideFakeWalls_C.ExecuteUbergraph_BP_Trigger_HideFakeWalls
+// 0x0018 (0x0018 - 0x0000)
+struct BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class AActor*                                 K2Node_Event_OtherActor;                           // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsPlayer_ReturnValue;                     // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls) == 0x000008, "Wrong alignment on BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls");
+static_assert(sizeof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls) == 0x000018, "Wrong size on BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls");
+static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls, EntryPoint) == 0x000000, "Member 'BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls::EntryPoint' has a wrong offset!");
+static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls, K2Node_Event_OtherActor) == 0x000008, "Member 'BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls::K2Node_Event_OtherActor' has a wrong offset!");
+static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls, CallFunc_IsPlayer_ReturnValue) == 0x000010, "Member 'BP_Trigger_HideFakeWalls_C_ExecuteUbergraph_BP_Trigger_HideFakeWalls::CallFunc_IsPlayer_ReturnValue' has a wrong offset!");
+
+// Function BP_Trigger_HideFakeWalls.BP_Trigger_HideFakeWalls_C.ReceiveActorBeginOverlap
+// 0x0008 (0x0008 - 0x0000)
+struct BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap final
+{
+public:
+	class AActor*                                 OtherActor;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap) == 0x000008, "Wrong alignment on BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap");
+static_assert(sizeof(BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap) == 0x000008, "Wrong size on BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap");
+static_assert(offsetof(BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap, OtherActor) == 0x000000, "Member 'BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap::OtherActor' has a wrong offset!");
 
 }
 

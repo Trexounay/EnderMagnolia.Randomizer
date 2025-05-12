@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "InteractiveToolsFramework_classes.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
 #include "MeshModelingTools_structs.hpp"
-#include "InteractiveToolsFramework_classes.hpp"
 #include "ModelingComponents_structs.hpp"
 #include "ModelingComponents_classes.hpp"
 #include "ModelingOperators_structs.hpp"
@@ -21,6 +21,43 @@
 
 namespace SDK
 {
+
+// Class MeshModelingTools.DrawPolygonToolStandardProperties
+// 0x0018 (0x00C0 - 0x00A8)
+class UDrawPolygonToolStandardProperties final : public UInteractiveToolPropertySet
+{
+public:
+	EDrawPolygonDrawMode                          PolygonDrawMode;                                   // 0x00A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAllowSelfIntersections;                           // 0x00A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_AA[0x2];                                       // 0x00AA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         FeatureSizeRatio;                                  // 0x00AC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         RadialSlices;                                      // 0x00B0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Distance;                                          // 0x00B4(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bShowGridGizmo;                                    // 0x00B8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDrawPolygonExtrudeMode                       ExtrudeMode;                                       // 0x00B9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_BA[0x2];                                       // 0x00BA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ExtrudeHeight;                                     // 0x00BC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"DrawPolygonToolStandardProperties">();
+	}
+	static class UDrawPolygonToolStandardProperties* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDrawPolygonToolStandardProperties>();
+	}
+};
+static_assert(alignof(UDrawPolygonToolStandardProperties) == 0x000008, "Wrong alignment on UDrawPolygonToolStandardProperties");
+static_assert(sizeof(UDrawPolygonToolStandardProperties) == 0x0000C0, "Wrong size on UDrawPolygonToolStandardProperties");
+static_assert(offsetof(UDrawPolygonToolStandardProperties, PolygonDrawMode) == 0x0000A8, "Member 'UDrawPolygonToolStandardProperties::PolygonDrawMode' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolStandardProperties, bAllowSelfIntersections) == 0x0000A9, "Member 'UDrawPolygonToolStandardProperties::bAllowSelfIntersections' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolStandardProperties, FeatureSizeRatio) == 0x0000AC, "Member 'UDrawPolygonToolStandardProperties::FeatureSizeRatio' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolStandardProperties, RadialSlices) == 0x0000B0, "Member 'UDrawPolygonToolStandardProperties::RadialSlices' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolStandardProperties, Distance) == 0x0000B4, "Member 'UDrawPolygonToolStandardProperties::Distance' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolStandardProperties, bShowGridGizmo) == 0x0000B8, "Member 'UDrawPolygonToolStandardProperties::bShowGridGizmo' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolStandardProperties, ExtrudeMode) == 0x0000B9, "Member 'UDrawPolygonToolStandardProperties::ExtrudeMode' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolStandardProperties, ExtrudeHeight) == 0x0000BC, "Member 'UDrawPolygonToolStandardProperties::ExtrudeHeight' has a wrong offset!");
 
 // Class MeshModelingTools.PolyEditActivityContext
 // 0x00F8 (0x0120 - 0x0028)
@@ -49,43 +86,6 @@ static_assert(sizeof(UPolyEditActivityContext) == 0x000120, "Wrong size on UPoly
 static_assert(offsetof(UPolyEditActivityContext, CommonProperties) == 0x000028, "Member 'UPolyEditActivityContext::CommonProperties' has a wrong offset!");
 static_assert(offsetof(UPolyEditActivityContext, Preview) == 0x000040, "Member 'UPolyEditActivityContext::Preview' has a wrong offset!");
 static_assert(offsetof(UPolyEditActivityContext, SelectionMechanic) == 0x000070, "Member 'UPolyEditActivityContext::SelectionMechanic' has a wrong offset!");
-
-// Class MeshModelingTools.DrawPolygonToolSnapProperties
-// 0x0010 (0x00B8 - 0x00A8)
-class UDrawPolygonToolSnapProperties final : public UInteractiveToolPropertySet
-{
-public:
-	bool                                          bEnableSnapping;                                   // 0x00A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSnapToWorldGrid;                                  // 0x00A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSnapToVertices;                                   // 0x00AA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSnapToEdges;                                      // 0x00AB(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSnapToAxes;                                       // 0x00AC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSnapToLengths;                                    // 0x00AD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSnapToSurfaces;                                   // 0x00AE(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_AF[0x1];                                       // 0x00AF(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         SnapToSurfacesOffset;                              // 0x00B0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B4[0x4];                                       // 0x00B4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"DrawPolygonToolSnapProperties">();
-	}
-	static class UDrawPolygonToolSnapProperties* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UDrawPolygonToolSnapProperties>();
-	}
-};
-static_assert(alignof(UDrawPolygonToolSnapProperties) == 0x000008, "Wrong alignment on UDrawPolygonToolSnapProperties");
-static_assert(sizeof(UDrawPolygonToolSnapProperties) == 0x0000B8, "Wrong size on UDrawPolygonToolSnapProperties");
-static_assert(offsetof(UDrawPolygonToolSnapProperties, bEnableSnapping) == 0x0000A8, "Member 'UDrawPolygonToolSnapProperties::bEnableSnapping' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToWorldGrid) == 0x0000A9, "Member 'UDrawPolygonToolSnapProperties::bSnapToWorldGrid' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToVertices) == 0x0000AA, "Member 'UDrawPolygonToolSnapProperties::bSnapToVertices' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToEdges) == 0x0000AB, "Member 'UDrawPolygonToolSnapProperties::bSnapToEdges' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToAxes) == 0x0000AC, "Member 'UDrawPolygonToolSnapProperties::bSnapToAxes' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToLengths) == 0x0000AD, "Member 'UDrawPolygonToolSnapProperties::bSnapToLengths' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToSurfaces) == 0x0000AE, "Member 'UDrawPolygonToolSnapProperties::bSnapToSurfaces' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolSnapProperties, SnapToSurfacesOffset) == 0x0000B0, "Member 'UDrawPolygonToolSnapProperties::SnapToSurfacesOffset' has a wrong offset!");
 
 // Class MeshModelingTools.PolyEditExtrudeEdgeActivityProperties
 // 0x0018 (0x00C0 - 0x00A8)
@@ -116,6 +116,57 @@ static_assert(offsetof(UPolyEditExtrudeEdgeActivityProperties, DistanceMode) == 
 static_assert(offsetof(UPolyEditExtrudeEdgeActivityProperties, Distance) == 0x0000B0, "Member 'UPolyEditExtrudeEdgeActivityProperties::Distance' has a wrong offset!");
 static_assert(offsetof(UPolyEditExtrudeEdgeActivityProperties, bUseUnselectedForFrames) == 0x0000B8, "Member 'UPolyEditExtrudeEdgeActivityProperties::bUseUnselectedForFrames' has a wrong offset!");
 static_assert(offsetof(UPolyEditExtrudeEdgeActivityProperties, bAdjustToExtrudeEvenly) == 0x0000B9, "Member 'UPolyEditExtrudeEdgeActivityProperties::bAdjustToExtrudeEvenly' has a wrong offset!");
+
+// Class MeshModelingTools.EditMeshPolygonsToolActionPropertySet
+// 0x0008 (0x00B0 - 0x00A8)
+class UEditMeshPolygonsToolActionPropertySet : public UInteractiveToolPropertySet
+{
+public:
+	uint8                                         Pad_A8[0x8];                                       // 0x00A8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"EditMeshPolygonsToolActionPropertySet">();
+	}
+	static class UEditMeshPolygonsToolActionPropertySet* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UEditMeshPolygonsToolActionPropertySet>();
+	}
+};
+static_assert(alignof(UEditMeshPolygonsToolActionPropertySet) == 0x000008, "Wrong alignment on UEditMeshPolygonsToolActionPropertySet");
+static_assert(sizeof(UEditMeshPolygonsToolActionPropertySet) == 0x0000B0, "Wrong size on UEditMeshPolygonsToolActionPropertySet");
+
+// Class MeshModelingTools.EditMeshPolygonsToolActions_Triangles
+// 0x0000 (0x00B0 - 0x00B0)
+class UEditMeshPolygonsToolActions_Triangles final : public UEditMeshPolygonsToolActionPropertySet
+{
+public:
+	void CutFaces();
+	void Delete();
+	void Disconnect();
+	void Duplicate();
+	void Extrude();
+	void Flip();
+	void Inset();
+	void Offset();
+	void Outset();
+	void Poke();
+	void PushPull();
+	void RecalcNormals();
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"EditMeshPolygonsToolActions_Triangles">();
+	}
+	static class UEditMeshPolygonsToolActions_Triangles* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UEditMeshPolygonsToolActions_Triangles>();
+	}
+};
+static_assert(alignof(UEditMeshPolygonsToolActions_Triangles) == 0x000008, "Wrong alignment on UEditMeshPolygonsToolActions_Triangles");
+static_assert(sizeof(UEditMeshPolygonsToolActions_Triangles) == 0x0000B0, "Wrong size on UEditMeshPolygonsToolActions_Triangles");
 
 // Class MeshModelingTools.PolyEditExtrudeEdgeActivity
 // 0x02A0 (0x02D0 - 0x0030)
@@ -151,46 +202,6 @@ static_assert(offsetof(UPolyEditExtrudeEdgeActivity, ExtrudeFrameGizmo) == 0x000
 static_assert(offsetof(UPolyEditExtrudeEdgeActivity, SingleDirectionProxy) == 0x000058, "Member 'UPolyEditExtrudeEdgeActivity::SingleDirectionProxy' has a wrong offset!");
 static_assert(offsetof(UPolyEditExtrudeEdgeActivity, SingleDirectionGizmo) == 0x000060, "Member 'UPolyEditExtrudeEdgeActivity::SingleDirectionGizmo' has a wrong offset!");
 static_assert(offsetof(UPolyEditExtrudeEdgeActivity, PreviewGeometry) == 0x000068, "Member 'UPolyEditExtrudeEdgeActivity::PreviewGeometry' has a wrong offset!");
-
-// Class MeshModelingTools.EditMeshPolygonsToolActionPropertySet
-// 0x0008 (0x00B0 - 0x00A8)
-class UEditMeshPolygonsToolActionPropertySet : public UInteractiveToolPropertySet
-{
-public:
-	uint8                                         Pad_A8[0x8];                                       // 0x00A8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"EditMeshPolygonsToolActionPropertySet">();
-	}
-	static class UEditMeshPolygonsToolActionPropertySet* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UEditMeshPolygonsToolActionPropertySet>();
-	}
-};
-static_assert(alignof(UEditMeshPolygonsToolActionPropertySet) == 0x000008, "Wrong alignment on UEditMeshPolygonsToolActionPropertySet");
-static_assert(sizeof(UEditMeshPolygonsToolActionPropertySet) == 0x0000B0, "Wrong size on UEditMeshPolygonsToolActionPropertySet");
-
-// Class MeshModelingTools.EditMeshPolygonsToolUVActions
-// 0x0000 (0x00B0 - 0x00B0)
-class UEditMeshPolygonsToolUVActions final : public UEditMeshPolygonsToolActionPropertySet
-{
-public:
-	void PlanarProjection();
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"EditMeshPolygonsToolUVActions">();
-	}
-	static class UEditMeshPolygonsToolUVActions* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UEditMeshPolygonsToolUVActions>();
-	}
-};
-static_assert(alignof(UEditMeshPolygonsToolUVActions) == 0x000008, "Wrong alignment on UEditMeshPolygonsToolUVActions");
-static_assert(sizeof(UEditMeshPolygonsToolUVActions) == 0x0000B0, "Wrong size on UEditMeshPolygonsToolUVActions");
 
 // Class MeshModelingTools.AddPrimitiveToolBuilder
 // 0x0008 (0x0030 - 0x0028)
@@ -278,6 +289,70 @@ static_assert(offsetof(UProceduralBoxToolProperties, WidthSubdivisions) == 0x000
 static_assert(offsetof(UProceduralBoxToolProperties, DepthSubdivisions) == 0x0000C8, "Member 'UProceduralBoxToolProperties::DepthSubdivisions' has a wrong offset!");
 static_assert(offsetof(UProceduralBoxToolProperties, HeightSubdivisions) == 0x0000CC, "Member 'UProceduralBoxToolProperties::HeightSubdivisions' has a wrong offset!");
 
+// Class MeshModelingTools.EditMeshPolygonsTool
+// 0x07E0 (0x0900 - 0x0120)
+class alignas(0x10) UEditMeshPolygonsTool final : public USingleTargetWithSelectionTool
+{
+public:
+	uint8                                         Pad_120[0x20];                                     // 0x0120(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMeshOpPreviewWithBackgroundCompute*    Preview;                                           // 0x0140(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditCommonProperties*              CommonProps;                                       // 0x0148(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UEditMeshPolygonsToolActions*           EditActions;                                       // 0x0150(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UEditMeshPolygonsToolActions_Triangles* EditActions_Triangles;                             // 0x0158(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UEditMeshPolygonsToolEdgeActions*       EditEdgeActions;                                   // 0x0160(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UEditMeshPolygonsToolEdgeActions_Triangles* EditEdgeActions_Triangles;                     // 0x0168(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UEditMeshPolygonsToolUVActions*         EditUVActions;                                     // 0x0170(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditTopologyProperties*            TopologyProperties;                                // 0x0178(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditExtrudeActivity*               ExtrudeActivity;                                   // 0x0180(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditInsetOutsetActivity*           InsetOutsetActivity;                               // 0x0188(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditCutFacesActivity*              CutFacesActivity;                                  // 0x0190(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditPlanarProjectionUVActivity*    PlanarProjectionUVActivity;                        // 0x0198(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditInsertEdgeActivity*            InsertEdgeActivity;                                // 0x01A0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditInsertEdgeLoopActivity*        InsertEdgeLoopActivity;                            // 0x01A8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditBevelEdgeActivity*             BevelEdgeActivity;                                 // 0x01B0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolyEditExtrudeEdgeActivity*           ExtrudeEdgeActivity;                               // 0x01B8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1C0[0xD8];                                     // 0x01C0(0x00D8)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPolyEditActivityContext*               ActivityContext;                                   // 0x0298(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPolygonSelectionMechanic*              SelectionMechanic;                                 // 0x02A0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UDragAlignmentMechanic*                 DragAlignmentMechanic;                             // 0x02A8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UCombinedTransformGizmo*                TransformGizmo;                                    // 0x02B0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UTransformProxy*                        TransformProxy;                                    // 0x02B8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2C0[0x640];                                    // 0x02C0(0x0640)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"EditMeshPolygonsTool">();
+	}
+	static class UEditMeshPolygonsTool* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UEditMeshPolygonsTool>();
+	}
+};
+static_assert(alignof(UEditMeshPolygonsTool) == 0x000010, "Wrong alignment on UEditMeshPolygonsTool");
+static_assert(sizeof(UEditMeshPolygonsTool) == 0x000900, "Wrong size on UEditMeshPolygonsTool");
+static_assert(offsetof(UEditMeshPolygonsTool, Preview) == 0x000140, "Member 'UEditMeshPolygonsTool::Preview' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, CommonProps) == 0x000148, "Member 'UEditMeshPolygonsTool::CommonProps' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, EditActions) == 0x000150, "Member 'UEditMeshPolygonsTool::EditActions' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, EditActions_Triangles) == 0x000158, "Member 'UEditMeshPolygonsTool::EditActions_Triangles' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, EditEdgeActions) == 0x000160, "Member 'UEditMeshPolygonsTool::EditEdgeActions' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, EditEdgeActions_Triangles) == 0x000168, "Member 'UEditMeshPolygonsTool::EditEdgeActions_Triangles' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, EditUVActions) == 0x000170, "Member 'UEditMeshPolygonsTool::EditUVActions' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, TopologyProperties) == 0x000178, "Member 'UEditMeshPolygonsTool::TopologyProperties' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, ExtrudeActivity) == 0x000180, "Member 'UEditMeshPolygonsTool::ExtrudeActivity' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, InsetOutsetActivity) == 0x000188, "Member 'UEditMeshPolygonsTool::InsetOutsetActivity' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, CutFacesActivity) == 0x000190, "Member 'UEditMeshPolygonsTool::CutFacesActivity' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, PlanarProjectionUVActivity) == 0x000198, "Member 'UEditMeshPolygonsTool::PlanarProjectionUVActivity' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, InsertEdgeActivity) == 0x0001A0, "Member 'UEditMeshPolygonsTool::InsertEdgeActivity' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, InsertEdgeLoopActivity) == 0x0001A8, "Member 'UEditMeshPolygonsTool::InsertEdgeLoopActivity' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, BevelEdgeActivity) == 0x0001B0, "Member 'UEditMeshPolygonsTool::BevelEdgeActivity' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, ExtrudeEdgeActivity) == 0x0001B8, "Member 'UEditMeshPolygonsTool::ExtrudeEdgeActivity' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, ActivityContext) == 0x000298, "Member 'UEditMeshPolygonsTool::ActivityContext' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, SelectionMechanic) == 0x0002A0, "Member 'UEditMeshPolygonsTool::SelectionMechanic' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, DragAlignmentMechanic) == 0x0002A8, "Member 'UEditMeshPolygonsTool::DragAlignmentMechanic' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, TransformGizmo) == 0x0002B0, "Member 'UEditMeshPolygonsTool::TransformGizmo' has a wrong offset!");
+static_assert(offsetof(UEditMeshPolygonsTool, TransformProxy) == 0x0002B8, "Member 'UEditMeshPolygonsTool::TransformProxy' has a wrong offset!");
+
 // Class MeshModelingTools.ProceduralRectangleToolProperties
 // 0x0020 (0x00D8 - 0x00B8)
 class UProceduralRectangleToolProperties final : public UProceduralShapeToolProperties
@@ -344,6 +419,33 @@ static_assert(offsetof(UProceduralDiscToolProperties, RadialSlices) == 0x0000C0,
 static_assert(offsetof(UProceduralDiscToolProperties, RadialSubdivisions) == 0x0000C4, "Member 'UProceduralDiscToolProperties::RadialSubdivisions' has a wrong offset!");
 static_assert(offsetof(UProceduralDiscToolProperties, HoleRadius) == 0x0000C8, "Member 'UProceduralDiscToolProperties::HoleRadius' has a wrong offset!");
 
+// Class MeshModelingTools.PolyEditTopologyProperties
+// 0x0010 (0x00C0 - 0x00B0)
+class UPolyEditTopologyProperties final : public UEditMeshPolygonsToolActionPropertySet
+{
+public:
+	bool                                          bAddExtraCorners;                                  // 0x00B0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B1[0x7];                                       // 0x00B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        ExtraCornerAngleThresholdDegrees;                  // 0x00B8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	void RegenerateExtraCorners();
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"PolyEditTopologyProperties">();
+	}
+	static class UPolyEditTopologyProperties* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UPolyEditTopologyProperties>();
+	}
+};
+static_assert(alignof(UPolyEditTopologyProperties) == 0x000008, "Wrong alignment on UPolyEditTopologyProperties");
+static_assert(sizeof(UPolyEditTopologyProperties) == 0x0000C0, "Wrong size on UPolyEditTopologyProperties");
+static_assert(offsetof(UPolyEditTopologyProperties, bAddExtraCorners) == 0x0000B0, "Member 'UPolyEditTopologyProperties::bAddExtraCorners' has a wrong offset!");
+static_assert(offsetof(UPolyEditTopologyProperties, ExtraCornerAngleThresholdDegrees) == 0x0000B8, "Member 'UPolyEditTopologyProperties::ExtraCornerAngleThresholdDegrees' has a wrong offset!");
+
 // Class MeshModelingTools.ProceduralTorusToolProperties
 // 0x0010 (0x00C8 - 0x00B8)
 class UProceduralTorusToolProperties final : public UProceduralShapeToolProperties
@@ -371,42 +473,25 @@ static_assert(offsetof(UProceduralTorusToolProperties, MinorRadius) == 0x0000BC,
 static_assert(offsetof(UProceduralTorusToolProperties, MajorSlices) == 0x0000C0, "Member 'UProceduralTorusToolProperties::MajorSlices' has a wrong offset!");
 static_assert(offsetof(UProceduralTorusToolProperties, MinorSlices) == 0x0000C4, "Member 'UProceduralTorusToolProperties::MinorSlices' has a wrong offset!");
 
-// Class MeshModelingTools.EditMeshPolygonsToolActions
-// 0x0000 (0x00B0 - 0x00B0)
-class UEditMeshPolygonsToolActions final : public UEditMeshPolygonsToolActionPropertySet
+// Class MeshModelingTools.CombineMeshesToolBuilder
+// 0x0008 (0x0030 - 0x0028)
+class UCombineMeshesToolBuilder final : public UMultiSelectionMeshEditingToolBuilder
 {
 public:
-	void Bevel();
-	void CutFaces();
-	void Decompose();
-	void Delete();
-	void Disconnect();
-	void Duplicate();
-	void Extrude();
-	void Flip();
-	void InsertEdge();
-	void InsertEdgeLoop();
-	void Inset();
-	void Merge();
-	void Offset();
-	void Outset();
-	void PushPull();
-	void RecalcNormals();
-	void Retriangulate();
-	void SimplifyByGroups();
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"EditMeshPolygonsToolActions">();
+		return StaticClassImpl<"CombineMeshesToolBuilder">();
 	}
-	static class UEditMeshPolygonsToolActions* GetDefaultObj()
+	static class UCombineMeshesToolBuilder* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UEditMeshPolygonsToolActions>();
+		return GetDefaultObjImpl<UCombineMeshesToolBuilder>();
 	}
 };
-static_assert(alignof(UEditMeshPolygonsToolActions) == 0x000008, "Wrong alignment on UEditMeshPolygonsToolActions");
-static_assert(sizeof(UEditMeshPolygonsToolActions) == 0x0000B0, "Wrong size on UEditMeshPolygonsToolActions");
+static_assert(alignof(UCombineMeshesToolBuilder) == 0x000008, "Wrong alignment on UCombineMeshesToolBuilder");
+static_assert(sizeof(UCombineMeshesToolBuilder) == 0x000030, "Wrong size on UCombineMeshesToolBuilder");
 
 // Class MeshModelingTools.ProceduralCylinderToolProperties
 // 0x0010 (0x00C8 - 0x00B8)
@@ -435,34 +520,6 @@ static_assert(offsetof(UProceduralCylinderToolProperties, Height) == 0x0000BC, "
 static_assert(offsetof(UProceduralCylinderToolProperties, RadialSlices) == 0x0000C0, "Member 'UProceduralCylinderToolProperties::RadialSlices' has a wrong offset!");
 static_assert(offsetof(UProceduralCylinderToolProperties, HeightSubdivisions) == 0x0000C4, "Member 'UProceduralCylinderToolProperties::HeightSubdivisions' has a wrong offset!");
 
-// Class MeshModelingTools.CombineMeshesToolProperties
-// 0x0028 (0x00D0 - 0x00A8)
-class UCombineMeshesToolProperties final : public UInteractiveToolPropertySet
-{
-public:
-	bool                                          bIsDuplicateMode;                                  // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A9[0x3];                                       // 0x00A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	EBaseCreateFromSelectedTargetType             OutputWriteTo;                                     // 0x00AC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 OutputNewName;                                     // 0x00B0(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 OutputExistingName;                                // 0x00C0(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"CombineMeshesToolProperties">();
-	}
-	static class UCombineMeshesToolProperties* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCombineMeshesToolProperties>();
-	}
-};
-static_assert(alignof(UCombineMeshesToolProperties) == 0x000008, "Wrong alignment on UCombineMeshesToolProperties");
-static_assert(sizeof(UCombineMeshesToolProperties) == 0x0000D0, "Wrong size on UCombineMeshesToolProperties");
-static_assert(offsetof(UCombineMeshesToolProperties, bIsDuplicateMode) == 0x0000A8, "Member 'UCombineMeshesToolProperties::bIsDuplicateMode' has a wrong offset!");
-static_assert(offsetof(UCombineMeshesToolProperties, OutputWriteTo) == 0x0000AC, "Member 'UCombineMeshesToolProperties::OutputWriteTo' has a wrong offset!");
-static_assert(offsetof(UCombineMeshesToolProperties, OutputNewName) == 0x0000B0, "Member 'UCombineMeshesToolProperties::OutputNewName' has a wrong offset!");
-static_assert(offsetof(UCombineMeshesToolProperties, OutputExistingName) == 0x0000C0, "Member 'UCombineMeshesToolProperties::OutputExistingName' has a wrong offset!");
-
 // Class MeshModelingTools.ProceduralConeToolProperties
 // 0x0010 (0x00C8 - 0x00B8)
 class UProceduralConeToolProperties final : public UProceduralShapeToolProperties
@@ -489,37 +546,6 @@ static_assert(offsetof(UProceduralConeToolProperties, Radius) == 0x0000B8, "Memb
 static_assert(offsetof(UProceduralConeToolProperties, Height) == 0x0000BC, "Member 'UProceduralConeToolProperties::Height' has a wrong offset!");
 static_assert(offsetof(UProceduralConeToolProperties, RadialSlices) == 0x0000C0, "Member 'UProceduralConeToolProperties::RadialSlices' has a wrong offset!");
 static_assert(offsetof(UProceduralConeToolProperties, HeightSubdivisions) == 0x0000C4, "Member 'UProceduralConeToolProperties::HeightSubdivisions' has a wrong offset!");
-
-// Class MeshModelingTools.ProceduralArrowToolProperties
-// 0x0018 (0x00D0 - 0x00B8)
-class UProceduralArrowToolProperties final : public UProceduralShapeToolProperties
-{
-public:
-	float                                         ShaftRadius;                                       // 0x00B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ShaftHeight;                                       // 0x00BC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         HeadRadius;                                        // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         HeadHeight;                                        // 0x00C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         RadialSlices;                                      // 0x00C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         HeightSubdivisions;                                // 0x00CC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"ProceduralArrowToolProperties">();
-	}
-	static class UProceduralArrowToolProperties* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UProceduralArrowToolProperties>();
-	}
-};
-static_assert(alignof(UProceduralArrowToolProperties) == 0x000008, "Wrong alignment on UProceduralArrowToolProperties");
-static_assert(sizeof(UProceduralArrowToolProperties) == 0x0000D0, "Wrong size on UProceduralArrowToolProperties");
-static_assert(offsetof(UProceduralArrowToolProperties, ShaftRadius) == 0x0000B8, "Member 'UProceduralArrowToolProperties::ShaftRadius' has a wrong offset!");
-static_assert(offsetof(UProceduralArrowToolProperties, ShaftHeight) == 0x0000BC, "Member 'UProceduralArrowToolProperties::ShaftHeight' has a wrong offset!");
-static_assert(offsetof(UProceduralArrowToolProperties, HeadRadius) == 0x0000C0, "Member 'UProceduralArrowToolProperties::HeadRadius' has a wrong offset!");
-static_assert(offsetof(UProceduralArrowToolProperties, HeadHeight) == 0x0000C4, "Member 'UProceduralArrowToolProperties::HeadHeight' has a wrong offset!");
-static_assert(offsetof(UProceduralArrowToolProperties, RadialSlices) == 0x0000C8, "Member 'UProceduralArrowToolProperties::RadialSlices' has a wrong offset!");
-static_assert(offsetof(UProceduralArrowToolProperties, HeightSubdivisions) == 0x0000CC, "Member 'UProceduralArrowToolProperties::HeightSubdivisions' has a wrong offset!");
 
 // Class MeshModelingTools.AddPrimitiveTool
 // 0x0098 (0x0138 - 0x00A0)
@@ -556,22 +582,53 @@ static_assert(offsetof(UAddPrimitiveTool, Gizmo) == 0x0000D8, "Member 'UAddPrimi
 static_assert(offsetof(UAddPrimitiveTool, DragAlignmentMechanic) == 0x0000E0, "Member 'UAddPrimitiveTool::DragAlignmentMechanic' has a wrong offset!");
 static_assert(offsetof(UAddPrimitiveTool, AssetName) == 0x0000E8, "Member 'UAddPrimitiveTool::AssetName' has a wrong offset!");
 
-// Class MeshModelingTools.AddDiscPrimitiveTool
+// Class MeshModelingTools.AddRectanglePrimitiveTool
 // 0x0000 (0x0138 - 0x0138)
-class UAddDiscPrimitiveTool final : public UAddPrimitiveTool
+class UAddRectanglePrimitiveTool final : public UAddPrimitiveTool
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"AddDiscPrimitiveTool">();
+		return StaticClassImpl<"AddRectanglePrimitiveTool">();
 	}
-	static class UAddDiscPrimitiveTool* GetDefaultObj()
+	static class UAddRectanglePrimitiveTool* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UAddDiscPrimitiveTool>();
+		return GetDefaultObjImpl<UAddRectanglePrimitiveTool>();
 	}
 };
-static_assert(alignof(UAddDiscPrimitiveTool) == 0x000008, "Wrong alignment on UAddDiscPrimitiveTool");
-static_assert(sizeof(UAddDiscPrimitiveTool) == 0x000138, "Wrong size on UAddDiscPrimitiveTool");
+static_assert(alignof(UAddRectanglePrimitiveTool) == 0x000008, "Wrong alignment on UAddRectanglePrimitiveTool");
+static_assert(sizeof(UAddRectanglePrimitiveTool) == 0x000138, "Wrong size on UAddRectanglePrimitiveTool");
+
+// Class MeshModelingTools.ProceduralArrowToolProperties
+// 0x0018 (0x00D0 - 0x00B8)
+class UProceduralArrowToolProperties final : public UProceduralShapeToolProperties
+{
+public:
+	float                                         ShaftRadius;                                       // 0x00B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ShaftHeight;                                       // 0x00BC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         HeadRadius;                                        // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         HeadHeight;                                        // 0x00C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         RadialSlices;                                      // 0x00C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         HeightSubdivisions;                                // 0x00CC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"ProceduralArrowToolProperties">();
+	}
+	static class UProceduralArrowToolProperties* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UProceduralArrowToolProperties>();
+	}
+};
+static_assert(alignof(UProceduralArrowToolProperties) == 0x000008, "Wrong alignment on UProceduralArrowToolProperties");
+static_assert(sizeof(UProceduralArrowToolProperties) == 0x0000D0, "Wrong size on UProceduralArrowToolProperties");
+static_assert(offsetof(UProceduralArrowToolProperties, ShaftRadius) == 0x0000B8, "Member 'UProceduralArrowToolProperties::ShaftRadius' has a wrong offset!");
+static_assert(offsetof(UProceduralArrowToolProperties, ShaftHeight) == 0x0000BC, "Member 'UProceduralArrowToolProperties::ShaftHeight' has a wrong offset!");
+static_assert(offsetof(UProceduralArrowToolProperties, HeadRadius) == 0x0000C0, "Member 'UProceduralArrowToolProperties::HeadRadius' has a wrong offset!");
+static_assert(offsetof(UProceduralArrowToolProperties, HeadHeight) == 0x0000C4, "Member 'UProceduralArrowToolProperties::HeadHeight' has a wrong offset!");
+static_assert(offsetof(UProceduralArrowToolProperties, RadialSlices) == 0x0000C8, "Member 'UProceduralArrowToolProperties::RadialSlices' has a wrong offset!");
+static_assert(offsetof(UProceduralArrowToolProperties, HeightSubdivisions) == 0x0000CC, "Member 'UProceduralArrowToolProperties::HeightSubdivisions' has a wrong offset!");
 
 // Class MeshModelingTools.ProceduralSphereToolProperties
 // 0x0018 (0x00D0 - 0x00B8)
@@ -638,6 +695,23 @@ static_assert(offsetof(UProceduralStairsToolProperties, CurveAngle) == 0x0000CC,
 static_assert(offsetof(UProceduralStairsToolProperties, SpiralAngle) == 0x0000D0, "Member 'UProceduralStairsToolProperties::SpiralAngle' has a wrong offset!");
 static_assert(offsetof(UProceduralStairsToolProperties, InnerRadius) == 0x0000D4, "Member 'UProceduralStairsToolProperties::InnerRadius' has a wrong offset!");
 
+// Class MeshModelingTools.AddSpherePrimitiveTool
+// 0x0000 (0x0138 - 0x0138)
+class UAddSpherePrimitiveTool final : public UAddPrimitiveTool
+{
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"AddSpherePrimitiveTool">();
+	}
+	static class UAddSpherePrimitiveTool* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAddSpherePrimitiveTool>();
+	}
+};
+static_assert(alignof(UAddSpherePrimitiveTool) == 0x000008, "Wrong alignment on UAddSpherePrimitiveTool");
+static_assert(sizeof(UAddSpherePrimitiveTool) == 0x000138, "Wrong size on UAddSpherePrimitiveTool");
+
 // Class MeshModelingTools.AddBoxPrimitiveTool
 // 0x0000 (0x0138 - 0x0138)
 class UAddBoxPrimitiveTool final : public UAddPrimitiveTool
@@ -654,23 +728,6 @@ public:
 };
 static_assert(alignof(UAddBoxPrimitiveTool) == 0x000008, "Wrong alignment on UAddBoxPrimitiveTool");
 static_assert(sizeof(UAddBoxPrimitiveTool) == 0x000138, "Wrong size on UAddBoxPrimitiveTool");
-
-// Class MeshModelingTools.AddStairsPrimitiveTool
-// 0x0000 (0x0138 - 0x0138)
-class UAddStairsPrimitiveTool final : public UAddPrimitiveTool
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"AddStairsPrimitiveTool">();
-	}
-	static class UAddStairsPrimitiveTool* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAddStairsPrimitiveTool>();
-	}
-};
-static_assert(alignof(UAddStairsPrimitiveTool) == 0x000008, "Wrong alignment on UAddStairsPrimitiveTool");
-static_assert(sizeof(UAddStairsPrimitiveTool) == 0x000138, "Wrong size on UAddStairsPrimitiveTool");
 
 // Class MeshModelingTools.AddCylinderPrimitiveTool
 // 0x0000 (0x0138 - 0x0138)
@@ -706,22 +763,22 @@ public:
 static_assert(alignof(UAddConePrimitiveTool) == 0x000008, "Wrong alignment on UAddConePrimitiveTool");
 static_assert(sizeof(UAddConePrimitiveTool) == 0x000138, "Wrong size on UAddConePrimitiveTool");
 
-// Class MeshModelingTools.AddRectanglePrimitiveTool
+// Class MeshModelingTools.AddDiscPrimitiveTool
 // 0x0000 (0x0138 - 0x0138)
-class UAddRectanglePrimitiveTool final : public UAddPrimitiveTool
+class UAddDiscPrimitiveTool final : public UAddPrimitiveTool
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"AddRectanglePrimitiveTool">();
+		return StaticClassImpl<"AddDiscPrimitiveTool">();
 	}
-	static class UAddRectanglePrimitiveTool* GetDefaultObj()
+	static class UAddDiscPrimitiveTool* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UAddRectanglePrimitiveTool>();
+		return GetDefaultObjImpl<UAddDiscPrimitiveTool>();
 	}
 };
-static_assert(alignof(UAddRectanglePrimitiveTool) == 0x000008, "Wrong alignment on UAddRectanglePrimitiveTool");
-static_assert(sizeof(UAddRectanglePrimitiveTool) == 0x000138, "Wrong size on UAddRectanglePrimitiveTool");
+static_assert(alignof(UAddDiscPrimitiveTool) == 0x000008, "Wrong alignment on UAddDiscPrimitiveTool");
+static_assert(sizeof(UAddDiscPrimitiveTool) == 0x000138, "Wrong size on UAddDiscPrimitiveTool");
 
 // Class MeshModelingTools.AddTorusPrimitiveTool
 // 0x0000 (0x0138 - 0x0138)
@@ -757,42 +814,50 @@ public:
 static_assert(alignof(UAddArrowPrimitiveTool) == 0x000008, "Wrong alignment on UAddArrowPrimitiveTool");
 static_assert(sizeof(UAddArrowPrimitiveTool) == 0x000138, "Wrong size on UAddArrowPrimitiveTool");
 
-// Class MeshModelingTools.AddSpherePrimitiveTool
+// Class MeshModelingTools.AddStairsPrimitiveTool
 // 0x0000 (0x0138 - 0x0138)
-class UAddSpherePrimitiveTool final : public UAddPrimitiveTool
+class UAddStairsPrimitiveTool final : public UAddPrimitiveTool
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"AddSpherePrimitiveTool">();
+		return StaticClassImpl<"AddStairsPrimitiveTool">();
 	}
-	static class UAddSpherePrimitiveTool* GetDefaultObj()
+	static class UAddStairsPrimitiveTool* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UAddSpherePrimitiveTool>();
+		return GetDefaultObjImpl<UAddStairsPrimitiveTool>();
 	}
 };
-static_assert(alignof(UAddSpherePrimitiveTool) == 0x000008, "Wrong alignment on UAddSpherePrimitiveTool");
-static_assert(sizeof(UAddSpherePrimitiveTool) == 0x000138, "Wrong size on UAddSpherePrimitiveTool");
+static_assert(alignof(UAddStairsPrimitiveTool) == 0x000008, "Wrong alignment on UAddStairsPrimitiveTool");
+static_assert(sizeof(UAddStairsPrimitiveTool) == 0x000138, "Wrong size on UAddStairsPrimitiveTool");
 
-// Class MeshModelingTools.CombineMeshesToolBuilder
-// 0x0008 (0x0030 - 0x0028)
-class UCombineMeshesToolBuilder final : public UMultiSelectionMeshEditingToolBuilder
+// Class MeshModelingTools.CombineMeshesToolProperties
+// 0x0028 (0x00D0 - 0x00A8)
+class UCombineMeshesToolProperties final : public UInteractiveToolPropertySet
 {
 public:
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bIsDuplicateMode;                                  // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A9[0x3];                                       // 0x00A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	EBaseCreateFromSelectedTargetType             OutputWriteTo;                                     // 0x00AC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 OutputNewName;                                     // 0x00B0(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 OutputExistingName;                                // 0x00C0(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"CombineMeshesToolBuilder">();
+		return StaticClassImpl<"CombineMeshesToolProperties">();
 	}
-	static class UCombineMeshesToolBuilder* GetDefaultObj()
+	static class UCombineMeshesToolProperties* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UCombineMeshesToolBuilder>();
+		return GetDefaultObjImpl<UCombineMeshesToolProperties>();
 	}
 };
-static_assert(alignof(UCombineMeshesToolBuilder) == 0x000008, "Wrong alignment on UCombineMeshesToolBuilder");
-static_assert(sizeof(UCombineMeshesToolBuilder) == 0x000030, "Wrong size on UCombineMeshesToolBuilder");
+static_assert(alignof(UCombineMeshesToolProperties) == 0x000008, "Wrong alignment on UCombineMeshesToolProperties");
+static_assert(sizeof(UCombineMeshesToolProperties) == 0x0000D0, "Wrong size on UCombineMeshesToolProperties");
+static_assert(offsetof(UCombineMeshesToolProperties, bIsDuplicateMode) == 0x0000A8, "Member 'UCombineMeshesToolProperties::bIsDuplicateMode' has a wrong offset!");
+static_assert(offsetof(UCombineMeshesToolProperties, OutputWriteTo) == 0x0000AC, "Member 'UCombineMeshesToolProperties::OutputWriteTo' has a wrong offset!");
+static_assert(offsetof(UCombineMeshesToolProperties, OutputNewName) == 0x0000B0, "Member 'UCombineMeshesToolProperties::OutputNewName' has a wrong offset!");
+static_assert(offsetof(UCombineMeshesToolProperties, OutputExistingName) == 0x0000C0, "Member 'UCombineMeshesToolProperties::OutputExistingName' has a wrong offset!");
 
 // Class MeshModelingTools.CombineMeshesTool
 // 0x0028 (0x00E0 - 0x00B8)
@@ -1345,42 +1410,42 @@ public:
 static_assert(alignof(UDrawPolygonToolBuilder) == 0x000008, "Wrong alignment on UDrawPolygonToolBuilder");
 static_assert(sizeof(UDrawPolygonToolBuilder) == 0x000028, "Wrong size on UDrawPolygonToolBuilder");
 
-// Class MeshModelingTools.DrawPolygonToolStandardProperties
-// 0x0018 (0x00C0 - 0x00A8)
-class UDrawPolygonToolStandardProperties final : public UInteractiveToolPropertySet
+// Class MeshModelingTools.DrawPolygonToolSnapProperties
+// 0x0010 (0x00B8 - 0x00A8)
+class UDrawPolygonToolSnapProperties final : public UInteractiveToolPropertySet
 {
 public:
-	EDrawPolygonDrawMode                          PolygonDrawMode;                                   // 0x00A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAllowSelfIntersections;                           // 0x00A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_AA[0x2];                                       // 0x00AA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         FeatureSizeRatio;                                  // 0x00AC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         RadialSlices;                                      // 0x00B0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Distance;                                          // 0x00B4(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bShowGridGizmo;                                    // 0x00B8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDrawPolygonExtrudeMode                       ExtrudeMode;                                       // 0x00B9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_BA[0x2];                                       // 0x00BA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ExtrudeHeight;                                     // 0x00BC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bEnableSnapping;                                   // 0x00A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSnapToWorldGrid;                                  // 0x00A9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSnapToVertices;                                   // 0x00AA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSnapToEdges;                                      // 0x00AB(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSnapToAxes;                                       // 0x00AC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSnapToLengths;                                    // 0x00AD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSnapToSurfaces;                                   // 0x00AE(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_AF[0x1];                                       // 0x00AF(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         SnapToSurfacesOffset;                              // 0x00B0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B4[0x4];                                       // 0x00B4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DrawPolygonToolStandardProperties">();
+		return StaticClassImpl<"DrawPolygonToolSnapProperties">();
 	}
-	static class UDrawPolygonToolStandardProperties* GetDefaultObj()
+	static class UDrawPolygonToolSnapProperties* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UDrawPolygonToolStandardProperties>();
+		return GetDefaultObjImpl<UDrawPolygonToolSnapProperties>();
 	}
 };
-static_assert(alignof(UDrawPolygonToolStandardProperties) == 0x000008, "Wrong alignment on UDrawPolygonToolStandardProperties");
-static_assert(sizeof(UDrawPolygonToolStandardProperties) == 0x0000C0, "Wrong size on UDrawPolygonToolStandardProperties");
-static_assert(offsetof(UDrawPolygonToolStandardProperties, PolygonDrawMode) == 0x0000A8, "Member 'UDrawPolygonToolStandardProperties::PolygonDrawMode' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolStandardProperties, bAllowSelfIntersections) == 0x0000A9, "Member 'UDrawPolygonToolStandardProperties::bAllowSelfIntersections' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolStandardProperties, FeatureSizeRatio) == 0x0000AC, "Member 'UDrawPolygonToolStandardProperties::FeatureSizeRatio' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolStandardProperties, RadialSlices) == 0x0000B0, "Member 'UDrawPolygonToolStandardProperties::RadialSlices' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolStandardProperties, Distance) == 0x0000B4, "Member 'UDrawPolygonToolStandardProperties::Distance' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolStandardProperties, bShowGridGizmo) == 0x0000B8, "Member 'UDrawPolygonToolStandardProperties::bShowGridGizmo' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolStandardProperties, ExtrudeMode) == 0x0000B9, "Member 'UDrawPolygonToolStandardProperties::ExtrudeMode' has a wrong offset!");
-static_assert(offsetof(UDrawPolygonToolStandardProperties, ExtrudeHeight) == 0x0000BC, "Member 'UDrawPolygonToolStandardProperties::ExtrudeHeight' has a wrong offset!");
+static_assert(alignof(UDrawPolygonToolSnapProperties) == 0x000008, "Wrong alignment on UDrawPolygonToolSnapProperties");
+static_assert(sizeof(UDrawPolygonToolSnapProperties) == 0x0000B8, "Wrong size on UDrawPolygonToolSnapProperties");
+static_assert(offsetof(UDrawPolygonToolSnapProperties, bEnableSnapping) == 0x0000A8, "Member 'UDrawPolygonToolSnapProperties::bEnableSnapping' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToWorldGrid) == 0x0000A9, "Member 'UDrawPolygonToolSnapProperties::bSnapToWorldGrid' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToVertices) == 0x0000AA, "Member 'UDrawPolygonToolSnapProperties::bSnapToVertices' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToEdges) == 0x0000AB, "Member 'UDrawPolygonToolSnapProperties::bSnapToEdges' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToAxes) == 0x0000AC, "Member 'UDrawPolygonToolSnapProperties::bSnapToAxes' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToLengths) == 0x0000AD, "Member 'UDrawPolygonToolSnapProperties::bSnapToLengths' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolSnapProperties, bSnapToSurfaces) == 0x0000AE, "Member 'UDrawPolygonToolSnapProperties::bSnapToSurfaces' has a wrong offset!");
+static_assert(offsetof(UDrawPolygonToolSnapProperties, SnapToSurfacesOffset) == 0x0000B0, "Member 'UDrawPolygonToolSnapProperties::SnapToSurfacesOffset' has a wrong offset!");
 
 // Class MeshModelingTools.DrawPolygonTool
 // 0x04B8 (0x0550 - 0x0098)
@@ -1514,63 +1579,62 @@ public:
 static_assert(alignof(UEditMeshPolygonsSelectionModeToolBuilder) == 0x000008, "Wrong alignment on UEditMeshPolygonsSelectionModeToolBuilder");
 static_assert(sizeof(UEditMeshPolygonsSelectionModeToolBuilder) == 0x000038, "Wrong size on UEditMeshPolygonsSelectionModeToolBuilder");
 
-// Class MeshModelingTools.PolyEditTopologyProperties
-// 0x0010 (0x00C0 - 0x00B0)
-class UPolyEditTopologyProperties final : public UEditMeshPolygonsToolActionPropertySet
-{
-public:
-	bool                                          bAddExtraCorners;                                  // 0x00B0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B1[0x7];                                       // 0x00B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        ExtraCornerAngleThresholdDegrees;                  // 0x00B8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	void RegenerateExtraCorners();
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"PolyEditTopologyProperties">();
-	}
-	static class UPolyEditTopologyProperties* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UPolyEditTopologyProperties>();
-	}
-};
-static_assert(alignof(UPolyEditTopologyProperties) == 0x000008, "Wrong alignment on UPolyEditTopologyProperties");
-static_assert(sizeof(UPolyEditTopologyProperties) == 0x0000C0, "Wrong size on UPolyEditTopologyProperties");
-static_assert(offsetof(UPolyEditTopologyProperties, bAddExtraCorners) == 0x0000B0, "Member 'UPolyEditTopologyProperties::bAddExtraCorners' has a wrong offset!");
-static_assert(offsetof(UPolyEditTopologyProperties, ExtraCornerAngleThresholdDegrees) == 0x0000B8, "Member 'UPolyEditTopologyProperties::ExtraCornerAngleThresholdDegrees' has a wrong offset!");
-
-// Class MeshModelingTools.EditMeshPolygonsToolActions_Triangles
+// Class MeshModelingTools.EditMeshPolygonsToolActions
 // 0x0000 (0x00B0 - 0x00B0)
-class UEditMeshPolygonsToolActions_Triangles final : public UEditMeshPolygonsToolActionPropertySet
+class UEditMeshPolygonsToolActions final : public UEditMeshPolygonsToolActionPropertySet
 {
 public:
+	void Bevel();
 	void CutFaces();
+	void Decompose();
 	void Delete();
 	void Disconnect();
 	void Duplicate();
 	void Extrude();
 	void Flip();
+	void InsertEdge();
+	void InsertEdgeLoop();
 	void Inset();
+	void Merge();
 	void Offset();
 	void Outset();
-	void Poke();
 	void PushPull();
 	void RecalcNormals();
+	void Retriangulate();
+	void SimplifyByGroups();
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"EditMeshPolygonsToolActions_Triangles">();
+		return StaticClassImpl<"EditMeshPolygonsToolActions">();
 	}
-	static class UEditMeshPolygonsToolActions_Triangles* GetDefaultObj()
+	static class UEditMeshPolygonsToolActions* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UEditMeshPolygonsToolActions_Triangles>();
+		return GetDefaultObjImpl<UEditMeshPolygonsToolActions>();
 	}
 };
-static_assert(alignof(UEditMeshPolygonsToolActions_Triangles) == 0x000008, "Wrong alignment on UEditMeshPolygonsToolActions_Triangles");
-static_assert(sizeof(UEditMeshPolygonsToolActions_Triangles) == 0x0000B0, "Wrong size on UEditMeshPolygonsToolActions_Triangles");
+static_assert(alignof(UEditMeshPolygonsToolActions) == 0x000008, "Wrong alignment on UEditMeshPolygonsToolActions");
+static_assert(sizeof(UEditMeshPolygonsToolActions) == 0x0000B0, "Wrong size on UEditMeshPolygonsToolActions");
+
+// Class MeshModelingTools.EditMeshPolygonsToolUVActions
+// 0x0000 (0x00B0 - 0x00B0)
+class UEditMeshPolygonsToolUVActions final : public UEditMeshPolygonsToolActionPropertySet
+{
+public:
+	void PlanarProjection();
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticClassImpl<"EditMeshPolygonsToolUVActions">();
+	}
+	static class UEditMeshPolygonsToolUVActions* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UEditMeshPolygonsToolUVActions>();
+	}
+};
+static_assert(alignof(UEditMeshPolygonsToolUVActions) == 0x000008, "Wrong alignment on UEditMeshPolygonsToolUVActions");
+static_assert(sizeof(UEditMeshPolygonsToolUVActions) == 0x0000B0, "Wrong size on UEditMeshPolygonsToolUVActions");
 
 // Class MeshModelingTools.EditMeshPolygonsToolEdgeActions
 // 0x0000 (0x00B0 - 0x00B0)
@@ -1624,70 +1688,6 @@ public:
 };
 static_assert(alignof(UEditMeshPolygonsToolEdgeActions_Triangles) == 0x000008, "Wrong alignment on UEditMeshPolygonsToolEdgeActions_Triangles");
 static_assert(sizeof(UEditMeshPolygonsToolEdgeActions_Triangles) == 0x0000B0, "Wrong size on UEditMeshPolygonsToolEdgeActions_Triangles");
-
-// Class MeshModelingTools.EditMeshPolygonsTool
-// 0x07E0 (0x0900 - 0x0120)
-class alignas(0x10) UEditMeshPolygonsTool final : public USingleTargetWithSelectionTool
-{
-public:
-	uint8                                         Pad_120[0x20];                                     // 0x0120(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMeshOpPreviewWithBackgroundCompute*    Preview;                                           // 0x0140(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditCommonProperties*              CommonProps;                                       // 0x0148(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UEditMeshPolygonsToolActions*           EditActions;                                       // 0x0150(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UEditMeshPolygonsToolActions_Triangles* EditActions_Triangles;                             // 0x0158(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UEditMeshPolygonsToolEdgeActions*       EditEdgeActions;                                   // 0x0160(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UEditMeshPolygonsToolEdgeActions_Triangles* EditEdgeActions_Triangles;                     // 0x0168(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UEditMeshPolygonsToolUVActions*         EditUVActions;                                     // 0x0170(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditTopologyProperties*            TopologyProperties;                                // 0x0178(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditExtrudeActivity*               ExtrudeActivity;                                   // 0x0180(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditInsetOutsetActivity*           InsetOutsetActivity;                               // 0x0188(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditCutFacesActivity*              CutFacesActivity;                                  // 0x0190(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditPlanarProjectionUVActivity*    PlanarProjectionUVActivity;                        // 0x0198(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditInsertEdgeActivity*            InsertEdgeActivity;                                // 0x01A0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditInsertEdgeLoopActivity*        InsertEdgeLoopActivity;                            // 0x01A8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditBevelEdgeActivity*             BevelEdgeActivity;                                 // 0x01B0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolyEditExtrudeEdgeActivity*           ExtrudeEdgeActivity;                               // 0x01B8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1C0[0xD8];                                     // 0x01C0(0x00D8)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPolyEditActivityContext*               ActivityContext;                                   // 0x0298(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPolygonSelectionMechanic*              SelectionMechanic;                                 // 0x02A0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UDragAlignmentMechanic*                 DragAlignmentMechanic;                             // 0x02A8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UCombinedTransformGizmo*                TransformGizmo;                                    // 0x02B0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UTransformProxy*                        TransformProxy;                                    // 0x02B8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2C0[0x640];                                    // 0x02C0(0x0640)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"EditMeshPolygonsTool">();
-	}
-	static class UEditMeshPolygonsTool* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UEditMeshPolygonsTool>();
-	}
-};
-static_assert(alignof(UEditMeshPolygonsTool) == 0x000010, "Wrong alignment on UEditMeshPolygonsTool");
-static_assert(sizeof(UEditMeshPolygonsTool) == 0x000900, "Wrong size on UEditMeshPolygonsTool");
-static_assert(offsetof(UEditMeshPolygonsTool, Preview) == 0x000140, "Member 'UEditMeshPolygonsTool::Preview' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, CommonProps) == 0x000148, "Member 'UEditMeshPolygonsTool::CommonProps' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, EditActions) == 0x000150, "Member 'UEditMeshPolygonsTool::EditActions' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, EditActions_Triangles) == 0x000158, "Member 'UEditMeshPolygonsTool::EditActions_Triangles' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, EditEdgeActions) == 0x000160, "Member 'UEditMeshPolygonsTool::EditEdgeActions' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, EditEdgeActions_Triangles) == 0x000168, "Member 'UEditMeshPolygonsTool::EditEdgeActions_Triangles' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, EditUVActions) == 0x000170, "Member 'UEditMeshPolygonsTool::EditUVActions' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, TopologyProperties) == 0x000178, "Member 'UEditMeshPolygonsTool::TopologyProperties' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, ExtrudeActivity) == 0x000180, "Member 'UEditMeshPolygonsTool::ExtrudeActivity' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, InsetOutsetActivity) == 0x000188, "Member 'UEditMeshPolygonsTool::InsetOutsetActivity' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, CutFacesActivity) == 0x000190, "Member 'UEditMeshPolygonsTool::CutFacesActivity' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, PlanarProjectionUVActivity) == 0x000198, "Member 'UEditMeshPolygonsTool::PlanarProjectionUVActivity' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, InsertEdgeActivity) == 0x0001A0, "Member 'UEditMeshPolygonsTool::InsertEdgeActivity' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, InsertEdgeLoopActivity) == 0x0001A8, "Member 'UEditMeshPolygonsTool::InsertEdgeLoopActivity' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, BevelEdgeActivity) == 0x0001B0, "Member 'UEditMeshPolygonsTool::BevelEdgeActivity' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, ExtrudeEdgeActivity) == 0x0001B8, "Member 'UEditMeshPolygonsTool::ExtrudeEdgeActivity' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, ActivityContext) == 0x000298, "Member 'UEditMeshPolygonsTool::ActivityContext' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, SelectionMechanic) == 0x0002A0, "Member 'UEditMeshPolygonsTool::SelectionMechanic' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, DragAlignmentMechanic) == 0x0002A8, "Member 'UEditMeshPolygonsTool::DragAlignmentMechanic' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, TransformGizmo) == 0x0002B0, "Member 'UEditMeshPolygonsTool::TransformGizmo' has a wrong offset!");
-static_assert(offsetof(UEditMeshPolygonsTool, TransformProxy) == 0x0002B8, "Member 'UEditMeshPolygonsTool::TransformProxy' has a wrong offset!");
 
 // Class MeshModelingTools.NewMeshMaterialProperties
 // 0x0010 (0x00B8 - 0x00A8)

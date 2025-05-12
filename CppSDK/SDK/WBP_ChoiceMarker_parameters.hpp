@@ -14,6 +14,32 @@
 namespace SDK::Params
 {
 
+// Function WBP_ChoiceMarker.WBP_ChoiceMarker_C.SetSelectedChoiceIndex
+// 0x0028 (0x0028 - 0x0000)
+struct WBP_ChoiceMarker_C_SetSelectedChoiceIndex final
+{
+public:
+	int32                                         SelectedChoiceIndex;                               // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWBP_ChoiceMarker_Entry_C*              CallFunc_Array_Get_Item;                           // 0x0018(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex) == 0x000008, "Wrong alignment on WBP_ChoiceMarker_C_SetSelectedChoiceIndex");
+static_assert(sizeof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex) == 0x000028, "Wrong size on WBP_ChoiceMarker_C_SetSelectedChoiceIndex");
+static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, SelectedChoiceIndex) == 0x000000, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::SelectedChoiceIndex' has a wrong offset!");
+static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, Temp_int_Array_Index_Variable) == 0x000004, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::Temp_int_Array_Index_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::Temp_int_Loop_Counter_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x00000C, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_Add_IntInt_ReturnValue) == 0x000010, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_Array_Length_ReturnValue) == 0x000014, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_Array_Get_Item) == 0x000018, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_Array_Get_Item' has a wrong offset!");
+static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_Less_IntInt_ReturnValue) == 0x000020, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
+
 // Function WBP_ChoiceMarker.WBP_ChoiceMarker_C.SetChoiceCount
 // 0x0050 (0x0050 - 0x0000)
 struct WBP_ChoiceMarker_C_SetChoiceCount final
@@ -55,32 +81,6 @@ static_assert(offsetof(WBP_ChoiceMarker_C_SetChoiceCount, CallFunc_Array_Length_
 static_assert(offsetof(WBP_ChoiceMarker_C_SetChoiceCount, CallFunc_Less_IntInt_ReturnValue) == 0x00003C, "Member 'WBP_ChoiceMarker_C_SetChoiceCount::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WBP_ChoiceMarker_C_SetChoiceCount, CallFunc_Array_Add_ReturnValue) == 0x000040, "Member 'WBP_ChoiceMarker_C_SetChoiceCount::CallFunc_Array_Add_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WBP_ChoiceMarker_C_SetChoiceCount, CallFunc_AddChild_ReturnValue) == 0x000048, "Member 'WBP_ChoiceMarker_C_SetChoiceCount::CallFunc_AddChild_ReturnValue' has a wrong offset!");
-
-// Function WBP_ChoiceMarker.WBP_ChoiceMarker_C.SetSelectedChoiceIndex
-// 0x0028 (0x0028 - 0x0000)
-struct WBP_ChoiceMarker_C_SetSelectedChoiceIndex final
-{
-public:
-	int32                                         SelectedChoiceIndex;                               // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Array_Index_Variable;                     // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UWBP_ChoiceMarker_Entry_C*              CallFunc_Array_Get_Item;                           // 0x0018(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex) == 0x000008, "Wrong alignment on WBP_ChoiceMarker_C_SetSelectedChoiceIndex");
-static_assert(sizeof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex) == 0x000028, "Wrong size on WBP_ChoiceMarker_C_SetSelectedChoiceIndex");
-static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, SelectedChoiceIndex) == 0x000000, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::SelectedChoiceIndex' has a wrong offset!");
-static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, Temp_int_Array_Index_Variable) == 0x000004, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::Temp_int_Array_Index_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, Temp_int_Loop_Counter_Variable) == 0x000008, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::Temp_int_Loop_Counter_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_EqualEqual_IntInt_ReturnValue) == 0x00000C, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_EqualEqual_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_Add_IntInt_ReturnValue) == 0x000010, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_Add_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_Array_Length_ReturnValue) == 0x000014, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_Array_Length_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_Array_Get_Item) == 0x000018, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_Array_Get_Item' has a wrong offset!");
-static_assert(offsetof(WBP_ChoiceMarker_C_SetSelectedChoiceIndex, CallFunc_Less_IntInt_ReturnValue) == 0x000020, "Member 'WBP_ChoiceMarker_C_SetSelectedChoiceIndex::CallFunc_Less_IntInt_ReturnValue' has a wrong offset!");
 
 }
 

@@ -28,10 +28,10 @@ public:
 	double                                        RandomRange;                                       // 0x0330(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ExecuteUbergraph_WBP_WorldSpace_Text_Heal(int32 EntryPoint);
 	void SetText(const class FText& Text_0);
-	void Construct();
 	void OnAnimationFinished(const class UWidgetAnimation* Animation_0);
+	void ExecuteUbergraph_WBP_WorldSpace_Text_Heal(int32 EntryPoint);
+	void Construct();
 
 public:
 	static class UClass* StaticClass()

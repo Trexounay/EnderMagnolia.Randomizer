@@ -20,16 +20,116 @@
 namespace SDK::Params
 {
 
-// Function WBP_Button_Item.WBP_Button_Item_C.TryMarkItemAsChecked
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_Button_Item_C_TryMarkItemAsChecked final
+// Function WBP_Button_Item.WBP_Button_Item_C.OnAddedToFocusPath
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_Button_Item_C_OnAddedToFocusPath final
 {
 public:
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FFocusEvent                            InFocusEvent;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
 };
-static_assert(alignof(WBP_Button_Item_C_TryMarkItemAsChecked) == 0x000001, "Wrong alignment on WBP_Button_Item_C_TryMarkItemAsChecked");
-static_assert(sizeof(WBP_Button_Item_C_TryMarkItemAsChecked) == 0x000001, "Wrong size on WBP_Button_Item_C_TryMarkItemAsChecked");
-static_assert(offsetof(WBP_Button_Item_C_TryMarkItemAsChecked, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'WBP_Button_Item_C_TryMarkItemAsChecked::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(alignof(WBP_Button_Item_C_OnAddedToFocusPath) == 0x000004, "Wrong alignment on WBP_Button_Item_C_OnAddedToFocusPath");
+static_assert(sizeof(WBP_Button_Item_C_OnAddedToFocusPath) == 0x000008, "Wrong size on WBP_Button_Item_C_OnAddedToFocusPath");
+static_assert(offsetof(WBP_Button_Item_C_OnAddedToFocusPath, InFocusEvent) == 0x000000, "Member 'WBP_Button_Item_C_OnAddedToFocusPath::InFocusEvent' has a wrong offset!");
+
+// Function WBP_Button_Item.WBP_Button_Item_C.ExecuteUbergraph_WBP_Button_Item
+// 0x0020 (0x0020 - 0x0000)
+struct WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FFocusEvent                            K2Node_Event_InFocusEvent_1;                       // 0x0004(0x0008)(NoDestructor)
+	struct FFocusEvent                            K2Node_Event_InFocusEvent;                         // 0x000C(0x0008)(NoDestructor)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerControllerZion*                  CallFunc_Get_ReturnValue;                          // 0x0018(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item) == 0x000008, "Wrong alignment on WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item");
+static_assert(sizeof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item) == 0x000020, "Wrong size on WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item");
+static_assert(offsetof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item, EntryPoint) == 0x000000, "Member 'WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item::EntryPoint' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item, K2Node_Event_InFocusEvent_1) == 0x000004, "Member 'WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item::K2Node_Event_InFocusEvent_1' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item, K2Node_Event_InFocusEvent) == 0x00000C, "Member 'WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item::K2Node_Event_InFocusEvent' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item, CallFunc_Get_ReturnValue) == 0x000018, "Member 'WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item::CallFunc_Get_ReturnValue' has a wrong offset!");
+
+// Function WBP_Button_Item.WBP_Button_Item_C.OnPressConfirm
+// 0x01B0 (0x01B0 - 0x0000)
+struct WBP_Button_Item_C_OnPressConfirm final
+{
+public:
+	struct FKeyEvent                              KeyEvent;                                          // 0x0000(0x0040)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	struct FEventReply                            ReturnValue;                                       // 0x0040(0x00B8)(Parm, OutParm, ReturnParm)
+	struct FEventReply                            CallFunc_Handled_ReturnValue;                      // 0x00F8(0x00B8)()
+};
+static_assert(alignof(WBP_Button_Item_C_OnPressConfirm) == 0x000008, "Wrong alignment on WBP_Button_Item_C_OnPressConfirm");
+static_assert(sizeof(WBP_Button_Item_C_OnPressConfirm) == 0x0001B0, "Wrong size on WBP_Button_Item_C_OnPressConfirm");
+static_assert(offsetof(WBP_Button_Item_C_OnPressConfirm, KeyEvent) == 0x000000, "Member 'WBP_Button_Item_C_OnPressConfirm::KeyEvent' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_OnPressConfirm, ReturnValue) == 0x000040, "Member 'WBP_Button_Item_C_OnPressConfirm::ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_OnPressConfirm, CallFunc_Handled_ReturnValue) == 0x0000F8, "Member 'WBP_Button_Item_C_OnPressConfirm::CallFunc_Handled_ReturnValue' has a wrong offset!");
+
+// Function WBP_Button_Item.WBP_Button_Item_C.OnRemovedFromFocusPath
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_Button_Item_C_OnRemovedFromFocusPath final
+{
+public:
+	struct FFocusEvent                            InFocusEvent;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
+};
+static_assert(alignof(WBP_Button_Item_C_OnRemovedFromFocusPath) == 0x000004, "Wrong alignment on WBP_Button_Item_C_OnRemovedFromFocusPath");
+static_assert(sizeof(WBP_Button_Item_C_OnRemovedFromFocusPath) == 0x000008, "Wrong size on WBP_Button_Item_C_OnRemovedFromFocusPath");
+static_assert(offsetof(WBP_Button_Item_C_OnRemovedFromFocusPath, InFocusEvent) == 0x000000, "Member 'WBP_Button_Item_C_OnRemovedFromFocusPath::InFocusEvent' has a wrong offset!");
+
+// Function WBP_Button_Item.WBP_Button_Item_C.RefreshNewVisibility
+// 0x0007 (0x0007 - 0x0000)
+struct WBP_Button_Item_C_RefreshNewVisibility final
+{
+public:
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsItemChecked_ReturnValue;                // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Button_Item_C_RefreshNewVisibility) == 0x000001, "Wrong alignment on WBP_Button_Item_C_RefreshNewVisibility");
+static_assert(sizeof(WBP_Button_Item_C_RefreshNewVisibility) == 0x000007, "Wrong size on WBP_Button_Item_C_RefreshNewVisibility");
+static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, Temp_byte_Variable) == 0x000000, "Member 'WBP_Button_Item_C_RefreshNewVisibility::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, Temp_byte_Variable_1) == 0x000001, "Member 'WBP_Button_Item_C_RefreshNewVisibility::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, Temp_bool_Variable) == 0x000002, "Member 'WBP_Button_Item_C_RefreshNewVisibility::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, CallFunc_IsValid_ReturnValue) == 0x000003, "Member 'WBP_Button_Item_C_RefreshNewVisibility::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, CallFunc_IsItemChecked_ReturnValue) == 0x000004, "Member 'WBP_Button_Item_C_RefreshNewVisibility::CallFunc_IsItemChecked_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, CallFunc_IsValid_ReturnValue_1) == 0x000005, "Member 'WBP_Button_Item_C_RefreshNewVisibility::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, K2Node_Select_Default) == 0x000006, "Member 'WBP_Button_Item_C_RefreshNewVisibility::K2Node_Select_Default' has a wrong offset!");
+
+// Function WBP_Button_Item.WBP_Button_Item_C.SetColor
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_Button_Item_C_SetColor final
+{
+public:
+	struct FLinearColor                           Color;                                             // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Button_Item_C_SetColor) == 0x000004, "Wrong alignment on WBP_Button_Item_C_SetColor");
+static_assert(sizeof(WBP_Button_Item_C_SetColor) == 0x000010, "Wrong size on WBP_Button_Item_C_SetColor");
+static_assert(offsetof(WBP_Button_Item_C_SetColor, Color) == 0x000000, "Member 'WBP_Button_Item_C_SetColor::Color' has a wrong offset!");
+
+// Function WBP_Button_Item.WBP_Button_Item_C.SetFocusedState
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_Button_Item_C_SetFocusedState final
+{
+public:
+	bool                                          Focus;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Button_Item_C_SetFocusedState) == 0x000008, "Wrong alignment on WBP_Button_Item_C_SetFocusedState");
+static_assert(sizeof(WBP_Button_Item_C_SetFocusedState) == 0x000010, "Wrong size on WBP_Button_Item_C_SetFocusedState");
+static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, Focus) == 0x000000, "Member 'WBP_Button_Item_C_SetFocusedState::Focus' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, Temp_byte_Variable) == 0x000001, "Member 'WBP_Button_Item_C_SetFocusedState::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, Temp_byte_Variable_1) == 0x000002, "Member 'WBP_Button_Item_C_SetFocusedState::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, Temp_bool_Variable) == 0x000003, "Member 'WBP_Button_Item_C_SetFocusedState::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, K2Node_Select_Default) == 0x000004, "Member 'WBP_Button_Item_C_SetFocusedState::K2Node_Select_Default' has a wrong offset!");
+static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, CallFunc_PlayAnimation_ReturnValue) == 0x000008, "Member 'WBP_Button_Item_C_SetFocusedState::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
 
 // Function WBP_Button_Item.WBP_Button_Item_C.Setup
 // 0x0330 (0x0330 - 0x0000)
@@ -104,116 +204,16 @@ static_assert(offsetof(WBP_Button_Item_C_Setup, Temp_byte_Variable) == 0x00032C,
 static_assert(offsetof(WBP_Button_Item_C_Setup, K2Node_Select_Default) == 0x00032D, "Member 'WBP_Button_Item_C_Setup::K2Node_Select_Default' has a wrong offset!");
 static_assert(offsetof(WBP_Button_Item_C_Setup, CallFunc_BooleanOR_ReturnValue) == 0x00032E, "Member 'WBP_Button_Item_C_Setup::CallFunc_BooleanOR_ReturnValue' has a wrong offset!");
 
-// Function WBP_Button_Item.WBP_Button_Item_C.SetFocusedState
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_Button_Item_C_SetFocusedState final
+// Function WBP_Button_Item.WBP_Button_Item_C.TryMarkItemAsChecked
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_Button_Item_C_TryMarkItemAsChecked final
 {
 public:
-	bool                                          Focus;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(WBP_Button_Item_C_SetFocusedState) == 0x000008, "Wrong alignment on WBP_Button_Item_C_SetFocusedState");
-static_assert(sizeof(WBP_Button_Item_C_SetFocusedState) == 0x000010, "Wrong size on WBP_Button_Item_C_SetFocusedState");
-static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, Focus) == 0x000000, "Member 'WBP_Button_Item_C_SetFocusedState::Focus' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, Temp_byte_Variable) == 0x000001, "Member 'WBP_Button_Item_C_SetFocusedState::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, Temp_byte_Variable_1) == 0x000002, "Member 'WBP_Button_Item_C_SetFocusedState::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, Temp_bool_Variable) == 0x000003, "Member 'WBP_Button_Item_C_SetFocusedState::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, K2Node_Select_Default) == 0x000004, "Member 'WBP_Button_Item_C_SetFocusedState::K2Node_Select_Default' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_SetFocusedState, CallFunc_PlayAnimation_ReturnValue) == 0x000008, "Member 'WBP_Button_Item_C_SetFocusedState::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
-
-// Function WBP_Button_Item.WBP_Button_Item_C.SetColor
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_Button_Item_C_SetColor final
-{
-public:
-	struct FLinearColor                           Color;                                             // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Button_Item_C_SetColor) == 0x000004, "Wrong alignment on WBP_Button_Item_C_SetColor");
-static_assert(sizeof(WBP_Button_Item_C_SetColor) == 0x000010, "Wrong size on WBP_Button_Item_C_SetColor");
-static_assert(offsetof(WBP_Button_Item_C_SetColor, Color) == 0x000000, "Member 'WBP_Button_Item_C_SetColor::Color' has a wrong offset!");
-
-// Function WBP_Button_Item.WBP_Button_Item_C.RefreshNewVisibility
-// 0x0007 (0x0007 - 0x0000)
-struct WBP_Button_Item_C_RefreshNewVisibility final
-{
-public:
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsItemChecked_ReturnValue;                // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Button_Item_C_RefreshNewVisibility) == 0x000001, "Wrong alignment on WBP_Button_Item_C_RefreshNewVisibility");
-static_assert(sizeof(WBP_Button_Item_C_RefreshNewVisibility) == 0x000007, "Wrong size on WBP_Button_Item_C_RefreshNewVisibility");
-static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, Temp_byte_Variable) == 0x000000, "Member 'WBP_Button_Item_C_RefreshNewVisibility::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, Temp_byte_Variable_1) == 0x000001, "Member 'WBP_Button_Item_C_RefreshNewVisibility::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, Temp_bool_Variable) == 0x000002, "Member 'WBP_Button_Item_C_RefreshNewVisibility::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, CallFunc_IsValid_ReturnValue) == 0x000003, "Member 'WBP_Button_Item_C_RefreshNewVisibility::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, CallFunc_IsItemChecked_ReturnValue) == 0x000004, "Member 'WBP_Button_Item_C_RefreshNewVisibility::CallFunc_IsItemChecked_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, CallFunc_IsValid_ReturnValue_1) == 0x000005, "Member 'WBP_Button_Item_C_RefreshNewVisibility::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_RefreshNewVisibility, K2Node_Select_Default) == 0x000006, "Member 'WBP_Button_Item_C_RefreshNewVisibility::K2Node_Select_Default' has a wrong offset!");
-
-// Function WBP_Button_Item.WBP_Button_Item_C.OnRemovedFromFocusPath
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_Button_Item_C_OnRemovedFromFocusPath final
-{
-public:
-	struct FFocusEvent                            InFocusEvent;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
-};
-static_assert(alignof(WBP_Button_Item_C_OnRemovedFromFocusPath) == 0x000004, "Wrong alignment on WBP_Button_Item_C_OnRemovedFromFocusPath");
-static_assert(sizeof(WBP_Button_Item_C_OnRemovedFromFocusPath) == 0x000008, "Wrong size on WBP_Button_Item_C_OnRemovedFromFocusPath");
-static_assert(offsetof(WBP_Button_Item_C_OnRemovedFromFocusPath, InFocusEvent) == 0x000000, "Member 'WBP_Button_Item_C_OnRemovedFromFocusPath::InFocusEvent' has a wrong offset!");
-
-// Function WBP_Button_Item.WBP_Button_Item_C.OnPressConfirm
-// 0x01B0 (0x01B0 - 0x0000)
-struct WBP_Button_Item_C_OnPressConfirm final
-{
-public:
-	struct FKeyEvent                              KeyEvent;                                          // 0x0000(0x0040)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-	struct FEventReply                            ReturnValue;                                       // 0x0040(0x00B8)(Parm, OutParm, ReturnParm)
-	struct FEventReply                            CallFunc_Handled_ReturnValue;                      // 0x00F8(0x00B8)()
-};
-static_assert(alignof(WBP_Button_Item_C_OnPressConfirm) == 0x000008, "Wrong alignment on WBP_Button_Item_C_OnPressConfirm");
-static_assert(sizeof(WBP_Button_Item_C_OnPressConfirm) == 0x0001B0, "Wrong size on WBP_Button_Item_C_OnPressConfirm");
-static_assert(offsetof(WBP_Button_Item_C_OnPressConfirm, KeyEvent) == 0x000000, "Member 'WBP_Button_Item_C_OnPressConfirm::KeyEvent' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_OnPressConfirm, ReturnValue) == 0x000040, "Member 'WBP_Button_Item_C_OnPressConfirm::ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_OnPressConfirm, CallFunc_Handled_ReturnValue) == 0x0000F8, "Member 'WBP_Button_Item_C_OnPressConfirm::CallFunc_Handled_ReturnValue' has a wrong offset!");
-
-// Function WBP_Button_Item.WBP_Button_Item_C.OnAddedToFocusPath
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_Button_Item_C_OnAddedToFocusPath final
-{
-public:
-	struct FFocusEvent                            InFocusEvent;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
-};
-static_assert(alignof(WBP_Button_Item_C_OnAddedToFocusPath) == 0x000004, "Wrong alignment on WBP_Button_Item_C_OnAddedToFocusPath");
-static_assert(sizeof(WBP_Button_Item_C_OnAddedToFocusPath) == 0x000008, "Wrong size on WBP_Button_Item_C_OnAddedToFocusPath");
-static_assert(offsetof(WBP_Button_Item_C_OnAddedToFocusPath, InFocusEvent) == 0x000000, "Member 'WBP_Button_Item_C_OnAddedToFocusPath::InFocusEvent' has a wrong offset!");
-
-// Function WBP_Button_Item.WBP_Button_Item_C.ExecuteUbergraph_WBP_Button_Item
-// 0x0020 (0x0020 - 0x0000)
-struct WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FFocusEvent                            K2Node_Event_InFocusEvent_1;                       // 0x0004(0x0008)(NoDestructor)
-	struct FFocusEvent                            K2Node_Event_InFocusEvent;                         // 0x000C(0x0008)(NoDestructor)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerControllerZion*                  CallFunc_Get_ReturnValue;                          // 0x0018(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item) == 0x000008, "Wrong alignment on WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item");
-static_assert(sizeof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item) == 0x000020, "Wrong size on WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item");
-static_assert(offsetof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item, EntryPoint) == 0x000000, "Member 'WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item::EntryPoint' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item, K2Node_Event_InFocusEvent_1) == 0x000004, "Member 'WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item::K2Node_Event_InFocusEvent_1' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item, K2Node_Event_InFocusEvent) == 0x00000C, "Member 'WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item::K2Node_Event_InFocusEvent' has a wrong offset!");
-static_assert(offsetof(WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item, CallFunc_Get_ReturnValue) == 0x000018, "Member 'WBP_Button_Item_C_ExecuteUbergraph_WBP_Button_Item::CallFunc_Get_ReturnValue' has a wrong offset!");
+static_assert(alignof(WBP_Button_Item_C_TryMarkItemAsChecked) == 0x000001, "Wrong alignment on WBP_Button_Item_C_TryMarkItemAsChecked");
+static_assert(sizeof(WBP_Button_Item_C_TryMarkItemAsChecked) == 0x000001, "Wrong size on WBP_Button_Item_C_TryMarkItemAsChecked");
+static_assert(offsetof(WBP_Button_Item_C_TryMarkItemAsChecked, CallFunc_IsValid_ReturnValue) == 0x000000, "Member 'WBP_Button_Item_C_TryMarkItemAsChecked::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 
 }
 

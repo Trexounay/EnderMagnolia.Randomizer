@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "Niagara_structs.hpp"
-#include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "RenderLayer_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK
@@ -35,6 +35,7 @@ enum class ESpineBone : uint8
 	HandRight                                = 120,
 	HandLeft                                 = 130,
 	Custom                                   = 255,
+	ESpineBone_MAX                           = 256,
 };
 
 // Enum SpineExtension.ESpineBoneRotationMode

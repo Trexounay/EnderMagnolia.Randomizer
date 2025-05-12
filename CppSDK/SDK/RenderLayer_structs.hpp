@@ -32,6 +32,7 @@ enum class ERenderLayerTypes : uint8
 	SpiritFront                              = 80,
 	AbovePlayer                              = 90,
 	None                                     = 255,
+	ERenderLayerTypes_MAX                    = 256,
 };
 
 }

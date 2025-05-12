@@ -18,7 +18,7 @@ namespace SDK
 
 // BlueprintGeneratedClass BP_FallThroughPlatform.BP_FallThroughPlatform_C
 // 0x0008 (0x0368 - 0x0360)
-class ABP_FallThroughPlatform_C final : public AOneWayPlatform
+class ABP_FallThroughPlatform_C : public AOneWayPlatform
 {
 public:
 	class UStaticMeshComponent*                   DebugVisual;                                       // 0x0360(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)

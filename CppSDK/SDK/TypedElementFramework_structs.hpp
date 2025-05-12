@@ -46,16 +46,6 @@ struct alignas(0x01) FTypedElementDataStorageColumn
 static_assert(alignof(FTypedElementDataStorageColumn) == 0x000001, "Wrong alignment on FTypedElementDataStorageColumn");
 static_assert(sizeof(FTypedElementDataStorageColumn) == 0x000001, "Wrong size on FTypedElementDataStorageColumn");
 
-// ScriptStruct TypedElementFramework.TypedElementChildAlertColumn
-// 0x0010 (0x0010 - 0x0000)
-struct alignas(0x08) FTypedElementChildAlertColumn final : public FTypedElementDataStorageColumn
-{
-public:
-	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FTypedElementChildAlertColumn) == 0x000008, "Wrong alignment on FTypedElementChildAlertColumn");
-static_assert(sizeof(FTypedElementChildAlertColumn) == 0x000010, "Wrong size on FTypedElementChildAlertColumn");
-
 // ScriptStruct TypedElementFramework.ScriptTypedElementHandle
 // 0x0008 (0x0008 - 0x0000)
 struct alignas(0x08) FScriptTypedElementHandle final
@@ -80,6 +70,16 @@ static_assert(alignof(FTypedElementAlertColumn) == 0x000008, "Wrong alignment on
 static_assert(sizeof(FTypedElementAlertColumn) == 0x000020, "Wrong size on FTypedElementAlertColumn");
 static_assert(offsetof(FTypedElementAlertColumn, Message) == 0x000000, "Member 'FTypedElementAlertColumn::Message' has a wrong offset!");
 static_assert(offsetof(FTypedElementAlertColumn, AlertType) == 0x00001A, "Member 'FTypedElementAlertColumn::AlertType' has a wrong offset!");
+
+// ScriptStruct TypedElementFramework.TypedElementChildAlertColumn
+// 0x0010 (0x0010 - 0x0000)
+struct alignas(0x08) FTypedElementChildAlertColumn final : public FTypedElementDataStorageColumn
+{
+public:
+	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FTypedElementChildAlertColumn) == 0x000008, "Wrong alignment on FTypedElementChildAlertColumn");
+static_assert(sizeof(FTypedElementChildAlertColumn) == 0x000010, "Wrong size on FTypedElementChildAlertColumn");
 
 // ScriptStruct TypedElementFramework.TypedElementUObjectColumn
 // 0x0008 (0x0008 - 0x0000)

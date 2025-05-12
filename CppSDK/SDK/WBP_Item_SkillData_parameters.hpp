@@ -19,117 +19,6 @@
 namespace SDK::Params
 {
 
-// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupUpgrade
-// 0x00E0 (0x00E0 - 0x0000)
-struct WBP_Item_SkillData_C_SetupUpgrade final
-{
-public:
-	struct FSkillData                             SkillData;                                         // 0x0000(0x0058)(BlueprintVisible, BlueprintReadOnly, Parm)
-	struct FSkillData                             UpgradeSkillData;                                  // 0x0058(0x0058)(BlueprintVisible, BlueprintReadOnly, Parm)
-	double                                        CallFunc_Conv_IntToDouble_ReturnValue;             // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_Conv_IntToDouble_ReturnValue_1;           // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_Conv_IntToDouble_ReturnValue_2;           // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_Conv_IntToDouble_ReturnValue_3;           // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_Setup_Upgraded_Cooldown_Cost_UpgradeCooldown_ImplicitCast; // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_Setup_Upgraded_Cooldown_Cost_CurrCooldown_ImplicitCast; // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Item_SkillData_C_SetupUpgrade) == 0x000008, "Wrong alignment on WBP_Item_SkillData_C_SetupUpgrade");
-static_assert(sizeof(WBP_Item_SkillData_C_SetupUpgrade) == 0x0000E0, "Wrong size on WBP_Item_SkillData_C_SetupUpgrade");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, SkillData) == 0x000000, "Member 'WBP_Item_SkillData_C_SetupUpgrade::SkillData' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, UpgradeSkillData) == 0x000058, "Member 'WBP_Item_SkillData_C_SetupUpgrade::UpgradeSkillData' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Conv_IntToDouble_ReturnValue) == 0x0000B0, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Conv_IntToDouble_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Conv_IntToDouble_ReturnValue_1) == 0x0000B8, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Conv_IntToDouble_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Conv_IntToDouble_ReturnValue_2) == 0x0000C0, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Conv_IntToDouble_ReturnValue_2' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Conv_IntToDouble_ReturnValue_3) == 0x0000C8, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Conv_IntToDouble_ReturnValue_3' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Setup_Upgraded_Cooldown_Cost_UpgradeCooldown_ImplicitCast) == 0x0000D0, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Setup_Upgraded_Cooldown_Cost_UpgradeCooldown_ImplicitCast' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Setup_Upgraded_Cooldown_Cost_CurrCooldown_ImplicitCast) == 0x0000D8, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Setup_Upgraded_Cooldown_Cost_CurrCooldown_ImplicitCast' has a wrong offset!");
-
-// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupSPCost
-// 0x0020 (0x0020 - 0x0000)
-struct WBP_Item_SkillData_C_SetupSPCost final
-{
-public:
-	int32                                         Value;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   CallFunc_Conv_IntToText_ReturnValue;               // 0x0008(0x0010)()
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Item_SkillData_C_SetupSPCost) == 0x000008, "Wrong alignment on WBP_Item_SkillData_C_SetupSPCost");
-static_assert(sizeof(WBP_Item_SkillData_C_SetupSPCost) == 0x000020, "Wrong size on WBP_Item_SkillData_C_SetupSPCost");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, Value) == 0x000000, "Member 'WBP_Item_SkillData_C_SetupSPCost::Value' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, Temp_bool_Variable) == 0x000004, "Member 'WBP_Item_SkillData_C_SetupSPCost::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, CallFunc_Greater_IntInt_ReturnValue) == 0x000005, "Member 'WBP_Item_SkillData_C_SetupSPCost::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, CallFunc_Conv_IntToText_ReturnValue) == 0x000008, "Member 'WBP_Item_SkillData_C_SetupSPCost::CallFunc_Conv_IntToText_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, Temp_byte_Variable) == 0x000018, "Member 'WBP_Item_SkillData_C_SetupSPCost::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, Temp_byte_Variable_1) == 0x000019, "Member 'WBP_Item_SkillData_C_SetupSPCost::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, K2Node_Select_Default) == 0x00001A, "Member 'WBP_Item_SkillData_C_SetupSPCost::K2Node_Select_Default' has a wrong offset!");
-
-// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupCooldownCost
-// 0x0088 (0x0088 - 0x0000)
-struct WBP_Item_SkillData_C_SetupCooldownCost final
-{
-public:
-	double                                        Value;                                             // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0010(0x0048)(HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_DoubleDouble_ReturnValue;         // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x0060(0x0010)(ReferenceParm)
-	class FText                                   CallFunc_Format_ReturnValue;                       // 0x0070(0x0010)()
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0081(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0082(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Item_SkillData_C_SetupCooldownCost) == 0x000008, "Wrong alignment on WBP_Item_SkillData_C_SetupCooldownCost");
-static_assert(sizeof(WBP_Item_SkillData_C_SetupCooldownCost) == 0x000088, "Wrong size on WBP_Item_SkillData_C_SetupCooldownCost");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, Value) == 0x000000, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::Value' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, Temp_bool_Variable) == 0x000008, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, K2Node_MakeStruct_FormatArgumentData) == 0x000010, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, CallFunc_Greater_DoubleDouble_ReturnValue) == 0x000058, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::CallFunc_Greater_DoubleDouble_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, K2Node_MakeArray_Array) == 0x000060, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, CallFunc_Format_ReturnValue) == 0x000070, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::CallFunc_Format_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, Temp_byte_Variable) == 0x000080, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, Temp_byte_Variable_1) == 0x000081, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, K2Node_Select_Default) == 0x000082, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::K2Node_Select_Default' has a wrong offset!");
-
-// Function WBP_Item_SkillData.WBP_Item_SkillData_C.Setup Upgraded Cooldown Cost
-// 0x0090 (0x0090 - 0x0000)
-struct WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost final
-{
-public:
-	double                                        CurrCooldown;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        UpgradeCooldown;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0018(0x0048)(HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_DoubleDouble_ReturnValue;         // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x0068(0x0010)(ReferenceParm)
-	class FText                                   CallFunc_Format_ReturnValue;                       // 0x0078(0x0010)()
-	bool                                          CallFunc_NearlyEqual_FloatFloat_ReturnValue;       // 0x0088(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0089(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x008A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x008B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost) == 0x000008, "Wrong alignment on WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost");
-static_assert(sizeof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost) == 0x000090, "Wrong size on WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, CurrCooldown) == 0x000000, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::CurrCooldown' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, UpgradeCooldown) == 0x000008, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::UpgradeCooldown' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, Temp_bool_Variable) == 0x000010, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::Temp_bool_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, K2Node_MakeStruct_FormatArgumentData) == 0x000018, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, CallFunc_Greater_DoubleDouble_ReturnValue) == 0x000060, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::CallFunc_Greater_DoubleDouble_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, K2Node_MakeArray_Array) == 0x000068, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::K2Node_MakeArray_Array' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, CallFunc_Format_ReturnValue) == 0x000078, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::CallFunc_Format_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, CallFunc_NearlyEqual_FloatFloat_ReturnValue) == 0x000088, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::CallFunc_NearlyEqual_FloatFloat_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, Temp_byte_Variable) == 0x000089, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::Temp_byte_Variable' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, Temp_byte_Variable_1) == 0x00008A, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::Temp_byte_Variable_1' has a wrong offset!");
-static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, K2Node_Select_Default) == 0x00008B, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::K2Node_Select_Default' has a wrong offset!");
-
 // Function WBP_Item_SkillData.WBP_Item_SkillData_C.Setup
 // 0x0130 (0x0130 - 0x0000)
 struct WBP_Item_SkillData_C_Setup final
@@ -182,6 +71,117 @@ static_assert(offsetof(WBP_Item_SkillData_C_Setup, CallFunc_SetRating_Rating_Imp
 static_assert(offsetof(WBP_Item_SkillData_C_Setup, CallFunc_SetRating_Rating_ImplicitCast_1) == 0x000124, "Member 'WBP_Item_SkillData_C_Setup::CallFunc_SetRating_Rating_ImplicitCast_1' has a wrong offset!");
 static_assert(offsetof(WBP_Item_SkillData_C_Setup, CallFunc_SetRating_Rating_ImplicitCast_2) == 0x000128, "Member 'WBP_Item_SkillData_C_Setup::CallFunc_SetRating_Rating_ImplicitCast_2' has a wrong offset!");
 static_assert(offsetof(WBP_Item_SkillData_C_Setup, CallFunc_SetRating_Rating_ImplicitCast_3) == 0x00012C, "Member 'WBP_Item_SkillData_C_Setup::CallFunc_SetRating_Rating_ImplicitCast_3' has a wrong offset!");
+
+// Function WBP_Item_SkillData.WBP_Item_SkillData_C.Setup Upgraded Cooldown Cost
+// 0x0090 (0x0090 - 0x0000)
+struct WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost final
+{
+public:
+	double                                        CurrCooldown;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        UpgradeCooldown;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0018(0x0048)(HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_DoubleDouble_ReturnValue;         // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x0068(0x0010)(ReferenceParm)
+	class FText                                   CallFunc_Format_ReturnValue;                       // 0x0078(0x0010)()
+	bool                                          CallFunc_NearlyEqual_FloatFloat_ReturnValue;       // 0x0088(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0089(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x008A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x008B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost) == 0x000008, "Wrong alignment on WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost");
+static_assert(sizeof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost) == 0x000090, "Wrong size on WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, CurrCooldown) == 0x000000, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::CurrCooldown' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, UpgradeCooldown) == 0x000008, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::UpgradeCooldown' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, Temp_bool_Variable) == 0x000010, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, K2Node_MakeStruct_FormatArgumentData) == 0x000018, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, CallFunc_Greater_DoubleDouble_ReturnValue) == 0x000060, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::CallFunc_Greater_DoubleDouble_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, K2Node_MakeArray_Array) == 0x000068, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, CallFunc_Format_ReturnValue) == 0x000078, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::CallFunc_Format_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, CallFunc_NearlyEqual_FloatFloat_ReturnValue) == 0x000088, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::CallFunc_NearlyEqual_FloatFloat_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, Temp_byte_Variable) == 0x000089, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, Temp_byte_Variable_1) == 0x00008A, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost, K2Node_Select_Default) == 0x00008B, "Member 'WBP_Item_SkillData_C_Setup_Upgraded_Cooldown_Cost::K2Node_Select_Default' has a wrong offset!");
+
+// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupCooldownCost
+// 0x0088 (0x0088 - 0x0000)
+struct WBP_Item_SkillData_C_SetupCooldownCost final
+{
+public:
+	double                                        Value;                                             // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFormatArgumentData                    K2Node_MakeStruct_FormatArgumentData;              // 0x0010(0x0048)(HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_DoubleDouble_ReturnValue;         // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FFormatArgumentData>            K2Node_MakeArray_Array;                            // 0x0060(0x0010)(ReferenceParm)
+	class FText                                   CallFunc_Format_ReturnValue;                       // 0x0070(0x0010)()
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0081(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0082(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Item_SkillData_C_SetupCooldownCost) == 0x000008, "Wrong alignment on WBP_Item_SkillData_C_SetupCooldownCost");
+static_assert(sizeof(WBP_Item_SkillData_C_SetupCooldownCost) == 0x000088, "Wrong size on WBP_Item_SkillData_C_SetupCooldownCost");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, Value) == 0x000000, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::Value' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, Temp_bool_Variable) == 0x000008, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, K2Node_MakeStruct_FormatArgumentData) == 0x000010, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::K2Node_MakeStruct_FormatArgumentData' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, CallFunc_Greater_DoubleDouble_ReturnValue) == 0x000058, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::CallFunc_Greater_DoubleDouble_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, K2Node_MakeArray_Array) == 0x000060, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::K2Node_MakeArray_Array' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, CallFunc_Format_ReturnValue) == 0x000070, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::CallFunc_Format_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, Temp_byte_Variable) == 0x000080, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, Temp_byte_Variable_1) == 0x000081, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupCooldownCost, K2Node_Select_Default) == 0x000082, "Member 'WBP_Item_SkillData_C_SetupCooldownCost::K2Node_Select_Default' has a wrong offset!");
+
+// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupSPCost
+// 0x0020 (0x0020 - 0x0000)
+struct WBP_Item_SkillData_C_SetupSPCost final
+{
+public:
+	int32                                         Value;                                             // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   CallFunc_Conv_IntToText_ReturnValue;               // 0x0008(0x0010)()
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Item_SkillData_C_SetupSPCost) == 0x000008, "Wrong alignment on WBP_Item_SkillData_C_SetupSPCost");
+static_assert(sizeof(WBP_Item_SkillData_C_SetupSPCost) == 0x000020, "Wrong size on WBP_Item_SkillData_C_SetupSPCost");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, Value) == 0x000000, "Member 'WBP_Item_SkillData_C_SetupSPCost::Value' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, Temp_bool_Variable) == 0x000004, "Member 'WBP_Item_SkillData_C_SetupSPCost::Temp_bool_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, CallFunc_Greater_IntInt_ReturnValue) == 0x000005, "Member 'WBP_Item_SkillData_C_SetupSPCost::CallFunc_Greater_IntInt_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, CallFunc_Conv_IntToText_ReturnValue) == 0x000008, "Member 'WBP_Item_SkillData_C_SetupSPCost::CallFunc_Conv_IntToText_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, Temp_byte_Variable) == 0x000018, "Member 'WBP_Item_SkillData_C_SetupSPCost::Temp_byte_Variable' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, Temp_byte_Variable_1) == 0x000019, "Member 'WBP_Item_SkillData_C_SetupSPCost::Temp_byte_Variable_1' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupSPCost, K2Node_Select_Default) == 0x00001A, "Member 'WBP_Item_SkillData_C_SetupSPCost::K2Node_Select_Default' has a wrong offset!");
+
+// Function WBP_Item_SkillData.WBP_Item_SkillData_C.SetupUpgrade
+// 0x00E0 (0x00E0 - 0x0000)
+struct WBP_Item_SkillData_C_SetupUpgrade final
+{
+public:
+	struct FSkillData                             SkillData;                                         // 0x0000(0x0058)(BlueprintVisible, BlueprintReadOnly, Parm)
+	struct FSkillData                             UpgradeSkillData;                                  // 0x0058(0x0058)(BlueprintVisible, BlueprintReadOnly, Parm)
+	double                                        CallFunc_Conv_IntToDouble_ReturnValue;             // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_Conv_IntToDouble_ReturnValue_1;           // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_Conv_IntToDouble_ReturnValue_2;           // 0x00C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_Conv_IntToDouble_ReturnValue_3;           // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_Setup_Upgraded_Cooldown_Cost_UpgradeCooldown_ImplicitCast; // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_Setup_Upgraded_Cooldown_Cost_CurrCooldown_ImplicitCast; // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Item_SkillData_C_SetupUpgrade) == 0x000008, "Wrong alignment on WBP_Item_SkillData_C_SetupUpgrade");
+static_assert(sizeof(WBP_Item_SkillData_C_SetupUpgrade) == 0x0000E0, "Wrong size on WBP_Item_SkillData_C_SetupUpgrade");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, SkillData) == 0x000000, "Member 'WBP_Item_SkillData_C_SetupUpgrade::SkillData' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, UpgradeSkillData) == 0x000058, "Member 'WBP_Item_SkillData_C_SetupUpgrade::UpgradeSkillData' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Conv_IntToDouble_ReturnValue) == 0x0000B0, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Conv_IntToDouble_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Conv_IntToDouble_ReturnValue_1) == 0x0000B8, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Conv_IntToDouble_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Conv_IntToDouble_ReturnValue_2) == 0x0000C0, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Conv_IntToDouble_ReturnValue_2' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Conv_IntToDouble_ReturnValue_3) == 0x0000C8, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Conv_IntToDouble_ReturnValue_3' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Setup_Upgraded_Cooldown_Cost_UpgradeCooldown_ImplicitCast) == 0x0000D0, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Setup_Upgraded_Cooldown_Cost_UpgradeCooldown_ImplicitCast' has a wrong offset!");
+static_assert(offsetof(WBP_Item_SkillData_C_SetupUpgrade, CallFunc_Setup_Upgraded_Cooldown_Cost_CurrCooldown_ImplicitCast) == 0x0000D8, "Member 'WBP_Item_SkillData_C_SetupUpgrade::CallFunc_Setup_Upgraded_Cooldown_Cost_CurrCooldown_ImplicitCast' has a wrong offset!");
 
 }
 

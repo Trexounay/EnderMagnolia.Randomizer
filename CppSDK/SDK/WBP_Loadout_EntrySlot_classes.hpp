@@ -28,9 +28,9 @@ public:
 	class UWidgetSwitcher*                        WidgetSwitcher;                                    // 0x0478(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 
 public:
-	void Construct();
-	void ExecuteUbergraph_WBP_Loadout_EntrySlot(int32 EntryPoint);
 	void SetSelected(bool bSelected);
+	void ExecuteUbergraph_WBP_Loadout_EntrySlot(int32 EntryPoint);
+	void Construct();
 
 public:
 	static class UClass* StaticClass()

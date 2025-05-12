@@ -12,8 +12,8 @@
 
 #include "UMG_structs.hpp"
 #include "SlateCore_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "Zion_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "InputCore_structs.hpp"
 
 
@@ -21,7 +21,7 @@ namespace SDK::Params
 {
 
 // Function WBP_Extra_Dialog_GalleryImage.WBP_Extra_Dialog_GalleryImage_C.ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage
-// 0x00E8 (0x00E8 - 0x0000)
+// 0x00F0 (0x00F0 - 0x0000)
 struct WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage final
 {
 public:
@@ -30,44 +30,45 @@ public:
 	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x0014(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UPlayUMGAnimationAsyncAction*           CallFunc_PlayUMGAnimation_ReturnValue;             // 0x0028(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UPlayUMGAnimationAsyncAction*           CallFunc_PlayUMGAnimation_ReturnValue_1;           // 0x0030(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3A[0x2];                                       // 0x003A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(TSoftObjectPtr<class UObject> SoftImageObject)> K2Node_CreateDelegate_OutputDelegate_2; // 0x003C(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(TSoftObjectPtr<class UObject> SoftImageObject)> K2Node_CreateDelegate_OutputDelegate_3; // 0x004C(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(double NewZoomValue)>          K2Node_CreateDelegate_OutputDelegate_4;            // 0x005C(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_6C[0x4];                                       // 0x006C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        K2Node_CustomEvent_NewZoomValue;                   // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_Initialize_MinZoom;                       // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_Initialize_DefaultZoom;                   // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_Initialize_MaxZoom;                       // 0x0088(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TSoftObjectPtr<class UObject>                 K2Node_CustomEvent_SoftImageObject_1;              // 0x0090(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	TSoftObjectPtr<class UObject>                 K2Node_CustomEvent_SoftImageObject;                // 0x00B8(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_SoftObjectReference_ReturnValue; // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_E1[0x3];                                       // 0x00E1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CallFunc_SetUserSpecifiedScale_InUserSpecifiedScale_ImplicitCast; // 0x00E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(TSoftObjectPtr<class UObject> SoftImageObject)> K2Node_CreateDelegate_OutputDelegate_2; // 0x0034(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(TSoftObjectPtr<class UObject> SoftImageObject)> K2Node_CreateDelegate_OutputDelegate_3; // 0x0044(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(double NewZoomValue)>          K2Node_CreateDelegate_OutputDelegate_4;            // 0x0054(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        K2Node_CustomEvent_NewZoomValue;                   // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_Initialize_MinZoom;                       // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_Initialize_DefaultZoom;                   // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_Initialize_MaxZoom;                       // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TSoftObjectPtr<class UObject>                 K2Node_CustomEvent_SoftImageObject_1;              // 0x0088(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	TSoftObjectPtr<class UObject>                 K2Node_CustomEvent_SoftImageObject;                // 0x00B0(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_SoftObjectReference_ReturnValue; // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_D9[0x7];                                       // 0x00D9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPlayUMGAnimationAsyncAction*           CallFunc_PlayUMGAnimation_ReturnValue_1;           // 0x00E0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         CallFunc_SetUserSpecifiedScale_InUserSpecifiedScale_ImplicitCast; // 0x00EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 static_assert(alignof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage) == 0x000008, "Wrong alignment on WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage");
-static_assert(sizeof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage) == 0x0000E8, "Wrong size on WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage");
+static_assert(sizeof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage) == 0x0000F0, "Wrong size on WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage");
 static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, EntryPoint) == 0x000000, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::EntryPoint' has a wrong offset!");
 static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CreateDelegate_OutputDelegate) == 0x000004, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CreateDelegate_OutputDelegate' has a wrong offset!");
 static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CreateDelegate_OutputDelegate_1) == 0x000014, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CreateDelegate_OutputDelegate_1' has a wrong offset!");
 static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_PlayUMGAnimation_ReturnValue) == 0x000028, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_PlayUMGAnimation_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_PlayUMGAnimation_ReturnValue_1) == 0x000030, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_PlayUMGAnimation_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_IsValid_ReturnValue) == 0x000038, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_IsValid_ReturnValue_1) == 0x000039, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CreateDelegate_OutputDelegate_2) == 0x00003C, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CreateDelegate_OutputDelegate_3) == 0x00004C, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CreateDelegate_OutputDelegate_3' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CreateDelegate_OutputDelegate_4) == 0x00005C, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CreateDelegate_OutputDelegate_4' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CustomEvent_NewZoomValue) == 0x000070, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CustomEvent_NewZoomValue' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_Initialize_MinZoom) == 0x000078, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_Initialize_MinZoom' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_Initialize_DefaultZoom) == 0x000080, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_Initialize_DefaultZoom' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_Initialize_MaxZoom) == 0x000088, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_Initialize_MaxZoom' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CustomEvent_SoftImageObject_1) == 0x000090, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CustomEvent_SoftImageObject_1' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CustomEvent_SoftImageObject) == 0x0000B8, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CustomEvent_SoftImageObject' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_EqualEqual_SoftObjectReference_ReturnValue) == 0x0000E0, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_EqualEqual_SoftObjectReference_ReturnValue' has a wrong offset!");
-static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_SetUserSpecifiedScale_InUserSpecifiedScale_ImplicitCast) == 0x0000E4, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_SetUserSpecifiedScale_InUserSpecifiedScale_ImplicitCast' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_IsValid_ReturnValue) == 0x000030, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CreateDelegate_OutputDelegate_2) == 0x000034, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CreateDelegate_OutputDelegate_2' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CreateDelegate_OutputDelegate_3) == 0x000044, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CreateDelegate_OutputDelegate_3' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CreateDelegate_OutputDelegate_4) == 0x000054, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CreateDelegate_OutputDelegate_4' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CustomEvent_NewZoomValue) == 0x000068, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CustomEvent_NewZoomValue' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_Initialize_MinZoom) == 0x000070, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_Initialize_MinZoom' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_Initialize_DefaultZoom) == 0x000078, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_Initialize_DefaultZoom' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_Initialize_MaxZoom) == 0x000080, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_Initialize_MaxZoom' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CustomEvent_SoftImageObject_1) == 0x000088, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CustomEvent_SoftImageObject_1' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, K2Node_CustomEvent_SoftImageObject) == 0x0000B0, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::K2Node_CustomEvent_SoftImageObject' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_EqualEqual_SoftObjectReference_ReturnValue) == 0x0000D8, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_EqualEqual_SoftObjectReference_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_PlayUMGAnimation_ReturnValue_1) == 0x0000E0, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_PlayUMGAnimation_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_IsValid_ReturnValue_1) == 0x0000E8, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_IsValid_ReturnValue_1' has a wrong offset!");
+static_assert(offsetof(WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage, CallFunc_SetUserSpecifiedScale_InUserSpecifiedScale_ImplicitCast) == 0x0000EC, "Member 'WBP_Extra_Dialog_GalleryImage_C_ExecuteUbergraph_WBP_Extra_Dialog_GalleryImage::CallFunc_SetUserSpecifiedScale_InUserSpecifiedScale_ImplicitCast' has a wrong offset!");
 
 // Function WBP_Extra_Dialog_GalleryImage.WBP_Extra_Dialog_GalleryImage_C.OnAnalogValueChanged
 // 0x0260 (0x0260 - 0x0000)

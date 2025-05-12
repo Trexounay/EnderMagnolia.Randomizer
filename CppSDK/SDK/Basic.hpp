@@ -32,11 +32,11 @@ using namespace UC;
 */
 namespace Offsets
 {
-	constexpr int32 GObjects          = 0x07F497B0;
-	constexpr int32 AppendString      = 0x010A57F0;
-	constexpr int32 GNames            = 0x07E92A40;
-	constexpr int32 GWorld            = 0x080C9728;
-	constexpr int32 ProcessEvent      = 0x0128FD80;
+	constexpr int32 GObjects          = 0x07F4C830;
+	constexpr int32 AppendString      = 0x010A5920;
+	constexpr int32 GNames            = 0x07E95AC0;
+	constexpr int32 GWorld            = 0x080CC7A8;
+	constexpr int32 ProcessEvent      = 0x0128FEB0;
 	constexpr int32 ProcessEventIdx   = 0x0000004D;
 }
 
@@ -797,7 +797,7 @@ inline bool operator&(EEnumClass Left, EEnumClass Right)																								
 	return (((std::underlying_type<EEnumClass>::type)(Left) & (std::underlying_type<EEnumClass>::type)(Right)) == (std::underlying_type<EEnumClass>::type)(Right));		\
 }																																										
 
-enum class EObjectFlags
+enum class EObjectFlags : int32
 {
 	NoFlags							= 0x00000000,
 

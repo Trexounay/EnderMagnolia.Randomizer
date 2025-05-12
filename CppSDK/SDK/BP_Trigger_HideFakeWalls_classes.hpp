@@ -27,9 +27,9 @@ public:
 	TArray<class ABP_FakeWall_C*>                 FakeWalls;                                         // 0x02B0(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate)
 
 public:
-	void ReceiveActorBeginOverlap(class AActor* OtherActor);
-	void ExecuteUbergraph_BP_Trigger_HideFakeWalls(int32 EntryPoint);
 	void ClearFakeWalls();
+	void ExecuteUbergraph_BP_Trigger_HideFakeWalls(int32 EntryPoint);
+	void ReceiveActorBeginOverlap(class AActor* OtherActor);
 
 public:
 	static class UClass* StaticClass()

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Zion_structs.hpp"
 #include "UMG_structs.hpp"
+#include "Zion_structs.hpp"
 
 
 namespace SDK::Params

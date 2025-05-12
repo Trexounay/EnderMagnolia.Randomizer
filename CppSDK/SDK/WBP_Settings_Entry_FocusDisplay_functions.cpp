@@ -17,23 +17,17 @@
 namespace SDK
 {
 
-// Function WBP_Settings_Entry_FocusDisplay.WBP_Settings_Entry_FocusDisplay_C.SetFocusDisplay
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Focused_0                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function WBP_Settings_Entry_FocusDisplay.WBP_Settings_Entry_FocusDisplay_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
 
-void UWBP_Settings_Entry_FocusDisplay_C::SetFocusDisplay(bool Focused_0)
+void UWBP_Settings_Entry_FocusDisplay_C::Construct()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_FocusDisplay_C", "SetFocusDisplay");
+		Func = Class->GetFunction("WBP_Settings_Entry_FocusDisplay_C", "Construct");
 
-	Params::WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay Parms{};
-
-	Parms.Focused_0 = Focused_0;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -57,17 +51,23 @@ void UWBP_Settings_Entry_FocusDisplay_C::ExecuteUbergraph_WBP_Settings_Entry_Foc
 }
 
 
-// Function WBP_Settings_Entry_FocusDisplay.WBP_Settings_Entry_FocusDisplay_C.Construct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Function WBP_Settings_Entry_FocusDisplay.WBP_Settings_Entry_FocusDisplay_C.SetFocusDisplay
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Focused_0                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Settings_Entry_FocusDisplay_C::Construct()
+void UWBP_Settings_Entry_FocusDisplay_C::SetFocusDisplay(bool Focused_0)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_FocusDisplay_C", "Construct");
+		Func = Class->GetFunction("WBP_Settings_Entry_FocusDisplay_C", "SetFocusDisplay");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay Parms{};
+
+	Parms.Focused_0 = Focused_0;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

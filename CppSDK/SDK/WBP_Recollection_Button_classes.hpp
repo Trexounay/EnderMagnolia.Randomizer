@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "Zion_structs.hpp"
-#include "Zion_classes.hpp"
 #include "UMG_structs.hpp"
 #include "SlateCore_structs.hpp"
+#include "Zion_structs.hpp"
+#include "Zion_classes.hpp"
 
 
 namespace SDK

@@ -17,23 +17,17 @@
 namespace SDK
 {
 
-// Function BP_Trigger_HideFakeWalls.BP_Trigger_HideFakeWalls_C.ReceiveActorBeginOverlap
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// Function BP_Trigger_HideFakeWalls.BP_Trigger_HideFakeWalls_C.ClearFakeWalls
+// (Public, BlueprintCallable, BlueprintEvent)
 
-void ABP_Trigger_HideFakeWalls_C::ReceiveActorBeginOverlap(class AActor* OtherActor)
+void ABP_Trigger_HideFakeWalls_C::ClearFakeWalls()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Trigger_HideFakeWalls_C", "ReceiveActorBeginOverlap");
+		Func = Class->GetFunction("BP_Trigger_HideFakeWalls_C", "ClearFakeWalls");
 
-	Params::BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap Parms{};
-
-	Parms.OtherActor = OtherActor;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -57,17 +51,23 @@ void ABP_Trigger_HideFakeWalls_C::ExecuteUbergraph_BP_Trigger_HideFakeWalls(int3
 }
 
 
-// Function BP_Trigger_HideFakeWalls.BP_Trigger_HideFakeWalls_C.ClearFakeWalls
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function BP_Trigger_HideFakeWalls.BP_Trigger_HideFakeWalls_C.ReceiveActorBeginOverlap
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void ABP_Trigger_HideFakeWalls_C::ClearFakeWalls()
+void ABP_Trigger_HideFakeWalls_C::ReceiveActorBeginOverlap(class AActor* OtherActor)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Trigger_HideFakeWalls_C", "ClearFakeWalls");
+		Func = Class->GetFunction("BP_Trigger_HideFakeWalls_C", "ReceiveActorBeginOverlap");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::BP_Trigger_HideFakeWalls_C_ReceiveActorBeginOverlap Parms{};
+
+	Parms.OtherActor = OtherActor;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 }

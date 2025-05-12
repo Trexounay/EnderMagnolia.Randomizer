@@ -323,7 +323,8 @@ public:
 	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FInventoryItemPassiveData              CallFunc_GetItemPassiveData_out_ItemData;          // 0x0010(0x0268)()
 	bool                                          CallFunc_GetItemPassiveData_ReturnValue;           // 0x0278(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_279[0x3];                                      // 0x0279(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          CallFunc_CanUpgradePassiveData_CanBeUpgraded;      // 0x0279(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_27A[0x2];                                      // 0x027A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FCurrencyValue                         CallFunc_ToCurrencyValue_ReturnValue;              // 0x027C(0x0008)(NoDestructor)
 	uint8                                         Pad_284[0x4];                                      // 0x0284(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class FText                                   CallFunc_Conv_IntToText_ReturnValue;               // 0x0288(0x0010)()
@@ -335,6 +336,7 @@ static_assert(offsetof(WBP_PassiveUnlock_C_RefreshCurrency, HeldCurrency) == 0x0
 static_assert(offsetof(WBP_PassiveUnlock_C_RefreshCurrency, CallFunc_IsValid_ReturnValue) == 0x00000C, "Member 'WBP_PassiveUnlock_C_RefreshCurrency::CallFunc_IsValid_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WBP_PassiveUnlock_C_RefreshCurrency, CallFunc_GetItemPassiveData_out_ItemData) == 0x000010, "Member 'WBP_PassiveUnlock_C_RefreshCurrency::CallFunc_GetItemPassiveData_out_ItemData' has a wrong offset!");
 static_assert(offsetof(WBP_PassiveUnlock_C_RefreshCurrency, CallFunc_GetItemPassiveData_ReturnValue) == 0x000278, "Member 'WBP_PassiveUnlock_C_RefreshCurrency::CallFunc_GetItemPassiveData_ReturnValue' has a wrong offset!");
+static_assert(offsetof(WBP_PassiveUnlock_C_RefreshCurrency, CallFunc_CanUpgradePassiveData_CanBeUpgraded) == 0x000279, "Member 'WBP_PassiveUnlock_C_RefreshCurrency::CallFunc_CanUpgradePassiveData_CanBeUpgraded' has a wrong offset!");
 static_assert(offsetof(WBP_PassiveUnlock_C_RefreshCurrency, CallFunc_ToCurrencyValue_ReturnValue) == 0x00027C, "Member 'WBP_PassiveUnlock_C_RefreshCurrency::CallFunc_ToCurrencyValue_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WBP_PassiveUnlock_C_RefreshCurrency, CallFunc_Conv_IntToText_ReturnValue) == 0x000288, "Member 'WBP_PassiveUnlock_C_RefreshCurrency::CallFunc_Conv_IntToText_ReturnValue' has a wrong offset!");
 

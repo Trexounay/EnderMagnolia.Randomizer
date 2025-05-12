@@ -38,16 +38,16 @@ public:
 	class UInventoryComponent*                    InventoryComponent;                                // 0x04C8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 
 public:
-	void TryMarkItemAsChecked();
-	void Setup(const struct FDataTableRowHandle& ItemHandle_0, int32 Count, const class FText& FallbackText, bool bNew);
-	void SetFocusedState(bool Focus);
-	void SetColor(const struct FLinearColor& Color);
-	void RefreshNewVisibility();
-	void OnRemovedFromFocusPath(const struct FFocusEvent& InFocusEvent);
-	struct FEventReply OnPressConfirm(const struct FKeyEvent& KeyEvent);
 	void OnAddedToFocusPath(const struct FFocusEvent& InFocusEvent);
 	void ExecuteUbergraph_WBP_Button_Item(int32 EntryPoint);
 	void Construct();
+	struct FEventReply OnPressConfirm(const struct FKeyEvent& KeyEvent);
+	void OnRemovedFromFocusPath(const struct FFocusEvent& InFocusEvent);
+	void RefreshNewVisibility();
+	void SetColor(const struct FLinearColor& Color);
+	void SetFocusedState(bool Focus);
+	void Setup(const struct FDataTableRowHandle& ItemHandle_0, int32 Count, const class FText& FallbackText, bool bNew);
+	void TryMarkItemAsChecked();
 
 public:
 	static class UClass* StaticClass()

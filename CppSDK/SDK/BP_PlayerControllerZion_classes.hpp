@@ -19,23 +19,23 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_PlayerControllerZion.BP_PlayerControllerZion_C
-// 0x0068 (0x0DE0 - 0x0D78)
+// 0x0068 (0x0DE8 - 0x0D80)
 class ABP_PlayerControllerZion_C final : public APlayerControllerZion
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0D78(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UWBP_DebugMenu_C*                       DebugMenu;                                         // 0x0D80(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, InstancedReference, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
-	class UWBP_Pause_C*                           PauseMenu;                                         // 0x0D88(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, InstancedReference, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
-	class UWBP_GameMenu_C*                        gamemenu;                                          // 0x0D90(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, InstancedReference, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
-	class UClass*                                 CommandFastTravel_Lv1;                             // 0x0D98(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 CommandFastTravel_Lv2;                             // 0x0DA0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 CommandWakeUp;                                     // 0x0DA8(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TArray<class FName>                           RequestedTutorialIDs;                              // 0x0DB0(0x0010)(Edit, BlueprintVisible, Transient, DisableEditOnInstance, AdvancedDisplay)
-	int32                                         GameMenuPageIndex;                                 // 0x0DC0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
-	uint8                                         Pad_DC4[0x4];                                      // 0x0DC4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWBP_DisplayAreaName_C*                 DisplayAreaNameWidget;                             // 0x0DC8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	int32                                         DisplayingAreaNameCount;                           // 0x0DD0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
-	class FName                                   OnMapChangePreviousMapID;                          // 0x0DD4(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
+	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0D80(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class UWBP_DebugMenu_C*                       DebugMenu;                                         // 0x0D88(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, InstancedReference, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
+	class UWBP_Pause_C*                           PauseMenu;                                         // 0x0D90(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, InstancedReference, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
+	class UWBP_GameMenu_C*                        gamemenu;                                          // 0x0D98(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, InstancedReference, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
+	class UClass*                                 CommandFastTravel_Lv1;                             // 0x0DA0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 CommandFastTravel_Lv2;                             // 0x0DA8(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 CommandWakeUp;                                     // 0x0DB0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	TArray<class FName>                           RequestedTutorialIDs;                              // 0x0DB8(0x0010)(Edit, BlueprintVisible, Transient, DisableEditOnInstance, AdvancedDisplay)
+	int32                                         GameMenuPageIndex;                                 // 0x0DC8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
+	uint8                                         Pad_DCC[0x4];                                      // 0x0DCC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWBP_DisplayAreaName_C*                 DisplayAreaNameWidget;                             // 0x0DD0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	int32                                         DisplayingAreaNameCount;                           // 0x0DD8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
+	class FName                                   OnMapChangePreviousMapID;                          // 0x0DDC(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
 
 public:
 	void AddCommand(class UClass* Command);
@@ -76,19 +76,19 @@ public:
 	}
 };
 static_assert(alignof(ABP_PlayerControllerZion_C) == 0x000008, "Wrong alignment on ABP_PlayerControllerZion_C");
-static_assert(sizeof(ABP_PlayerControllerZion_C) == 0x000DE0, "Wrong size on ABP_PlayerControllerZion_C");
-static_assert(offsetof(ABP_PlayerControllerZion_C, UberGraphFrame) == 0x000D78, "Member 'ABP_PlayerControllerZion_C::UberGraphFrame' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, DebugMenu) == 0x000D80, "Member 'ABP_PlayerControllerZion_C::DebugMenu' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, PauseMenu) == 0x000D88, "Member 'ABP_PlayerControllerZion_C::PauseMenu' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, gamemenu) == 0x000D90, "Member 'ABP_PlayerControllerZion_C::gamemenu' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, CommandFastTravel_Lv1) == 0x000D98, "Member 'ABP_PlayerControllerZion_C::CommandFastTravel_Lv1' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, CommandFastTravel_Lv2) == 0x000DA0, "Member 'ABP_PlayerControllerZion_C::CommandFastTravel_Lv2' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, CommandWakeUp) == 0x000DA8, "Member 'ABP_PlayerControllerZion_C::CommandWakeUp' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, RequestedTutorialIDs) == 0x000DB0, "Member 'ABP_PlayerControllerZion_C::RequestedTutorialIDs' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, GameMenuPageIndex) == 0x000DC0, "Member 'ABP_PlayerControllerZion_C::GameMenuPageIndex' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, DisplayAreaNameWidget) == 0x000DC8, "Member 'ABP_PlayerControllerZion_C::DisplayAreaNameWidget' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, DisplayingAreaNameCount) == 0x000DD0, "Member 'ABP_PlayerControllerZion_C::DisplayingAreaNameCount' has a wrong offset!");
-static_assert(offsetof(ABP_PlayerControllerZion_C, OnMapChangePreviousMapID) == 0x000DD4, "Member 'ABP_PlayerControllerZion_C::OnMapChangePreviousMapID' has a wrong offset!");
+static_assert(sizeof(ABP_PlayerControllerZion_C) == 0x000DE8, "Wrong size on ABP_PlayerControllerZion_C");
+static_assert(offsetof(ABP_PlayerControllerZion_C, UberGraphFrame) == 0x000D80, "Member 'ABP_PlayerControllerZion_C::UberGraphFrame' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, DebugMenu) == 0x000D88, "Member 'ABP_PlayerControllerZion_C::DebugMenu' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, PauseMenu) == 0x000D90, "Member 'ABP_PlayerControllerZion_C::PauseMenu' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, gamemenu) == 0x000D98, "Member 'ABP_PlayerControllerZion_C::gamemenu' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, CommandFastTravel_Lv1) == 0x000DA0, "Member 'ABP_PlayerControllerZion_C::CommandFastTravel_Lv1' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, CommandFastTravel_Lv2) == 0x000DA8, "Member 'ABP_PlayerControllerZion_C::CommandFastTravel_Lv2' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, CommandWakeUp) == 0x000DB0, "Member 'ABP_PlayerControllerZion_C::CommandWakeUp' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, RequestedTutorialIDs) == 0x000DB8, "Member 'ABP_PlayerControllerZion_C::RequestedTutorialIDs' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, GameMenuPageIndex) == 0x000DC8, "Member 'ABP_PlayerControllerZion_C::GameMenuPageIndex' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, DisplayAreaNameWidget) == 0x000DD0, "Member 'ABP_PlayerControllerZion_C::DisplayAreaNameWidget' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, DisplayingAreaNameCount) == 0x000DD8, "Member 'ABP_PlayerControllerZion_C::DisplayingAreaNameCount' has a wrong offset!");
+static_assert(offsetof(ABP_PlayerControllerZion_C, OnMapChangePreviousMapID) == 0x000DDC, "Member 'ABP_PlayerControllerZion_C::OnMapChangePreviousMapID' has a wrong offset!");
 
 }
 

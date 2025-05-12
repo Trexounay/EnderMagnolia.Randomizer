@@ -16,6 +16,17 @@
 namespace SDK::Params
 {
 
+// Function WBP_Settings_Entry_FocusDisplay.WBP_Settings_Entry_FocusDisplay_C.ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay
+// 0x0004 (0x0004 - 0x0000)
+struct WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay) == 0x000004, "Wrong alignment on WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay");
+static_assert(sizeof(WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay) == 0x000004, "Wrong size on WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay");
+static_assert(offsetof(WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay, EntryPoint) == 0x000000, "Member 'WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay::EntryPoint' has a wrong offset!");
+
 // Function WBP_Settings_Entry_FocusDisplay.WBP_Settings_Entry_FocusDisplay_C.SetFocusDisplay
 // 0x0018 (0x0018 - 0x0000)
 struct WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay final
@@ -37,17 +48,6 @@ static_assert(offsetof(WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay, Temp_b
 static_assert(offsetof(WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay, Temp_bool_Variable) == 0x000003, "Member 'WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay::Temp_bool_Variable' has a wrong offset!");
 static_assert(offsetof(WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay, CallFunc_PlayAnimation_ReturnValue) == 0x000008, "Member 'WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay::CallFunc_PlayAnimation_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay, K2Node_Select_Default) == 0x000010, "Member 'WBP_Settings_Entry_FocusDisplay_C_SetFocusDisplay::K2Node_Select_Default' has a wrong offset!");
-
-// Function WBP_Settings_Entry_FocusDisplay.WBP_Settings_Entry_FocusDisplay_C.ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay
-// 0x0004 (0x0004 - 0x0000)
-struct WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay) == 0x000004, "Wrong alignment on WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay");
-static_assert(sizeof(WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay) == 0x000004, "Wrong size on WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay");
-static_assert(offsetof(WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay, EntryPoint) == 0x000000, "Member 'WBP_Settings_Entry_FocusDisplay_C_ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay::EntryPoint' has a wrong offset!");
 
 }
 

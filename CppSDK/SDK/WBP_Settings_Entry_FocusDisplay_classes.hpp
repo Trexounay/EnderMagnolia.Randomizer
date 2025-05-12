@@ -32,9 +32,9 @@ public:
 	class UOverlay*                               Overlay_FocusContainerRight;                       // 0x0490(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 
 public:
-	void SetFocusDisplay(bool Focused_0);
-	void ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay(int32 EntryPoint);
 	void Construct();
+	void ExecuteUbergraph_WBP_Settings_Entry_FocusDisplay(int32 EntryPoint);
+	void SetFocusDisplay(bool Focused_0);
 
 public:
 	static class UClass* StaticClass()

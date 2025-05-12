@@ -34,15 +34,15 @@ public:
 	class URecollectionBossRushComponent*         BossRushComponent;                                 // 0x04A0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, InstancedReference, NoDestructor, ExposeOnSpawn, HasGetValueTypeHash)
 
 public:
-	void Construct();
-	void Destruct();
-	void ExecuteUbergraph_WBP_Recollection_BossRush_Timer(int32 EntryPoint);
-	void OnDisplayPlayerUIChanged();
-	void PauseTimer(bool bPaused);
-	void RefreshTimerText();
-	void RefreshVisibility();
-	void SetCurrentBossIndex(int32 Index_0);
 	void Tick(const struct FGeometry& MyGeometry, float InDeltaTime);
+	void SetCurrentBossIndex(int32 Index_0);
+	void RefreshVisibility();
+	void RefreshTimerText();
+	void PauseTimer(bool bPaused);
+	void OnDisplayPlayerUIChanged();
+	void ExecuteUbergraph_WBP_Recollection_BossRush_Timer(int32 EntryPoint);
+	void Destruct();
+	void Construct();
 
 public:
 	static class UClass* StaticClass()

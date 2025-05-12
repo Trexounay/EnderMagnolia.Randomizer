@@ -794,6 +794,7 @@ enum class ENDISkeletalMesh_SkinningMode : uint8
 	None                                     = 0,
 	SkinOnTheFly                             = 1,
 	PreSkin                                  = 2,
+	ENDISkeletalMesh_MAX                     = 256,
 };
 
 // Enum Niagara.ENiagaraDebugPlaybackMode
@@ -1380,40 +1381,29 @@ enum class EVolumeCacheType : uint8
 	EVolumeCacheType_MAX                     = 1,
 };
 
-// ScriptStruct Niagara.NiagaraAssetTagDefinition
-// 0x0050 (0x0050 - 0x0000)
-struct FNiagaraAssetTagDefinition final
+// ScriptStruct Niagara.NiagaraSimCacheCaptureParameters
+// 0x001C (0x001C - 0x0000)
+struct FNiagaraSimCacheCaptureParameters final
 {
 public:
-	class FText                                   AssetTag;                                          // 0x0000(0x0010)(Edit, NativeAccessSpecifierPublic)
-	int32                                         AssetFlags;                                        // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   Description;                                       // 0x0018(0x0010)(Edit, NativeAccessSpecifierPublic)
-	ENiagaraAssetTagDefinitionImportance          DisplayType;                                       // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLinearColor                           Color;                                             // 0x002C(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGuid                                  TagGuid;                                           // 0x003C(0x0010)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4C[0x4];                                       // 0x004C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         bAppendToSimCache : 1;                             // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bCaptureFixedNumberOfFrames : 1;                   // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         NumFrames;                                         // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         CaptureRate;                                       // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         bUseTimeout : 1;                                   // 0x000C(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         TimeoutFrameCount;                                 // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         bCaptureAllFramesImmediatly : 1;                   // 0x0014(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ImmediateCaptureDeltaTime;                         // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraAssetTagDefinition) == 0x000008, "Wrong alignment on FNiagaraAssetTagDefinition");
-static_assert(sizeof(FNiagaraAssetTagDefinition) == 0x000050, "Wrong size on FNiagaraAssetTagDefinition");
-static_assert(offsetof(FNiagaraAssetTagDefinition, AssetTag) == 0x000000, "Member 'FNiagaraAssetTagDefinition::AssetTag' has a wrong offset!");
-static_assert(offsetof(FNiagaraAssetTagDefinition, AssetFlags) == 0x000010, "Member 'FNiagaraAssetTagDefinition::AssetFlags' has a wrong offset!");
-static_assert(offsetof(FNiagaraAssetTagDefinition, Description) == 0x000018, "Member 'FNiagaraAssetTagDefinition::Description' has a wrong offset!");
-static_assert(offsetof(FNiagaraAssetTagDefinition, DisplayType) == 0x000028, "Member 'FNiagaraAssetTagDefinition::DisplayType' has a wrong offset!");
-static_assert(offsetof(FNiagaraAssetTagDefinition, Color) == 0x00002C, "Member 'FNiagaraAssetTagDefinition::Color' has a wrong offset!");
-static_assert(offsetof(FNiagaraAssetTagDefinition, TagGuid) == 0x00003C, "Member 'FNiagaraAssetTagDefinition::TagGuid' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraFloat
-// 0x0004 (0x0004 - 0x0000)
-struct FNiagaraFloat final
-{
-public:
-	float                                         Value;                                             // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraFloat) == 0x000004, "Wrong alignment on FNiagaraFloat");
-static_assert(sizeof(FNiagaraFloat) == 0x000004, "Wrong size on FNiagaraFloat");
-static_assert(offsetof(FNiagaraFloat, Value) == 0x000000, "Member 'FNiagaraFloat::Value' has a wrong offset!");
+static_assert(alignof(FNiagaraSimCacheCaptureParameters) == 0x000004, "Wrong alignment on FNiagaraSimCacheCaptureParameters");
+static_assert(sizeof(FNiagaraSimCacheCaptureParameters) == 0x00001C, "Wrong size on FNiagaraSimCacheCaptureParameters");
+static_assert(offsetof(FNiagaraSimCacheCaptureParameters, NumFrames) == 0x000004, "Member 'FNiagaraSimCacheCaptureParameters::NumFrames' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheCaptureParameters, CaptureRate) == 0x000008, "Member 'FNiagaraSimCacheCaptureParameters::CaptureRate' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheCaptureParameters, TimeoutFrameCount) == 0x000010, "Member 'FNiagaraSimCacheCaptureParameters::TimeoutFrameCount' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheCaptureParameters, ImmediateCaptureDeltaTime) == 0x000018, "Member 'FNiagaraSimCacheCaptureParameters::ImmediateCaptureDeltaTime' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraTypeDefinitionHandle
 // 0x0004 (0x0004 - 0x0000)
@@ -1439,56 +1429,89 @@ static_assert(sizeof(FNiagaraVariableBase) == 0x00000C, "Wrong size on FNiagaraV
 static_assert(offsetof(FNiagaraVariableBase, Name) == 0x000000, "Member 'FNiagaraVariableBase::Name' has a wrong offset!");
 static_assert(offsetof(FNiagaraVariableBase, TypeDefHandle) == 0x000008, "Member 'FNiagaraVariableBase::TypeDefHandle' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraDistributionBase
+// ScriptStruct Niagara.NiagaraSimCacheVariable
 // 0x0018 (0x0018 - 0x0000)
-struct alignas(0x08) FNiagaraDistributionBase
+struct FNiagaraSimCacheVariable final
 {
 public:
-	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	ENiagaraDistributionMode                      Mode;                                              // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraVariableBase                   ParameterBinding;                                  // 0x000C(0x000C)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraVariableBase                   Variable;                                          // 0x0000(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        FloatOffset;                                       // 0x000C(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        FloatCount;                                        // 0x000E(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        HalfOffset;                                        // 0x0010(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        HalfCount;                                         // 0x0012(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        Int32Offset;                                       // 0x0014(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        Int32Count;                                        // 0x0016(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraDistributionBase) == 0x000008, "Wrong alignment on FNiagaraDistributionBase");
-static_assert(sizeof(FNiagaraDistributionBase) == 0x000018, "Wrong size on FNiagaraDistributionBase");
-static_assert(offsetof(FNiagaraDistributionBase, Mode) == 0x000008, "Member 'FNiagaraDistributionBase::Mode' has a wrong offset!");
-static_assert(offsetof(FNiagaraDistributionBase, ParameterBinding) == 0x00000C, "Member 'FNiagaraDistributionBase::ParameterBinding' has a wrong offset!");
+static_assert(alignof(FNiagaraSimCacheVariable) == 0x000004, "Wrong alignment on FNiagaraSimCacheVariable");
+static_assert(sizeof(FNiagaraSimCacheVariable) == 0x000018, "Wrong size on FNiagaraSimCacheVariable");
+static_assert(offsetof(FNiagaraSimCacheVariable, Variable) == 0x000000, "Member 'FNiagaraSimCacheVariable::Variable' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheVariable, FloatOffset) == 0x00000C, "Member 'FNiagaraSimCacheVariable::FloatOffset' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheVariable, FloatCount) == 0x00000E, "Member 'FNiagaraSimCacheVariable::FloatCount' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheVariable, HalfOffset) == 0x000010, "Member 'FNiagaraSimCacheVariable::HalfOffset' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheVariable, HalfCount) == 0x000012, "Member 'FNiagaraSimCacheVariable::HalfCount' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheVariable, Int32Offset) == 0x000014, "Member 'FNiagaraSimCacheVariable::Int32Offset' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheVariable, Int32Count) == 0x000016, "Member 'FNiagaraSimCacheVariable::Int32Count' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraDistributionRangeFloat
-// 0x0008 (0x0020 - 0x0018)
-struct FNiagaraDistributionRangeFloat final : public FNiagaraDistributionBase
+// ScriptStruct Niagara.NiagaraSimCacheDataBuffersLayout
+// 0x00B8 (0x00B8 - 0x0000)
+struct FNiagaraSimCacheDataBuffersLayout final
 {
 public:
-	float                                         Min;                                               // 0x0018(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Max;                                               // 0x001C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   LayoutName;                                        // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraSimTarget                             SimTarget;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FNiagaraSimCacheVariable>       Variables;                                         // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	uint16                                        FloatCount;                                        // 0x0020(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        HalfCount;                                         // 0x0022(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        Int32Count;                                        // 0x0024(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bLocalSpace;                                       // 0x0026(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAllowInterpolation;                               // 0x0027(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAllowVelocityExtrapolation;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FName>                           RebaseVariableNames;                               // 0x0030(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<class FName>                           InterpVariableNames;                               // 0x0040(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	uint16                                        ComponentVelocity;                                 // 0x0050(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_52[0x66];                                      // 0x0052(0x0066)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FNiagaraDistributionRangeFloat) == 0x000008, "Wrong alignment on FNiagaraDistributionRangeFloat");
-static_assert(sizeof(FNiagaraDistributionRangeFloat) == 0x000020, "Wrong size on FNiagaraDistributionRangeFloat");
-static_assert(offsetof(FNiagaraDistributionRangeFloat, Min) == 0x000018, "Member 'FNiagaraDistributionRangeFloat::Min' has a wrong offset!");
-static_assert(offsetof(FNiagaraDistributionRangeFloat, Max) == 0x00001C, "Member 'FNiagaraDistributionRangeFloat::Max' has a wrong offset!");
+static_assert(alignof(FNiagaraSimCacheDataBuffersLayout) == 0x000008, "Wrong alignment on FNiagaraSimCacheDataBuffersLayout");
+static_assert(sizeof(FNiagaraSimCacheDataBuffersLayout) == 0x0000B8, "Wrong size on FNiagaraSimCacheDataBuffersLayout");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, LayoutName) == 0x000000, "Member 'FNiagaraSimCacheDataBuffersLayout::LayoutName' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, SimTarget) == 0x000008, "Member 'FNiagaraSimCacheDataBuffersLayout::SimTarget' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, Variables) == 0x000010, "Member 'FNiagaraSimCacheDataBuffersLayout::Variables' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, FloatCount) == 0x000020, "Member 'FNiagaraSimCacheDataBuffersLayout::FloatCount' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, HalfCount) == 0x000022, "Member 'FNiagaraSimCacheDataBuffersLayout::HalfCount' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, Int32Count) == 0x000024, "Member 'FNiagaraSimCacheDataBuffersLayout::Int32Count' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, bLocalSpace) == 0x000026, "Member 'FNiagaraSimCacheDataBuffersLayout::bLocalSpace' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, bAllowInterpolation) == 0x000027, "Member 'FNiagaraSimCacheDataBuffersLayout::bAllowInterpolation' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, bAllowVelocityExtrapolation) == 0x000028, "Member 'FNiagaraSimCacheDataBuffersLayout::bAllowVelocityExtrapolation' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, RebaseVariableNames) == 0x000030, "Member 'FNiagaraSimCacheDataBuffersLayout::RebaseVariableNames' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, InterpVariableNames) == 0x000040, "Member 'FNiagaraSimCacheDataBuffersLayout::InterpVariableNames' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, ComponentVelocity) == 0x000050, "Member 'FNiagaraSimCacheDataBuffersLayout::ComponentVelocity' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraSimCacheCaptureParameters
-// 0x001C (0x001C - 0x0000)
-struct FNiagaraSimCacheCaptureParameters final
+// ScriptStruct Niagara.NiagaraSimCacheLayout
+// 0x00C8 (0x00C8 - 0x0000)
+struct FNiagaraSimCacheLayout final
 {
 public:
-	uint8                                         bAppendToSimCache : 1;                             // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bCaptureFixedNumberOfFrames : 1;                   // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         NumFrames;                                         // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         CaptureRate;                                       // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         bUseTimeout : 1;                                   // 0x000C(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         TimeoutFrameCount;                                 // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         bCaptureAllFramesImmediatly : 1;                   // 0x0014(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ImmediateCaptureDeltaTime;                         // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraSimCacheDataBuffersLayout      SystemLayout;                                      // 0x0000(0x00B8)(NativeAccessSpecifierPublic)
+	TArray<struct FNiagaraSimCacheDataBuffersLayout> EmitterLayouts;                                 // 0x00B8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraSimCacheCaptureParameters) == 0x000004, "Wrong alignment on FNiagaraSimCacheCaptureParameters");
-static_assert(sizeof(FNiagaraSimCacheCaptureParameters) == 0x00001C, "Wrong size on FNiagaraSimCacheCaptureParameters");
-static_assert(offsetof(FNiagaraSimCacheCaptureParameters, NumFrames) == 0x000004, "Member 'FNiagaraSimCacheCaptureParameters::NumFrames' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheCaptureParameters, CaptureRate) == 0x000008, "Member 'FNiagaraSimCacheCaptureParameters::CaptureRate' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheCaptureParameters, TimeoutFrameCount) == 0x000010, "Member 'FNiagaraSimCacheCaptureParameters::TimeoutFrameCount' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheCaptureParameters, ImmediateCaptureDeltaTime) == 0x000018, "Member 'FNiagaraSimCacheCaptureParameters::ImmediateCaptureDeltaTime' has a wrong offset!");
+static_assert(alignof(FNiagaraSimCacheLayout) == 0x000008, "Wrong alignment on FNiagaraSimCacheLayout");
+static_assert(sizeof(FNiagaraSimCacheLayout) == 0x0000C8, "Wrong size on FNiagaraSimCacheLayout");
+static_assert(offsetof(FNiagaraSimCacheLayout, SystemLayout) == 0x000000, "Member 'FNiagaraSimCacheLayout::SystemLayout' has a wrong offset!");
+static_assert(offsetof(FNiagaraSimCacheLayout, EmitterLayouts) == 0x0000B8, "Member 'FNiagaraSimCacheLayout::EmitterLayouts' has a wrong offset!");
+
+// ScriptStruct Niagara.NDCIslandDebugDrawSettings
+// 0x0004 (0x0004 - 0x0000)
+struct alignas(0x04) FNDCIslandDebugDrawSettings final
+{
+public:
+	uint8                                         bEnabled : 1;                                      // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bShowIslandBounds : 1;                             // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNDCIslandDebugDrawSettings) == 0x000004, "Wrong alignment on FNDCIslandDebugDrawSettings");
+static_assert(sizeof(FNDCIslandDebugDrawSettings) == 0x000004, "Wrong size on FNDCIslandDebugDrawSettings");
 
 // ScriptStruct Niagara.NiagaraSimCacheCreateParameters
 // 0x0058 (0x0058 - 0x0000)
@@ -1537,6 +1560,30 @@ static_assert(offsetof(FNDIRenderTargetVolumeSimCacheFrame, Format) == 0x00000C,
 static_assert(offsetof(FNDIRenderTargetVolumeSimCacheFrame, UncompressedSize) == 0x000010, "Member 'FNDIRenderTargetVolumeSimCacheFrame::UncompressedSize' has a wrong offset!");
 static_assert(offsetof(FNDIRenderTargetVolumeSimCacheFrame, CompressedSize) == 0x000014, "Member 'FNDIRenderTargetVolumeSimCacheFrame::CompressedSize' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraAssetTagDefinition
+// 0x0050 (0x0050 - 0x0000)
+struct FNiagaraAssetTagDefinition final
+{
+public:
+	class FText                                   AssetTag;                                          // 0x0000(0x0010)(Edit, NativeAccessSpecifierPublic)
+	int32                                         AssetFlags;                                        // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   Description;                                       // 0x0018(0x0010)(Edit, NativeAccessSpecifierPublic)
+	ENiagaraAssetTagDefinitionImportance          DisplayType;                                       // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLinearColor                           Color;                                             // 0x002C(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGuid                                  TagGuid;                                           // 0x003C(0x0010)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4C[0x4];                                       // 0x004C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraAssetTagDefinition) == 0x000008, "Wrong alignment on FNiagaraAssetTagDefinition");
+static_assert(sizeof(FNiagaraAssetTagDefinition) == 0x000050, "Wrong size on FNiagaraAssetTagDefinition");
+static_assert(offsetof(FNiagaraAssetTagDefinition, AssetTag) == 0x000000, "Member 'FNiagaraAssetTagDefinition::AssetTag' has a wrong offset!");
+static_assert(offsetof(FNiagaraAssetTagDefinition, AssetFlags) == 0x000010, "Member 'FNiagaraAssetTagDefinition::AssetFlags' has a wrong offset!");
+static_assert(offsetof(FNiagaraAssetTagDefinition, Description) == 0x000018, "Member 'FNiagaraAssetTagDefinition::Description' has a wrong offset!");
+static_assert(offsetof(FNiagaraAssetTagDefinition, DisplayType) == 0x000028, "Member 'FNiagaraAssetTagDefinition::DisplayType' has a wrong offset!");
+static_assert(offsetof(FNiagaraAssetTagDefinition, Color) == 0x00002C, "Member 'FNiagaraAssetTagDefinition::Color' has a wrong offset!");
+static_assert(offsetof(FNiagaraAssetTagDefinition, TagGuid) == 0x00003C, "Member 'FNiagaraAssetTagDefinition::TagGuid' has a wrong offset!");
+
 // ScriptStruct Niagara.NiagaraAssetTagDefinitionReference
 // 0x0010 (0x0010 - 0x0000)
 struct FNiagaraAssetTagDefinitionReference final
@@ -1576,28 +1623,15 @@ static_assert(sizeof(FNiagaraDataSetProperties) == 0x000020, "Wrong size on FNia
 static_assert(offsetof(FNiagaraDataSetProperties, ID) == 0x000000, "Member 'FNiagaraDataSetProperties::ID' has a wrong offset!");
 static_assert(offsetof(FNiagaraDataSetProperties, Variables) == 0x000010, "Member 'FNiagaraDataSetProperties::Variables' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraVariable
-// 0x0014 (0x0020 - 0x000C)
-struct FNiagaraVariable final : public FNiagaraVariableBase
+// ScriptStruct Niagara.ParameterDefinitionsSubscription
+// 0x0001 (0x0001 - 0x0000)
+struct FParameterDefinitionsSubscription final
 {
 public:
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<uint8>                                 VarData;                                           // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_0[0x1];                                        // 0x0000(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FNiagaraVariable) == 0x000008, "Wrong alignment on FNiagaraVariable");
-static_assert(sizeof(FNiagaraVariable) == 0x000020, "Wrong size on FNiagaraVariable");
-static_assert(offsetof(FNiagaraVariable, VarData) == 0x000010, "Member 'FNiagaraVariable::VarData' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraParameters
-// 0x0010 (0x0010 - 0x0000)
-struct FNiagaraParameters final
-{
-public:
-	TArray<struct FNiagaraVariable>               Parameters;                                        // 0x0000(0x0010)(Edit, EditFixedSize, ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraParameters) == 0x000008, "Wrong alignment on FNiagaraParameters");
-static_assert(sizeof(FNiagaraParameters) == 0x000010, "Wrong size on FNiagaraParameters");
-static_assert(offsetof(FNiagaraParameters, Parameters) == 0x000000, "Member 'FNiagaraParameters::Parameters' has a wrong offset!");
+static_assert(alignof(FParameterDefinitionsSubscription) == 0x000001, "Wrong alignment on FParameterDefinitionsSubscription");
+static_assert(sizeof(FParameterDefinitionsSubscription) == 0x000001, "Wrong size on FParameterDefinitionsSubscription");
 
 // ScriptStruct Niagara.NiagaraScriptDataUsageInfo
 // 0x0001 (0x0001 - 0x0000)
@@ -1609,6 +1643,102 @@ public:
 static_assert(alignof(FNiagaraScriptDataUsageInfo) == 0x000001, "Wrong alignment on FNiagaraScriptDataUsageInfo");
 static_assert(sizeof(FNiagaraScriptDataUsageInfo) == 0x000001, "Wrong size on FNiagaraScriptDataUsageInfo");
 static_assert(offsetof(FNiagaraScriptDataUsageInfo, bReadsAttributeData) == 0x000000, "Member 'FNiagaraScriptDataUsageInfo::bReadsAttributeData' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraStructConversionStep
+// 0x0014 (0x0014 - 0x0000)
+struct FNiagaraStructConversionStep final
+{
+public:
+	int32                                         LWCBytes;                                          // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         LWCOffset;                                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         SimulationBytes;                                   // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         SimulationOffset;                                  // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraStructConversionType                  ConversionType;                                    // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraStructConversionStep) == 0x000004, "Wrong alignment on FNiagaraStructConversionStep");
+static_assert(sizeof(FNiagaraStructConversionStep) == 0x000014, "Wrong size on FNiagaraStructConversionStep");
+static_assert(offsetof(FNiagaraStructConversionStep, LWCBytes) == 0x000000, "Member 'FNiagaraStructConversionStep::LWCBytes' has a wrong offset!");
+static_assert(offsetof(FNiagaraStructConversionStep, LWCOffset) == 0x000004, "Member 'FNiagaraStructConversionStep::LWCOffset' has a wrong offset!");
+static_assert(offsetof(FNiagaraStructConversionStep, SimulationBytes) == 0x000008, "Member 'FNiagaraStructConversionStep::SimulationBytes' has a wrong offset!");
+static_assert(offsetof(FNiagaraStructConversionStep, SimulationOffset) == 0x00000C, "Member 'FNiagaraStructConversionStep::SimulationOffset' has a wrong offset!");
+static_assert(offsetof(FNiagaraStructConversionStep, ConversionType) == 0x000010, "Member 'FNiagaraStructConversionStep::ConversionType' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraLwcStructConverter
+// 0x0018 (0x0018 - 0x0000)
+struct FNiagaraLwcStructConverter final
+{
+public:
+	int32                                         LWCSize;                                           // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int32                                         SWCSize;                                           // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TArray<struct FNiagaraStructConversionStep>   ConversionSteps;                                   // 0x0008(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+};
+static_assert(alignof(FNiagaraLwcStructConverter) == 0x000008, "Wrong alignment on FNiagaraLwcStructConverter");
+static_assert(sizeof(FNiagaraLwcStructConverter) == 0x000018, "Wrong size on FNiagaraLwcStructConverter");
+static_assert(offsetof(FNiagaraLwcStructConverter, LWCSize) == 0x000000, "Member 'FNiagaraLwcStructConverter::LWCSize' has a wrong offset!");
+static_assert(offsetof(FNiagaraLwcStructConverter, SWCSize) == 0x000004, "Member 'FNiagaraLwcStructConverter::SWCSize' has a wrong offset!");
+static_assert(offsetof(FNiagaraLwcStructConverter, ConversionSteps) == 0x000008, "Member 'FNiagaraLwcStructConverter::ConversionSteps' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraVariableWithOffset
+// 0x001C (0x0028 - 0x000C)
+struct FNiagaraVariableWithOffset final : public FNiagaraVariableBase
+{
+public:
+	int32                                         Offset;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraLwcStructConverter             StructConverter;                                   // 0x0010(0x0018)(NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraVariableWithOffset) == 0x000008, "Wrong alignment on FNiagaraVariableWithOffset");
+static_assert(sizeof(FNiagaraVariableWithOffset) == 0x000028, "Wrong size on FNiagaraVariableWithOffset");
+static_assert(offsetof(FNiagaraVariableWithOffset, Offset) == 0x00000C, "Member 'FNiagaraVariableWithOffset::Offset' has a wrong offset!");
+static_assert(offsetof(FNiagaraVariableWithOffset, StructConverter) == 0x000010, "Member 'FNiagaraVariableWithOffset::StructConverter' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraPositionSource
+// 0x0020 (0x0020 - 0x0000)
+struct FNiagaraPositionSource final
+{
+public:
+	class FName                                   Name;                                              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Value;                                             // 0x0008(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraPositionSource) == 0x000008, "Wrong alignment on FNiagaraPositionSource");
+static_assert(sizeof(FNiagaraPositionSource) == 0x000020, "Wrong size on FNiagaraPositionSource");
+static_assert(offsetof(FNiagaraPositionSource, Name) == 0x000000, "Member 'FNiagaraPositionSource::Name' has a wrong offset!");
+static_assert(offsetof(FNiagaraPositionSource, Value) == 0x000008, "Member 'FNiagaraPositionSource::Value' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraParameterStore
+// 0x0088 (0x0088 - 0x0000)
+struct FNiagaraParameterStore
+{
+public:
+	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UObject>                 Owner;                                             // 0x0008(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TArray<struct FNiagaraVariableWithOffset>     SortedParameterOffsets;                            // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+	TArray<uint8>                                 ParameterData;                                     // 0x0020(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+	TArray<class UNiagaraDataInterface*>          DataInterfaces;                                    // 0x0030(0x0010)(ZeroConstructor, UObjectWrapper, NativeAccessSpecifierPrivate)
+	TArray<class UObject*>                        UObjects;                                          // 0x0040(0x0010)(ZeroConstructor, UObjectWrapper, NativeAccessSpecifierPrivate)
+	TArray<struct FNiagaraPositionSource>         OriginalPositionData;                              // 0x0050(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_60[0x28];                                      // 0x0060(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraParameterStore) == 0x000008, "Wrong alignment on FNiagaraParameterStore");
+static_assert(sizeof(FNiagaraParameterStore) == 0x000088, "Wrong size on FNiagaraParameterStore");
+static_assert(offsetof(FNiagaraParameterStore, Owner) == 0x000008, "Member 'FNiagaraParameterStore::Owner' has a wrong offset!");
+static_assert(offsetof(FNiagaraParameterStore, SortedParameterOffsets) == 0x000010, "Member 'FNiagaraParameterStore::SortedParameterOffsets' has a wrong offset!");
+static_assert(offsetof(FNiagaraParameterStore, ParameterData) == 0x000020, "Member 'FNiagaraParameterStore::ParameterData' has a wrong offset!");
+static_assert(offsetof(FNiagaraParameterStore, DataInterfaces) == 0x000030, "Member 'FNiagaraParameterStore::DataInterfaces' has a wrong offset!");
+static_assert(offsetof(FNiagaraParameterStore, UObjects) == 0x000040, "Member 'FNiagaraParameterStore::UObjects' has a wrong offset!");
+static_assert(offsetof(FNiagaraParameterStore, OriginalPositionData) == 0x000050, "Member 'FNiagaraParameterStore::OriginalPositionData' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraVariable
+// 0x0014 (0x0020 - 0x000C)
+struct FNiagaraVariable final : public FNiagaraVariableBase
+{
+public:
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<uint8>                                 VarData;                                           // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+};
+static_assert(alignof(FNiagaraVariable) == 0x000008, "Wrong alignment on FNiagaraVariable");
+static_assert(sizeof(FNiagaraVariable) == 0x000020, "Wrong size on FNiagaraVariable");
+static_assert(offsetof(FNiagaraVariable, VarData) == 0x000010, "Member 'FNiagaraVariable::VarData' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraFunctionSignature
 // 0x0098 (0x0098 - 0x0000)
@@ -1653,18 +1783,18 @@ static_assert(offsetof(FNiagaraFunctionSignature, RequiredInputs) == 0x000040, "
 static_assert(offsetof(FNiagaraFunctionSignature, RequiredOutputs) == 0x000042, "Member 'FNiagaraFunctionSignature::RequiredOutputs' has a wrong offset!");
 static_assert(offsetof(FNiagaraFunctionSignature, FunctionSpecifiers) == 0x000048, "Member 'FNiagaraFunctionSignature::FunctionSpecifiers' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraPositionSource
-// 0x0020 (0x0020 - 0x0000)
-struct FNiagaraPositionSource final
+// ScriptStruct Niagara.NiagaraHalfVector2
+// 0x0004 (0x0004 - 0x0000)
+struct FNiagaraHalfVector2 final
 {
 public:
-	class FName                                   Name;                                              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Value;                                             // 0x0008(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        X;                                                 // 0x0000(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        Y;                                                 // 0x0002(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraPositionSource) == 0x000008, "Wrong alignment on FNiagaraPositionSource");
-static_assert(sizeof(FNiagaraPositionSource) == 0x000020, "Wrong size on FNiagaraPositionSource");
-static_assert(offsetof(FNiagaraPositionSource, Name) == 0x000000, "Member 'FNiagaraPositionSource::Name' has a wrong offset!");
-static_assert(offsetof(FNiagaraPositionSource, Value) == 0x000008, "Member 'FNiagaraPositionSource::Value' has a wrong offset!");
+static_assert(alignof(FNiagaraHalfVector2) == 0x000002, "Wrong alignment on FNiagaraHalfVector2");
+static_assert(sizeof(FNiagaraHalfVector2) == 0x000004, "Wrong size on FNiagaraHalfVector2");
+static_assert(offsetof(FNiagaraHalfVector2, X) == 0x000000, "Member 'FNiagaraHalfVector2::X' has a wrong offset!");
+static_assert(offsetof(FNiagaraHalfVector2, Y) == 0x000002, "Member 'FNiagaraHalfVector2::Y' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraScriptUObjectCompileInfo
 // 0x0050 (0x0050 - 0x0000)
@@ -1686,21 +1816,6 @@ static_assert(offsetof(FNiagaraScriptUObjectCompileInfo, ObjectPath) == 0x000018
 static_assert(offsetof(FNiagaraScriptUObjectCompileInfo, RegisteredParameterMapRead) == 0x000038, "Member 'FNiagaraScriptUObjectCompileInfo::RegisteredParameterMapRead' has a wrong offset!");
 static_assert(offsetof(FNiagaraScriptUObjectCompileInfo, RegisteredParameterMapWrites) == 0x000040, "Member 'FNiagaraScriptUObjectCompileInfo::RegisteredParameterMapWrites' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraHalfVector3
-// 0x0006 (0x0006 - 0x0000)
-struct FNiagaraHalfVector3 final
-{
-public:
-	uint16                                        X;                                                 // 0x0000(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        Y;                                                 // 0x0002(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        Z;                                                 // 0x0004(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraHalfVector3) == 0x000002, "Wrong alignment on FNiagaraHalfVector3");
-static_assert(sizeof(FNiagaraHalfVector3) == 0x000006, "Wrong size on FNiagaraHalfVector3");
-static_assert(offsetof(FNiagaraHalfVector3, X) == 0x000000, "Member 'FNiagaraHalfVector3::X' has a wrong offset!");
-static_assert(offsetof(FNiagaraHalfVector3, Y) == 0x000002, "Member 'FNiagaraHalfVector3::Y' has a wrong offset!");
-static_assert(offsetof(FNiagaraHalfVector3, Z) == 0x000004, "Member 'FNiagaraHalfVector3::Z' has a wrong offset!");
-
 // ScriptStruct Niagara.NiagaraResolvedUObjectInfo
 // 0x0020 (0x0020 - 0x0000)
 struct FNiagaraResolvedUObjectInfo final
@@ -1716,19 +1831,6 @@ static_assert(sizeof(FNiagaraResolvedUObjectInfo) == 0x000020, "Wrong size on FN
 static_assert(offsetof(FNiagaraResolvedUObjectInfo, ReadVariableName) == 0x000000, "Member 'FNiagaraResolvedUObjectInfo::ReadVariableName' has a wrong offset!");
 static_assert(offsetof(FNiagaraResolvedUObjectInfo, ResolvedVariable) == 0x000008, "Member 'FNiagaraResolvedUObjectInfo::ResolvedVariable' has a wrong offset!");
 static_assert(offsetof(FNiagaraResolvedUObjectInfo, Object) == 0x000018, "Member 'FNiagaraResolvedUObjectInfo::Object' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraExternalUObjectInfo
-// 0x0014 (0x0014 - 0x0000)
-struct FNiagaraExternalUObjectInfo final
-{
-public:
-	struct FNiagaraVariableBase                   Variable;                                          // 0x0000(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   ExternalName;                                      // 0x000C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraExternalUObjectInfo) == 0x000004, "Wrong alignment on FNiagaraExternalUObjectInfo");
-static_assert(sizeof(FNiagaraExternalUObjectInfo) == 0x000014, "Wrong size on FNiagaraExternalUObjectInfo");
-static_assert(offsetof(FNiagaraExternalUObjectInfo, Variable) == 0x000000, "Member 'FNiagaraExternalUObjectInfo::Variable' has a wrong offset!");
-static_assert(offsetof(FNiagaraExternalUObjectInfo, ExternalName) == 0x00000C, "Member 'FNiagaraExternalUObjectInfo::ExternalName' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraOutlinerEmitterInstanceData
 // 0x0020 (0x0020 - 0x0000)
@@ -1849,28 +1951,18 @@ static_assert(offsetof(FNiagaraOutlinerSystemData, MaxPerFrameTime) == 0x000018,
 static_assert(offsetof(FNiagaraOutlinerSystemData, AveragePerInstanceTime) == 0x000020, "Member 'FNiagaraOutlinerSystemData::AveragePerInstanceTime' has a wrong offset!");
 static_assert(offsetof(FNiagaraOutlinerSystemData, MaxPerInstanceTime) == 0x000028, "Member 'FNiagaraOutlinerSystemData::MaxPerInstanceTime' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraOutlinerWorldData
-// 0x0068 (0x0068 - 0x0000)
-struct FNiagaraOutlinerWorldData final
+// ScriptStruct Niagara.NiagaraExternalUObjectInfo
+// 0x0014 (0x0014 - 0x0000)
+struct FNiagaraExternalUObjectInfo final
 {
 public:
-	TMap<class FString, struct FNiagaraOutlinerSystemData> Systems;                                  // 0x0000(0x0050)(Edit, EditConst, NativeAccessSpecifierPublic)
-	bool                                          bHasBegunPlay;                                     // 0x0050(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         WorldType;                                         // 0x0051(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         NetMode;                                           // 0x0052(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_53[0x1];                                       // 0x0053(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FNiagaraOutlinerTimingData             AveragePerFrameTime;                               // 0x0054(0x0008)(Edit, EditConst, NoDestructor, NativeAccessSpecifierPublic)
-	struct FNiagaraOutlinerTimingData             MaxPerFrameTime;                                   // 0x005C(0x0008)(Edit, EditConst, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FNiagaraVariableBase                   Variable;                                          // 0x0000(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   ExternalName;                                      // 0x000C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraOutlinerWorldData) == 0x000008, "Wrong alignment on FNiagaraOutlinerWorldData");
-static_assert(sizeof(FNiagaraOutlinerWorldData) == 0x000068, "Wrong size on FNiagaraOutlinerWorldData");
-static_assert(offsetof(FNiagaraOutlinerWorldData, Systems) == 0x000000, "Member 'FNiagaraOutlinerWorldData::Systems' has a wrong offset!");
-static_assert(offsetof(FNiagaraOutlinerWorldData, bHasBegunPlay) == 0x000050, "Member 'FNiagaraOutlinerWorldData::bHasBegunPlay' has a wrong offset!");
-static_assert(offsetof(FNiagaraOutlinerWorldData, WorldType) == 0x000051, "Member 'FNiagaraOutlinerWorldData::WorldType' has a wrong offset!");
-static_assert(offsetof(FNiagaraOutlinerWorldData, NetMode) == 0x000052, "Member 'FNiagaraOutlinerWorldData::NetMode' has a wrong offset!");
-static_assert(offsetof(FNiagaraOutlinerWorldData, AveragePerFrameTime) == 0x000054, "Member 'FNiagaraOutlinerWorldData::AveragePerFrameTime' has a wrong offset!");
-static_assert(offsetof(FNiagaraOutlinerWorldData, MaxPerFrameTime) == 0x00005C, "Member 'FNiagaraOutlinerWorldData::MaxPerFrameTime' has a wrong offset!");
+static_assert(alignof(FNiagaraExternalUObjectInfo) == 0x000004, "Wrong alignment on FNiagaraExternalUObjectInfo");
+static_assert(sizeof(FNiagaraExternalUObjectInfo) == 0x000014, "Wrong size on FNiagaraExternalUObjectInfo");
+static_assert(offsetof(FNiagaraExternalUObjectInfo, Variable) == 0x000000, "Member 'FNiagaraExternalUObjectInfo::Variable' has a wrong offset!");
+static_assert(offsetof(FNiagaraExternalUObjectInfo, ExternalName) == 0x00000C, "Member 'FNiagaraExternalUObjectInfo::ExternalName' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraTypeDefinition
 // 0x0010 (0x0010 - 0x0000)
@@ -1924,6 +2016,20 @@ public:
 static_assert(alignof(FNiagaraResolvedUserDataInterfaceBinding) == 0x000004, "Wrong alignment on FNiagaraResolvedUserDataInterfaceBinding");
 static_assert(sizeof(FNiagaraResolvedUserDataInterfaceBinding) == 0x000008, "Wrong size on FNiagaraResolvedUserDataInterfaceBinding");
 
+// ScriptStruct Niagara.NiagaraScalabilityManager
+// 0x00E0 (0x00E0 - 0x0000)
+struct FNiagaraScalabilityManager final
+{
+public:
+	class UNiagaraEffectType*                     EffectType;                                        // 0x0000(0x0008)(ZeroConstructor, Transient, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class UNiagaraComponent*>              ManagedComponents;                                 // 0x0008(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, UObjectWrapper, NativeAccessSpecifierPublic)
+	uint8                                         Pad_18[0xC8];                                      // 0x0018(0x00C8)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraScalabilityManager) == 0x000008, "Wrong alignment on FNiagaraScalabilityManager");
+static_assert(sizeof(FNiagaraScalabilityManager) == 0x0000E0, "Wrong size on FNiagaraScalabilityManager");
+static_assert(offsetof(FNiagaraScalabilityManager, EffectType) == 0x000000, "Member 'FNiagaraScalabilityManager::EffectType' has a wrong offset!");
+static_assert(offsetof(FNiagaraScalabilityManager, ManagedComponents) == 0x000008, "Member 'FNiagaraScalabilityManager::ManagedComponents' has a wrong offset!");
+
 // ScriptStruct Niagara.NiagaraScriptResolvedDataInterfaceInfo
 // 0x0050 (0x0050 - 0x0000)
 struct FNiagaraScriptResolvedDataInterfaceInfo final
@@ -1950,30 +2056,6 @@ static_assert(offsetof(FNiagaraScriptResolvedDataInterfaceInfo, ParameterStoreVa
 static_assert(offsetof(FNiagaraScriptResolvedDataInterfaceInfo, bIsInternal) == 0x000038, "Member 'FNiagaraScriptResolvedDataInterfaceInfo::bIsInternal' has a wrong offset!");
 static_assert(offsetof(FNiagaraScriptResolvedDataInterfaceInfo, ResolvedDataInterface) == 0x000040, "Member 'FNiagaraScriptResolvedDataInterfaceInfo::ResolvedDataInterface' has a wrong offset!");
 static_assert(offsetof(FNiagaraScriptResolvedDataInterfaceInfo, UserPtrIdx) == 0x000048, "Member 'FNiagaraScriptResolvedDataInterfaceInfo::UserPtrIdx' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraModuleDependency
-// 0x0060 (0x0060 - 0x0000)
-struct FNiagaraModuleDependency final
-{
-public:
-	class FName                                   ID;                                                // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ENiagaraModuleDependencyType                  Type;                                              // 0x0008(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ENiagaraModuleDependencyScriptConstraint      ScriptConstraint;                                  // 0x0009(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 RequiredVersion;                                   // 0x0010(0x0010)(Edit, ZeroConstructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OnlyEvaluateInScriptUsage;                         // 0x0020(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   Description;                                       // 0x0028(0x0010)(Edit, AssetRegistrySearchable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_38[0x28];                                      // 0x0038(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FNiagaraModuleDependency) == 0x000008, "Wrong alignment on FNiagaraModuleDependency");
-static_assert(sizeof(FNiagaraModuleDependency) == 0x000060, "Wrong size on FNiagaraModuleDependency");
-static_assert(offsetof(FNiagaraModuleDependency, ID) == 0x000000, "Member 'FNiagaraModuleDependency::ID' has a wrong offset!");
-static_assert(offsetof(FNiagaraModuleDependency, Type) == 0x000008, "Member 'FNiagaraModuleDependency::Type' has a wrong offset!");
-static_assert(offsetof(FNiagaraModuleDependency, ScriptConstraint) == 0x000009, "Member 'FNiagaraModuleDependency::ScriptConstraint' has a wrong offset!");
-static_assert(offsetof(FNiagaraModuleDependency, RequiredVersion) == 0x000010, "Member 'FNiagaraModuleDependency::RequiredVersion' has a wrong offset!");
-static_assert(offsetof(FNiagaraModuleDependency, OnlyEvaluateInScriptUsage) == 0x000020, "Member 'FNiagaraModuleDependency::OnlyEvaluateInScriptUsage' has a wrong offset!");
-static_assert(offsetof(FNiagaraModuleDependency, Description) == 0x000028, "Member 'FNiagaraModuleDependency::Description' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraScriptDataInterfaceCompileInfo
 // 0x0048 (0x0048 - 0x0000)
@@ -2107,6 +2189,58 @@ static_assert(offsetof(FNiagaraVariableAttributeBinding, ParamMapVariable) == 0x
 static_assert(offsetof(FNiagaraVariableAttributeBinding, DataSetName) == 0x00002C, "Member 'FNiagaraVariableAttributeBinding::DataSetName' has a wrong offset!");
 static_assert(offsetof(FNiagaraVariableAttributeBinding, BindingSourceMode) == 0x000034, "Member 'FNiagaraVariableAttributeBinding::BindingSourceMode' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraPlatformSetCVarCondition
+// 0x0030 (0x0030 - 0x0000)
+struct alignas(0x08) FNiagaraPlatformSetCVarCondition final
+{
+public:
+	class FName                                   CVarName;                                          // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraCVarConditionResponse                 PassResponse;                                      // 0x0008(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraCVarConditionResponse                 FailResponse;                                      // 0x0009(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Value;                                             // 0x000A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B[0x1];                                        // 0x000B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         MinInt;                                            // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaxInt;                                            // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MinFloat;                                          // 0x0014(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MaxFloat;                                          // 0x0018(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         bUseMinInt : 1;                                    // 0x001C(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bUseMaxInt : 1;                                    // 0x001C(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bUseMinFloat : 1;                                  // 0x001C(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bUseMaxFloat : 1;                                  // 0x001C(0x0001)(BitIndex: 0x03, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_1D[0x13];                                      // 0x001D(0x0013)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraPlatformSetCVarCondition) == 0x000008, "Wrong alignment on FNiagaraPlatformSetCVarCondition");
+static_assert(sizeof(FNiagaraPlatformSetCVarCondition) == 0x000030, "Wrong size on FNiagaraPlatformSetCVarCondition");
+static_assert(offsetof(FNiagaraPlatformSetCVarCondition, CVarName) == 0x000000, "Member 'FNiagaraPlatformSetCVarCondition::CVarName' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetCVarCondition, PassResponse) == 0x000008, "Member 'FNiagaraPlatformSetCVarCondition::PassResponse' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetCVarCondition, FailResponse) == 0x000009, "Member 'FNiagaraPlatformSetCVarCondition::FailResponse' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetCVarCondition, Value) == 0x00000A, "Member 'FNiagaraPlatformSetCVarCondition::Value' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetCVarCondition, MinInt) == 0x00000C, "Member 'FNiagaraPlatformSetCVarCondition::MinInt' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetCVarCondition, MaxInt) == 0x000010, "Member 'FNiagaraPlatformSetCVarCondition::MaxInt' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetCVarCondition, MinFloat) == 0x000014, "Member 'FNiagaraPlatformSetCVarCondition::MinFloat' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetCVarCondition, MaxFloat) == 0x000018, "Member 'FNiagaraPlatformSetCVarCondition::MaxFloat' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraPlatformSetRedirect
+// 0x0080 (0x0080 - 0x0000)
+struct FNiagaraPlatformSetRedirect final
+{
+public:
+	TArray<class FName>                           ProfileNames;                                      // 0x0000(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	ENiagaraDeviceProfileRedirectMode             Mode;                                              // 0x0010(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   RedirectProfileName;                               // 0x0014(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FNiagaraPlatformSetCVarCondition       CVarConditionEnabled;                              // 0x0020(0x0030)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	struct FNiagaraPlatformSetCVarCondition       CVarConditionDisabled;                             // 0x0050(0x0030)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraPlatformSetRedirect) == 0x000008, "Wrong alignment on FNiagaraPlatformSetRedirect");
+static_assert(sizeof(FNiagaraPlatformSetRedirect) == 0x000080, "Wrong size on FNiagaraPlatformSetRedirect");
+static_assert(offsetof(FNiagaraPlatformSetRedirect, ProfileNames) == 0x000000, "Member 'FNiagaraPlatformSetRedirect::ProfileNames' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetRedirect, Mode) == 0x000010, "Member 'FNiagaraPlatformSetRedirect::Mode' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetRedirect, RedirectProfileName) == 0x000014, "Member 'FNiagaraPlatformSetRedirect::RedirectProfileName' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetRedirect, CVarConditionEnabled) == 0x000020, "Member 'FNiagaraPlatformSetRedirect::CVarConditionEnabled' has a wrong offset!");
+static_assert(offsetof(FNiagaraPlatformSetRedirect, CVarConditionDisabled) == 0x000050, "Member 'FNiagaraPlatformSetRedirect::CVarConditionDisabled' has a wrong offset!");
+
 // ScriptStruct Niagara.NiagaraMaterialAttributeBinding
 // 0x002C (0x002C - 0x0000)
 struct FNiagaraMaterialAttributeBinding final
@@ -2123,19 +2257,6 @@ static_assert(offsetof(FNiagaraMaterialAttributeBinding, MaterialParameterName) 
 static_assert(offsetof(FNiagaraMaterialAttributeBinding, NiagaraVariable) == 0x000008, "Member 'FNiagaraMaterialAttributeBinding::NiagaraVariable' has a wrong offset!");
 static_assert(offsetof(FNiagaraMaterialAttributeBinding, ResolvedNiagaraVariable) == 0x000014, "Member 'FNiagaraMaterialAttributeBinding::ResolvedNiagaraVariable' has a wrong offset!");
 static_assert(offsetof(FNiagaraMaterialAttributeBinding, NiagaraChildVariable) == 0x000020, "Member 'FNiagaraMaterialAttributeBinding::NiagaraChildVariable' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraRendererMaterialScalarParameter
-// 0x000C (0x000C - 0x0000)
-struct FNiagaraRendererMaterialScalarParameter final
-{
-public:
-	class FName                                   MaterialParameterName;                             // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Value;                                             // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraRendererMaterialScalarParameter) == 0x000004, "Wrong alignment on FNiagaraRendererMaterialScalarParameter");
-static_assert(sizeof(FNiagaraRendererMaterialScalarParameter) == 0x00000C, "Wrong size on FNiagaraRendererMaterialScalarParameter");
-static_assert(offsetof(FNiagaraRendererMaterialScalarParameter, MaterialParameterName) == 0x000000, "Member 'FNiagaraRendererMaterialScalarParameter::MaterialParameterName' has a wrong offset!");
-static_assert(offsetof(FNiagaraRendererMaterialScalarParameter, Value) == 0x000008, "Member 'FNiagaraRendererMaterialScalarParameter::Value' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraVariableDataInterfaceBinding
 // 0x0020 (0x0020 - 0x0000)
@@ -2170,6 +2291,22 @@ static_assert(alignof(FNiagaraUserParameterBinding) == 0x000008, "Wrong alignmen
 static_assert(sizeof(FNiagaraUserParameterBinding) == 0x000020, "Wrong size on FNiagaraUserParameterBinding");
 static_assert(offsetof(FNiagaraUserParameterBinding, Parameter) == 0x000000, "Member 'FNiagaraUserParameterBinding::Parameter' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraGraphViewSettings
+// 0x0018 (0x0018 - 0x0000)
+struct FNiagaraGraphViewSettings final
+{
+public:
+	struct FVector2D                              Location;                                          // 0x0000(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         Zoom;                                              // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bIsValid;                                          // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraGraphViewSettings) == 0x000008, "Wrong alignment on FNiagaraGraphViewSettings");
+static_assert(sizeof(FNiagaraGraphViewSettings) == 0x000018, "Wrong size on FNiagaraGraphViewSettings");
+static_assert(offsetof(FNiagaraGraphViewSettings, Location) == 0x000000, "Member 'FNiagaraGraphViewSettings::Location' has a wrong offset!");
+static_assert(offsetof(FNiagaraGraphViewSettings, Zoom) == 0x000010, "Member 'FNiagaraGraphViewSettings::Zoom' has a wrong offset!");
+static_assert(offsetof(FNiagaraGraphViewSettings, bIsValid) == 0x000014, "Member 'FNiagaraGraphViewSettings::bIsValid' has a wrong offset!");
+
 // ScriptStruct Niagara.NiagaraCompileDependency
 // 0x0050 (0x0050 - 0x0000)
 struct FNiagaraCompileDependency final
@@ -2191,23 +2328,6 @@ static_assert(offsetof(FNiagaraCompileDependency, PinGuid) == 0x000020, "Member 
 static_assert(offsetof(FNiagaraCompileDependency, StackGuids) == 0x000030, "Member 'FNiagaraCompileDependency::StackGuids' has a wrong offset!");
 static_assert(offsetof(FNiagaraCompileDependency, DependentVariable) == 0x000040, "Member 'FNiagaraCompileDependency::DependentVariable' has a wrong offset!");
 static_assert(offsetof(FNiagaraCompileDependency, bDependentVariableFromCustomIterationNamespace) == 0x00004C, "Member 'FNiagaraCompileDependency::bDependentVariableFromCustomIterationNamespace' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraLinearRamp
-// 0x0010 (0x0010 - 0x0000)
-struct FNiagaraLinearRamp final
-{
-public:
-	float                                         StartX;                                            // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         StartY;                                            // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         EndX;                                              // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         EndY;                                              // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraLinearRamp) == 0x000004, "Wrong alignment on FNiagaraLinearRamp");
-static_assert(sizeof(FNiagaraLinearRamp) == 0x000010, "Wrong size on FNiagaraLinearRamp");
-static_assert(offsetof(FNiagaraLinearRamp, StartX) == 0x000000, "Member 'FNiagaraLinearRamp::StartX' has a wrong offset!");
-static_assert(offsetof(FNiagaraLinearRamp, StartY) == 0x000004, "Member 'FNiagaraLinearRamp::StartY' has a wrong offset!");
-static_assert(offsetof(FNiagaraLinearRamp, EndX) == 0x000008, "Member 'FNiagaraLinearRamp::EndX' has a wrong offset!");
-static_assert(offsetof(FNiagaraLinearRamp, EndY) == 0x00000C, "Member 'FNiagaraLinearRamp::EndY' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraScriptAsyncCompileData
 // 0x0110 (0x0110 - 0x0000)
@@ -2276,40 +2396,22 @@ static_assert(sizeof(FNiagaraDataChannelSearchParameters) == 0x000028, "Wrong si
 static_assert(offsetof(FNiagaraDataChannelSearchParameters, OwningComponent) == 0x000000, "Member 'FNiagaraDataChannelSearchParameters::OwningComponent' has a wrong offset!");
 static_assert(offsetof(FNiagaraDataChannelSearchParameters, Location) == 0x000008, "Member 'FNiagaraDataChannelSearchParameters::Location' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraStructConversionStep
-// 0x0014 (0x0014 - 0x0000)
-struct FNiagaraStructConversionStep final
+// ScriptStruct Niagara.NiagaraSpawnInfo
+// 0x0010 (0x0010 - 0x0000)
+struct FNiagaraSpawnInfo final
 {
 public:
-	int32                                         LWCBytes;                                          // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         LWCOffset;                                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         SimulationBytes;                                   // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         SimulationOffset;                                  // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ENiagaraStructConversionType                  ConversionType;                                    // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         Count;                                             // 0x0000(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         InterpStartDt;                                     // 0x0004(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         IntervalDt;                                        // 0x0008(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         SpawnGroup;                                        // 0x000C(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraStructConversionStep) == 0x000004, "Wrong alignment on FNiagaraStructConversionStep");
-static_assert(sizeof(FNiagaraStructConversionStep) == 0x000014, "Wrong size on FNiagaraStructConversionStep");
-static_assert(offsetof(FNiagaraStructConversionStep, LWCBytes) == 0x000000, "Member 'FNiagaraStructConversionStep::LWCBytes' has a wrong offset!");
-static_assert(offsetof(FNiagaraStructConversionStep, LWCOffset) == 0x000004, "Member 'FNiagaraStructConversionStep::LWCOffset' has a wrong offset!");
-static_assert(offsetof(FNiagaraStructConversionStep, SimulationBytes) == 0x000008, "Member 'FNiagaraStructConversionStep::SimulationBytes' has a wrong offset!");
-static_assert(offsetof(FNiagaraStructConversionStep, SimulationOffset) == 0x00000C, "Member 'FNiagaraStructConversionStep::SimulationOffset' has a wrong offset!");
-static_assert(offsetof(FNiagaraStructConversionStep, ConversionType) == 0x000010, "Member 'FNiagaraStructConversionStep::ConversionType' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraLwcStructConverter
-// 0x0018 (0x0018 - 0x0000)
-struct FNiagaraLwcStructConverter final
-{
-public:
-	int32                                         LWCSize;                                           // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int32                                         SWCSize;                                           // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	TArray<struct FNiagaraStructConversionStep>   ConversionSteps;                                   // 0x0008(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
-};
-static_assert(alignof(FNiagaraLwcStructConverter) == 0x000008, "Wrong alignment on FNiagaraLwcStructConverter");
-static_assert(sizeof(FNiagaraLwcStructConverter) == 0x000018, "Wrong size on FNiagaraLwcStructConverter");
-static_assert(offsetof(FNiagaraLwcStructConverter, LWCSize) == 0x000000, "Member 'FNiagaraLwcStructConverter::LWCSize' has a wrong offset!");
-static_assert(offsetof(FNiagaraLwcStructConverter, SWCSize) == 0x000004, "Member 'FNiagaraLwcStructConverter::SWCSize' has a wrong offset!");
-static_assert(offsetof(FNiagaraLwcStructConverter, ConversionSteps) == 0x000008, "Member 'FNiagaraLwcStructConverter::ConversionSteps' has a wrong offset!");
+static_assert(alignof(FNiagaraSpawnInfo) == 0x000004, "Wrong alignment on FNiagaraSpawnInfo");
+static_assert(sizeof(FNiagaraSpawnInfo) == 0x000010, "Wrong size on FNiagaraSpawnInfo");
+static_assert(offsetof(FNiagaraSpawnInfo, Count) == 0x000000, "Member 'FNiagaraSpawnInfo::Count' has a wrong offset!");
+static_assert(offsetof(FNiagaraSpawnInfo, InterpStartDt) == 0x000004, "Member 'FNiagaraSpawnInfo::InterpStartDt' has a wrong offset!");
+static_assert(offsetof(FNiagaraSpawnInfo, IntervalDt) == 0x000008, "Member 'FNiagaraSpawnInfo::IntervalDt' has a wrong offset!");
+static_assert(offsetof(FNiagaraSpawnInfo, SpawnGroup) == 0x00000C, "Member 'FNiagaraSpawnInfo::SpawnGroup' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraDataChannelGameDataLayout
 // 0x0060 (0x0060 - 0x0000)
@@ -2324,32 +2426,23 @@ static_assert(sizeof(FNiagaraDataChannelGameDataLayout) == 0x000060, "Wrong size
 static_assert(offsetof(FNiagaraDataChannelGameDataLayout, VariableIndices) == 0x000000, "Member 'FNiagaraDataChannelGameDataLayout::VariableIndices' has a wrong offset!");
 static_assert(offsetof(FNiagaraDataChannelGameDataLayout, LwcConverters) == 0x000050, "Member 'FNiagaraDataChannelGameDataLayout::LwcConverters' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraID
-// 0x0008 (0x0008 - 0x0000)
-struct FNiagaraID final
-{
-public:
-	int32                                         Index;                                             // 0x0000(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         AcquireTag;                                        // 0x0004(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraID) == 0x000004, "Wrong alignment on FNiagaraID");
-static_assert(sizeof(FNiagaraID) == 0x000008, "Wrong size on FNiagaraID");
-static_assert(offsetof(FNiagaraID, Index) == 0x000000, "Member 'FNiagaraID::Index' has a wrong offset!");
-static_assert(offsetof(FNiagaraID, AcquireTag) == 0x000004, "Member 'FNiagaraID::AcquireTag' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraDebugHUDVariable
+// ScriptStruct Niagara.NiagaraDebugHudTextOptions
 // 0x0018 (0x0018 - 0x0000)
-struct FNiagaraDebugHUDVariable final
+struct FNiagaraDebugHudTextOptions final
 {
 public:
-	bool                                          bEnabled;                                          // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 Name;                                              // 0x0008(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraDebugHudFont                          Font;                                              // 0x0000(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraDebugHudHAlign                        HorizontalAlignment;                               // 0x0004(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraDebugHudVAlign                        VerticalAlignment;                                 // 0x0005(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              ScreenOffset;                                      // 0x0008(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraDebugHUDVariable) == 0x000008, "Wrong alignment on FNiagaraDebugHUDVariable");
-static_assert(sizeof(FNiagaraDebugHUDVariable) == 0x000018, "Wrong size on FNiagaraDebugHUDVariable");
-static_assert(offsetof(FNiagaraDebugHUDVariable, bEnabled) == 0x000000, "Member 'FNiagaraDebugHUDVariable::bEnabled' has a wrong offset!");
-static_assert(offsetof(FNiagaraDebugHUDVariable, Name) == 0x000008, "Member 'FNiagaraDebugHUDVariable::Name' has a wrong offset!");
+static_assert(alignof(FNiagaraDebugHudTextOptions) == 0x000008, "Wrong alignment on FNiagaraDebugHudTextOptions");
+static_assert(sizeof(FNiagaraDebugHudTextOptions) == 0x000018, "Wrong size on FNiagaraDebugHudTextOptions");
+static_assert(offsetof(FNiagaraDebugHudTextOptions, Font) == 0x000000, "Member 'FNiagaraDebugHudTextOptions::Font' has a wrong offset!");
+static_assert(offsetof(FNiagaraDebugHudTextOptions, HorizontalAlignment) == 0x000004, "Member 'FNiagaraDebugHudTextOptions::HorizontalAlignment' has a wrong offset!");
+static_assert(offsetof(FNiagaraDebugHudTextOptions, VerticalAlignment) == 0x000005, "Member 'FNiagaraDebugHudTextOptions::VerticalAlignment' has a wrong offset!");
+static_assert(offsetof(FNiagaraDebugHudTextOptions, ScreenOffset) == 0x000008, "Member 'FNiagaraDebugHudTextOptions::ScreenOffset' has a wrong offset!");
 
 // ScriptStruct Niagara.NDCIsland
 // 0x0070 (0x0070 - 0x0000)
@@ -2367,17 +2460,70 @@ static_assert(offsetof(FNDCIsland, Owner) == 0x000000, "Member 'FNDCIsland::Owne
 static_assert(offsetof(FNDCIsland, Bounds) == 0x000008, "Member 'FNDCIsland::Bounds' has a wrong offset!");
 static_assert(offsetof(FNDCIsland, NiagaraSystems) == 0x000040, "Member 'FNDCIsland::NiagaraSystems' has a wrong offset!");
 
-// ScriptStruct Niagara.NDCIslandDebugDrawSettings
-// 0x0004 (0x0004 - 0x0000)
-struct alignas(0x04) FNDCIslandDebugDrawSettings final
+// ScriptStruct Niagara.NDIDataChannelFunctionInfo
+// 0x0028 (0x0028 - 0x0000)
+struct FNDIDataChannelFunctionInfo final
 {
 public:
-	uint8                                         bEnabled : 1;                                      // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bShowIslandBounds : 1;                             // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   FunctionName;                                      // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FNiagaraVariableBase>           Inputs;                                            // 0x0008(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FNiagaraVariableBase>           Outputs;                                           // 0x0018(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNDCIslandDebugDrawSettings) == 0x000004, "Wrong alignment on FNDCIslandDebugDrawSettings");
-static_assert(sizeof(FNDCIslandDebugDrawSettings) == 0x000004, "Wrong size on FNDCIslandDebugDrawSettings");
+static_assert(alignof(FNDIDataChannelFunctionInfo) == 0x000008, "Wrong alignment on FNDIDataChannelFunctionInfo");
+static_assert(sizeof(FNDIDataChannelFunctionInfo) == 0x000028, "Wrong size on FNDIDataChannelFunctionInfo");
+static_assert(offsetof(FNDIDataChannelFunctionInfo, FunctionName) == 0x000000, "Member 'FNDIDataChannelFunctionInfo::FunctionName' has a wrong offset!");
+static_assert(offsetof(FNDIDataChannelFunctionInfo, Inputs) == 0x000008, "Member 'FNDIDataChannelFunctionInfo::Inputs' has a wrong offset!");
+static_assert(offsetof(FNDIDataChannelFunctionInfo, Outputs) == 0x000018, "Member 'FNDIDataChannelFunctionInfo::Outputs' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraScriptExecutionPaddingInfo
+// 0x0008 (0x0008 - 0x0000)
+struct FNiagaraScriptExecutionPaddingInfo final
+{
+public:
+	uint16                                        SrcOffset;                                         // 0x0000(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        DestOffset;                                        // 0x0002(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        SrcSize;                                           // 0x0004(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        DestSize;                                          // 0x0006(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraScriptExecutionPaddingInfo) == 0x000002, "Wrong alignment on FNiagaraScriptExecutionPaddingInfo");
+static_assert(sizeof(FNiagaraScriptExecutionPaddingInfo) == 0x000008, "Wrong size on FNiagaraScriptExecutionPaddingInfo");
+static_assert(offsetof(FNiagaraScriptExecutionPaddingInfo, SrcOffset) == 0x000000, "Member 'FNiagaraScriptExecutionPaddingInfo::SrcOffset' has a wrong offset!");
+static_assert(offsetof(FNiagaraScriptExecutionPaddingInfo, DestOffset) == 0x000002, "Member 'FNiagaraScriptExecutionPaddingInfo::DestOffset' has a wrong offset!");
+static_assert(offsetof(FNiagaraScriptExecutionPaddingInfo, SrcSize) == 0x000004, "Member 'FNiagaraScriptExecutionPaddingInfo::SrcSize' has a wrong offset!");
+static_assert(offsetof(FNiagaraScriptExecutionPaddingInfo, DestSize) == 0x000006, "Member 'FNiagaraScriptExecutionPaddingInfo::DestSize' has a wrong offset!");
+
+// ScriptStruct Niagara.NDIDataChannel_GPUScriptParameterAccessInfo
+// 0x0010 (0x0010 - 0x0000)
+struct FNDIDataChannel_GPUScriptParameterAccessInfo final
+{
+public:
+	TArray<struct FNiagaraVariableBase>           SortedParameters;                                  // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNDIDataChannel_GPUScriptParameterAccessInfo) == 0x000008, "Wrong alignment on FNDIDataChannel_GPUScriptParameterAccessInfo");
+static_assert(sizeof(FNDIDataChannel_GPUScriptParameterAccessInfo) == 0x000010, "Wrong size on FNDIDataChannel_GPUScriptParameterAccessInfo");
+static_assert(offsetof(FNDIDataChannel_GPUScriptParameterAccessInfo, SortedParameters) == 0x000000, "Member 'FNDIDataChannel_GPUScriptParameterAccessInfo::SortedParameters' has a wrong offset!");
+
+// ScriptStruct Niagara.NDIDataChannelCompiledData
+// 0x0068 (0x0068 - 0x0000)
+struct FNDIDataChannelCompiledData
+{
+public:
+	TArray<struct FNDIDataChannelFunctionInfo>    FunctionInfo;                                      // 0x0000(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	TMap<struct FNiagaraCompileHash, struct FNDIDataChannel_GPUScriptParameterAccessInfo> GPUScriptParameterInfos; // 0x0010(0x0050)(Protected, NativeAccessSpecifierProtected)
+	uint32                                        TotalParams;                                       // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bUsedByCPU;                                        // 0x0064(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bUsedByGPU;                                        // 0x0065(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bNeedsSpawnDataTable;                              // 0x0066(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_67[0x1];                                       // 0x0067(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNDIDataChannelCompiledData) == 0x000008, "Wrong alignment on FNDIDataChannelCompiledData");
+static_assert(sizeof(FNDIDataChannelCompiledData) == 0x000068, "Wrong size on FNDIDataChannelCompiledData");
+static_assert(offsetof(FNDIDataChannelCompiledData, FunctionInfo) == 0x000000, "Member 'FNDIDataChannelCompiledData::FunctionInfo' has a wrong offset!");
+static_assert(offsetof(FNDIDataChannelCompiledData, GPUScriptParameterInfos) == 0x000010, "Member 'FNDIDataChannelCompiledData::GPUScriptParameterInfos' has a wrong offset!");
+static_assert(offsetof(FNDIDataChannelCompiledData, TotalParams) == 0x000060, "Member 'FNDIDataChannelCompiledData::TotalParams' has a wrong offset!");
+static_assert(offsetof(FNDIDataChannelCompiledData, bUsedByCPU) == 0x000064, "Member 'FNDIDataChannelCompiledData::bUsedByCPU' has a wrong offset!");
+static_assert(offsetof(FNDIDataChannelCompiledData, bUsedByGPU) == 0x000065, "Member 'FNDIDataChannelCompiledData::bUsedByGPU' has a wrong offset!");
+static_assert(offsetof(FNDIDataChannelCompiledData, bNeedsSpawnDataTable) == 0x000066, "Member 'FNDIDataChannelCompiledData::bNeedsSpawnDataTable' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraTypeLayoutInfo
 // 0x0018 (0x0018 - 0x0000)
@@ -2441,130 +2587,6 @@ static_assert(offsetof(FNiagaraDataSetCompiledData, TotalInt32Components) == 0x0
 static_assert(offsetof(FNiagaraDataSetCompiledData, TotalHalfComponents) == 0x000034, "Member 'FNiagaraDataSetCompiledData::TotalHalfComponents' has a wrong offset!");
 static_assert(offsetof(FNiagaraDataSetCompiledData, SimTarget) == 0x00003C, "Member 'FNiagaraDataSetCompiledData::SimTarget' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraEmitterCompiledData
-// 0x0138 (0x0138 - 0x0000)
-struct FNiagaraEmitterCompiledData final
-{
-public:
-	TArray<class FName>                           SpawnAttributes;                                   // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	struct FNiagaraVariable                       EmitterSpawnIntervalVar;                           // 0x0010(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraVariable                       EmitterInterpSpawnStartDTVar;                      // 0x0030(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraVariable                       EmitterSpawnGroupVar;                              // 0x0050(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraVariable                       EmitterAgeVar;                                     // 0x0070(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraVariable                       EmitterRandomSeedVar;                              // 0x0090(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraVariable                       EmitterInstanceSeedVar;                            // 0x00B0(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraVariable                       EmitterTotalSpawnedParticlesVar;                   // 0x00D0(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraDataSetCompiledData            DataSetCompiledData;                               // 0x00F0(0x0048)(NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraEmitterCompiledData) == 0x000008, "Wrong alignment on FNiagaraEmitterCompiledData");
-static_assert(sizeof(FNiagaraEmitterCompiledData) == 0x000138, "Wrong size on FNiagaraEmitterCompiledData");
-static_assert(offsetof(FNiagaraEmitterCompiledData, SpawnAttributes) == 0x000000, "Member 'FNiagaraEmitterCompiledData::SpawnAttributes' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterSpawnIntervalVar) == 0x000010, "Member 'FNiagaraEmitterCompiledData::EmitterSpawnIntervalVar' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterInterpSpawnStartDTVar) == 0x000030, "Member 'FNiagaraEmitterCompiledData::EmitterInterpSpawnStartDTVar' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterSpawnGroupVar) == 0x000050, "Member 'FNiagaraEmitterCompiledData::EmitterSpawnGroupVar' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterAgeVar) == 0x000070, "Member 'FNiagaraEmitterCompiledData::EmitterAgeVar' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterRandomSeedVar) == 0x000090, "Member 'FNiagaraEmitterCompiledData::EmitterRandomSeedVar' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterInstanceSeedVar) == 0x0000B0, "Member 'FNiagaraEmitterCompiledData::EmitterInstanceSeedVar' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterTotalSpawnedParticlesVar) == 0x0000D0, "Member 'FNiagaraEmitterCompiledData::EmitterTotalSpawnedParticlesVar' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterCompiledData, DataSetCompiledData) == 0x0000F0, "Member 'FNiagaraEmitterCompiledData::DataSetCompiledData' has a wrong offset!");
-
-// ScriptStruct Niagara.NDIDataChannelFunctionInfo
-// 0x0028 (0x0028 - 0x0000)
-struct FNDIDataChannelFunctionInfo final
-{
-public:
-	class FName                                   FunctionName;                                      // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<struct FNiagaraVariableBase>           Inputs;                                            // 0x0008(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FNiagaraVariableBase>           Outputs;                                           // 0x0018(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNDIDataChannelFunctionInfo) == 0x000008, "Wrong alignment on FNDIDataChannelFunctionInfo");
-static_assert(sizeof(FNDIDataChannelFunctionInfo) == 0x000028, "Wrong size on FNDIDataChannelFunctionInfo");
-static_assert(offsetof(FNDIDataChannelFunctionInfo, FunctionName) == 0x000000, "Member 'FNDIDataChannelFunctionInfo::FunctionName' has a wrong offset!");
-static_assert(offsetof(FNDIDataChannelFunctionInfo, Inputs) == 0x000008, "Member 'FNDIDataChannelFunctionInfo::Inputs' has a wrong offset!");
-static_assert(offsetof(FNDIDataChannelFunctionInfo, Outputs) == 0x000018, "Member 'FNDIDataChannelFunctionInfo::Outputs' has a wrong offset!");
-
-// ScriptStruct Niagara.NDIDataChannel_GPUScriptParameterAccessInfo
-// 0x0010 (0x0010 - 0x0000)
-struct FNDIDataChannel_GPUScriptParameterAccessInfo final
-{
-public:
-	TArray<struct FNiagaraVariableBase>           SortedParameters;                                  // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNDIDataChannel_GPUScriptParameterAccessInfo) == 0x000008, "Wrong alignment on FNDIDataChannel_GPUScriptParameterAccessInfo");
-static_assert(sizeof(FNDIDataChannel_GPUScriptParameterAccessInfo) == 0x000010, "Wrong size on FNDIDataChannel_GPUScriptParameterAccessInfo");
-static_assert(offsetof(FNDIDataChannel_GPUScriptParameterAccessInfo, SortedParameters) == 0x000000, "Member 'FNDIDataChannel_GPUScriptParameterAccessInfo::SortedParameters' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraVariableWithOffset
-// 0x001C (0x0028 - 0x000C)
-struct FNiagaraVariableWithOffset final : public FNiagaraVariableBase
-{
-public:
-	int32                                         Offset;                                            // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraLwcStructConverter             StructConverter;                                   // 0x0010(0x0018)(NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraVariableWithOffset) == 0x000008, "Wrong alignment on FNiagaraVariableWithOffset");
-static_assert(sizeof(FNiagaraVariableWithOffset) == 0x000028, "Wrong size on FNiagaraVariableWithOffset");
-static_assert(offsetof(FNiagaraVariableWithOffset, Offset) == 0x00000C, "Member 'FNiagaraVariableWithOffset::Offset' has a wrong offset!");
-static_assert(offsetof(FNiagaraVariableWithOffset, StructConverter) == 0x000010, "Member 'FNiagaraVariableWithOffset::StructConverter' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraParameterStore
-// 0x0088 (0x0088 - 0x0000)
-struct FNiagaraParameterStore
-{
-public:
-	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UObject>                 Owner;                                             // 0x0008(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	TArray<struct FNiagaraVariableWithOffset>     SortedParameterOffsets;                            // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
-	TArray<uint8>                                 ParameterData;                                     // 0x0020(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
-	TArray<class UNiagaraDataInterface*>          DataInterfaces;                                    // 0x0030(0x0010)(ZeroConstructor, UObjectWrapper, NativeAccessSpecifierPrivate)
-	TArray<class UObject*>                        UObjects;                                          // 0x0040(0x0010)(ZeroConstructor, UObjectWrapper, NativeAccessSpecifierPrivate)
-	TArray<struct FNiagaraPositionSource>         OriginalPositionData;                              // 0x0050(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_60[0x28];                                      // 0x0060(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FNiagaraParameterStore) == 0x000008, "Wrong alignment on FNiagaraParameterStore");
-static_assert(sizeof(FNiagaraParameterStore) == 0x000088, "Wrong size on FNiagaraParameterStore");
-static_assert(offsetof(FNiagaraParameterStore, Owner) == 0x000008, "Member 'FNiagaraParameterStore::Owner' has a wrong offset!");
-static_assert(offsetof(FNiagaraParameterStore, SortedParameterOffsets) == 0x000010, "Member 'FNiagaraParameterStore::SortedParameterOffsets' has a wrong offset!");
-static_assert(offsetof(FNiagaraParameterStore, ParameterData) == 0x000020, "Member 'FNiagaraParameterStore::ParameterData' has a wrong offset!");
-static_assert(offsetof(FNiagaraParameterStore, DataInterfaces) == 0x000030, "Member 'FNiagaraParameterStore::DataInterfaces' has a wrong offset!");
-static_assert(offsetof(FNiagaraParameterStore, UObjects) == 0x000040, "Member 'FNiagaraParameterStore::UObjects' has a wrong offset!");
-static_assert(offsetof(FNiagaraParameterStore, OriginalPositionData) == 0x000050, "Member 'FNiagaraParameterStore::OriginalPositionData' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraScriptExecutionParameterStore
-// 0x0008 (0x0090 - 0x0088)
-struct FNiagaraScriptExecutionParameterStore final : public FNiagaraParameterStore
-{
-public:
-	int32                                         ParameterSize;                                     // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         bInitialized : 1;                                  // 0x008C(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_8D[0x3];                                       // 0x008D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FNiagaraScriptExecutionParameterStore) == 0x000008, "Wrong alignment on FNiagaraScriptExecutionParameterStore");
-static_assert(sizeof(FNiagaraScriptExecutionParameterStore) == 0x000090, "Wrong size on FNiagaraScriptExecutionParameterStore");
-static_assert(offsetof(FNiagaraScriptExecutionParameterStore, ParameterSize) == 0x000088, "Member 'FNiagaraScriptExecutionParameterStore::ParameterSize' has a wrong offset!");
-
-// ScriptStruct Niagara.NDIDataChannelCompiledData
-// 0x0068 (0x0068 - 0x0000)
-struct FNDIDataChannelCompiledData
-{
-public:
-	TArray<struct FNDIDataChannelFunctionInfo>    FunctionInfo;                                      // 0x0000(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	TMap<struct FNiagaraCompileHash, struct FNDIDataChannel_GPUScriptParameterAccessInfo> GPUScriptParameterInfos; // 0x0010(0x0050)(Protected, NativeAccessSpecifierProtected)
-	uint32                                        TotalParams;                                       // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bUsedByCPU;                                        // 0x0064(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bUsedByGPU;                                        // 0x0065(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bNeedsSpawnDataTable;                              // 0x0066(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_67[0x1];                                       // 0x0067(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FNDIDataChannelCompiledData) == 0x000008, "Wrong alignment on FNDIDataChannelCompiledData");
-static_assert(sizeof(FNDIDataChannelCompiledData) == 0x000068, "Wrong size on FNDIDataChannelCompiledData");
-static_assert(offsetof(FNDIDataChannelCompiledData, FunctionInfo) == 0x000000, "Member 'FNDIDataChannelCompiledData::FunctionInfo' has a wrong offset!");
-static_assert(offsetof(FNDIDataChannelCompiledData, GPUScriptParameterInfos) == 0x000010, "Member 'FNDIDataChannelCompiledData::GPUScriptParameterInfos' has a wrong offset!");
-static_assert(offsetof(FNDIDataChannelCompiledData, TotalParams) == 0x000060, "Member 'FNDIDataChannelCompiledData::TotalParams' has a wrong offset!");
-static_assert(offsetof(FNDIDataChannelCompiledData, bUsedByCPU) == 0x000064, "Member 'FNDIDataChannelCompiledData::bUsedByCPU' has a wrong offset!");
-static_assert(offsetof(FNDIDataChannelCompiledData, bUsedByGPU) == 0x000065, "Member 'FNDIDataChannelCompiledData::bUsedByGPU' has a wrong offset!");
-static_assert(offsetof(FNDIDataChannelCompiledData, bNeedsSpawnDataTable) == 0x000066, "Member 'FNDIDataChannelCompiledData::bNeedsSpawnDataTable' has a wrong offset!");
-
 // ScriptStruct Niagara.NDIDataChannelWriteCompiledData
 // 0x0048 (0x00B0 - 0x0068)
 struct FNDIDataChannelWriteCompiledData final : public FNDIDataChannelCompiledData
@@ -2575,6 +2597,20 @@ public:
 static_assert(alignof(FNDIDataChannelWriteCompiledData) == 0x000008, "Wrong alignment on FNDIDataChannelWriteCompiledData");
 static_assert(sizeof(FNDIDataChannelWriteCompiledData) == 0x0000B0, "Wrong size on FNDIDataChannelWriteCompiledData");
 static_assert(offsetof(FNDIDataChannelWriteCompiledData, DataLayout) == 0x000068, "Member 'FNDIDataChannelWriteCompiledData::DataLayout' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraDebuggerExecuteConsoleCommand
+// 0x0018 (0x0018 - 0x0000)
+struct FNiagaraDebuggerExecuteConsoleCommand final
+{
+public:
+	class FString                                 Command;                                           // 0x0000(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bRequiresWorld;                                    // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraDebuggerExecuteConsoleCommand) == 0x000008, "Wrong alignment on FNiagaraDebuggerExecuteConsoleCommand");
+static_assert(sizeof(FNiagaraDebuggerExecuteConsoleCommand) == 0x000018, "Wrong size on FNiagaraDebuggerExecuteConsoleCommand");
+static_assert(offsetof(FNiagaraDebuggerExecuteConsoleCommand, Command) == 0x000000, "Member 'FNiagaraDebuggerExecuteConsoleCommand::Command' has a wrong offset!");
+static_assert(offsetof(FNiagaraDebuggerExecuteConsoleCommand, bRequiresWorld) == 0x000010, "Member 'FNiagaraDebuggerExecuteConsoleCommand::bRequiresWorld' has a wrong offset!");
 
 // ScriptStruct Niagara.NDIDataChannelWriteSimCacheFrameBuffer
 // 0x0020 (0x0020 - 0x0000)
@@ -2590,28 +2626,6 @@ static_assert(sizeof(FNDIDataChannelWriteSimCacheFrameBuffer) == 0x000020, "Wron
 static_assert(offsetof(FNDIDataChannelWriteSimCacheFrameBuffer, Data) == 0x000000, "Member 'FNDIDataChannelWriteSimCacheFrameBuffer::Data' has a wrong offset!");
 static_assert(offsetof(FNDIDataChannelWriteSimCacheFrameBuffer, Size) == 0x000010, "Member 'FNDIDataChannelWriteSimCacheFrameBuffer::Size' has a wrong offset!");
 static_assert(offsetof(FNDIDataChannelWriteSimCacheFrameBuffer, SourceVar) == 0x000014, "Member 'FNDIDataChannelWriteSimCacheFrameBuffer::SourceVar' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraOutlinerData
-// 0x0050 (0x0050 - 0x0000)
-struct FNiagaraOutlinerData final
-{
-public:
-	TMap<class FString, struct FNiagaraOutlinerWorldData> WorldData;                                 // 0x0000(0x0050)(Edit, EditConst, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraOutlinerData) == 0x000008, "Wrong alignment on FNiagaraOutlinerData");
-static_assert(sizeof(FNiagaraOutlinerData) == 0x000050, "Wrong size on FNiagaraOutlinerData");
-static_assert(offsetof(FNiagaraOutlinerData, WorldData) == 0x000000, "Member 'FNiagaraOutlinerData::WorldData' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraDebuggerOutlinerUpdate
-// 0x0050 (0x0050 - 0x0000)
-struct FNiagaraDebuggerOutlinerUpdate final
-{
-public:
-	struct FNiagaraOutlinerData                   OutlinerData;                                      // 0x0000(0x0050)(Edit, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraDebuggerOutlinerUpdate) == 0x000008, "Wrong alignment on FNiagaraDebuggerOutlinerUpdate");
-static_assert(sizeof(FNiagaraDebuggerOutlinerUpdate) == 0x000050, "Wrong size on FNiagaraDebuggerOutlinerUpdate");
-static_assert(offsetof(FNiagaraDebuggerOutlinerUpdate, OutlinerData) == 0x000000, "Member 'FNiagaraDebuggerOutlinerUpdate::OutlinerData' has a wrong offset!");
 
 // ScriptStruct Niagara.NDIDataChannelWriteSimCacheFrame
 // 0x0020 (0x0020 - 0x0000)
@@ -2667,6 +2681,14 @@ static_assert(alignof(FNiagaraParameterBindingWithValue) == 0x000008, "Wrong ali
 static_assert(sizeof(FNiagaraParameterBindingWithValue) == 0x000020, "Wrong size on FNiagaraParameterBindingWithValue");
 static_assert(offsetof(FNiagaraParameterBindingWithValue, DefaultValue) == 0x000010, "Member 'FNiagaraParameterBindingWithValue::DefaultValue' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraPosition
+// 0x0000 (0x000C - 0x000C)
+struct FNiagaraPosition final : public FVector3f
+{
+};
+static_assert(alignof(FNiagaraPosition) == 0x000004, "Wrong alignment on FNiagaraPosition");
+static_assert(sizeof(FNiagaraPosition) == 0x00000C, "Wrong size on FNiagaraPosition");
+
 // ScriptStruct Niagara.NiagaraSimStageExecutionLoopEditorData
 // 0x0001 (0x0001 - 0x0000)
 struct FNiagaraSimStageExecutionLoopEditorData final
@@ -2676,17 +2698,6 @@ public:
 };
 static_assert(alignof(FNiagaraSimStageExecutionLoopEditorData) == 0x000001, "Wrong alignment on FNiagaraSimStageExecutionLoopEditorData");
 static_assert(sizeof(FNiagaraSimStageExecutionLoopEditorData) == 0x000001, "Wrong size on FNiagaraSimStageExecutionLoopEditorData");
-
-// ScriptStruct Niagara.NiagaraHalf
-// 0x0002 (0x0002 - 0x0000)
-struct FNiagaraHalf final
-{
-public:
-	uint16                                        Value;                                             // 0x0000(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraHalf) == 0x000002, "Wrong alignment on FNiagaraHalf");
-static_assert(sizeof(FNiagaraHalf) == 0x000002, "Wrong size on FNiagaraHalf");
-static_assert(offsetof(FNiagaraHalf, Value) == 0x000000, "Member 'FNiagaraHalf::Value' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraSimStageExecutionLoopData
 // 0x0014 (0x0014 - 0x0000)
@@ -2725,6 +2736,30 @@ static_assert(offsetof(FNiagaraStackSection, Categories) == 0x000018, "Member 'F
 static_assert(offsetof(FNiagaraStackSection, ToolTip) == 0x000028, "Member 'FNiagaraStackSection::ToolTip' has a wrong offset!");
 static_assert(offsetof(FNiagaraStackSection, bEnabled) == 0x000038, "Member 'FNiagaraStackSection::bEnabled' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraDistributionBase
+// 0x0018 (0x0018 - 0x0000)
+struct alignas(0x08) FNiagaraDistributionBase
+{
+public:
+	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	ENiagaraDistributionMode                      Mode;                                              // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraVariableBase                   ParameterBinding;                                  // 0x000C(0x000C)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraDistributionBase) == 0x000008, "Wrong alignment on FNiagaraDistributionBase");
+static_assert(sizeof(FNiagaraDistributionBase) == 0x000018, "Wrong size on FNiagaraDistributionBase");
+static_assert(offsetof(FNiagaraDistributionBase, Mode) == 0x000008, "Member 'FNiagaraDistributionBase::Mode' has a wrong offset!");
+static_assert(offsetof(FNiagaraDistributionBase, ParameterBinding) == 0x00000C, "Member 'FNiagaraDistributionBase::ParameterBinding' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraWildcard
+// 0x0001 (0x0001 - 0x0000)
+struct FNiagaraWildcard final
+{
+public:
+	uint8                                         Pad_0[0x1];                                        // 0x0000(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraWildcard) == 0x000001, "Wrong alignment on FNiagaraWildcard");
+static_assert(sizeof(FNiagaraWildcard) == 0x000001, "Wrong size on FNiagaraWildcard");
+
 // ScriptStruct Niagara.NiagaraDistributionRangeInt
 // 0x0018 (0x0018 - 0x0000)
 struct FNiagaraDistributionRangeInt final
@@ -2741,6 +2776,19 @@ static_assert(offsetof(FNiagaraDistributionRangeInt, Mode) == 0x000000, "Member 
 static_assert(offsetof(FNiagaraDistributionRangeInt, ParameterBinding) == 0x000004, "Member 'FNiagaraDistributionRangeInt::ParameterBinding' has a wrong offset!");
 static_assert(offsetof(FNiagaraDistributionRangeInt, Min) == 0x000010, "Member 'FNiagaraDistributionRangeInt::Min' has a wrong offset!");
 static_assert(offsetof(FNiagaraDistributionRangeInt, Max) == 0x000014, "Member 'FNiagaraDistributionRangeInt::Max' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraDistributionRangeFloat
+// 0x0008 (0x0020 - 0x0018)
+struct FNiagaraDistributionRangeFloat final : public FNiagaraDistributionBase
+{
+public:
+	float                                         Min;                                               // 0x0018(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Max;                                               // 0x001C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraDistributionRangeFloat) == 0x000008, "Wrong alignment on FNiagaraDistributionRangeFloat");
+static_assert(sizeof(FNiagaraDistributionRangeFloat) == 0x000020, "Wrong size on FNiagaraDistributionRangeFloat");
+static_assert(offsetof(FNiagaraDistributionRangeFloat, Min) == 0x000018, "Member 'FNiagaraDistributionRangeFloat::Min' has a wrong offset!");
+static_assert(offsetof(FNiagaraDistributionRangeFloat, Max) == 0x00001C, "Member 'FNiagaraDistributionRangeFloat::Max' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraDistributionRangeVector2
 // 0x0010 (0x0028 - 0x0018)
@@ -2803,21 +2851,6 @@ static_assert(alignof(FNiagaraDistributionVector2) == 0x000008, "Wrong alignment
 static_assert(sizeof(FNiagaraDistributionVector2) == 0x000028, "Wrong size on FNiagaraDistributionVector2");
 static_assert(offsetof(FNiagaraDistributionVector2, Values) == 0x000018, "Member 'FNiagaraDistributionVector2::Values' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraDeviceProfileStateEntry
-// 0x0010 (0x0010 - 0x0000)
-struct FNiagaraDeviceProfileStateEntry final
-{
-public:
-	class FName                                   ProfileName;                                       // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        QualityLevelMask;                                  // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        SetQualityLevelMask;                               // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraDeviceProfileStateEntry) == 0x000004, "Wrong alignment on FNiagaraDeviceProfileStateEntry");
-static_assert(sizeof(FNiagaraDeviceProfileStateEntry) == 0x000010, "Wrong size on FNiagaraDeviceProfileStateEntry");
-static_assert(offsetof(FNiagaraDeviceProfileStateEntry, ProfileName) == 0x000000, "Member 'FNiagaraDeviceProfileStateEntry::ProfileName' has a wrong offset!");
-static_assert(offsetof(FNiagaraDeviceProfileStateEntry, QualityLevelMask) == 0x000008, "Member 'FNiagaraDeviceProfileStateEntry::QualityLevelMask' has a wrong offset!");
-static_assert(offsetof(FNiagaraDeviceProfileStateEntry, SetQualityLevelMask) == 0x00000C, "Member 'FNiagaraDeviceProfileStateEntry::SetQualityLevelMask' has a wrong offset!");
-
 // ScriptStruct Niagara.NiagaraDistributionVector3
 // 0x0010 (0x0028 - 0x0018)
 struct FNiagaraDistributionVector3 final : public FNiagaraDistributionBase
@@ -2862,6 +2895,40 @@ static_assert(offsetof(FNiagaraStatelessSpawnInfo, Rate) == 0x000020, "Member 'F
 static_assert(offsetof(FNiagaraStatelessSpawnInfo, bSpawnProbabilityEnabled) == 0x000040, "Member 'FNiagaraStatelessSpawnInfo::bSpawnProbabilityEnabled' has a wrong offset!");
 static_assert(offsetof(FNiagaraStatelessSpawnInfo, SpawnProbability) == 0x000044, "Member 'FNiagaraStatelessSpawnInfo::SpawnProbability' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraOutlinerWorldData
+// 0x0068 (0x0068 - 0x0000)
+struct FNiagaraOutlinerWorldData final
+{
+public:
+	TMap<class FString, struct FNiagaraOutlinerSystemData> Systems;                                  // 0x0000(0x0050)(Edit, EditConst, NativeAccessSpecifierPublic)
+	bool                                          bHasBegunPlay;                                     // 0x0050(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         WorldType;                                         // 0x0051(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         NetMode;                                           // 0x0052(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_53[0x1];                                       // 0x0053(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FNiagaraOutlinerTimingData             AveragePerFrameTime;                               // 0x0054(0x0008)(Edit, EditConst, NoDestructor, NativeAccessSpecifierPublic)
+	struct FNiagaraOutlinerTimingData             MaxPerFrameTime;                                   // 0x005C(0x0008)(Edit, EditConst, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraOutlinerWorldData) == 0x000008, "Wrong alignment on FNiagaraOutlinerWorldData");
+static_assert(sizeof(FNiagaraOutlinerWorldData) == 0x000068, "Wrong size on FNiagaraOutlinerWorldData");
+static_assert(offsetof(FNiagaraOutlinerWorldData, Systems) == 0x000000, "Member 'FNiagaraOutlinerWorldData::Systems' has a wrong offset!");
+static_assert(offsetof(FNiagaraOutlinerWorldData, bHasBegunPlay) == 0x000050, "Member 'FNiagaraOutlinerWorldData::bHasBegunPlay' has a wrong offset!");
+static_assert(offsetof(FNiagaraOutlinerWorldData, WorldType) == 0x000051, "Member 'FNiagaraOutlinerWorldData::WorldType' has a wrong offset!");
+static_assert(offsetof(FNiagaraOutlinerWorldData, NetMode) == 0x000052, "Member 'FNiagaraOutlinerWorldData::NetMode' has a wrong offset!");
+static_assert(offsetof(FNiagaraOutlinerWorldData, AveragePerFrameTime) == 0x000054, "Member 'FNiagaraOutlinerWorldData::AveragePerFrameTime' has a wrong offset!");
+static_assert(offsetof(FNiagaraOutlinerWorldData, MaxPerFrameTime) == 0x00005C, "Member 'FNiagaraOutlinerWorldData::MaxPerFrameTime' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraOutlinerData
+// 0x0050 (0x0050 - 0x0000)
+struct FNiagaraOutlinerData final
+{
+public:
+	TMap<class FString, struct FNiagaraOutlinerWorldData> WorldData;                                 // 0x0000(0x0050)(Edit, EditConst, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraOutlinerData) == 0x000008, "Wrong alignment on FNiagaraOutlinerData");
+static_assert(sizeof(FNiagaraOutlinerData) == 0x000050, "Wrong size on FNiagaraOutlinerData");
+static_assert(offsetof(FNiagaraOutlinerData, WorldData) == 0x000000, "Member 'FNiagaraOutlinerData::WorldData' has a wrong offset!");
+
 // ScriptStruct Niagara.NiagaraSystemStateData
 // 0x0060 (0x0060 - 0x0000)
 struct FNiagaraSystemStateData final
@@ -2893,19 +2960,6 @@ static_assert(offsetof(FNiagaraSystemStateData, LoopDelay) == 0x000038, "Member 
 static_assert(offsetof(FNiagaraSystemStateData, bDelayFirstLoopOnly) == 0x000058, "Member 'FNiagaraSystemStateData::bDelayFirstLoopOnly' has a wrong offset!");
 static_assert(offsetof(FNiagaraSystemStateData, bRecalculateDelayEachLoop) == 0x000059, "Member 'FNiagaraSystemStateData::bRecalculateDelayEachLoop' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraDebuggerRequestConnection
-// 0x0020 (0x0020 - 0x0000)
-struct FNiagaraDebuggerRequestConnection final
-{
-public:
-	struct FGuid                                  SessionId;                                         // 0x0000(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGuid                                  InstanceId;                                        // 0x0010(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraDebuggerRequestConnection) == 0x000004, "Wrong alignment on FNiagaraDebuggerRequestConnection");
-static_assert(sizeof(FNiagaraDebuggerRequestConnection) == 0x000020, "Wrong size on FNiagaraDebuggerRequestConnection");
-static_assert(offsetof(FNiagaraDebuggerRequestConnection, SessionId) == 0x000000, "Member 'FNiagaraDebuggerRequestConnection::SessionId' has a wrong offset!");
-static_assert(offsetof(FNiagaraDebuggerRequestConnection, InstanceId) == 0x000010, "Member 'FNiagaraDebuggerRequestConnection::InstanceId' has a wrong offset!");
-
 // ScriptStruct Niagara.NiagaraEmitterStateData
 // 0x0060 (0x0060 - 0x0000)
 struct FNiagaraEmitterStateData final
@@ -2934,19 +2988,6 @@ static_assert(offsetof(FNiagaraEmitterStateData, LoopDelay) == 0x000038, "Member
 static_assert(offsetof(FNiagaraEmitterStateData, bDelayFirstLoopOnly) == 0x000058, "Member 'FNiagaraEmitterStateData::bDelayFirstLoopOnly' has a wrong offset!");
 static_assert(offsetof(FNiagaraEmitterStateData, bRecalculateDelayEachLoop) == 0x000059, "Member 'FNiagaraEmitterStateData::bRecalculateDelayEachLoop' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraInputConditionMetadata
-// 0x0018 (0x0018 - 0x0000)
-struct FNiagaraInputConditionMetadata final
-{
-public:
-	class FName                                   InputName;                                         // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<class FString>                         TargetValues;                                      // 0x0008(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraInputConditionMetadata) == 0x000008, "Wrong alignment on FNiagaraInputConditionMetadata");
-static_assert(sizeof(FNiagaraInputConditionMetadata) == 0x000018, "Wrong size on FNiagaraInputConditionMetadata");
-static_assert(offsetof(FNiagaraInputConditionMetadata, InputName) == 0x000000, "Member 'FNiagaraInputConditionMetadata::InputName' has a wrong offset!");
-static_assert(offsetof(FNiagaraInputConditionMetadata, TargetValues) == 0x000008, "Member 'FNiagaraInputConditionMetadata::TargetValues' has a wrong offset!");
-
 // ScriptStruct Niagara.VersionedNiagaraEmitter
 // 0x0018 (0x0018 - 0x0000)
 struct FVersionedNiagaraEmitter final
@@ -2959,6 +3000,44 @@ static_assert(alignof(FVersionedNiagaraEmitter) == 0x000008, "Wrong alignment on
 static_assert(sizeof(FVersionedNiagaraEmitter) == 0x000018, "Wrong size on FVersionedNiagaraEmitter");
 static_assert(offsetof(FVersionedNiagaraEmitter, Emitter) == 0x000000, "Member 'FVersionedNiagaraEmitter::Emitter' has a wrong offset!");
 static_assert(offsetof(FVersionedNiagaraEmitter, Version) == 0x000008, "Member 'FVersionedNiagaraEmitter::Version' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraEmitterHandle
+// 0x0050 (0x0050 - 0x0000)
+struct FNiagaraEmitterHandle final
+{
+public:
+	class FName                                   Name;                                              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FGuid                                  ID;                                                // 0x0008(0x0010)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class FName                                   IdName;                                            // 0x0018(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bIsEnabled;                                        // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVersionedNiagaraEmitter               VersionedInstance;                                 // 0x0028(0x0018)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UNiagaraStatelessEmitter*               StatelessEmitter;                                  // 0x0040(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	ENiagaraEmitterMode                           EmitterMode;                                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraEmitterHandle) == 0x000008, "Wrong alignment on FNiagaraEmitterHandle");
+static_assert(sizeof(FNiagaraEmitterHandle) == 0x000050, "Wrong size on FNiagaraEmitterHandle");
+static_assert(offsetof(FNiagaraEmitterHandle, Name) == 0x000000, "Member 'FNiagaraEmitterHandle::Name' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterHandle, ID) == 0x000008, "Member 'FNiagaraEmitterHandle::ID' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterHandle, IdName) == 0x000018, "Member 'FNiagaraEmitterHandle::IdName' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterHandle, bIsEnabled) == 0x000020, "Member 'FNiagaraEmitterHandle::bIsEnabled' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterHandle, VersionedInstance) == 0x000028, "Member 'FNiagaraEmitterHandle::VersionedInstance' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterHandle, StatelessEmitter) == 0x000040, "Member 'FNiagaraEmitterHandle::StatelessEmitter' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterHandle, EmitterMode) == 0x000048, "Member 'FNiagaraEmitterHandle::EmitterMode' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraInputConditionMetadata
+// 0x0018 (0x0018 - 0x0000)
+struct FNiagaraInputConditionMetadata final
+{
+public:
+	class FName                                   InputName;                                         // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class FString>                         TargetValues;                                      // 0x0008(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraInputConditionMetadata) == 0x000008, "Wrong alignment on FNiagaraInputConditionMetadata");
+static_assert(sizeof(FNiagaraInputConditionMetadata) == 0x000018, "Wrong size on FNiagaraInputConditionMetadata");
+static_assert(offsetof(FNiagaraInputConditionMetadata, InputName) == 0x000000, "Member 'FNiagaraInputConditionMetadata::InputName' has a wrong offset!");
+static_assert(offsetof(FNiagaraInputConditionMetadata, TargetValues) == 0x000008, "Member 'FNiagaraInputConditionMetadata::TargetValues' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraEnumParameterMetaData
 // 0x0028 (0x0028 - 0x0000)
@@ -3013,6 +3092,21 @@ static_assert(offsetof(FWidgetSegmentValueOverride, bOverrideDisplayName) == 0x0
 static_assert(offsetof(FWidgetSegmentValueOverride, DisplayNameOverride) == 0x000008, "Member 'FWidgetSegmentValueOverride::DisplayNameOverride' has a wrong offset!");
 static_assert(offsetof(FWidgetSegmentValueOverride, DisplayIcon) == 0x000018, "Member 'FWidgetSegmentValueOverride::DisplayIcon' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraRandInfo
+// 0x000C (0x000C - 0x0000)
+struct FNiagaraRandInfo final
+{
+public:
+	int32                                         Seed1;                                             // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Seed2;                                             // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Seed3;                                             // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraRandInfo) == 0x000004, "Wrong alignment on FNiagaraRandInfo");
+static_assert(sizeof(FNiagaraRandInfo) == 0x00000C, "Wrong size on FNiagaraRandInfo");
+static_assert(offsetof(FNiagaraRandInfo, Seed1) == 0x000000, "Member 'FNiagaraRandInfo::Seed1' has a wrong offset!");
+static_assert(offsetof(FNiagaraRandInfo, Seed2) == 0x000004, "Member 'FNiagaraRandInfo::Seed2' has a wrong offset!");
+static_assert(offsetof(FNiagaraRandInfo, Seed3) == 0x000008, "Member 'FNiagaraRandInfo::Seed3' has a wrong offset!");
+
 // ScriptStruct Niagara.NiagaraWidgetNamedIntegerInputValue
 // 0x0020 (0x0020 - 0x0000)
 struct FNiagaraWidgetNamedIntegerInputValue final
@@ -3025,17 +3119,6 @@ static_assert(alignof(FNiagaraWidgetNamedIntegerInputValue) == 0x000008, "Wrong 
 static_assert(sizeof(FNiagaraWidgetNamedIntegerInputValue) == 0x000020, "Wrong size on FNiagaraWidgetNamedIntegerInputValue");
 static_assert(offsetof(FNiagaraWidgetNamedIntegerInputValue, DisplayName) == 0x000000, "Member 'FNiagaraWidgetNamedIntegerInputValue::DisplayName' has a wrong offset!");
 static_assert(offsetof(FNiagaraWidgetNamedIntegerInputValue, ToolTip) == 0x000010, "Member 'FNiagaraWidgetNamedIntegerInputValue::ToolTip' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraUserRedirectionParameterStore
-// 0x0050 (0x00D8 - 0x0088)
-struct FNiagaraUserRedirectionParameterStore final : public FNiagaraParameterStore
-{
-public:
-	TMap<struct FNiagaraVariable, struct FNiagaraVariable> UserParameterRedirects;                   // 0x0088(0x0050)(NativeAccessSpecifierPrivate)
-};
-static_assert(alignof(FNiagaraUserRedirectionParameterStore) == 0x000008, "Wrong alignment on FNiagaraUserRedirectionParameterStore");
-static_assert(sizeof(FNiagaraUserRedirectionParameterStore) == 0x0000D8, "Wrong size on FNiagaraUserRedirectionParameterStore");
-static_assert(offsetof(FNiagaraUserRedirectionParameterStore, UserParameterRedirects) == 0x000088, "Member 'FNiagaraUserRedirectionParameterStore::UserParameterRedirects' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraInputParameterCustomization
 // 0x0058 (0x0058 - 0x0000)
@@ -3155,19 +3238,6 @@ static_assert(offsetof(FNiagaraVariableMetaData, VariableGuid) == 0x000178, "Mem
 static_assert(offsetof(FNiagaraVariableMetaData, bIsStaticSwitch) == 0x000188, "Member 'FNiagaraVariableMetaData::bIsStaticSwitch' has a wrong offset!");
 static_assert(offsetof(FNiagaraVariableMetaData, StaticSwitchDefaultValue) == 0x00018C, "Member 'FNiagaraVariableMetaData::StaticSwitchDefaultValue' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraDynamicMeshSection
-// 0x0008 (0x0008 - 0x0000)
-struct FNiagaraDynamicMeshSection final
-{
-public:
-	int32                                         NumTriangles;                                      // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MaterialIndex;                                     // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraDynamicMeshSection) == 0x000004, "Wrong alignment on FNiagaraDynamicMeshSection");
-static_assert(sizeof(FNiagaraDynamicMeshSection) == 0x000008, "Wrong size on FNiagaraDynamicMeshSection");
-static_assert(offsetof(FNiagaraDynamicMeshSection, NumTriangles) == 0x000000, "Member 'FNiagaraDynamicMeshSection::NumTriangles' has a wrong offset!");
-static_assert(offsetof(FNiagaraDynamicMeshSection, MaterialIndex) == 0x000004, "Member 'FNiagaraDynamicMeshSection::MaterialIndex' has a wrong offset!");
-
 // ScriptStruct Niagara.NiagaraVMExecutableByteCode
 // 0x0018 (0x0018 - 0x0000)
 struct FNiagaraVMExecutableByteCode final
@@ -3182,70 +3252,18 @@ static_assert(sizeof(FNiagaraVMExecutableByteCode) == 0x000018, "Wrong size on F
 static_assert(offsetof(FNiagaraVMExecutableByteCode, Data) == 0x000000, "Member 'FNiagaraVMExecutableByteCode::Data' has a wrong offset!");
 static_assert(offsetof(FNiagaraVMExecutableByteCode, UncompressedSize) == 0x000010, "Member 'FNiagaraVMExecutableByteCode::UncompressedSize' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraCompilerTag
-// 0x0030 (0x0030 - 0x0000)
-struct FNiagaraCompilerTag final
+// ScriptStruct Niagara.NiagaraDynamicMeshSection
+// 0x0008 (0x0008 - 0x0000)
+struct FNiagaraDynamicMeshSection final
 {
 public:
-	struct FNiagaraVariable                       Variable;                                          // 0x0000(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 StringValue;                                       // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         NumTriangles;                                      // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaterialIndex;                                     // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraCompilerTag) == 0x000008, "Wrong alignment on FNiagaraCompilerTag");
-static_assert(sizeof(FNiagaraCompilerTag) == 0x000030, "Wrong size on FNiagaraCompilerTag");
-static_assert(offsetof(FNiagaraCompilerTag, Variable) == 0x000000, "Member 'FNiagaraCompilerTag::Variable' has a wrong offset!");
-static_assert(offsetof(FNiagaraCompilerTag, StringValue) == 0x000020, "Member 'FNiagaraCompilerTag::StringValue' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraVMExecutableData
-// 0x01A0 (0x01A0 - 0x0000)
-struct FNiagaraVMExecutableData final
-{
-public:
-	struct FNiagaraVMExecutableByteCode           ByteCode;                                          // 0x0000(0x0018)(NativeAccessSpecifierPublic)
-	struct FNiagaraVMExecutableByteCode           OptimizedByteCode;                                 // 0x0018(0x0018)(Transient, NativeAccessSpecifierPublic)
-	uint8                                         Pad_30[0x38];                                      // 0x0030(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         NumTempRegisters;                                  // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         NumUserPtrs;                                       // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<struct FNiagaraCompilerTag>            CompileTags;                                       // 0x0070(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<uint8>                                 ScriptLiterals;                                    // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FNiagaraVariableBase>           Attributes;                                        // 0x0090(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	struct FNiagaraScriptDataUsageInfo            DataUsage;                                         // 0x00A0(0x0001)(NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A1[0x7];                                       // 0x00A1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FNiagaraScriptUObjectCompileInfo> UObjectInfos;                                    // 0x00A8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FNiagaraScriptDataInterfaceCompileInfo> DataInterfaceInfo;                         // 0x00B8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FVMExternalFunctionBindingInfo> CalledVMExternalFunctions;                         // 0x00C8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D8[0x10];                                      // 0x00D8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FNiagaraDataSetID>              ReadDataSets;                                      // 0x00E8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FNiagaraDataSetProperties>      WriteDataSets;                                     // 0x00F8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FNiagaraStatScope>              StatScopes;                                        // 0x0108(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	struct FNiagaraShaderScriptParametersMetadata ShaderScriptParametersMetadata;                    // 0x0118(0x0058)(NativeAccessSpecifierPublic)
-	ENiagaraScriptCompileStatus                   LastCompileStatus;                                 // 0x0170(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_171[0x7];                                      // 0x0171(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FSimulationStageMetaData>       SimulationStageMetaData;                           // 0x0178(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<uint8>                                 ExperimentalContextData;                           // 0x0188(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	uint8                                         bReadsSignificanceIndex : 1;                       // 0x0198(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bNeedsGPUContextInit : 1;                          // 0x0198(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_199[0x7];                                      // 0x0199(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FNiagaraVMExecutableData) == 0x000008, "Wrong alignment on FNiagaraVMExecutableData");
-static_assert(sizeof(FNiagaraVMExecutableData) == 0x0001A0, "Wrong size on FNiagaraVMExecutableData");
-static_assert(offsetof(FNiagaraVMExecutableData, ByteCode) == 0x000000, "Member 'FNiagaraVMExecutableData::ByteCode' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, OptimizedByteCode) == 0x000018, "Member 'FNiagaraVMExecutableData::OptimizedByteCode' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, NumTempRegisters) == 0x000068, "Member 'FNiagaraVMExecutableData::NumTempRegisters' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, NumUserPtrs) == 0x00006C, "Member 'FNiagaraVMExecutableData::NumUserPtrs' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, CompileTags) == 0x000070, "Member 'FNiagaraVMExecutableData::CompileTags' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, ScriptLiterals) == 0x000080, "Member 'FNiagaraVMExecutableData::ScriptLiterals' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, Attributes) == 0x000090, "Member 'FNiagaraVMExecutableData::Attributes' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, DataUsage) == 0x0000A0, "Member 'FNiagaraVMExecutableData::DataUsage' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, UObjectInfos) == 0x0000A8, "Member 'FNiagaraVMExecutableData::UObjectInfos' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, DataInterfaceInfo) == 0x0000B8, "Member 'FNiagaraVMExecutableData::DataInterfaceInfo' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, CalledVMExternalFunctions) == 0x0000C8, "Member 'FNiagaraVMExecutableData::CalledVMExternalFunctions' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, ReadDataSets) == 0x0000E8, "Member 'FNiagaraVMExecutableData::ReadDataSets' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, WriteDataSets) == 0x0000F8, "Member 'FNiagaraVMExecutableData::WriteDataSets' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, StatScopes) == 0x000108, "Member 'FNiagaraVMExecutableData::StatScopes' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, ShaderScriptParametersMetadata) == 0x000118, "Member 'FNiagaraVMExecutableData::ShaderScriptParametersMetadata' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, LastCompileStatus) == 0x000170, "Member 'FNiagaraVMExecutableData::LastCompileStatus' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, SimulationStageMetaData) == 0x000178, "Member 'FNiagaraVMExecutableData::SimulationStageMetaData' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableData, ExperimentalContextData) == 0x000188, "Member 'FNiagaraVMExecutableData::ExperimentalContextData' has a wrong offset!");
+static_assert(alignof(FNiagaraDynamicMeshSection) == 0x000004, "Wrong alignment on FNiagaraDynamicMeshSection");
+static_assert(sizeof(FNiagaraDynamicMeshSection) == 0x000008, "Wrong size on FNiagaraDynamicMeshSection");
+static_assert(offsetof(FNiagaraDynamicMeshSection, NumTriangles) == 0x000000, "Member 'FNiagaraDynamicMeshSection::NumTriangles' has a wrong offset!");
+static_assert(offsetof(FNiagaraDynamicMeshSection, MaterialIndex) == 0x000004, "Member 'FNiagaraDynamicMeshSection::MaterialIndex' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraDynamicMeshMaterial
 // 0x0028 (0x0028 - 0x0000)
@@ -3276,24 +3294,6 @@ static_assert(offsetof(FNDIMemoryBufferSimCacheDataFrame, CpuBufferSize) == 0x00
 static_assert(offsetof(FNDIMemoryBufferSimCacheDataFrame, CpuDataOffset) == 0x000004, "Member 'FNDIMemoryBufferSimCacheDataFrame::CpuDataOffset' has a wrong offset!");
 static_assert(offsetof(FNDIMemoryBufferSimCacheDataFrame, GpuBufferSize) == 0x000008, "Member 'FNDIMemoryBufferSimCacheDataFrame::GpuBufferSize' has a wrong offset!");
 static_assert(offsetof(FNDIMemoryBufferSimCacheDataFrame, GpuDataOffset) == 0x00000C, "Member 'FNDIMemoryBufferSimCacheDataFrame::GpuDataOffset' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraAssetVersion
-// 0x001C (0x001C - 0x0000)
-struct FNiagaraAssetVersion final
-{
-public:
-	int32                                         MajorVersion;                                      // 0x0000(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MinorVersion;                                      // 0x0004(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGuid                                  VersionGuid;                                       // 0x0008(0x0010)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bIsVisibleInVersionSelector;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FNiagaraAssetVersion) == 0x000004, "Wrong alignment on FNiagaraAssetVersion");
-static_assert(sizeof(FNiagaraAssetVersion) == 0x00001C, "Wrong size on FNiagaraAssetVersion");
-static_assert(offsetof(FNiagaraAssetVersion, MajorVersion) == 0x000000, "Member 'FNiagaraAssetVersion::MajorVersion' has a wrong offset!");
-static_assert(offsetof(FNiagaraAssetVersion, MinorVersion) == 0x000004, "Member 'FNiagaraAssetVersion::MinorVersion' has a wrong offset!");
-static_assert(offsetof(FNiagaraAssetVersion, VersionGuid) == 0x000008, "Member 'FNiagaraAssetVersion::VersionGuid' has a wrong offset!");
-static_assert(offsetof(FNiagaraAssetVersion, bIsVisibleInVersionSelector) == 0x000018, "Member 'FNiagaraAssetVersion::bIsVisibleInVersionSelector' has a wrong offset!");
 
 // ScriptStruct Niagara.NDIStaticMeshSectionFilter
 // 0x0010 (0x0010 - 0x0000)
@@ -3327,6 +3327,45 @@ struct FMovieSceneNiagaraSystemTrackTemplate final : public FMovieSceneEvalTempl
 static_assert(alignof(FMovieSceneNiagaraSystemTrackTemplate) == 0x000008, "Wrong alignment on FMovieSceneNiagaraSystemTrackTemplate");
 static_assert(sizeof(FMovieSceneNiagaraSystemTrackTemplate) == 0x000020, "Wrong size on FMovieSceneNiagaraSystemTrackTemplate");
 
+// ScriptStruct Niagara.NiagaraLinearRamp
+// 0x0010 (0x0010 - 0x0000)
+struct FNiagaraLinearRamp final
+{
+public:
+	float                                         StartX;                                            // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         StartY;                                            // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         EndX;                                              // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         EndY;                                              // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraLinearRamp) == 0x000004, "Wrong alignment on FNiagaraLinearRamp");
+static_assert(sizeof(FNiagaraLinearRamp) == 0x000010, "Wrong size on FNiagaraLinearRamp");
+static_assert(offsetof(FNiagaraLinearRamp, StartX) == 0x000000, "Member 'FNiagaraLinearRamp::StartX' has a wrong offset!");
+static_assert(offsetof(FNiagaraLinearRamp, StartY) == 0x000004, "Member 'FNiagaraLinearRamp::StartY' has a wrong offset!");
+static_assert(offsetof(FNiagaraLinearRamp, EndX) == 0x000008, "Member 'FNiagaraLinearRamp::EndX' has a wrong offset!");
+static_assert(offsetof(FNiagaraLinearRamp, EndY) == 0x00000C, "Member 'FNiagaraLinearRamp::EndY' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraGlobalBudgetScaling
+// 0x0038 (0x0038 - 0x0000)
+struct FNiagaraGlobalBudgetScaling final
+{
+public:
+	uint8                                         bCullByGlobalBudget : 1;                           // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bScaleMaxDistanceByGlobalBudgetUse : 1;            // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bScaleMaxInstanceCountByGlobalBudgetUse : 1;       // 0x0000(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bScaleSystemInstanceCountByGlobalBudgetUse : 1;    // 0x0000(0x0001)(BitIndex: 0x03, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         MaxGlobalBudgetUsage;                              // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraLinearRamp                     MaxDistanceScaleByGlobalBudgetUse;                 // 0x0008(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	struct FNiagaraLinearRamp                     MaxInstanceCountScaleByGlobalBudgetUse;            // 0x0018(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	struct FNiagaraLinearRamp                     MaxSystemInstanceCountScaleByGlobalBudgetUse;      // 0x0028(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraGlobalBudgetScaling) == 0x000004, "Wrong alignment on FNiagaraGlobalBudgetScaling");
+static_assert(sizeof(FNiagaraGlobalBudgetScaling) == 0x000038, "Wrong size on FNiagaraGlobalBudgetScaling");
+static_assert(offsetof(FNiagaraGlobalBudgetScaling, MaxGlobalBudgetUsage) == 0x000004, "Member 'FNiagaraGlobalBudgetScaling::MaxGlobalBudgetUsage' has a wrong offset!");
+static_assert(offsetof(FNiagaraGlobalBudgetScaling, MaxDistanceScaleByGlobalBudgetUse) == 0x000008, "Member 'FNiagaraGlobalBudgetScaling::MaxDistanceScaleByGlobalBudgetUse' has a wrong offset!");
+static_assert(offsetof(FNiagaraGlobalBudgetScaling, MaxInstanceCountScaleByGlobalBudgetUse) == 0x000018, "Member 'FNiagaraGlobalBudgetScaling::MaxInstanceCountScaleByGlobalBudgetUse' has a wrong offset!");
+static_assert(offsetof(FNiagaraGlobalBudgetScaling, MaxSystemInstanceCountScaleByGlobalBudgetUse) == 0x000028, "Member 'FNiagaraGlobalBudgetScaling::MaxSystemInstanceCountScaleByGlobalBudgetUse' has a wrong offset!");
+
 // ScriptStruct Niagara.MovieSceneNiagaraSystemTrackImplementation
 // 0x0018 (0x0028 - 0x0010)
 struct FMovieSceneNiagaraSystemTrackImplementation final : public FMovieSceneTrackImplementation
@@ -3351,23 +3390,6 @@ static_assert(offsetof(FMovieSceneNiagaraSystemTrackImplementation, SpawnSection
 static_assert(offsetof(FMovieSceneNiagaraSystemTrackImplementation, AgeUpdateMode) == 0x000024, "Member 'FMovieSceneNiagaraSystemTrackImplementation::AgeUpdateMode' has a wrong offset!");
 static_assert(offsetof(FMovieSceneNiagaraSystemTrackImplementation, bAllowScalability) == 0x000025, "Member 'FMovieSceneNiagaraSystemTrackImplementation::bAllowScalability' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraSystemVisibilityCullingSettings
-// 0x000C (0x000C - 0x0000)
-struct FNiagaraSystemVisibilityCullingSettings final
-{
-public:
-	uint8                                         bCullWhenNotRendered : 1;                          // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bCullByViewFrustum : 1;                            // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bAllowPreCullingByViewFrustum : 1;                 // 0x0000(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         MaxTimeOutsideViewFrustum;                         // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MaxTimeWithoutRender;                              // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraSystemVisibilityCullingSettings) == 0x000004, "Wrong alignment on FNiagaraSystemVisibilityCullingSettings");
-static_assert(sizeof(FNiagaraSystemVisibilityCullingSettings) == 0x00000C, "Wrong size on FNiagaraSystemVisibilityCullingSettings");
-static_assert(offsetof(FNiagaraSystemVisibilityCullingSettings, MaxTimeOutsideViewFrustum) == 0x000004, "Member 'FNiagaraSystemVisibilityCullingSettings::MaxTimeOutsideViewFrustum' has a wrong offset!");
-static_assert(offsetof(FNiagaraSystemVisibilityCullingSettings, MaxTimeWithoutRender) == 0x000008, "Member 'FNiagaraSystemVisibilityCullingSettings::MaxTimeWithoutRender' has a wrong offset!");
-
 // ScriptStruct Niagara.MovieSceneNiagaraParameterSectionTemplate
 // 0x0020 (0x0040 - 0x0020)
 struct FMovieSceneNiagaraParameterSectionTemplate : public FMovieSceneEvalTemplate
@@ -3379,6 +3401,19 @@ static_assert(alignof(FMovieSceneNiagaraParameterSectionTemplate) == 0x000008, "
 static_assert(sizeof(FMovieSceneNiagaraParameterSectionTemplate) == 0x000040, "Wrong size on FMovieSceneNiagaraParameterSectionTemplate");
 static_assert(offsetof(FMovieSceneNiagaraParameterSectionTemplate, Parameter) == 0x000020, "Member 'FMovieSceneNiagaraParameterSectionTemplate::Parameter' has a wrong offset!");
 
+// ScriptStruct Niagara.NDIArraySimCacheDataFrame
+// 0x0008 (0x0008 - 0x0000)
+struct FNDIArraySimCacheDataFrame final
+{
+public:
+	int32                                         NumElements;                                       // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         DataOffset;                                        // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNDIArraySimCacheDataFrame) == 0x000004, "Wrong alignment on FNDIArraySimCacheDataFrame");
+static_assert(sizeof(FNDIArraySimCacheDataFrame) == 0x000008, "Wrong size on FNDIArraySimCacheDataFrame");
+static_assert(offsetof(FNDIArraySimCacheDataFrame, NumElements) == 0x000000, "Member 'FNDIArraySimCacheDataFrame::NumElements' has a wrong offset!");
+static_assert(offsetof(FNDIArraySimCacheDataFrame, DataOffset) == 0x000004, "Member 'FNDIArraySimCacheDataFrame::DataOffset' has a wrong offset!");
+
 // ScriptStruct Niagara.MovieSceneNiagaraBoolParameterSectionTemplate
 // 0x0108 (0x0148 - 0x0040)
 struct FMovieSceneNiagaraBoolParameterSectionTemplate final : public FMovieSceneNiagaraParameterSectionTemplate
@@ -3389,19 +3424,6 @@ public:
 static_assert(alignof(FMovieSceneNiagaraBoolParameterSectionTemplate) == 0x000008, "Wrong alignment on FMovieSceneNiagaraBoolParameterSectionTemplate");
 static_assert(sizeof(FMovieSceneNiagaraBoolParameterSectionTemplate) == 0x000148, "Wrong size on FMovieSceneNiagaraBoolParameterSectionTemplate");
 static_assert(offsetof(FMovieSceneNiagaraBoolParameterSectionTemplate, BoolChannel) == 0x000040, "Member 'FMovieSceneNiagaraBoolParameterSectionTemplate::BoolChannel' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraDataInterfaceEmitterBinding
-// 0x000C (0x000C - 0x0000)
-struct FNiagaraDataInterfaceEmitterBinding final
-{
-public:
-	ENiagaraDataInterfaceEmitterBindingMode       BindingMode;                                       // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   EmitterName;                                       // 0x0004(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraDataInterfaceEmitterBinding) == 0x000004, "Wrong alignment on FNiagaraDataInterfaceEmitterBinding");
-static_assert(sizeof(FNiagaraDataInterfaceEmitterBinding) == 0x00000C, "Wrong size on FNiagaraDataInterfaceEmitterBinding");
-static_assert(offsetof(FNiagaraDataInterfaceEmitterBinding, BindingMode) == 0x000000, "Member 'FNiagaraDataInterfaceEmitterBinding::BindingMode' has a wrong offset!");
-static_assert(offsetof(FNiagaraDataInterfaceEmitterBinding, EmitterName) == 0x000004, "Member 'FNiagaraDataInterfaceEmitterBinding::EmitterName' has a wrong offset!");
 
 // ScriptStruct Niagara.MovieSceneNiagaraColorParameterSectionTemplate
 // 0x0440 (0x0480 - 0x0040)
@@ -3420,6 +3442,19 @@ static_assert(offsetof(FMovieSceneNiagaraColorParameterSectionTemplate, GreenCha
 static_assert(offsetof(FMovieSceneNiagaraColorParameterSectionTemplate, BlueChannel) == 0x000260, "Member 'FMovieSceneNiagaraColorParameterSectionTemplate::BlueChannel' has a wrong offset!");
 static_assert(offsetof(FMovieSceneNiagaraColorParameterSectionTemplate, AlphaChannel) == 0x000370, "Member 'FMovieSceneNiagaraColorParameterSectionTemplate::AlphaChannel' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraCompilerTag
+// 0x0030 (0x0030 - 0x0000)
+struct FNiagaraCompilerTag final
+{
+public:
+	struct FNiagaraVariable                       Variable;                                          // 0x0000(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 StringValue;                                       // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraCompilerTag) == 0x000008, "Wrong alignment on FNiagaraCompilerTag");
+static_assert(sizeof(FNiagaraCompilerTag) == 0x000030, "Wrong size on FNiagaraCompilerTag");
+static_assert(offsetof(FNiagaraCompilerTag, Variable) == 0x000000, "Member 'FNiagaraCompilerTag::Variable' has a wrong offset!");
+static_assert(offsetof(FNiagaraCompilerTag, StringValue) == 0x000020, "Member 'FNiagaraCompilerTag::StringValue' has a wrong offset!");
+
 // ScriptStruct Niagara.MovieSceneNiagaraFloatParameterSectionTemplate
 // 0x0110 (0x0150 - 0x0040)
 struct FMovieSceneNiagaraFloatParameterSectionTemplate final : public FMovieSceneNiagaraParameterSectionTemplate
@@ -3430,33 +3465,6 @@ public:
 static_assert(alignof(FMovieSceneNiagaraFloatParameterSectionTemplate) == 0x000008, "Wrong alignment on FMovieSceneNiagaraFloatParameterSectionTemplate");
 static_assert(sizeof(FMovieSceneNiagaraFloatParameterSectionTemplate) == 0x000150, "Wrong size on FMovieSceneNiagaraFloatParameterSectionTemplate");
 static_assert(offsetof(FMovieSceneNiagaraFloatParameterSectionTemplate, FloatChannel) == 0x000040, "Member 'FMovieSceneNiagaraFloatParameterSectionTemplate::FloatChannel' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraVMExecutableDataId
-// 0x0058 (0x0058 - 0x0000)
-struct FNiagaraVMExecutableDataId final
-{
-public:
-	struct FGuid                                  CompilerVersionID;                                 // 0x0000(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ENiagaraScriptUsage                           ScriptUsageType;                                   // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGuid                                  ScriptUsageTypeID;                                 // 0x0014(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         bUsesRapidIterationParams : 1;                     // 0x0024(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bDisableDebugSwitches : 1;                         // 0x0024(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bInterpolatedSpawn : 1;                            // 0x0024(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bRequiresPersistentIDs : 1;                        // 0x0024(0x0001)(BitIndex: 0x03, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGuid                                  BaseScriptID;                                      // 0x0028(0x0010)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraCompileHash                    BaseScriptCompileHash;                             // 0x0038(0x0010)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGuid                                  ScriptVersionID;                                   // 0x0048(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraVMExecutableDataId) == 0x000008, "Wrong alignment on FNiagaraVMExecutableDataId");
-static_assert(sizeof(FNiagaraVMExecutableDataId) == 0x000058, "Wrong size on FNiagaraVMExecutableDataId");
-static_assert(offsetof(FNiagaraVMExecutableDataId, CompilerVersionID) == 0x000000, "Member 'FNiagaraVMExecutableDataId::CompilerVersionID' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableDataId, ScriptUsageType) == 0x000010, "Member 'FNiagaraVMExecutableDataId::ScriptUsageType' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableDataId, ScriptUsageTypeID) == 0x000014, "Member 'FNiagaraVMExecutableDataId::ScriptUsageTypeID' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableDataId, BaseScriptID) == 0x000028, "Member 'FNiagaraVMExecutableDataId::BaseScriptID' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableDataId, BaseScriptCompileHash) == 0x000038, "Member 'FNiagaraVMExecutableDataId::BaseScriptCompileHash' has a wrong offset!");
-static_assert(offsetof(FNiagaraVMExecutableDataId, ScriptVersionID) == 0x000048, "Member 'FNiagaraVMExecutableDataId::ScriptVersionID' has a wrong offset!");
 
 // ScriptStruct Niagara.MovieSceneNiagaraIntegerParameterSectionTemplate
 // 0x0108 (0x0148 - 0x0040)
@@ -3534,6 +3542,19 @@ static_assert(offsetof(FNiagaraBakerCameraSettings, OrthoWidth) == 0x000040, "Me
 static_assert(offsetof(FNiagaraBakerCameraSettings, bUseAspectRatio) == 0x000044, "Member 'FNiagaraBakerCameraSettings::bUseAspectRatio' has a wrong offset!");
 static_assert(offsetof(FNiagaraBakerCameraSettings, AspectRatio) == 0x000048, "Member 'FNiagaraBakerCameraSettings::AspectRatio' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraParameterDataSetBinding
+// 0x0008 (0x0008 - 0x0000)
+struct FNiagaraParameterDataSetBinding final
+{
+public:
+	int32                                         ParameterOffset;                                   // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         DataSetComponentOffset;                            // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraParameterDataSetBinding) == 0x000004, "Wrong alignment on FNiagaraParameterDataSetBinding");
+static_assert(sizeof(FNiagaraParameterDataSetBinding) == 0x000008, "Wrong size on FNiagaraParameterDataSetBinding");
+static_assert(offsetof(FNiagaraParameterDataSetBinding, ParameterOffset) == 0x000000, "Member 'FNiagaraParameterDataSetBinding::ParameterOffset' has a wrong offset!");
+static_assert(offsetof(FNiagaraParameterDataSetBinding, DataSetComponentOffset) == 0x000004, "Member 'FNiagaraParameterDataSetBinding::DataSetComponentOffset' has a wrong offset!");
+
 // ScriptStruct Niagara.NiagaraBakerTextureSettings
 // 0x0040 (0x0040 - 0x0000)
 struct FNiagaraBakerTextureSettings final
@@ -3556,32 +3577,6 @@ static_assert(offsetof(FNiagaraBakerTextureSettings, FrameSize) == 0x000024, "Me
 static_assert(offsetof(FNiagaraBakerTextureSettings, TextureSize) == 0x00002C, "Member 'FNiagaraBakerTextureSettings::TextureSize' has a wrong offset!");
 static_assert(offsetof(FNiagaraBakerTextureSettings, GeneratedTexture) == 0x000038, "Member 'FNiagaraBakerTextureSettings::GeneratedTexture' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraParameterDataSetBinding
-// 0x0008 (0x0008 - 0x0000)
-struct FNiagaraParameterDataSetBinding final
-{
-public:
-	int32                                         ParameterOffset;                                   // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         DataSetComponentOffset;                            // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraParameterDataSetBinding) == 0x000004, "Wrong alignment on FNiagaraParameterDataSetBinding");
-static_assert(sizeof(FNiagaraParameterDataSetBinding) == 0x000008, "Wrong size on FNiagaraParameterDataSetBinding");
-static_assert(offsetof(FNiagaraParameterDataSetBinding, ParameterOffset) == 0x000000, "Member 'FNiagaraParameterDataSetBinding::ParameterOffset' has a wrong offset!");
-static_assert(offsetof(FNiagaraParameterDataSetBinding, DataSetComponentOffset) == 0x000004, "Member 'FNiagaraParameterDataSetBinding::DataSetComponentOffset' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraParameterDataSetBindingCollection
-// 0x0020 (0x0020 - 0x0000)
-struct FNiagaraParameterDataSetBindingCollection final
-{
-public:
-	TArray<struct FNiagaraParameterDataSetBinding> FloatOffsets;                                     // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FNiagaraParameterDataSetBinding> Int32Offsets;                                     // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraParameterDataSetBindingCollection) == 0x000008, "Wrong alignment on FNiagaraParameterDataSetBindingCollection");
-static_assert(sizeof(FNiagaraParameterDataSetBindingCollection) == 0x000020, "Wrong size on FNiagaraParameterDataSetBindingCollection");
-static_assert(offsetof(FNiagaraParameterDataSetBindingCollection, FloatOffsets) == 0x000000, "Member 'FNiagaraParameterDataSetBindingCollection::FloatOffsets' has a wrong offset!");
-static_assert(offsetof(FNiagaraParameterDataSetBindingCollection, Int32Offsets) == 0x000010, "Member 'FNiagaraParameterDataSetBindingCollection::Int32Offsets' has a wrong offset!");
-
 // ScriptStruct Niagara.NCPoolElement
 // 0x0010 (0x0010 - 0x0000)
 struct FNCPoolElement final
@@ -3594,6 +3589,19 @@ static_assert(alignof(FNCPoolElement) == 0x000008, "Wrong alignment on FNCPoolEl
 static_assert(sizeof(FNCPoolElement) == 0x000010, "Wrong size on FNCPoolElement");
 static_assert(offsetof(FNCPoolElement, Component) == 0x000000, "Member 'FNCPoolElement::Component' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraRendererMaterialVectorParameter
+// 0x0018 (0x0018 - 0x0000)
+struct FNiagaraRendererMaterialVectorParameter final
+{
+public:
+	class FName                                   MaterialParameterName;                             // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           Value;                                             // 0x0008(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraRendererMaterialVectorParameter) == 0x000004, "Wrong alignment on FNiagaraRendererMaterialVectorParameter");
+static_assert(sizeof(FNiagaraRendererMaterialVectorParameter) == 0x000018, "Wrong size on FNiagaraRendererMaterialVectorParameter");
+static_assert(offsetof(FNiagaraRendererMaterialVectorParameter, MaterialParameterName) == 0x000000, "Member 'FNiagaraRendererMaterialVectorParameter::MaterialParameterName' has a wrong offset!");
+static_assert(offsetof(FNiagaraRendererMaterialVectorParameter, Value) == 0x000008, "Member 'FNiagaraRendererMaterialVectorParameter::Value' has a wrong offset!");
+
 // ScriptStruct Niagara.NCPool
 // 0x0010 (0x0010 - 0x0000)
 struct FNCPool final
@@ -3604,19 +3612,6 @@ public:
 static_assert(alignof(FNCPool) == 0x000008, "Wrong alignment on FNCPool");
 static_assert(sizeof(FNCPool) == 0x000010, "Wrong size on FNCPool");
 static_assert(offsetof(FNCPool, FreeElements) == 0x000000, "Member 'FNCPool::FreeElements' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraRendererMaterialTextureParameter
-// 0x0010 (0x0010 - 0x0000)
-struct FNiagaraRendererMaterialTextureParameter final
-{
-public:
-	class FName                                   MaterialParameterName;                             // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTexture*                               Texture;                                           // 0x0008(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraRendererMaterialTextureParameter) == 0x000008, "Wrong alignment on FNiagaraRendererMaterialTextureParameter");
-static_assert(sizeof(FNiagaraRendererMaterialTextureParameter) == 0x000010, "Wrong size on FNiagaraRendererMaterialTextureParameter");
-static_assert(offsetof(FNiagaraRendererMaterialTextureParameter, MaterialParameterName) == 0x000000, "Member 'FNiagaraRendererMaterialTextureParameter::MaterialParameterName' has a wrong offset!");
-static_assert(offsetof(FNiagaraRendererMaterialTextureParameter, Texture) == 0x000008, "Member 'FNiagaraRendererMaterialTextureParameter::Texture' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraComponentPropertyBinding
 // 0x00A8 (0x00A8 - 0x0000)
@@ -3647,18 +3642,18 @@ public:
 static_assert(alignof(FNiagaraCulledComponentInfo) == 0x000004, "Wrong alignment on FNiagaraCulledComponentInfo");
 static_assert(sizeof(FNiagaraCulledComponentInfo) == 0x000008, "Wrong size on FNiagaraCulledComponentInfo");
 
-// ScriptStruct Niagara.NDIArraySimCacheDataFrame
-// 0x0008 (0x0008 - 0x0000)
-struct FNDIArraySimCacheDataFrame final
+// ScriptStruct Niagara.NiagaraDataInterfaceEmitterBinding
+// 0x000C (0x000C - 0x0000)
+struct FNiagaraDataInterfaceEmitterBinding final
 {
 public:
-	int32                                         NumElements;                                       // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         DataOffset;                                        // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraDataInterfaceEmitterBindingMode       BindingMode;                                       // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   EmitterName;                                       // 0x0004(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNDIArraySimCacheDataFrame) == 0x000004, "Wrong alignment on FNDIArraySimCacheDataFrame");
-static_assert(sizeof(FNDIArraySimCacheDataFrame) == 0x000008, "Wrong size on FNDIArraySimCacheDataFrame");
-static_assert(offsetof(FNDIArraySimCacheDataFrame, NumElements) == 0x000000, "Member 'FNDIArraySimCacheDataFrame::NumElements' has a wrong offset!");
-static_assert(offsetof(FNDIArraySimCacheDataFrame, DataOffset) == 0x000004, "Member 'FNDIArraySimCacheDataFrame::DataOffset' has a wrong offset!");
+static_assert(alignof(FNiagaraDataInterfaceEmitterBinding) == 0x000004, "Wrong alignment on FNiagaraDataInterfaceEmitterBinding");
+static_assert(sizeof(FNiagaraDataInterfaceEmitterBinding) == 0x00000C, "Wrong size on FNiagaraDataInterfaceEmitterBinding");
+static_assert(offsetof(FNiagaraDataInterfaceEmitterBinding, BindingMode) == 0x000000, "Member 'FNiagaraDataInterfaceEmitterBinding::BindingMode' has a wrong offset!");
+static_assert(offsetof(FNiagaraDataInterfaceEmitterBinding, EmitterName) == 0x000004, "Member 'FNiagaraDataInterfaceEmitterBinding::EmitterName' has a wrong offset!");
 
 // ScriptStruct Niagara.BasicParticleData
 // 0x0038 (0x0038 - 0x0000)
@@ -3712,6 +3707,19 @@ static_assert(offsetof(FNiagaraDataInterfaceSplineLUT, SplineDistanceStep) == 0x
 static_assert(offsetof(FNiagaraDataInterfaceSplineLUT, InvSplineDistanceStep) == 0x000038, "Member 'FNiagaraDataInterfaceSplineLUT::InvSplineDistanceStep' has a wrong offset!");
 static_assert(offsetof(FNiagaraDataInterfaceSplineLUT, MaxIndex) == 0x00003C, "Member 'FNiagaraDataInterfaceSplineLUT::MaxIndex' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraDebuggerRequestConnection
+// 0x0020 (0x0020 - 0x0000)
+struct FNiagaraDebuggerRequestConnection final
+{
+public:
+	struct FGuid                                  SessionId;                                         // 0x0000(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGuid                                  InstanceId;                                        // 0x0010(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraDebuggerRequestConnection) == 0x000004, "Wrong alignment on FNiagaraDebuggerRequestConnection");
+static_assert(sizeof(FNiagaraDebuggerRequestConnection) == 0x000020, "Wrong size on FNiagaraDebuggerRequestConnection");
+static_assert(offsetof(FNiagaraDebuggerRequestConnection, SessionId) == 0x000000, "Member 'FNiagaraDebuggerRequestConnection::SessionId' has a wrong offset!");
+static_assert(offsetof(FNiagaraDebuggerRequestConnection, InstanceId) == 0x000010, "Member 'FNiagaraDebuggerRequestConnection::InstanceId' has a wrong offset!");
+
 // ScriptStruct Niagara.NiagaraDebuggerAcceptConnection
 // 0x0020 (0x0020 - 0x0000)
 struct FNiagaraDebuggerAcceptConnection final
@@ -3738,37 +3746,30 @@ static_assert(sizeof(FNiagaraDebuggerConnectionClosed) == 0x000020, "Wrong size 
 static_assert(offsetof(FNiagaraDebuggerConnectionClosed, SessionId) == 0x000000, "Member 'FNiagaraDebuggerConnectionClosed::SessionId' has a wrong offset!");
 static_assert(offsetof(FNiagaraDebuggerConnectionClosed, InstanceId) == 0x000010, "Member 'FNiagaraDebuggerConnectionClosed::InstanceId' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraDebuggerExecuteConsoleCommand
-// 0x0018 (0x0018 - 0x0000)
-struct FNiagaraDebuggerExecuteConsoleCommand final
+// ScriptStruct Niagara.NiagaraDebuggerOutlinerUpdate
+// 0x0050 (0x0050 - 0x0000)
+struct FNiagaraDebuggerOutlinerUpdate final
 {
 public:
-	class FString                                 Command;                                           // 0x0000(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bRequiresWorld;                                    // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FNiagaraOutlinerData                   OutlinerData;                                      // 0x0000(0x0050)(Edit, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraDebuggerExecuteConsoleCommand) == 0x000008, "Wrong alignment on FNiagaraDebuggerExecuteConsoleCommand");
-static_assert(sizeof(FNiagaraDebuggerExecuteConsoleCommand) == 0x000018, "Wrong size on FNiagaraDebuggerExecuteConsoleCommand");
-static_assert(offsetof(FNiagaraDebuggerExecuteConsoleCommand, Command) == 0x000000, "Member 'FNiagaraDebuggerExecuteConsoleCommand::Command' has a wrong offset!");
-static_assert(offsetof(FNiagaraDebuggerExecuteConsoleCommand, bRequiresWorld) == 0x000010, "Member 'FNiagaraDebuggerExecuteConsoleCommand::bRequiresWorld' has a wrong offset!");
+static_assert(alignof(FNiagaraDebuggerOutlinerUpdate) == 0x000008, "Wrong alignment on FNiagaraDebuggerOutlinerUpdate");
+static_assert(sizeof(FNiagaraDebuggerOutlinerUpdate) == 0x000050, "Wrong size on FNiagaraDebuggerOutlinerUpdate");
+static_assert(offsetof(FNiagaraDebuggerOutlinerUpdate, OutlinerData) == 0x000000, "Member 'FNiagaraDebuggerOutlinerUpdate::OutlinerData' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraDebugHudTextOptions
+// ScriptStruct Niagara.NiagaraDebugHUDVariable
 // 0x0018 (0x0018 - 0x0000)
-struct FNiagaraDebugHudTextOptions final
+struct FNiagaraDebugHUDVariable final
 {
 public:
-	ENiagaraDebugHudFont                          Font;                                              // 0x0000(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ENiagaraDebugHudHAlign                        HorizontalAlignment;                               // 0x0004(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ENiagaraDebugHudVAlign                        VerticalAlignment;                                 // 0x0005(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              ScreenOffset;                                      // 0x0008(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bEnabled;                                          // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 Name;                                              // 0x0008(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraDebugHudTextOptions) == 0x000008, "Wrong alignment on FNiagaraDebugHudTextOptions");
-static_assert(sizeof(FNiagaraDebugHudTextOptions) == 0x000018, "Wrong size on FNiagaraDebugHudTextOptions");
-static_assert(offsetof(FNiagaraDebugHudTextOptions, Font) == 0x000000, "Member 'FNiagaraDebugHudTextOptions::Font' has a wrong offset!");
-static_assert(offsetof(FNiagaraDebugHudTextOptions, HorizontalAlignment) == 0x000004, "Member 'FNiagaraDebugHudTextOptions::HorizontalAlignment' has a wrong offset!");
-static_assert(offsetof(FNiagaraDebugHudTextOptions, VerticalAlignment) == 0x000005, "Member 'FNiagaraDebugHudTextOptions::VerticalAlignment' has a wrong offset!");
-static_assert(offsetof(FNiagaraDebugHudTextOptions, ScreenOffset) == 0x000008, "Member 'FNiagaraDebugHudTextOptions::ScreenOffset' has a wrong offset!");
+static_assert(alignof(FNiagaraDebugHUDVariable) == 0x000008, "Wrong alignment on FNiagaraDebugHUDVariable");
+static_assert(sizeof(FNiagaraDebugHUDVariable) == 0x000018, "Wrong size on FNiagaraDebugHUDVariable");
+static_assert(offsetof(FNiagaraDebugHUDVariable, bEnabled) == 0x000000, "Member 'FNiagaraDebugHUDVariable::bEnabled' has a wrong offset!");
+static_assert(offsetof(FNiagaraDebugHUDVariable, Name) == 0x000008, "Member 'FNiagaraDebugHUDVariable::Name' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraDebugHUDSettingsData
 // 0x0250 (0x0250 - 0x0000)
@@ -4019,74 +4020,37 @@ static_assert(sizeof(FNiagaraSystemSimCacheCaptureReply) == 0x000018, "Wrong siz
 static_assert(offsetof(FNiagaraSystemSimCacheCaptureReply, ComponentName) == 0x000000, "Member 'FNiagaraSystemSimCacheCaptureReply::ComponentName' has a wrong offset!");
 static_assert(offsetof(FNiagaraSystemSimCacheCaptureReply, SimCacheData) == 0x000008, "Member 'FNiagaraSystemSimCacheCaptureReply::SimCacheData' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraGraphViewSettings
-// 0x0018 (0x0018 - 0x0000)
-struct FNiagaraGraphViewSettings final
+// ScriptStruct Niagara.NiagaraSystemVisibilityCullingSettings
+// 0x000C (0x000C - 0x0000)
+struct FNiagaraSystemVisibilityCullingSettings final
 {
 public:
-	struct FVector2D                              Location;                                          // 0x0000(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         Zoom;                                              // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          bIsValid;                                          // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FNiagaraGraphViewSettings) == 0x000008, "Wrong alignment on FNiagaraGraphViewSettings");
-static_assert(sizeof(FNiagaraGraphViewSettings) == 0x000018, "Wrong size on FNiagaraGraphViewSettings");
-static_assert(offsetof(FNiagaraGraphViewSettings, Location) == 0x000000, "Member 'FNiagaraGraphViewSettings::Location' has a wrong offset!");
-static_assert(offsetof(FNiagaraGraphViewSettings, Zoom) == 0x000010, "Member 'FNiagaraGraphViewSettings::Zoom' has a wrong offset!");
-static_assert(offsetof(FNiagaraGraphViewSettings, bIsValid) == 0x000014, "Member 'FNiagaraGraphViewSettings::bIsValid' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraGlobalBudgetScaling
-// 0x0038 (0x0038 - 0x0000)
-struct FNiagaraGlobalBudgetScaling final
-{
-public:
-	uint8                                         bCullByGlobalBudget : 1;                           // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bScaleMaxDistanceByGlobalBudgetUse : 1;            // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bScaleMaxInstanceCountByGlobalBudgetUse : 1;       // 0x0000(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bScaleSystemInstanceCountByGlobalBudgetUse : 1;    // 0x0000(0x0001)(BitIndex: 0x03, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bCullWhenNotRendered : 1;                          // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bCullByViewFrustum : 1;                            // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bAllowPreCullingByViewFrustum : 1;                 // 0x0000(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
 	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         MaxGlobalBudgetUsage;                              // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FNiagaraLinearRamp                     MaxDistanceScaleByGlobalBudgetUse;                 // 0x0008(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	struct FNiagaraLinearRamp                     MaxInstanceCountScaleByGlobalBudgetUse;            // 0x0018(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	struct FNiagaraLinearRamp                     MaxSystemInstanceCountScaleByGlobalBudgetUse;      // 0x0028(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         MaxTimeOutsideViewFrustum;                         // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MaxTimeWithoutRender;                              // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraGlobalBudgetScaling) == 0x000004, "Wrong alignment on FNiagaraGlobalBudgetScaling");
-static_assert(sizeof(FNiagaraGlobalBudgetScaling) == 0x000038, "Wrong size on FNiagaraGlobalBudgetScaling");
-static_assert(offsetof(FNiagaraGlobalBudgetScaling, MaxGlobalBudgetUsage) == 0x000004, "Member 'FNiagaraGlobalBudgetScaling::MaxGlobalBudgetUsage' has a wrong offset!");
-static_assert(offsetof(FNiagaraGlobalBudgetScaling, MaxDistanceScaleByGlobalBudgetUse) == 0x000008, "Member 'FNiagaraGlobalBudgetScaling::MaxDistanceScaleByGlobalBudgetUse' has a wrong offset!");
-static_assert(offsetof(FNiagaraGlobalBudgetScaling, MaxInstanceCountScaleByGlobalBudgetUse) == 0x000018, "Member 'FNiagaraGlobalBudgetScaling::MaxInstanceCountScaleByGlobalBudgetUse' has a wrong offset!");
-static_assert(offsetof(FNiagaraGlobalBudgetScaling, MaxSystemInstanceCountScaleByGlobalBudgetUse) == 0x000028, "Member 'FNiagaraGlobalBudgetScaling::MaxSystemInstanceCountScaleByGlobalBudgetUse' has a wrong offset!");
+static_assert(alignof(FNiagaraSystemVisibilityCullingSettings) == 0x000004, "Wrong alignment on FNiagaraSystemVisibilityCullingSettings");
+static_assert(sizeof(FNiagaraSystemVisibilityCullingSettings) == 0x00000C, "Wrong size on FNiagaraSystemVisibilityCullingSettings");
+static_assert(offsetof(FNiagaraSystemVisibilityCullingSettings, MaxTimeOutsideViewFrustum) == 0x000004, "Member 'FNiagaraSystemVisibilityCullingSettings::MaxTimeOutsideViewFrustum' has a wrong offset!");
+static_assert(offsetof(FNiagaraSystemVisibilityCullingSettings, MaxTimeWithoutRender) == 0x000008, "Member 'FNiagaraSystemVisibilityCullingSettings::MaxTimeWithoutRender' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraPlatformSetCVarCondition
-// 0x0030 (0x0030 - 0x0000)
-struct alignas(0x08) FNiagaraPlatformSetCVarCondition final
+// ScriptStruct Niagara.NiagaraDeviceProfileStateEntry
+// 0x0010 (0x0010 - 0x0000)
+struct FNiagaraDeviceProfileStateEntry final
 {
 public:
-	class FName                                   CVarName;                                          // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ENiagaraCVarConditionResponse                 PassResponse;                                      // 0x0008(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ENiagaraCVarConditionResponse                 FailResponse;                                      // 0x0009(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Value;                                             // 0x000A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B[0x1];                                        // 0x000B(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         MinInt;                                            // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MaxInt;                                            // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MinFloat;                                          // 0x0014(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MaxFloat;                                          // 0x0018(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         bUseMinInt : 1;                                    // 0x001C(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bUseMaxInt : 1;                                    // 0x001C(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bUseMinFloat : 1;                                  // 0x001C(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bUseMaxFloat : 1;                                  // 0x001C(0x0001)(BitIndex: 0x03, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_1D[0x13];                                      // 0x001D(0x0013)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   ProfileName;                                       // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        QualityLevelMask;                                  // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        SetQualityLevelMask;                               // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraPlatformSetCVarCondition) == 0x000008, "Wrong alignment on FNiagaraPlatformSetCVarCondition");
-static_assert(sizeof(FNiagaraPlatformSetCVarCondition) == 0x000030, "Wrong size on FNiagaraPlatformSetCVarCondition");
-static_assert(offsetof(FNiagaraPlatformSetCVarCondition, CVarName) == 0x000000, "Member 'FNiagaraPlatformSetCVarCondition::CVarName' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetCVarCondition, PassResponse) == 0x000008, "Member 'FNiagaraPlatformSetCVarCondition::PassResponse' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetCVarCondition, FailResponse) == 0x000009, "Member 'FNiagaraPlatformSetCVarCondition::FailResponse' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetCVarCondition, Value) == 0x00000A, "Member 'FNiagaraPlatformSetCVarCondition::Value' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetCVarCondition, MinInt) == 0x00000C, "Member 'FNiagaraPlatformSetCVarCondition::MinInt' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetCVarCondition, MaxInt) == 0x000010, "Member 'FNiagaraPlatformSetCVarCondition::MaxInt' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetCVarCondition, MinFloat) == 0x000014, "Member 'FNiagaraPlatformSetCVarCondition::MinFloat' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetCVarCondition, MaxFloat) == 0x000018, "Member 'FNiagaraPlatformSetCVarCondition::MaxFloat' has a wrong offset!");
+static_assert(alignof(FNiagaraDeviceProfileStateEntry) == 0x000004, "Wrong alignment on FNiagaraDeviceProfileStateEntry");
+static_assert(sizeof(FNiagaraDeviceProfileStateEntry) == 0x000010, "Wrong size on FNiagaraDeviceProfileStateEntry");
+static_assert(offsetof(FNiagaraDeviceProfileStateEntry, ProfileName) == 0x000000, "Member 'FNiagaraDeviceProfileStateEntry::ProfileName' has a wrong offset!");
+static_assert(offsetof(FNiagaraDeviceProfileStateEntry, QualityLevelMask) == 0x000008, "Member 'FNiagaraDeviceProfileStateEntry::QualityLevelMask' has a wrong offset!");
+static_assert(offsetof(FNiagaraDeviceProfileStateEntry, SetQualityLevelMask) == 0x00000C, "Member 'FNiagaraDeviceProfileStateEntry::SetQualityLevelMask' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraPlatformSet
 // 0x0030 (0x0030 - 0x0000)
@@ -4306,6 +4270,24 @@ static_assert(offsetof(FNiagaraDetailsLevelScaleOverrides, High) == 0x000008, "M
 static_assert(offsetof(FNiagaraDetailsLevelScaleOverrides, Epic) == 0x00000C, "Member 'FNiagaraDetailsLevelScaleOverrides::Epic' has a wrong offset!");
 static_assert(offsetof(FNiagaraDetailsLevelScaleOverrides, Cine) == 0x000010, "Member 'FNiagaraDetailsLevelScaleOverrides::Cine' has a wrong offset!");
 
+// ScriptStruct Niagara.NiagaraAssetVersion
+// 0x001C (0x001C - 0x0000)
+struct FNiagaraAssetVersion final
+{
+public:
+	int32                                         MajorVersion;                                      // 0x0000(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MinorVersion;                                      // 0x0004(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGuid                                  VersionGuid;                                       // 0x0008(0x0010)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsVisibleInVersionSelector;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraAssetVersion) == 0x000004, "Wrong alignment on FNiagaraAssetVersion");
+static_assert(sizeof(FNiagaraAssetVersion) == 0x00001C, "Wrong size on FNiagaraAssetVersion");
+static_assert(offsetof(FNiagaraAssetVersion, MajorVersion) == 0x000000, "Member 'FNiagaraAssetVersion::MajorVersion' has a wrong offset!");
+static_assert(offsetof(FNiagaraAssetVersion, MinorVersion) == 0x000004, "Member 'FNiagaraAssetVersion::MinorVersion' has a wrong offset!");
+static_assert(offsetof(FNiagaraAssetVersion, VersionGuid) == 0x000008, "Member 'FNiagaraAssetVersion::VersionGuid' has a wrong offset!");
+static_assert(offsetof(FNiagaraAssetVersion, bIsVisibleInVersionSelector) == 0x000018, "Member 'FNiagaraAssetVersion::bIsVisibleInVersionSelector' has a wrong offset!");
+
 // ScriptStruct Niagara.VersionedNiagaraEmitterData
 // 0x0358 (0x0358 - 0x0000)
 struct FVersionedNiagaraEmitterData final
@@ -4377,31 +4359,6 @@ static_assert(offsetof(FVersionedNiagaraEmitterData, SimStageExecutionLoops) == 
 static_assert(offsetof(FVersionedNiagaraEmitterData, GPUComputeScript) == 0x000258, "Member 'FVersionedNiagaraEmitterData::GPUComputeScript' has a wrong offset!");
 static_assert(offsetof(FVersionedNiagaraEmitterData, SharedEventGeneratorIds) == 0x000260, "Member 'FVersionedNiagaraEmitterData::SharedEventGeneratorIds' has a wrong offset!");
 static_assert(offsetof(FVersionedNiagaraEmitterData, CurrentScalabilitySettings) == 0x000270, "Member 'FVersionedNiagaraEmitterData::CurrentScalabilitySettings' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraEmitterHandle
-// 0x0050 (0x0050 - 0x0000)
-struct FNiagaraEmitterHandle final
-{
-public:
-	class FName                                   Name;                                              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FGuid                                  ID;                                                // 0x0008(0x0010)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class FName                                   IdName;                                            // 0x0018(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          bIsEnabled;                                        // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVersionedNiagaraEmitter               VersionedInstance;                                 // 0x0028(0x0018)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UNiagaraStatelessEmitter*               StatelessEmitter;                                  // 0x0040(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	ENiagaraEmitterMode                           EmitterMode;                                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FNiagaraEmitterHandle) == 0x000008, "Wrong alignment on FNiagaraEmitterHandle");
-static_assert(sizeof(FNiagaraEmitterHandle) == 0x000050, "Wrong size on FNiagaraEmitterHandle");
-static_assert(offsetof(FNiagaraEmitterHandle, Name) == 0x000000, "Member 'FNiagaraEmitterHandle::Name' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterHandle, ID) == 0x000008, "Member 'FNiagaraEmitterHandle::ID' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterHandle, IdName) == 0x000018, "Member 'FNiagaraEmitterHandle::IdName' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterHandle, bIsEnabled) == 0x000020, "Member 'FNiagaraEmitterHandle::bIsEnabled' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterHandle, VersionedInstance) == 0x000028, "Member 'FNiagaraEmitterHandle::VersionedInstance' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterHandle, StatelessEmitter) == 0x000040, "Member 'FNiagaraEmitterHandle::StatelessEmitter' has a wrong offset!");
-static_assert(offsetof(FNiagaraEmitterHandle, EmitterMode) == 0x000048, "Member 'FNiagaraEmitterHandle::EmitterMode' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraCollisionEventPayload
 // 0x0050 (0x0050 - 0x0000)
@@ -4484,15 +4441,16 @@ static_assert(offsetof(FNiagaraMeshRendererMeshProperties, Rotation) == 0x000048
 static_assert(offsetof(FNiagaraMeshRendererMeshProperties, PivotOffset) == 0x000060, "Member 'FNiagaraMeshRendererMeshProperties::PivotOffset' has a wrong offset!");
 static_assert(offsetof(FNiagaraMeshRendererMeshProperties, PivotOffsetSpace) == 0x000078, "Member 'FNiagaraMeshRendererMeshProperties::PivotOffsetSpace' has a wrong offset!");
 
-// ScriptStruct Niagara.ParameterDefinitionsSubscription
-// 0x0001 (0x0001 - 0x0000)
-struct FParameterDefinitionsSubscription final
+// ScriptStruct Niagara.NiagaraParameters
+// 0x0010 (0x0010 - 0x0000)
+struct FNiagaraParameters final
 {
 public:
-	uint8                                         Pad_0[0x1];                                        // 0x0000(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TArray<struct FNiagaraVariable>               Parameters;                                        // 0x0000(0x0010)(Edit, EditFixedSize, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FParameterDefinitionsSubscription) == 0x000001, "Wrong alignment on FParameterDefinitionsSubscription");
-static_assert(sizeof(FParameterDefinitionsSubscription) == 0x000001, "Wrong size on FParameterDefinitionsSubscription");
+static_assert(alignof(FNiagaraParameters) == 0x000008, "Wrong alignment on FNiagaraParameters");
+static_assert(sizeof(FNiagaraParameters) == 0x000010, "Wrong size on FNiagaraParameters");
+static_assert(offsetof(FNiagaraParameters, Parameters) == 0x000000, "Member 'FNiagaraParameters::Parameters' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraBoundParameter
 // 0x0014 (0x0014 - 0x0000)
@@ -4554,39 +4512,31 @@ static_assert(offsetof(FNiagaraPlatformSetConflictInfo, SetAIndex) == 0x000000, 
 static_assert(offsetof(FNiagaraPlatformSetConflictInfo, SetBIndex) == 0x000004, "Member 'FNiagaraPlatformSetConflictInfo::SetBIndex' has a wrong offset!");
 static_assert(offsetof(FNiagaraPlatformSetConflictInfo, Conflicts) == 0x000008, "Member 'FNiagaraPlatformSetConflictInfo::Conflicts' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraPlatformSetRedirect
-// 0x0080 (0x0080 - 0x0000)
-struct FNiagaraPlatformSetRedirect final
-{
-public:
-	TArray<class FName>                           ProfileNames;                                      // 0x0000(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	ENiagaraDeviceProfileRedirectMode             Mode;                                              // 0x0010(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   RedirectProfileName;                               // 0x0014(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FNiagaraPlatformSetCVarCondition       CVarConditionEnabled;                              // 0x0020(0x0030)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	struct FNiagaraPlatformSetCVarCondition       CVarConditionDisabled;                             // 0x0050(0x0030)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraPlatformSetRedirect) == 0x000008, "Wrong alignment on FNiagaraPlatformSetRedirect");
-static_assert(sizeof(FNiagaraPlatformSetRedirect) == 0x000080, "Wrong size on FNiagaraPlatformSetRedirect");
-static_assert(offsetof(FNiagaraPlatformSetRedirect, ProfileNames) == 0x000000, "Member 'FNiagaraPlatformSetRedirect::ProfileNames' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetRedirect, Mode) == 0x000010, "Member 'FNiagaraPlatformSetRedirect::Mode' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetRedirect, RedirectProfileName) == 0x000014, "Member 'FNiagaraPlatformSetRedirect::RedirectProfileName' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetRedirect, CVarConditionEnabled) == 0x000020, "Member 'FNiagaraPlatformSetRedirect::CVarConditionEnabled' has a wrong offset!");
-static_assert(offsetof(FNiagaraPlatformSetRedirect, CVarConditionDisabled) == 0x000050, "Member 'FNiagaraPlatformSetRedirect::CVarConditionDisabled' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraRendererMaterialVectorParameter
-// 0x0018 (0x0018 - 0x0000)
-struct FNiagaraRendererMaterialVectorParameter final
+// ScriptStruct Niagara.NiagaraRendererMaterialScalarParameter
+// 0x000C (0x000C - 0x0000)
+struct FNiagaraRendererMaterialScalarParameter final
 {
 public:
 	class FName                                   MaterialParameterName;                             // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           Value;                                             // 0x0008(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Value;                                             // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraRendererMaterialVectorParameter) == 0x000004, "Wrong alignment on FNiagaraRendererMaterialVectorParameter");
-static_assert(sizeof(FNiagaraRendererMaterialVectorParameter) == 0x000018, "Wrong size on FNiagaraRendererMaterialVectorParameter");
-static_assert(offsetof(FNiagaraRendererMaterialVectorParameter, MaterialParameterName) == 0x000000, "Member 'FNiagaraRendererMaterialVectorParameter::MaterialParameterName' has a wrong offset!");
-static_assert(offsetof(FNiagaraRendererMaterialVectorParameter, Value) == 0x000008, "Member 'FNiagaraRendererMaterialVectorParameter::Value' has a wrong offset!");
+static_assert(alignof(FNiagaraRendererMaterialScalarParameter) == 0x000004, "Wrong alignment on FNiagaraRendererMaterialScalarParameter");
+static_assert(sizeof(FNiagaraRendererMaterialScalarParameter) == 0x00000C, "Wrong size on FNiagaraRendererMaterialScalarParameter");
+static_assert(offsetof(FNiagaraRendererMaterialScalarParameter, MaterialParameterName) == 0x000000, "Member 'FNiagaraRendererMaterialScalarParameter::MaterialParameterName' has a wrong offset!");
+static_assert(offsetof(FNiagaraRendererMaterialScalarParameter, Value) == 0x000008, "Member 'FNiagaraRendererMaterialScalarParameter::Value' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraRendererMaterialTextureParameter
+// 0x0010 (0x0010 - 0x0000)
+struct FNiagaraRendererMaterialTextureParameter final
+{
+public:
+	class FName                                   MaterialParameterName;                             // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTexture*                               Texture;                                           // 0x0008(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraRendererMaterialTextureParameter) == 0x000008, "Wrong alignment on FNiagaraRendererMaterialTextureParameter");
+static_assert(sizeof(FNiagaraRendererMaterialTextureParameter) == 0x000010, "Wrong size on FNiagaraRendererMaterialTextureParameter");
+static_assert(offsetof(FNiagaraRendererMaterialTextureParameter, MaterialParameterName) == 0x000000, "Member 'FNiagaraRendererMaterialTextureParameter::MaterialParameterName' has a wrong offset!");
+static_assert(offsetof(FNiagaraRendererMaterialTextureParameter, Texture) == 0x000008, "Member 'FNiagaraRendererMaterialTextureParameter::Texture' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraRendererMaterialStaticBoolParameter
 // 0x0010 (0x0010 - 0x0000)
@@ -4658,19 +4608,108 @@ static_assert(offsetof(FNiagaraRibbonUVSettings, TilingLength) == 0x000004, "Mem
 static_assert(offsetof(FNiagaraRibbonUVSettings, Offset) == 0x000008, "Member 'FNiagaraRibbonUVSettings::Offset' has a wrong offset!");
 static_assert(offsetof(FNiagaraRibbonUVSettings, Scale) == 0x000018, "Member 'FNiagaraRibbonUVSettings::Scale' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraScalabilityManager
-// 0x00E0 (0x00E0 - 0x0000)
-struct FNiagaraScalabilityManager final
+// ScriptStruct Niagara.NiagaraModuleDependency
+// 0x0060 (0x0060 - 0x0000)
+struct FNiagaraModuleDependency final
 {
 public:
-	class UNiagaraEffectType*                     EffectType;                                        // 0x0000(0x0008)(ZeroConstructor, Transient, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<class UNiagaraComponent*>              ManagedComponents;                                 // 0x0008(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, UObjectWrapper, NativeAccessSpecifierPublic)
-	uint8                                         Pad_18[0xC8];                                      // 0x0018(0x00C8)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   ID;                                                // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraModuleDependencyType                  Type;                                              // 0x0008(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraModuleDependencyScriptConstraint      ScriptConstraint;                                  // 0x0009(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 RequiredVersion;                                   // 0x0010(0x0010)(Edit, ZeroConstructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OnlyEvaluateInScriptUsage;                         // 0x0020(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   Description;                                       // 0x0028(0x0010)(Edit, AssetRegistrySearchable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_38[0x28];                                      // 0x0038(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FNiagaraScalabilityManager) == 0x000008, "Wrong alignment on FNiagaraScalabilityManager");
-static_assert(sizeof(FNiagaraScalabilityManager) == 0x0000E0, "Wrong size on FNiagaraScalabilityManager");
-static_assert(offsetof(FNiagaraScalabilityManager, EffectType) == 0x000000, "Member 'FNiagaraScalabilityManager::EffectType' has a wrong offset!");
-static_assert(offsetof(FNiagaraScalabilityManager, ManagedComponents) == 0x000008, "Member 'FNiagaraScalabilityManager::ManagedComponents' has a wrong offset!");
+static_assert(alignof(FNiagaraModuleDependency) == 0x000008, "Wrong alignment on FNiagaraModuleDependency");
+static_assert(sizeof(FNiagaraModuleDependency) == 0x000060, "Wrong size on FNiagaraModuleDependency");
+static_assert(offsetof(FNiagaraModuleDependency, ID) == 0x000000, "Member 'FNiagaraModuleDependency::ID' has a wrong offset!");
+static_assert(offsetof(FNiagaraModuleDependency, Type) == 0x000008, "Member 'FNiagaraModuleDependency::Type' has a wrong offset!");
+static_assert(offsetof(FNiagaraModuleDependency, ScriptConstraint) == 0x000009, "Member 'FNiagaraModuleDependency::ScriptConstraint' has a wrong offset!");
+static_assert(offsetof(FNiagaraModuleDependency, RequiredVersion) == 0x000010, "Member 'FNiagaraModuleDependency::RequiredVersion' has a wrong offset!");
+static_assert(offsetof(FNiagaraModuleDependency, OnlyEvaluateInScriptUsage) == 0x000020, "Member 'FNiagaraModuleDependency::OnlyEvaluateInScriptUsage' has a wrong offset!");
+static_assert(offsetof(FNiagaraModuleDependency, Description) == 0x000028, "Member 'FNiagaraModuleDependency::Description' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraVMExecutableDataId
+// 0x0058 (0x0058 - 0x0000)
+struct FNiagaraVMExecutableDataId final
+{
+public:
+	struct FGuid                                  CompilerVersionID;                                 // 0x0000(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ENiagaraScriptUsage                           ScriptUsageType;                                   // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGuid                                  ScriptUsageTypeID;                                 // 0x0014(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         bUsesRapidIterationParams : 1;                     // 0x0024(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bDisableDebugSwitches : 1;                         // 0x0024(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bInterpolatedSpawn : 1;                            // 0x0024(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bRequiresPersistentIDs : 1;                        // 0x0024(0x0001)(BitIndex: 0x03, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGuid                                  BaseScriptID;                                      // 0x0028(0x0010)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraCompileHash                    BaseScriptCompileHash;                             // 0x0038(0x0010)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGuid                                  ScriptVersionID;                                   // 0x0048(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FNiagaraVMExecutableDataId) == 0x000008, "Wrong alignment on FNiagaraVMExecutableDataId");
+static_assert(sizeof(FNiagaraVMExecutableDataId) == 0x000058, "Wrong size on FNiagaraVMExecutableDataId");
+static_assert(offsetof(FNiagaraVMExecutableDataId, CompilerVersionID) == 0x000000, "Member 'FNiagaraVMExecutableDataId::CompilerVersionID' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableDataId, ScriptUsageType) == 0x000010, "Member 'FNiagaraVMExecutableDataId::ScriptUsageType' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableDataId, ScriptUsageTypeID) == 0x000014, "Member 'FNiagaraVMExecutableDataId::ScriptUsageTypeID' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableDataId, BaseScriptID) == 0x000028, "Member 'FNiagaraVMExecutableDataId::BaseScriptID' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableDataId, BaseScriptCompileHash) == 0x000038, "Member 'FNiagaraVMExecutableDataId::BaseScriptCompileHash' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableDataId, ScriptVersionID) == 0x000048, "Member 'FNiagaraVMExecutableDataId::ScriptVersionID' has a wrong offset!");
+
+// ScriptStruct Niagara.NiagaraVMExecutableData
+// 0x01A0 (0x01A0 - 0x0000)
+struct FNiagaraVMExecutableData final
+{
+public:
+	struct FNiagaraVMExecutableByteCode           ByteCode;                                          // 0x0000(0x0018)(NativeAccessSpecifierPublic)
+	struct FNiagaraVMExecutableByteCode           OptimizedByteCode;                                 // 0x0018(0x0018)(Transient, NativeAccessSpecifierPublic)
+	uint8                                         Pad_30[0x38];                                      // 0x0030(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         NumTempRegisters;                                  // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         NumUserPtrs;                                       // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FNiagaraCompilerTag>            CompileTags;                                       // 0x0070(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<uint8>                                 ScriptLiterals;                                    // 0x0080(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FNiagaraVariableBase>           Attributes;                                        // 0x0090(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FNiagaraScriptDataUsageInfo            DataUsage;                                         // 0x00A0(0x0001)(NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A1[0x7];                                       // 0x00A1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FNiagaraScriptUObjectCompileInfo> UObjectInfos;                                    // 0x00A8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FNiagaraScriptDataInterfaceCompileInfo> DataInterfaceInfo;                         // 0x00B8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FVMExternalFunctionBindingInfo> CalledVMExternalFunctions;                         // 0x00C8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D8[0x10];                                      // 0x00D8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FNiagaraDataSetID>              ReadDataSets;                                      // 0x00E8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FNiagaraDataSetProperties>      WriteDataSets;                                     // 0x00F8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FNiagaraStatScope>              StatScopes;                                        // 0x0108(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FNiagaraShaderScriptParametersMetadata ShaderScriptParametersMetadata;                    // 0x0118(0x0058)(NativeAccessSpecifierPublic)
+	ENiagaraScriptCompileStatus                   LastCompileStatus;                                 // 0x0170(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_171[0x7];                                      // 0x0171(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FSimulationStageMetaData>       SimulationStageMetaData;                           // 0x0178(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<uint8>                                 ExperimentalContextData;                           // 0x0188(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	uint8                                         bReadsSignificanceIndex : 1;                       // 0x0198(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bNeedsGPUContextInit : 1;                          // 0x0198(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_199[0x7];                                      // 0x0199(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+static_assert(alignof(FNiagaraVMExecutableData) == 0x000008, "Wrong alignment on FNiagaraVMExecutableData");
+static_assert(sizeof(FNiagaraVMExecutableData) == 0x0001A0, "Wrong size on FNiagaraVMExecutableData");
+static_assert(offsetof(FNiagaraVMExecutableData, ByteCode) == 0x000000, "Member 'FNiagaraVMExecutableData::ByteCode' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, OptimizedByteCode) == 0x000018, "Member 'FNiagaraVMExecutableData::OptimizedByteCode' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, NumTempRegisters) == 0x000068, "Member 'FNiagaraVMExecutableData::NumTempRegisters' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, NumUserPtrs) == 0x00006C, "Member 'FNiagaraVMExecutableData::NumUserPtrs' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, CompileTags) == 0x000070, "Member 'FNiagaraVMExecutableData::CompileTags' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, ScriptLiterals) == 0x000080, "Member 'FNiagaraVMExecutableData::ScriptLiterals' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, Attributes) == 0x000090, "Member 'FNiagaraVMExecutableData::Attributes' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, DataUsage) == 0x0000A0, "Member 'FNiagaraVMExecutableData::DataUsage' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, UObjectInfos) == 0x0000A8, "Member 'FNiagaraVMExecutableData::UObjectInfos' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, DataInterfaceInfo) == 0x0000B8, "Member 'FNiagaraVMExecutableData::DataInterfaceInfo' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, CalledVMExternalFunctions) == 0x0000C8, "Member 'FNiagaraVMExecutableData::CalledVMExternalFunctions' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, ReadDataSets) == 0x0000E8, "Member 'FNiagaraVMExecutableData::ReadDataSets' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, WriteDataSets) == 0x0000F8, "Member 'FNiagaraVMExecutableData::WriteDataSets' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, StatScopes) == 0x000108, "Member 'FNiagaraVMExecutableData::StatScopes' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, ShaderScriptParametersMetadata) == 0x000118, "Member 'FNiagaraVMExecutableData::ShaderScriptParametersMetadata' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, LastCompileStatus) == 0x000170, "Member 'FNiagaraVMExecutableData::LastCompileStatus' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, SimulationStageMetaData) == 0x000178, "Member 'FNiagaraVMExecutableData::SimulationStageMetaData' has a wrong offset!");
+static_assert(offsetof(FNiagaraVMExecutableData, ExperimentalContextData) == 0x000188, "Member 'FNiagaraVMExecutableData::ExperimentalContextData' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraInlineDynamicInputFormatToken
 // 0x0001 (0x0001 - 0x0000)
@@ -4692,22 +4731,18 @@ public:
 static_assert(alignof(FVersionedNiagaraScriptData) == 0x000001, "Wrong alignment on FVersionedNiagaraScriptData");
 static_assert(sizeof(FVersionedNiagaraScriptData) == 0x000001, "Wrong size on FVersionedNiagaraScriptData");
 
-// ScriptStruct Niagara.NiagaraScriptExecutionPaddingInfo
-// 0x0008 (0x0008 - 0x0000)
-struct FNiagaraScriptExecutionPaddingInfo final
+// ScriptStruct Niagara.NiagaraScriptExecutionParameterStore
+// 0x0008 (0x0090 - 0x0088)
+struct FNiagaraScriptExecutionParameterStore final : public FNiagaraParameterStore
 {
 public:
-	uint16                                        SrcOffset;                                         // 0x0000(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        DestOffset;                                        // 0x0002(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        SrcSize;                                           // 0x0004(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        DestSize;                                          // 0x0006(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParameterSize;                                     // 0x0088(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         bInitialized : 1;                                  // 0x008C(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_8D[0x3];                                       // 0x008D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FNiagaraScriptExecutionPaddingInfo) == 0x000002, "Wrong alignment on FNiagaraScriptExecutionPaddingInfo");
-static_assert(sizeof(FNiagaraScriptExecutionPaddingInfo) == 0x000008, "Wrong size on FNiagaraScriptExecutionPaddingInfo");
-static_assert(offsetof(FNiagaraScriptExecutionPaddingInfo, SrcOffset) == 0x000000, "Member 'FNiagaraScriptExecutionPaddingInfo::SrcOffset' has a wrong offset!");
-static_assert(offsetof(FNiagaraScriptExecutionPaddingInfo, DestOffset) == 0x000002, "Member 'FNiagaraScriptExecutionPaddingInfo::DestOffset' has a wrong offset!");
-static_assert(offsetof(FNiagaraScriptExecutionPaddingInfo, SrcSize) == 0x000004, "Member 'FNiagaraScriptExecutionPaddingInfo::SrcSize' has a wrong offset!");
-static_assert(offsetof(FNiagaraScriptExecutionPaddingInfo, DestSize) == 0x000006, "Member 'FNiagaraScriptExecutionPaddingInfo::DestSize' has a wrong offset!");
+static_assert(alignof(FNiagaraScriptExecutionParameterStore) == 0x000008, "Wrong alignment on FNiagaraScriptExecutionParameterStore");
+static_assert(sizeof(FNiagaraScriptExecutionParameterStore) == 0x000090, "Wrong size on FNiagaraScriptExecutionParameterStore");
+static_assert(offsetof(FNiagaraScriptExecutionParameterStore, ParameterSize) == 0x000088, "Member 'FNiagaraScriptExecutionParameterStore::ParameterSize' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraScriptInstanceParameterStore
 // 0x0010 (0x0098 - 0x0088)
@@ -4800,77 +4835,45 @@ static_assert(offsetof(FNiagaraSimCacheFrame, SimulationTickCount) == 0x000070, 
 static_assert(offsetof(FNiagaraSimCacheFrame, SystemData) == 0x000078, "Member 'FNiagaraSimCacheFrame::SystemData' has a wrong offset!");
 static_assert(offsetof(FNiagaraSimCacheFrame, EmitterData) == 0x000148, "Member 'FNiagaraSimCacheFrame::EmitterData' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraSimCacheVariable
-// 0x0018 (0x0018 - 0x0000)
-struct FNiagaraSimCacheVariable final
+// ScriptStruct Niagara.NiagaraEmitterCompiledData
+// 0x0138 (0x0138 - 0x0000)
+struct FNiagaraEmitterCompiledData final
 {
 public:
-	struct FNiagaraVariableBase                   Variable;                                          // 0x0000(0x000C)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        FloatOffset;                                       // 0x000C(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        FloatCount;                                        // 0x000E(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        HalfOffset;                                        // 0x0010(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        HalfCount;                                         // 0x0012(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        Int32Offset;                                       // 0x0014(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        Int32Count;                                        // 0x0016(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class FName>                           SpawnAttributes;                                   // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FNiagaraVariable                       EmitterSpawnIntervalVar;                           // 0x0010(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraVariable                       EmitterInterpSpawnStartDTVar;                      // 0x0030(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraVariable                       EmitterSpawnGroupVar;                              // 0x0050(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraVariable                       EmitterAgeVar;                                     // 0x0070(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraVariable                       EmitterRandomSeedVar;                              // 0x0090(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraVariable                       EmitterInstanceSeedVar;                            // 0x00B0(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraVariable                       EmitterTotalSpawnedParticlesVar;                   // 0x00D0(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FNiagaraDataSetCompiledData            DataSetCompiledData;                               // 0x00F0(0x0048)(NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraSimCacheVariable) == 0x000004, "Wrong alignment on FNiagaraSimCacheVariable");
-static_assert(sizeof(FNiagaraSimCacheVariable) == 0x000018, "Wrong size on FNiagaraSimCacheVariable");
-static_assert(offsetof(FNiagaraSimCacheVariable, Variable) == 0x000000, "Member 'FNiagaraSimCacheVariable::Variable' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheVariable, FloatOffset) == 0x00000C, "Member 'FNiagaraSimCacheVariable::FloatOffset' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheVariable, FloatCount) == 0x00000E, "Member 'FNiagaraSimCacheVariable::FloatCount' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheVariable, HalfOffset) == 0x000010, "Member 'FNiagaraSimCacheVariable::HalfOffset' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheVariable, HalfCount) == 0x000012, "Member 'FNiagaraSimCacheVariable::HalfCount' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheVariable, Int32Offset) == 0x000014, "Member 'FNiagaraSimCacheVariable::Int32Offset' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheVariable, Int32Count) == 0x000016, "Member 'FNiagaraSimCacheVariable::Int32Count' has a wrong offset!");
+static_assert(alignof(FNiagaraEmitterCompiledData) == 0x000008, "Wrong alignment on FNiagaraEmitterCompiledData");
+static_assert(sizeof(FNiagaraEmitterCompiledData) == 0x000138, "Wrong size on FNiagaraEmitterCompiledData");
+static_assert(offsetof(FNiagaraEmitterCompiledData, SpawnAttributes) == 0x000000, "Member 'FNiagaraEmitterCompiledData::SpawnAttributes' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterSpawnIntervalVar) == 0x000010, "Member 'FNiagaraEmitterCompiledData::EmitterSpawnIntervalVar' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterInterpSpawnStartDTVar) == 0x000030, "Member 'FNiagaraEmitterCompiledData::EmitterInterpSpawnStartDTVar' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterSpawnGroupVar) == 0x000050, "Member 'FNiagaraEmitterCompiledData::EmitterSpawnGroupVar' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterAgeVar) == 0x000070, "Member 'FNiagaraEmitterCompiledData::EmitterAgeVar' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterRandomSeedVar) == 0x000090, "Member 'FNiagaraEmitterCompiledData::EmitterRandomSeedVar' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterInstanceSeedVar) == 0x0000B0, "Member 'FNiagaraEmitterCompiledData::EmitterInstanceSeedVar' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterCompiledData, EmitterTotalSpawnedParticlesVar) == 0x0000D0, "Member 'FNiagaraEmitterCompiledData::EmitterTotalSpawnedParticlesVar' has a wrong offset!");
+static_assert(offsetof(FNiagaraEmitterCompiledData, DataSetCompiledData) == 0x0000F0, "Member 'FNiagaraEmitterCompiledData::DataSetCompiledData' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraSimCacheDataBuffersLayout
-// 0x00B8 (0x00B8 - 0x0000)
-struct FNiagaraSimCacheDataBuffersLayout final
+// ScriptStruct Niagara.NiagaraParameterDataSetBindingCollection
+// 0x0020 (0x0020 - 0x0000)
+struct FNiagaraParameterDataSetBindingCollection final
 {
 public:
-	class FName                                   LayoutName;                                        // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ENiagaraSimTarget                             SimTarget;                                         // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FNiagaraSimCacheVariable>       Variables;                                         // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	uint16                                        FloatCount;                                        // 0x0020(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        HalfCount;                                         // 0x0022(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        Int32Count;                                        // 0x0024(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bLocalSpace;                                       // 0x0026(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAllowInterpolation;                               // 0x0027(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAllowVelocityExtrapolation;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FName>                           RebaseVariableNames;                               // 0x0030(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<class FName>                           InterpVariableNames;                               // 0x0040(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	uint16                                        ComponentVelocity;                                 // 0x0050(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_52[0x66];                                      // 0x0052(0x0066)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TArray<struct FNiagaraParameterDataSetBinding> FloatOffsets;                                     // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FNiagaraParameterDataSetBinding> Int32Offsets;                                     // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraSimCacheDataBuffersLayout) == 0x000008, "Wrong alignment on FNiagaraSimCacheDataBuffersLayout");
-static_assert(sizeof(FNiagaraSimCacheDataBuffersLayout) == 0x0000B8, "Wrong size on FNiagaraSimCacheDataBuffersLayout");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, LayoutName) == 0x000000, "Member 'FNiagaraSimCacheDataBuffersLayout::LayoutName' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, SimTarget) == 0x000008, "Member 'FNiagaraSimCacheDataBuffersLayout::SimTarget' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, Variables) == 0x000010, "Member 'FNiagaraSimCacheDataBuffersLayout::Variables' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, FloatCount) == 0x000020, "Member 'FNiagaraSimCacheDataBuffersLayout::FloatCount' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, HalfCount) == 0x000022, "Member 'FNiagaraSimCacheDataBuffersLayout::HalfCount' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, Int32Count) == 0x000024, "Member 'FNiagaraSimCacheDataBuffersLayout::Int32Count' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, bLocalSpace) == 0x000026, "Member 'FNiagaraSimCacheDataBuffersLayout::bLocalSpace' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, bAllowInterpolation) == 0x000027, "Member 'FNiagaraSimCacheDataBuffersLayout::bAllowInterpolation' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, bAllowVelocityExtrapolation) == 0x000028, "Member 'FNiagaraSimCacheDataBuffersLayout::bAllowVelocityExtrapolation' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, RebaseVariableNames) == 0x000030, "Member 'FNiagaraSimCacheDataBuffersLayout::RebaseVariableNames' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, InterpVariableNames) == 0x000040, "Member 'FNiagaraSimCacheDataBuffersLayout::InterpVariableNames' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheDataBuffersLayout, ComponentVelocity) == 0x000050, "Member 'FNiagaraSimCacheDataBuffersLayout::ComponentVelocity' has a wrong offset!");
-
-// ScriptStruct Niagara.NiagaraSimCacheLayout
-// 0x00C8 (0x00C8 - 0x0000)
-struct FNiagaraSimCacheLayout final
-{
-public:
-	struct FNiagaraSimCacheDataBuffersLayout      SystemLayout;                                      // 0x0000(0x00B8)(NativeAccessSpecifierPublic)
-	TArray<struct FNiagaraSimCacheDataBuffersLayout> EmitterLayouts;                                 // 0x00B8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FNiagaraSimCacheLayout) == 0x000008, "Wrong alignment on FNiagaraSimCacheLayout");
-static_assert(sizeof(FNiagaraSimCacheLayout) == 0x0000C8, "Wrong size on FNiagaraSimCacheLayout");
-static_assert(offsetof(FNiagaraSimCacheLayout, SystemLayout) == 0x000000, "Member 'FNiagaraSimCacheLayout::SystemLayout' has a wrong offset!");
-static_assert(offsetof(FNiagaraSimCacheLayout, EmitterLayouts) == 0x0000B8, "Member 'FNiagaraSimCacheLayout::EmitterLayouts' has a wrong offset!");
+static_assert(alignof(FNiagaraParameterDataSetBindingCollection) == 0x000008, "Wrong alignment on FNiagaraParameterDataSetBindingCollection");
+static_assert(sizeof(FNiagaraParameterDataSetBindingCollection) == 0x000020, "Wrong size on FNiagaraParameterDataSetBindingCollection");
+static_assert(offsetof(FNiagaraParameterDataSetBindingCollection, FloatOffsets) == 0x000000, "Member 'FNiagaraParameterDataSetBindingCollection::FloatOffsets' has a wrong offset!");
+static_assert(offsetof(FNiagaraParameterDataSetBindingCollection, Int32Offsets) == 0x000010, "Member 'FNiagaraParameterDataSetBindingCollection::Int32Offsets' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraSystemCompiledData
 // 0x0240 (0x0240 - 0x0000)
@@ -4916,15 +4919,16 @@ static_assert(alignof(FNiagaraSystemScalabilityOverrides) == 0x000008, "Wrong al
 static_assert(sizeof(FNiagaraSystemScalabilityOverrides) == 0x000010, "Wrong size on FNiagaraSystemScalabilityOverrides");
 static_assert(offsetof(FNiagaraSystemScalabilityOverrides, Overrides) == 0x000000, "Member 'FNiagaraSystemScalabilityOverrides::Overrides' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraWildcard
-// 0x0001 (0x0001 - 0x0000)
-struct FNiagaraWildcard final
+// ScriptStruct Niagara.NiagaraFloat
+// 0x0004 (0x0004 - 0x0000)
+struct FNiagaraFloat final
 {
 public:
-	uint8                                         Pad_0[0x1];                                        // 0x0000(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         Value;                                             // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraWildcard) == 0x000001, "Wrong alignment on FNiagaraWildcard");
-static_assert(sizeof(FNiagaraWildcard) == 0x000001, "Wrong size on FNiagaraWildcard");
+static_assert(alignof(FNiagaraFloat) == 0x000004, "Wrong alignment on FNiagaraFloat");
+static_assert(sizeof(FNiagaraFloat) == 0x000004, "Wrong size on FNiagaraFloat");
+static_assert(offsetof(FNiagaraFloat, Value) == 0x000000, "Member 'FNiagaraFloat::Value' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraInt32
 // 0x0004 (0x0004 - 0x0000)
@@ -4948,26 +4952,31 @@ static_assert(alignof(FNiagaraBool) == 0x000004, "Wrong alignment on FNiagaraBoo
 static_assert(sizeof(FNiagaraBool) == 0x000004, "Wrong size on FNiagaraBool");
 static_assert(offsetof(FNiagaraBool, Value) == 0x000000, "Member 'FNiagaraBool::Value' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraPosition
-// 0x0000 (0x000C - 0x000C)
-struct FNiagaraPosition final : public FVector3f
+// ScriptStruct Niagara.NiagaraHalf
+// 0x0002 (0x0002 - 0x0000)
+struct FNiagaraHalf final
 {
+public:
+	uint16                                        Value;                                             // 0x0000(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraPosition) == 0x000004, "Wrong alignment on FNiagaraPosition");
-static_assert(sizeof(FNiagaraPosition) == 0x00000C, "Wrong size on FNiagaraPosition");
+static_assert(alignof(FNiagaraHalf) == 0x000002, "Wrong alignment on FNiagaraHalf");
+static_assert(sizeof(FNiagaraHalf) == 0x000002, "Wrong size on FNiagaraHalf");
+static_assert(offsetof(FNiagaraHalf, Value) == 0x000000, "Member 'FNiagaraHalf::Value' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraHalfVector2
-// 0x0004 (0x0004 - 0x0000)
-struct FNiagaraHalfVector2 final
+// ScriptStruct Niagara.NiagaraHalfVector3
+// 0x0006 (0x0006 - 0x0000)
+struct FNiagaraHalfVector3 final
 {
 public:
 	uint16                                        X;                                                 // 0x0000(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint16                                        Y;                                                 // 0x0002(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        Z;                                                 // 0x0004(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraHalfVector2) == 0x000002, "Wrong alignment on FNiagaraHalfVector2");
-static_assert(sizeof(FNiagaraHalfVector2) == 0x000004, "Wrong size on FNiagaraHalfVector2");
-static_assert(offsetof(FNiagaraHalfVector2, X) == 0x000000, "Member 'FNiagaraHalfVector2::X' has a wrong offset!");
-static_assert(offsetof(FNiagaraHalfVector2, Y) == 0x000002, "Member 'FNiagaraHalfVector2::Y' has a wrong offset!");
+static_assert(alignof(FNiagaraHalfVector3) == 0x000002, "Wrong alignment on FNiagaraHalfVector3");
+static_assert(sizeof(FNiagaraHalfVector3) == 0x000006, "Wrong size on FNiagaraHalfVector3");
+static_assert(offsetof(FNiagaraHalfVector3, X) == 0x000000, "Member 'FNiagaraHalfVector3::X' has a wrong offset!");
+static_assert(offsetof(FNiagaraHalfVector3, Y) == 0x000002, "Member 'FNiagaraHalfVector3::Y' has a wrong offset!");
+static_assert(offsetof(FNiagaraHalfVector3, Z) == 0x000004, "Member 'FNiagaraHalfVector3::Z' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraHalfVector4
 // 0x0008 (0x0008 - 0x0000)
@@ -5045,37 +5054,29 @@ static_assert(alignof(FNiagaraEmitterID) == 0x000004, "Wrong alignment on FNiaga
 static_assert(sizeof(FNiagaraEmitterID) == 0x000004, "Wrong size on FNiagaraEmitterID");
 static_assert(offsetof(FNiagaraEmitterID, ID) == 0x000000, "Member 'FNiagaraEmitterID::ID' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraSpawnInfo
-// 0x0010 (0x0010 - 0x0000)
-struct FNiagaraSpawnInfo final
+// ScriptStruct Niagara.NiagaraID
+// 0x0008 (0x0008 - 0x0000)
+struct FNiagaraID final
 {
 public:
-	int32                                         Count;                                             // 0x0000(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         InterpStartDt;                                     // 0x0004(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         IntervalDt;                                        // 0x0008(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         SpawnGroup;                                        // 0x000C(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Index;                                             // 0x0000(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         AcquireTag;                                        // 0x0004(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FNiagaraSpawnInfo) == 0x000004, "Wrong alignment on FNiagaraSpawnInfo");
-static_assert(sizeof(FNiagaraSpawnInfo) == 0x000010, "Wrong size on FNiagaraSpawnInfo");
-static_assert(offsetof(FNiagaraSpawnInfo, Count) == 0x000000, "Member 'FNiagaraSpawnInfo::Count' has a wrong offset!");
-static_assert(offsetof(FNiagaraSpawnInfo, InterpStartDt) == 0x000004, "Member 'FNiagaraSpawnInfo::InterpStartDt' has a wrong offset!");
-static_assert(offsetof(FNiagaraSpawnInfo, IntervalDt) == 0x000008, "Member 'FNiagaraSpawnInfo::IntervalDt' has a wrong offset!");
-static_assert(offsetof(FNiagaraSpawnInfo, SpawnGroup) == 0x00000C, "Member 'FNiagaraSpawnInfo::SpawnGroup' has a wrong offset!");
+static_assert(alignof(FNiagaraID) == 0x000004, "Wrong alignment on FNiagaraID");
+static_assert(sizeof(FNiagaraID) == 0x000008, "Wrong size on FNiagaraID");
+static_assert(offsetof(FNiagaraID, Index) == 0x000000, "Member 'FNiagaraID::Index' has a wrong offset!");
+static_assert(offsetof(FNiagaraID, AcquireTag) == 0x000004, "Member 'FNiagaraID::AcquireTag' has a wrong offset!");
 
-// ScriptStruct Niagara.NiagaraRandInfo
-// 0x000C (0x000C - 0x0000)
-struct FNiagaraRandInfo final
+// ScriptStruct Niagara.NiagaraUserRedirectionParameterStore
+// 0x0050 (0x00D8 - 0x0088)
+struct FNiagaraUserRedirectionParameterStore final : public FNiagaraParameterStore
 {
 public:
-	int32                                         Seed1;                                             // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Seed2;                                             // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Seed3;                                             // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TMap<struct FNiagaraVariable, struct FNiagaraVariable> UserParameterRedirects;                   // 0x0088(0x0050)(NativeAccessSpecifierPrivate)
 };
-static_assert(alignof(FNiagaraRandInfo) == 0x000004, "Wrong alignment on FNiagaraRandInfo");
-static_assert(sizeof(FNiagaraRandInfo) == 0x00000C, "Wrong size on FNiagaraRandInfo");
-static_assert(offsetof(FNiagaraRandInfo, Seed1) == 0x000000, "Member 'FNiagaraRandInfo::Seed1' has a wrong offset!");
-static_assert(offsetof(FNiagaraRandInfo, Seed2) == 0x000004, "Member 'FNiagaraRandInfo::Seed2' has a wrong offset!");
-static_assert(offsetof(FNiagaraRandInfo, Seed3) == 0x000008, "Member 'FNiagaraRandInfo::Seed3' has a wrong offset!");
+static_assert(alignof(FNiagaraUserRedirectionParameterStore) == 0x000008, "Wrong alignment on FNiagaraUserRedirectionParameterStore");
+static_assert(sizeof(FNiagaraUserRedirectionParameterStore) == 0x0000D8, "Wrong size on FNiagaraUserRedirectionParameterStore");
+static_assert(offsetof(FNiagaraUserRedirectionParameterStore, UserParameterRedirects) == 0x000088, "Member 'FNiagaraUserRedirectionParameterStore::UserParameterRedirects' has a wrong offset!");
 
 // ScriptStruct Niagara.NiagaraVariant
 // 0x0028 (0x0028 - 0x0000)

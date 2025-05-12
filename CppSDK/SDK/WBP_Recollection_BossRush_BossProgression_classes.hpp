@@ -42,12 +42,12 @@ public:
 	TArray<class UWBP_Recollection_BossRush_BossProgression_Entry_C*> Entries;                       // 0x04E8(0x0010)(Edit, BlueprintVisible, Transient, DisableEditOnInstance, ContainsInstancedReference, AdvancedDisplay)
 
 public:
-	void Construct();
-	void ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression(int32 EntryPoint);
-	void ResetEntries();
-	void SetActiveEntry(int32 Index_0);
-	void SetBossesDefeatedCount(int32 Count);
 	void SetDefeatedEntry(int32 Index_0);
+	void SetBossesDefeatedCount(int32 Count);
+	void SetActiveEntry(int32 Index_0);
+	void ResetEntries();
+	void ExecuteUbergraph_WBP_Recollection_BossRush_BossProgression(int32 EntryPoint);
+	void Construct();
 
 public:
 	static class UClass* StaticClass()

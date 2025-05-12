@@ -17,17 +17,23 @@
 namespace SDK
 {
 
-// Function WBP_Loadout_EntrySlot.WBP_Loadout_EntrySlot_C.Construct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Function WBP_Loadout_EntrySlot.WBP_Loadout_EntrySlot_C.SetSelected
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    bSelected                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Loadout_EntrySlot_C::Construct()
+void UWBP_Loadout_EntrySlot_C::SetSelected(bool bSelected)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Loadout_EntrySlot_C", "Construct");
+		Func = Class->GetFunction("WBP_Loadout_EntrySlot_C", "SetSelected");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::WBP_Loadout_EntrySlot_C_SetSelected Parms{};
+
+	Parms.bSelected = bSelected;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -51,23 +57,17 @@ void UWBP_Loadout_EntrySlot_C::ExecuteUbergraph_WBP_Loadout_EntrySlot(int32 Entr
 }
 
 
-// Function WBP_Loadout_EntrySlot.WBP_Loadout_EntrySlot_C.SetSelected
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    bSelected                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function WBP_Loadout_EntrySlot.WBP_Loadout_EntrySlot_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
 
-void UWBP_Loadout_EntrySlot_C::SetSelected(bool bSelected)
+void UWBP_Loadout_EntrySlot_C::Construct()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Loadout_EntrySlot_C", "SetSelected");
+		Func = Class->GetFunction("WBP_Loadout_EntrySlot_C", "Construct");
 
-	Params::WBP_Loadout_EntrySlot_C_SetSelected Parms{};
-
-	Parms.bSelected = bSelected;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

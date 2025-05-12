@@ -20,10 +20,10 @@
 #include "PhysicsCore_structs.hpp"
 #include "PhysicsCore_classes.hpp"
 #include "AudioPlatformConfiguration_structs.hpp"
-#include "AudioExtensions_structs.hpp"
-#include "AudioExtensions_classes.hpp"
 #include "Chaos_structs.hpp"
 #include "MeshDescription_classes.hpp"
+#include "AudioExtensions_structs.hpp"
+#include "AudioExtensions_classes.hpp"
 #include "SlateCore_structs.hpp"
 #include "IrisCore_classes.hpp"
 #include "NetCore_structs.hpp"
@@ -12289,7 +12289,7 @@ static_assert(offsetof(UInGameAdManager, ClosedAdDelegates) == 0x000050, "Member
 
 // Class Engine.LevelScriptActor
 // 0x0008 (0x0298 - 0x0290)
-class ALevelScriptActor final : public AActor
+class ALevelScriptActor : public AActor
 {
 public:
 	uint8                                         bInputEnabled : 1;                                 // 0x0290(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate))

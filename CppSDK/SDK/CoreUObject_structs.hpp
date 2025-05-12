@@ -1055,6 +1055,19 @@ static_assert(offsetof(FBox2D, Min) == 0x000000, "Member 'FBox2D::Min' has a wro
 static_assert(offsetof(FBox2D, Max) == 0x000010, "Member 'FBox2D::Max' has a wrong offset!");
 static_assert(offsetof(FBox2D, bIsValid) == 0x000020, "Member 'FBox2D::bIsValid' has a wrong offset!");
 
+// ScriptStruct CoreUObject.OverriddenPropertyNodeID
+// 0x0010 (0x0010 - 0x0000)
+struct FOverriddenPropertyNodeID final
+{
+public:
+	class FName                                   Path;                                              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UObject*                                Object;                                            // 0x0008(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FOverriddenPropertyNodeID) == 0x000008, "Wrong alignment on FOverriddenPropertyNodeID");
+static_assert(sizeof(FOverriddenPropertyNodeID) == 0x000010, "Wrong size on FOverriddenPropertyNodeID");
+static_assert(offsetof(FOverriddenPropertyNodeID, Path) == 0x000000, "Member 'FOverriddenPropertyNodeID::Path' has a wrong offset!");
+static_assert(offsetof(FOverriddenPropertyNodeID, Object) == 0x000008, "Member 'FOverriddenPropertyNodeID::Object' has a wrong offset!");
+
 // ScriptStruct CoreUObject.Vector2f
 // 0x0008 (0x0008 - 0x0000)
 struct FVector2f
@@ -1083,35 +1096,6 @@ static_assert(sizeof(FBox2f) == 0x000014, "Wrong size on FBox2f");
 static_assert(offsetof(FBox2f, Min) == 0x000000, "Member 'FBox2f::Min' has a wrong offset!");
 static_assert(offsetof(FBox2f, Max) == 0x000008, "Member 'FBox2f::Max' has a wrong offset!");
 static_assert(offsetof(FBox2f, bIsValid) == 0x000010, "Member 'FBox2f::bIsValid' has a wrong offset!");
-
-// ScriptStruct CoreUObject.OverriddenPropertyNodeID
-// 0x0010 (0x0010 - 0x0000)
-struct FOverriddenPropertyNodeID final
-{
-public:
-	class FName                                   Path;                                              // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UObject*                                Object;                                            // 0x0008(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FOverriddenPropertyNodeID) == 0x000008, "Wrong alignment on FOverriddenPropertyNodeID");
-static_assert(sizeof(FOverriddenPropertyNodeID) == 0x000010, "Wrong size on FOverriddenPropertyNodeID");
-static_assert(offsetof(FOverriddenPropertyNodeID, Path) == 0x000000, "Member 'FOverriddenPropertyNodeID::Path' has a wrong offset!");
-static_assert(offsetof(FOverriddenPropertyNodeID, Object) == 0x000008, "Member 'FOverriddenPropertyNodeID::Object' has a wrong offset!");
-
-// ScriptStruct CoreUObject.OverriddenPropertyNode
-// 0x0068 (0x0068 - 0x0000)
-struct FOverriddenPropertyNode final
-{
-public:
-	struct FOverriddenPropertyNodeID              NodeID;                                            // 0x0000(0x0010)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EOverriddenPropertyOperation                  Operation;                                         // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<struct FOverriddenPropertyNodeID, struct FOverriddenPropertyNodeID> SubPropertyNodeKeys;    // 0x0018(0x0050)(NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FOverriddenPropertyNode) == 0x000008, "Wrong alignment on FOverriddenPropertyNode");
-static_assert(sizeof(FOverriddenPropertyNode) == 0x000068, "Wrong size on FOverriddenPropertyNode");
-static_assert(offsetof(FOverriddenPropertyNode, NodeID) == 0x000000, "Member 'FOverriddenPropertyNode::NodeID' has a wrong offset!");
-static_assert(offsetof(FOverriddenPropertyNode, Operation) == 0x000010, "Member 'FOverriddenPropertyNode::Operation' has a wrong offset!");
-static_assert(offsetof(FOverriddenPropertyNode, SubPropertyNodeKeys) == 0x000018, "Member 'FOverriddenPropertyNode::SubPropertyNodeKeys' has a wrong offset!");
 
 // ScriptStruct CoreUObject.Vector3d
 // 0x0018 (0x0018 - 0x0000)
@@ -2478,6 +2462,22 @@ static_assert(offsetof(FVector4f, X) == 0x000000, "Member 'FVector4f::X' has a w
 static_assert(offsetof(FVector4f, Y) == 0x000004, "Member 'FVector4f::Y' has a wrong offset!");
 static_assert(offsetof(FVector4f, Z) == 0x000008, "Member 'FVector4f::Z' has a wrong offset!");
 static_assert(offsetof(FVector4f, W) == 0x00000C, "Member 'FVector4f::W' has a wrong offset!");
+
+// ScriptStruct CoreUObject.OverriddenPropertyNode
+// 0x0068 (0x0068 - 0x0000)
+struct FOverriddenPropertyNode final
+{
+public:
+	struct FOverriddenPropertyNodeID              NodeID;                                            // 0x0000(0x0010)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EOverriddenPropertyOperation                  Operation;                                         // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<struct FOverriddenPropertyNodeID, struct FOverriddenPropertyNodeID> SubPropertyNodeKeys;    // 0x0018(0x0050)(NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FOverriddenPropertyNode) == 0x000008, "Wrong alignment on FOverriddenPropertyNode");
+static_assert(sizeof(FOverriddenPropertyNode) == 0x000068, "Wrong size on FOverriddenPropertyNode");
+static_assert(offsetof(FOverriddenPropertyNode, NodeID) == 0x000000, "Member 'FOverriddenPropertyNode::NodeID' has a wrong offset!");
+static_assert(offsetof(FOverriddenPropertyNode, Operation) == 0x000010, "Member 'FOverriddenPropertyNode::Operation' has a wrong offset!");
+static_assert(offsetof(FOverriddenPropertyNode, SubPropertyNodeKeys) == 0x000018, "Member 'FOverriddenPropertyNode::SubPropertyNodeKeys' has a wrong offset!");
 
 // ScriptStruct CoreUObject.OverriddenPropertySet
 // 0x0060 (0x0060 - 0x0000)

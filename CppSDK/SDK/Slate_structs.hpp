@@ -237,6 +237,17 @@ enum class EListItemAlignment : uint8
 	EListItemAlignment_MAX                   = 7,
 };
 
+// ScriptStruct Slate.VirtualKeyboardOptions
+// 0x0001 (0x0001 - 0x0000)
+struct FVirtualKeyboardOptions final
+{
+public:
+	bool                                          bEnableAutocorrect;                                // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+static_assert(alignof(FVirtualKeyboardOptions) == 0x000001, "Wrong alignment on FVirtualKeyboardOptions");
+static_assert(sizeof(FVirtualKeyboardOptions) == 0x000001, "Wrong size on FVirtualKeyboardOptions");
+static_assert(offsetof(FVirtualKeyboardOptions, bEnableAutocorrect) == 0x000000, "Member 'FVirtualKeyboardOptions::bEnableAutocorrect' has a wrong offset!");
+
 // ScriptStruct Slate.CharRange
 // 0x0004 (0x0004 - 0x0000)
 struct FCharRange final
@@ -249,17 +260,6 @@ static_assert(alignof(FCharRange) == 0x000002, "Wrong alignment on FCharRange");
 static_assert(sizeof(FCharRange) == 0x000004, "Wrong size on FCharRange");
 static_assert(offsetof(FCharRange, First) == 0x000000, "Member 'FCharRange::First' has a wrong offset!");
 static_assert(offsetof(FCharRange, Last) == 0x000002, "Member 'FCharRange::Last' has a wrong offset!");
-
-// ScriptStruct Slate.VirtualKeyboardOptions
-// 0x0001 (0x0001 - 0x0000)
-struct FVirtualKeyboardOptions final
-{
-public:
-	bool                                          bEnableAutocorrect;                                // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-static_assert(alignof(FVirtualKeyboardOptions) == 0x000001, "Wrong alignment on FVirtualKeyboardOptions");
-static_assert(sizeof(FVirtualKeyboardOptions) == 0x000001, "Wrong size on FVirtualKeyboardOptions");
-static_assert(offsetof(FVirtualKeyboardOptions, bEnableAutocorrect) == 0x000000, "Member 'FVirtualKeyboardOptions::bEnableAutocorrect' has a wrong offset!");
 
 // ScriptStruct Slate.InputChord
 // 0x0020 (0x0020 - 0x0000)

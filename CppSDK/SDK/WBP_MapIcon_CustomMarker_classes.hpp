@@ -35,11 +35,11 @@ public:
 	struct FMargin                                DefaultIconPadding;                                // 0x05F8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay)
 
 public:
-	void Construct();
-	void ExecuteUbergraph_WBP_MapIcon_CustomMarker(int32 EntryPoint);
-	void GetMarkerColor(struct FLinearColor* Color);
-	void OnSetCustomMarkerData(const struct FMapCustomMarkerIconData& NewCustomMarkerData);
 	void OnSetScale(float NewScale);
+	void OnSetCustomMarkerData(const struct FMapCustomMarkerIconData& NewCustomMarkerData);
+	void GetMarkerColor(struct FLinearColor* Color);
+	void ExecuteUbergraph_WBP_MapIcon_CustomMarker(int32 EntryPoint);
+	void Construct();
 
 public:
 	static class UClass* StaticClass()

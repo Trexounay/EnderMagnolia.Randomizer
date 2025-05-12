@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "Zion_structs.hpp"
+#include "Engine_structs.hpp"
 #include "BP_Interactable_classes.hpp"
 
 
@@ -20,7 +20,7 @@ namespace SDK
 
 // BlueprintGeneratedClass BP_Interactable_GameMapChange.BP_Interactable_GameMapChange_C
 // 0x0060 (0x0388 - 0x0328)
-class ABP_Interactable_GameMapChange_C : public ABP_Interactable_C
+class ABP_Interactable_GameMapChange_C final : public ABP_Interactable_C
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame_BP_Interactable_GameMapChange_C;    // 0x0328(0x0008)(ZeroConstructor, Transient, DuplicateTransient)

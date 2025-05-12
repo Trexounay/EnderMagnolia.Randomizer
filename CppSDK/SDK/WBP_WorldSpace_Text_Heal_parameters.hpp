@@ -16,6 +16,28 @@
 namespace SDK::Params
 {
 
+// Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.SetText
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_WorldSpace_Text_Heal_C_SetText final
+{
+public:
+	class FText                                   Text_0;                                            // 0x0000(0x0010)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+};
+static_assert(alignof(WBP_WorldSpace_Text_Heal_C_SetText) == 0x000008, "Wrong alignment on WBP_WorldSpace_Text_Heal_C_SetText");
+static_assert(sizeof(WBP_WorldSpace_Text_Heal_C_SetText) == 0x000010, "Wrong size on WBP_WorldSpace_Text_Heal_C_SetText");
+static_assert(offsetof(WBP_WorldSpace_Text_Heal_C_SetText, Text_0) == 0x000000, "Member 'WBP_WorldSpace_Text_Heal_C_SetText::Text_0' has a wrong offset!");
+
+// Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.OnAnimationFinished
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_WorldSpace_Text_Heal_C_OnAnimationFinished final
+{
+public:
+	const class UWidgetAnimation*                 Animation_0;                                       // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_WorldSpace_Text_Heal_C_OnAnimationFinished) == 0x000008, "Wrong alignment on WBP_WorldSpace_Text_Heal_C_OnAnimationFinished");
+static_assert(sizeof(WBP_WorldSpace_Text_Heal_C_OnAnimationFinished) == 0x000008, "Wrong size on WBP_WorldSpace_Text_Heal_C_OnAnimationFinished");
+static_assert(offsetof(WBP_WorldSpace_Text_Heal_C_OnAnimationFinished, Animation_0) == 0x000000, "Member 'WBP_WorldSpace_Text_Heal_C_OnAnimationFinished::Animation_0' has a wrong offset!");
+
 // Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.ExecuteUbergraph_WBP_WorldSpace_Text_Heal
 // 0x0048 (0x0048 - 0x0000)
 struct WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpace_Text_Heal final
@@ -39,28 +61,6 @@ static_assert(offsetof(WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpac
 static_assert(offsetof(WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpace_Text_Heal, CallFunc_RandomFloatInRange_ReturnValue) == 0x000028, "Member 'WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpace_Text_Heal::CallFunc_RandomFloatInRange_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpace_Text_Heal, CallFunc_Multiply_DoubleDouble_ReturnValue) == 0x000030, "Member 'WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpace_Text_Heal::CallFunc_Multiply_DoubleDouble_ReturnValue' has a wrong offset!");
 static_assert(offsetof(WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpace_Text_Heal, CallFunc_MakeVector2D_ReturnValue) == 0x000038, "Member 'WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpace_Text_Heal::CallFunc_MakeVector2D_ReturnValue' has a wrong offset!");
-
-// Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.SetText
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_WorldSpace_Text_Heal_C_SetText final
-{
-public:
-	class FText                                   Text_0;                                            // 0x0000(0x0010)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-};
-static_assert(alignof(WBP_WorldSpace_Text_Heal_C_SetText) == 0x000008, "Wrong alignment on WBP_WorldSpace_Text_Heal_C_SetText");
-static_assert(sizeof(WBP_WorldSpace_Text_Heal_C_SetText) == 0x000010, "Wrong size on WBP_WorldSpace_Text_Heal_C_SetText");
-static_assert(offsetof(WBP_WorldSpace_Text_Heal_C_SetText, Text_0) == 0x000000, "Member 'WBP_WorldSpace_Text_Heal_C_SetText::Text_0' has a wrong offset!");
-
-// Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.OnAnimationFinished
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_WorldSpace_Text_Heal_C_OnAnimationFinished final
-{
-public:
-	const class UWidgetAnimation*                 Animation_0;                                       // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_WorldSpace_Text_Heal_C_OnAnimationFinished) == 0x000008, "Wrong alignment on WBP_WorldSpace_Text_Heal_C_OnAnimationFinished");
-static_assert(sizeof(WBP_WorldSpace_Text_Heal_C_OnAnimationFinished) == 0x000008, "Wrong size on WBP_WorldSpace_Text_Heal_C_OnAnimationFinished");
-static_assert(offsetof(WBP_WorldSpace_Text_Heal_C_OnAnimationFinished, Animation_0) == 0x000000, "Member 'WBP_WorldSpace_Text_Heal_C_OnAnimationFinished::Animation_0' has a wrong offset!");
 
 }
 

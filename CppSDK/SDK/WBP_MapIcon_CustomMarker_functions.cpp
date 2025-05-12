@@ -17,35 +17,41 @@
 namespace SDK
 {
 
-// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.Construct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.OnSetScale
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   NewScale                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_MapIcon_CustomMarker_C::Construct()
+void UWBP_MapIcon_CustomMarker_C::OnSetScale(float NewScale)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_MapIcon_CustomMarker_C", "Construct");
+		Func = Class->GetFunction("WBP_MapIcon_CustomMarker_C", "OnSetScale");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::WBP_MapIcon_CustomMarker_C_OnSetScale Parms{};
+
+	Parms.NewScale = NewScale;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.ExecuteUbergraph_WBP_MapIcon_CustomMarker
-// (Final, UbergraphFunction, HasDefaults)
+// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.OnSetCustomMarkerData
+// (Event, Public, HasOutParams, BlueprintEvent)
 // Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const struct FMapCustomMarkerIconData&  NewCustomMarkerData                                    (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_MapIcon_CustomMarker_C::ExecuteUbergraph_WBP_MapIcon_CustomMarker(int32 EntryPoint)
+void UWBP_MapIcon_CustomMarker_C::OnSetCustomMarkerData(const struct FMapCustomMarkerIconData& NewCustomMarkerData)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_MapIcon_CustomMarker_C", "ExecuteUbergraph_WBP_MapIcon_CustomMarker");
+		Func = Class->GetFunction("WBP_MapIcon_CustomMarker_C", "OnSetCustomMarkerData");
 
-	Params::WBP_MapIcon_CustomMarker_C_ExecuteUbergraph_WBP_MapIcon_CustomMarker Parms{};
+	Params::WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData Parms{};
 
-	Parms.EntryPoint = EntryPoint;
+	Parms.NewCustomMarkerData = std::move(NewCustomMarkerData);
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -72,43 +78,37 @@ void UWBP_MapIcon_CustomMarker_C::GetMarkerColor(struct FLinearColor* Color)
 }
 
 
-// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.OnSetCustomMarkerData
-// (Event, Public, HasOutParams, BlueprintEvent)
+// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.ExecuteUbergraph_WBP_MapIcon_CustomMarker
+// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
-// const struct FMapCustomMarkerIconData&  NewCustomMarkerData                                    (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_MapIcon_CustomMarker_C::OnSetCustomMarkerData(const struct FMapCustomMarkerIconData& NewCustomMarkerData)
+void UWBP_MapIcon_CustomMarker_C::ExecuteUbergraph_WBP_MapIcon_CustomMarker(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_MapIcon_CustomMarker_C", "OnSetCustomMarkerData");
+		Func = Class->GetFunction("WBP_MapIcon_CustomMarker_C", "ExecuteUbergraph_WBP_MapIcon_CustomMarker");
 
-	Params::WBP_MapIcon_CustomMarker_C_OnSetCustomMarkerData Parms{};
+	Params::WBP_MapIcon_CustomMarker_C_ExecuteUbergraph_WBP_MapIcon_CustomMarker Parms{};
 
-	Parms.NewCustomMarkerData = std::move(NewCustomMarkerData);
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.OnSetScale
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// float                                   NewScale                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function WBP_MapIcon_CustomMarker.WBP_MapIcon_CustomMarker_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
 
-void UWBP_MapIcon_CustomMarker_C::OnSetScale(float NewScale)
+void UWBP_MapIcon_CustomMarker_C::Construct()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_MapIcon_CustomMarker_C", "OnSetScale");
+		Func = Class->GetFunction("WBP_MapIcon_CustomMarker_C", "Construct");
 
-	Params::WBP_MapIcon_CustomMarker_C_OnSetScale Parms{};
-
-	Parms.NewScale = NewScale;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

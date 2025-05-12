@@ -17,96 +17,6 @@
 namespace SDK::Params
 {
 
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabelScaleBoxStretch
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch final
-{
-public:
-	EStretch                                      InStretch;                                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch) == 0x000001, "Wrong alignment on WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch");
-static_assert(sizeof(WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch) == 0x000001, "Wrong size on WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch");
-static_assert(offsetof(WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch, InStretch) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch::InStretch' has a wrong offset!");
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabelImage
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_Settings_Entry_Label_C_SetLabelImage final
-{
-public:
-	class UPaperSprite*                           InputPin;                                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Settings_Entry_Label_C_SetLabelImage) == 0x000008, "Wrong alignment on WBP_Settings_Entry_Label_C_SetLabelImage");
-static_assert(sizeof(WBP_Settings_Entry_Label_C_SetLabelImage) == 0x000010, "Wrong size on WBP_Settings_Entry_Label_C_SetLabelImage");
-static_assert(offsetof(WBP_Settings_Entry_Label_C_SetLabelImage, InputPin) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_SetLabelImage::InputPin' has a wrong offset!");
-static_assert(offsetof(WBP_Settings_Entry_Label_C_SetLabelImage, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'WBP_Settings_Entry_Label_C_SetLabelImage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabel
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_Settings_Entry_Label_C_SetLabel final
-{
-public:
-	class FText                                   InText;                                            // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm)
-};
-static_assert(alignof(WBP_Settings_Entry_Label_C_SetLabel) == 0x000008, "Wrong alignment on WBP_Settings_Entry_Label_C_SetLabel");
-static_assert(sizeof(WBP_Settings_Entry_Label_C_SetLabel) == 0x000010, "Wrong size on WBP_Settings_Entry_Label_C_SetLabel");
-static_assert(offsetof(WBP_Settings_Entry_Label_C_SetLabel, InText) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_SetLabel::InText' has a wrong offset!");
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetFocusDisplay
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_Settings_Entry_Label_C_SetFocusDisplay final
-{
-public:
-	bool                                          Focused;                                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Settings_Entry_Label_C_SetFocusDisplay) == 0x000001, "Wrong alignment on WBP_Settings_Entry_Label_C_SetFocusDisplay");
-static_assert(sizeof(WBP_Settings_Entry_Label_C_SetFocusDisplay) == 0x000001, "Wrong size on WBP_Settings_Entry_Label_C_SetFocusDisplay");
-static_assert(offsetof(WBP_Settings_Entry_Label_C_SetFocusDisplay, Focused) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_SetFocusDisplay::Focused' has a wrong offset!");
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.PreConstruct
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_Settings_Entry_Label_C_PreConstruct final
-{
-public:
-	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Settings_Entry_Label_C_PreConstruct) == 0x000001, "Wrong alignment on WBP_Settings_Entry_Label_C_PreConstruct");
-static_assert(sizeof(WBP_Settings_Entry_Label_C_PreConstruct) == 0x000001, "Wrong size on WBP_Settings_Entry_Label_C_PreConstruct");
-static_assert(offsetof(WBP_Settings_Entry_Label_C_PreConstruct, IsDesignTime) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_PreConstruct::IsDesignTime' has a wrong offset!");
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnSetIsEnabled
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_Settings_Entry_Label_C_OnSetIsEnabled final
-{
-public:
-	bool                                          bInIsEnabled;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(WBP_Settings_Entry_Label_C_OnSetIsEnabled) == 0x000001, "Wrong alignment on WBP_Settings_Entry_Label_C_OnSetIsEnabled");
-static_assert(sizeof(WBP_Settings_Entry_Label_C_OnSetIsEnabled) == 0x000001, "Wrong size on WBP_Settings_Entry_Label_C_OnSetIsEnabled");
-static_assert(offsetof(WBP_Settings_Entry_Label_C_OnSetIsEnabled, bInIsEnabled) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_OnSetIsEnabled::bInIsEnabled' has a wrong offset!");
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnRemovedFromFocusPath
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath final
-{
-public:
-	struct FFocusEvent                            InFocusEvent;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
-};
-static_assert(alignof(WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath) == 0x000004, "Wrong alignment on WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath");
-static_assert(sizeof(WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath) == 0x000008, "Wrong size on WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath");
-static_assert(offsetof(WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath, InFocusEvent) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath::InFocusEvent' has a wrong offset!");
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnAddedToFocusPath
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_Settings_Entry_Label_C_OnAddedToFocusPath final
-{
-public:
-	struct FFocusEvent                            InFocusEvent;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
-};
-static_assert(alignof(WBP_Settings_Entry_Label_C_OnAddedToFocusPath) == 0x000004, "Wrong alignment on WBP_Settings_Entry_Label_C_OnAddedToFocusPath");
-static_assert(sizeof(WBP_Settings_Entry_Label_C_OnAddedToFocusPath) == 0x000008, "Wrong size on WBP_Settings_Entry_Label_C_OnAddedToFocusPath");
-static_assert(offsetof(WBP_Settings_Entry_Label_C_OnAddedToFocusPath, InFocusEvent) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_OnAddedToFocusPath::InFocusEvent' has a wrong offset!");
-
 // Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.ExecuteUbergraph_WBP_Settings_Entry_Label
 // 0x001C (0x001C - 0x0000)
 struct WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_Entry_Label final
@@ -126,6 +36,96 @@ static_assert(offsetof(WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_
 static_assert(offsetof(WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_Entry_Label, K2Node_Event_InFocusEvent_1) == 0x000008, "Member 'WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_Entry_Label::K2Node_Event_InFocusEvent_1' has a wrong offset!");
 static_assert(offsetof(WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_Entry_Label, K2Node_Event_InFocusEvent) == 0x000010, "Member 'WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_Entry_Label::K2Node_Event_InFocusEvent' has a wrong offset!");
 static_assert(offsetof(WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_Entry_Label, K2Node_Event_bInIsEnabled) == 0x000018, "Member 'WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_Entry_Label::K2Node_Event_bInIsEnabled' has a wrong offset!");
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnAddedToFocusPath
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_Settings_Entry_Label_C_OnAddedToFocusPath final
+{
+public:
+	struct FFocusEvent                            InFocusEvent;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
+};
+static_assert(alignof(WBP_Settings_Entry_Label_C_OnAddedToFocusPath) == 0x000004, "Wrong alignment on WBP_Settings_Entry_Label_C_OnAddedToFocusPath");
+static_assert(sizeof(WBP_Settings_Entry_Label_C_OnAddedToFocusPath) == 0x000008, "Wrong size on WBP_Settings_Entry_Label_C_OnAddedToFocusPath");
+static_assert(offsetof(WBP_Settings_Entry_Label_C_OnAddedToFocusPath, InFocusEvent) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_OnAddedToFocusPath::InFocusEvent' has a wrong offset!");
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnRemovedFromFocusPath
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath final
+{
+public:
+	struct FFocusEvent                            InFocusEvent;                                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
+};
+static_assert(alignof(WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath) == 0x000004, "Wrong alignment on WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath");
+static_assert(sizeof(WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath) == 0x000008, "Wrong size on WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath");
+static_assert(offsetof(WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath, InFocusEvent) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath::InFocusEvent' has a wrong offset!");
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnSetIsEnabled
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_Settings_Entry_Label_C_OnSetIsEnabled final
+{
+public:
+	bool                                          bInIsEnabled;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Settings_Entry_Label_C_OnSetIsEnabled) == 0x000001, "Wrong alignment on WBP_Settings_Entry_Label_C_OnSetIsEnabled");
+static_assert(sizeof(WBP_Settings_Entry_Label_C_OnSetIsEnabled) == 0x000001, "Wrong size on WBP_Settings_Entry_Label_C_OnSetIsEnabled");
+static_assert(offsetof(WBP_Settings_Entry_Label_C_OnSetIsEnabled, bInIsEnabled) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_OnSetIsEnabled::bInIsEnabled' has a wrong offset!");
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.PreConstruct
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_Settings_Entry_Label_C_PreConstruct final
+{
+public:
+	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Settings_Entry_Label_C_PreConstruct) == 0x000001, "Wrong alignment on WBP_Settings_Entry_Label_C_PreConstruct");
+static_assert(sizeof(WBP_Settings_Entry_Label_C_PreConstruct) == 0x000001, "Wrong size on WBP_Settings_Entry_Label_C_PreConstruct");
+static_assert(offsetof(WBP_Settings_Entry_Label_C_PreConstruct, IsDesignTime) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_PreConstruct::IsDesignTime' has a wrong offset!");
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetFocusDisplay
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_Settings_Entry_Label_C_SetFocusDisplay final
+{
+public:
+	bool                                          Focused;                                           // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Settings_Entry_Label_C_SetFocusDisplay) == 0x000001, "Wrong alignment on WBP_Settings_Entry_Label_C_SetFocusDisplay");
+static_assert(sizeof(WBP_Settings_Entry_Label_C_SetFocusDisplay) == 0x000001, "Wrong size on WBP_Settings_Entry_Label_C_SetFocusDisplay");
+static_assert(offsetof(WBP_Settings_Entry_Label_C_SetFocusDisplay, Focused) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_SetFocusDisplay::Focused' has a wrong offset!");
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabel
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_Settings_Entry_Label_C_SetLabel final
+{
+public:
+	class FText                                   InText;                                            // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm)
+};
+static_assert(alignof(WBP_Settings_Entry_Label_C_SetLabel) == 0x000008, "Wrong alignment on WBP_Settings_Entry_Label_C_SetLabel");
+static_assert(sizeof(WBP_Settings_Entry_Label_C_SetLabel) == 0x000010, "Wrong size on WBP_Settings_Entry_Label_C_SetLabel");
+static_assert(offsetof(WBP_Settings_Entry_Label_C_SetLabel, InText) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_SetLabel::InText' has a wrong offset!");
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabelImage
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_Settings_Entry_Label_C_SetLabelImage final
+{
+public:
+	class UPaperSprite*                           InputPin;                                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Settings_Entry_Label_C_SetLabelImage) == 0x000008, "Wrong alignment on WBP_Settings_Entry_Label_C_SetLabelImage");
+static_assert(sizeof(WBP_Settings_Entry_Label_C_SetLabelImage) == 0x000010, "Wrong size on WBP_Settings_Entry_Label_C_SetLabelImage");
+static_assert(offsetof(WBP_Settings_Entry_Label_C_SetLabelImage, InputPin) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_SetLabelImage::InputPin' has a wrong offset!");
+static_assert(offsetof(WBP_Settings_Entry_Label_C_SetLabelImage, CallFunc_IsValid_ReturnValue) == 0x000008, "Member 'WBP_Settings_Entry_Label_C_SetLabelImage::CallFunc_IsValid_ReturnValue' has a wrong offset!");
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabelScaleBoxStretch
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch final
+{
+public:
+	EStretch                                      InStretch;                                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch) == 0x000001, "Wrong alignment on WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch");
+static_assert(sizeof(WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch) == 0x000001, "Wrong size on WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch");
+static_assert(offsetof(WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch, InStretch) == 0x000000, "Member 'WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch::InStretch' has a wrong offset!");
 
 }
 

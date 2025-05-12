@@ -17,141 +17,21 @@
 namespace SDK
 {
 
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabelScaleBoxStretch
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.ExecuteUbergraph_WBP_Settings_Entry_Label
+// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
-// EStretch                                InStretch                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_Settings_Entry_Label_C::SetLabelScaleBoxStretch(EStretch InStretch)
+void UWBP_Settings_Entry_Label_C::ExecuteUbergraph_WBP_Settings_Entry_Label(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "SetLabelScaleBoxStretch");
+		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "ExecuteUbergraph_WBP_Settings_Entry_Label");
 
-	Params::WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch Parms{};
+	Params::WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_Entry_Label Parms{};
 
-	Parms.InStretch = InStretch;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabelImage
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UPaperSprite*                     InputPin                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Settings_Entry_Label_C::SetLabelImage(class UPaperSprite* InputPin)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "SetLabelImage");
-
-	Params::WBP_Settings_Entry_Label_C_SetLabelImage Parms{};
-
-	Parms.InputPin = InputPin;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabel
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const class FText&                      InText                                                 (BlueprintVisible, BlueprintReadOnly, Parm)
-
-void UWBP_Settings_Entry_Label_C::SetLabel(const class FText& InText)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "SetLabel");
-
-	Params::WBP_Settings_Entry_Label_C_SetLabel Parms{};
-
-	Parms.InText = std::move(InText);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetFocusDisplay
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Focused                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Settings_Entry_Label_C::SetFocusDisplay(bool Focused)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "SetFocusDisplay");
-
-	Params::WBP_Settings_Entry_Label_C_SetFocusDisplay Parms{};
-
-	Parms.Focused = Focused;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.PreConstruct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-// Parameters:
-// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Settings_Entry_Label_C::PreConstruct(bool IsDesignTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "PreConstruct");
-
-	Params::WBP_Settings_Entry_Label_C_PreConstruct Parms{};
-
-	Parms.IsDesignTime = IsDesignTime;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnSetIsEnabled
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool                                    bInIsEnabled                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Settings_Entry_Label_C::OnSetIsEnabled(bool bInIsEnabled)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "OnSetIsEnabled");
-
-	Params::WBP_Settings_Entry_Label_C_OnSetIsEnabled Parms{};
-
-	Parms.bInIsEnabled = bInIsEnabled;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnRemovedFromFocusPath
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-// Parameters:
-// const struct FFocusEvent&               InFocusEvent                                           (BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
-
-void UWBP_Settings_Entry_Label_C::OnRemovedFromFocusPath(const struct FFocusEvent& InFocusEvent)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "OnRemovedFromFocusPath");
-
-	Params::WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath Parms{};
-
-	Parms.InFocusEvent = std::move(InFocusEvent);
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -177,21 +57,141 @@ void UWBP_Settings_Entry_Label_C::OnAddedToFocusPath(const struct FFocusEvent& I
 }
 
 
-// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.ExecuteUbergraph_WBP_Settings_Entry_Label
-// (Final, UbergraphFunction, HasDefaults)
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnRemovedFromFocusPath
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
 // Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const struct FFocusEvent&               InFocusEvent                                           (BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
 
-void UWBP_Settings_Entry_Label_C::ExecuteUbergraph_WBP_Settings_Entry_Label(int32 EntryPoint)
+void UWBP_Settings_Entry_Label_C::OnRemovedFromFocusPath(const struct FFocusEvent& InFocusEvent)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "ExecuteUbergraph_WBP_Settings_Entry_Label");
+		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "OnRemovedFromFocusPath");
 
-	Params::WBP_Settings_Entry_Label_C_ExecuteUbergraph_WBP_Settings_Entry_Label Parms{};
+	Params::WBP_Settings_Entry_Label_C_OnRemovedFromFocusPath Parms{};
 
-	Parms.EntryPoint = EntryPoint;
+	Parms.InFocusEvent = std::move(InFocusEvent);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.OnSetIsEnabled
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// bool                                    bInIsEnabled                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_Settings_Entry_Label_C::OnSetIsEnabled(bool bInIsEnabled)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "OnSetIsEnabled");
+
+	Params::WBP_Settings_Entry_Label_C_OnSetIsEnabled Parms{};
+
+	Parms.bInIsEnabled = bInIsEnabled;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.PreConstruct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Parameters:
+// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_Settings_Entry_Label_C::PreConstruct(bool IsDesignTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "PreConstruct");
+
+	Params::WBP_Settings_Entry_Label_C_PreConstruct Parms{};
+
+	Parms.IsDesignTime = IsDesignTime;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetFocusDisplay
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    Focused                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_Settings_Entry_Label_C::SetFocusDisplay(bool Focused)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "SetFocusDisplay");
+
+	Params::WBP_Settings_Entry_Label_C_SetFocusDisplay Parms{};
+
+	Parms.Focused = Focused;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabel
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// const class FText&                      InText                                                 (BlueprintVisible, BlueprintReadOnly, Parm)
+
+void UWBP_Settings_Entry_Label_C::SetLabel(const class FText& InText)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "SetLabel");
+
+	Params::WBP_Settings_Entry_Label_C_SetLabel Parms{};
+
+	Parms.InText = std::move(InText);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabelImage
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UPaperSprite*                     InputPin                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_Settings_Entry_Label_C::SetLabelImage(class UPaperSprite* InputPin)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "SetLabelImage");
+
+	Params::WBP_Settings_Entry_Label_C_SetLabelImage Parms{};
+
+	Parms.InputPin = InputPin;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Settings_Entry_Label.WBP_Settings_Entry_Label_C.SetLabelScaleBoxStretch
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// EStretch                                InStretch                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_Settings_Entry_Label_C::SetLabelScaleBoxStretch(EStretch InStretch)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Settings_Entry_Label_C", "SetLabelScaleBoxStretch");
+
+	Params::WBP_Settings_Entry_Label_C_SetLabelScaleBoxStretch Parms{};
+
+	Parms.InStretch = InStretch;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

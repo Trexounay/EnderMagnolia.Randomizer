@@ -17,13 +17,12 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_AbilityHitbox.BP_AbilityHitbox_C
-// 0x0010 (0x0AC0 - 0x0AB0)
-#pragma pack(push, 0x1)
-class alignas(0x10) ABP_AbilityHitbox_C : public AAbilityHitbox
+// 0x0010 (0x0AD0 - 0x0AC0)
+class ABP_AbilityHitbox_C final : public AAbilityHitbox
 {
 public:
-	uint8                                         Pad_AA8[0x8];                                      // 0x0AA8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class UBoxComponent*                          Box;                                               // 0x0AB0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_AB8[0x8];                                      // 0x0AB8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class UBoxComponent*                          Box;                                               // 0x0AC0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
 
 public:
 	static class UClass* StaticClass()
@@ -35,10 +34,9 @@ public:
 		return GetDefaultObjImpl<ABP_AbilityHitbox_C>();
 	}
 };
-#pragma pack(pop)
 static_assert(alignof(ABP_AbilityHitbox_C) == 0x000010, "Wrong alignment on ABP_AbilityHitbox_C");
-static_assert(sizeof(ABP_AbilityHitbox_C) == 0x000AC0, "Wrong size on ABP_AbilityHitbox_C");
-static_assert(offsetof(ABP_AbilityHitbox_C, Box) == 0x000AB0, "Member 'ABP_AbilityHitbox_C::Box' has a wrong offset!");
+static_assert(sizeof(ABP_AbilityHitbox_C) == 0x000AD0, "Wrong size on ABP_AbilityHitbox_C");
+static_assert(offsetof(ABP_AbilityHitbox_C, Box) == 0x000AC0, "Member 'ABP_AbilityHitbox_C::Box' has a wrong offset!");
 
 }
 

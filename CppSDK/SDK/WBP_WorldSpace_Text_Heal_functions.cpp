@@ -17,26 +17,6 @@
 namespace SDK
 {
 
-// Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.ExecuteUbergraph_WBP_WorldSpace_Text_Heal
-// (Final, UbergraphFunction, HasDefaults)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_WorldSpace_Text_Heal_C::ExecuteUbergraph_WBP_WorldSpace_Text_Heal(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_WorldSpace_Text_Heal_C", "ExecuteUbergraph_WBP_WorldSpace_Text_Heal");
-
-	Params::WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpace_Text_Heal Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.SetText
 // (Event, Public, HasOutParams, BlueprintEvent)
 // Parameters:
@@ -57,20 +37,6 @@ void UWBP_WorldSpace_Text_Heal_C::SetText(const class FText& Text_0)
 }
 
 
-// Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.Construct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UWBP_WorldSpace_Text_Heal_C::Construct()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_WorldSpace_Text_Heal_C", "Construct");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.OnAnimationFinished
 // (BlueprintCosmetic, Event, Protected, BlueprintEvent)
 // Parameters:
@@ -88,6 +54,40 @@ void UWBP_WorldSpace_Text_Heal_C::OnAnimationFinished(const class UWidgetAnimati
 	Parms.Animation_0 = Animation_0;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.ExecuteUbergraph_WBP_WorldSpace_Text_Heal
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_WorldSpace_Text_Heal_C::ExecuteUbergraph_WBP_WorldSpace_Text_Heal(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_WorldSpace_Text_Heal_C", "ExecuteUbergraph_WBP_WorldSpace_Text_Heal");
+
+	Params::WBP_WorldSpace_Text_Heal_C_ExecuteUbergraph_WBP_WorldSpace_Text_Heal Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_WorldSpace_Text_Heal.WBP_WorldSpace_Text_Heal_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void UWBP_WorldSpace_Text_Heal_C::Construct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_WorldSpace_Text_Heal_C", "Construct");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }
