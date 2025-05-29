@@ -1,9 +1,53 @@
 #include "GameManager.h"
-#include "HookManager.h"
 #include "Configuration.h"
 #include "Logger.h"
 #include "SDK.hpp"
 
+GameManager& GameManager::Instance()
+{
+	static GameManager instance;
+	return instance;
+}
+
+bool GameManager::IsLoading()
+{
+	SDK::UWorld* World = SDK::UWorld::GetWorld();
+	if (!World) return true;
+	auto loader = (SDK::UWorldLoaderSubsystem*)SDK::USubsystemBlueprintLibrary::GetGameInstanceSubsystem(World, SDK::UWorldLoaderSubsystem::StaticClass());
+	return !loader || loader->IsLoading(true);
+}
+
+void GameManager::Init()
+{
+	Logger::Log(this, "Init ok");
+}
+
+void GameManager::OnGameStarted()
+{
+	Logger::Log(this, "New Game Started", (int)(GameInstance()->GetLaunchGameIntent()));
+	// read seed
+	Configuration::Instance().Load();
+	this->currentZone = UC::FString(L"");
+}	
+
+void GameManager::OnReceiveTick()
+{
+	auto zoneSystem = SDK::UZoneSystemComponent::Get(World());
+	if (zoneSystem && !IsLoading())
+	{
+		auto zone = zoneSystem->GetActiveZoneLevelName();
+		if (zone != this->currentZone && (zone.IsValid() || this->currentZone.IsValid()))
+			this->ZoneChanged(this->currentZone, zone);
+	}
+}
+
+void GameManager::ZoneChanged(UC::FString oldZone, UC::FString newZone)
+{
+	this->currentZone = newZone;
+	Logger::Log(LogLevel::Debug, this, "Zone Changed", oldZone.ToString(), "->", newZone.ToString());
+	if (newZone.IsValid())
+		ReplaceInteractableAddItems();
+}
 
 const std::unordered_map<std::string, SDK::UDataTable*> GameManager::GetDatatables() const
 {
@@ -33,50 +77,6 @@ const std::unordered_map<std::string, SDK::UDataTable*> GameManager::GetDatatabl
 	return tableMap;
 }
 
-GameManager& GameManager::Instance()
-{
-	static GameManager instance;
-	return instance;
-}
-
-bool GameManager::IsLoading()
-{
-	SDK::UWorld* World = SDK::UWorld::GetWorld();
-	if (!World) return true;
-	auto loader = (SDK::UWorldLoaderSubsystem*)SDK::USubsystemBlueprintLibrary::GetGameInstanceSubsystem(World, SDK::UWorldLoaderSubsystem::StaticClass());
-	return !loader || loader->IsLoading(true);
-}
-
-void GameManager::Init()
-{
-	HookManager::Instance().AddSubscriber(
-		"BP_PlayerCameraManagerZion_C",
-		"ReceiveTick", [this](const SDK::UObject* obj, SDK::UFunction* func, void* params) {
-			this->PlayerCameraManager_ReceiveTick(static_cast<const SDK::APlayerCameraManagerZion*>(obj));
-		});
-	Logger::Log(this, "Init ok");
-	Configuration::Instance().Load();
-}
-
-void GameManager::PlayerCameraManager_ReceiveTick(const SDK::APlayerCameraManagerZion* cameraManager)
-{
-	auto zoneSystem = SDK::UZoneSystemComponent::Get(World());
-	if (zoneSystem && !IsLoading())
-	{
-		auto zone = zoneSystem->GetActiveZoneLevelName();
-		if (zone != this->currentZone && (zone.IsValid() || this->currentZone.IsValid()))
-			this->ZoneChanged(this->currentZone, zone);
-	}
-}
-
-void GameManager::ZoneChanged(UC::FString oldZone, UC::FString newZone)
-{
-	this->currentZone = newZone;
-	Logger::Log(LogLevel::Debug, this, "Zone Changed", oldZone.ToString(), "->", newZone.ToString());
-	if (newZone.IsValid())
-		ReplaceInteractableAddItems();
-}
-
 std::optional<SDK::FDataTableRowHandle> GameManager::FromItemName(std::string itemName) const
 {
 	static const std::unordered_map<std::string, SDK::UDataTable*> dataTables = GetDatatables();
@@ -85,8 +85,8 @@ std::optional<SDK::FDataTableRowHandle> GameManager::FromItemName(std::string it
 	auto separator = itemName.find('.');
 	if (separator == std::string::npos)
 		return std::nullopt;
-	std::string tableName = itemName.substr(0, separator);  // DT_ItemTips
-	std::string rowName = itemName.substr(separator + 1);		// tip_corrosionboard_01
+	std::string tableName = itemName.substr(0, separator);
+	std::string rowName = itemName.substr(separator + 1);
 
 	auto it = dataTables.find(tableName);
 	if (it == dataTables.end())

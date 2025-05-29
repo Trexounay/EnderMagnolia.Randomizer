@@ -1,9 +1,10 @@
 #include "HookManager.h"
 #include "Logger.h"
 #include "Configuration.h"
+#include "GameManager.h"
 
 // Static member
-detour_ctx_t HookManager::processEventCtx;
+std::unordered_map<void*, detour_ctx_t> HookManager::ctxs;
 
 HookManager& HookManager::Instance()
 {
@@ -20,45 +21,61 @@ bool HookManager::Init()
 		return false;
 	}
 
-	void* origPtr = (void*)(SDK::InSDKUtils::GetVirtualFunction<void(*)(const SDK::UObject*, SDK::UFunction*, void*)>(
-		engine,
-		SDK::Offsets::ProcessEventIdx
-	));
+	// Process Event
+	if (!HookProcessEvent(&HookManager::ProcessEvent_Hook))
+		Logger::Log(LogLevel::Error, this, "Failed to hook ProcessEvent");
 
+	// SetLaunchGameIntent
+	if (!HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", &HookManager::SetLaunchGameIntent_Hook))
+		Logger::Log(LogLevel::Error, this, "Failed to hook SetLaunchIntent");
+
+	// Enable Hooks
+	Logger::Log(this, "Init ok");
+	return true;
+}
+
+bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std::string className, const std::string funcName, FNativeFuncPtr detour)
+{
+	if (!defaultClass)
+	{
+		Logger::Log(LogLevel::Error, this, "no default class");
+		return false;
+	}
+	auto Func = defaultClass->GetFunction(className, funcName);
+	if (!Func || !Func->ExecFunction)
+	{
+		Logger::Log(LogLevel::Error, this, "no function", className, ".", funcName);
+		return false;
+	}
+	this->ctxs[detour] = detour_ctx_t();
+	detour_init(&this->ctxs[detour], Func->ExecFunction, detour);
+	return detour_enable(&this->ctxs[detour]);
+}
+
+bool HookManager::HookProcessEvent(FProcessEventFuncPtr detour)
+{
+	SDK::UEngine* engine = SDK::UEngine::GetEngine();
+	void* origPtr = (void*)(SDK::InSDKUtils::GetVirtualFunction<FProcessEventFuncPtr>(engine, SDK::Offsets::ProcessEventIdx));
 	if (!origPtr)
 	{
 		Logger::Log(LogLevel::Error, this, "Failed to get original ProcessEvent function");
 		return false;
 	}
-
-	detour_init(&processEventCtx, origPtr, (void*)&HookManager::ProcessEvent_Hook);
-	EnableHooks();
-	Logger::Log(this, "Init ok");
-	return true;
-}
-
-bool HookManager::EnableHooks()
-{
-	auto result = detour_enable(&processEventCtx);
-	return result;
-}
-
-bool HookManager::DisableHooks()
-{
-	auto result = detour_disable(&processEventCtx);
-	return result;
-}
-
-void HookManager::AddSubscriber(const std::string& objName, const std::string& funcName, ProcessEventCallback callback)
-{
-	subscribers.emplace_back(objName, funcName, std::move(callback));
+	this->ctxs[detour] = detour_ctx_t();
+	detour_init(&this->ctxs[detour], origPtr, detour);
+	return detour_enable(&this->ctxs[detour]);
 }
 
 void HookManager::ProcessEvent(const SDK::UObject* obj, SDK::UFunction* func, void* params)
 {
-	for (auto& sub : subscribers)
-		if (sub.Matches(obj, func))
-			sub.callback(obj, func, params);
+	static Subscriber PlayerCameraManager_ReceiveTick("BP_PlayerCameraManagerZion_C", "ReceiveTick");
+	if (PlayerCameraManager_ReceiveTick.Matches(obj, func))
+		GameManager::Instance().OnReceiveTick();
+}
+
+void HookManager::SetLaunchGameIntent(SDK::UObject* Context, void* TheStack, void* Result)
+{
+	GameManager::Instance().OnGameStarted();
 }
 
 inline bool HookManager::Subscriber::Matches(const SDK::UObject* obj, const SDK::UFunction* func)

@@ -9,7 +9,9 @@ public:
 	static GameManager& Instance();
 	void Init();
 
-	void PlayerCameraManager_ReceiveTick(const SDK::APlayerCameraManagerZion* cameraManager);
+	void OnReceiveTick();
+	void OnGameStarted();
+
 	bool IsLoading();
 
 	SDK::UWorld* World() const { return SDK::UWorld::GetWorld(); };
@@ -17,7 +19,6 @@ public:
 	SDK::UGameInstanceZion* GameInstance() const { return SDK::UGameInstanceZion::Get(World()); };
 	SDK::APlayerControllerZion* Controller() const { return SDK::APlayerControllerZion::Get(World(), 0); };
 	SDK::ACharacterZion* Pawn() const { return (SDK::ACharacterZion *)Controller()->Character; };
-
 
 private:
 	GameManager() = default;
