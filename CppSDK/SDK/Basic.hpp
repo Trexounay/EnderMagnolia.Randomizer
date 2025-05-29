@@ -835,7 +835,7 @@ enum class EObjectFlags : int32
 	HasExternalPackage				= 0x10000000,
 
 	MirroredGarbage					= 0x40000000,
-	AllocatedInSharedPage			= 0x80000000,
+	//AllocatedInSharedPage			= 0x80000000,
 };
 
 enum class EFunctionFlags : uint32

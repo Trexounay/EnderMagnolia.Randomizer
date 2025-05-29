@@ -35,7 +35,6 @@ enum class ESpineBone : uint8
 	HandRight                                = 120,
 	HandLeft                                 = 130,
 	Custom                                   = 255,
-	ESpineBone_MAX                           = 256,
 };
 
 // Enum SpineExtension.ESpineBoneRotationMode

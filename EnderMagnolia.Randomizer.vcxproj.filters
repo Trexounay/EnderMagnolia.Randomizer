@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\SDK">
+      <UniqueIdentifier>{441f1dbc-b54e-4210-831a-1c805b8d07f6}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Lib">
+      <UniqueIdentifier>{248f6bd2-fab5-4d44-87bf-103e23434977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SDK\Headers">
+      <UniqueIdentifier>{7e8ad442-34a3-4b34-837b-730a5c1097f0}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="Source Files\version">
+      <UniqueIdentifier>{780554b1-6b04-4cdd-8d3e-d78f938c758e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Randomizer">
+      <UniqueIdentifier>{f3cdb9c6-d8d8-4897-bcf2-bc441650b9b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Randomizer\Sources">
+      <UniqueIdentifier>{951af2af-25d9-4198-aa74-66656e4c055e}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Randomizer\Headers">
+      <UniqueIdentifier>{4dc62b9e-1788-4584-9f6f-d3b0afa040cb}</UniqueIdentifier>
+      <Extensions>h;hpp</Extensions>
+    </Filter>
+    <Filter Include="Source Files\SDK\Sources">
+      <UniqueIdentifier>{d1a48895-2d99-4a5e-83c4-e1d5162bc0db}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="version\version.h">
+      <Filter>Source Files\version</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\libdetour.h">
+      <Filter>Source Files\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSDK\SDK.hpp">
+      <Filter>Source Files\SDK\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSDK\SDK\Basic.hpp">
+      <Filter>Source Files\SDK\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Engine_classes.hpp">
+      <Filter>Source Files\SDK\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Engine_parameters.hpp">
+      <Filter>Source Files\SDK\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Engine_structs.hpp">
+      <Filter>Source Files\SDK\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HookManager.h">
+      <Filter>Source Files\Randomizer\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\DetourFunctions.h">
+      <Filter>Source Files\Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Source Files\Randomizer\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration.h">
+      <Filter>Source Files\Randomizer\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Source Files\Randomizer\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lib\libdetour.c">
+      <Filter>Source Files\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSDK\SDK\Basic.cpp">
+      <Filter>Source Files\SDK\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Engine_functions.cpp">
+      <Filter>Source Files\SDK\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\CoreUObject_functions.cpp">
+      <Filter>Source Files\SDK\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Zion_functions.cpp">
+      <Filter>Source Files\SDK\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="HookManager.cpp">
+      <Filter>Source Files\Randomizer\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\DetourFunctions.cpp">
+      <Filter>Source Files\Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Source Files\Randomizer\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Configuration.cpp">
+      <Filter>Source Files\Randomizer\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files\Randomizer\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="version\version.def">
+      <Filter>Source Files\version</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="version\32\version_32.asm">
+      <Filter>Source Files\version</Filter>
+    </MASM>
+    <MASM Include="version\64\version_64.asm">
+      <Filter>Source Files\version</Filter>
+    </MASM>
+  </ItemGroup>
+</Project>

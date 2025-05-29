@@ -604,7 +604,7 @@ public:
 		*this = *this / Other;
 		return *this;
 	}
-	FVector& operator/=(float Scalar)
+	FVector& operator/=(UnderlayingType Scalar)
 	{
 		*this = *this / Scalar;
 		return *this;
@@ -662,7 +662,7 @@ public:
 	
 		return { X / Other.X, Y / Other.Y, Z / Other.Z };
 	}
-	FVector operator/(float Scalar) const
+	FVector operator/(UnderlayingType Scalar) const
 	{
 		if (Scalar == 0.0f)
 			return *this;
@@ -808,7 +808,7 @@ public:
 		*this = *this / Other;
 		return *this;
 	}
-	FVector2D& operator/=(float Scalar)
+	FVector2D& operator/=(UnderlayingType Scalar)
 	{
 		*this = *this / Scalar;
 		return *this;
@@ -862,7 +862,7 @@ public:
 	
 		return { X / Other.X, Y / Other.Y };
 	}
-	FVector2D operator/(float Scalar) const
+	FVector2D operator/(UnderlayingType Scalar) const
 	{
 		if (Scalar == 0.0f)
 			return *this;
