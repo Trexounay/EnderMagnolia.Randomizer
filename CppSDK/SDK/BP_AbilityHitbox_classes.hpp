@@ -18,7 +18,7 @@ namespace SDK
 
 // BlueprintGeneratedClass BP_AbilityHitbox.BP_AbilityHitbox_C
 // 0x0010 (0x0AD0 - 0x0AC0)
-class ABP_AbilityHitbox_C final : public AAbilityHitbox
+class ABP_AbilityHitbox_C : public AAbilityHitbox
 {
 public:
 	uint8                                         Pad_AB8[0x8];                                      // 0x0AB8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])

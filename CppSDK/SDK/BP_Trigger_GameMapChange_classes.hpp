@@ -18,7 +18,7 @@ namespace SDK
 
 // BlueprintGeneratedClass BP_Trigger_GameMapChange.BP_Trigger_GameMapChange_C
 // 0x0008 (0x0318 - 0x0310)
-class ABP_Trigger_GameMapChange_C final : public ATrigger_GameMapChange
+class ABP_Trigger_GameMapChange_C : public ATrigger_GameMapChange
 {
 public:
 	class UBoxComponent*                          Box;                                               // 0x0310(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)

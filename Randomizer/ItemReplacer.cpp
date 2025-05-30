@@ -31,6 +31,7 @@ void ItemReplacer::ZoneChanged(const UC::FString& oldZone, const UC::FString& ne
 	delayed_replacement.clear();
 	auto zoneName = newZone.ToString();
 	ReplaceInteractableAddItems(zoneName);
+	ReplaceInteractableAddTutorial(zoneName);
 	ReplaceTriggerEvents(zoneName);
 	ReplaceBossEvents(zoneName);
 }
@@ -42,6 +43,23 @@ void ItemReplacer::Tick(const UC::FString& newZone)
 		auto current = it++;
 		if ((*current)())
 			delayed_replacement.erase(current);
+	}
+}
+
+void ItemReplacer::ReplaceInteractableAddTutorial(const std::string& zoneName)
+{
+	UC::TArray<SDK::AActor*> out;
+	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_Interactable_AddTutorial_C::StaticClass(), &out);
+
+	for (auto Actor : out)
+	{
+		auto interactable = static_cast<SDK::ABP_Interactable_AddItem_C*>(Actor);
+		auto id = zoneName + "." + Actor->GetName();
+		if (auto item = FromLocation(id))
+		{
+			Logger::Log(LogLevel::Debug, this, "replaced", id);
+			interactable->Item = item.value();
+		}
 	}
 }
 
@@ -151,7 +169,7 @@ std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromLocation(std::string l
 		Logger::Log(this, "found item with replacement", locationName, newItem.value());
 		return FromItemName(newItem.value());
 	}
-	Logger::Log(LogLevel::Warning, this, "no replacement items for", locationName);
+	Logger::Log(LogLevel::Warning, this, "found item with no replacement", locationName);
 	return std::nullopt;
 }
 

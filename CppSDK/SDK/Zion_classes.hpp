@@ -10618,7 +10618,7 @@ static_assert(offsetof(UCommandSettingsData, CommandSettings) == 0x000030, "Memb
 
 // Class Zion.Command_AI_WarpTo
 // 0x0090 (0x0138 - 0x00A8)
-class UCommand_AI_WarpTo final : public UCommand
+class UCommand_AI_WarpTo : public UCommand
 {
 public:
 	EWarpLocationComputationTiming                WarpLocationComputationTiming;                     // 0x00A8(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -20487,7 +20487,7 @@ static_assert(sizeof(IToggleActorInterface) == 0x000001, "Wrong size on IToggleA
 
 // Class Zion.Trigger_GameMapChange
 // 0x0070 (0x0310 - 0x02A0)
-class ATrigger_GameMapChange final : public ATrigger
+class ATrigger_GameMapChange : public ATrigger
 {
 public:
 	struct FDataTableRowHandle                    GameMap;                                           // 0x02A0(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPrivate)
