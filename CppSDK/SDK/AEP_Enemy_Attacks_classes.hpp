@@ -18,7 +18,7 @@ namespace SDK
 
 // BlueprintGeneratedClass AEP_Enemy_Attacks.AEP_Enemy_Attacks_C
 // 0x0000 (0x0370 - 0x0370)
-class UAEP_Enemy_Attacks_C final : public UAEProcess_C
+class UAEP_Enemy_Attacks_C : public UAEProcess_C
 {
 public:
 	static class UClass* StaticClass()

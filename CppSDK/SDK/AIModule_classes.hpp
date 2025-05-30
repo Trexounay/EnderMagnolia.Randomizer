@@ -2184,7 +2184,7 @@ static_assert(offsetof(UBTTask_BlackboardBase, BlackboardKey) == 0x000070, "Memb
 
 // Class AIModule.BTTask_BlueprintBase
 // 0x0038 (0x00A8 - 0x0070)
-class UBTTask_BlueprintBase final : public UBTTaskNode
+class UBTTask_BlueprintBase : public UBTTaskNode
 {
 public:
 	class AAIController*                          AIOwner;                                           // 0x0070(0x0008)(ZeroConstructor, Transient, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)

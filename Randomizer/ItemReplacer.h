@@ -22,6 +22,7 @@ private:
 
 	void ReplaceInteractableAddItems(const std::string& zoneName);
 	void ReplaceInteractableAddTutorial(const std::string& zoneName);
+	void ReplaceInteractableTreasureBox(const std::string& zoneName);
 	void ReplaceTriggerEvents(const std::string& zoneName);
 	void ReplaceBossEvents(const std::string& zoneName);
 	void ReplaceEventAsset(const std::string& zoneName, const std::string& actorName, SDK::UEventAsset* asset);

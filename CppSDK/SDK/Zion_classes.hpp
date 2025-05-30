@@ -919,7 +919,7 @@ static_assert(sizeof(UStateLockFreeCommandLayer) == 0x000028, "Wrong size on USt
 
 // Class Zion.Command_Transform
 // 0x0040 (0x00E8 - 0x00A8)
-class UCommand_Transform final : public UCommand
+class UCommand_Transform : public UCommand
 {
 public:
 	float                                         TransformDelay;                                    // 0x00A8(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -1021,7 +1021,7 @@ static_assert(offsetof(AAbilityHitboxTarget_Search, VisibilityChannel) == 0x000A
 
 // Class Zion.AbilityHitboxTarget_Search_Homing
 // 0x0010 (0x0AD0 - 0x0AC0)
-class AAbilityHitboxTarget_Search_Homing final : public AAbilityHitboxTarget_Search
+class AAbilityHitboxTarget_Search_Homing : public AAbilityHitboxTarget_Search
 {
 public:
 	class UHomingComponent*                       HomingComponent;                                   // 0x0AC0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, EditConst, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -1325,7 +1325,7 @@ static_assert(offsetof(ATrigger_FieldMessage, bAbortOnNewFieldMessage) == 0x0002
 
 // Class Zion.Trigger_FieldMessageNPC
 // 0x0128 (0x03F0 - 0x02C8)
-class alignas(0x10) ATrigger_FieldMessageNPC final : public ATrigger_FieldMessage
+class alignas(0x10) ATrigger_FieldMessageNPC : public ATrigger_FieldMessage
 {
 public:
 	uint8                                         Pad_2C8[0x8];                                      // 0x02C8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
@@ -3296,7 +3296,7 @@ static_assert(offsetof(UAbilityEffectTimed_TimeDilation, Settings) == 0x000058, 
 
 // Class Zion.AbilityHitboxBounce
 // 0x0020 (0x0AE0 - 0x0AC0)
-class AAbilityHitboxBounce final : public AAbilityHitboxMoving
+class AAbilityHitboxBounce : public AAbilityHitboxMoving
 {
 public:
 	class USphereComponent*                       SphereCollision;                                   // 0x0AC0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, EditConst, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -3506,7 +3506,7 @@ static_assert(offsetof(UGameplayCondition_HasAptitude, Aptitude) == 0x000030, "M
 
 // Class Zion.AbilityHitboxTarget_AI_Homing
 // 0x0000 (0x0AC0 - 0x0AC0)
-class AAbilityHitboxTarget_AI_Homing final : public AAbilityHitboxTarget_AI
+class AAbilityHitboxTarget_AI_Homing : public AAbilityHitboxTarget_AI
 {
 public:
 	class UHomingComponent*                       HomingComponent;                                   // 0x0AB8(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, EditConst, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -5506,7 +5506,7 @@ static_assert(sizeof(UBoxBPFLibrary) == 0x000028, "Wrong size on UBoxBPFLibrary"
 
 // Class Zion.Breakable
 // 0x0180 (0x0410 - 0x0290)
-class ABreakable final : public AActor
+class ABreakable : public AActor
 {
 public:
 	uint8                                         Pad_290[0x8];                                      // 0x0290(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
@@ -6762,7 +6762,7 @@ static_assert(offsetof(UBTService_FindClosestEnemy_Settings, Settings) == 0x0000
 
 // Class Zion.Command_AI_DashTo
 // 0x03E8 (0x0490 - 0x00A8)
-class UCommand_AI_DashTo final : public UCommand
+class UCommand_AI_DashTo : public UCommand
 {
 public:
 	struct FDashToData                            DashForward;                                       // 0x00A8(0x0078)(Edit, DisableEditOnInstance, ContainsInstancedReference, NativeAccessSpecifierPrivate)
@@ -8578,7 +8578,7 @@ static_assert(offsetof(ACharacterZion, TargetPivotComponent) == 0x000988, "Membe
 
 // Class Zion.CharacterZionNPC
 // 0x0110 (0x0780 - 0x0670)
-class ACharacterZionNPC final : public ACharacter
+class ACharacterZionNPC : public ACharacter
 {
 public:
 	uint8                                         Pad_668[0x18];                                     // 0x0668(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
@@ -10687,7 +10687,7 @@ static_assert(offsetof(UCommand_Dodge, bSetMovementSpeedFastOnFinish) == 0x0000A
 
 // Class Zion.Command_Fall
 // 0x0028 (0x00D0 - 0x00A8)
-class UCommand_Fall final : public UCommand
+class UCommand_Fall : public UCommand
 {
 public:
 	uint8                                         Pad_A8[0x18];                                      // 0x00A8(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
@@ -11233,7 +11233,7 @@ static_assert(offsetof(UDeathProcess_Enemy, DeathAnimations) == 0x0002E8, "Membe
 
 // Class Zion.DeathProcess_SpineAnimation
 // 0x0040 (0x0280 - 0x0240)
-class UDeathProcess_SpineAnimation final : public UDeathProcess
+class UDeathProcess_SpineAnimation : public UDeathProcess
 {
 public:
 	int32                                         TrackIndex;                                        // 0x0240(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -15211,7 +15211,7 @@ static_assert(offsetof(AMovingBlock_Elevator, RopeComponent) == 0x0002C0, "Membe
 
 // Class Zion.MovingPlatform_Elevator
 // 0x0088 (0x03E8 - 0x0360)
-class AMovingPlatform_Elevator final : public AOneWayPlatform
+class AMovingPlatform_Elevator : public AOneWayPlatform
 {
 public:
 	class USphereComponent*                       PlayerDetector;                                    // 0x0360(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)

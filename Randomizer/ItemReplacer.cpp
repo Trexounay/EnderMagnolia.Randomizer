@@ -32,6 +32,7 @@ void ItemReplacer::ZoneChanged(const UC::FString& oldZone, const UC::FString& ne
 	auto zoneName = newZone.ToString();
 	ReplaceInteractableAddItems(zoneName);
 	ReplaceInteractableAddTutorial(zoneName);
+	ReplaceInteractableTreasureBox(zoneName);
 	ReplaceTriggerEvents(zoneName);
 	ReplaceBossEvents(zoneName);
 }
@@ -53,7 +54,24 @@ void ItemReplacer::ReplaceInteractableAddTutorial(const std::string& zoneName)
 
 	for (auto Actor : out)
 	{
-		auto interactable = static_cast<SDK::ABP_Interactable_AddItem_C*>(Actor);
+		auto interactable = static_cast<SDK::ABP_Interactable_AddTutorial_C*>(Actor);
+		auto id = zoneName + "." + Actor->GetName();
+		if (auto item = FromLocation(id))
+		{
+			Logger::Log(LogLevel::Debug, this, "replaced", id);
+			interactable->Item = item.value();
+		}
+	}
+}
+
+void ItemReplacer::ReplaceInteractableTreasureBox(const std::string& zoneName)
+{
+	UC::TArray<SDK::AActor*> out;
+	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_Interactable_TreasureBox_C::StaticClass(), &out);
+
+	for (auto Actor : out)
+	{
+		auto interactable = static_cast<SDK::ABP_Interactable_TreasureBox_C*>(Actor);
 		auto id = zoneName + "." + Actor->GetName();
 		if (auto item = FromLocation(id))
 		{

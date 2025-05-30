@@ -18,7 +18,7 @@ namespace SDK
 
 // BlueprintGeneratedClass BP_Interactable_EventNPC.BP_Interactable_EventNPC_C
 // 0x0008 (0x0630 - 0x0628)
-class ABP_Interactable_EventNPC_C final : public AInteractable_EventNPC
+class ABP_Interactable_EventNPC_C : public AInteractable_EventNPC
 {
 public:
 	class USphereComponent*                       SphereCollider;                                    // 0x0628(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
