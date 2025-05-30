@@ -40,13 +40,14 @@ void GameManager::OnReceiveTick()
 		auto zone = zoneSystem->GetActiveZoneLevelName();
 		if (zone != this->currentZone && (zone.IsValid() || this->currentZone.IsValid()))
 			this->ZoneChanged(this->currentZone, zone);
+		itemReplacer->Tick(zone);
 	}
 }
 
 void GameManager::ZoneChanged(UC::FString oldZone, UC::FString newZone)
 {
 	this->currentZone = newZone;
-	Logger::Log(LogLevel::Debug, this, "Zone Changed", oldZone.ToString(), "->", newZone.ToString());
+	Logger::Log(this, "Zone Changed", oldZone.ToString(), "->", newZone.ToString());
 	if (newZone.IsValid())
 		itemReplacer->ZoneChanged(oldZone, newZone);
 }

@@ -56,7 +56,7 @@ public:
 		WORD color = oldColor;
 		switch (level)
 		{
-		case LogLevel::Info:    color = FOREGROUND_GREEN; break;
+		case LogLevel::Info:    color = oldColor; break;
 		case LogLevel::Warning: color = FOREGROUND_RED | FOREGROUND_GREEN; break;
 		case LogLevel::Error:   color = FOREGROUND_RED | FOREGROUND_INTENSITY; break;
 		case LogLevel::Debug:   color = FOREGROUND_GREEN | FOREGROUND_INTENSITY; break;

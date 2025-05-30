@@ -28,9 +28,21 @@ ItemReplacer::ItemReplacer()
 
 void ItemReplacer::ZoneChanged(const UC::FString& oldZone, const UC::FString& newZone)
 {
+	delayed_replacement.clear();
 	auto zoneName = newZone.ToString();
 	ReplaceInteractableAddItems(zoneName);
 	ReplaceTriggerEvents(zoneName);
+	ReplaceBossEvents(zoneName);
+}
+
+void ItemReplacer::Tick(const UC::FString& newZone)
+{
+	for (auto it = delayed_replacement.begin(); it != delayed_replacement.end(); )
+	{
+		auto current = it++;
+		if ((*current)())
+			delayed_replacement.erase(current);
+	}
 }
 
 void ItemReplacer::ReplaceInteractableAddItems(const std::string& zoneName)
@@ -42,16 +54,27 @@ void ItemReplacer::ReplaceInteractableAddItems(const std::string& zoneName)
 	{
 		auto interactable = static_cast<SDK::ABP_Interactable_AddItem_C*>(Actor);
 		auto id = zoneName + "." + Actor->GetName();
-		Logger::Log(LogLevel::Debug, this, "Item found", id);
-		if (auto newItem = Configuration::Instance().ScoutLocation(id))
+		if (auto item = FromLocation(id))
 		{
-			Logger::Log(LogLevel::Debug, this, "found replacement", newItem.value());
-			if (auto item = FromItemName(newItem.value()))
-			{
-				interactable->Item = item.value();
-				Logger::Log(LogLevel::Debug, this, "replaced");
-			}
+			Logger::Log(LogLevel::Debug, this, "replaced", id);
+			interactable->Item = item.value();
 		}
+	}
+}
+
+void ItemReplacer::ReplaceBossEvents(const std::string& zoneName)
+{
+	UC::TArray<SDK::AActor*> out;
+	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_BossSpawner_C::StaticClass(), &out);
+	for (auto actor : out)
+	{
+		auto trigger = static_cast<SDK::ABP_BossSpawner_C*>(actor);
+		auto actorName = actor->GetName();
+		WaitForEventAsset(&trigger->LoadedDefeatEvent, [this, zoneName, actorName](SDK::UEventAsset* asset)
+			{
+				ReplaceEventAsset(zoneName, actorName, asset);
+			}
+		);
 	}
 }
 
@@ -59,59 +82,78 @@ void ItemReplacer::ReplaceTriggerEvents(const std::string& zoneName)
 {
 	UC::TArray<SDK::AActor*> out;
 	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ATrigger_Event::StaticClass(), &out);
-	for (auto Actor : out)
+	for (auto actor : out)
 	{
-		auto trigger = static_cast<SDK::ATrigger_Event*>(Actor);
-		auto asset = trigger->LoadedEventAsset;
-		if (!asset)
-		{
-			Logger::Log(LogLevel::Warning, this, "No loaded event asset for actor", Actor->GetName());
-			continue;
-		}
-		auto id = zoneName + "." + Actor->GetName();
-		Logger::Log(LogLevel::Debug, this, "Item found", id);
-		if (auto newItem = Configuration::Instance().ScoutLocation(id))
-		{
-			Logger::Log(LogLevel::Debug, this, "found replacement", newItem.value());
-			if (auto item = FromItemName(newItem.value()))
+		auto trigger = static_cast<SDK::ATrigger_Event*>(actor);
+		auto actorName = actor->GetName();
+		WaitForEventAsset(&trigger->LoadedEventAsset, [this, zoneName, actorName](SDK::UEventAsset* asset)
 			{
-				ItemReplacer::ReplaceInEventAsset(asset, item.value());
+				ReplaceEventAsset(zoneName, actorName, asset);
 			}
-		}
+		);
 	}
 }
 
-void ItemReplacer::ReplaceInEventAsset(SDK::UEventAsset* asset, const SDK::FDataTableRowHandle &item)
+void ItemReplacer::WaitForEventAsset(SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action)
 {
-	bool placed = false;
+	if (!*asset)
+	{
+		delayed_replacement.push_back([asset, action]()
+			{
+				if (!*asset) return false;
+				action(*asset);
+				return true;
+			}
+		);
+	}
+	else
+		action(*asset);
+}
+
+void ItemReplacer::ReplaceEventAsset(const std::string& zoneName, const std::string& actorName, SDK::UEventAsset* asset)
+{
+	int count = 0;
 	for (auto data : asset->Nodes)
 	{
-		if (data.Value()->IsA(SDK::UEventNodeAction::StaticClass()))
+		auto nodeAction = data.Value()->Cast<SDK::UEventNodeAction>();
+		if (!nodeAction)
+			continue;
+		for (auto action : nodeAction->Actions)
 		{
-			auto nodeAction = static_cast<SDK::UEventNodeAction*>(data.Value());
-			for (auto action : nodeAction->Actions)
+			if (auto grantItem = action->Cast<SDK::UEventAction_GrantItems>())
 			{
-				if (action->IsA(SDK::UEventAction_GrantItems::StaticClass()))
+				if (grantItem->ItemHandleCounts.Num() > 1)
+					Logger::Log(LogLevel::Warning, this, "Multiple items (not supported)",
+						zoneName, actorName, grantItem->GetName(), grantItem->ItemHandleCounts.Num());
+				auto eventName = grantItem->GetName();
+				auto id = zoneName + "." + actorName + (count > 0 ? ("." + std::to_string(count)) : "");
+				count++;
+				if (auto item = FromLocation(id))
 				{
-					auto grantItem = static_cast<SDK::UEventAction_GrantItems*>(action);
-					for (auto& itemHandleCount : grantItem->ItemHandleCounts)
-					{
-						itemHandleCount.ItemHandle = placed ? SDK::FDataTableRowHandle() : item;
-						placed = true;
-						Logger::Log(LogLevel::Debug, this, "replaced");
-					}
+					Logger::Log(LogLevel::Debug, this, "replaced", id);
+					grantItem->ItemHandleCounts[0].ItemHandle = item.value();
 				}
-				else if (action->IsA(SDK::UEventAction_EquipSkills::StaticClass()))
-				{
-					// logic here to equip skill corresponding to spirit
-					// auto equipSkill = static_cast<SDK::UEventAction_EquipSkills*>(action);
-					// equipSkill->SkillsToEquip[0].Second = item
-				}
+			}
+			else if (auto equipSkill = action->Cast<SDK::UEventAction_EquipSkills>())
+			{
+				// logic here to equip skill corresponding to spirit
+				// auto equipSkill = static_cast<SDK::UEventAction_EquipSkills*>(action);
+				// equipSkill->SkillsToEquip[0].Second = item
 			}
 		}
 	}
 }
 
+std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromLocation(std::string locationName) const
+{
+	if (auto newItem = Configuration::Instance().ScoutLocation(locationName))
+	{
+		Logger::Log(this, "found item with replacement", locationName, newItem.value());
+		return FromItemName(newItem.value());
+	}
+	Logger::Log(LogLevel::Warning, this, "no replacement items for", locationName);
+	return std::nullopt;
+}
 
 std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromItemName(std::string itemName) const
 {

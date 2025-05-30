@@ -39,6 +39,14 @@ public:
 	bool HasTypeFlag(EClassCastFlags TypeFlags) const;
 	bool IsA(EClassCastFlags TypeFlags) const;
 	bool IsA(class UClass* TypeClass) const;
+
+	template<typename UEType = UClass>
+	UEType* Cast()
+	{
+		if (this->IsA(UEType::StaticClass()))
+			return static_cast<UEType*>(this);
+		return nullptr;
+	}
 	bool IsDefaultObject() const;
 
 	void ExecuteUbergraph(int32 EntryPoint);
