@@ -28,7 +28,8 @@ void GameManager::OnGameStarted()
 	// read seed
 	Configuration::Instance().Load();
 	this->currentZone = UC::FString(L"");
-}	
+	this->dataTables.clear();
+}
 
 void GameManager::OnReceiveTick()
 {
@@ -43,6 +44,8 @@ void GameManager::OnReceiveTick()
 
 void GameManager::ZoneChanged(UC::FString oldZone, UC::FString newZone)
 {
+	if (this->dataTables.empty())
+		this->dataTables = GetDatatables();
 	this->currentZone = newZone;
 	Logger::Log(LogLevel::Debug, this, "Zone Changed", oldZone.ToString(), "->", newZone.ToString());
 	if (newZone.IsValid())
@@ -79,8 +82,6 @@ const std::unordered_map<std::string, SDK::UDataTable*> GameManager::GetDatatabl
 
 std::optional<SDK::FDataTableRowHandle> GameManager::FromItemName(std::string itemName) const
 {
-	static const std::unordered_map<std::string, SDK::UDataTable*> dataTables = GetDatatables();
-
 	SDK::FDataTableRowHandle Item;
 	auto separator = itemName.find('.');
 	if (separator == std::string::npos)

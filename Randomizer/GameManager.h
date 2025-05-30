@@ -33,7 +33,6 @@ private:
 	std::optional<SDK::FDataTableRowHandle> FromItemName(std::string itemName) const;
 
 	void ReplaceInteractableAddItems();
-
-	static const std::unordered_map<std::string, SDK::UDataTable*> dataTables;
+	std::unordered_map<std::string, SDK::UDataTable*> dataTables;
 };
 

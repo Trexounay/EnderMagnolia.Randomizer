@@ -13,9 +13,6 @@
       <UniqueIdentifier>{441f1dbc-b54e-4210-831a-1c805b8d07f6}</UniqueIdentifier>
       <Extensions>cpp</Extensions>
     </Filter>
-    <Filter Include="Source Files\Lib">
-      <UniqueIdentifier>{248f6bd2-fab5-4d44-87bf-103e23434977}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\SDK\Headers">
       <UniqueIdentifier>{7e8ad442-34a3-4b34-837b-730a5c1097f0}</UniqueIdentifier>
       <Extensions>
@@ -40,13 +37,16 @@
       <Extensions>
       </Extensions>
     </Filter>
+    <Filter Include="Source Files\libdetour">
+      <UniqueIdentifier>{248f6bd2-fab5-4d44-87bf-103e23434977}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="version\version.h">
       <Filter>Source Files\version</Filter>
     </ClInclude>
-    <ClInclude Include="Lib\libdetour.h">
-      <Filter>Source Files\Lib</Filter>
+    <ClInclude Include="extern\libdetour\libdetour.h">
+      <Filter>Source Files\libdetour</Filter>
     </ClInclude>
     <ClInclude Include="CppSDK\SDK.hpp">
       <Filter>Source Files\SDK\Headers</Filter>
@@ -54,28 +54,25 @@
     <ClInclude Include="CppSDK\SDK\Basic.hpp">
       <Filter>Source Files\SDK\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Engine_classes.hpp">
+    <ClInclude Include="CppSDK\SDK\Engine_classes.hpp">
       <Filter>Source Files\SDK\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Engine_parameters.hpp">
+    <ClInclude Include="CppSDK\SDK\Engine_parameters.hpp">
       <Filter>Source Files\SDK\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Engine_structs.hpp">
+    <ClInclude Include="CppSDK\SDK\Engine_structs.hpp">
       <Filter>Source Files\SDK\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="HookManager.h">
+    <ClInclude Include="Randomizer\HookManager.h">
       <Filter>Source Files\Randomizer\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Randomizer\DetourFunctions.h">
-      <Filter>Source Files\Randomizer</Filter>
-    </ClInclude>
-    <ClInclude Include="Logger.h">
+    <ClInclude Include="Randomizer\Logger.h">
       <Filter>Source Files\Randomizer\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Configuration.h">
+    <ClInclude Include="Randomizer\Configuration.h">
       <Filter>Source Files\Randomizer\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
+    <ClInclude Include="Randomizer\GameManager.h">
       <Filter>Source Files\Randomizer\Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -83,34 +80,31 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lib\libdetour.c">
-      <Filter>Source Files\Lib</Filter>
+    <ClCompile Include="extern\libdetour\libdetour.c">
+      <Filter>Source Files\libdetour</Filter>
     </ClCompile>
     <ClCompile Include="CppSDK\SDK\Basic.cpp">
       <Filter>Source Files\SDK\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Engine_functions.cpp">
+    <ClCompile Include="CppSDK\SDK\Engine_functions.cpp">
       <Filter>Source Files\SDK\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\CoreUObject_functions.cpp">
+    <ClCompile Include="CppSDK\SDK\CoreUObject_functions.cpp">
       <Filter>Source Files\SDK\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Dumper-7\5.4.4-0+UE5-EnderMagnolia\CppSDK\SDK\Zion_functions.cpp">
+    <ClCompile Include="CppSDK\SDK\Zion_functions.cpp">
       <Filter>Source Files\SDK\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="HookManager.cpp">
+    <ClCompile Include="Randomizer\HookManager.cpp">
       <Filter>Source Files\Randomizer\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="Randomizer\DetourFunctions.cpp">
-      <Filter>Source Files\Randomizer</Filter>
-    </ClCompile>
-    <ClCompile Include="Logger.cpp">
+    <ClCompile Include="Randomizer\Logger.cpp">
       <Filter>Source Files\Randomizer\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="Configuration.cpp">
+    <ClCompile Include="Randomizer\Configuration.cpp">
       <Filter>Source Files\Randomizer\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager.cpp">
+    <ClCompile Include="Randomizer\GameManager.cpp">
       <Filter>Source Files\Randomizer\Sources</Filter>
     </ClCompile>
   </ItemGroup>

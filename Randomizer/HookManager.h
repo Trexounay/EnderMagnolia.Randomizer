@@ -2,7 +2,7 @@
 #include "SDK.hpp"
 
 extern "C" {
-#include "Lib/libdetour.h"
+#include "extern/libdetour/libdetour.h"
 }
 
 #include "Logger.h"

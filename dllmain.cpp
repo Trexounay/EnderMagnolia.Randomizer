@@ -8,10 +8,10 @@
 #include <thread>
 #include "version/version.h"
 
-#include "HookManager.h"
-#include "GameManager.h"
-#include "Logger.h"
-#include "Configuration.h"
+#include "Randomizer/HookManager.h"
+#include "Randomizer/GameManager.h"
+#include "Randomizer/Logger.h"
+#include "Randomizer/Configuration.h"
 
 DWORD APIENTRY MainThread(HMODULE Module)
 {
