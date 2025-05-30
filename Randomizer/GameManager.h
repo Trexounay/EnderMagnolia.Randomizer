@@ -3,6 +3,7 @@
 #include <optional>
 #include <unordered_map>
 
+class ItemReplacer;
 class GameManager
 {
 public:
@@ -19,6 +20,7 @@ public:
 	SDK::UGameInstanceZion* GameInstance() const { return SDK::UGameInstanceZion::Get(World()); };
 	SDK::APlayerControllerZion* Controller() const { return SDK::APlayerControllerZion::Get(World(), 0); };
 	SDK::ACharacterZion* Pawn() const { return (SDK::ACharacterZion *)Controller()->Character; };
+	std::optional<SDK::FDataTableRowHandle> FromItemName(std::string itemName) const;
 
 private:
 	GameManager() = default;
@@ -29,10 +31,5 @@ private:
 	void ZoneChanged(const UC::FString oldZone, UC::FString newZone);
 	UC::FString currentZone;
 
-	const std::unordered_map<std::string, SDK::UDataTable*> GetDatatables() const;
-	std::optional<SDK::FDataTableRowHandle> FromItemName(std::string itemName) const;
-
-	void ReplaceInteractableAddItems();
-	std::unordered_map<std::string, SDK::UDataTable*> dataTables;
+	ItemReplacer* itemReplacer;
 };
-

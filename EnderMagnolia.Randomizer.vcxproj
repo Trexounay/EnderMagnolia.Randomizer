@@ -111,6 +111,9 @@
       <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(TargetPath)" "E:\STEAM\steamapps\common\ENDER MAGNOLIA\EnderMagnolia\Binaries\Win64\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -136,6 +139,9 @@
       <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(TargetPath)" "E:\STEAM\steamapps\common\ENDER MAGNOLIA\EnderMagnolia\Binaries\Win64\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -160,6 +166,9 @@
       <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(TargetPath)" "E:\STEAM\steamapps\common\ENDER MAGNOLIA\EnderMagnolia\Binaries\Win64\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -185,6 +194,9 @@
       <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(TargetPath)" "E:\STEAM\steamapps\common\ENDER MAGNOLIA\EnderMagnolia\Binaries\Win64\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CppSDK\SDK\Engine_classes.hpp" />
@@ -197,6 +209,7 @@
     <ClInclude Include="Randomizer\HookManager.h" />
     <ClInclude Include="extern\libdetour\libdetour.h" />
     <ClInclude Include="Randomizer\Logger.h" />
+    <ClInclude Include="Randomizer\ItemReplacer.h" />
     <ClInclude Include="version\version.h" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +223,7 @@
     <ClCompile Include="Randomizer\HookManager.cpp" />
     <ClCompile Include="extern\libdetour\libdetour.c" />
     <ClCompile Include="Randomizer\Logger.cpp" />
+    <ClCompile Include="Randomizer\ItemReplacer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <MASM Include="version\32\version_32.asm">

@@ -1,6 +1,7 @@
 #include "GameManager.h"
 #include "Configuration.h"
 #include "Logger.h"
+#include "ItemReplacer.h"
 #include "SDK.hpp"
 
 GameManager& GameManager::Instance()
@@ -20,6 +21,7 @@ bool GameManager::IsLoading()
 void GameManager::Init()
 {
 	Logger::Log(this, "Init ok");
+	itemReplacer = new ItemReplacer();
 }
 
 void GameManager::OnGameStarted()
@@ -28,7 +30,6 @@ void GameManager::OnGameStarted()
 	// read seed
 	Configuration::Instance().Load();
 	this->currentZone = UC::FString(L"");
-	this->dataTables.clear();
 }
 
 void GameManager::OnReceiveTick()
@@ -44,86 +45,8 @@ void GameManager::OnReceiveTick()
 
 void GameManager::ZoneChanged(UC::FString oldZone, UC::FString newZone)
 {
-	if (this->dataTables.empty())
-		this->dataTables = GetDatatables();
 	this->currentZone = newZone;
 	Logger::Log(LogLevel::Debug, this, "Zone Changed", oldZone.ToString(), "->", newZone.ToString());
 	if (newZone.IsValid())
-		ReplaceInteractableAddItems();
-}
-
-const std::unordered_map<std::string, SDK::UDataTable*> GameManager::GetDatatables() const
-{
-	auto Mode = this->Mode();
-	std::vector<SDK::UDataTable*> datatables =
-	{
-		Mode->DataTableItemCurrencies,
-		Mode->DataTableItemAptitudes,
-		Mode->DataTableItemSpirits,
-		Mode->DataTableItemSkills,
-		Mode->DataTableItemStats,
-		Mode->DataTableItemPassives,
-		Mode->DataTableItemEquipments,
-		Mode->DataTableItemEquipments,
-		Mode->DataTableItemAssists,
-		Mode->DataTableItemMaterials,
-		Mode->DataTableItemTips,
-		Mode->DataTableItemKeys,
-		Mode->DataTableItemQuests,
-		Mode->DataTableItemCostumes,
-		Mode->DataTableItemCostumes,
-		Mode->DataTableItemGallery,
-	};
-	std::unordered_map<std::string, SDK::UDataTable*> tableMap;
-	for (auto* table : datatables)
-		tableMap[table->Name.ToString()] = table;
-	return tableMap;
-}
-
-std::optional<SDK::FDataTableRowHandle> GameManager::FromItemName(std::string itemName) const
-{
-	SDK::FDataTableRowHandle Item;
-	auto separator = itemName.find('.');
-	if (separator == std::string::npos)
-		return std::nullopt;
-	std::string tableName = itemName.substr(0, separator);
-	std::string rowName = itemName.substr(separator + 1);
-
-	auto it = dataTables.find(tableName);
-	if (it == dataTables.end())
-		return std::nullopt;
-
-	Item.DataTable = it->second;
-	for (auto It = begin(Item.DataTable->RowMap); It != end(Item.DataTable->RowMap); ++It)
-	{
-		if (It->Key().GetRawString() == rowName)
-		{
-			Item.RowName = It->Key();
-			break;
-		}
-	}
-	return Item;
-}
-
-
-void GameManager::ReplaceInteractableAddItems()
-{
-	UC::TArray<SDK::AActor*> out;
-	SDK::UGameplayStatics::GetAllActorsOfClass(World(), SDK::ABP_Interactable_AddItem_C::StaticClass(), &out);
-
-	for (auto Actor : out)
-	{
-		auto interactable = static_cast<SDK::ABP_Interactable_AddItem_C*>(Actor);
-		auto id = this->currentZone.ToString() + "." + Actor->GetName();
-		Logger::Log(LogLevel::Debug, this, "Item found", id);
-		if (auto newItem = Configuration::Instance().ScoutLocation(id))
-		{
-			Logger::Log(LogLevel::Debug, this, "found replacement", newItem.value());
-			if (auto item = FromItemName(newItem.value()))
-			{
-				interactable->Item = item.value();
-				Logger::Log(LogLevel::Debug, this, "replaced");
-			}
-		}
-	}
+		itemReplacer->ZoneChanged(oldZone, newZone);
 }
