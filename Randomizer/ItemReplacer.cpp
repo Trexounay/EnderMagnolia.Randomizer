@@ -169,7 +169,7 @@ void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHa
 	{
 		if (auto rowHandle = FromItemName(newItem.value()))
 		{
-			Logger::Log(LogLevel::Debug, this, "replace at", locationName, ":", ToItemName(item), "->", newItem);
+			Logger::Log(LogLevel::Debug, this, "replace at", locationName, ":", ToItemName(item), "->", newItem.value());
 			item = rowHandle.value();
 			return;
 		}
