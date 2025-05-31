@@ -112,7 +112,9 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y /F "$(TargetPath)" "E:\STEAM\steamapps\common\ENDER MAGNOLIA\EnderMagnolia\Binaries\Win64\"</Command>
+      <Command>if defined EM_GAME_PATH (
+        xcopy /Y /F "$(TargetPath)" "%EM_GAME_PATH%"
+) else echo "Environment variable EM_GAME_PATH is not defined."</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -140,7 +142,9 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y /F "$(TargetPath)" "E:\STEAM\steamapps\common\ENDER MAGNOLIA\EnderMagnolia\Binaries\Win64\"</Command>
+      <Command>if defined EM_GAME_PATH (
+        xcopy /Y /F "$(TargetPath)" "%EM_GAME_PATH%"
+) else echo "Environment variable EM_GAME_PATH is not defined."</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -167,7 +171,9 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y /F "$(TargetPath)" "E:\STEAM\steamapps\common\ENDER MAGNOLIA\EnderMagnolia\Binaries\Win64\"</Command>
+      <Command>if defined EM_GAME_PATH (
+        xcopy /Y /F "$(TargetPath)" "%EM_GAME_PATH%"
+) else echo "Environment variable EM_GAME_PATH is not defined."</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -195,7 +201,9 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y /F "$(TargetPath)" "E:\STEAM\steamapps\common\ENDER MAGNOLIA\EnderMagnolia\Binaries\Win64\"</Command>
+      <Command>if defined EM_GAME_PATH (
+        xcopy /Y /F "$(TargetPath)" "%EM_GAME_PATH%"
+) else echo "Environment variable EM_GAME_PATH is not defined."</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
