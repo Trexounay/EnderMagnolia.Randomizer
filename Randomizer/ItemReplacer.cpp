@@ -56,11 +56,7 @@ void ItemReplacer::ReplaceInteractableAddTutorial(const std::string& zoneName)
 	{
 		auto interactable = static_cast<SDK::ABP_Interactable_AddTutorial_C*>(Actor);
 		auto id = zoneName + "." + Actor->GetName();
-		if (auto item = FromLocation(id))
-		{
-			Logger::Log(LogLevel::Debug, this, "replaced", id);
-			interactable->Item = item.value();
-		}
+		SwapAtLocation(id, interactable->Item);
 	}
 }
 
@@ -73,11 +69,7 @@ void ItemReplacer::ReplaceInteractableTreasureBox(const std::string& zoneName)
 	{
 		auto interactable = static_cast<SDK::ABP_Interactable_TreasureBox_C*>(Actor);
 		auto id = zoneName + "." + Actor->GetName();
-		if (auto item = FromLocation(id))
-		{
-			Logger::Log(LogLevel::Debug, this, "replaced", id);
-			interactable->Item = item.value();
-		}
+		SwapAtLocation(id, interactable->Item);
 	}
 }
 
@@ -90,11 +82,7 @@ void ItemReplacer::ReplaceInteractableAddItems(const std::string& zoneName)
 	{
 		auto interactable = static_cast<SDK::ABP_Interactable_AddItem_C*>(Actor);
 		auto id = zoneName + "." + Actor->GetName();
-		if (auto item = FromLocation(id))
-		{
-			Logger::Log(LogLevel::Debug, this, "replaced", id);
-			interactable->Item = item.value();
-		}
+		SwapAtLocation(id, interactable->Item);
 	}
 }
 
@@ -158,16 +146,11 @@ void ItemReplacer::ReplaceEventAsset(const std::string& zoneName, const std::str
 		{
 			if (auto grantItem = action->Cast<SDK::UEventAction_GrantItems>())
 			{
-				if (grantItem->ItemHandleCounts.Num() > 1)
-					Logger::Log(LogLevel::Warning, this, "Multiple items (not supported)",
-						zoneName, actorName, grantItem->GetName(), grantItem->ItemHandleCounts.Num());
-				auto eventName = grantItem->GetName();
-				auto id = zoneName + "." + actorName + (count > 0 ? ("." + std::to_string(count)) : "");
-				count++;
-				if (auto item = FromLocation(id))
+				for (auto itemHandleCount : grantItem->ItemHandleCounts)
 				{
-					Logger::Log(LogLevel::Debug, this, "replaced", id);
-					grantItem->ItemHandleCounts[0].ItemHandle = item.value();
+					auto id = zoneName + "." + actorName + (count > 0 ? ("." + std::to_string(count)) : "");
+					count++;
+					SwapAtLocation(id, itemHandleCount.ItemHandle);
 				}
 			}
 			else if (auto equipSkill = action->Cast<SDK::UEventAction_EquipSkills>())
@@ -180,15 +163,18 @@ void ItemReplacer::ReplaceEventAsset(const std::string& zoneName, const std::str
 	}
 }
 
-std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromLocation(std::string locationName) const
+void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle &item) const
 {
 	if (auto newItem = Configuration::Instance().ScoutLocation(locationName))
 	{
-		Logger::Log(this, "found item with replacement", locationName, newItem.value());
-		return FromItemName(newItem.value());
+		if (auto rowHandle = FromItemName(newItem.value()))
+		{
+			Logger::Log(LogLevel::Debug, this, "replace at", locationName, ":", ToItemName(item), "->", newItem);
+			item = rowHandle.value();
+			return;
+		}
 	}
 	Logger::Log(LogLevel::Warning, this, "found item with no replacement", locationName);
-	return std::nullopt;
 }
 
 std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromItemName(std::string itemName) const
@@ -215,4 +201,9 @@ std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromItemName(std::string i
 		}
 	}
 	return Item;
+}
+
+std::string ItemReplacer::ToItemName(SDK::FDataTableRowHandle row) const
+{
+	return row.DataTable->GetName() + "." + row.RowName.GetRawString();
 }

@@ -78,6 +78,9 @@
     <ClInclude Include="Randomizer\ItemReplacer.h">
       <Filter>Source Files\Randomizer\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Randomizer\DebugTeleporter.h">
+      <Filter>Source Files\Randomizer\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -111,6 +114,9 @@
       <Filter>Source Files\Randomizer\Sources</Filter>
     </ClCompile>
     <ClCompile Include="Randomizer\ItemReplacer.cpp">
+      <Filter>Source Files\Randomizer\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\DebugTeleporter.cpp">
       <Filter>Source Files\Randomizer\Sources</Filter>
     </ClCompile>
   </ItemGroup>

@@ -202,6 +202,7 @@
     <ClInclude Include="CppSDK\SDK\Engine_classes.hpp" />
     <ClInclude Include="CppSDK\SDK\Engine_parameters.hpp" />
     <ClInclude Include="CppSDK\SDK\Engine_structs.hpp" />
+    <ClInclude Include="Randomizer\DebugTeleporter.h" />
     <ClInclude Include="Randomizer\Configuration.h" />
     <ClInclude Include="CppSDK\SDK.hpp" />
     <ClInclude Include="CppSDK\SDK\Basic.hpp" />
@@ -216,6 +217,7 @@
     <ClCompile Include="CppSDK\SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Engine_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Zion_functions.cpp" />
+    <ClCompile Include="Randomizer\DebugTeleporter.cpp" />
     <ClCompile Include="Randomizer\Configuration.cpp" />
     <ClCompile Include="CppSDK\SDK\Basic.cpp" />
     <ClCompile Include="dllmain.cpp" />

@@ -2,6 +2,7 @@
 #include "Configuration.h"
 #include "Logger.h"
 #include "ItemReplacer.h"
+#include "DebugTeleporter.h"
 #include "SDK.hpp"
 
 GameManager& GameManager::Instance()
@@ -10,11 +11,17 @@ GameManager& GameManager::Instance()
 	return instance;
 }
 
-bool GameManager::IsLoading()
+SDK::UWorldLoaderSubsystem* GameManager::Loader() const
 {
 	SDK::UWorld* World = SDK::UWorld::GetWorld();
-	if (!World) return true;
-	auto loader = (SDK::UWorldLoaderSubsystem*)SDK::USubsystemBlueprintLibrary::GetGameInstanceSubsystem(World, SDK::UWorldLoaderSubsystem::StaticClass());
+	if (!World) return nullptr;
+	return (SDK::UWorldLoaderSubsystem*)SDK::USubsystemBlueprintLibrary::GetGameInstanceSubsystem(World, SDK::UWorldLoaderSubsystem::StaticClass());
+
+}
+
+bool GameManager::IsLoading() const
+{
+	auto loader = Loader();
 	return !loader || loader->IsLoading(true);
 }
 
@@ -22,6 +29,7 @@ void GameManager::Init()
 {
 	Logger::Log(this, "Init ok");
 	itemReplacer = new ItemReplacer();
+	teleporter = new DebugTeleporter();
 }
 
 void GameManager::OnGameStarted()
@@ -41,6 +49,8 @@ void GameManager::OnReceiveTick()
 		if (zone != this->currentZone && (zone.IsValid() || this->currentZone.IsValid()))
 			this->ZoneChanged(this->currentZone, zone);
 		itemReplacer->Tick(zone);
+		// teleport to every room/zone in the game 
+		//teleporter->Tick();
 	}
 }
 

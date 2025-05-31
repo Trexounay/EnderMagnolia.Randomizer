@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <windows.h>
 
 
@@ -9,7 +10,8 @@ enum class LogLevel {
 	Info,
 	Warning,
 	Error,
-	Debug
+	Debug,
+	File
 };
 
 class Logger {
@@ -47,6 +49,17 @@ public:
 	template<typename... Args>
 	static void Print(LogLevel level, Args&&... args)
 	{
+		std::ostringstream stream;
+		((stream << std::forward<Args>(args) << ' '), ...);
+
+		if (level == LogLevel::File)
+		{
+			std::ofstream myfile;
+			myfile.open("Debug.txt", std::ios_base::app);
+			myfile << stream.str() << std::endl;
+			myfile.close();
+			return;
+		}
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 		CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
@@ -64,11 +77,8 @@ public:
 
 		SetConsoleTextAttribute(hConsole, color);
 
-		std::ostringstream stream;
-		((stream << std::forward<Args>(args) << ' '), ...);
 		std::cout << stream.str() << std::endl;
 
-		// Restaure l’ancienne couleur
 		SetConsoleTextAttribute(hConsole, oldColor);
 	}
 

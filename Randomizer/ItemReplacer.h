@@ -16,7 +16,8 @@ private:
 	GameManager* GM;
 
 	std::optional<SDK::FDataTableRowHandle> FromItemName(std::string itemName) const;
-	std::optional<SDK::FDataTableRowHandle> FromLocation(std::string locationName) const;
+	std::string ToItemName(SDK::FDataTableRowHandle row) const;
+	void SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item) const;
 	std::list<std::function<bool()>> delayed_replacement;
 
 

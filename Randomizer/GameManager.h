@@ -4,6 +4,8 @@
 #include <unordered_map>
 
 class ItemReplacer;
+class DebugTeleporter;
+
 class GameManager
 {
 public:
@@ -13,7 +15,8 @@ public:
 	void OnReceiveTick();
 	void OnGameStarted();
 
-	bool IsLoading();
+	bool IsLoading() const;
+	SDK::UWorldLoaderSubsystem* Loader() const;
 
 	SDK::UWorld* World() const { return SDK::UWorld::GetWorld(); };
 	SDK::AGameModeZion* Mode() const { return (SDK::AGameModeZion*)World()->AuthorityGameMode; };
@@ -32,4 +35,5 @@ private:
 	UC::FString currentZone;
 
 	ItemReplacer* itemReplacer;
+	DebugTeleporter* teleporter;
 };
