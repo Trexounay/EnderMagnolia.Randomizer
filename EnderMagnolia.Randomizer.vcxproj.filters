@@ -125,12 +125,4 @@
       <Filter>Source Files\version</Filter>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <MASM Include="version\32\version_32.asm">
-      <Filter>Source Files\version</Filter>
-    </MASM>
-    <MASM Include="version\64\version_64.asm">
-      <Filter>Source Files\version</Filter>
-    </MASM>
-  </ItemGroup>
 </Project>

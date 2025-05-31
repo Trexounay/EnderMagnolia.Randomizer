@@ -38,20 +38,29 @@ void setupWrappers()
     }
 }
 
-extern "C" void GetFileVersionInfoA_wrapper();
-extern "C" void GetFileVersionInfoByHandle_wrapper();
-extern "C" void GetFileVersionInfoExA_wrapper();
-extern "C" void GetFileVersionInfoExW_wrapper();
-extern "C" void GetFileVersionInfoSizeA_wrapper();
-extern "C" void GetFileVersionInfoSizeExA_wrapper();
-extern "C" void GetFileVersionInfoSizeExW_wrapper();
-extern "C" void GetFileVersionInfoSizeW_wrapper();
-extern "C" void GetFileVersionInfoW_wrapper();
-extern "C" void VerFindFileA_wrapper();
-extern "C" void VerFindFileW_wrapper();
-extern "C" void VerInstallFileA_wrapper();
-extern "C" void VerInstallFileW_wrapper();
-extern "C" void VerLanguageNameA_wrapper();
-extern "C" void VerLanguageNameW_wrapper();
-extern "C" void VerQueryValueA_wrapper();
-extern "C" void VerQueryValueW_wrapper();
+
+// Implementation macros
+#define FORWARD_FUNC(index, rettype, name, args, callargs) \
+rettype WINAPI name##_wrapper args { \
+    using Fn = rettype (WINAPI*) args; \
+    return ((Fn)mProcs[index]) callargs; \
+}
+
+// Define the functions using the macro (same as earlier)
+FORWARD_FUNC(0, BOOL, GetFileVersionInfoA, (LPCSTR a, DWORD b, DWORD c, LPVOID d), (a, b, c, d))
+FORWARD_FUNC(1, BOOL, GetFileVersionInfoByHandle, (HANDLE a, LPVOID b), (a, b))
+FORWARD_FUNC(2, BOOL, GetFileVersionInfoExA, (DWORD a, LPCSTR b, DWORD c, DWORD d, LPVOID e), (a, b, c, d, e))
+FORWARD_FUNC(3, BOOL, GetFileVersionInfoExW, (DWORD a, LPCWSTR b, DWORD c, DWORD d, LPVOID e), (a, b, c, d, e))
+FORWARD_FUNC(4, DWORD, GetFileVersionInfoSizeA, (LPCSTR a, LPDWORD b), (a, b))
+FORWARD_FUNC(5, DWORD, GetFileVersionInfoSizeExA, (DWORD a, LPCSTR b, LPDWORD c), (a, b, c))
+FORWARD_FUNC(6, DWORD, GetFileVersionInfoSizeExW, (DWORD a, LPCWSTR b, LPDWORD c), (a, b, c))
+FORWARD_FUNC(7, DWORD, GetFileVersionInfoSizeW, (LPCWSTR a, LPDWORD b), (a, b))
+FORWARD_FUNC(8, BOOL, GetFileVersionInfoW, (LPCWSTR a, DWORD b, DWORD c, LPVOID d), (a, b, c, d))
+FORWARD_FUNC(9, DWORD, VerFindFileA, (DWORD a, LPCSTR b, LPCSTR c, LPCSTR d, LPSTR e, PUINT f, LPSTR g, PUINT h), (a, b, c, d, e, f, g, h))
+FORWARD_FUNC(10, DWORD, VerFindFileW, (DWORD a, LPCWSTR b, LPCWSTR c, LPCWSTR d, LPWSTR e, PUINT f, LPWSTR g, PUINT h), (a, b, c, d, e, f, g, h))
+FORWARD_FUNC(11, DWORD, VerInstallFileA, (DWORD a, LPCSTR b, LPCSTR c, LPCSTR d, LPCSTR e, LPCSTR f, LPSTR g, PUINT h), (a, b, c, d, e, f, g, h))
+FORWARD_FUNC(12, DWORD, VerInstallFileW, (DWORD a, LPCWSTR b, LPCWSTR c, LPCWSTR d, LPCWSTR e, LPCWSTR f, LPWSTR g, PUINT h), (a, b, c, d, e, f, g, h))
+FORWARD_FUNC(13, DWORD, VerLanguageNameA, (DWORD a, LPSTR b, DWORD c), (a, b, c))
+FORWARD_FUNC(14, DWORD, VerLanguageNameW, (DWORD a, LPWSTR b, DWORD c), (a, b, c))
+FORWARD_FUNC(15, BOOL, VerQueryValueA, (LPCVOID a, LPCSTR b, LPVOID* c, PUINT d), (a, b, c, d))
+FORWARD_FUNC(16, BOOL, VerQueryValueW, (LPCVOID a, LPCWSTR b, LPVOID* c, PUINT d), (a, b, c, d))
