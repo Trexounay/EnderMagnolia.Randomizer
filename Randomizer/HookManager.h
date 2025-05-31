@@ -63,5 +63,9 @@ private:
 		DETOUR_ORIG_CALL(&ctxs[SetLaunchGameIntent_Hook], NativeFunction, Context, TheStack, Result);
 		HookManager::Instance().SetLaunchGameIntent(Context, TheStack, Result);
 	}
+	static void DEBUG_Hook(SDK::UObject* Context, void* TheStack, void* Result)
+	{
+		Logger::Log(LogLevel::Error, "DEBUG", Context->GetName());
+		DETOUR_ORIG_CALL(&ctxs[DEBUG_Hook], NativeFunction, Context, TheStack, Result);
+	}
 };
-

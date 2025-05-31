@@ -146,11 +146,11 @@ void ItemReplacer::ReplaceEventAsset(const std::string& zoneName, const std::str
 		{
 			if (auto grantItem = action->Cast<SDK::UEventAction_GrantItems>())
 			{
-				for (auto itemHandleCount : grantItem->ItemHandleCounts)
+				for (int i = 0; i < grantItem->ItemHandleCounts.Num(); ++i)
 				{
 					auto id = zoneName + "." + actorName + (count > 0 ? ("." + std::to_string(count)) : "");
 					count++;
-					SwapAtLocation(id, itemHandleCount.ItemHandle);
+					SwapAtLocation(id, grantItem->ItemHandleCounts[i].ItemHandle);
 				}
 			}
 			else if (auto equipSkill = action->Cast<SDK::UEventAction_EquipSkills>())

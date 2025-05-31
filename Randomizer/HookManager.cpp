@@ -21,6 +21,13 @@ bool HookManager::Init()
 		return false;
 	}
 
+	auto world = SDK::UWorld::GetWorld();
+	if (!world || !world->OwningGameInstance || !world->OwningGameInstance->LocalPlayers.Num() || !world->OwningGameInstance->LocalPlayers[0]->PlayerController)
+	{
+		Logger::Log(LogLevel::Warning, this, "waiting for UWORLD");
+		return false;
+	}
+
 	// Process Event
 	if (!HookProcessEvent(&HookManager::ProcessEvent_Hook))
 		Logger::Log(LogLevel::Error, this, "Failed to hook ProcessEvent");
@@ -28,6 +35,32 @@ bool HookManager::Init()
 	// SetLaunchGameIntent
 	if (!HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", &HookManager::SetLaunchGameIntent_Hook))
 		Logger::Log(LogLevel::Error, this, "Failed to hook SetLaunchIntent");
+
+	// tick
+//	if (!HookNativeFunction(SDK::UActorComponent::StaticClass(), "ActorComponent", "ReceiveTick", &HookManager::DEBUG_Hook))
+//		Logger::Log(LogLevel::Error, this, "Failed to hook tick");
+
+	/*s
+	for (int i = 0; i < SDK::UObject::GObjects->Num(); ++i)
+	{
+		SDK::UObject* Object = SDK::UObject::GObjects->GetByIndex(i);
+
+		if (!Object)
+			continue;
+
+		if (Object->HasTypeFlag(SDK::EClassCastFlags::Function) && Object->GetName() == "ReceiveTick")
+		{
+			Logger::Log(LogLevel::Error, this, "FUNC: ", Object->GetFullName());
+		}
+	}
+	for (const SDK::UStruct* Clss = SDK::APlayerController::StaticClass(); Clss; Clss = Clss->Super)
+	{
+		for (SDK::UField* Field = Clss->Children; Field; Field = Field->Next)
+		{
+			if (Field->HasTypeFlag(SDK::EClassCastFlags::Function))
+				Logger::Log(LogLevel::Error, this, Clss->GetName(), "." , Field->GetName());
+		}
+	}*/
 
 	// Enable Hooks
 	Logger::Log(this, "Init ok");
@@ -54,8 +87,7 @@ bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std:
 
 bool HookManager::HookProcessEvent(FProcessEventFuncPtr detour)
 {
-	SDK::UEngine* engine = SDK::UEngine::GetEngine();
-	void* origPtr = (void*)(SDK::InSDKUtils::GetVirtualFunction<FProcessEventFuncPtr>(engine, SDK::Offsets::ProcessEventIdx));
+	void* origPtr = reinterpret_cast<void*>(SDK::InSDKUtils::GetImageBase() + SDK::Offsets::ProcessEvent);
 	if (!origPtr)
 	{
 		Logger::Log(LogLevel::Error, this, "Failed to get original ProcessEvent function");
@@ -68,7 +100,7 @@ bool HookManager::HookProcessEvent(FProcessEventFuncPtr detour)
 
 void HookManager::ProcessEvent(const SDK::UObject* obj, SDK::UFunction* func, void* params)
 {
-	static Subscriber PlayerCameraManager_ReceiveTick("BP_PlayerCameraManagerZion_C", "ReceiveTick");
+	static Subscriber PlayerCameraManager_ReceiveTick("CameraAnimationCameraModifier", "BlueprintModifyCamera");
 	if (PlayerCameraManager_ReceiveTick.Matches(obj, func))
 		GameManager::Instance().OnReceiveTick();
 }
