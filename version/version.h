@@ -38,15 +38,12 @@ void setupWrappers()
     }
 }
 
-
-// Implementation macros
 #define FORWARD_FUNC(index, rettype, name, args, callargs) \
 rettype WINAPI name##_wrapper args { \
     using Fn = rettype (WINAPI*) args; \
     return ((Fn)mProcs[index]) callargs; \
 }
 
-// Define the functions using the macro (same as earlier)
 FORWARD_FUNC(0, BOOL, GetFileVersionInfoA, (LPCSTR a, DWORD b, DWORD c, LPVOID d), (a, b, c, d))
 FORWARD_FUNC(1, BOOL, GetFileVersionInfoByHandle, (HANDLE a, LPVOID b), (a, b))
 FORWARD_FUNC(2, BOOL, GetFileVersionInfoExA, (DWORD a, LPCSTR b, DWORD c, DWORD d, LPVOID e), (a, b, c, d, e))
