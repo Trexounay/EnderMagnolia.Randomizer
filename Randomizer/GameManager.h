@@ -14,12 +14,13 @@ public:
 
 	void OnReceiveTick();
 	void OnGameStarted();
+	bool SetStartingWeapon();
 
 	bool IsLoading() const;
 	SDK::UWorldLoaderSubsystem* Loader() const;
 
 	SDK::UWorld* World() const { return SDK::UWorld::GetWorld(); };
-	SDK::AGameModeZion* Mode() const { return (SDK::AGameModeZion*)World()->AuthorityGameMode; };
+	SDK::AGameModeZion* Mode() const { return (SDK::AGameModeZion*)SDK::UWorld::GetWorld()->AuthorityGameMode; };
 	SDK::UGameInstanceZion* GameInstance() const { return SDK::UGameInstanceZion::Get(World()); };
 	SDK::APlayerControllerZion* Controller() const { return SDK::APlayerControllerZion::Get(World(), 0); };
 	SDK::ACharacterZion* Pawn() const { return (SDK::ACharacterZion *)Controller()->Character; };
@@ -36,4 +37,5 @@ private:
 
 	ItemReplacer* itemReplacer;
 	DebugTeleporter* teleporter;
+	bool start_weapon;
 };

@@ -177,7 +177,7 @@ void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHa
 	Logger::Log(LogLevel::Warning, this, "found item with no replacement", locationName);
 }
 
-std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromItemName(std::string itemName) const
+std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromItemName(std::string itemName)
 {
 	SDK::FDataTableRowHandle Item;
 	auto separator = itemName.find('.');
@@ -186,10 +186,10 @@ std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromItemName(std::string i
 	std::string tableName = itemName.substr(0, separator);
 	std::string rowName = itemName.substr(separator + 1);
 
-	auto it = this->dataTableOffsets.find(tableName);
-	if (it == this->dataTableOffsets.end())
+	auto it = ItemReplacer::dataTableOffsets.find(tableName);
+	if (it == ItemReplacer::dataTableOffsets.end())
 		return std::nullopt;
-	uintptr_t base = reinterpret_cast<uintptr_t>(GM->Mode());
+	uintptr_t base = reinterpret_cast<uintptr_t>(SDK::UWorld::GetWorld()->AuthorityGameMode);
 	Item.DataTable = *reinterpret_cast<SDK::UDataTable**>(base + it->second);
 
 	for (auto It = begin(Item.DataTable->RowMap); It != end(Item.DataTable->RowMap); ++It)
