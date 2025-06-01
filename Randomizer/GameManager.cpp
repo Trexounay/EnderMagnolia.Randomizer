@@ -57,8 +57,6 @@ bool GameManager::SetStartingWeapon()
 	{
 		return false;
 	}
-
-	// remove all auto granted skills
 	Logger::Log(this, "removing auto granted skills");
 	SDK::FDataTableRowHandle handle;
 	handle.DataTable = Mode()->DataTableItemSpirits;
@@ -68,6 +66,34 @@ bool GameManager::SetStartingWeapon()
 		spiritData->AutoGrantSkills.Clear();
 		handle.RowName = i.First;
 		controller->InventoryComponent->AddItem(handle, 1);
+	}
+
+	for (auto s : Mode()->DataTableItemSkills->RowMap)
+	{
+		auto skillData = (SDK::FInventoryItemSkillData*)(s.Second);
+		SDK::FDataTableRowHandle row;
+		row.DataTable = Mode()->DataTableItemSkills;
+		row.RowName = s.First;
+		Logger::Log(this, "replacing unlock cost for lvl 1 skill", s.First.GetRawString());
+
+		SDK::FSkillMaterialData cost;
+		cost.Item = row;
+		cost.Count = 1;
+
+		auto levels = skillData->SkillLevelTable->RowMap;
+		auto level_1 = (SDK::FSkillLevelData*)levels[skillData->InitialLevel-1].Second;
+		if (level_1->UnlockMaterials && level_1->UnlockMaterials.Num() > 0)
+		{
+			level_1->UnlockMaterials[0] = cost;
+		}
+		else
+		{
+			auto result = SDK::UPluginBlueprintLibrary::GetEnabledPluginNames();
+			result.Clear();
+			auto b = reinterpret_cast<UC::TArray<SDK::FSkillMaterialData>*>(&result);
+			b->Add(cost);
+			level_1->UnlockMaterials = *b;
+		}
 	}
 	std::string skill = "DT_ItemSkills.s5000_sword";
 	if (auto confSkill = Configuration::Instance().ScoutLocation("starting_skill"))
