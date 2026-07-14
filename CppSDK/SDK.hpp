@@ -122,6 +122,8 @@
 #include "SDK/BP_BossRushComponent_classes.hpp"
 #include "SDK/BP_BossSpawner_Final_classes.hpp"
 #include "SDK/BP_BossSpawner_classes.hpp"
+#include "SDK/BP_Breakable_SpawnItem_classes.hpp"
+#include "SDK/BP_Breakable_SpawnItem_parameters.hpp"
 #include "SDK/BP_Breakable_Block_PileAttack_Lv1_classes.hpp"
 #include "SDK/BP_Breakable_Block_Spine_classes.hpp"
 #include "SDK/BP_Breakable_Block_classes.hpp"

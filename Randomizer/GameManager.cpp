@@ -16,7 +16,13 @@ SDK::UWorldLoaderSubsystem* GameManager::Loader() const
 	SDK::UWorld* World = SDK::UWorld::GetWorld();
 	if (!World) return nullptr;
 	return (SDK::UWorldLoaderSubsystem*)SDK::USubsystemBlueprintLibrary::GetGameInstanceSubsystem(World, SDK::UWorldLoaderSubsystem::StaticClass());
+}
 
+SDK::USaveSubsystem* GameManager::SaveSubsystem() const
+{
+	SDK::UWorld* World = SDK::UWorld::GetWorld();
+	if (!World) return nullptr;
+	return (SDK::USaveSubsystem*)SDK::USubsystemBlueprintLibrary::GetGameInstanceSubsystem(World, SDK::USaveSubsystem::StaticClass());
 }
 
 bool GameManager::IsLoading() const
@@ -34,7 +40,10 @@ void GameManager::Init()
 
 void GameManager::OnGameStarted()
 {
-	Logger::Log(this, "New Game Started", (int)(GameInstance()->GetLaunchGameIntent()));
+	auto ss = SaveSubsystem();
+	Logger::Log(this, "New Game Started", (int)(GameInstance()->GetLaunchGameIntent()),
+		(ss && ss->CurrentSettings ? ss->CurrentSettings->ValidGameVersion.ToString() : "none"),
+		(ss && ss->SavingGameData ? ss->SavingGameData->ValidGameVersion.ToString() : "none"));
 	// read seed
 	Configuration::Instance().Load();
 	this->currentZone = UC::FString(L"");
@@ -74,14 +83,13 @@ bool GameManager::SetStartingWeapon()
 		SDK::FDataTableRowHandle row;
 		row.DataTable = Mode()->DataTableItemSkills;
 		row.RowName = s.First;
-		Logger::Log(this, "replacing unlock cost for lvl 1 skill", s.First.GetRawString());
 
 		SDK::FSkillMaterialData cost;
 		cost.Item = row;
 		cost.Count = 1;
 
 		auto levels = skillData->SkillLevelTable->RowMap;
-		auto level_1 = (SDK::FSkillLevelData*)levels[skillData->InitialLevel-1].Second;
+		auto level_1 = (SDK::FSkillLevelData*)levels[skillData->InitialLevel - 1].Second;
 		if (level_1->UnlockMaterials && level_1->UnlockMaterials.Num() > 0)
 		{
 			level_1->UnlockMaterials[0] = cost;
@@ -114,13 +122,14 @@ void GameManager::OnReceiveTick()
 	if (!start_weapon)
 		SetStartingWeapon();
 	auto zoneSystem = SDK::UZoneSystemComponent::Get(World());
-	
+
 	if (zoneSystem && !IsLoading())
 	{
 		auto zone = zoneSystem->GetActiveZoneLevelName();
 		if (zone != this->currentZone && (zone.IsValid() || this->currentZone.IsValid()))
 			this->ZoneChanged(this->currentZone, zone);
 		itemReplacer->Tick(zone);
+		Configuration::Instance().Tick();
 		// teleport to every room/zone in the game 
 		//teleporter->Tick();
 	}
@@ -131,5 +140,14 @@ void GameManager::ZoneChanged(UC::FString oldZone, UC::FString newZone)
 	this->currentZone = newZone;
 	Logger::Log(this, "Zone Changed", oldZone.ToString(), "->", newZone.ToString());
 	if (newZone.IsValid())
+	{
 		itemReplacer->ZoneChanged(oldZone, newZone);
+
+		auto save = (SDK::USaveSubsystem*)SDK::USubsystemBlueprintLibrary::GetGameInstanceSubsystem(World(), SDK::USaveSubsystem::StaticClass());
+		auto result = SDK::UPluginBlueprintLibrary::GetEnabledPluginNames();
+		save->CurrentSettings->ValidGameVersion = result[0];
+		if (save->SavingGameData)
+			save->SavingGameData->ValidGameVersion = result[0];
+		save->SaveGameInCurrentSlot();
+	}
 }

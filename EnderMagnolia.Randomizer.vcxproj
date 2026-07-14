@@ -101,7 +101,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
-      <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern\pybind11\include;E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\Include;E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PC</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -109,7 +109,8 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>extern\minhook\lib\libMinHook.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
       <Command>if defined EM_GAME_PATH (
@@ -129,7 +130,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
-      <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern\pybind11\include;E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\Include;E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PC</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -139,7 +140,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>extern\minhook\lib\libMinHook.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if defined EM_GAME_PATH (
@@ -151,7 +152,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;_WINDOWS;_USRDLL;WSWRAP_NO_SSL;WSWRAP_NO_COMPRESSION;AP_NO_SCHEMA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -159,7 +160,7 @@
       <LanguageStandard_C>Default</LanguageStandard_C>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern\pybind11\include;E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\Include;E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PC</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -168,7 +169,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
       <Command>if defined EM_GAME_PATH (
@@ -182,13 +183,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
-      <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern\pybind11\include;E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\Include;E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PC</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -198,7 +199,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>extern\minhook\lib\libMinHook.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if defined EM_GAME_PATH (
@@ -210,12 +211,36 @@
     <ClInclude Include="CppSDK\SDK\Engine_classes.hpp" />
     <ClInclude Include="CppSDK\SDK\Engine_parameters.hpp" />
     <ClInclude Include="CppSDK\SDK\Engine_structs.hpp" />
+    <ClInclude Include="CppSDK\SDK\Zion_classes.hpp" />
+    <ClInclude Include="extern\apclientcpp\apclient.hpp" />
+    <ClInclude Include="extern\apclientcpp\apuuid.hpp" />
+    <ClInclude Include="extern\apclientcpp\defaultdatapackagestore.hpp" />
+    <ClInclude Include="extern\imgui\backends\imgui_impl_dx11.h" />
+    <ClInclude Include="extern\imgui\backends\imgui_impl_dx12.h" />
+    <ClInclude Include="extern\imgui\imconfig.h" />
+    <ClInclude Include="extern\imgui\imgui_internal.h" />
+    <ClInclude Include="extern\imgui\imstb_rectpack.h" />
+    <ClInclude Include="extern\imgui\imstb_textedit.h" />
+    <ClInclude Include="extern\imgui\imstb_truetype.h" />
+    <ClInclude Include="extern\kiero\impl\d3d11_impl.h" />
+    <ClInclude Include="extern\kiero\impl\shared.h" />
+    <ClInclude Include="extern\kiero\impl\win32_impl.h" />
+    <ClInclude Include="extern\kiero\kiero.h" />
+    <ClInclude Include="extern\minhook\src\buffer.h" />
+    <ClInclude Include="extern\minhook\src\hde\hde32.h" />
+    <ClInclude Include="extern\minhook\src\hde\hde64.h" />
+    <ClInclude Include="extern\minhook\src\hde\pstdint.h" />
+    <ClInclude Include="extern\minhook\src\hde\table32.h" />
+    <ClInclude Include="extern\minhook\src\hde\table64.h" />
+    <ClInclude Include="extern\minhook\src\trampoline.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="Randomizer\DebugTeleporter.h" />
     <ClInclude Include="Randomizer\Configuration.h" />
     <ClInclude Include="CppSDK\SDK.hpp" />
     <ClInclude Include="CppSDK\SDK\Basic.hpp" />
     <ClInclude Include="Randomizer\GameManager.h" />
     <ClInclude Include="Randomizer\HookManager.h" />
+    <ClInclude Include="Randomizer\HookProbe.h" />
     <ClInclude Include="extern\libdetour\libdetour.h" />
     <ClInclude Include="Randomizer\Logger.h" />
     <ClInclude Include="Randomizer\ItemReplacer.h" />
@@ -225,21 +250,52 @@
     <ClCompile Include="CppSDK\SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Engine_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Zion_functions.cpp" />
+    <ClCompile Include="extern\imgui\backends\imgui_impl_dx11.cpp" />
+    <ClCompile Include="extern\imgui\backends\imgui_impl_dx12.cpp" />
+    <ClCompile Include="extern\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="extern\imgui\imgui.cpp" />
+    <ClCompile Include="extern\imgui\imgui_demo.cpp" />
+    <ClCompile Include="extern\imgui\imgui_draw.cpp" />
+    <ClCompile Include="extern\imgui\imgui_tables.cpp" />
+    <ClCompile Include="extern\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="extern\kiero\impl\d3d11_impl.cpp" />
+    <ClCompile Include="extern\kiero\impl\shared.cpp" />
+    <ClCompile Include="extern\kiero\impl\win32_impl.cpp" />
+    <ClCompile Include="extern\kiero\kiero.cpp" />
+    <ClCompile Include="extern\minhook\src\buffer.c" />
+    <ClCompile Include="extern\minhook\src\hde\hde32.c" />
+    <ClCompile Include="extern\minhook\src\hde\hde64.c" />
+    <ClCompile Include="extern\minhook\src\hook.c" />
+    <ClCompile Include="extern\minhook\src\trampoline.c" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Randomizer\DebugTeleporter.cpp" />
     <ClCompile Include="Randomizer\Configuration.cpp" />
     <ClCompile Include="CppSDK\SDK\Basic.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Randomizer\GameManager.cpp" />
     <ClCompile Include="Randomizer\HookManager.cpp" />
+    <ClCompile Include="Randomizer\HookProbe.cpp" />
     <ClCompile Include="extern\libdetour\libdetour.c" />
     <ClCompile Include="Randomizer\Logger.cpp" />
     <ClCompile Include="Randomizer\ItemReplacer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="version\version.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+    <Import Project="packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets" Condition="Exists('packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets')" />
+    <Import Project="packages\boost.1.87.0\build\boost.targets" Condition="Exists('packages\boost.1.87.0\build\boost.targets')" />
+    <Import Project="packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets" Condition="Exists('packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets'))" />
+    <Error Condition="!Exists('packages\boost.1.87.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\boost.1.87.0\build\boost.targets'))" />
+    <Error Condition="!Exists('packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets'))" />
+  </Target>
 </Project>

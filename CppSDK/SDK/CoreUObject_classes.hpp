@@ -72,6 +72,21 @@ public:
 		return static_cast<UEType*>(FindObjectFastImpl(Name, RequiredType));
 	}
 
+	static void FindObjectsByClass(SDK::UClass* cls, std::vector<UObject*> &out)
+	{
+		for (int i = 0; i < GObjects->Num(); ++i)
+		{
+			UObject* Object = GObjects->GetByIndex(i);
+
+			if (!Object || Object->HasTypeFlag(EClassCastFlags::Class))
+				continue;
+
+			if (Object->IsA(cls))
+				out.push_back(Object);
+		}
+	}
+
+
 	void ProcessEvent(class UFunction* Function, void* Parms) const
 	{
 		InSDKUtils::CallGameFunction(InSDKUtils::GetVirtualFunction<void(*)(const UObject*, class UFunction*, void*)>(this, Offsets::ProcessEventIdx), this, Function, Parms);
