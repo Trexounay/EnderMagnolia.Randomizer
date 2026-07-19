@@ -223,31 +223,19 @@ void ItemReplacer::WaitForEventAsset(SDK::UEventAsset** asset, std::function<voi
 
 void ItemReplacer::ReplaceEventAsset(const std::string& zoneName, const std::string& actorName, SDK::UEventAsset* asset)
 {
-	int count = 0;
+	for (auto& loc : EnumerateEventLocations(zoneName, "", asset))
+		SwapAtLocation(loc.id, *loc.item);
+
 	for (auto data : asset->Nodes)
 	{
 		auto nodeAction = data.Value()->Cast<SDK::UEventNodeAction>();
 		if (!nodeAction)
-		{
 			continue;
-		}
 		for (auto action : nodeAction->Actions)
 		{
-			if (auto grantItem = action->Cast<SDK::UEventAction_GrantItems>())
-			{
-				for (int i = 0; i < grantItem->ItemHandleCounts.Num(); ++i)
-				{
-					auto id = zoneName + "." + actorName + "." + asset->GetName() + (count > 0 ? ("." + std::to_string(count)) : "");
-					count++;
-					SwapAtLocation(id, grantItem->ItemHandleCounts[i].ItemHandle);
-				}
-			}
-			else if (auto equipSkill = action->Cast<SDK::UEventAction_EquipSkills>())
+			if (auto equipSkill = action->Cast<SDK::UEventAction_EquipSkills>())
 			{
 				equipSkill->bOnlyIfSetIsEmpty = true;
-				// logic here to equip skill corresponding to spirit
-				// auto equipSkill = static_cast<SDK::UEventAction_EquipSkills*>(action);
-				// equipSkill->SkillsToEquip[0].Second = item
 			}
 			else if (auto equipSkill = action->Cast<SDK::UEventAction_EquipCostume>())
 			{
@@ -257,6 +245,39 @@ void ItemReplacer::ReplaceEventAsset(const std::string& zoneName, const std::str
 			}
 		}
 	}
+}
+
+std::vector<ItemReplacer::EventLocation> ItemReplacer::EnumerateEventLocations(const std::string& zoneName, const std::string& actorName, SDK::UEventAsset* asset)
+{
+	std::vector<EventLocation> locations;
+	if (!asset)
+		return locations;
+
+	int count = 0;
+	for (auto data : asset->Nodes)
+	{
+		auto nodeAction = data.Value()->Cast<SDK::UEventNodeAction>();
+		if (!nodeAction)
+			continue;
+		for (auto action : nodeAction->Actions)
+		{
+			if (auto grantItem = action->Cast<SDK::UEventAction_GrantItems>())
+			{
+				for (int i = 0; i < grantItem->ItemHandleCounts.Num(); ++i)
+				{
+					std::string id = zoneName;
+					if (!actorName.empty())
+						id += "." + actorName;
+					id += "." + asset->GetName();
+					if (count > 0)
+						id += "." + std::to_string(count);
+					count++;
+					locations.push_back({ id, &grantItem->ItemHandleCounts[i].ItemHandle });
+				}
+			}
+		}
+	}
+	return locations;
 }
 
 void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item) const

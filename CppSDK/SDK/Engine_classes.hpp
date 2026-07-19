@@ -19826,6 +19826,20 @@ public:
 	uint8                                         Pad_98[0x18];                                      // 0x0098(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
+	void AddRowInternal(class FName RowName, uint8* RowData)
+	{
+		InSDKUtils::CallGameFunction(InSDKUtils::GetVirtualFunction<void(*)(UDataTable*, class FName, uint8*)>(this, 88), this, RowName, RowData);
+	}
+
+	uint8* FindRow(const std::string& RowName)
+	{
+		for (auto It = begin(RowMap); It != end(RowMap); ++It)
+			if (It->Key().GetRawString() == RowName)
+				return It->Value();
+		return nullptr;
+	}
+
+public:
 	static class UClass* StaticClass()
 	{
 		return StaticClassImpl<"DataTable">();

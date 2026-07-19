@@ -35484,6 +35484,12 @@ class FText UKismetTextLibrary::Conv_StringToText(const class FString& InString)
 	return Parms.ReturnValue;
 }
 
+FText FText::FromString(const std::string& s)
+{
+	std::wstring w(s.begin(), s.end());
+	return UKismetTextLibrary::Conv_StringToText(FString(w.c_str()));
+}
+
 
 // Function Engine.KismetTextLibrary.Conv_TextToString
 // (Final, RequiredAPI, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
@@ -113092,6 +113098,13 @@ class FName UKismetStringLibrary::Conv_StringToName(const class FString& InStrin
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
+}
+
+
+FName FName::FromString(const std::string& s)
+{
+	std::wstring w(s.begin(), s.end());
+	return UKismetStringLibrary::Conv_StringToName(FString(w.c_str()));
 }
 
 

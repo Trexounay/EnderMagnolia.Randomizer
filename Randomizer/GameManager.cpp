@@ -1,5 +1,7 @@
 #include "GameManager.h"
 #include "Configuration.h"
+#include "APConnection.h"
+#include "GUI.h"
 #include "Logger.h"
 #include "ItemReplacer.h"
 #include "DebugTeleporter.h"
@@ -129,9 +131,27 @@ void GameManager::OnReceiveTick()
 		if (zone != this->currentZone && (zone.IsValid() || this->currentZone.IsValid()))
 			this->ZoneChanged(this->currentZone, zone);
 		itemReplacer->Tick(zone);
-		Configuration::Instance().Tick();
-		// teleport to every room/zone in the game 
-		//teleporter->Tick();
+
+		for (auto& received : APConnection::Instance().DrainReceivedItems())
+		{
+			GUI::Instance().Notify(received.display);
+			APConnection::Instance().ConfirmApplied(received.index);
+		}
+	}
+}
+
+void GameManager::OnLocationClear(SDK::AActor* actor, SDK::UEventAsset* asset)
+{
+	std::string zone = currentZone.ToString();
+
+	if (asset)
+	{
+		for (auto& loc : ItemReplacer::EnumerateEventLocations(zone, "", asset))
+			APConnection::Instance().CheckLocation(loc.id);
+	}
+	else if (actor)
+	{
+		APConnection::Instance().CheckLocation(zone + "." + actor->GetName());
 	}
 }
 

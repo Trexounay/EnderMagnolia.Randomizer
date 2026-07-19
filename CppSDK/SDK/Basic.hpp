@@ -38,6 +38,7 @@ namespace Offsets
 	constexpr int32 GWorld            = 0x080CC7A8;
 	constexpr int32 ProcessEvent      = 0x0128FEB0;
 	constexpr int32 ProcessEventIdx   = 0x0000004D;
+	constexpr int32 EngineTickIdx     = 0x0000005F;
 }
 
 namespace InSDKUtils
@@ -357,6 +358,8 @@ public:
 	{
 		return ComparisonIndex != Other.ComparisonIndex || Number != Other.Number;
 	}
+
+	static FName FromString(const std::string& s);
 };
 static_assert(alignof(FName) == 0x000004, "Wrong alignment on FName");
 static_assert(sizeof(FName) == 0x000008, "Wrong size on FName");
@@ -456,6 +459,8 @@ public:
 	{
 		return TextData->TextSource.ToString();
 	}
+
+	static FText FromString(const std::string& s);
 };
 static_assert(alignof(FText) == 0x000008, "Wrong alignment on FText");
 static_assert(sizeof(FText) == 0x000010, "Wrong size on FText");

@@ -1,264 +1,279 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="CppSDK">
+      <UniqueIdentifier>{a1e90740-071a-56c4-8e43-2ed8a343a062}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="CppSDK\SDK">
+      <UniqueIdentifier>{d7834b2c-1ad1-536d-b05e-192f018d2c2f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SDK">
-      <UniqueIdentifier>{441f1dbc-b54e-4210-831a-1c805b8d07f6}</UniqueIdentifier>
-      <Extensions>cpp</Extensions>
+    <Filter Include="Randomizer">
+      <UniqueIdentifier>{55b20edc-f7a2-578e-8d5a-44b2608216d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SDK\Headers">
-      <UniqueIdentifier>{7e8ad442-34a3-4b34-837b-730a5c1097f0}</UniqueIdentifier>
-      <Extensions>
-      </Extensions>
+    <Filter Include="extern">
+      <UniqueIdentifier>{e51f9fce-bae6-5809-bf11-1ec30b40b9f4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\version">
-      <UniqueIdentifier>{780554b1-6b04-4cdd-8d3e-d78f938c758e}</UniqueIdentifier>
+    <Filter Include="extern\apclientcpp">
+      <UniqueIdentifier>{d543b3ce-394e-55d7-b9a9-b40cafa94f7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Randomizer">
-      <UniqueIdentifier>{f3cdb9c6-d8d8-4897-bcf2-bc441650b9b2}</UniqueIdentifier>
+    <Filter Include="extern\imgui">
+      <UniqueIdentifier>{09e704cd-e80e-5dae-a2f9-ce6530500c1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Randomizer\Sources">
-      <UniqueIdentifier>{951af2af-25d9-4198-aa74-66656e4c055e}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm</Extensions>
+    <Filter Include="extern\imgui\backends">
+      <UniqueIdentifier>{2828b2e5-4aa7-5bc6-94c2-cc945dd1d6cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Randomizer\Headers">
-      <UniqueIdentifier>{4dc62b9e-1788-4584-9f6f-d3b0afa040cb}</UniqueIdentifier>
-      <Extensions>h;hpp</Extensions>
+    <Filter Include="extern\kiero">
+      <UniqueIdentifier>{0799ed98-62cc-5729-a0aa-045badb4049e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SDK\Sources">
-      <UniqueIdentifier>{d1a48895-2d99-4a5e-83c4-e1d5162bc0db}</UniqueIdentifier>
-      <Extensions>
-      </Extensions>
+    <Filter Include="extern\kiero\impl">
+      <UniqueIdentifier>{54d3f583-8b82-5c40-9f31-b9035338ff88}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\libdetour">
-      <UniqueIdentifier>{248f6bd2-fab5-4d44-87bf-103e23434977}</UniqueIdentifier>
+    <Filter Include="extern\libdetour">
+      <UniqueIdentifier>{d2a07628-113c-50a7-96f7-c8209d8970db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\apclientcpp">
-      <UniqueIdentifier>{2fde1fdb-7156-48a6-8b3f-5f0b0266e9aa}</UniqueIdentifier>
+    <Filter Include="extern\minhook">
+      <UniqueIdentifier>{d7a0ef86-ad71-53ae-be56-0c411f532f19}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\imgui">
-      <UniqueIdentifier>{5bfc51d0-81dc-4c84-a9b8-caf6d4ce307d}</UniqueIdentifier>
+    <Filter Include="extern\minhook\src">
+      <UniqueIdentifier>{84ed00ad-d0d7-50c8-a347-09a5006f9d84}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\kiero">
-      <UniqueIdentifier>{ae0e05a5-4cdf-46ae-9f01-f10639db6515}</UniqueIdentifier>
+    <Filter Include="extern\minhook\src\hde">
+      <UniqueIdentifier>{ff01efd2-08a2-56e0-8fee-81e99b38b1dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\minhook">
-      <UniqueIdentifier>{c2502367-a1a7-436d-932d-6277fd18234a}</UniqueIdentifier>
+    <Filter Include="version">
+      <UniqueIdentifier>{4f1fcc9b-2de2-5981-ae64-9c503d29ebee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="version\version.h">
-      <Filter>Source Files\version</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\libdetour\libdetour.h">
-      <Filter>Source Files\libdetour</Filter>
-    </ClInclude>
-    <ClInclude Include="CppSDK\SDK.hpp">
-      <Filter>Source Files\SDK\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="CppSDK\SDK\Basic.hpp">
-      <Filter>Source Files\SDK\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="CppSDK\SDK\Engine_classes.hpp">
-      <Filter>Source Files\SDK\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="CppSDK\SDK\Engine_parameters.hpp">
-      <Filter>Source Files\SDK\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="CppSDK\SDK\Engine_structs.hpp">
-      <Filter>Source Files\SDK\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Randomizer\HookManager.h">
-      <Filter>Source Files\Randomizer\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Randomizer\Logger.h">
-      <Filter>Source Files\Randomizer\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Randomizer\Configuration.h">
-      <Filter>Source Files\Randomizer\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Randomizer\GameManager.h">
-      <Filter>Source Files\Randomizer\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Randomizer\ItemReplacer.h">
-      <Filter>Source Files\Randomizer\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Randomizer\DebugTeleporter.h">
-      <Filter>Source Files\Randomizer\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\apclientcpp\apuuid.hpp">
-      <Filter>Source Files\apclientcpp</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\apclientcpp\defaultdatapackagestore.hpp">
-      <Filter>Source Files\apclientcpp</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\apclientcpp\apclient.hpp">
-      <Filter>Source Files\apclientcpp</Filter>
-    </ClInclude>
-    <ClInclude Include="CppSDK\SDK\Zion_classes.hpp">
-      <Filter>Source Files\SDK\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\imgui\backends\imgui_impl_dx11.h">
-      <Filter>Source Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\imgui\backends\imgui_impl_dx12.h">
-      <Filter>Source Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\imgui\imconfig.h">
-      <Filter>Source Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\imgui\imgui_internal.h">
-      <Filter>Source Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\imgui\imstb_rectpack.h">
-      <Filter>Source Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\imgui\imstb_textedit.h">
-      <Filter>Source Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\imgui\imstb_truetype.h">
-      <Filter>Source Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI.h">
-      <Filter>Source Files\Randomizer\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\kiero\kiero.h">
-      <Filter>Source Files\kiero</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\kiero\impl\d3d11_impl.h">
-      <Filter>Source Files\kiero</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\kiero\impl\win32_impl.h">
-      <Filter>Source Files\kiero</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\kiero\impl\shared.h">
-      <Filter>Source Files\kiero</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\minhook\src\buffer.h">
-      <Filter>Source Files\minhook</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\minhook\src\trampoline.h">
-      <Filter>Source Files\minhook</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\minhook\src\hde\hde64.h">
-      <Filter>Source Files\minhook</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\minhook\src\hde\pstdint.h">
-      <Filter>Source Files\minhook</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\minhook\src\hde\table32.h">
-      <Filter>Source Files\minhook</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\minhook\src\hde\table64.h">
-      <Filter>Source Files\minhook</Filter>
-    </ClInclude>
-    <ClInclude Include="extern\minhook\src\hde\hde32.h">
-      <Filter>Source Files\minhook</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="extern\libdetour\libdetour.c">
-      <Filter>Source Files\libdetour</Filter>
-    </ClCompile>
-    <ClCompile Include="CppSDK\SDK\Basic.cpp">
-      <Filter>Source Files\SDK\Sources</Filter>
+    <ClCompile Include="CppSDK\SDK\CoreUObject_functions.cpp">
+      <Filter>CppSDK\SDK</Filter>
     </ClCompile>
     <ClCompile Include="CppSDK\SDK\Engine_functions.cpp">
-      <Filter>Source Files\SDK\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CppSDK\SDK\CoreUObject_functions.cpp">
-      <Filter>Source Files\SDK\Sources</Filter>
+      <Filter>CppSDK\SDK</Filter>
     </ClCompile>
     <ClCompile Include="CppSDK\SDK\Zion_functions.cpp">
-      <Filter>Source Files\SDK\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Randomizer\HookManager.cpp">
-      <Filter>Source Files\Randomizer\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Randomizer\Logger.cpp">
-      <Filter>Source Files\Randomizer\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Randomizer\Configuration.cpp">
-      <Filter>Source Files\Randomizer\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Randomizer\GameManager.cpp">
-      <Filter>Source Files\Randomizer\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Randomizer\ItemReplacer.cpp">
-      <Filter>Source Files\Randomizer\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Randomizer\DebugTeleporter.cpp">
-      <Filter>Source Files\Randomizer\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="extern\imgui\imgui.cpp">
-      <Filter>Source Files\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="extern\imgui\backends\imgui_impl_dx12.cpp">
-      <Filter>Source Files\imgui</Filter>
+      <Filter>CppSDK\SDK</Filter>
     </ClCompile>
     <ClCompile Include="extern\imgui\backends\imgui_impl_dx11.cpp">
-      <Filter>Source Files\imgui</Filter>
+      <Filter>extern\imgui\backends</Filter>
     </ClCompile>
-    <ClCompile Include="extern\imgui\imgui_demo.cpp">
-      <Filter>Source Files\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="extern\imgui\imgui_draw.cpp">
-      <Filter>Source Files\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="extern\imgui\imgui_tables.cpp">
-      <Filter>Source Files\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="extern\imgui\imgui_widgets.cpp">
-      <Filter>Source Files\imgui</Filter>
+    <ClCompile Include="extern\imgui\backends\imgui_impl_dx12.cpp">
+      <Filter>extern\imgui\backends</Filter>
     </ClCompile>
     <ClCompile Include="extern\imgui\backends\imgui_impl_win32.cpp">
-      <Filter>Source Files\imgui</Filter>
+      <Filter>extern\imgui\backends</Filter>
     </ClCompile>
-    <ClCompile Include="GUI.cpp">
-      <Filter>Source Files\Randomizer\Sources</Filter>
+    <ClCompile Include="extern\imgui\imgui.cpp">
+      <Filter>extern\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="extern\kiero\kiero.cpp">
-      <Filter>Source Files\kiero</Filter>
+    <ClCompile Include="extern\imgui\imgui_demo.cpp">
+      <Filter>extern\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\imgui\imgui_draw.cpp">
+      <Filter>extern\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\imgui\imgui_tables.cpp">
+      <Filter>extern\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\imgui\imgui_widgets.cpp">
+      <Filter>extern\imgui</Filter>
     </ClCompile>
     <ClCompile Include="extern\kiero\impl\d3d11_impl.cpp">
-      <Filter>Source Files\kiero</Filter>
+      <Filter>extern\kiero\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\kiero\impl\d3d12_impl.cpp">
+      <Filter>extern\kiero\impl</Filter>
     </ClCompile>
     <ClCompile Include="extern\kiero\impl\shared.cpp">
-      <Filter>Source Files\kiero</Filter>
+      <Filter>extern\kiero\impl</Filter>
     </ClCompile>
     <ClCompile Include="extern\kiero\impl\win32_impl.cpp">
-      <Filter>Source Files\kiero</Filter>
+      <Filter>extern\kiero\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\kiero\kiero.cpp">
+      <Filter>extern\kiero</Filter>
     </ClCompile>
     <ClCompile Include="extern\minhook\src\buffer.c">
-      <Filter>Source Files\minhook</Filter>
-    </ClCompile>
-    <ClCompile Include="extern\minhook\src\hook.c">
-      <Filter>Source Files\minhook</Filter>
-    </ClCompile>
-    <ClCompile Include="extern\minhook\src\trampoline.c">
-      <Filter>Source Files\minhook</Filter>
-    </ClCompile>
-    <ClCompile Include="extern\minhook\src\hde\hde64.c">
-      <Filter>Source Files\minhook</Filter>
+      <Filter>extern\minhook\src</Filter>
     </ClCompile>
     <ClCompile Include="extern\minhook\src\hde\hde32.c">
-      <Filter>Source Files\minhook</Filter>
+      <Filter>extern\minhook\src\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\minhook\src\hde\hde64.c">
+      <Filter>extern\minhook\src\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\minhook\src\hook.c">
+      <Filter>extern\minhook\src</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\minhook\src\trampoline.c">
+      <Filter>extern\minhook\src</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="Randomizer\DebugTeleporter.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\APConnection.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\Configuration.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\VTableTools.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSDK\SDK\Basic.cpp">
+      <Filter>CppSDK\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Randomizer\GameManager.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\HookManager.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\HookProbe.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\libdetour\libdetour.c">
+      <Filter>extern\libdetour</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\Logger.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\ItemReplacer.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\DataTableRowInserter.cpp">
+      <Filter>Randomizer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="version\version.def">
-      <Filter>Source Files\version</Filter>
-    </None>
+    <ClInclude Include="CppSDK\SDK\Engine_classes.hpp">
+      <Filter>CppSDK\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSDK\SDK\Engine_parameters.hpp">
+      <Filter>CppSDK\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSDK\SDK\Engine_structs.hpp">
+      <Filter>CppSDK\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSDK\SDK\Zion_classes.hpp">
+      <Filter>CppSDK\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\apclientcpp\apclient.hpp">
+      <Filter>extern\apclientcpp</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\apclientcpp\apuuid.hpp">
+      <Filter>extern\apclientcpp</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\apclientcpp\defaultdatapackagestore.hpp">
+      <Filter>extern\apclientcpp</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\imgui\backends\imgui_impl_dx11.h">
+      <Filter>extern\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\imgui\backends\imgui_impl_dx12.h">
+      <Filter>extern\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\imgui\imconfig.h">
+      <Filter>extern\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\imgui\imgui_internal.h">
+      <Filter>extern\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\imgui\imstb_rectpack.h">
+      <Filter>extern\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\imgui\imstb_textedit.h">
+      <Filter>extern\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\imgui\imstb_truetype.h">
+      <Filter>extern\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\kiero\impl\d3d11_impl.h">
+      <Filter>extern\kiero\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\kiero\impl\d3d12_impl.h">
+      <Filter>extern\kiero\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\kiero\impl\shared.h">
+      <Filter>extern\kiero\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\kiero\impl\win32_impl.h">
+      <Filter>extern\kiero\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\kiero\kiero.h">
+      <Filter>extern\kiero</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\minhook\src\buffer.h">
+      <Filter>extern\minhook\src</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\minhook\src\hde\hde32.h">
+      <Filter>extern\minhook\src\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\minhook\src\hde\hde64.h">
+      <Filter>extern\minhook\src\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\minhook\src\hde\pstdint.h">
+      <Filter>extern\minhook\src\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\minhook\src\hde\table32.h">
+      <Filter>extern\minhook\src\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\minhook\src\hde\table64.h">
+      <Filter>extern\minhook\src\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\minhook\src\trampoline.h">
+      <Filter>extern\minhook\src</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h" />
+    <ClInclude Include="Randomizer\DebugTeleporter.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\APConnection.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\Configuration.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\VTableTools.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSDK\SDK.hpp">
+      <Filter>CppSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSDK\SDK\Basic.hpp">
+      <Filter>CppSDK\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\GameManager.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\HookManager.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\HookProbe.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\libdetour\libdetour.h">
+      <Filter>extern\libdetour</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\Logger.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\ItemReplacer.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\DataTableRowInserter.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="version\version.h">
+      <Filter>version</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
+    <None Include="version\version.def">
+      <Filter>version</Filter>
+    </None>
   </ItemGroup>
 </Project>

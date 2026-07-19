@@ -2,16 +2,30 @@
 #include "Logger.h"
 #include "Configuration.h"
 #include "GameManager.h"
-#include "HookProbe.h" // HOOK_PROBE (temporary, safe to remove)
+#include "APConnection.h"
+#include "HookProbe.h"
+#include "GUI.h"
 
-// Static member
+#include <Windows.h>
+
+HookManager::FEngineTickFn HookManager::oEngineTick = nullptr;
 std::unordered_map<void*, detour_ctx_t> HookManager::ctxs;
+
+namespace
+{
+	constexpr uintptr_t kOff_MarkAsCleared         = 0x4712D20;
+	constexpr uintptr_t kOff_TriggerEventFinished  = 0x46BBF40;
+	constexpr uintptr_t kOff_FinishAction          = 0x44F7270;
+}
 
 HookManager& HookManager::Instance()
 {
 	static HookManager instance;
 	return instance;
 }
+
+
+#pragma region Hooks installation
 
 bool HookManager::Init()
 {
@@ -29,17 +43,67 @@ bool HookManager::Init()
 		return false;
 	}
 
-	// Process Event
+	oEngineTick = reinterpret_cast<FEngineTickFn>(
+		HookVTableFunction(engine, SDK::Offsets::EngineTickIdx, reinterpret_cast<void*>(&EngineTick_Hook)));
+	if (!oEngineTick)
+		Logger::Log(LogLevel::Error, this, "Failed to hook engine tick");
+
 	if (!HookProcessEvent(&HookManager::ProcessEvent_Hook))
 		Logger::Log(LogLevel::Error, this, "Failed to hook ProcessEvent");
 
-	// SetLaunchGameIntent
 	if (!HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", &HookManager::SetLaunchGameIntent_Hook))
 		Logger::Log(LogLevel::Error, this, "Failed to hook SetLaunchIntent");
 
-	// Enable Hooks
+	HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook);
+	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook);
+	HookAt(kOff_FinishAction, &FinishAction_Hook);
+
+#if ENABLE_HOOK_PROBE
+	HookProbe::InstallNativeHooks();
+#endif
+
 	Logger::Log(this, "Init ok");
 	return true;
+}
+
+void HookManager::HookAt(uintptr_t offset, void* hook)
+{
+	uintptr_t base = SDK::InSDKUtils::GetImageBase();
+	ctxs[hook] = detour_ctx_t();
+	detour_init(&ctxs[hook], reinterpret_cast<void*>(base + offset), hook);
+	detour_enable(&ctxs[hook]);
+}
+
+void* HookManager::HookVTableFunction(void* instance, int index, void* hook)
+{
+	if (!instance)
+		return nullptr;
+
+	void** vtable = *reinterpret_cast<void***>(instance);
+	if (!vtable)
+		return nullptr;
+
+	void* original = vtable[index];
+
+	DWORD oldProtect;
+	VirtualProtect(&vtable[index], sizeof(void*), PAGE_READWRITE, &oldProtect);
+	vtable[index] = hook;
+	VirtualProtect(&vtable[index], sizeof(void*), oldProtect, &oldProtect);
+
+	return original;
+}
+
+bool HookManager::HookProcessEvent(FProcessEventFuncPtr detour)
+{
+	void* origPtr = reinterpret_cast<void*>(SDK::InSDKUtils::GetImageBase() + SDK::Offsets::ProcessEvent);
+	if (!origPtr)
+	{
+		Logger::Log(LogLevel::Error, this, "Failed to get original ProcessEvent function");
+		return false;
+	}
+	this->ctxs[detour] = detour_ctx_t();
+	detour_init(&this->ctxs[detour], origPtr, detour);
+	return detour_enable(&this->ctxs[detour]);
 }
 
 bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std::string className, const std::string funcName, FNativeFuncPtr detour)
@@ -59,48 +123,77 @@ bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std:
 	detour_init(&this->ctxs[detour], Func->ExecFunction, detour);
 	return detour_enable(&this->ctxs[detour]);
 }
+#pragma endregion
 
-bool HookManager::HookProcessEvent(FProcessEventFuncPtr detour)
+#pragma region Game callbacks
+
+
+void HookManager::TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result)
 {
-	void* origPtr = reinterpret_cast<void*>(SDK::InSDKUtils::GetImageBase() + SDK::Offsets::ProcessEvent);
-	if (!origPtr)
+	//if (completed && self && eventPlayer && eventPlayer->EventAsset)
+		//GameManager::Instance().OnLocationClear(self, eventPlayer->EventAsset);
+	DETOUR_ORIG_CALL(&ctxs[&TriggerEventFinished_Hook], EventFinished, self, eventPlayer, completed, result);
+}
+
+void HookManager::MarkAsCleared_Hook(SDK::UClearComponent* self)
+{
+	/*
+	if (self)
 	{
-		Logger::Log(LogLevel::Error, this, "Failed to get original ProcessEvent function");
-		return false;
-	}
-	this->ctxs[detour] = detour_ctx_t();
-	detour_init(&this->ctxs[detour], origPtr, detour);
-	return detour_enable(&this->ctxs[detour]);
+		SDK::AActor* owner = self->GetOwner();
+		auto boss = owner ? owner->Cast<SDK::ABP_BossSpawner_C>() : nullptr;
+		GameManager::Instance().OnLocationClear(owner, boss ? boss->LoadedDefeatEvent : nullptr);
+	}*/
+	DETOUR_ORIG_CALL(&ctxs[&MarkAsCleared_Hook], MarkCleared, self);
 }
 
-void HookManager::ProcessEvent(const SDK::UObject* obj, SDK::UFunction* func, void* params)
+void HookManager::FinishAction_Hook(SDK::UEventAction* self)
 {
-	static Subscriber PlayerCameraManager_ReceiveTick("CameraAnimationCameraModifier", "BlueprintModifyCamera");
-	if (PlayerCameraManager_ReceiveTick.Matches(obj, func))
-		GameManager::Instance().OnReceiveTick();
-
-#if ENABLE_HOOK_PROBE // HOOK_PROBE (temporary, safe to remove)
-	HookProbe::OnProcessEvent(obj, func, params);
+	if (self && self->Class)
+	{
+		std::string cls = self->Class->Name.ToString();
+		if ((cls == "EventAction_GrantItems" || cls == "EventAction_GrantItemsFromBlackboard") && self->EventContext)
+		{
+			SDK::UEventAsset* asset = self->EventContext->GetEventAsset();
+#if ENABLE_HOOK_PROBE
+			if (cls == "EventAction_GrantItemsFromBlackboard")
+			{
+				auto grant = static_cast<SDK::UEventAction_GrantItemsFromBlackboard*>(self);
+				std::string assetName = asset ? asset->GetName() : "<null>";
+				for (int i = 0; i < grant->ItemBlackboardKeys.Num(); ++i)
+				{
+					SDK::FDataTableRowHandle def{};
+					auto h = self->EventContext->GetValueRowHandle(grant->ItemBlackboardKeys[i], def);
+					std::string dt = h.DataTable ? h.DataTable->Name.ToString() : "<null-dt>";
+					Logger::Log(LogLevel::Debug, "[FIN-BB] asset=", assetName, "key=", grant->ItemBlackboardKeys[i].GetRawString(),
+						"item=", dt + "." + h.RowName.GetRawString());
+				}
+			}
 #endif
+			if (asset)
+				GameManager::Instance().OnLocationClear(nullptr, asset);
+		}
+	}
+	DETOUR_ORIG_CALL(&ctxs[&FinishAction_Hook], FinishAction, self);
 }
 
-void HookManager::SetLaunchGameIntent(SDK::UObject* Context, void* TheStack, void* Result)
+void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)
 {
+	GUI::Instance().Tick();
+	APConnection::Instance().Tick();
+	GameManager::Instance().OnReceiveTick();
+	oEngineTick(self, dt, idle);
+}
+
+void HookManager::ProcessEvent_Hook(const SDK::UObject* obj, SDK::UFunction* func, void* params)
+{
+	DETOUR_ORIG_CALL(&ctxs[&ProcessEvent_Hook], ProcessEvent, obj, func, params);
+}
+
+void HookManager::SetLaunchGameIntent_Hook(SDK::UObject* Context, void* TheStack, void* Result)
+{
+	DETOUR_ORIG_CALL(&ctxs[&SetLaunchGameIntent_Hook], NativeFunction, Context, TheStack, Result);
 	GameManager::Instance().OnGameStarted();
 }
 
-inline bool HookManager::Subscriber::Matches(const SDK::UObject* obj, const SDK::UFunction* func)
-{
-	if (!obj || !func) return false;
-	if (_objFName.ComparisonIndex != 0 && _funcFName.ComparisonIndex != 0)
-	{
-		return obj->Class->Name == _objFName && func->Name == _funcFName;
-	}
-	auto match = objName == obj->Class->Name.ToString() && funcName == func->Name.GetRawString();
-	if (match)
-	{
-		_objFName = obj->Class->Name;
-		_funcFName = func->Name;
-	}
-	return match;
-}
+#pragma endregion

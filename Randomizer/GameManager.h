@@ -14,6 +14,7 @@ public:
 
 	void OnReceiveTick();
 	void OnGameStarted();
+	void OnLocationClear(SDK::AActor* actor, SDK::UEventAsset* asset);
 	bool SetStartingWeapon();
 
 	bool IsLoading() const;
@@ -25,6 +26,7 @@ public:
 	SDK::UGameInstanceZion* GameInstance() const { return SDK::UGameInstanceZion::Get(World()); };
 	SDK::APlayerControllerZion* Controller() const { return SDK::APlayerControllerZion::Get(World(), 0); };
 	SDK::ACharacterZion* Pawn() const { return (SDK::ACharacterZion *)Controller()->Character; };
+	const UC::FString& Zone() const { return currentZone; };
 	std::optional<SDK::FDataTableRowHandle> FromItemName(std::string itemName) const;
 
 private:

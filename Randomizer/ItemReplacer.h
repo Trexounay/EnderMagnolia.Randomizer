@@ -1,5 +1,7 @@
 #pragma once
 #include <unordered_map>
+#include <vector>
+#include <string>
 #include "GameManager.h"
 #include "SDK.hpp"
 
@@ -11,6 +13,11 @@ public:
 
 	void Tick(const UC::FString& newZone);
 	static std::optional<SDK::FDataTableRowHandle> FromItemName(std::string itemName);
+	struct EventLocation {
+		std::string id;
+		SDK::FDataTableRowHandle* item;
+	};
+	static std::vector<EventLocation> EnumerateEventLocations(const std::string& zoneName, const std::string& actorName, SDK::UEventAsset* asset);
 
 private:
 	static const std::unordered_map<std::string, size_t>dataTableOffsets;
