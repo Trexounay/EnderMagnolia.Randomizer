@@ -95,12 +95,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;WIN32;_DEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -108,7 +109,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>extern\minhook\lib\libMinHook.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
@@ -124,12 +124,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;WIN32;NDEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -139,7 +140,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>extern\minhook\lib\libMinHook.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -152,12 +152,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;_WINDOWS;_USRDLL;WSWRAP_NO_SSL;WSWRAP_NO_COMPRESSION;AP_NO_SCHEMA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;_DEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;_WINDOWS;_USRDLL;WSWRAP_NO_SSL;WSWRAP_NO_COMPRESSION;AP_NO_SCHEMA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
@@ -168,7 +169,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
@@ -183,12 +183,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;NDEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -198,7 +199,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>E:\Projects\ENDERMAGNOLIA\EnderMagnolia.Randomizer\cpython-main\PCbuild\amd64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>extern\minhook\lib\libMinHook.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -223,6 +223,7 @@
     <ClInclude Include="extern\imgui\imstb_textedit.h" />
     <ClInclude Include="extern\imgui\imstb_truetype.h" />
     <ClInclude Include="extern\kiero\impl\d3d11_impl.h" />
+    <ClInclude Include="extern\kiero\impl\d3d12_impl.h" />
     <ClInclude Include="extern\kiero\impl\shared.h" />
     <ClInclude Include="extern\kiero\impl\win32_impl.h" />
     <ClInclude Include="extern\kiero\kiero.h" />
@@ -233,9 +234,11 @@
     <ClInclude Include="extern\minhook\src\hde\table32.h" />
     <ClInclude Include="extern\minhook\src\hde\table64.h" />
     <ClInclude Include="extern\minhook\src\trampoline.h" />
-    <ClInclude Include="GUI.h" />
+    <ClInclude Include="Randomizer\GUI.h" />
     <ClInclude Include="Randomizer\DebugTeleporter.h" />
+    <ClInclude Include="Randomizer\APConnection.h" />
     <ClInclude Include="Randomizer\Configuration.h" />
+    <ClInclude Include="Randomizer\VTableTools.h" />
     <ClInclude Include="CppSDK\SDK.hpp" />
     <ClInclude Include="CppSDK\SDK\Basic.hpp" />
     <ClInclude Include="Randomizer\GameManager.h" />
@@ -244,11 +247,13 @@
     <ClInclude Include="extern\libdetour\libdetour.h" />
     <ClInclude Include="Randomizer\Logger.h" />
     <ClInclude Include="Randomizer\ItemReplacer.h" />
+    <ClInclude Include="Randomizer\DataTableRowInserter.h" />
     <ClInclude Include="version\version.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppSDK\SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Engine_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\EventSystem_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Zion_functions.cpp" />
     <ClCompile Include="extern\imgui\backends\imgui_impl_dx11.cpp" />
     <ClCompile Include="extern\imgui\backends\imgui_impl_dx12.cpp" />
@@ -259,6 +264,7 @@
     <ClCompile Include="extern\imgui\imgui_tables.cpp" />
     <ClCompile Include="extern\imgui\imgui_widgets.cpp" />
     <ClCompile Include="extern\kiero\impl\d3d11_impl.cpp" />
+    <ClCompile Include="extern\kiero\impl\d3d12_impl.cpp" />
     <ClCompile Include="extern\kiero\impl\shared.cpp" />
     <ClCompile Include="extern\kiero\impl\win32_impl.cpp" />
     <ClCompile Include="extern\kiero\kiero.cpp" />
@@ -267,9 +273,11 @@
     <ClCompile Include="extern\minhook\src\hde\hde64.c" />
     <ClCompile Include="extern\minhook\src\hook.c" />
     <ClCompile Include="extern\minhook\src\trampoline.c" />
-    <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="Randomizer\GUI.cpp" />
     <ClCompile Include="Randomizer\DebugTeleporter.cpp" />
+    <ClCompile Include="Randomizer\APConnection.cpp" />
     <ClCompile Include="Randomizer\Configuration.cpp" />
+    <ClCompile Include="Randomizer\VTableTools.cpp" />
     <ClCompile Include="CppSDK\SDK\Basic.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Randomizer\GameManager.cpp" />
@@ -278,6 +286,7 @@
     <ClCompile Include="extern\libdetour\libdetour.c" />
     <ClCompile Include="Randomizer\Logger.cpp" />
     <ClCompile Include="Randomizer\ItemReplacer.cpp" />
+    <ClCompile Include="Randomizer\DataTableRowInserter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

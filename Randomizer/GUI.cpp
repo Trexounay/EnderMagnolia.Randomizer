@@ -1,0 +1,266 @@
+#include "GUI.h"
+#include "imgui.h"
+
+#include "impl/shared.h"
+#include "impl/d3d11_impl.h"
+#include "impl/d3d12_impl.h"
+#include "kiero.h"
+
+#include "Randomizer/Logger.h"
+#include "Randomizer/APConnection.h"
+
+#include <cstring>
+#include <fstream>
+#include <string>
+
+namespace
+{
+	static const ImVec4 kColorDisconnected(0.6f, 0.6f, 0.6f, 1.0f);
+	static const ImVec4 kColorConnecting(0.9f, 0.8f, 0.2f, 1.0f);
+	static const ImVec4 kColorConnected(0.3f, 0.85f, 0.3f, 1.0f);
+	static const ImVec4 kColorError(0.9f, 0.3f, 0.3f, 1.0f);
+	static const ImVec4 kColorNotifText(1.0f, 1.0f, 1.0f, 1.0f);
+	static const ImVec4 kColorNotifOutline(0.0f, 0.0f, 0.0f, 1.0f);
+
+	const char* SETTINGS_PATH = "randomizer_ui.ini";
+}
+
+GUI& GUI::Instance()
+{
+	static GUI instance;
+	return instance;
+}
+
+void GUI::Init()
+{
+	LoadSettings();
+	InjectOverlay();
+}
+
+void GUI::LoadSettings()
+{
+	std::ifstream file(SETTINGS_PATH);
+	if (!file.is_open())
+		return;
+
+	std::string line;
+	while (std::getline(file, line))
+	{
+		size_t eq = line.find('=');
+		if (eq == std::string::npos)
+			continue;
+		std::string key = line.substr(0, eq);
+		std::string value = line.substr(eq + 1);
+		if (key == "host")
+			strncpy_s(host, value.c_str(), sizeof(host) - 1);
+		else if (key == "slot")
+			strncpy_s(slot, value.c_str(), sizeof(slot) - 1);
+	}
+}
+
+void GUI::SaveSettings()
+{
+	std::ofstream file(SETTINGS_PATH, std::ios::trunc);
+	if (!file.is_open())
+		return;
+	file << "host=" << host << "\n";
+	file << "slot=" << slot << "\n";
+}
+
+void GUI::InjectOverlay()
+{
+	kiero::Status::Enum kieroStatus = kiero::init(kiero::RenderType::Auto);
+	if (kieroStatus != kiero::Status::Success)
+	{
+		Logger::Log(LogLevel::Error, "GUI", "kiero init FAILED status=", (int)kieroStatus);
+		return;
+	}
+
+	Logger::Log("GUI", "kiero OK renderType", (int)kiero::getRenderType());
+	switch (kiero::getRenderType())
+	{
+	case kiero::RenderType::D3D11:
+		impl::d3d11::init();
+		break;
+	case kiero::RenderType::D3D12:
+		impl::d3d12::init();
+		break;
+	default:
+		Logger::Log(LogLevel::Error, "GUI", "unsupported renderType, no overlay", (int)kiero::getRenderType());
+		return;
+	}
+
+	impl::SetRenderCallback(&GUI::RenderTrampoline);
+}
+
+void GUI::RenderTrampoline()
+{
+	GUI::Instance().Draw();
+}
+
+void GUI::Tick()
+{
+	APConnection& ap = APConnection::Instance();
+
+	switch (pending.exchange(PendingAction::None))
+	{
+	case PendingAction::Connect:
+		ap.Connect(pendingHost, pendingSlot, pendingPass);
+		break;
+	case PendingAction::Disconnect:
+		ap.Disconnect();
+		break;
+	default:
+		break;
+	}
+
+	cachedState.store(ap.GetState());
+	strncpy_s(cachedError, ap.GetError().c_str(), sizeof(cachedError) - 1);
+}
+
+void GUI::Draw()
+{
+	const APState apState = cachedState.load();
+
+	const char* statusText = "Disconnected";
+	ImVec4 statusColor = kColorDisconnected;
+	switch (apState)
+	{
+	case APState::Disconnected:
+		statusText = "Disconnected";
+		statusColor = kColorDisconnected;
+		break;
+	case APState::Connecting:
+		statusText = "Connecting";
+		statusColor = kColorConnecting;
+		break;
+	case APState::Connected:
+		statusText = "Connected";
+		statusColor = kColorConnected;
+		break;
+	case APState::Error:
+		statusText = "Error";
+		statusColor = kColorError;
+		break;
+	}
+
+	const ImVec4 titleColor(statusColor.x * 0.6f, statusColor.y * 0.6f, statusColor.z * 0.6f, 1.0f);
+	ImGui::PushStyleColor(ImGuiCol_TitleBg, titleColor);
+	ImGui::PushStyleColor(ImGuiCol_TitleBgActive, statusColor);
+	ImGui::PushStyleColor(ImGuiCol_TitleBgCollapsed, titleColor);
+
+	std::string title = std::string("Ender Magnolia Randomizer - ") + statusText + "###rando";
+	ImGui::Begin(title.c_str());
+
+	const bool connected = (apState == APState::Connected || apState == APState::Connecting);
+	const float fieldWidth = 220.0f;
+
+	ImGui::BeginDisabled(connected);
+
+	ImGui::Text("Host");
+	ImGui::SameLine();
+	ImGui::SetNextItemWidth(fieldWidth);
+	ImGui::InputText("##host", host, sizeof(host));
+	ImGui::Text("Slot");
+	ImGui::SameLine();
+	ImGui::SetNextItemWidth(fieldWidth);
+	ImGui::InputText("##slot", slot, sizeof(slot));
+	ImGui::Text("Pass");
+	ImGui::SameLine();
+	ImGui::SetNextItemWidth(fieldWidth);
+	ImGui::InputText("##pass", pass, sizeof(pass), ImGuiInputTextFlags_Password);
+
+	ImGui::EndDisabled();
+
+	if (connected)
+	{
+		if (ImGui::Button("Disconnect"))
+			pending.store(PendingAction::Disconnect);
+	}
+	else
+	{
+		if (ImGui::Button("Connect!"))
+		{
+			SaveSettings();
+			strncpy_s(pendingHost, host, sizeof(pendingHost) - 1);
+			strncpy_s(pendingSlot, slot, sizeof(pendingSlot) - 1);
+			strncpy_s(pendingPass, pass, sizeof(pendingPass) - 1);
+			pending.store(PendingAction::Connect);
+		}
+	}
+
+	if (apState == APState::Error && cachedError[0])
+	{
+		ImGui::PushStyleColor(ImGuiCol_Text, kColorError);
+		ImGui::TextWrapped("%s", cachedError);
+		ImGui::PopStyleColor();
+	}
+
+	ImGui::End();
+
+	ImGui::PopStyleColor(3);
+
+	DrawNotifications();
+}
+
+void GUI::Notify(const std::string& text)
+{
+	std::lock_guard<std::mutex> lock(notifMutex);
+	notifications.push_back({ text, 5.0f });
+	if (notifications.size() > 8)
+		notifications.pop_front();
+}
+
+void GUI::DrawNotifications()
+{
+	float dt = ImGui::GetIO().DeltaTime;
+
+	std::lock_guard<std::mutex> lock(notifMutex);
+	if (notifications.empty())
+		return;
+
+	for (auto& n : notifications)
+		n.remaining -= dt;
+	while (!notifications.empty() && notifications.front().remaining <= 0.0f)
+		notifications.pop_front();
+	if (notifications.empty())
+		return;
+
+	ImGuiViewport* vp = ImGui::GetMainViewport();
+	ImVec2 pos(vp->WorkPos.x + vp->WorkSize.x - 20.0f, vp->WorkPos.y + vp->WorkSize.y * 0.5f);
+	ImGui::SetNextWindowPos(pos, ImGuiCond_Always, ImVec2(1.0f, 0.5f));
+
+	ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs |
+		ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoBackground;
+	ImGui::Begin("##ap_notifications", nullptr, flags);
+
+	ImFont* bigFont = static_cast<ImFont*>(impl::GetBigFont());
+	if (bigFont)
+		ImGui::PushFont(bigFont);
+
+	ImDrawList* dl = ImGui::GetWindowDrawList();
+	ImFont* font = ImGui::GetFont();
+	float fontSize = ImGui::GetFontSize();
+	float lineH = ImGui::GetTextLineHeightWithSpacing();
+	const float o = 1.5f;
+	const ImVec2 offsets[8] = {
+		{-o,-o}, {0,-o}, {o,-o}, {-o,0}, {o,0}, {-o,o}, {0,o}, {o,o}
+	};
+
+	for (auto& n : notifications)
+	{
+		float alpha = n.remaining < 1.0f ? n.remaining : 1.0f;
+		ImVec2 p = ImGui::GetCursorScreenPos();
+		ImU32 black = ImGui::GetColorU32(ImVec4(kColorNotifOutline.x, kColorNotifOutline.y, kColorNotifOutline.z, alpha));
+		ImU32 white = ImGui::GetColorU32(ImVec4(kColorNotifText.x, kColorNotifText.y, kColorNotifText.z, alpha));
+		for (auto& off : offsets)
+			dl->AddText(font, fontSize, ImVec2(p.x + off.x, p.y + off.y), black, n.text.c_str());
+		dl->AddText(font, fontSize, p, white, n.text.c_str());
+		ImGui::Dummy(ImVec2(ImGui::CalcTextSize(n.text.c_str()).x, lineH));
+	}
+
+	if (bigFont)
+		ImGui::PopFont();
+	ImGui::End();
+}

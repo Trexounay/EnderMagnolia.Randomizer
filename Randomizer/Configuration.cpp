@@ -1,8 +1,8 @@
 #include "Configuration.h"
 #include "Logger.h"
-#include "apuuid.hpp"
-
-
+#include "SDK.hpp"
+#include "GameManager.h"
+#include "DataTableRowInserter.h"
 
 Configuration& Configuration::Instance()
 {
@@ -28,6 +28,7 @@ bool Configuration::Init(const std::string& path)
 bool Configuration::Load()
 {
 	checks_to_items.clear();
+	ap_items.clear();
 	std::ifstream file(configPath);
 	if (!file.is_open())
 	{
@@ -35,8 +36,15 @@ bool Configuration::Load()
 		return false;
 	}
 
-	Configuration::ConnectAP("http://127.0.0.1:38281");
+	auto trim = [](std::string& s)
+	{
+		auto a = s.find_first_not_of(" \t");
+		if (a == std::string::npos) { s.clear(); return; }
+		s.erase(0, a);
+		s.erase(s.find_last_not_of(" \t") + 1);
+	};
 
+	int ap_index = 0;
 	std::string line;
 	while (std::getline(file, line))
 	{
@@ -49,64 +57,32 @@ bool Configuration::Load()
 
 		std::string location = line.substr(0, separator);
 		std::string item = line.substr(separator + 1);
+		trim(location);
+		trim(item);
 
-		location.erase(0, location.find_first_not_of(" \t"));
-		location.erase(location.find_last_not_of(" \t") + 1);
-		item.erase(0, item.find_first_not_of(" \t"));
-		item.erase(item.find_last_not_of(" \t") + 1);
+		size_t p1 = item.find('|');
+		if (p1 != std::string::npos)
+		{
+			size_t p2 = item.find('|', p1 + 1);
+			APItemInfo info;
+			info.item = item.substr(0, p1);
+			info.player = (p2 == std::string::npos) ? "" : item.substr(p1 + 1, p2 - p1 - 1);
+			info.game = (p2 == std::string::npos) ? "" : item.substr(p2 + 1);
+			trim(info.item);
+			trim(info.player);
+			trim(info.game);
 
-		checks_to_items[location] = item;
+			std::string key = "DT_ItemStats.ap_" + std::to_string(ap_index++);
+			ap_items[location] = info;
+			checks_to_items[location] = key;
+		}
+		else
+		{
+			checks_to_items[location] = item;
+		}
 	}
-	Logger::Log(LogLevel::Debug, this, "Found", checks_to_items.size(), "Items");
+	Logger::Log(LogLevel::Debug, this, "Found", checks_to_items.size(), "Items", ap_items.size(), "AP");
 	return true;
-}
-
-void Configuration::ConnectAP(std::string uri)
-{
-	ap.reset();
-	bool is_ws = uri.rfind("ws://", 0) == 0;
-	bool is_wss = uri.rfind("wss://", 0) == 0;
-	std::string uri_without_scheme =
-		uri.empty() ? APClient::DEFAULT_URI :
-		is_ws ? uri.substr(5) :
-		is_wss ? uri.substr(6) :
-		uri;
-	//UUIDFactory
-	auto uuid = ap_get_uuid("EnderMagnolia.uuid");
-
-	Logger::Log(LogLevel::Debug, this, "Connecting AP...");
-	ap.reset(new APClient(uuid, "Ender Magnolia", uri.empty() ? APClient::DEFAULT_URI : uri));
-
-	std::list<int64_t> list = {0,1,2};
-	ap->LocationScouts(list, 0);
-	ap->set_socket_error_handler([this](const std::string& error) {
-		Logger::Log(LogLevel::Error, this, "Socket Error", error);
-	});
-	ap->set_room_info_handler([this]() {
-		Logger::Log(LogLevel::Debug, "AP", "Room info");
-		ap->ConnectSlot("Trex", "", 0b101);
-	});
-	ap->set_slot_connected_handler([](const nlohmann::json &json) {
-		Logger::Log(LogLevel::Debug, "AP", "set_slot_connected_handler");
-	});
-	ap->set_slot_disconnected_handler([]() {
-		Logger::Log(LogLevel::Debug, "AP", "set_slot_disconnected_handler");
-	});
-	ap->set_slot_refused_handler([](const std::list<std::string>& errors) {
-		Logger::Log(LogLevel::Debug, "AP", "set_slot_refused_handler");
-	});
-	ap->set_items_received_handler([](const std::list<APClient::NetworkItem>& items) {
-		Logger::Log(LogLevel::Debug, "AP", "set_items_received_handler");
-	});
-	ap->set_print_handler([](const std::string& msg) {
-		Logger::Log(LogLevel::Debug, "AP", msg);
-	});
-}
-
-void Configuration::Tick()
-{
-
-	ap->poll();
 }
 
 std::optional<std::string> Configuration::ScoutLocation(const std::string& location) const
@@ -115,4 +91,69 @@ std::optional<std::string> Configuration::ScoutLocation(const std::string& locat
 	if (it == checks_to_items.end())
 		return std::nullopt;
 	return it->second;
+}
+
+std::optional<APItemInfo> Configuration::ScoutAPItem(const std::string& location) const
+{
+	auto it = ap_items.find(location);
+	if (it == ap_items.end())
+		return std::nullopt;
+	return it->second;
+}
+
+SDK::TSoftObjectPtr<SDK::UPaperSprite> AchievementIcon(SDK::UDataTable* table, int enumValue)
+{
+	if (table)
+		for (auto It = begin(table->RowMap); It != end(table->RowMap); ++It)
+		{
+			auto row = (SDK::FAchievementData*)It->Value();
+			if ((int)row->Achievement == enumValue)
+				return row->UnlockedIcon;
+		}
+	return {};
+}
+
+void Configuration::PopulateDataTable(SDK::UDataTable* table)
+{
+	if (!table || ap_items.empty())
+		return;
+
+	auto source = (SDK::FInventoryItemData*)table->FindRow("hp_up_s");
+	if (!source)
+		return;
+
+	auto icon = AchievementIcon(GameManager::Instance().Mode()->DataTableAchievements, 21);
+
+	auto crouch = (SDK::FInventoryItemData*)GameManager::Instance().Mode()->DataTableItemAptitudes->FindRow("Crouch");
+	icon = crouch->Icon;
+
+	for (auto& kv : ap_items)
+	{
+		auto keyName = ScoutLocation(kv.first);
+		if (!keyName)
+			continue;
+		auto dot = keyName->find('.');
+		std::string rowName = (dot == std::string::npos) ? *keyName : keyName->substr(dot + 1);
+		if (table->FindRow(rowName))
+			continue;
+
+		const APItemInfo& info = kv.second;
+		// maybe unsafe
+		auto clone = (SDK::FInventoryItemData*)malloc(sizeof(SDK::FInventoryItemData));
+		memcpy(clone, source, sizeof(SDK::FInventoryItemData));
+
+		clone->ItemType = SDK::EInventoryItemType::None;
+		clone->Name = SDK::FText::FromString(info.item);
+		clone->Description = SDK::FText::FromString("Item for " + info.player);
+		clone->FlavorText = SDK::FText::FromString("This is an Archipelago item for " + info.game);
+		clone->DescriptionFormatElements.Clear();
+		clone->DescriptionStringElements.Clear();
+		clone->FlavorTextFormatElements.Clear();
+		clone->FlavorStringElements.Clear();
+		clone->Icon = icon;
+
+		auto fname = SDK::FName::FromString(rowName);
+		if (!DataTableRowInserter::AddRowViaVtable(table, fname, reinterpret_cast<uint8_t*>(clone)))
+			free(clone);
+	}
 }

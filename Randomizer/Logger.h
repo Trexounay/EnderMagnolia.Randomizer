@@ -14,6 +14,8 @@ enum class LogLevel {
 	File
 };
 
+#define LOG_ALL_TO_FILE 1
+
 class Logger {
 public:
 	static void Init();
@@ -60,6 +62,15 @@ public:
 			myfile.close();
 			return;
 		}
+
+#if LOG_ALL_TO_FILE
+		{
+			std::ofstream myfile;
+			myfile.open("Debug.txt", std::ios_base::app);
+			myfile << stream.str() << std::endl;
+			myfile.close();
+		}
+#endif
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 		CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
