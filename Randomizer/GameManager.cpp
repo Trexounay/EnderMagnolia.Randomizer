@@ -1,9 +1,9 @@
 #include "GameManager.h"
 #include "Configuration.h"
-#include "APConnection.h"
 #include "GUI.h"
 #include "Logger.h"
 #include "ItemReplacer.h"
+#include "CustomItemRegistry.h"
 #include "DebugTeleporter.h"
 #include "SDK.hpp"
 
@@ -46,8 +46,7 @@ void GameManager::OnGameStarted()
 	Logger::Log(this, "New Game Started", (int)(GameInstance()->GetLaunchGameIntent()),
 		(ss && ss->CurrentSettings ? ss->CurrentSettings->ValidGameVersion.ToString() : "none"),
 		(ss && ss->SavingGameData ? ss->SavingGameData->ValidGameVersion.ToString() : "none"));
-	// read seed
-	Configuration::Instance().Load();
+	Configuration::Instance().OnGameStart();
 	this->currentZone = UC::FString(L"");
 	start_weapon = false;
 	if (!start_weapon)
@@ -70,7 +69,7 @@ bool GameManager::SetStartingWeapon()
 	}
 	Logger::Log(this, "removing auto granted skills");
 	SDK::FDataTableRowHandle handle;
-	handle.DataTable = Mode()->DataTableItemSpirits;
+	handle.DataTable = GameTables::ItemSpirits();
 	for (auto i : handle.DataTable->RowMap)
 	{
 		auto spiritData = (SDK::FInventoryItemSpiritData*)(i.Second);
@@ -79,11 +78,11 @@ bool GameManager::SetStartingWeapon()
 		controller->InventoryComponent->AddItem(handle, 1);
 	}
 
-	for (auto s : Mode()->DataTableItemSkills->RowMap)
+	for (auto s : GameTables::ItemSkills()->RowMap)
 	{
 		auto skillData = (SDK::FInventoryItemSkillData*)(s.Second);
 		SDK::FDataTableRowHandle row;
-		row.DataTable = Mode()->DataTableItemSkills;
+		row.DataTable = GameTables::ItemSkills();
 		row.RowName = s.First;
 
 		SDK::FSkillMaterialData cost;
@@ -108,7 +107,7 @@ bool GameManager::SetStartingWeapon()
 	std::string skill = "DT_ItemSkills.s5000_sword";
 	if (auto confSkill = Configuration::Instance().ScoutLocation("starting_skill"))
 		skill = confSkill.value();
-	auto row = ItemReplacer::FromItemName(skill);
+	auto row = CustomItemRegistry::FromItemName(skill);
 	if (!controller->SkillComponent->HasAnyEquippedSkill() && row.has_value())
 	{
 		Logger::Log(LogLevel::Debug, this, "equiping", skill);
@@ -119,7 +118,7 @@ bool GameManager::SetStartingWeapon()
 	return true;
 }
 
-void GameManager::OnReceiveTick()
+void GameManager::Tick()
 {
 	if (!start_weapon)
 		SetStartingWeapon();
@@ -130,28 +129,43 @@ void GameManager::OnReceiveTick()
 		auto zone = zoneSystem->GetActiveZoneLevelName();
 		if (zone != this->currentZone && (zone.IsValid() || this->currentZone.IsValid()))
 			this->ZoneChanged(this->currentZone, zone);
-		itemReplacer->Tick(zone);
-
-		for (auto& received : APConnection::Instance().DrainReceivedItems())
-		{
-			GUI::Instance().Notify(received.display);
-			APConnection::Instance().ConfirmApplied(received.index);
-		}
+		itemReplacer->Tick();
 	}
+}
+
+bool GameManager::GrantItem(const std::string& itemName, int count)
+{
+	auto controller = Controller();
+	if (!controller || !controller->InventoryComponent)
+		return false;
+
+	auto row = CustomItemRegistry::FromItemName(itemName);
+	if (!row.has_value())
+		return false;
+
+	controller->InventoryComponent->AddItem(row.value(), count);
+	return true;
+}
+
+void GameManager::OnGameSaved()
+{
+	Configuration::Instance().OnGameSaved();
 }
 
 void GameManager::OnLocationClear(SDK::AActor* actor, SDK::UEventAsset* asset)
 {
-	std::string zone = currentZone.ToString();
+	if (!currentZone.IsValid())
+		return;
 
 	if (asset)
 	{
-		for (auto& loc : ItemReplacer::EnumerateEventLocations(zone, "", asset))
-			APConnection::Instance().CheckLocation(loc.id);
+		auto items = ItemReplacer::EnumerateEventItems(asset);
+		for (int i = 0; i < (int)items.size(); ++i)
+			Configuration::Instance().ReportCheck(ItemReplacer::EventLocationId(asset, i));
 	}
 	else if (actor)
 	{
-		APConnection::Instance().CheckLocation(zone + "." + actor->GetName());
+		Configuration::Instance().ReportCheck(ItemReplacer::ActorLocationId(actor->GetName()));
 	}
 }
 
@@ -160,14 +174,5 @@ void GameManager::ZoneChanged(UC::FString oldZone, UC::FString newZone)
 	this->currentZone = newZone;
 	Logger::Log(this, "Zone Changed", oldZone.ToString(), "->", newZone.ToString());
 	if (newZone.IsValid())
-	{
 		itemReplacer->ZoneChanged(oldZone, newZone);
-
-		auto save = (SDK::USaveSubsystem*)SDK::USubsystemBlueprintLibrary::GetGameInstanceSubsystem(World(), SDK::USaveSubsystem::StaticClass());
-		auto result = SDK::UPluginBlueprintLibrary::GetEnabledPluginNames();
-		save->CurrentSettings->ValidGameVersion = result[0];
-		if (save->SavingGameData)
-			save->SavingGameData->ValidGameVersion = result[0];
-		save->SaveGameInCurrentSlot();
-	}
 }

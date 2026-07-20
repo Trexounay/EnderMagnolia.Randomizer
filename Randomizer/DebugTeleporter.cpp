@@ -6,7 +6,7 @@
 void DebugTeleporter::Init()
 {
 	GM = &GameManager::Instance();
-	for (auto data : GM->Mode()->DataTableGameMapTransitions->RowMap)
+	for (auto data : GameTables::GameMapTransitions()->RowMap)
 	{
 		auto transData = (SDK::FMapTransitionRowData*)(data.Second);
 		for (auto trans : transData->TransitionSpawnPoints)

@@ -199,6 +199,9 @@ HRESULT __stdcall hkPresent12(IDXGISwapChain3* swapChain, UINT syncInterval, UIN
 
 		ImGui::CreateContext();
 
+		if (auto initCb = impl::GetInitCallback())
+			initCb();
+
 		ImGuiIO& io = ImGui::GetIO();
 		io.Fonts->AddFontDefault();
 		ImFontConfig cfg;

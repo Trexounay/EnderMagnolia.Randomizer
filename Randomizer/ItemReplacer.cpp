@@ -3,24 +3,8 @@
 #include "Logger.h"
 #include "GameManager.h"
 #include "Configuration.h"
+#include "CustomItemRegistry.h"
 #include <vector>
-
-const std::unordered_map<std::string, size_t> ItemReplacer::dataTableOffsets = {
-	{ "DT_ItemCurrencies", offsetof(SDK::AGameModeZion, DataTableItemCurrencies) },
-	{ "DT_ItemAptitudes", offsetof(SDK::AGameModeZion, DataTableItemAptitudes) },
-	{ "DT_ItemSpirits", offsetof(SDK::AGameModeZion, DataTableItemSpirits) },
-	{ "DT_ItemSkills", offsetof(SDK::AGameModeZion, DataTableItemSkills) },
-	{ "DT_ItemStats", offsetof(SDK::AGameModeZion, DataTableItemStats) },
-	{ "DT_ItemPassives", offsetof(SDK::AGameModeZion, DataTableItemPassives) },
-	{ "DT_ItemEquipments", offsetof(SDK::AGameModeZion, DataTableItemEquipments) },
-	{ "DT_ItemAssists", offsetof(SDK::AGameModeZion, DataTableItemAssists) },
-	{ "DT_ItemMaterials", offsetof(SDK::AGameModeZion, DataTableItemMaterials) },
-	{ "DT_ItemTips", offsetof(SDK::AGameModeZion, DataTableItemTips) },
-	{ "DT_ItemKeys", offsetof(SDK::AGameModeZion, DataTableItemKeys) },
-	{ "DT_ItemQuests", offsetof(SDK::AGameModeZion, DataTableItemQuests) },
-	{ "DT_ItemCostumes", offsetof(SDK::AGameModeZion, DataTableItemCostumes) },
-	{ "DT_ItemGallery", offsetof(SDK::AGameModeZion, DataTableItemGallery) },
-};
 
 ItemReplacer::ItemReplacer()
 {
@@ -30,25 +14,16 @@ ItemReplacer::ItemReplacer()
 void ItemReplacer::ZoneChanged(const UC::FString& oldZone, const UC::FString& newZone)
 {
 	delayed_replacement.clear();
-	auto zoneName = newZone.ToString();
-	ReplaceInteractableAddItems(zoneName);
-	ReplaceInteractableAddTutorial(zoneName);
-	ReplaceInteractableTreasureBox(zoneName);
-	ReplaceBreakableSpawnItem(zoneName);
-	ReplaceTriggerEvents(zoneName);
-	ReplaceBossEvents(zoneName);
-	ReplaceInteractableEvents(zoneName);
-	
-	std::vector<SDK::UObject*> toto;
-	SDK::UObject::FindObjectsByClass(SDK::UEventAsset::StaticClass(), toto);
-	for (auto obj : toto)
-	{
-		auto evt = static_cast<SDK::UEventAsset*>(obj);
-		Logger::Log(LogLevel::Debug, this, "event", evt->GetName());
-	}
+	ReplaceItemActors<SDK::ABP_Interactable_AddItem_C>();
+	ReplaceItemActors<SDK::ABP_Interactable_AddTutorial_C>();
+	ReplaceItemActors<SDK::ABP_Interactable_TreasureBox_C>();
+	ReplaceItemActors<SDK::ABP_Breakable_SpawnItem_C>();
+	ReplaceTriggerEvents();
+	ReplaceBossEvents();
+	ReplaceInteractableEvents();
 }
 
-void ItemReplacer::Tick(const UC::FString& newZone)
+void ItemReplacer::Tick()
 {
 	for (auto it = delayed_replacement.begin(); it != delayed_replacement.end(); )
 	{
@@ -60,59 +35,7 @@ void ItemReplacer::Tick(const UC::FString& newZone)
 	}
 }
 
-void ItemReplacer::ReplaceInteractableAddTutorial(const std::string& zoneName)
-{
-	UC::TArray<SDK::AActor*> out;
-	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_Interactable_AddTutorial_C::StaticClass(), &out);
-
-	for (auto Actor : out)
-	{
-		auto interactable = static_cast<SDK::ABP_Interactable_AddTutorial_C*>(Actor);
-		auto id = zoneName + "." + Actor->GetName();
-		SwapAtLocation(id, interactable->Item);
-	}
-}
-
-void ItemReplacer::ReplaceInteractableTreasureBox(const std::string& zoneName)
-{
-	UC::TArray<SDK::AActor*> out;
-	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_Interactable_TreasureBox_C::StaticClass(), &out);
-
-	for (auto Actor : out)
-	{
-		auto interactable = static_cast<SDK::ABP_Interactable_TreasureBox_C*>(Actor);
-		auto id = zoneName + "." + Actor->GetName();
-		SwapAtLocation(id, interactable->Item);
-	}
-}
-
-void ItemReplacer::ReplaceInteractableAddItems(const std::string& zoneName)
-{
-	UC::TArray<SDK::AActor*> out;
-	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_Interactable_AddItem_C::StaticClass(), &out);
-
-	for (auto Actor : out)
-	{
-		auto interactable = static_cast<SDK::ABP_Interactable_AddItem_C*>(Actor);
-		auto id = zoneName + "." + Actor->GetName();
-		SwapAtLocation(id, interactable->Item);
-	}
-}
-
-void ItemReplacer::ReplaceBreakableSpawnItem(const std::string& zoneName)
-{
-	UC::TArray<SDK::AActor*> out;
-	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_Breakable_SpawnItem_C::StaticClass(), &out);
-
-	for (auto Actor : out)
-	{
-		auto interactable = static_cast<SDK::ABP_Breakable_SpawnItem_C*>(Actor);
-		auto id = zoneName + "." + Actor->GetName();
-		SwapAtLocation(id, interactable->Item);
-	}
-}
-
-void ItemReplacer::ReplaceInteractableEvents(const std::string& zoneName)
+void ItemReplacer::ReplaceInteractableEvents()
 {
 	UC::TArray<SDK::AActor*> out;
 	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::AInteractable_Event::StaticClass(), &out);
@@ -126,20 +49,20 @@ void ItemReplacer::ReplaceInteractableEvents(const std::string& zoneName)
 				auto eventPtr = static_cast<SDK::TSoftObjectPtr<SDK::UObject>>(data.EventAsset);
 				auto event = static_cast<SDK::UEventAsset*>(SDK::UKismetSystemLibrary::LoadAsset_Blocking(eventPtr));
 				if (event)
-					ReplaceEventAsset(zoneName, actorName, event);
+					ReplaceEventAsset(actorName, event);
 			}
 		}
 		auto trigger = static_cast<SDK::AInteractable_Event*>(actor);
 		Logger::Log(LogLevel::Debug, this, "interactable", actorName);
-		WaitForEventAsset(&trigger->LoadedEventAsset, [this, zoneName, actorName](SDK::UEventAsset* asset)
+		WaitForEventAsset(&trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
 			{
-				ReplaceEventAsset(zoneName, actorName, asset);
+				ReplaceEventAsset(actorName, asset);
 			}, &trigger->EventAsset
 		);
 	}
 }
 
-void ItemReplacer::ReplaceBossEvents(const std::string& zoneName)
+void ItemReplacer::ReplaceBossEvents()
 {
 	UC::TArray<SDK::AActor*> out;
 	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_BossSpawner_C::StaticClass(), &out);
@@ -147,15 +70,15 @@ void ItemReplacer::ReplaceBossEvents(const std::string& zoneName)
 	{
 		auto trigger = static_cast<SDK::ABP_BossSpawner_C*>(actor);
 		auto actorName = actor->GetName();
-		WaitForEventAsset(&trigger->LoadedDefeatEvent, [this, zoneName, actorName](SDK::UEventAsset* asset)
+		WaitForEventAsset(&trigger->LoadedDefeatEvent, [this, actorName](SDK::UEventAsset* asset)
 			{
-				ReplaceEventAsset(zoneName, actorName, asset);
+				ReplaceEventAsset(actorName, asset);
 			}, &trigger->DefeatEvent
 		);
 	}
 }
 
-void ItemReplacer::ReplaceTriggerEvents(const std::string& zoneName)
+void ItemReplacer::ReplaceTriggerEvents()
 {
 	UC::TArray<SDK::AActor*> out;
 	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ATrigger_Event::StaticClass(), &out);
@@ -168,64 +91,53 @@ void ItemReplacer::ReplaceTriggerEvents(const std::string& zoneName)
 		{
 			auto eventPtr = static_cast<SDK::TSoftObjectPtr<SDK::UObject>>(data.EventAsset);
 			auto event = static_cast<SDK::UEventAsset*>(SDK::UKismetSystemLibrary::LoadAsset_Blocking(eventPtr));
-			ReplaceEventAsset(zoneName, actorName, event);
+			ReplaceEventAsset(actorName, event);
 		}
 
-		WaitForEventAsset(&trigger->LoadedEventAsset, [this, zoneName, actorName](SDK::UEventAsset* asset)
+		WaitForEventAsset(&trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
 			{
-				ReplaceEventAsset(zoneName, actorName, asset);
+				ReplaceEventAsset(actorName, asset);
 			}, &trigger->EventDataList[0].EventAsset);
 	}
 }
 
 void ItemReplacer::WaitForEventAsset(SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action, SDK::TSoftObjectPtr<SDK::UEventAsset>* softptr)
 {
-	if (!*asset)
+	auto tryResolve = [asset, action, softptr]() -> bool
 	{
-		if (softptr && softptr->WeakPtr.ObjectIndex != 0 && softptr->WeakPtr.ObjectIndex != 0)
+		if (*asset)
+		{
+			action(*asset);
+			return true;
+		}
+		if (softptr && softptr->WeakPtr.ObjectIndex != 0)
 		{
 			auto eventPtr = static_cast<SDK::TSoftObjectPtr<SDK::UObject>>(*softptr);
 			auto event = static_cast<SDK::UEventAsset*>(SDK::UKismetSystemLibrary::LoadAsset_Blocking(eventPtr));
 			if (event)
 			{
 				action(event);
-				return;
-			}
-			else
-				Logger::Log(LogLevel::Warning, this, "no event");
-		}
-		delayed_replacement.push_back([asset, action, softptr]()
-			{
-				if (!*asset)
-				{
-					if (softptr && softptr->WeakPtr.ObjectIndex != 0 && softptr->WeakPtr.ObjectIndex != 0)
-					{
-						auto eventPtr = static_cast<SDK::TSoftObjectPtr<SDK::UObject>>(*softptr);
-						auto event = static_cast<SDK::UEventAsset*>(SDK::UKismetSystemLibrary::LoadAsset_Blocking(eventPtr));
-						if (event)
-						{
-							action(event);
-							return true;
-						}
-					}
-					return false;
-				}
-				action(*asset);
 				return true;
 			}
-		);
-	}
-	else
-	{
-		action(*asset);
-	}
+		}
+		return false;
+	};
+
+	if (!tryResolve())
+		delayed_replacement.push_back(tryResolve);
 }
 
-void ItemReplacer::ReplaceEventAsset(const std::string& zoneName, const std::string& actorName, SDK::UEventAsset* asset)
+void ItemReplacer::ReplaceEventAsset(const std::string& actorName, SDK::UEventAsset* asset)
 {
-	for (auto& loc : EnumerateEventLocations(zoneName, "", asset))
-		SwapAtLocation(loc.id, *loc.item);
+	auto items = EnumerateEventItems(asset);
+	for (int i = 0; i < (int)items.size(); ++i)
+		SwapAtLocation(EventLocationId(asset, i), *items[i]);
 
+	DisableAutoEquip(asset);
+}
+
+void ItemReplacer::DisableAutoEquip(SDK::UEventAsset* asset)
+{
 	for (auto data : asset->Nodes)
 	{
 		auto nodeAction = data.Value()->Cast<SDK::UEventNodeAction>();
@@ -237,23 +149,34 @@ void ItemReplacer::ReplaceEventAsset(const std::string& zoneName, const std::str
 			{
 				equipSkill->bOnlyIfSetIsEmpty = true;
 			}
-			else if (auto equipSkill = action->Cast<SDK::UEventAction_EquipCostume>())
+			else if (auto equipCostume = action->Cast<SDK::UEventAction_EquipCostume>())
 			{
-				equipSkill->bAutoGrantCostume = false;
-				equipSkill->CostumeHandle.DataTable = nullptr;
-				Logger::Log(LogLevel::Warning, this, "Equip Costume", action->GetName(), " -> ", equipSkill->bAutoGrantCostume);
+				equipCostume->bAutoGrantCostume = false;
+				equipCostume->CostumeHandle.DataTable = nullptr;
 			}
 		}
 	}
 }
 
-std::vector<ItemReplacer::EventLocation> ItemReplacer::EnumerateEventLocations(const std::string& zoneName, const std::string& actorName, SDK::UEventAsset* asset)
+std::string ItemReplacer::ActorLocationId(const std::string& actorName)
 {
-	std::vector<EventLocation> locations;
-	if (!asset)
-		return locations;
+	return GameManager::Instance().Zone().ToString() + "." + actorName;
+}
 
-	int count = 0;
+std::string ItemReplacer::EventLocationId(SDK::UEventAsset* asset, int index)
+{
+	std::string id = GameManager::Instance().Zone().ToString() + "." + asset->GetName();
+	if (index > 0)
+		id += "." + std::to_string(index);
+	return id;
+}
+
+std::vector<SDK::FDataTableRowHandle*> ItemReplacer::EnumerateEventItems(SDK::UEventAsset* asset)
+{
+	std::vector<SDK::FDataTableRowHandle*> items;
+	if (!asset)
+		return items;
+
 	for (auto data : asset->Nodes)
 	{
 		auto nodeAction = data.Value()->Cast<SDK::UEventNodeAction>();
@@ -264,64 +187,24 @@ std::vector<ItemReplacer::EventLocation> ItemReplacer::EnumerateEventLocations(c
 			if (auto grantItem = action->Cast<SDK::UEventAction_GrantItems>())
 			{
 				for (int i = 0; i < grantItem->ItemHandleCounts.Num(); ++i)
-				{
-					std::string id = zoneName;
-					if (!actorName.empty())
-						id += "." + actorName;
-					id += "." + asset->GetName();
-					if (count > 0)
-						id += "." + std::to_string(count);
-					count++;
-					locations.push_back({ id, &grantItem->ItemHandleCounts[i].ItemHandle });
-				}
+					items.push_back(&grantItem->ItemHandleCounts[i].ItemHandle);
 			}
 		}
 	}
-	return locations;
+	return items;
 }
 
 void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item) const
 {
-	Logger::Log(LogLevel::File, this, locationName + ":" + ToItemName(item));
+	Logger::Log(LogLevel::File, this, locationName + ":" + CustomItemRegistry::ToItemName(item));
 	if (auto newItem = Configuration::Instance().ScoutLocation(locationName))
 	{
-		if (auto rowHandle = FromItemName(newItem.value()))
+		if (auto rowHandle = CustomItemRegistry::FromItemName(newItem.value()))
 		{
-			Logger::Log(LogLevel::Debug, this, "replace at", locationName, ":", ToItemName(item), "->", newItem.value());
+			Logger::Log(LogLevel::Debug, this, "replace at", locationName, ":", CustomItemRegistry::ToItemName(item), "->", newItem.value());
 			item = rowHandle.value();
 			return;
 		}
 	}
-	Logger::Log(LogLevel::Warning, this, "no replacement", locationName, ":", ToItemName(item));
-}
-
-std::optional<SDK::FDataTableRowHandle> ItemReplacer::FromItemName(std::string itemName)
-{
-	SDK::FDataTableRowHandle Item;
-	auto separator = itemName.find('.');
-	if (separator == std::string::npos)
-		return std::nullopt;
-	std::string tableName = itemName.substr(0, separator);
-	std::string rowName = itemName.substr(separator + 1);
-
-	auto it = ItemReplacer::dataTableOffsets.find(tableName);
-	if (it == ItemReplacer::dataTableOffsets.end())
-		return std::nullopt;
-	uintptr_t base = reinterpret_cast<uintptr_t>(SDK::UWorld::GetWorld()->AuthorityGameMode);
-	Item.DataTable = *reinterpret_cast<SDK::UDataTable**>(base + it->second);
-
-	for (auto It = begin(Item.DataTable->RowMap); It != end(Item.DataTable->RowMap); ++It)
-	{
-		if (It->Key().GetRawString() == rowName)
-		{
-			Item.RowName = It->Key();
-			break;
-		}
-	}
-	return Item;
-}
-
-std::string ItemReplacer::ToItemName(const SDK::FDataTableRowHandle& row) const
-{
-	return row.DataTable->GetName() + "." + row.RowName.GetRawString();
+	Logger::Log(LogLevel::Warning, this, "no replacement", locationName, ":", CustomItemRegistry::ToItemName(item));
 }

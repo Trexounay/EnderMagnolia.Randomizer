@@ -54,6 +54,9 @@ long __stdcall hkPresent11(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT F
 
 		ImGui::CreateContext();
 
+		if (auto initCb = impl::GetInitCallback())
+			initCb();
+
 		ImGuiIO& io = ImGui::GetIO();
 		io.Fonts->AddFontDefault();
 		ImFontConfig cfg;

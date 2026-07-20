@@ -3,6 +3,15 @@
 #include <optional>
 #include <unordered_map>
 
+namespace GameTables
+{
+	inline SDK::UDataTable* ItemSpirits() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemSpirits; }
+	inline SDK::UDataTable* ItemSkills() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemSkills; }
+	inline SDK::UDataTable* ItemStats() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemStats; }
+	inline SDK::UDataTable* ItemAptitudes() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemAptitudes; }
+	inline SDK::UDataTable* GameMapTransitions() { return SDK::AGameModeZion::GetDefaultObj()->DataTableGameMapTransitions; }
+}
+
 class ItemReplacer;
 class DebugTeleporter;
 
@@ -12,10 +21,12 @@ public:
 	static GameManager& Instance();
 	void Init();
 
-	void OnReceiveTick();
+	void Tick();
 	void OnGameStarted();
+	void OnGameSaved();
 	void OnLocationClear(SDK::AActor* actor, SDK::UEventAsset* asset);
 	bool SetStartingWeapon();
+	bool GrantItem(const std::string& itemName, int count = 1);
 
 	bool IsLoading() const;
 	SDK::UWorldLoaderSubsystem* Loader() const;
@@ -27,7 +38,6 @@ public:
 	SDK::APlayerControllerZion* Controller() const { return SDK::APlayerControllerZion::Get(World(), 0); };
 	SDK::ACharacterZion* Pawn() const { return (SDK::ACharacterZion *)Controller()->Character; };
 	const UC::FString& Zone() const { return currentZone; };
-	std::optional<SDK::FDataTableRowHandle> FromItemName(std::string itemName) const;
 
 private:
 	GameManager() = default;

@@ -4,7 +4,7 @@
 #include <mutex>
 #include <deque>
 #include <string>
-#include "Randomizer/APConnection.h"
+#include "Randomizer/ArchipelagoSource.h"
 
 class GUI {
 public:
@@ -22,11 +22,12 @@ private:
 
 	void InjectOverlay();
 	static void RenderTrampoline();
+	static void RegisterSettingsHandler();
 	void Draw();
 	void DrawNotifications();
 
-	void LoadSettings();
-	void SaveSettings();
+	void ApplySetting(const char* line);
+	void WriteSettings(struct ImGuiTextBuffer* buf) const;
 
 	struct Notification {
 		std::string text;
@@ -37,8 +38,8 @@ private:
 
 	enum class PendingAction { None, Connect, Disconnect };
 
-	char host[256] = {};
-	char slot[128] = {};
+	char host[256] = "127.0.0.1";
+	char slot[128] = "Lilac";
 	char pass[128] = {};
 
 	std::atomic<PendingAction> pending{ PendingAction::None };

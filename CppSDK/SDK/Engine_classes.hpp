@@ -19839,6 +19839,12 @@ public:
 		return nullptr;
 	}
 
+	template<typename T>
+	T* FindRowAs(const std::string& RowName)
+	{
+		return reinterpret_cast<T*>(FindRow(RowName));
+	}
+
 public:
 	static class UClass* StaticClass()
 	{
