@@ -8,11 +8,13 @@ extern "C" {
 #include "Logger.h"
 #include <unordered_map>
 
+namespace SDK { struct FFrame; }
+
 class HookManager
 {
 public:
 	using ProcessEventCallback = std::function<void(const SDK::UObject*, SDK::UFunction*, void*)>;
-	using FNativeFuncPtr = void (*)(SDK::UObject* Context, void* TheStack, void* Result);
+	using FNativeFuncPtr = void (*)(SDK::UObject* Context, SDK::FFrame* Stack, void* Result);
 	using FProcessEventFuncPtr = void (*)(const SDK::UObject*, SDK::UFunction*, void*);
 	static HookManager& Instance();
 
@@ -73,8 +75,10 @@ private:
 	static std::unordered_map<void*, detour_ctx_t> ctxs;
 
 	DETOUR_DECL_TYPE(void, ProcessEvent, const SDK::UObject*, SDK::UFunction*, void*);
-	DETOUR_DECL_TYPE(void, NativeFunction, SDK::UObject*, void*, void*);
+	DETOUR_DECL_TYPE(void, NativeFunction, SDK::UObject*, SDK::FFrame*, void*);
 
 	static void ProcessEvent_Hook(const SDK::UObject* obj, SDK::UFunction* func, void* params);
-	static void SetLaunchGameIntent_Hook(SDK::UObject* Context, void* TheStack, void* Result);
+	static void SetLaunchGameIntent_Hook(SDK::UGameInstanceZion* Context, SDK::FFrame* Stack, void* Result);
+	static void SaveGameSync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, bool* Result);
+	static void SaveGameAsync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, void* Result);
 };

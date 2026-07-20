@@ -1,5 +1,6 @@
 #include "GUI.h"
 #include "imgui.h"
+#include "imgui_internal.h"
 
 #include "impl/shared.h"
 #include "impl/d3d11_impl.h"
@@ -7,10 +8,9 @@
 #include "kiero.h"
 
 #include "Randomizer/Logger.h"
-#include "Randomizer/APConnection.h"
+#include "Randomizer/ArchipelagoSource.h"
 
 #include <cstring>
-#include <fstream>
 #include <string>
 
 namespace
@@ -21,8 +21,6 @@ namespace
 	static const ImVec4 kColorError(0.9f, 0.3f, 0.3f, 1.0f);
 	static const ImVec4 kColorNotifText(1.0f, 1.0f, 1.0f, 1.0f);
 	static const ImVec4 kColorNotifOutline(0.0f, 0.0f, 0.0f, 1.0f);
-
-	const char* SETTINGS_PATH = "randomizer_ui.ini";
 }
 
 GUI& GUI::Instance()
@@ -33,38 +31,30 @@ GUI& GUI::Instance()
 
 void GUI::Init()
 {
-	LoadSettings();
+	impl::SetInitCallback(&GUI::RegisterSettingsHandler);
 	InjectOverlay();
 }
 
-void GUI::LoadSettings()
+void GUI::ApplySetting(const char* line)
 {
-	std::ifstream file(SETTINGS_PATH);
-	if (!file.is_open())
-		return;
-
-	std::string line;
-	while (std::getline(file, line))
-	{
-		size_t eq = line.find('=');
-		if (eq == std::string::npos)
-			continue;
-		std::string key = line.substr(0, eq);
-		std::string value = line.substr(eq + 1);
-		if (key == "host")
-			strncpy_s(host, value.c_str(), sizeof(host) - 1);
-		else if (key == "slot")
-			strncpy_s(slot, value.c_str(), sizeof(slot) - 1);
-	}
+	sscanf_s(line, "host=%255[^\n]", host, (unsigned)sizeof(host));
+	sscanf_s(line, "slot=%127[^\n]", slot, (unsigned)sizeof(slot));
 }
 
-void GUI::SaveSettings()
+void GUI::WriteSettings(ImGuiTextBuffer* buf) const
 {
-	std::ofstream file(SETTINGS_PATH, std::ios::trunc);
-	if (!file.is_open())
-		return;
-	file << "host=" << host << "\n";
-	file << "slot=" << slot << "\n";
+	buf->appendf("[Randomizer][Connection]\nhost=%s\nslot=%s\n\n", host, slot);
+}
+
+void GUI::RegisterSettingsHandler()
+{
+	ImGuiSettingsHandler handler;
+	handler.TypeName = "Randomizer";
+	handler.TypeHash = ImHashStr("Randomizer");
+	handler.ReadOpenFn = [](ImGuiContext*, ImGuiSettingsHandler*, const char*) -> void* { return &GUI::Instance(); };
+	handler.ReadLineFn = [](ImGuiContext*, ImGuiSettingsHandler*, void* entry, const char* line) { static_cast<GUI*>(entry)->ApplySetting(line); };
+	handler.WriteAllFn = [](ImGuiContext*, ImGuiSettingsHandler*, ImGuiTextBuffer* buf) { GUI::Instance().WriteSettings(buf); };
+	ImGui::AddSettingsHandler(&handler);
 }
 
 void GUI::InjectOverlay()
@@ -100,7 +90,7 @@ void GUI::RenderTrampoline()
 
 void GUI::Tick()
 {
-	APConnection& ap = APConnection::Instance();
+	ArchipelagoSource& ap = ArchipelagoSource::Instance();
 
 	switch (pending.exchange(PendingAction::None))
 	{
@@ -134,6 +124,10 @@ void GUI::Draw()
 		statusText = "Connecting";
 		statusColor = kColorConnecting;
 		break;
+	case APState::Reconnecting:
+		statusText = "Reconnecting";
+		statusColor = kColorConnecting;
+		break;
 	case APState::Connected:
 		statusText = "Connected";
 		statusColor = kColorConnected;
@@ -152,7 +146,8 @@ void GUI::Draw()
 	std::string title = std::string("Ender Magnolia Randomizer - ") + statusText + "###rando";
 	ImGui::Begin(title.c_str());
 
-	const bool connected = (apState == APState::Connected || apState == APState::Connecting);
+	const bool connected = (apState == APState::Connected || apState == APState::Connecting ||
+		apState == APState::Reconnecting);
 	const float fieldWidth = 220.0f;
 
 	ImGui::BeginDisabled(connected);
@@ -181,7 +176,7 @@ void GUI::Draw()
 	{
 		if (ImGui::Button("Connect!"))
 		{
-			SaveSettings();
+			ImGui::MarkIniSettingsDirty();
 			strncpy_s(pendingHost, host, sizeof(pendingHost) - 1);
 			strncpy_s(pendingSlot, slot, sizeof(pendingSlot) - 1);
 			strncpy_s(pendingPass, pass, sizeof(pendingPass) - 1);

@@ -112,10 +112,16 @@
     <ClCompile Include="Randomizer\DebugTeleporter.cpp">
       <Filter>Randomizer</Filter>
     </ClCompile>
-    <ClCompile Include="Randomizer\APConnection.cpp">
+    <ClCompile Include="Randomizer\Configuration.cpp">
       <Filter>Randomizer</Filter>
     </ClCompile>
-    <ClCompile Include="Randomizer\Configuration.cpp">
+    <ClCompile Include="Randomizer\CustomItemRegistry.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\OfflineSource.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomizer\ArchipelagoSource.cpp">
       <Filter>Randomizer</Filter>
     </ClCompile>
     <ClCompile Include="Randomizer\VTableTools.cpp">
@@ -230,10 +236,19 @@
     <ClInclude Include="Randomizer\DebugTeleporter.h">
       <Filter>Randomizer</Filter>
     </ClInclude>
-    <ClInclude Include="Randomizer\APConnection.h">
+    <ClInclude Include="Randomizer\Configuration.h">
       <Filter>Randomizer</Filter>
     </ClInclude>
-    <ClInclude Include="Randomizer\Configuration.h">
+    <ClInclude Include="Randomizer\CustomItemRegistry.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\IItemSource.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\OfflineSource.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\ArchipelagoSource.h">
       <Filter>Randomizer</Filter>
     </ClInclude>
     <ClInclude Include="Randomizer\VTableTools.h">

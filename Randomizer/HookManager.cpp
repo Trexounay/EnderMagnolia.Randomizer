@@ -2,7 +2,7 @@
 #include "Logger.h"
 #include "Configuration.h"
 #include "GameManager.h"
-#include "APConnection.h"
+#include "ArchipelagoSource.h"
 #include "HookProbe.h"
 #include "GUI.h"
 
@@ -51,8 +51,14 @@ bool HookManager::Init()
 	if (!HookProcessEvent(&HookManager::ProcessEvent_Hook))
 		Logger::Log(LogLevel::Error, this, "Failed to hook ProcessEvent");
 
-	if (!HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", &HookManager::SetLaunchGameIntent_Hook))
+	if (!HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetLaunchGameIntent_Hook)))
 		Logger::Log(LogLevel::Error, this, "Failed to hook SetLaunchIntent");
+
+	if (!HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlot", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameSync_Hook)))
+		Logger::Log(LogLevel::Error, this, "Failed to hook SaveGameInCurrentSlot");
+
+	if (!HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlotAsync", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameAsync_Hook)))
+		Logger::Log(LogLevel::Error, this, "Failed to hook SaveGameInCurrentSlotAsync");
 
 	HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook);
 	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook);
@@ -137,13 +143,12 @@ void HookManager::TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEve
 
 void HookManager::MarkAsCleared_Hook(SDK::UClearComponent* self)
 {
-	/*
 	if (self)
 	{
 		SDK::AActor* owner = self->GetOwner();
 		auto boss = owner ? owner->Cast<SDK::ABP_BossSpawner_C>() : nullptr;
 		GameManager::Instance().OnLocationClear(owner, boss ? boss->LoadedDefeatEvent : nullptr);
-	}*/
+	}
 	DETOUR_ORIG_CALL(&ctxs[&MarkAsCleared_Hook], MarkCleared, self);
 }
 
@@ -173,6 +178,10 @@ void HookManager::FinishAction_Hook(SDK::UEventAction* self)
 			if (asset)
 				GameManager::Instance().OnLocationClear(nullptr, asset);
 		}
+		else if (cls == "EventAction_SaveGame")
+		{
+			GameManager::Instance().OnGameSaved();
+		}
 	}
 	DETOUR_ORIG_CALL(&ctxs[&FinishAction_Hook], FinishAction, self);
 }
@@ -180,20 +189,36 @@ void HookManager::FinishAction_Hook(SDK::UEventAction* self)
 void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)
 {
 	GUI::Instance().Tick();
-	APConnection::Instance().Tick();
-	GameManager::Instance().OnReceiveTick();
+	ArchipelagoSource::Instance().Tick();
+	GameManager::Instance().Tick();
 	oEngineTick(self, dt, idle);
 }
 
 void HookManager::ProcessEvent_Hook(const SDK::UObject* obj, SDK::UFunction* func, void* params)
 {
+#if ENABLE_HOOK_PROBE
+	HookProbe::OnProcessEvent(obj, func, params);
+#endif
 	DETOUR_ORIG_CALL(&ctxs[&ProcessEvent_Hook], ProcessEvent, obj, func, params);
 }
 
-void HookManager::SetLaunchGameIntent_Hook(SDK::UObject* Context, void* TheStack, void* Result)
+void HookManager::SetLaunchGameIntent_Hook(SDK::UGameInstanceZion* Context, SDK::FFrame* Stack, void* Result)
 {
-	DETOUR_ORIG_CALL(&ctxs[&SetLaunchGameIntent_Hook], NativeFunction, Context, TheStack, Result);
+	DETOUR_ORIG_CALL(&ctxs[&SetLaunchGameIntent_Hook], NativeFunction, Context, Stack, Result);
 	GameManager::Instance().OnGameStarted();
+}
+
+void HookManager::SaveGameSync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, bool* Result)
+{
+	DETOUR_ORIG_CALL(&ctxs[&SaveGameSync_Hook], NativeFunction, Context, Stack, Result);
+	if (Result && *Result)
+		GameManager::Instance().OnGameSaved();
+}
+
+void HookManager::SaveGameAsync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, void* Result)
+{
+	DETOUR_ORIG_CALL(&ctxs[&SaveGameAsync_Hook], NativeFunction, Context, Stack, Result);
+	GameManager::Instance().OnGameSaved();
 }
 
 #pragma endregion

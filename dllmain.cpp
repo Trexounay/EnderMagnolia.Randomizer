@@ -27,8 +27,8 @@ DWORD APIENTRY MainThread(HMODULE Module)
 	while (!HookManager::Instance().Init())
 		Sleep(500);
 
-	Configuration::Instance().Init();
 	GameManager::Instance().Init();
+	Configuration::Instance().Init();
 	GUI::Instance().Init();
 
 	FreeLibraryAndExitThread(Module, 0);

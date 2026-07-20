@@ -1,7 +1,8 @@
 #pragma once
-#include <unordered_map>
 #include <vector>
 #include <string>
+#include <list>
+#include <functional>
 #include "GameManager.h"
 #include "SDK.hpp"
 
@@ -11,30 +12,30 @@ public:
 	ItemReplacer();
 	void ZoneChanged(const UC::FString &oldZone, const UC::FString &newZone);
 
-	void Tick(const UC::FString& newZone);
-	static std::optional<SDK::FDataTableRowHandle> FromItemName(std::string itemName);
-	struct EventLocation {
-		std::string id;
-		SDK::FDataTableRowHandle* item;
-	};
-	static std::vector<EventLocation> EnumerateEventLocations(const std::string& zoneName, const std::string& actorName, SDK::UEventAsset* asset);
+	void Tick();
+	static std::vector<SDK::FDataTableRowHandle*> EnumerateEventItems(SDK::UEventAsset* asset);
+	static std::string ActorLocationId(const std::string& actorName);
+	static std::string EventLocationId(SDK::UEventAsset* asset, int index = 0);
 
 private:
-	static const std::unordered_map<std::string, size_t>dataTableOffsets;
 	GameManager* GM;
 
-	std::string ToItemName(const SDK::FDataTableRowHandle &row) const;
 	void SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item) const;
 	std::list<std::function<bool()>> delayed_replacement;
 
+	template<class T>
+	void ReplaceItemActors()
+	{
+		UC::TArray<SDK::AActor*> out;
+		SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), T::StaticClass(), &out);
+		for (auto Actor : out)
+			SwapAtLocation(ActorLocationId(Actor->GetName()), static_cast<T*>(Actor)->Item);
+	}
 
-	void ReplaceInteractableAddItems(const std::string& zoneName);
-	void ReplaceInteractableAddTutorial(const std::string& zoneName);
-	void ReplaceInteractableTreasureBox(const std::string& zoneName);
-	void ReplaceBreakableSpawnItem(const std::string& zoneName);
-	void ReplaceTriggerEvents(const std::string& zoneName);
-	void ReplaceInteractableEvents(const std::string& zoneName);
-	void ReplaceBossEvents(const std::string& zoneName);
-	void ReplaceEventAsset(const std::string& zoneName, const std::string& actorName, SDK::UEventAsset* asset);
+	void ReplaceTriggerEvents();
+	void ReplaceInteractableEvents();
+	void ReplaceBossEvents();
+	void ReplaceEventAsset(const std::string& actorName, SDK::UEventAsset* asset);
+	void DisableAutoEquip(SDK::UEventAsset* asset);
 	void WaitForEventAsset(SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action, SDK::TSoftObjectPtr<SDK::UEventAsset> *softptr);
 };
