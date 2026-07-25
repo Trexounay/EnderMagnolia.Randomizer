@@ -22,13 +22,16 @@ public:
 	void Init();
 
 	void Tick();
-	void OnGameStarted();
+	void OnGameStart(int slot, bool isNewGame);
 	void OnGameSaved();
-	void OnLocationClear(SDK::AActor* actor, SDK::UEventAsset* asset);
+	void OnEventFinished(SDK::UEventAsset* asset);
+	void OnActorCleared(SDK::AActor* actor);
 	bool SetStartingWeapon();
 	bool GrantItem(const std::string& itemName, int count = 1);
+	bool KillPlayer();
 
 	bool IsLoading() const;
+	int CurrentSaveSlot() const { return currentSaveSlot; }
 	SDK::UWorldLoaderSubsystem* Loader() const;
 	SDK::USaveSubsystem* SaveSubsystem() const;
 
@@ -46,9 +49,15 @@ private:
 	GameManager& operator=(const GameManager&) = delete;
 
 	void ZoneChanged(const UC::FString oldZone, UC::FString newZone);
-	UC::FString currentZone;
 
-	ItemReplacer* itemReplacer;
-	DebugTeleporter* teleporter;
-	bool start_weapon;
+	void GrantAllSpirits();
+	void SetSkillCosts();
+	void EquipStartingSkill();
+
+	UC::FString currentZone;
+	int currentSaveSlot = -1;
+
+	ItemReplacer* itemReplacer = nullptr;
+	DebugTeleporter* teleporter = nullptr;
+	bool start_weapon = false;
 };

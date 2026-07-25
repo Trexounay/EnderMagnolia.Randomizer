@@ -68,7 +68,7 @@ bool OfflineSource::Load()
 	return true;
 }
 
-void OfflineSource::OnGameStart()
+void OfflineSource::OnGameStart(bool isNewGame)
 {
 	PopulateDataTable();
 }

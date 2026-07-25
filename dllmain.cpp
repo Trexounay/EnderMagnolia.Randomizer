@@ -16,7 +16,6 @@
 
 DWORD APIENTRY MainThread(HMODULE Module)
 {
-
 #ifdef _DEBUG
 	Logger::Init();
 	char  dllName[MAX_PATH];

@@ -38,10 +38,10 @@ void Configuration::ReportCheck(const std::string& location)
 		activeSource->ReportCheck(location);
 }
 
-void Configuration::OnGameStart()
+void Configuration::OnGameStart(bool isNewGame)
 {
 	if (activeSource)
-		activeSource->OnGameStart();
+		activeSource->OnGameStart(isNewGame);
 }
 
 void Configuration::OnGameSaved()

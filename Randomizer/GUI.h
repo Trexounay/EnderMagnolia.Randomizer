@@ -41,11 +41,13 @@ private:
 	char host[256] = "127.0.0.1";
 	char slot[128] = "Lilac";
 	char pass[128] = {};
+	bool deathLink = false;
 
 	std::atomic<PendingAction> pending{ PendingAction::None };
 	char pendingHost[256] = {};
 	char pendingSlot[128] = {};
 	char pendingPass[128] = {};
+	bool pendingDeathLink = false;
 
 	std::atomic<APState> cachedState{ APState::Disconnected };
 	char cachedError[256] = {};

@@ -94,10 +94,11 @@ void ItemReplacer::ReplaceTriggerEvents()
 			ReplaceEventAsset(actorName, event);
 		}
 
+		auto* fallback = trigger->EventDataList.Num() > 0 ? &trigger->EventDataList[0].EventAsset : nullptr;
 		WaitForEventAsset(&trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
 			{
 				ReplaceEventAsset(actorName, asset);
-			}, &trigger->EventDataList[0].EventAsset);
+			}, fallback);
 	}
 }
 
@@ -129,6 +130,9 @@ void ItemReplacer::WaitForEventAsset(SDK::UEventAsset** asset, std::function<voi
 
 void ItemReplacer::ReplaceEventAsset(const std::string& actorName, SDK::UEventAsset* asset)
 {
+	if (!asset)
+		return;
+
 	auto items = EnumerateEventItems(asset);
 	for (int i = 0; i < (int)items.size(); ++i)
 		SwapAtLocation(EventLocationId(asset, i), *items[i]);

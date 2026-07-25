@@ -11,13 +11,13 @@ struct APItemInfo {
 
 class OfflineSource : public IItemSource {
 public:
-	explicit OfflineSource(const std::string& path = "EnderMagnolia.txt");
+	explicit OfflineSource(const std::string& path = "EnderMagnolia.Randomizer.Seed.txt");
 
 	bool Load();
 
 	std::optional<std::string> ScoutLocation(const std::string& location) override;
 	void ReportCheck(const std::string& location) override;
-	void OnGameStart() override;
+	void OnGameStart(bool isNewGame) override;
 	void OnGameSaved() override;
 
 private:

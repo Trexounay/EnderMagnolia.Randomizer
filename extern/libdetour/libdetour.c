@@ -38,11 +38,11 @@
  *   a:  ff e0                   jmp    rax
  */
 #ifdef __i386__
-static uint8_t jmp_bytes[] = { 0xB8, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xE0 };
+static const uint8_t jmp_bytes[] = { 0xB8, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xE0 };
 #define JMP_BYTES_OFF 1 /* Offset inside the array where the ptr should go */
 #else
-static uint8_t jmp_bytes[] = { 0x48, 0xB8, 0x00, 0x00, 0x00, 0x00,
-                               0x00, 0x00, 0x00, 0x00, 0xFF, 0xE0 };
+static const uint8_t jmp_bytes[] = { 0x48, 0xB8, 0x00, 0x00, 0x00, 0x00,
+                                     0x00, 0x00, 0x00, 0x00, 0xFF, 0xE0 };
 #define JMP_BYTES_OFF 2 /* Offset inside the array where the ptr should go */
 #endif
 
@@ -110,18 +110,22 @@ bool detour_enable(detour_ctx_t* ctx) {
         return false;
 
     /*
-     * Write the address of the `hook' function to the array for the encoded
-     * `jmp' instruction, at the `JMP_BYTES_OFF' offset (which changes depending
-     * on the architecture at compile-time).
+     * Build the encoded `jmp' instruction in a LOCAL buffer. This must not use
+     * the shared global template: `DETOUR_ORIG_CALL' disables and re-enables
+     * hooks on every invocation, so two threads inside two different hooks
+     * would race on a global and install each other's hook address into the
+     * wrong target function.
      */
-    memcpy(&jmp_bytes[JMP_BYTES_OFF], &(ctx->hook), sizeof(void*));
+    uint8_t local_jmp[sizeof(jmp_bytes)];
+    memcpy(local_jmp, jmp_bytes, sizeof(jmp_bytes));
+    memcpy(&local_jmp[JMP_BYTES_OFF], &(ctx->hook), sizeof(void*));
 
     /*
-     * Copy the whole (now filled) `jmp_bytes' array to the start of the body
-     * the target function (`ctx->orig'). This new `jmp' instruction will be
-     * responsible for the actual hook.
+     * Copy the whole (now filled) buffer to the start of the body of the target
+     * function (`ctx->orig'). This new `jmp' instruction will be responsible
+     * for the actual hook.
      */
-    memcpy(ctx->orig, jmp_bytes, sizeof(jmp_bytes));
+    memcpy(ctx->orig, local_jmp, sizeof(local_jmp));
 
     /*
      * Restore the old protection for this address.

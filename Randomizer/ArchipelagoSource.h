@@ -50,9 +50,13 @@ public:
 	APState GetState() const { return state; }
 	const std::string& GetError() const { return errorMsg; }
 
+	void SetDeathLink(bool enabled);
+	void OnPlayerDeath();
+	void OnGoalReached();
+
 	std::optional<std::string> ScoutLocation(const std::string& location) override;
 	void ReportCheck(const std::string& location) override;
-	void OnGameStart() override;
+	void OnGameStart(bool isNewGame) override;
 	void OnGameSaved() override;
 
 private:
@@ -73,13 +77,17 @@ private:
 	void OnLocationInfo(const std::list<APClient::NetworkItem>& items);
 	void OnRetrieved(const std::map<std::string, nlohmann::json>& keys);
 	void OnPrint(const std::string& msg);
+	void OnPrintJson(const std::list<APClient::TextNode>& msg);
+	void OnBounced(const nlohmann::json& json);
+	void DeliverRemoteDeath();
 
 	std::string IndexKey() const;
+	void LoadIndex();
+	void RequeueItems();
 	void QueueItem(const APClient::NetworkItem& item);
 	void DeliverReceivedItems();
 	void CommitIndex();
 	void LoadIdTable();
-	void CheckLocation(const std::string& location);
 	void ScoutAll();
 	void PopulateDataTable();
 
@@ -93,7 +101,7 @@ private:
 
 	int receivedIndex = 0;
 	bool indexLoaded = false;
-	std::vector<APClient::NetworkItem> pendingItems;
+	std::vector<APClient::NetworkItem> allItems;
 	std::vector<ReceivedItem> receivedItems;
 
 	std::unordered_map<std::string, int64_t> nameToId;
@@ -102,4 +110,9 @@ private:
 
 	int apItemIndex = 0;
 	std::unordered_map<std::string, std::string> location_to_item;
+
+	bool deathLinkEnabled = false;
+	double deathLinkEpoch = 0;
+	bool pendingRemoteDeath = false;
+	bool processingRemoteDeath = false;
 };

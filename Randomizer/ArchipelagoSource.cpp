@@ -63,11 +63,14 @@ void ArchipelagoSource::Connect(const std::string& host, const std::string& slot
 	ap->set_location_info_handler([this](const std::list<APClient::NetworkItem>& i) { OnLocationInfo(i); });
 	ap->set_retrieved_handler([this](const std::map<std::string, nlohmann::json>& k) { OnRetrieved(k); });
 	ap->set_print_handler([this](const std::string& m) { OnPrint(m); });
+	ap->set_print_json_handler([this](const std::list<APClient::TextNode>& msg) { OnPrintJson(msg); });
+	ap->set_bounced_handler([this](const nlohmann::json& j) { OnBounced(j); });
 }
 
 std::string ArchipelagoSource::IndexKey() const
 {
-	return std::to_string(ap->get_team_number()) + "_" + std::to_string(ap->get_player_number()) + "_EM_ItemIndex";
+	return std::to_string(ap->get_team_number()) + "_" + std::to_string(ap->get_player_number())
+		+ "_EM_ItemIndex_slot" + std::to_string(GameManager::Instance().CurrentSaveSlot());
 }
 
 void ArchipelagoSource::OnSocketError(const std::string& error)
@@ -86,7 +89,10 @@ void ArchipelagoSource::OnSocketDisconnected()
 void ArchipelagoSource::OnRoomInfo()
 {
 	Logger::Log("AP", "room info, connecting slot");
-	ap->ConnectSlot(connSlot, connPass, ItemsHandling::RemoteItems | ItemsHandling::StartingInventory);
+	std::list<std::string> tags;
+	if (deathLinkEnabled)
+		tags.push_back("DeathLink");
+	ap->ConnectSlot(connSlot, connPass, ItemsHandling::RemoteItems | ItemsHandling::StartingInventory, tags);
 }
 
 void ArchipelagoSource::OnSlotConnected(const nlohmann::json& json)
@@ -94,14 +100,14 @@ void ArchipelagoSource::OnSlotConnected(const nlohmann::json& json)
 	state = APState::Connected;
 	receivedIndex = 0;
 	indexLoaded = false;
-	pendingItems.clear();
+	allItems.clear();
 	receivedItems.clear();
 	Logger::Log("AP", "slot connected");
 	scouts.clear();
 	ScoutAll();
 	Configuration::Instance().UseArchipelago();
-	ap->SetNotify({ IndexKey() });
-	ap->Get({ IndexKey() });
+	if (GameManager::Instance().CurrentSaveSlot() >= 0 && !GameManager::Instance().IsLoading())
+		LoadIndex();
 }
 
 void ArchipelagoSource::OnSlotDisconnected()
@@ -124,10 +130,9 @@ void ArchipelagoSource::OnItemsReceived(const std::list<APClient::NetworkItem>& 
 	Logger::Log("AP", "items received", items.size());
 	for (const auto& item : items)
 	{
+		allItems.push_back(item);
 		if (indexLoaded)
 			QueueItem(item);
-		else
-			pendingItems.push_back(item);
 	}
 }
 
@@ -141,10 +146,14 @@ void ArchipelagoSource::OnRetrieved(const std::map<std::string, nlohmann::json>&
 		receivedIndex = it->second.get<int>();
 	indexLoaded = true;
 	Logger::Log("AP", "item index loaded", receivedIndex);
+	RequeueItems();
+}
 
-	for (const auto& item : pendingItems)
+void ArchipelagoSource::RequeueItems()
+{
+	receivedItems.clear();
+	for (const auto& item : allItems)
 		QueueItem(item);
-	pendingItems.clear();
 }
 
 void ArchipelagoSource::QueueItem(const APClient::NetworkItem& item)
@@ -197,14 +206,88 @@ void ArchipelagoSource::OnPrint(const std::string& msg)
 	GUI::Instance().Notify(msg);
 }
 
+void ArchipelagoSource::OnPrintJson(const std::list<APClient::TextNode>& msg)
+{
+	std::string text = ap->render_json(msg);
+	Logger::Log("AP", text);
+}
+
+void ArchipelagoSource::SetDeathLink(bool enabled)
+{
+	deathLinkEnabled = enabled;
+}
+
+void ArchipelagoSource::OnGoalReached()
+{
+	if (!ap || state != APState::Connected)
+		return;
+	ap->StatusUpdate(APClient::ClientStatus::GOAL);
+	Logger::Log("AP", "goal reached");
+}
+
+void ArchipelagoSource::OnPlayerDeath()
+{
+	if (!ap || !deathLinkEnabled)
+		return;
+
+	if (processingRemoteDeath)
+	{
+		processingRemoteDeath = false;
+		return;
+	}
+
+	nlohmann::json data;
+	data["time"] = ap->get_server_time();
+	data["source"] = connSlot;
+	ap->Bounce(data, {}, {}, { "DeathLink" });
+	Logger::Log("AP", "deathlink sent");
+}
+
+void ArchipelagoSource::OnBounced(const nlohmann::json& json)
+{
+	if (!deathLinkEnabled)
+		return;
+	if (!json.contains("tags"))
+		return;
+	bool isDeathLink = false;
+	for (const auto& tag : json["tags"])
+		if (tag.get<std::string>() == "DeathLink")
+			isDeathLink = true;
+	if (!isDeathLink)
+		return;
+
+	const auto& data = json["data"];
+	if (data.contains("source") && data["source"].get<std::string>() == connSlot)
+		return;
+
+	double time = data.contains("time") ? data["time"].get<double>() : 0;
+	if (time < deathLinkEpoch)
+		return;
+
+	Logger::Log("AP", "deathlink received");
+	pendingRemoteDeath = true;
+}
+
+void ArchipelagoSource::DeliverRemoteDeath()
+{
+	if (!pendingRemoteDeath)
+		return;
+
+	processingRemoteDeath = true;
+	if (GameManager::Instance().KillPlayer())
+		pendingRemoteDeath = false;
+	else
+		processingRemoteDeath = false;
+}
+
 void ArchipelagoSource::LoadIdTable()
 {
 	nameToId.clear();
 	idToName.clear();
-	std::ifstream file("ap_ids.txt");
+	std::ifstream file("EnderMagnolia.Randomizer.AP.txt");
 	if (!file.is_open())
 	{
-		Logger::Log(LogLevel::Error, "AP", "ap_ids.txt not found");
+		Logger::Log(LogLevel::Error, "AP", "EnderMagnolia.Randomizer.AP.txt not found");
 		return;
 	}
 	std::string line;
@@ -223,18 +306,6 @@ void ArchipelagoSource::LoadIdTable()
 		idToName[id] = name;
 	}
 	Logger::Log("AP", "id table loaded", nameToId.size());
-}
-
-void ArchipelagoSource::CheckLocation(const std::string& location)
-{
-	auto it = nameToId.find(location);
-	if (it == nameToId.end())
-	{
-		Logger::Log(LogLevel::Warning, "AP", "check: unknown location", location);
-		return;
-	}
-	Logger::Log("AP", "check", location, it->second);
-	ap->LocationChecks({ it->second });
 }
 
 void ArchipelagoSource::ScoutAll()
@@ -282,6 +353,7 @@ void ArchipelagoSource::Tick()
 	}
 
 	DeliverReceivedItems();
+	DeliverRemoteDeath();
 }
 
 std::optional<std::string> ArchipelagoSource::ScoutLocation(const std::string& location)
@@ -294,12 +366,47 @@ std::optional<std::string> ArchipelagoSource::ScoutLocation(const std::string& l
 
 void ArchipelagoSource::ReportCheck(const std::string& location)
 {
-	CheckLocation(location);
+	auto it = nameToId.find(location);
+	if (it == nameToId.end())
+	{
+		Logger::Log(LogLevel::Warning, "AP", "check: unknown location", location);
+		return;
+	}
+	Logger::Log("AP", "check", location, it->second);
+	ap->LocationChecks({ it->second });
 }
 
-void ArchipelagoSource::OnGameStart()
+void ArchipelagoSource::LoadIndex()
+{
+	receivedIndex = 0;
+	indexLoaded = false;
+	ap->SetNotify({ IndexKey() });
+	ap->Get({ IndexKey() });
+}
+
+void ArchipelagoSource::OnGameStart(bool isNewGame)
 {
 	PopulateDataTable();
+	if (ap)
+		deathLinkEpoch = ap->get_server_time();
+	pendingRemoteDeath = false;
+	processingRemoteDeath = false;
+
+	if (!ap)
+		return;
+
+	if (isNewGame)
+	{
+		receivedIndex = 0;
+		indexLoaded = true;
+		ap->Set(IndexKey(), 0, false, { { "replace", 0 } });
+		Logger::Log("AP", "new game, index reset for", IndexKey());
+		RequeueItems();
+	}
+	else
+	{
+		LoadIndex();
+	}
 }
 
 void ArchipelagoSource::OnGameSaved()
