@@ -16733,7 +16733,8 @@ public:
 	uint8                                         Pad_30[0x38];                                      // 0x0030(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
 	class USaveSettings*                          CurrentSettings;                                   // 0x0068(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	class USaveGameZion*                          SavingGameData;                                    // 0x0070(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_78[0x38];                                      // 0x0078(0x0038)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         CurrentSlotIndex;                                  // 0x0078(0x0004)(manually named from probe: slot passed to SetCurrentSlotIndex)
+	uint8                                         Pad_7C[0x34];                                      // 0x007C(0x0034)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	ESaveExistsType CheckCurrentSlotExistence();
@@ -16768,6 +16769,7 @@ static_assert(alignof(USaveSubsystem) == 0x000008, "Wrong alignment on USaveSubs
 static_assert(sizeof(USaveSubsystem) == 0x0000B0, "Wrong size on USaveSubsystem");
 static_assert(offsetof(USaveSubsystem, CurrentSettings) == 0x000068, "Member 'USaveSubsystem::CurrentSettings' has a wrong offset!");
 static_assert(offsetof(USaveSubsystem, SavingGameData) == 0x000070, "Member 'USaveSubsystem::SavingGameData' has a wrong offset!");
+static_assert(offsetof(USaveSubsystem, CurrentSlotIndex) == 0x000078, "Member 'USaveSubsystem::CurrentSlotIndex' has a wrong offset!");
 
 // Class Zion.SaveGameZion
 // 0x1338 (0x1360 - 0x0028)

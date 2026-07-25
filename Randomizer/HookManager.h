@@ -38,9 +38,11 @@ private:
 	DETOUR_DECL_TYPE(void, EventFinished, SDK::ATrigger_Event*, SDK::UEventPlayer*, bool, SDK::EEventPlayerResult);
 	DETOUR_DECL_TYPE(void, MarkCleared, SDK::UClearComponent*);
 	DETOUR_DECL_TYPE(void, FinishAction, SDK::UEventAction*);
+	DETOUR_DECL_TYPE(void, NotifyGameEnding, SDK::AGameModeZion*, SDK::EGameEndingType);
 	static void TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result);
 	static void MarkAsCleared_Hook(SDK::UClearComponent* self);
 	static void FinishAction_Hook(SDK::UEventAction* self);
+	static void NotifyGameEnding_Hook(SDK::AGameModeZion* self, SDK::EGameEndingType ending);
 
 	struct Subscriber
 	{
@@ -81,4 +83,6 @@ private:
 	static void SetLaunchGameIntent_Hook(SDK::UGameInstanceZion* Context, SDK::FFrame* Stack, void* Result);
 	static void SaveGameSync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, bool* Result);
 	static void SaveGameAsync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, void* Result);
+	static void HPReachedZero_Hook(SDK::UDeathComponent* Context, SDK::FFrame* Stack, void* Result);
+	static void SetCurrentSlot_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, void* Result);
 };

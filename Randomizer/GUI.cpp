@@ -21,6 +21,21 @@ namespace
 	static const ImVec4 kColorError(0.9f, 0.3f, 0.3f, 1.0f);
 	static const ImVec4 kColorNotifText(1.0f, 1.0f, 1.0f, 1.0f);
 	static const ImVec4 kColorNotifOutline(0.0f, 0.0f, 0.0f, 1.0f);
+
+	constexpr float kOutlinePx = 1.5f;
+	constexpr ImVec2 kOutlineOffsets[] = {
+		{-kOutlinePx, -kOutlinePx}, {0.0f, -kOutlinePx}, {kOutlinePx, -kOutlinePx},
+		{-kOutlinePx,       0.0f},                       {kOutlinePx,       0.0f},
+		{-kOutlinePx,  kOutlinePx}, {0.0f,  kOutlinePx}, {kOutlinePx,  kOutlinePx},
+	};
+
+	void AddTextOutlined(ImDrawList* dl, ImFont* font, float fontSize, ImVec2 pos,
+		ImU32 fill, ImU32 outline, const char* text)
+	{
+		for (const ImVec2& off : kOutlineOffsets)
+			dl->AddText(font, fontSize, ImVec2(pos.x + off.x, pos.y + off.y), outline, text);
+		dl->AddText(font, fontSize, pos, fill, text);
+	}
 }
 
 GUI& GUI::Instance()
@@ -39,11 +54,14 @@ void GUI::ApplySetting(const char* line)
 {
 	sscanf_s(line, "host=%255[^\n]", host, (unsigned)sizeof(host));
 	sscanf_s(line, "slot=%127[^\n]", slot, (unsigned)sizeof(slot));
+	int dl = 0;
+	if (sscanf_s(line, "deathlink=%d", &dl) == 1)
+		deathLink = (dl != 0);
 }
 
 void GUI::WriteSettings(ImGuiTextBuffer* buf) const
 {
-	buf->appendf("[Randomizer][Connection]\nhost=%s\nslot=%s\n\n", host, slot);
+	buf->appendf("[Randomizer][Connection]\nhost=%s\nslot=%s\ndeathlink=%d\n\n", host, slot, deathLink ? 1 : 0);
 }
 
 void GUI::RegisterSettingsHandler()
@@ -95,6 +113,7 @@ void GUI::Tick()
 	switch (pending.exchange(PendingAction::None))
 	{
 	case PendingAction::Connect:
+		ap.SetDeathLink(pendingDeathLink);
 		ap.Connect(pendingHost, pendingSlot, pendingPass);
 		break;
 	case PendingAction::Disconnect:
@@ -110,7 +129,7 @@ void GUI::Tick()
 
 void GUI::Draw()
 {
-	const APState apState = cachedState.load();
+	APState apState = cachedState.load();
 
 	const char* statusText = "Disconnected";
 	ImVec4 statusColor = kColorDisconnected;
@@ -138,7 +157,7 @@ void GUI::Draw()
 		break;
 	}
 
-	const ImVec4 titleColor(statusColor.x * 0.6f, statusColor.y * 0.6f, statusColor.z * 0.6f, 1.0f);
+	ImVec4 titleColor(statusColor.x * 0.6f, statusColor.y * 0.6f, statusColor.z * 0.6f, 1.0f);
 	ImGui::PushStyleColor(ImGuiCol_TitleBg, titleColor);
 	ImGui::PushStyleColor(ImGuiCol_TitleBgActive, statusColor);
 	ImGui::PushStyleColor(ImGuiCol_TitleBgCollapsed, titleColor);
@@ -146,9 +165,9 @@ void GUI::Draw()
 	std::string title = std::string("Ender Magnolia Randomizer - ") + statusText + "###rando";
 	ImGui::Begin(title.c_str());
 
-	const bool connected = (apState == APState::Connected || apState == APState::Connecting ||
+	bool connected = (apState == APState::Connected || apState == APState::Connecting ||
 		apState == APState::Reconnecting);
-	const float fieldWidth = 220.0f;
+	float fieldWidth = 220.0f;
 
 	ImGui::BeginDisabled(connected);
 
@@ -164,6 +183,7 @@ void GUI::Draw()
 	ImGui::SameLine();
 	ImGui::SetNextItemWidth(fieldWidth);
 	ImGui::InputText("##pass", pass, sizeof(pass), ImGuiInputTextFlags_Password);
+	ImGui::Checkbox("DeathLink", &deathLink);
 
 	ImGui::EndDisabled();
 
@@ -180,6 +200,7 @@ void GUI::Draw()
 			strncpy_s(pendingHost, host, sizeof(pendingHost) - 1);
 			strncpy_s(pendingSlot, slot, sizeof(pendingSlot) - 1);
 			strncpy_s(pendingPass, pass, sizeof(pendingPass) - 1);
+			pendingDeathLink = deathLink;
 			pending.store(PendingAction::Connect);
 		}
 	}
@@ -238,20 +259,19 @@ void GUI::DrawNotifications()
 	ImFont* font = ImGui::GetFont();
 	float fontSize = ImGui::GetFontSize();
 	float lineH = ImGui::GetTextLineHeightWithSpacing();
-	const float o = 1.5f;
-	const ImVec2 offsets[8] = {
-		{-o,-o}, {0,-o}, {o,-o}, {-o,0}, {o,0}, {-o,o}, {0,o}, {o,o}
-	};
 
 	for (auto& n : notifications)
 	{
-		float alpha = n.remaining < 1.0f ? n.remaining : 1.0f;
-		ImVec2 p = ImGui::GetCursorScreenPos();
-		ImU32 black = ImGui::GetColorU32(ImVec4(kColorNotifOutline.x, kColorNotifOutline.y, kColorNotifOutline.z, alpha));
-		ImU32 white = ImGui::GetColorU32(ImVec4(kColorNotifText.x, kColorNotifText.y, kColorNotifText.z, alpha));
-		for (auto& off : offsets)
-			dl->AddText(font, fontSize, ImVec2(p.x + off.x, p.y + off.y), black, n.text.c_str());
-		dl->AddText(font, fontSize, p, white, n.text.c_str());
+		float alpha = ImMin(n.remaining, 1.0f);
+
+		ImVec4 fill = kColorNotifText;
+		ImVec4 outline = kColorNotifOutline;
+		fill.w = alpha;
+		outline.w = alpha;
+
+		AddTextOutlined(dl, font, fontSize, ImGui::GetCursorScreenPos(),
+			ImGui::GetColorU32(fill), ImGui::GetColorU32(outline), n.text.c_str());
+
 		ImGui::Dummy(ImVec2(ImGui::CalcTextSize(n.text.c_str()).x, lineH));
 	}
 

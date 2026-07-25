@@ -3,7 +3,6 @@
 #include "Configuration.h"
 #include "GameManager.h"
 #include "ArchipelagoSource.h"
-#include "HookProbe.h"
 #include "GUI.h"
 
 #include <Windows.h>
@@ -16,6 +15,7 @@ namespace
 	constexpr uintptr_t kOff_MarkAsCleared         = 0x4712D20;
 	constexpr uintptr_t kOff_TriggerEventFinished  = 0x46BBF40;
 	constexpr uintptr_t kOff_FinishAction          = 0x44F7270;
+	constexpr uintptr_t kOff_NotifyGameEnding      = 0x4777300;
 }
 
 HookManager& HookManager::Instance()
@@ -51,8 +51,8 @@ bool HookManager::Init()
 	if (!HookProcessEvent(&HookManager::ProcessEvent_Hook))
 		Logger::Log(LogLevel::Error, this, "Failed to hook ProcessEvent");
 
-	if (!HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetLaunchGameIntent_Hook)))
-		Logger::Log(LogLevel::Error, this, "Failed to hook SetLaunchIntent");
+//	if (!HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetLaunchGameIntent_Hook)))
+//		Logger::Log(LogLevel::Error, this, "Failed to hook SetLaunchIntent");
 
 	if (!HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlot", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameSync_Hook)))
 		Logger::Log(LogLevel::Error, this, "Failed to hook SaveGameInCurrentSlot");
@@ -60,13 +60,16 @@ bool HookManager::Init()
 	if (!HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlotAsync", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameAsync_Hook)))
 		Logger::Log(LogLevel::Error, this, "Failed to hook SaveGameInCurrentSlotAsync");
 
-	HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook);
+	if (!HookNativeFunction(SDK::UDeathComponent::StaticClass(), "DeathComponent", "OnHPReachedZero", reinterpret_cast<FNativeFuncPtr>(&HookManager::HPReachedZero_Hook)))
+		Logger::Log(LogLevel::Error, this, "Failed to hook OnHPReachedZero");
+
+	if (!HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SetCurrentSlotIndex", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetCurrentSlot_Hook)))
+		Logger::Log(LogLevel::Error, this, "Failed to hook SetCurrentSlotIndex");
+
+	//HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook);
 	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook);
 	HookAt(kOff_FinishAction, &FinishAction_Hook);
-
-#if ENABLE_HOOK_PROBE
-	HookProbe::InstallNativeHooks();
-#endif
+	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook);
 
 	Logger::Log(this, "Init ok");
 	return true;
@@ -136,8 +139,6 @@ bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std:
 
 void HookManager::TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result)
 {
-	//if (completed && self && eventPlayer && eventPlayer->EventAsset)
-		//GameManager::Instance().OnLocationClear(self, eventPlayer->EventAsset);
 	DETOUR_ORIG_CALL(&ctxs[&TriggerEventFinished_Hook], EventFinished, self, eventPlayer, completed, result);
 }
 
@@ -147,9 +148,19 @@ void HookManager::MarkAsCleared_Hook(SDK::UClearComponent* self)
 	{
 		SDK::AActor* owner = self->GetOwner();
 		auto boss = owner ? owner->Cast<SDK::ABP_BossSpawner_C>() : nullptr;
-		GameManager::Instance().OnLocationClear(owner, boss ? boss->LoadedDefeatEvent : nullptr);
+		auto defeatEvent = boss ? boss->LoadedDefeatEvent : nullptr;
+		if (defeatEvent)
+			GameManager::Instance().OnEventFinished(defeatEvent);
+		else
+			GameManager::Instance().OnActorCleared(owner);
 	}
 	DETOUR_ORIG_CALL(&ctxs[&MarkAsCleared_Hook], MarkCleared, self);
+}
+
+void HookManager::NotifyGameEnding_Hook(SDK::AGameModeZion* self, SDK::EGameEndingType ending)
+{
+	DETOUR_ORIG_CALL(&ctxs[&NotifyGameEnding_Hook], NotifyGameEnding, self, ending);
+	ArchipelagoSource::Instance().OnGoalReached();
 }
 
 void HookManager::FinishAction_Hook(SDK::UEventAction* self)
@@ -160,23 +171,8 @@ void HookManager::FinishAction_Hook(SDK::UEventAction* self)
 		if ((cls == "EventAction_GrantItems" || cls == "EventAction_GrantItemsFromBlackboard") && self->EventContext)
 		{
 			SDK::UEventAsset* asset = self->EventContext->GetEventAsset();
-#if ENABLE_HOOK_PROBE
-			if (cls == "EventAction_GrantItemsFromBlackboard")
-			{
-				auto grant = static_cast<SDK::UEventAction_GrantItemsFromBlackboard*>(self);
-				std::string assetName = asset ? asset->GetName() : "<null>";
-				for (int i = 0; i < grant->ItemBlackboardKeys.Num(); ++i)
-				{
-					SDK::FDataTableRowHandle def{};
-					auto h = self->EventContext->GetValueRowHandle(grant->ItemBlackboardKeys[i], def);
-					std::string dt = h.DataTable ? h.DataTable->Name.ToString() : "<null-dt>";
-					Logger::Log(LogLevel::Debug, "[FIN-BB] asset=", assetName, "key=", grant->ItemBlackboardKeys[i].GetRawString(),
-						"item=", dt + "." + h.RowName.GetRawString());
-				}
-			}
-#endif
 			if (asset)
-				GameManager::Instance().OnLocationClear(nullptr, asset);
+				GameManager::Instance().OnEventFinished(asset);
 		}
 		else if (cls == "EventAction_SaveGame")
 		{
@@ -196,16 +192,12 @@ void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)
 
 void HookManager::ProcessEvent_Hook(const SDK::UObject* obj, SDK::UFunction* func, void* params)
 {
-#if ENABLE_HOOK_PROBE
-	HookProbe::OnProcessEvent(obj, func, params);
-#endif
 	DETOUR_ORIG_CALL(&ctxs[&ProcessEvent_Hook], ProcessEvent, obj, func, params);
 }
 
 void HookManager::SetLaunchGameIntent_Hook(SDK::UGameInstanceZion* Context, SDK::FFrame* Stack, void* Result)
 {
 	DETOUR_ORIG_CALL(&ctxs[&SetLaunchGameIntent_Hook], NativeFunction, Context, Stack, Result);
-	GameManager::Instance().OnGameStarted();
 }
 
 void HookManager::SaveGameSync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, bool* Result)
@@ -219,6 +211,23 @@ void HookManager::SaveGameAsync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* 
 {
 	DETOUR_ORIG_CALL(&ctxs[&SaveGameAsync_Hook], NativeFunction, Context, Stack, Result);
 	GameManager::Instance().OnGameSaved();
+}
+
+void HookManager::HPReachedZero_Hook(SDK::UDeathComponent* Context, SDK::FFrame* Stack, void* Result)
+{
+	DETOUR_ORIG_CALL(&ctxs[&HPReachedZero_Hook], NativeFunction, Context, Stack, Result);
+	if (Context && Context->GetOwner() == GameManager::Instance().Pawn())
+		ArchipelagoSource::Instance().OnPlayerDeath();
+}
+
+void HookManager::SetCurrentSlot_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, void* Result)
+{
+	DETOUR_ORIG_CALL(&ctxs[&SetCurrentSlot_Hook], NativeFunction, Context, Stack, Result);
+	if (Context)
+	{
+		bool isNewGame = GameManager::Instance().GameInstance()->GetLaunchGameIntent() == SDK::ELaunchGameIntent::NewGame;
+		GameManager::Instance().OnGameStart(Context->CurrentSlotIndex, isNewGame);
+	}
 }
 
 #pragma endregion

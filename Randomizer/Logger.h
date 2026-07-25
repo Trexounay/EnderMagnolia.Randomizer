@@ -19,6 +19,7 @@ enum class LogLevel {
 class Logger {
 public:
 	static void Init();
+	static void WriteToFile(const std::string& line);
 
 	template<typename T, typename... Args>
 	static typename std::enable_if<
@@ -56,20 +57,12 @@ public:
 
 		if (level == LogLevel::File)
 		{
-			std::ofstream myfile;
-			myfile.open("Debug.txt", std::ios_base::app);
-			myfile << stream.str() << std::endl;
-			myfile.close();
+			WriteToFile(stream.str());
 			return;
 		}
 
 #if LOG_ALL_TO_FILE
-		{
-			std::ofstream myfile;
-			myfile.open("Debug.txt", std::ios_base::app);
-			myfile << stream.str() << std::endl;
-			myfile.close();
-		}
+		WriteToFile(stream.str());
 #endif
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -94,6 +87,8 @@ public:
 	}
 
 private:
+	static std::ofstream s_file;
+
 	template<typename T>
 	static std::string GetName(T* obj)
 	{

@@ -18,7 +18,7 @@ public:
 
 	std::optional<std::string> ScoutLocation(const std::string& location);
 	void ReportCheck(const std::string& location);
-	void OnGameStart();
+	void OnGameStart(bool isNewGame);
 	void OnGameSaved();
 
 private:

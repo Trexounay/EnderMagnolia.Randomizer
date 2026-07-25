@@ -40,17 +40,14 @@ void GameManager::Init()
 	teleporter = new DebugTeleporter();
 }
 
-void GameManager::OnGameStarted()
+void GameManager::OnGameStart(int slot, bool isNewGame)
 {
-	auto ss = SaveSubsystem();
-	Logger::Log(this, "New Game Started", (int)(GameInstance()->GetLaunchGameIntent()),
-		(ss && ss->CurrentSettings ? ss->CurrentSettings->ValidGameVersion.ToString() : "none"),
-		(ss && ss->SavingGameData ? ss->SavingGameData->ValidGameVersion.ToString() : "none"));
-	Configuration::Instance().OnGameStart();
-	this->currentZone = UC::FString(L"");
+	currentSaveSlot = slot;
+	Logger::Log(this, "Game Started slot", slot, "newGame", (int)isNewGame);
+	currentZone = UC::FString(L"");
 	start_weapon = false;
-	if (!start_weapon)
-		SetStartingWeapon();
+	Configuration::Instance().OnGameStart(isNewGame);
+	SetStartingWeapon();
 }
 
 bool GameManager::SetStartingWeapon()
@@ -58,15 +55,20 @@ bool GameManager::SetStartingWeapon()
 	if (start_weapon)
 		return true;
 	auto controller = this->Controller();
-	if (!controller)
-	{
+	if (!controller || !controller->InventoryComponent || !controller->SkillComponent)
 		return false;
-	}
-	if (!controller->InventoryComponent ||
-		!controller->SkillComponent)
-	{
-		return false;
-	}
+
+	GrantAllSpirits();
+	SetSkillCosts();
+	EquipStartingSkill();
+
+	start_weapon = true;
+	return true;
+}
+
+void GameManager::GrantAllSpirits()
+{
+	auto controller = this->Controller();
 	Logger::Log(this, "removing auto granted skills");
 	SDK::FDataTableRowHandle handle;
 	handle.DataTable = GameTables::ItemSpirits();
@@ -77,7 +79,10 @@ bool GameManager::SetStartingWeapon()
 		handle.RowName = i.First;
 		controller->InventoryComponent->AddItem(handle, 1);
 	}
+}
 
+void GameManager::SetSkillCosts()
+{
 	for (auto s : GameTables::ItemSkills()->RowMap)
 	{
 		auto skillData = (SDK::FInventoryItemSkillData*)(s.Second);
@@ -104,6 +109,11 @@ bool GameManager::SetStartingWeapon()
 			level_1->UnlockMaterials = *b;
 		}
 	}
+}
+
+void GameManager::EquipStartingSkill()
+{
+	auto controller = this->Controller();
 	std::string skill = "DT_ItemSkills.s5000_sword";
 	if (auto confSkill = Configuration::Instance().ScoutLocation("starting_skill"))
 		skill = confSkill.value();
@@ -113,13 +123,15 @@ bool GameManager::SetStartingWeapon()
 		Logger::Log(LogLevel::Debug, this, "equiping", skill);
 		controller->InventoryComponent->AddItem(row.value(), 1);
 		controller->SkillComponent->Equip(SDK::ESkillSlot::A, row.value().RowName, true, true);
+		Configuration::Instance().ReportCheck("starting_skill");
 	}
-	start_weapon = true;
-	return true;
 }
 
 void GameManager::Tick()
 {
+	if (!itemReplacer)
+		return;
+
 	if (!start_weapon)
 		SetStartingWeapon();
 	auto zoneSystem = SDK::UZoneSystemComponent::Get(World());
@@ -147,26 +159,51 @@ bool GameManager::GrantItem(const std::string& itemName, int count)
 	return true;
 }
 
+bool GameManager::KillPlayer()
+{
+	auto controller = Controller();
+	if (!controller || IsLoading() || controller->IsInEvent())
+		return false;
+
+	auto pawn = Pawn();
+	if (!pawn || !pawn->StatHPComponent)
+		return false;
+
+	auto hp = pawn->StatHPComponent;
+	if (hp->GetCurrValue() <= 0)
+		return true;
+
+	SDK::FDamageData damage{};
+	damage.Damage = hp->GetMaxValue() + 1;
+	damage.Element = SDK::EAttackElement::None;
+	damage.Type = SDK::EAttackType::Physic;
+	damage.AppliedRate = 1.0f;
+
+	hp->DoDamage(pawn, damage);
+	return true;
+}
+
 void GameManager::OnGameSaved()
 {
 	Configuration::Instance().OnGameSaved();
 }
 
-void GameManager::OnLocationClear(SDK::AActor* actor, SDK::UEventAsset* asset)
+void GameManager::OnEventFinished(SDK::UEventAsset* asset)
 {
-	if (!currentZone.IsValid())
+	if (!currentZone.IsValid() || !asset)
 		return;
 
-	if (asset)
-	{
-		auto items = ItemReplacer::EnumerateEventItems(asset);
-		for (int i = 0; i < (int)items.size(); ++i)
-			Configuration::Instance().ReportCheck(ItemReplacer::EventLocationId(asset, i));
-	}
-	else if (actor)
-	{
-		Configuration::Instance().ReportCheck(ItemReplacer::ActorLocationId(actor->GetName()));
-	}
+	auto items = ItemReplacer::EnumerateEventItems(asset);
+	for (int i = 0; i < (int)items.size(); ++i)
+		Configuration::Instance().ReportCheck(ItemReplacer::EventLocationId(asset, i));
+}
+
+void GameManager::OnActorCleared(SDK::AActor* actor)
+{
+	if (!currentZone.IsValid() || !actor)
+		return;
+
+	Configuration::Instance().ReportCheck(ItemReplacer::ActorLocationId(actor->GetName()));
 }
 
 void GameManager::ZoneChanged(UC::FString oldZone, UC::FString newZone)

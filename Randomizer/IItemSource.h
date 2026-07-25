@@ -8,6 +8,6 @@ public:
 
 	virtual std::optional<std::string> ScoutLocation(const std::string& location) = 0;
 	virtual void ReportCheck(const std::string& location) = 0;
-	virtual void OnGameStart() = 0;
+	virtual void OnGameStart(bool isNewGame) = 0;
 	virtual void OnGameSaved() = 0;
 };
