@@ -102,11 +102,9 @@ void GameManager::SetSkillCosts()
 		}
 		else
 		{
-			auto result = SDK::UPluginBlueprintLibrary::GetEnabledPluginNames();
-			result.Clear();
-			auto b = reinterpret_cast<UC::TArray<SDK::FSkillMaterialData>*>(&result);
-			b->Add(cost);
-			level_1->UnlockMaterials = *b;
+			auto owned = new UC::TAllocatedArray<SDK::FSkillMaterialData>(1);
+			owned->Add(cost);
+			level_1->UnlockMaterials = *owned;
 		}
 	}
 }
