@@ -16,18 +16,20 @@
 
 DWORD APIENTRY MainThread(HMODULE Module)
 {
+	char dllName[MAX_PATH];
+	auto dllNameLength = GetModuleFileNameA(Module, dllName, MAX_PATH);
+	std::string dllPath(dllName, dllNameLength);
+
 #ifdef _DEBUG
 	Logger::Init();
-	char  dllName[MAX_PATH];
-	GetModuleFileNameA(Module, dllName, MAX_PATH);
-	Logger::Log("RANDOMIZER", dllName);
+	Logger::Log("RANDOMIZER", dllPath);
 #endif
 
 	while (!HookManager::Instance().Init())
 		Sleep(500);
 
 	GameManager::Instance().Init();
-	Configuration::Instance().Init();
+	Configuration::Instance().Init(dllPath);
 	GUI::Instance().Init();
 
 	FreeLibraryAndExitThread(Module, 0);

@@ -11,7 +11,9 @@ class Configuration {
 public:
 	static Configuration& Instance();
 
-	void Init();
+	void Init(const std::string& modulePath);
+
+	std::string DataPath(const std::string& name) const;
 
 	void UseOffline();
 	void UseArchipelago();
@@ -27,6 +29,7 @@ private:
 	Configuration(const Configuration&) = delete;
 	Configuration& operator=(const Configuration&) = delete;
 
+	std::string dataDirectory;
 	OfflineSource offlineSource;
 	IItemSource* activeSource = nullptr;
 };

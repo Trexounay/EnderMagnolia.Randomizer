@@ -15,6 +15,7 @@
 #include <functional>
 #include <type_traits>
 #include <string.h>
+#include <new>
 
 #include "../PropertyFixup.hpp"
 #include "../UnrealContainers.hpp"
@@ -40,6 +41,16 @@ namespace Offsets
 	constexpr int32 ProcessEvent      = 0x0128FEB0;
 	constexpr int32 ProcessEventIdx   = 0x0000004D;
 	constexpr int32 EngineTickIdx     = 0x0000005F;
+	constexpr int32 GMalloc           = 0x07E2C3F8;
+	constexpr int32 MallocVTable      = 0x0613A040;
+	constexpr int32 MallocIdx         = 0x00000005;
+	constexpr int32 TryMallocIdx      = 0x00000006;
+	constexpr int32 ReallocIdx        = 0x00000007;
+	constexpr int32 TryReallocIdx     = 0x00000008;
+	constexpr int32 FreeIdx           = 0x00000009;
+	constexpr int32 QuantizeSizeIdx   = 0x0000000A;
+	constexpr int32 GetAllocSizeIdx   = 0x0000000B;
+	constexpr int32 GetDescNameIdx    = 0x00000015;
 }
 
 namespace InSDKUtils
@@ -61,6 +72,46 @@ namespace InSDKUtils
 		return Function(std::forward<ParamTypes>(Args)...);
 	}
 }
+
+class FMemory
+{
+private:
+	static inline void* GetAllocator()
+	{
+		return *reinterpret_cast<void**>(InSDKUtils::GetImageBase() + Offsets::GMalloc);
+	}
+
+public:
+	static inline void* Malloc(size_t Count, uint32 Alignment = 0)
+	{
+		void* Allocator = GetAllocator();
+		return InSDKUtils::CallGameFunction(
+			InSDKUtils::GetVirtualFunction<void* (*)(void*, size_t, uint32)>(Allocator, Offsets::MallocIdx),
+			Allocator, Count, Alignment);
+	}
+
+	static inline void* Realloc(void* Original, size_t Count, uint32 Alignment = 0)
+	{
+		void* Allocator = GetAllocator();
+		return InSDKUtils::CallGameFunction(
+			InSDKUtils::GetVirtualFunction<void* (*)(void*, void*, size_t, uint32)>(Allocator, Offsets::ReallocIdx),
+			Allocator, Original, Count, Alignment);
+	}
+
+	static inline void Free(void* Original)
+	{
+		void* Allocator = GetAllocator();
+		InSDKUtils::CallGameFunction(
+			InSDKUtils::GetVirtualFunction<void (*)(void*, void*)>(Allocator, Offsets::FreeIdx),
+			Allocator, Original);
+	}
+
+	template<typename T>
+	static inline T* New()
+	{
+		return new (Malloc(sizeof(T))) T();
+	}
+};
 
 
 template<int32 Len>

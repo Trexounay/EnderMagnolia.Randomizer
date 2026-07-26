@@ -373,9 +373,28 @@ namespace UC
 		inline bool operator!=(const FString& Other) const { return Other ? NumElements != Other.NumElements || wcscmp(Data, Other.Data) != 0 : true; }
 	};
 
+	template<typename ArrayElementType>
+	class TExternalArray : public TArray<ArrayElementType>
+	{
+	public:
+		TExternalArray() = delete;
+
+	public:
+		TExternalArray(ArrayElementType* Buffer, int32 Count)
+		{
+			this->Data = Buffer;
+			this->NumElements = Count;
+			this->MaxElements = Count;
+		}
+
+	public:
+		inline operator       TArray<ArrayElementType>()       { return *reinterpret_cast<      TArray<ArrayElementType>*>(this); }
+		inline operator const TArray<ArrayElementType>() const { return *reinterpret_cast<const TArray<ArrayElementType>*>(this); }
+	};
+
 	/*
 	* Class to allow construction of a TArray, that uses c-style standard-library memory allocation.
-	* 
+	*
 	* Useful for calling functions that expect a buffer of a certain size and do not reallocate that buffer.
 	* This avoids leaking memory, if the array would otherwise be allocated by the engine, and couldn't be freed without FMemory-functions.
 	*/

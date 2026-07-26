@@ -102,9 +102,9 @@ void GameManager::SetSkillCosts()
 		}
 		else
 		{
-			auto owned = new UC::TAllocatedArray<SDK::FSkillMaterialData>(1);
-			owned->Add(cost);
-			level_1->UnlockMaterials = *owned;
+			auto buffer = (SDK::FSkillMaterialData*)SDK::FMemory::Malloc(sizeof(SDK::FSkillMaterialData));
+			buffer[0] = cost;
+			level_1->UnlockMaterials = UC::TExternalArray<SDK::FSkillMaterialData>(buffer, 1);
 		}
 	}
 }

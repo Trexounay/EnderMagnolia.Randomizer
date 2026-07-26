@@ -284,10 +284,11 @@ void ArchipelagoSource::LoadIdTable()
 {
 	nameToId.clear();
 	idToName.clear();
-	std::ifstream file("EnderMagnolia.Randomizer.AP.txt");
+	auto tablePath = Configuration::Instance().DataPath("EnderMagnolia.Randomizer.AP.txt");
+	std::ifstream file(tablePath);
 	if (!file.is_open())
 	{
-		Logger::Log(LogLevel::Error, "AP", "EnderMagnolia.Randomizer.AP.txt not found");
+		Logger::Log(LogLevel::Error, "AP", "not found", tablePath);
 		return;
 	}
 	std::string line;

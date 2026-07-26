@@ -7,8 +7,15 @@ Configuration& Configuration::Instance()
 	return instance;
 }
 
-void Configuration::Init()
+std::string Configuration::DataPath(const std::string& name) const
 {
+	return dataDirectory + name;
+}
+
+void Configuration::Init(const std::string& modulePath)
+{
+	auto slash = modulePath.find_last_of("\\/");
+	dataDirectory = slash == std::string::npos ? "" : modulePath.substr(0, slash + 1);
 	UseOffline();
 }
 
