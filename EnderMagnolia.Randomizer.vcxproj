@@ -53,8 +53,12 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Label="VcpkgLocate">
+    <VcpkgRootDir>$(VCPKG_ROOT)</VcpkgRootDir>
+  </PropertyGroup>
   <ImportGroup Label="ExtensionSettings">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+    <Import Project="$(VcpkgRootDir)\scripts\buildsystems\msbuild\vcpkg.props" Condition="Exists('$(VcpkgRootDir)\scripts\buildsystems\msbuild\vcpkg.props')" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -71,6 +75,11 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Platform)'=='x64'">
+    <VcpkgEnabled>true</VcpkgEnabled>
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+    <VcpkgTriplet>x64-windows-static-md</VcpkgTriplet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>Build\$(Platform)\$(Configuration)\</OutDir>
     <TargetName>version</TargetName>
@@ -152,7 +161,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;_DEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;_WINDOWS;_USRDLL;WSWRAP_NO_SSL;WSWRAP_NO_COMPRESSION;AP_NO_SCHEMA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;_DEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;NOMINMAX;_WINDOWS;_USRDLL;AP_NO_SCHEMA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -170,6 +179,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <AdditionalDependencies>crypt32.lib;ws2_32.lib;advapi32.lib;user32.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if defined EM_GAME_PATH (
@@ -183,7 +193,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;NDEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;_WINDOWS;_USRDLL;WSWRAP_NO_SSL;WSWRAP_NO_COMPRESSION;AP_NO_SCHEMA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;NDEBUG;ENDERMAGNOLIARANDOMIZER_EXPORTS;WIN32_LEAN_AND_MEAN;NOMINMAX;_WINDOWS;_USRDLL;AP_NO_SCHEMA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -200,6 +210,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>version\version.def</ModuleDefinitionFile>
       <ImportLibrary>$(IntDir)$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>crypt32.lib;ws2_32.lib;advapi32.lib;user32.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if defined EM_GAME_PATH (
@@ -247,7 +258,6 @@
     <ClInclude Include="Randomizer\GameManager.h" />
     <ClInclude Include="Randomizer\HookManager.h" />
     <ClInclude Include="Randomizer\HookProbe.h" />
-    <ClInclude Include="extern\libdetour\libdetour.h" />
     <ClInclude Include="Randomizer\Logger.h" />
     <ClInclude Include="Randomizer\ItemReplacer.h" />
     <ClInclude Include="Randomizer\DataTableRowInserter.h" />
@@ -288,7 +298,6 @@
     <ClCompile Include="Randomizer\GameManager.cpp" />
     <ClCompile Include="Randomizer\HookManager.cpp" />
     <ClCompile Include="Randomizer\HookProbe.cpp" />
-    <ClCompile Include="extern\libdetour\libdetour.c" />
     <ClCompile Include="Randomizer\Logger.cpp" />
     <ClCompile Include="Randomizer\ItemReplacer.cpp" />
     <ClCompile Include="Randomizer\DataTableRowInserter.cpp" />
@@ -300,6 +309,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+    <Import Project="$(VcpkgRootDir)\scripts\buildsystems\msbuild\vcpkg.targets" Condition="Exists('$(VcpkgRootDir)\scripts\buildsystems\msbuild\vcpkg.targets')" />
     <Import Project="packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets" Condition="Exists('packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets')" />
     <Import Project="packages\boost.1.87.0\build\boost.targets" Condition="Exists('packages\boost.1.87.0\build\boost.targets')" />
     <Import Project="packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets" Condition="Exists('packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets')" />

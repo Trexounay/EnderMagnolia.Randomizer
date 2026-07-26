@@ -28,9 +28,6 @@
     <Filter Include="extern\kiero\impl">
       <UniqueIdentifier>{54d3f583-8b82-5c40-9f31-b9035338ff88}</UniqueIdentifier>
     </Filter>
-    <Filter Include="extern\libdetour">
-      <UniqueIdentifier>{d2a07628-113c-50a7-96f7-c8209d8970db}</UniqueIdentifier>
-    </Filter>
     <Filter Include="extern\minhook">
       <UniqueIdentifier>{d7a0ef86-ad71-53ae-be56-0c411f532f19}</UniqueIdentifier>
     </Filter>
@@ -108,7 +105,6 @@
     <ClCompile Include="extern\minhook\src\trampoline.c">
       <Filter>extern\minhook\src</Filter>
     </ClCompile>
-    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Randomizer\DebugTeleporter.cpp">
       <Filter>Randomizer</Filter>
     </ClCompile>
@@ -140,9 +136,6 @@
     <ClCompile Include="Randomizer\HookProbe.cpp">
       <Filter>Randomizer</Filter>
     </ClCompile>
-    <ClCompile Include="extern\libdetour\libdetour.c">
-      <Filter>extern\libdetour</Filter>
-    </ClCompile>
     <ClCompile Include="Randomizer\Logger.cpp">
       <Filter>Randomizer</Filter>
     </ClCompile>
@@ -152,6 +145,8 @@
     <ClCompile Include="Randomizer\DataTableRowInserter.cpp">
       <Filter>Randomizer</Filter>
     </ClCompile>
+    <ClCompile Include="CppSDK\SDK\EventSystem_functions.cpp" />
+    <ClCompile Include="Randomizer\GUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSDK\SDK\Engine_classes.hpp">
@@ -232,7 +227,6 @@
     <ClInclude Include="extern\minhook\src\trampoline.h">
       <Filter>extern\minhook\src</Filter>
     </ClInclude>
-    <ClInclude Include="GUI.h" />
     <ClInclude Include="Randomizer\DebugTeleporter.h">
       <Filter>Randomizer</Filter>
     </ClInclude>
@@ -269,9 +263,6 @@
     <ClInclude Include="Randomizer\HookProbe.h">
       <Filter>Randomizer</Filter>
     </ClInclude>
-    <ClInclude Include="extern\libdetour\libdetour.h">
-      <Filter>extern\libdetour</Filter>
-    </ClInclude>
     <ClInclude Include="Randomizer\Logger.h">
       <Filter>Randomizer</Filter>
     </ClInclude>
@@ -284,6 +275,7 @@
     <ClInclude Include="version\version.h">
       <Filter>version</Filter>
     </ClInclude>
+    <ClInclude Include="Randomizer\GUI.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
