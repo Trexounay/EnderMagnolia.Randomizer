@@ -57,13 +57,10 @@ std::optional<SDK::FDataTableRowHandle> CustomItemRegistry::FromItemName(const s
 	SDK::FDataTableRowHandle Item;
 	Item.DataTable = Table(tableName);
 
-	for (auto It = begin(Item.DataTable->RowMap); It != end(Item.DataTable->RowMap); ++It)
+	if (!Item.DataTable->FindRow(rowName, &Item.RowName))
 	{
-		if (It->Key().GetRawString() == rowName)
-		{
-			Item.RowName = It->Key();
-			break;
-		}
+		Logger::Log(LogLevel::Warning, "items", "no row", itemName);
+		return std::nullopt;
 	}
 	return Item;
 }

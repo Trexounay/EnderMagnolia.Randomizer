@@ -19831,11 +19831,17 @@ public:
 		InSDKUtils::CallGameFunction(InSDKUtils::GetVirtualFunction<void(*)(UDataTable*, class FName, uint8*)>(this, 88), this, RowName, RowData);
 	}
 
-	uint8* FindRow(const std::string& RowName)
+	uint8* FindRow(const std::string& RowName, class FName* OutRowName = nullptr)
 	{
 		for (auto It = begin(RowMap); It != end(RowMap); ++It)
-			if (It->Key().GetRawString() == RowName)
+		{
+			if (_stricmp(It->Key().GetRawString().c_str(), RowName.c_str()) == 0)
+			{
+				if (OutRowName)
+					*OutRowName = It->Key();
 				return It->Value();
+			}
+		}
 		return nullptr;
 	}
 

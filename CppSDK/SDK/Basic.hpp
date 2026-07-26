@@ -14,6 +14,7 @@
 #include <string>
 #include <functional>
 #include <type_traits>
+#include <string.h>
 
 #include "../PropertyFixup.hpp"
 #include "../UnrealContainers.hpp"
