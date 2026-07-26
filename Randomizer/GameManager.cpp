@@ -44,7 +44,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 {
 	currentSaveSlot = slot;
 	Logger::Log(this, "Game Started slot", slot, "newGame", (int)isNewGame);
-	currentZone = UC::FString(L"");
+	currentZone.clear();
 	start_weapon = false;
 	Configuration::Instance().OnGameStart(isNewGame);
 	SetStartingWeapon();
@@ -138,8 +138,8 @@ void GameManager::Tick()
 
 	if (zoneSystem && !IsLoading())
 	{
-		auto zone = zoneSystem->GetActiveZoneLevelName();
-		if (zone != this->currentZone && (zone.IsValid() || this->currentZone.IsValid()))
+		std::string zone = zoneSystem->GetActiveZoneLevelName().ToString();
+		if (zone != this->currentZone)
 			this->ZoneChanged(this->currentZone, zone);
 		itemReplacer->Tick();
 	}
@@ -190,7 +190,7 @@ void GameManager::OnGameSaved()
 
 void GameManager::OnEventFinished(SDK::UEventAsset* asset)
 {
-	if (!currentZone.IsValid() || !asset)
+	if (currentZone.empty() || !asset)
 		return;
 
 	auto items = ItemReplacer::EnumerateEventItems(asset);
@@ -200,16 +200,18 @@ void GameManager::OnEventFinished(SDK::UEventAsset* asset)
 
 void GameManager::OnActorCleared(SDK::AActor* actor)
 {
-	if (!currentZone.IsValid() || !actor)
+	if (currentZone.empty() || !actor)
 		return;
 
 	Configuration::Instance().ReportCheck(ItemReplacer::ActorLocationId(actor->GetName()));
 }
 
-void GameManager::ZoneChanged(UC::FString oldZone, UC::FString newZone)
+void GameManager::ZoneChanged(std::string oldZone, std::string newZone)
 {
 	this->currentZone = newZone;
-	Logger::Log(this, "Zone Changed", oldZone.ToString(), "->", newZone.ToString());
-	if (newZone.IsValid())
+	Logger::Log(this, "Zone Changed", oldZone, "->", newZone);
+	if (!newZone.empty())
 		itemReplacer->ZoneChanged(oldZone, newZone);
+	else
+		itemReplacer->ZoneUnloaded();
 }

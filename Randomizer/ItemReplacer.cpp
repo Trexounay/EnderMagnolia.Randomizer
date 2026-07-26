@@ -11,7 +11,7 @@ ItemReplacer::ItemReplacer()
 	GM = &GameManager::Instance();
 }
 
-void ItemReplacer::ZoneChanged(const UC::FString& oldZone, const UC::FString& newZone)
+void ItemReplacer::ZoneChanged(const std::string& oldZone, const std::string& newZone)
 {
 	delayed_replacement.clear();
 	ReplaceItemActors<SDK::ABP_Interactable_AddItem_C>();
@@ -21,6 +21,11 @@ void ItemReplacer::ZoneChanged(const UC::FString& oldZone, const UC::FString& ne
 	ReplaceTriggerEvents();
 	ReplaceBossEvents();
 	ReplaceInteractableEvents();
+}
+
+void ItemReplacer::ZoneUnloaded()
+{
+	delayed_replacement.clear();
 }
 
 void ItemReplacer::Tick()
@@ -135,7 +140,7 @@ void ItemReplacer::ReplaceEventAsset(const std::string& actorName, SDK::UEventAs
 
 	auto items = EnumerateEventItems(asset);
 	for (int i = 0; i < (int)items.size(); ++i)
-		SwapAtLocation(EventLocationId(asset, i), *items[i]);
+		SwapAtLocation(EventLocationId(asset, i), items[i]->ItemHandle, &items[i]->Count);
 
 	DisableAutoEquip(asset);
 }
@@ -164,20 +169,20 @@ void ItemReplacer::DisableAutoEquip(SDK::UEventAsset* asset)
 
 std::string ItemReplacer::ActorLocationId(const std::string& actorName)
 {
-	return GameManager::Instance().Zone().ToString() + "." + actorName;
+	return GameManager::Instance().Zone() + "." + actorName;
 }
 
 std::string ItemReplacer::EventLocationId(SDK::UEventAsset* asset, int index)
 {
-	std::string id = GameManager::Instance().Zone().ToString() + "." + asset->GetName();
+	std::string id = GameManager::Instance().Zone() + "." + asset->GetName();
 	if (index > 0)
 		id += "." + std::to_string(index);
 	return id;
 }
 
-std::vector<SDK::FDataTableRowHandle*> ItemReplacer::EnumerateEventItems(SDK::UEventAsset* asset)
+std::vector<SDK::FItemHandleCount*> ItemReplacer::EnumerateEventItems(SDK::UEventAsset* asset)
 {
-	std::vector<SDK::FDataTableRowHandle*> items;
+	std::vector<SDK::FItemHandleCount*> items;
 	if (!asset)
 		return items;
 
@@ -191,14 +196,14 @@ std::vector<SDK::FDataTableRowHandle*> ItemReplacer::EnumerateEventItems(SDK::UE
 			if (auto grantItem = action->Cast<SDK::UEventAction_GrantItems>())
 			{
 				for (int i = 0; i < grantItem->ItemHandleCounts.Num(); ++i)
-					items.push_back(&grantItem->ItemHandleCounts[i].ItemHandle);
+					items.push_back(&grantItem->ItemHandleCounts[i]);
 			}
 		}
 	}
 	return items;
 }
 
-void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item) const
+void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count) const
 {
 	Logger::Log(LogLevel::File, this, locationName + ":" + CustomItemRegistry::ToItemName(item));
 	if (auto newItem = Configuration::Instance().ScoutLocation(locationName))
@@ -207,6 +212,8 @@ void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHa
 		{
 			Logger::Log(LogLevel::Debug, this, "replace at", locationName, ":", CustomItemRegistry::ToItemName(item), "->", newItem.value());
 			item = rowHandle.value();
+			if (count)
+				*count = 1;
 			return;
 		}
 	}

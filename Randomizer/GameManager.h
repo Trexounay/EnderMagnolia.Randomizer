@@ -40,7 +40,7 @@ public:
 	SDK::UGameInstanceZion* GameInstance() const { return SDK::UGameInstanceZion::Get(World()); };
 	SDK::APlayerControllerZion* Controller() const { return SDK::APlayerControllerZion::Get(World(), 0); };
 	SDK::ACharacterZion* Pawn() const { return (SDK::ACharacterZion *)Controller()->Character; };
-	const UC::FString& Zone() const { return currentZone; };
+	const std::string& Zone() const { return currentZone; };
 
 private:
 	GameManager() = default;
@@ -48,13 +48,13 @@ private:
 	GameManager(const GameManager&) = delete;
 	GameManager& operator=(const GameManager&) = delete;
 
-	void ZoneChanged(const UC::FString oldZone, UC::FString newZone);
+	void ZoneChanged(std::string oldZone, std::string newZone);
 
 	void GrantAllSpirits();
 	void SetSkillCosts();
 	void EquipStartingSkill();
 
-	UC::FString currentZone;
+	std::string currentZone;
 	int currentSaveSlot = -1;
 
 	ItemReplacer* itemReplacer = nullptr;
