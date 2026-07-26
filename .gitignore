@@ -33,3 +33,4 @@
 /.vs
 /Build
 /x64/Release/*.pdb
+/vcpkg_installed
