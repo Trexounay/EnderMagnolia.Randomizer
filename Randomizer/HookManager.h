@@ -1,12 +1,7 @@
 #pragma once
 #include "SDK.hpp"
 
-extern "C" {
-#include "extern/libdetour/libdetour.h"
-}
-
 #include "Logger.h"
-#include <unordered_map>
 
 namespace SDK { struct FFrame; }
 
@@ -26,19 +21,26 @@ private:
 	HookManager(const HookManager&) = delete;
 	HookManager& operator=(const HookManager&) = delete;
 
-	bool HookNativeFunction(const SDK::UClass* defaultClass, const std::string className, const std::string funcName, FNativeFuncPtr detour);
+	bool HookNativeFunction(const SDK::UClass* defaultClass, const std::string className, const std::string funcName, FNativeFuncPtr detour, void** original);
 	bool HookProcessEvent(FProcessEventFuncPtr detour);
 	void* HookVTableFunction(void* instance, int index, void* hook);
-	void HookAt(uintptr_t offset, void* hook);
+	bool HookAt(uintptr_t offset, void* hook, void** original);
+	bool CreateHook(void* target, void* hook, void** original, const char* name);
 
 	using FEngineTickFn = void(__fastcall*)(void* self, float dt, bool idle);
 	static FEngineTickFn oEngineTick;
 	static void __fastcall EngineTick_Hook(void* self, float dt, bool idle);
 
-	DETOUR_DECL_TYPE(void, EventFinished, SDK::ATrigger_Event*, SDK::UEventPlayer*, bool, SDK::EEventPlayerResult);
-	DETOUR_DECL_TYPE(void, MarkCleared, SDK::UClearComponent*);
-	DETOUR_DECL_TYPE(void, FinishAction, SDK::UEventAction*);
-	DETOUR_DECL_TYPE(void, NotifyGameEnding, SDK::AGameModeZion*, SDK::EGameEndingType);
+	using FEventFinishedFn = void(*)(SDK::ATrigger_Event*, SDK::UEventPlayer*, bool, SDK::EEventPlayerResult);
+	using FMarkClearedFn = void(*)(SDK::UClearComponent*);
+	using FFinishActionFn = void(*)(SDK::UEventAction*);
+	using FNotifyGameEndingFn = void(*)(SDK::AGameModeZion*, SDK::EGameEndingType);
+
+	static FEventFinishedFn oTriggerEventFinished;
+	static FMarkClearedFn oMarkAsCleared;
+	static FFinishActionFn oFinishAction;
+	static FNotifyGameEndingFn oNotifyGameEnding;
+
 	static void TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result);
 	static void MarkAsCleared_Hook(SDK::UClearComponent* self);
 	static void FinishAction_Hook(SDK::UEventAction* self);
@@ -74,10 +76,12 @@ private:
 		}
 	};
 
-	static std::unordered_map<void*, detour_ctx_t> ctxs;
-
-	DETOUR_DECL_TYPE(void, ProcessEvent, const SDK::UObject*, SDK::UFunction*, void*);
-	DETOUR_DECL_TYPE(void, NativeFunction, SDK::UObject*, SDK::FFrame*, void*);
+	static FProcessEventFuncPtr oProcessEvent;
+	static FNativeFuncPtr oSetLaunchGameIntent;
+	static FNativeFuncPtr oSaveGameSync;
+	static FNativeFuncPtr oSaveGameAsync;
+	static FNativeFuncPtr oHPReachedZero;
+	static FNativeFuncPtr oSetCurrentSlot;
 
 	static void ProcessEvent_Hook(const SDK::UObject* obj, SDK::UFunction* func, void* params);
 	static void SetLaunchGameIntent_Hook(SDK::UGameInstanceZion* Context, SDK::FFrame* Stack, void* Result);
