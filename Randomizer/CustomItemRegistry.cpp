@@ -109,8 +109,7 @@ bool CustomItemRegistry::EnsureItem(const std::string& itemName, const CustomIte
 	}
 
 	auto source = (SDK::FInventoryItemData*)begin(table->RowMap)->Value();
-	auto clone = (SDK::FInventoryItemData*)malloc(sizeof(SDK::FInventoryItemData));
-	new (clone) SDK::FInventoryItemData();
+	auto clone = SDK::FMemory::New<SDK::FInventoryItemData>();
 
 	clone->EquipmentType = source->EquipmentType;
 	clone->InventoryHideCondition = source->InventoryHideCondition;

@@ -13,7 +13,7 @@
     <Filter Include="extern">
       <UniqueIdentifier>{e51f9fce-bae6-5809-bf11-1ec30b40b9f4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="extern\apclientcpp">
+    <Filter Include="extern\apclientpp">
       <UniqueIdentifier>{d543b3ce-394e-55d7-b9a9-b40cafa94f7d}</UniqueIdentifier>
     </Filter>
     <Filter Include="extern\imgui">
@@ -161,14 +161,14 @@
     <ClInclude Include="CppSDK\SDK\Zion_classes.hpp">
       <Filter>CppSDK\SDK</Filter>
     </ClInclude>
-    <ClInclude Include="extern\apclientcpp\apclient.hpp">
-      <Filter>extern\apclientcpp</Filter>
+    <ClInclude Include="extern\apclientpp\apclient.hpp">
+      <Filter>extern\apclientpp</Filter>
     </ClInclude>
-    <ClInclude Include="extern\apclientcpp\apuuid.hpp">
-      <Filter>extern\apclientcpp</Filter>
+    <ClInclude Include="extern\apclientpp\apuuid.hpp">
+      <Filter>extern\apclientpp</Filter>
     </ClInclude>
-    <ClInclude Include="extern\apclientcpp\defaultdatapackagestore.hpp">
-      <Filter>extern\apclientcpp</Filter>
+    <ClInclude Include="extern\apclientpp\defaultdatapackagestore.hpp">
+      <Filter>extern\apclientpp</Filter>
     </ClInclude>
     <ClInclude Include="extern\imgui\backends\imgui_impl_dx11.h">
       <Filter>extern\imgui\backends</Filter>

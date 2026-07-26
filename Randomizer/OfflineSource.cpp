@@ -1,6 +1,7 @@
 #include "OfflineSource.h"
 #include "Logger.h"
 #include "CustomItemRegistry.h"
+#include "Configuration.h"
 #include <fstream>
 
 OfflineSource::OfflineSource(const std::string& path)
@@ -12,10 +13,11 @@ bool OfflineSource::Load()
 {
 	checks_to_items.clear();
 	ap_items.clear();
-	std::ifstream file(path);
+	auto fullPath = Configuration::Instance().DataPath(path);
+	std::ifstream file(fullPath);
 	if (!file.is_open())
 	{
-		Logger::Log(LogLevel::Error, this, "File not found", path);
+		Logger::Log(LogLevel::Error, this, "File not found", fullPath);
 		return false;
 	}
 
