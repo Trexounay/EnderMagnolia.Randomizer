@@ -6,9 +6,21 @@
 #include "GUI.h"
 
 #include <Windows.h>
+#include "minhook/include/MinHook.h"
 
 HookManager::FEngineTickFn HookManager::oEngineTick = nullptr;
-std::unordered_map<void*, detour_ctx_t> HookManager::ctxs;
+
+HookManager::FEventFinishedFn HookManager::oTriggerEventFinished = nullptr;
+HookManager::FMarkClearedFn HookManager::oMarkAsCleared = nullptr;
+HookManager::FFinishActionFn HookManager::oFinishAction = nullptr;
+HookManager::FNotifyGameEndingFn HookManager::oNotifyGameEnding = nullptr;
+
+HookManager::FProcessEventFuncPtr HookManager::oProcessEvent = nullptr;
+HookManager::FNativeFuncPtr HookManager::oSetLaunchGameIntent = nullptr;
+HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
+HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
+HookManager::FNativeFuncPtr HookManager::oHPReachedZero = nullptr;
+HookManager::FNativeFuncPtr HookManager::oSetCurrentSlot = nullptr;
 
 namespace
 {
@@ -43,44 +55,62 @@ bool HookManager::Init()
 		return false;
 	}
 
+	MH_STATUS mhInit = MH_Initialize();
+	if (mhInit != MH_OK && mhInit != MH_ERROR_ALREADY_INITIALIZED)
+	{
+		Logger::Log(LogLevel::Error, this, "MH_Initialize failed:", MH_StatusToString(mhInit));
+		return false;
+	}
+
 	oEngineTick = reinterpret_cast<FEngineTickFn>(
 		HookVTableFunction(engine, SDK::Offsets::EngineTickIdx, reinterpret_cast<void*>(&EngineTick_Hook)));
 	if (!oEngineTick)
 		Logger::Log(LogLevel::Error, this, "Failed to hook engine tick");
 
-	if (!HookProcessEvent(&HookManager::ProcessEvent_Hook))
-		Logger::Log(LogLevel::Error, this, "Failed to hook ProcessEvent");
+	//HookProcessEvent(&HookManager::ProcessEvent_Hook);
 
-//	if (!HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetLaunchGameIntent_Hook)))
-//		Logger::Log(LogLevel::Error, this, "Failed to hook SetLaunchIntent");
+	//HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetLaunchGameIntent_Hook), reinterpret_cast<void**>(&oSetLaunchGameIntent));
 
-	if (!HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlot", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameSync_Hook)))
-		Logger::Log(LogLevel::Error, this, "Failed to hook SaveGameInCurrentSlot");
+	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlot", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameSync_Hook), reinterpret_cast<void**>(&oSaveGameSync));
+	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlotAsync", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameAsync_Hook), reinterpret_cast<void**>(&oSaveGameAsync));
+	HookNativeFunction(SDK::UDeathComponent::StaticClass(), "DeathComponent", "OnHPReachedZero", reinterpret_cast<FNativeFuncPtr>(&HookManager::HPReachedZero_Hook), reinterpret_cast<void**>(&oHPReachedZero));
+	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SetCurrentSlotIndex", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetCurrentSlot_Hook), reinterpret_cast<void**>(&oSetCurrentSlot));
 
-	if (!HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlotAsync", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameAsync_Hook)))
-		Logger::Log(LogLevel::Error, this, "Failed to hook SaveGameInCurrentSlotAsync");
+	//HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook, reinterpret_cast<void**>(&oTriggerEventFinished));
+	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook, reinterpret_cast<void**>(&oMarkAsCleared));
+	HookAt(kOff_FinishAction, &FinishAction_Hook, reinterpret_cast<void**>(&oFinishAction));
+	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook, reinterpret_cast<void**>(&oNotifyGameEnding));
 
-	if (!HookNativeFunction(SDK::UDeathComponent::StaticClass(), "DeathComponent", "OnHPReachedZero", reinterpret_cast<FNativeFuncPtr>(&HookManager::HPReachedZero_Hook)))
-		Logger::Log(LogLevel::Error, this, "Failed to hook OnHPReachedZero");
-
-	if (!HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SetCurrentSlotIndex", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetCurrentSlot_Hook)))
-		Logger::Log(LogLevel::Error, this, "Failed to hook SetCurrentSlotIndex");
-
-	//HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook);
-	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook);
-	HookAt(kOff_FinishAction, &FinishAction_Hook);
-	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook);
+	MH_STATUS applied = MH_ApplyQueued();
+	if (applied != MH_OK)
+		Logger::Log(LogLevel::Error, this, "MH_ApplyQueued failed:", MH_StatusToString(applied));
 
 	Logger::Log(this, "Init ok");
 	return true;
 }
 
-void HookManager::HookAt(uintptr_t offset, void* hook)
+bool HookManager::CreateHook(void* target, void* hook, void** original, const char* name)
+{
+	MH_STATUS created = MH_CreateHook(target, hook, original);
+	if (created != MH_OK)
+	{
+		Logger::Log(LogLevel::Error, this, "MH_CreateHook failed for", name, ":", MH_StatusToString(created));
+		return false;
+	}
+
+	MH_STATUS queued = MH_QueueEnableHook(target);
+	if (queued != MH_OK)
+	{
+		Logger::Log(LogLevel::Error, this, "MH_QueueEnableHook failed for", name, ":", MH_StatusToString(queued));
+		return false;
+	}
+	return true;
+}
+
+bool HookManager::HookAt(uintptr_t offset, void* hook, void** original)
 {
 	uintptr_t base = SDK::InSDKUtils::GetImageBase();
-	ctxs[hook] = detour_ctx_t();
-	detour_init(&ctxs[hook], reinterpret_cast<void*>(base + offset), hook);
-	detour_enable(&ctxs[hook]);
+	return CreateHook(reinterpret_cast<void*>(base + offset), hook, original, "rva hook");
 }
 
 void* HookManager::HookVTableFunction(void* instance, int index, void* hook)
@@ -105,17 +135,10 @@ void* HookManager::HookVTableFunction(void* instance, int index, void* hook)
 bool HookManager::HookProcessEvent(FProcessEventFuncPtr detour)
 {
 	void* origPtr = reinterpret_cast<void*>(SDK::InSDKUtils::GetImageBase() + SDK::Offsets::ProcessEvent);
-	if (!origPtr)
-	{
-		Logger::Log(LogLevel::Error, this, "Failed to get original ProcessEvent function");
-		return false;
-	}
-	this->ctxs[detour] = detour_ctx_t();
-	detour_init(&this->ctxs[detour], origPtr, detour);
-	return detour_enable(&this->ctxs[detour]);
+	return CreateHook(origPtr, detour, reinterpret_cast<void**>(&oProcessEvent), "ProcessEvent");
 }
 
-bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std::string className, const std::string funcName, FNativeFuncPtr detour)
+bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std::string className, const std::string funcName, FNativeFuncPtr detour, void** original)
 {
 	if (!defaultClass)
 	{
@@ -128,9 +151,7 @@ bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std:
 		Logger::Log(LogLevel::Error, this, "no function", className, ".", funcName);
 		return false;
 	}
-	this->ctxs[detour] = detour_ctx_t();
-	detour_init(&this->ctxs[detour], Func->ExecFunction, detour);
-	return detour_enable(&this->ctxs[detour]);
+	return CreateHook(Func->ExecFunction, detour, original, funcName.c_str());
 }
 #pragma endregion
 
@@ -139,7 +160,7 @@ bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std:
 
 void HookManager::TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result)
 {
-	DETOUR_ORIG_CALL(&ctxs[&TriggerEventFinished_Hook], EventFinished, self, eventPlayer, completed, result);
+	oTriggerEventFinished(self, eventPlayer, completed, result);
 }
 
 void HookManager::MarkAsCleared_Hook(SDK::UClearComponent* self)
@@ -154,12 +175,12 @@ void HookManager::MarkAsCleared_Hook(SDK::UClearComponent* self)
 		else
 			GameManager::Instance().OnActorCleared(owner);
 	}
-	DETOUR_ORIG_CALL(&ctxs[&MarkAsCleared_Hook], MarkCleared, self);
+	oMarkAsCleared(self);
 }
 
 void HookManager::NotifyGameEnding_Hook(SDK::AGameModeZion* self, SDK::EGameEndingType ending)
 {
-	DETOUR_ORIG_CALL(&ctxs[&NotifyGameEnding_Hook], NotifyGameEnding, self, ending);
+	oNotifyGameEnding(self, ending);
 	ArchipelagoSource::Instance().OnGoalReached();
 }
 
@@ -179,7 +200,7 @@ void HookManager::FinishAction_Hook(SDK::UEventAction* self)
 			GameManager::Instance().OnGameSaved();
 		}
 	}
-	DETOUR_ORIG_CALL(&ctxs[&FinishAction_Hook], FinishAction, self);
+	oFinishAction(self);
 }
 
 void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)
@@ -192,37 +213,37 @@ void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)
 
 void HookManager::ProcessEvent_Hook(const SDK::UObject* obj, SDK::UFunction* func, void* params)
 {
-	DETOUR_ORIG_CALL(&ctxs[&ProcessEvent_Hook], ProcessEvent, obj, func, params);
+	oProcessEvent(obj, func, params);
 }
 
 void HookManager::SetLaunchGameIntent_Hook(SDK::UGameInstanceZion* Context, SDK::FFrame* Stack, void* Result)
 {
-	DETOUR_ORIG_CALL(&ctxs[&SetLaunchGameIntent_Hook], NativeFunction, Context, Stack, Result);
+	oSetLaunchGameIntent(Context, Stack, Result);
 }
 
 void HookManager::SaveGameSync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, bool* Result)
 {
-	DETOUR_ORIG_CALL(&ctxs[&SaveGameSync_Hook], NativeFunction, Context, Stack, Result);
+	oSaveGameSync(Context, Stack, Result);
 	if (Result && *Result)
 		GameManager::Instance().OnGameSaved();
 }
 
 void HookManager::SaveGameAsync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, void* Result)
 {
-	DETOUR_ORIG_CALL(&ctxs[&SaveGameAsync_Hook], NativeFunction, Context, Stack, Result);
+	oSaveGameAsync(Context, Stack, Result);
 	GameManager::Instance().OnGameSaved();
 }
 
 void HookManager::HPReachedZero_Hook(SDK::UDeathComponent* Context, SDK::FFrame* Stack, void* Result)
 {
-	DETOUR_ORIG_CALL(&ctxs[&HPReachedZero_Hook], NativeFunction, Context, Stack, Result);
+	oHPReachedZero(Context, Stack, Result);
 	if (Context && Context->GetOwner() == GameManager::Instance().Pawn())
 		ArchipelagoSource::Instance().OnPlayerDeath();
 }
 
 void HookManager::SetCurrentSlot_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, void* Result)
 {
-	DETOUR_ORIG_CALL(&ctxs[&SetCurrentSlot_Hook], NativeFunction, Context, Stack, Result);
+	oSetCurrentSlot(Context, Stack, Result);
 	if (Context)
 	{
 		bool isNewGame = GameManager::Instance().GameInstance()->GetLaunchGameIntent() == SDK::ELaunchGameIntent::NewGame;
