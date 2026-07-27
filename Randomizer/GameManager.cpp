@@ -47,6 +47,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	currentZone.clear();
 	start_weapon = false;
 	Configuration::Instance().OnGameStart(isNewGame);
+	itemReplacer->ResetShopItems();
 	SetStartingWeapon();
 }
 

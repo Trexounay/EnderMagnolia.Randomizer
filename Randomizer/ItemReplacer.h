@@ -12,14 +12,17 @@ public:
 	ItemReplacer();
 	void ZoneChanged(const std::string &oldZone, const std::string &newZone);
 	void ZoneUnloaded();
+	void ResetShopItems();
 
 	void Tick();
 	static std::vector<SDK::FItemHandleCount*> EnumerateEventItems(SDK::UEventAsset* asset);
 	static std::string ActorLocationId(const std::string& actorName);
 	static std::string EventLocationId(SDK::UEventAsset* asset, int index = 0);
+	static std::string ShopLocationId(SDK::UDataTable* table, const SDK::FName& rowName, int index);
 
 private:
 	GameManager* GM;
+	bool shop_replaced = false;
 
 	void SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count = nullptr) const;
 	std::list<std::function<bool()>> delayed_replacement;
@@ -39,6 +42,7 @@ private:
 	void ReplaceTriggerEvents();
 	void ReplaceInteractableEvents();
 	void ReplaceBossEvents();
+	bool ReplaceShopItems();
 	void ReplaceEventAsset(const std::string& actorName, SDK::UEventAsset* asset);
 	void DisableAutoEquip(SDK::UEventAsset* asset);
 	void WaitForEventAsset(SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action, SDK::TSoftObjectPtr<SDK::UEventAsset> *softptr);
