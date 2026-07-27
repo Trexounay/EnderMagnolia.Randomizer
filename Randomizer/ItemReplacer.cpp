@@ -21,6 +21,9 @@ void ItemReplacer::ZoneChanged(const std::string& oldZone, const std::string& ne
 	ReplaceTriggerEvents();
 	ReplaceBossEvents();
 	ReplaceInteractableEvents();
+
+	if (!ReplaceShopItems())
+		delayed_replacement.push_back([this]() { return ReplaceShopItems(); });
 }
 
 void ItemReplacer::ZoneUnloaded()
@@ -172,9 +175,49 @@ std::string ItemReplacer::ActorLocationId(const std::string& actorName)
 	return GameManager::Instance().Zone() + "." + actorName;
 }
 
+std::string ItemReplacer::ShopLocationId(SDK::UDataTable* table, const SDK::FName& rowName, int index)
+{
+	return table->GetName() + "." + rowName.GetRawString() + "." + std::to_string(index);
+}
+
+void ItemReplacer::ResetShopItems()
+{
+	shop_replaced = false;
+}
+
+bool ItemReplacer::ReplaceShopItems()
+{
+	if (shop_replaced)
+		return true;
+
+	auto shopWidget = SDK::UWBP_Shop_C::GetDefaultObj();
+	if (!shopWidget)
+		return false;
+
+	auto table = shopWidget->ShopDataTable;
+	if (!table)
+	{
+		Logger::Log(LogLevel::Warning, this, "shop widget CDO has no ShopDataTable");
+		return false;
+	}
+
+	for (auto it = begin(table->RowMap); it != end(table->RowMap); ++it)
+	{
+		auto row = reinterpret_cast<SDK::FLeveledShopData*>(it->Value());
+		for (int slot = 0; slot < row->Items.Num(); ++slot)
+		{
+			auto& entry = row->Items[slot];
+			SwapAtLocation(ShopLocationId(table, it->Key(), slot), entry.Item, &entry.StockCount);
+		}
+	}
+
+	shop_replaced = true;
+	return true;
+}
+
 std::string ItemReplacer::EventLocationId(SDK::UEventAsset* asset, int index)
 {
-	std::string id = GameManager::Instance().Zone() + "." + asset->GetName();
+	std::string id = asset->GetName();
 	if (index > 0)
 		id += "." + std::to_string(index);
 	return id;
