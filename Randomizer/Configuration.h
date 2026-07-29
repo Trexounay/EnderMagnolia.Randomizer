@@ -29,6 +29,8 @@ private:
 	Configuration(const Configuration&) = delete;
 	Configuration& operator=(const Configuration&) = delete;
 
+	void SetSource(IItemSource* source);
+
 	std::string dataDirectory;
 	OfflineSource offlineSource;
 	IItemSource* activeSource = nullptr;

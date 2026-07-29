@@ -1,4 +1,5 @@
 #include "Configuration.h"
+#include "GameManager.h"
 #include "Logger.h"
 
 Configuration& Configuration::Instance()
@@ -22,14 +23,25 @@ void Configuration::Init(const std::string& modulePath)
 void Configuration::UseOffline()
 {
 	bool ok = offlineSource.Load();
-	activeSource = &offlineSource;
+	SetSource(&offlineSource);
 	Logger::Log(this, "source: offline, load ok=", (int)ok);
 }
 
 void Configuration::UseArchipelago()
 {
-	activeSource = &ArchipelagoSource::Instance();
+	SetSource(&ArchipelagoSource::Instance());
 	Logger::Log(this, "source: archipelago");
+}
+
+void Configuration::SetSource(IItemSource* source)
+{
+	if (activeSource == source)
+		return;
+
+	bool hadSource = activeSource != nullptr;
+	activeSource = source;
+	if (hadSource)
+		GameManager::Instance().OnItemSourceChanged();
 }
 
 std::optional<std::string> Configuration::ScoutLocation(const std::string& location)

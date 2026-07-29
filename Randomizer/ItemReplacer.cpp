@@ -62,7 +62,7 @@ void ItemReplacer::ReplaceInteractableEvents()
 		}
 		auto trigger = static_cast<SDK::AInteractable_Event*>(actor);
 		Logger::Log(LogLevel::Debug, this, "interactable", actorName);
-		WaitForEventAsset(&trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
+		WaitForEventAsset(actor, &trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
 			{
 				ReplaceEventAsset(actorName, asset);
 			}, &trigger->EventAsset
@@ -77,12 +77,10 @@ void ItemReplacer::ReplaceBossEvents()
 	for (auto actor : out)
 	{
 		auto trigger = static_cast<SDK::ABP_BossSpawner_C*>(actor);
-		auto actorName = actor->GetName();
-		WaitForEventAsset(&trigger->LoadedDefeatEvent, [this, actorName](SDK::UEventAsset* asset)
-			{
-				ReplaceEventAsset(actorName, asset);
-			}, &trigger->DefeatEvent
-		);
+		auto eventPtr = static_cast<SDK::TSoftObjectPtr<SDK::UObject>>(trigger->DefeatEvent);
+		auto event = static_cast<SDK::UEventAsset*>(SDK::UKismetSystemLibrary::LoadAsset_Blocking(eventPtr));
+		if (event)
+			ReplaceEventAsset(actor->GetName(), event);
 	}
 }
 
@@ -103,17 +101,20 @@ void ItemReplacer::ReplaceTriggerEvents()
 		}
 
 		auto* fallback = trigger->EventDataList.Num() > 0 ? &trigger->EventDataList[0].EventAsset : nullptr;
-		WaitForEventAsset(&trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
+		WaitForEventAsset(actor, &trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
 			{
 				ReplaceEventAsset(actorName, asset);
 			}, fallback);
 	}
 }
 
-void ItemReplacer::WaitForEventAsset(SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action, SDK::TSoftObjectPtr<SDK::UEventAsset>* softptr)
+void ItemReplacer::WaitForEventAsset(SDK::AActor* owner, SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action, SDK::TSoftObjectPtr<SDK::UEventAsset>* softptr)
 {
-	auto tryResolve = [asset, action, softptr]() -> bool
+	auto tryResolve = [owner, asset, action, softptr]() -> bool
 	{
+		if (owner->bActorIsBeingDestroyed)
+			return true;
+
 		if (*asset)
 		{
 			action(*asset);
@@ -246,6 +247,15 @@ std::vector<SDK::FItemHandleCount*> ItemReplacer::EnumerateEventItems(SDK::UEven
 	return items;
 }
 
+SDK::int32 ItemReplacer::CurrencyCount(const std::string& itemName)
+{
+	if (itemName == "DT_ItemCurrencies.Default")
+		return 1000;
+	if (itemName == "DT_ItemCurrencies.rare")
+		return 500;
+	return 1;
+}
+
 void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count) const
 {
 	Logger::Log(LogLevel::File, this, locationName + ":" + CustomItemRegistry::ToItemName(item));
@@ -256,7 +266,7 @@ void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHa
 			Logger::Log(LogLevel::Debug, this, "replace at", locationName, ":", CustomItemRegistry::ToItemName(item), "->", newItem.value());
 			item = rowHandle.value();
 			if (count)
-				*count = 1;
+				*count = CurrencyCount(newItem.value());
 			return;
 		}
 	}

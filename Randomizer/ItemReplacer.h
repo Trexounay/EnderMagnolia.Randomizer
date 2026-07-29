@@ -24,6 +24,7 @@ private:
 	GameManager* GM;
 	bool shop_replaced = false;
 
+	static SDK::int32 CurrencyCount(const std::string& itemName);
 	void SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count = nullptr) const;
 	std::list<std::function<bool()>> delayed_replacement;
 
@@ -45,5 +46,5 @@ private:
 	bool ReplaceShopItems();
 	void ReplaceEventAsset(const std::string& actorName, SDK::UEventAsset* asset);
 	void DisableAutoEquip(SDK::UEventAsset* asset);
-	void WaitForEventAsset(SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action, SDK::TSoftObjectPtr<SDK::UEventAsset> *softptr);
+	void WaitForEventAsset(SDK::AActor* owner, SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action, SDK::TSoftObjectPtr<SDK::UEventAsset> *softptr);
 };

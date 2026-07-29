@@ -10,6 +10,10 @@
 #include "Randomizer/Logger.h"
 #include "Randomizer/ArchipelagoSource.h"
 
+#ifdef _DEBUG
+#include "Randomizer/DebugMenu.h"
+#endif
+
 #include <cstring>
 #include <string>
 
@@ -125,6 +129,10 @@ void GUI::Tick()
 
 	cachedState.store(ap.GetState());
 	strncpy_s(cachedError, ap.GetError().c_str(), sizeof(cachedError) - 1);
+
+#ifdef _DEBUG
+	DebugMenu::Instance().Tick();
+#endif
 }
 
 void GUI::Draw()
@@ -211,6 +219,10 @@ void GUI::Draw()
 		ImGui::TextWrapped("%s", cachedError);
 		ImGui::PopStyleColor();
 	}
+
+#ifdef _DEBUG
+	DebugMenu::Instance().Draw();
+#endif
 
 	ImGui::End();
 
