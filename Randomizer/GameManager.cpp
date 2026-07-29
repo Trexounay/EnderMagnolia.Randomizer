@@ -6,6 +6,7 @@
 #include "CustomItemRegistry.h"
 #include "DebugTeleporter.h"
 #include "SDK.hpp"
+#include <algorithm>
 
 GameManager& GameManager::Instance()
 {
@@ -135,11 +136,19 @@ void GameManager::Tick()
 		SetStartingWeapon();
 	auto zoneSystem = SDK::UZoneSystemComponent::Get(World());
 
-	if (zoneSystem && !IsLoading())
+	if (IsLoading())
+	{
+		wasLoading = true;
+		itemReplacer->ZoneUnloaded();
+	}
+	else if (zoneSystem)
 	{
 		std::string zone = zoneSystem->GetActiveZoneLevelName().ToString();
 		if (zone != this->currentZone)
 			this->ZoneChanged(this->currentZone, zone);
+		else if (wasLoading)
+			this->ZoneReloaded(zone);
+		wasLoading = false;
 		itemReplacer->Tick();
 	}
 }
@@ -182,9 +191,59 @@ bool GameManager::KillPlayer()
 	return true;
 }
 
+std::vector<RespiteEntry> GameManager::ListRespites() const
+{
+	std::vector<RespiteEntry> result;
+	auto table = GameTables::RestPoints();
+	if (!table)
+		return result;
+
+	for (auto row : table->RowMap)
+	{
+		auto data = (SDK::FRestPointData*)(row.Second);
+		RespiteEntry entry;
+		entry.id = row.First.GetRawString();
+		entry.label = data->Name.TextData ? data->Name.ToString() : entry.id;
+		result.push_back(entry);
+	}
+
+	std::sort(result.begin(), result.end(),
+		[](const RespiteEntry& a, const RespiteEntry& b) { return a.id < b.id; });
+	return result;
+}
+
+bool GameManager::FastTravelTo(const std::string& respiteId)
+{
+	auto mode = Mode();
+	if (!mode || IsLoading())
+		return false;
+
+	SDK::FName rowName;
+	if (!GameTables::RestPoints()->FindRow(respiteId, &rowName))
+	{
+		Logger::Log(LogLevel::Warning, this, "no respite row", respiteId);
+		return false;
+	}
+
+	Logger::Log(this, "fast travel to respite", respiteId);
+	mode->FastTravel(rowName);
+	return true;
+}
+
 void GameManager::OnGameSaved()
 {
 	Configuration::Instance().OnGameSaved();
+}
+
+void GameManager::OnItemSourceChanged()
+{
+	if (!itemReplacer)
+		return;
+
+	Logger::Log(this, "item source changed, shop will be replaced again");
+	itemReplacer->ResetShopItems();
+	if (!currentZone.empty() && !IsLoading())
+		itemReplacer->ZoneChanged(currentZone, currentZone);
 }
 
 void GameManager::OnEventFinished(SDK::UEventAsset* asset)
@@ -213,4 +272,11 @@ void GameManager::ZoneChanged(std::string oldZone, std::string newZone)
 		itemReplacer->ZoneChanged(oldZone, newZone);
 	else
 		itemReplacer->ZoneUnloaded();
+}
+
+void GameManager::ZoneReloaded(std::string zone)
+{
+	Logger::Log(this, "Zone Reloaded", zone);
+	if (!zone.empty())
+		itemReplacer->ZoneChanged(zone, zone);
 }

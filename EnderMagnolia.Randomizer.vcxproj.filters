@@ -105,6 +105,9 @@
     <ClCompile Include="extern\minhook\src\trampoline.c">
       <Filter>extern\minhook\src</Filter>
     </ClCompile>
+    <ClCompile Include="Randomizer\DebugMenu.cpp">
+      <Filter>Randomizer</Filter>
+    </ClCompile>
     <ClCompile Include="Randomizer\DebugTeleporter.cpp">
       <Filter>Randomizer</Filter>
     </ClCompile>
@@ -226,6 +229,9 @@
     </ClInclude>
     <ClInclude Include="extern\minhook\src\trampoline.h">
       <Filter>extern\minhook\src</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer\DebugMenu.h">
+      <Filter>Randomizer</Filter>
     </ClInclude>
     <ClInclude Include="Randomizer\DebugTeleporter.h">
       <Filter>Randomizer</Filter>

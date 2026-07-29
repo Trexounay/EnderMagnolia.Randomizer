@@ -1,7 +1,9 @@
 #pragma once
 #include "SDK.hpp"
 #include <optional>
+#include <string>
 #include <unordered_map>
+#include <vector>
 
 namespace GameTables
 {
@@ -10,7 +12,14 @@ namespace GameTables
 	inline SDK::UDataTable* ItemStats() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemStats; }
 	inline SDK::UDataTable* ItemAptitudes() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemAptitudes; }
 	inline SDK::UDataTable* GameMapTransitions() { return SDK::AGameModeZion::GetDefaultObj()->DataTableGameMapTransitions; }
+	inline SDK::UDataTable* RestPoints() { return SDK::AGameModeZion::GetDefaultObj()->DataTableRestPoints; }
 }
+
+struct RespiteEntry
+{
+	std::string id;
+	std::string label;
+};
 
 class ItemReplacer;
 class DebugTeleporter;
@@ -24,11 +33,15 @@ public:
 	void Tick();
 	void OnGameStart(int slot, bool isNewGame);
 	void OnGameSaved();
+	void OnItemSourceChanged();
 	void OnEventFinished(SDK::UEventAsset* asset);
 	void OnActorCleared(SDK::AActor* actor);
 	bool SetStartingWeapon();
 	bool GrantItem(const std::string& itemName, int count = 1);
 	bool KillPlayer();
+
+	std::vector<RespiteEntry> ListRespites() const;
+	bool FastTravelTo(const std::string& respiteId);
 
 	bool IsLoading() const;
 	int CurrentSaveSlot() const { return currentSaveSlot; }
@@ -49,6 +62,7 @@ private:
 	GameManager& operator=(const GameManager&) = delete;
 
 	void ZoneChanged(std::string oldZone, std::string newZone);
+	void ZoneReloaded(std::string zone);
 
 	void GrantAllSpirits();
 	void SetSkillCosts();
@@ -56,6 +70,7 @@ private:
 
 	std::string currentZone;
 	int currentSaveSlot = -1;
+	bool wasLoading = false;
 
 	ItemReplacer* itemReplacer = nullptr;
 	DebugTeleporter* teleporter = nullptr;

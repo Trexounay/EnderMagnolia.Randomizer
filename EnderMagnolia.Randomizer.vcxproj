@@ -152,6 +152,7 @@
     <ClInclude Include="extern\minhook\src\hde\table64.h" />
     <ClInclude Include="extern\minhook\src\trampoline.h" />
     <ClInclude Include="Randomizer\GUI.h" />
+    <ClInclude Include="Randomizer\DebugMenu.h" />
     <ClInclude Include="Randomizer\DebugTeleporter.h" />
     <ClInclude Include="Randomizer\Configuration.h" />
     <ClInclude Include="Randomizer\CustomItemRegistry.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="extern\minhook\src\hook.c" />
     <ClCompile Include="extern\minhook\src\trampoline.c" />
     <ClCompile Include="Randomizer\GUI.cpp" />
+    <ClCompile Include="Randomizer\DebugMenu.cpp" />
     <ClCompile Include="Randomizer\DebugTeleporter.cpp" />
     <ClCompile Include="Randomizer\Configuration.cpp" />
     <ClCompile Include="Randomizer\CustomItemRegistry.cpp" />
