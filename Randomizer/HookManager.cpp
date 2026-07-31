@@ -2,8 +2,10 @@
 #include "Logger.h"
 #include "Configuration.h"
 #include "GameManager.h"
+#include "CustomItemRegistry.h"
 #include "ArchipelagoSource.h"
 #include "GUI.h"
+#include "HookProbe.h"
 
 #include <Windows.h>
 #include "minhook/include/MinHook.h"
@@ -14,6 +16,9 @@ HookManager::FEventFinishedFn HookManager::oTriggerEventFinished = nullptr;
 HookManager::FMarkClearedFn HookManager::oMarkAsCleared = nullptr;
 HookManager::FFinishActionFn HookManager::oFinishAction = nullptr;
 HookManager::FNotifyGameEndingFn HookManager::oNotifyGameEnding = nullptr;
+
+HookManager::FCheckHasItemFn HookManager::oCheckHasItem = nullptr;
+HookManager::FCheckHasClearedEventFn HookManager::oCheckHasClearedEvent = nullptr;
 
 HookManager::FProcessEventFuncPtr HookManager::oProcessEvent = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSetLaunchGameIntent = nullptr;
@@ -28,6 +33,13 @@ namespace
 	constexpr uintptr_t kOff_TriggerEventFinished  = 0x46BBF40;
 	constexpr uintptr_t kOff_FinishAction          = 0x44F7270;
 	constexpr uintptr_t kOff_NotifyGameEnding      = 0x4777300;
+
+	constexpr int kSlot_OnCheckCondition = 87;
+
+	const SDK::FName& EventNameOf(const SDK::UGameplayCondition_HasClearedEvent* condition)
+	{
+		return condition->Event.ObjectID.AssetPath.AssetName;
+	}
 }
 
 HookManager& HookManager::Instance()
@@ -67,7 +79,10 @@ bool HookManager::Init()
 	if (!oEngineTick)
 		Logger::Log(LogLevel::Error, this, "Failed to hook engine tick");
 
-	//HookProcessEvent(&HookManager::ProcessEvent_Hook);
+#if ENABLE_HOOK_PROBE
+	HookProcessEvent(&HookManager::ProcessEvent_Hook);
+	HookProbe::InstallNativeHooks();
+#endif
 
 	//HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetLaunchGameIntent_Hook), reinterpret_cast<void**>(&oSetLaunchGameIntent));
 
@@ -77,6 +92,11 @@ bool HookManager::Init()
 	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SetCurrentSlotIndex", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetCurrentSlot_Hook), reinterpret_cast<void**>(&oSetCurrentSlot));
 
 	//HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook, reinterpret_cast<void**>(&oTriggerEventFinished));
+	HookConditionSlot("GameplayCondition_HasItem", SDK::UGameplayCondition_HasItem::GetDefaultObj(),
+		&CheckHasItem_Hook, reinterpret_cast<void**>(&oCheckHasItem));
+	HookConditionSlot("GameplayCondition_HasClearedEvent", SDK::UGameplayCondition_HasClearedEvent::GetDefaultObj(),
+		&CheckHasClearedEvent_Hook, reinterpret_cast<void**>(&oCheckHasClearedEvent));
+
 	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook, reinterpret_cast<void**>(&oMarkAsCleared));
 	HookAt(kOff_FinishAction, &FinishAction_Hook, reinterpret_cast<void**>(&oFinishAction));
 	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook, reinterpret_cast<void**>(&oNotifyGameEnding));
@@ -105,6 +125,21 @@ bool HookManager::CreateHook(void* target, void* hook, void** original, const ch
 		return false;
 	}
 	return true;
+}
+
+bool HookManager::HookConditionSlot(const char* name, SDK::UObject* cdo, void* hook, void** original)
+{
+	if (!cdo)
+	{
+		Logger::Log(LogLevel::Error, this, "no CDO for condition", name);
+		return false;
+	}
+
+	void** vtable = *reinterpret_cast<void***>(cdo);
+	if (!vtable)
+		return false;
+
+	return CreateHook(vtable[kSlot_OnCheckCondition], hook, original, name);
 }
 
 bool HookManager::HookAt(uintptr_t offset, void* hook, void** original)
@@ -203,6 +238,23 @@ void HookManager::FinishAction_Hook(SDK::UEventAction* self)
 	oFinishAction(self);
 }
 
+bool HookManager::CheckHasItem_Hook(SDK::UGameplayCondition_HasItem* self, SDK::APlayerController* controller)
+{
+	if (self && self->bInvertCondition)
+		return false;
+	return oCheckHasItem(self, controller);
+}
+
+bool HookManager::CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEvent* self, SDK::APlayerController* controller)
+{
+	static const SDK::FName elevatorFix = SDK::FName::FromString("EVT_ev_s_0180_StreetElevatorFix");
+	if (self && EventNameOf(self) == elevatorFix
+		&& CustomItemRegistry::Instance().PlayerHas(RandomizerItems::ElevatorKey.id))
+		return true;
+
+	return oCheckHasClearedEvent(self, controller);
+}
+
 void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)
 {
 	GUI::Instance().Tick();
@@ -214,6 +266,9 @@ void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)
 void HookManager::ProcessEvent_Hook(const SDK::UObject* obj, SDK::UFunction* func, void* params)
 {
 	oProcessEvent(obj, func, params);
+#if ENABLE_HOOK_PROBE
+	HookProbe::OnProcessEvent(obj, func, params);
+#endif
 }
 
 void HookManager::SetLaunchGameIntent_Hook(SDK::UGameInstanceZion* Context, SDK::FFrame* Stack, void* Result)

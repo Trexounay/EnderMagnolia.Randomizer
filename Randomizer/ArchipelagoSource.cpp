@@ -437,13 +437,13 @@ void ArchipelagoSource::PopulateDataTable()
 		}
 		else
 		{
-			std::string key = "custom.ap_" + std::to_string(apItemIndex++);
-			CustomItemDef def;
+			RandomizerItemDef def;
+			def.id = "custom.ap_" + std::to_string(apItemIndex++);
 			def.name = scout.itemName;
 			def.description = "Item for " + scout.playerAlias;
 			def.flavorText = "This is an Archipelago item for " + scout.game;
-			CustomItemRegistry::Instance().EnsureItem(key, def);
-			location_to_item[location] = key;
+			CustomItemRegistry::Instance().CreateItem(def);
+			location_to_item[location] = def.id;
 		}
 	}
 	Logger::Log(LogLevel::Debug, this, "AP populate", location_to_item.size(), "locations");

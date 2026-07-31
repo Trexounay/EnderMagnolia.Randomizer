@@ -261,7 +261,7 @@ void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHa
 	Logger::Log(LogLevel::File, this, locationName + ":" + CustomItemRegistry::ToItemName(item));
 	if (auto newItem = Configuration::Instance().ScoutLocation(locationName))
 	{
-		if (auto rowHandle = CustomItemRegistry::FromItemName(newItem.value()))
+		if (auto rowHandle = CustomItemRegistry::Instance().Provide(newItem.value()))
 		{
 			Logger::Log(LogLevel::Debug, this, "replace at", locationName, ":", CustomItemRegistry::ToItemName(item), "->", newItem.value());
 			item = rowHandle.value();

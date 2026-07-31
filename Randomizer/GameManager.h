@@ -3,7 +3,6 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
-#include <vector>
 
 namespace GameTables
 {
@@ -12,14 +11,9 @@ namespace GameTables
 	inline SDK::UDataTable* ItemStats() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemStats; }
 	inline SDK::UDataTable* ItemAptitudes() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemAptitudes; }
 	inline SDK::UDataTable* GameMapTransitions() { return SDK::AGameModeZion::GetDefaultObj()->DataTableGameMapTransitions; }
+	inline SDK::UDataTable* GameMaps() { return SDK::AGameModeZion::GetDefaultObj()->DataTableGameMaps; }
 	inline SDK::UDataTable* RestPoints() { return SDK::AGameModeZion::GetDefaultObj()->DataTableRestPoints; }
 }
-
-struct RespiteEntry
-{
-	std::string id;
-	std::string label;
-};
 
 class ItemReplacer;
 class DebugTeleporter;
@@ -39,9 +33,6 @@ public:
 	bool SetStartingWeapon();
 	bool GrantItem(const std::string& itemName, int count = 1);
 	bool KillPlayer();
-
-	std::vector<RespiteEntry> ListRespites() const;
-	bool FastTravelTo(const std::string& respiteId);
 
 	bool IsLoading() const;
 	int CurrentSaveSlot() const { return currentSaveSlot; }

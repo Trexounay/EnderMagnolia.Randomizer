@@ -6,7 +6,6 @@
 #include "CustomItemRegistry.h"
 #include "DebugTeleporter.h"
 #include "SDK.hpp"
-#include <algorithm>
 
 GameManager& GameManager::Instance()
 {
@@ -47,6 +46,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	Logger::Log(this, "Game Started slot", slot, "newGame", (int)isNewGame);
 	currentZone.clear();
 	start_weapon = false;
+	CustomItemRegistry::Instance().ResetItems();
 	Configuration::Instance().OnGameStart(isNewGame);
 	itemReplacer->ResetShopItems();
 	SetStartingWeapon();
@@ -117,7 +117,7 @@ void GameManager::EquipStartingSkill()
 	std::string skill = "DT_ItemSkills.s5000_sword";
 	if (auto confSkill = Configuration::Instance().ScoutLocation("starting_skill"))
 		skill = confSkill.value();
-	auto row = CustomItemRegistry::FromItemName(skill);
+	auto row = CustomItemRegistry::Instance().Provide(skill);
 	if (!controller->SkillComponent->HasAnyEquippedSkill() && row.has_value())
 	{
 		Logger::Log(LogLevel::Debug, this, "equiping", skill);
@@ -159,7 +159,7 @@ bool GameManager::GrantItem(const std::string& itemName, int count)
 	if (!controller || !controller->InventoryComponent)
 		return false;
 
-	auto row = CustomItemRegistry::FromItemName(itemName);
+	auto row = CustomItemRegistry::Instance().Provide(itemName);
 	if (!row.has_value())
 		return false;
 
@@ -188,45 +188,6 @@ bool GameManager::KillPlayer()
 	damage.AppliedRate = 1.0f;
 
 	hp->DoDamage(pawn, damage);
-	return true;
-}
-
-std::vector<RespiteEntry> GameManager::ListRespites() const
-{
-	std::vector<RespiteEntry> result;
-	auto table = GameTables::RestPoints();
-	if (!table)
-		return result;
-
-	for (auto row : table->RowMap)
-	{
-		auto data = (SDK::FRestPointData*)(row.Second);
-		RespiteEntry entry;
-		entry.id = row.First.GetRawString();
-		entry.label = data->Name.TextData ? data->Name.ToString() : entry.id;
-		result.push_back(entry);
-	}
-
-	std::sort(result.begin(), result.end(),
-		[](const RespiteEntry& a, const RespiteEntry& b) { return a.id < b.id; });
-	return result;
-}
-
-bool GameManager::FastTravelTo(const std::string& respiteId)
-{
-	auto mode = Mode();
-	if (!mode || IsLoading())
-		return false;
-
-	SDK::FName rowName;
-	if (!GameTables::RestPoints()->FindRow(respiteId, &rowName))
-	{
-		Logger::Log(LogLevel::Warning, this, "no respite row", respiteId);
-		return false;
-	}
-
-	Logger::Log(this, "fast travel to respite", respiteId);
-	mode->FastTravel(rowName);
 	return true;
 }
 
