@@ -35,16 +35,24 @@ private:
 	using FMarkClearedFn = void(*)(SDK::UClearComponent*);
 	using FFinishActionFn = void(*)(SDK::UEventAction*);
 	using FNotifyGameEndingFn = void(*)(SDK::AGameModeZion*, SDK::EGameEndingType);
+	using FCheckHasItemFn = bool(*)(SDK::UGameplayCondition_HasItem*, SDK::APlayerController*);
+	using FCheckHasClearedEventFn = bool(*)(SDK::UGameplayCondition_HasClearedEvent*, SDK::APlayerController*);
 
 	static FEventFinishedFn oTriggerEventFinished;
 	static FMarkClearedFn oMarkAsCleared;
 	static FFinishActionFn oFinishAction;
 	static FNotifyGameEndingFn oNotifyGameEnding;
+	static FCheckHasItemFn oCheckHasItem;
+	static FCheckHasClearedEventFn oCheckHasClearedEvent;
 
 	static void TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result);
 	static void MarkAsCleared_Hook(SDK::UClearComponent* self);
 	static void FinishAction_Hook(SDK::UEventAction* self);
 	static void NotifyGameEnding_Hook(SDK::AGameModeZion* self, SDK::EGameEndingType ending);
+	static bool CheckHasItem_Hook(SDK::UGameplayCondition_HasItem* self, SDK::APlayerController* controller);
+	static bool CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEvent* self, SDK::APlayerController* controller);
+
+	bool HookConditionSlot(const char* name, SDK::UObject* cdo, void* hook, void** original);
 
 	struct Subscriber
 	{

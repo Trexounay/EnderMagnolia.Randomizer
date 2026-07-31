@@ -100,10 +100,11 @@ void OfflineSource::PopulateDataTable()
 			continue;
 
 		const APItemInfo& info = kv.second;
-		CustomItemDef def;
+		RandomizerItemDef def;
+		def.id = *keyName;
 		def.name = info.item;
 		def.description = "Item for " + info.player;
 		def.flavorText = "This is an Archipelago item for " + info.game;
-		CustomItemRegistry::Instance().EnsureItem(*keyName, def);
+		CustomItemRegistry::Instance().CreateItem(def);
 	}
 }

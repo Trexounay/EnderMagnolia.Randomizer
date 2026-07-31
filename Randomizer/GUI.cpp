@@ -220,13 +220,13 @@ void GUI::Draw()
 		ImGui::PopStyleColor();
 	}
 
-#ifdef _DEBUG
-	DebugMenu::Instance().Draw();
-#endif
-
 	ImGui::End();
 
 	ImGui::PopStyleColor(3);
+
+#ifdef _DEBUG
+	DebugMenu::Instance().Draw();
+#endif
 
 	DrawNotifications();
 }

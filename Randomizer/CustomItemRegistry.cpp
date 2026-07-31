@@ -34,6 +34,9 @@ SDK::UDataTable* CustomItemRegistry::Table(const std::string& tableName)
 	if (it == dataTableOffsets.end())
 		return nullptr;
 	auto cdo = SDK::AGameModeZion::GetDefaultObj();
+	if (!cdo)
+		return nullptr;
+
 	uintptr_t base = reinterpret_cast<uintptr_t>(cdo);
 	return *reinterpret_cast<SDK::UDataTable**>(base + it->second);
 }
@@ -56,6 +59,8 @@ std::optional<SDK::FDataTableRowHandle> CustomItemRegistry::FromItemName(const s
 
 	SDK::FDataTableRowHandle Item;
 	Item.DataTable = Table(tableName);
+	if (!Item.DataTable)
+		return std::nullopt;
 
 	if (!Item.DataTable->FindRow(rowName, &Item.RowName))
 	{
@@ -68,6 +73,72 @@ std::optional<SDK::FDataTableRowHandle> CustomItemRegistry::FromItemName(const s
 std::string CustomItemRegistry::ToItemName(const SDK::FDataTableRowHandle& row)
 {
 	return row.DataTable->GetName() + "." + row.RowName.GetRawString();
+}
+
+std::optional<SDK::TSoftObjectPtr<SDK::UPaperSprite>> CustomItemRegistry::IconOf(const std::string& itemName)
+{
+	std::string tableName, rowName;
+	if (!SplitId(itemName, tableName, rowName))
+		return std::nullopt;
+
+	auto table = Table(tableName);
+	if (!table)
+		return std::nullopt;
+
+	auto row = table->FindRowAs<SDK::FInventoryItemData>(rowName);
+	if (!row)
+		return std::nullopt;
+	return row->Icon;
+}
+
+const RandomizerItemDef* RandomizerItems::Find(const std::string& id)
+{
+	for (const RandomizerItemDef* item : All)
+		if (item->id == id)
+			return item;
+	return nullptr;
+}
+
+void CustomItemRegistry::ResetItems()
+{
+	itemRows.clear();
+}
+
+std::optional<SDK::FDataTableRowHandle> CustomItemRegistry::Provide(const std::string& itemName)
+{
+	if (auto def = RandomizerItems::Find(itemName))
+		if (!Has(itemName))
+			CreateItem(*def);
+
+	if (auto row = Lookup(itemName))
+		return *row;
+	return std::nullopt;
+}
+
+const SDK::FDataTableRowHandle* CustomItemRegistry::Lookup(const std::string& itemName)
+{
+	auto it = itemRows.find(itemName);
+	if (it != itemRows.end())
+		return &it->second;
+
+	auto row = FromItemName(itemName);
+	if (!row)
+		return nullptr;
+
+	return &itemRows.emplace(itemName, row.value()).first->second;
+}
+
+bool CustomItemRegistry::PlayerHas(const std::string& itemName, int count)
+{
+	auto row = Lookup(itemName);
+	if (!row)
+		return false;
+
+	auto controller = GameManager::Instance().Controller();
+	if (!controller || !controller->InventoryComponent)
+		return false;
+
+	return controller->InventoryComponent->HasItem(*row, count);
 }
 
 SDK::TSoftObjectPtr<SDK::UPaperSprite> CustomItemRegistry::DefaultIcon() const
@@ -83,25 +154,33 @@ bool CustomItemRegistry::Has(const std::string& itemName) const
 	std::string tableName, rowName;
 	if (!SplitId(itemName, tableName, rowName))
 		return false;
-	return Table(tableName)->FindRow(rowName) != nullptr;
+
+	auto table = Table(tableName);
+	return table && table->FindRow(rowName) != nullptr;
 }
 
-void CustomItemRegistry::FillRow(SDK::FInventoryItemData* row, const CustomItemDef& def) const
+void CustomItemRegistry::FillRow(SDK::FInventoryItemData* row, const RandomizerItemDef& def) const
 {
 	row->ItemType = SDK::EInventoryItemType::None;
 	row->Name = SDK::FText::FromString(def.name);
 	row->Description = SDK::FText::FromString(def.description);
 	row->FlavorText = SDK::FText::FromString(def.flavorText);
-	row->Icon = def.icon.value_or(DefaultIcon());
+	row->Icon = IconOf(def.iconFrom).value_or(DefaultIcon());
 }
 
-bool CustomItemRegistry::EnsureItem(const std::string& itemName, const CustomItemDef& def)
+bool CustomItemRegistry::CreateItem(const RandomizerItemDef& requested)
 {
+	auto declared = RandomizerItems::Find(requested.id);
+	const RandomizerItemDef& def = declared ? *declared : requested;
+
 	std::string tableName, rowName;
-	if (!SplitId(itemName, tableName, rowName))
+	if (!SplitId(def.id, tableName, rowName))
 		return false;
 
 	auto table = Table(tableName);
+	if (!table)
+		return false;
+
 	if (auto existing = table->FindRowAs<SDK::FInventoryItemData>(rowName))
 	{
 		FillRow(existing, def);
