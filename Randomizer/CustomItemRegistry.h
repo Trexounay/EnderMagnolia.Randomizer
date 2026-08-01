@@ -17,8 +17,8 @@ namespace RandomizerItems
 	inline const RandomizerItemDef ElevatorKey{
 		"DT_ItemKeys.key_elevator",
 		"DT_ItemKeys.key_higher_a",
-		"Middle Stratum Elevator Key",
-		"Restores the elevator to the middle stratum."
+		"Grand Lift Key",
+		"Open the elevator to Central Stratum",
 	};
 
 	inline const RandomizerItemDef* const All[] = { &ElevatorKey };
