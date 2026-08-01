@@ -1,0 +1,12 @@
+[submodule "extern/wswrap"]
+	path = extern/wswrap
+	url = https://github.com/black-sliver/wswrap.git
+[submodule "extern/apclientpp"]
+	path = extern/apclientpp
+	url = https://github.com/black-sliver/apclientpp.git
+[submodule "extern/json"]
+	path = extern/json
+	url = https://github.com/nlohmann/json.git
+[submodule "extern/websocketpp"]
+	path = extern/websocketpp
+	url = https://github.com/zaphoyd/websocketpp.git

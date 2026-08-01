@@ -9,7 +9,7 @@
 // Basic file containing structs required by the SDK
 
 #define VC_EXTRALEAN
-#define WIN32_LEAN_AND_MEAN
+//#define WIN32_LEAN_AND_MEAN
 
 #include <string>
 #include <functional>

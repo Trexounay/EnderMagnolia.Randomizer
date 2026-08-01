@@ -18,6 +18,7 @@ public:
 
 	bool IsLoading() const;
 	SDK::UWorldLoaderSubsystem* Loader() const;
+	SDK::USaveSubsystem* SaveSubsystem() const;
 
 	SDK::UWorld* World() const { return SDK::UWorld::GetWorld(); };
 	SDK::AGameModeZion* Mode() const { return (SDK::AGameModeZion*)SDK::UWorld::GetWorld()->AuthorityGameMode; };

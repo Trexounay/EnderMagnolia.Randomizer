@@ -2,6 +2,7 @@
 #include "Logger.h"
 #include "Configuration.h"
 #include "GameManager.h"
+#include "HookProbe.h" // HOOK_PROBE (temporary, safe to remove)
 
 // Static member
 std::unordered_map<void*, detour_ctx_t> HookManager::ctxs;
@@ -35,32 +36,6 @@ bool HookManager::Init()
 	// SetLaunchGameIntent
 	if (!HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", &HookManager::SetLaunchGameIntent_Hook))
 		Logger::Log(LogLevel::Error, this, "Failed to hook SetLaunchIntent");
-
-	// tick
-//	if (!HookNativeFunction(SDK::UActorComponent::StaticClass(), "ActorComponent", "ReceiveTick", &HookManager::DEBUG_Hook))
-//		Logger::Log(LogLevel::Error, this, "Failed to hook tick");
-
-	/*s
-	for (int i = 0; i < SDK::UObject::GObjects->Num(); ++i)
-	{
-		SDK::UObject* Object = SDK::UObject::GObjects->GetByIndex(i);
-
-		if (!Object)
-			continue;
-
-		if (Object->HasTypeFlag(SDK::EClassCastFlags::Function) && Object->GetName() == "ReceiveTick")
-		{
-			Logger::Log(LogLevel::Error, this, "FUNC: ", Object->GetFullName());
-		}
-	}
-	for (const SDK::UStruct* Clss = SDK::APlayerController::StaticClass(); Clss; Clss = Clss->Super)
-	{
-		for (SDK::UField* Field = Clss->Children; Field; Field = Field->Next)
-		{
-			if (Field->HasTypeFlag(SDK::EClassCastFlags::Function))
-				Logger::Log(LogLevel::Error, this, Clss->GetName(), "." , Field->GetName());
-		}
-	}*/
 
 	// Enable Hooks
 	Logger::Log(this, "Init ok");
@@ -103,6 +78,10 @@ void HookManager::ProcessEvent(const SDK::UObject* obj, SDK::UFunction* func, vo
 	static Subscriber PlayerCameraManager_ReceiveTick("CameraAnimationCameraModifier", "BlueprintModifyCamera");
 	if (PlayerCameraManager_ReceiveTick.Matches(obj, func))
 		GameManager::Instance().OnReceiveTick();
+
+#if ENABLE_HOOK_PROBE // HOOK_PROBE (temporary, safe to remove)
+	HookProbe::OnProcessEvent(obj, func, params);
+#endif
 }
 
 void HookManager::SetLaunchGameIntent(SDK::UObject* Context, void* TheStack, void* Result)
