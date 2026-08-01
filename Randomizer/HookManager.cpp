@@ -16,6 +16,7 @@ HookManager::FEventFinishedFn HookManager::oTriggerEventFinished = nullptr;
 HookManager::FMarkClearedFn HookManager::oMarkAsCleared = nullptr;
 HookManager::FFinishActionFn HookManager::oFinishAction = nullptr;
 HookManager::FNotifyGameEndingFn HookManager::oNotifyGameEnding = nullptr;
+HookManager::FAddShopHistoryFn HookManager::oAddShopHistory = nullptr;
 
 HookManager::FCheckHasItemFn HookManager::oCheckHasItem = nullptr;
 HookManager::FCheckHasClearedEventFn HookManager::oCheckHasClearedEvent = nullptr;
@@ -33,6 +34,7 @@ namespace
 	constexpr uintptr_t kOff_TriggerEventFinished  = 0x46BBF40;
 	constexpr uintptr_t kOff_FinishAction          = 0x44F7270;
 	constexpr uintptr_t kOff_NotifyGameEnding      = 0x4777300;
+	constexpr uintptr_t kOff_AddShopHistory        = 0x4731DE0;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 
@@ -100,6 +102,7 @@ bool HookManager::Init()
 	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook, reinterpret_cast<void**>(&oMarkAsCleared));
 	HookAt(kOff_FinishAction, &FinishAction_Hook, reinterpret_cast<void**>(&oFinishAction));
 	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook, reinterpret_cast<void**>(&oNotifyGameEnding));
+	HookAt(kOff_AddShopHistory, &AddShopHistory_Hook, reinterpret_cast<void**>(&oAddShopHistory));
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -219,6 +222,13 @@ void HookManager::NotifyGameEnding_Hook(SDK::AGameModeZion* self, SDK::EGameEndi
 	ArchipelagoSource::Instance().OnGoalReached();
 }
 
+void HookManager::AddShopHistory_Hook(SDK::UShopInfoComponent* self, SDK::EShopType shopType, SDK::FDataTableRowHandle* boughtItem)
+{
+	oAddShopHistory(self, shopType, boughtItem);
+	if (boughtItem)
+		ArchipelagoSource::Instance().OnShopPurchase(CustomItemRegistry::ToItemName(*boughtItem));
+}
+
 void HookManager::FinishAction_Hook(SDK::UEventAction* self)
 {
 	if (self && self->Class)
@@ -248,9 +258,13 @@ bool HookManager::CheckHasItem_Hook(SDK::UGameplayCondition_HasItem* self, SDK::
 bool HookManager::CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEvent* self, SDK::APlayerController* controller)
 {
 	static const SDK::FName elevatorFix = SDK::FName::FromString("EVT_ev_s_0180_StreetElevatorFix");
-	if (self && EventNameOf(self) == elevatorFix
-		&& CustomItemRegistry::Instance().PlayerHas(RandomizerItems::ElevatorKey.id))
-		return true;
+	if (self && EventNameOf(self) == elevatorFix)
+	{
+		int mode = ArchipelagoSource::Instance().Option("central_elevator_fix");
+		if (mode == 2
+			|| (mode == 1 && CustomItemRegistry::Instance().PlayerHas(RandomizerItems::ElevatorKey.id)))
+			return !self->bInvertCondition;
+	}
 
 	return oCheckHasClearedEvent(self, controller);
 }

@@ -50,9 +50,13 @@ public:
 	APState GetState() const { return state; }
 	const std::string& GetError() const { return errorMsg; }
 
+	int Option(const std::string& name, int fallback = 0) const;
+	bool OptionIs(const std::string& name, int value) const { return Option(name) == value; }
+
 	void SetDeathLink(bool enabled);
 	void OnPlayerDeath();
 	void OnGoalReached();
+	void OnShopPurchase(const std::string& itemName);
 
 	std::optional<std::string> ScoutLocation(const std::string& location) override;
 	void ReportCheck(const std::string& location) override;
@@ -71,6 +75,7 @@ private:
 	void OnSocketDisconnected();
 	void OnRoomInfo();
 	void OnSlotConnected(const nlohmann::json& json);
+	void ReadSlotData(const nlohmann::json& json);
 	void OnSlotDisconnected();
 	void OnSlotRefused(const std::list<std::string>& errors);
 	void OnItemsReceived(const std::list<APClient::NetworkItem>& items);
@@ -104,6 +109,7 @@ private:
 	std::vector<APClient::NetworkItem> allItems;
 	std::vector<ReceivedItem> receivedItems;
 
+	std::unordered_map<std::string, int> options;
 	std::unordered_map<std::string, int64_t> nameToId;
 	std::unordered_map<int64_t, std::string> idToName;
 	std::unordered_map<std::string, ScoutedLocation> scouts;

@@ -31,6 +31,7 @@ void ArchipelagoSource::Disconnect()
 {
 	ap.reset();
 	state = APState::Disconnected;
+	options.clear();
 	Logger::Log("AP", "disconnected");
 	Configuration::Instance().UseOffline();
 }
@@ -103,11 +104,39 @@ void ArchipelagoSource::OnSlotConnected(const nlohmann::json& json)
 	allItems.clear();
 	receivedItems.clear();
 	Logger::Log("AP", "slot connected");
+	ReadSlotData(json);
 	scouts.clear();
 	ScoutAll();
 	Configuration::Instance().UseArchipelago();
 	if (GameManager::Instance().CurrentSaveSlot() >= 0 && !GameManager::Instance().IsLoading())
 		LoadIndex();
+}
+
+void ArchipelagoSource::ReadSlotData(const nlohmann::json& json)
+{
+	options.clear();
+	if (!json.is_object())
+		return;
+
+	for (auto it = json.begin(); it != json.end(); ++it)
+	{
+		if (it.value().is_number_integer())
+			options[it.key()] = it.value().get<int>();
+		else if (it.value().is_boolean())
+			options[it.key()] = it.value().get<bool>() ? 1 : 0;
+	}
+
+	for (const auto& kv : options)
+		Logger::Log("AP", "option", kv.first, "=", kv.second);
+}
+
+int ArchipelagoSource::Option(const std::string& name, int fallback) const
+{
+	if (!ap || state != APState::Connected)
+		return fallback;
+
+	auto it = options.find(name);
+	return it == options.end() ? fallback : it->second;
 }
 
 void ArchipelagoSource::OnSlotDisconnected()
@@ -375,6 +404,35 @@ void ArchipelagoSource::ReportCheck(const std::string& location)
 	}
 	Logger::Log("AP", "check", location, it->second);
 	ap->LocationChecks({ it->second });
+}
+
+void ArchipelagoSource::OnShopPurchase(const std::string& itemName)
+{
+	if (!ap)
+		return;
+
+	const auto& checked = ap->get_checked_locations();
+	const std::string* best = nullptr;
+	for (const auto& kv : location_to_item)
+	{
+		if (kv.second != itemName || kv.first.rfind("DT_Shop_Main.", 0) != 0)
+			continue;
+
+		auto it = nameToId.find(kv.first);
+		if (it == nameToId.end() || checked.count(it->second))
+			continue;
+
+		if (!best || kv.first < *best)
+			best = &kv.first;
+	}
+
+	if (!best)
+	{
+		Logger::Log(LogLevel::Warning, "AP", "shop purchase, no unchecked slot for", itemName);
+		return;
+	}
+
+	ReportCheck(*best);
 }
 
 void ArchipelagoSource::LoadIndex()

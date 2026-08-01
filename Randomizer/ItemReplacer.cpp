@@ -181,6 +181,12 @@ std::string ItemReplacer::ShopLocationId(SDK::UDataTable* table, const SDK::FNam
 	return table->GetName() + "." + rowName.GetRawString() + "." + std::to_string(index);
 }
 
+SDK::UDataTable* ItemReplacer::ShopTable()
+{
+	auto shopWidget = SDK::UWBP_Shop_C::GetDefaultObj();
+	return shopWidget ? shopWidget->ShopDataTable : nullptr;
+}
+
 void ItemReplacer::ResetShopItems()
 {
 	shop_replaced = false;
@@ -191,16 +197,9 @@ bool ItemReplacer::ReplaceShopItems()
 	if (shop_replaced)
 		return true;
 
-	auto shopWidget = SDK::UWBP_Shop_C::GetDefaultObj();
-	if (!shopWidget)
-		return false;
-
-	auto table = shopWidget->ShopDataTable;
+	auto table = ShopTable();
 	if (!table)
-	{
-		Logger::Log(LogLevel::Warning, this, "shop widget CDO has no ShopDataTable");
 		return false;
-	}
 
 	for (auto it = begin(table->RowMap); it != end(table->RowMap); ++it)
 	{
@@ -208,7 +207,8 @@ bool ItemReplacer::ReplaceShopItems()
 		for (int slot = 0; slot < row->Items.Num(); ++slot)
 		{
 			auto& entry = row->Items[slot];
-			SwapAtLocation(ShopLocationId(table, it->Key(), slot), entry.Item, &entry.StockCount);
+			if (SwapAtLocation(ShopLocationId(table, it->Key(), slot), entry.Item))
+				entry.StockCount = 1;
 		}
 	}
 
@@ -256,7 +256,7 @@ SDK::int32 ItemReplacer::CurrencyCount(const std::string& itemName)
 	return 1;
 }
 
-void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count) const
+bool ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count) const
 {
 	Logger::Log(LogLevel::File, this, locationName + ":" + CustomItemRegistry::ToItemName(item));
 	if (auto newItem = Configuration::Instance().ScoutLocation(locationName))
@@ -267,8 +267,9 @@ void ItemReplacer::SwapAtLocation(std::string locationName, SDK::FDataTableRowHa
 			item = rowHandle.value();
 			if (count)
 				*count = CurrencyCount(newItem.value());
-			return;
+			return true;
 		}
 	}
 	Logger::Log(LogLevel::Warning, this, "no replacement", locationName, ":", CustomItemRegistry::ToItemName(item));
+	return false;
 }

@@ -24,8 +24,9 @@ private:
 	GameManager* GM;
 	bool shop_replaced = false;
 
+	static SDK::UDataTable* ShopTable();
 	static SDK::int32 CurrencyCount(const std::string& itemName);
-	void SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count = nullptr) const;
+	bool SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count = nullptr) const;
 	std::list<std::function<bool()>> delayed_replacement;
 
 	template<class T>
