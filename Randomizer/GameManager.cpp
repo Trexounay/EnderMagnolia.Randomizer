@@ -47,6 +47,8 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	currentZone.clear();
 	start_weapon = false;
 	CustomItemRegistry::Instance().ResetItems();
+	for (const RandomizerItemDef* def : RandomizerItems::All)
+		CustomItemRegistry::Instance().CreateItem(*def);
 	Configuration::Instance().OnGameStart(isNewGame);
 	itemReplacer->ResetShopItems();
 	SetStartingWeapon();

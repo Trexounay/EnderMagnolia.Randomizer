@@ -2,6 +2,7 @@
 #include "GameManager.h"
 #include "Logger.h"
 #include <cstdlib>
+#include <cstring>
 #include <new>
 
 const std::unordered_map<std::string, size_t> CustomItemRegistry::dataTableOffsets = {
@@ -166,6 +167,10 @@ void CustomItemRegistry::FillRow(SDK::FInventoryItemData* row, const RandomizerI
 	row->Description = SDK::FText::FromString(def.description);
 	row->FlavorText = SDK::FText::FromString(def.flavorText);
 	row->Icon = IconOf(def.iconFrom).value_or(DefaultIcon());
+	row->DescriptionFormatElements = {};
+	row->DescriptionStringElements = {};
+	row->FlavorTextFormatElements = {};
+	row->FlavorStringElements = {};
 }
 
 bool CustomItemRegistry::CreateItem(const RandomizerItemDef& requested)
@@ -187,16 +192,17 @@ bool CustomItemRegistry::CreateItem(const RandomizerItemDef& requested)
 		return true;
 	}
 
-	auto source = (SDK::FInventoryItemData*)begin(table->RowMap)->Value();
-	auto clone = SDK::FMemory::New<SDK::FInventoryItemData>();
+	if (!table->RowStruct || table->RowMap.Num() == 0)
+		return false;
 
-	clone->EquipmentType = source->EquipmentType;
-	clone->InventoryHideCondition = source->InventoryHideCondition;
-	clone->CollectableDropClass = source->CollectableDropClass;
-	clone->BuyInfo = source->BuyInfo;
-	FillRow(clone, def);
+	int32_t size = table->RowStruct->Size;
+	auto source = begin(table->RowMap)->Value();
+	auto clone = static_cast<uint8_t*>(SDK::FMemory::Malloc(size, table->RowStruct->MinAlignemnt));
+	memcpy(clone, source, size);
+
+	FillRow(reinterpret_cast<SDK::FInventoryItemData*>(clone), def);
 
 	auto fname = SDK::FName::FromString(rowName);
-	table->AddRowInternal(fname, reinterpret_cast<uint8_t*>(clone));
+	table->AddRowInternal(fname, clone);
 	return true;
 }
