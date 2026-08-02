@@ -19,6 +19,7 @@ public:
 	static std::string ActorLocationId(const std::string& actorName);
 	static std::string EventLocationId(SDK::UEventAsset* asset, int index = 0);
 	static std::string ShopLocationId(SDK::UDataTable* table, const SDK::FName& rowName, int index);
+	static std::vector<std::string> ShopLocationsFor(const SDK::FDataTableRowHandle& item);
 
 private:
 	GameManager* GM;

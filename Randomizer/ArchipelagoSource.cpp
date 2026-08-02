@@ -4,6 +4,7 @@
 #include "Configuration.h"
 #include "CustomItemRegistry.h"
 #include "GameManager.h"
+#include "ItemReplacer.h"
 #include "apuuid.hpp"
 #include <fstream>
 
@@ -406,33 +407,24 @@ void ArchipelagoSource::ReportCheck(const std::string& location)
 	ap->LocationChecks({ it->second });
 }
 
-void ArchipelagoSource::OnShopPurchase(const std::string& itemName)
+void ArchipelagoSource::OnShopPurchase(const SDK::FDataTableRowHandle& boughtItem)
 {
 	if (!ap)
 		return;
 
 	const auto& checked = ap->get_checked_locations();
-	const std::string* best = nullptr;
-	for (const auto& kv : location_to_item)
+	for (const auto& location : ItemReplacer::ShopLocationsFor(boughtItem))
 	{
-		if (kv.second != itemName || kv.first.rfind("DT_Shop_Main.", 0) != 0)
+		auto id = nameToId.find(location);
+		if (id == nameToId.end() || checked.count(id->second))
 			continue;
 
-		auto it = nameToId.find(kv.first);
-		if (it == nameToId.end() || checked.count(it->second))
-			continue;
-
-		if (!best || kv.first < *best)
-			best = &kv.first;
-	}
-
-	if (!best)
-	{
-		Logger::Log(LogLevel::Warning, "AP", "shop purchase, no unchecked slot for", itemName);
+		ReportCheck(location);
 		return;
 	}
 
-	ReportCheck(*best);
+	Logger::Log(LogLevel::Warning, "AP", "shop purchase, no unchecked slot for",
+		CustomItemRegistry::ToItemName(boughtItem));
 }
 
 void ArchipelagoSource::LoadIndex()

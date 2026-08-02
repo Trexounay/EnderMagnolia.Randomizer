@@ -226,7 +226,7 @@ void HookManager::AddShopHistory_Hook(SDK::UShopInfoComponent* self, SDK::EShopT
 {
 	oAddShopHistory(self, shopType, boughtItem);
 	if (boughtItem)
-		ArchipelagoSource::Instance().OnShopPurchase(CustomItemRegistry::ToItemName(*boughtItem));
+		ArchipelagoSource::Instance().OnShopPurchase(*boughtItem);
 }
 
 void HookManager::FinishAction_Hook(SDK::UEventAction* self)

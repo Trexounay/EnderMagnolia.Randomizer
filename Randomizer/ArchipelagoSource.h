@@ -9,6 +9,8 @@
 #include <optional>
 #include "apclient.hpp"
 
+namespace SDK { struct FDataTableRowHandle; }
+
 enum class APState {
 	Disconnected,
 	Connecting,
@@ -56,7 +58,7 @@ public:
 	void SetDeathLink(bool enabled);
 	void OnPlayerDeath();
 	void OnGoalReached();
-	void OnShopPurchase(const std::string& itemName);
+	void OnShopPurchase(const SDK::FDataTableRowHandle& boughtItem);
 
 	std::optional<std::string> ScoutLocation(const std::string& location) override;
 	void ReportCheck(const std::string& location) override;

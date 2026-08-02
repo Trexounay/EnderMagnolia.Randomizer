@@ -187,6 +187,26 @@ SDK::UDataTable* ItemReplacer::ShopTable()
 	return shopWidget ? shopWidget->ShopDataTable : nullptr;
 }
 
+std::vector<std::string> ItemReplacer::ShopLocationsFor(const SDK::FDataTableRowHandle& item)
+{
+	std::vector<std::string> locations;
+	auto table = ShopTable();
+	if (!table)
+		return locations;
+
+	for (auto it = begin(table->RowMap); it != end(table->RowMap); ++it)
+	{
+		auto row = reinterpret_cast<SDK::FLeveledShopData*>(it->Value());
+		for (int slot = 0; slot < row->Items.Num(); ++slot)
+		{
+			auto& entry = row->Items[slot];
+			if (entry.Item.DataTable == item.DataTable && entry.Item.RowName == item.RowName)
+				locations.push_back(ShopLocationId(table, it->Key(), slot));
+		}
+	}
+	return locations;
+}
+
 void ItemReplacer::ResetShopItems()
 {
 	shop_replaced = false;
