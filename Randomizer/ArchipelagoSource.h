@@ -52,8 +52,9 @@ public:
 	APState GetState() const { return state; }
 	const std::string& GetError() const { return errorMsg; }
 
-	int Option(const std::string& name, int fallback = 0) const;
+	int Option(const std::string& name, int fallback = 0) const override;
 	bool OptionIs(const std::string& name, int value) const { return Option(name) == value; }
+	std::optional<std::string> Seed() const override;
 
 	void SetDeathLink(bool enabled);
 	void OnPlayerDeath();
@@ -105,6 +106,7 @@ private:
 
 	std::string connSlot;
 	std::string connPass;
+	std::string seedName;
 
 	int receivedIndex = 0;
 	bool indexLoaded = false;

@@ -652,6 +652,7 @@ public:
 	{
 		return static_cast<UEType*>(TPersistentObjectPtr::Get());
 	}
+	UEType* LoadBlocking() const;
 };
 
 template<typename UEType>

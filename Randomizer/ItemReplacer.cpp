@@ -54,14 +54,11 @@ void ItemReplacer::ReplaceInteractableEvents()
 		{
 			for (auto data : npc->NPCDataList)
 			{
-				auto eventPtr = static_cast<SDK::TSoftObjectPtr<SDK::UObject>>(data.EventAsset);
-				auto event = static_cast<SDK::UEventAsset*>(SDK::UKismetSystemLibrary::LoadAsset_Blocking(eventPtr));
-				if (event)
+				if (auto event = data.EventAsset.LoadBlocking())
 					ReplaceEventAsset(actorName, event);
 			}
 		}
 		auto trigger = static_cast<SDK::AInteractable_Event*>(actor);
-		Logger::Log(LogLevel::Debug, this, "interactable", actorName);
 		WaitForEventAsset(actor, &trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
 			{
 				ReplaceEventAsset(actorName, asset);
@@ -77,9 +74,7 @@ void ItemReplacer::ReplaceBossEvents()
 	for (auto actor : out)
 	{
 		auto trigger = static_cast<SDK::ABP_BossSpawner_C*>(actor);
-		auto eventPtr = static_cast<SDK::TSoftObjectPtr<SDK::UObject>>(trigger->DefeatEvent);
-		auto event = static_cast<SDK::UEventAsset*>(SDK::UKismetSystemLibrary::LoadAsset_Blocking(eventPtr));
-		if (event)
+		if (auto event = trigger->DefeatEvent.LoadBlocking())
 			ReplaceEventAsset(actor->GetName(), event);
 	}
 }
@@ -94,11 +89,7 @@ void ItemReplacer::ReplaceTriggerEvents()
 		auto trigger = static_cast<SDK::ATrigger_Event*>(actor);
 
 		for (auto data : trigger->EventDataList)
-		{
-			auto eventPtr = static_cast<SDK::TSoftObjectPtr<SDK::UObject>>(data.EventAsset);
-			auto event = static_cast<SDK::UEventAsset*>(SDK::UKismetSystemLibrary::LoadAsset_Blocking(eventPtr));
-			ReplaceEventAsset(actorName, event);
-		}
+			ReplaceEventAsset(actorName, data.EventAsset.LoadBlocking());
 
 		auto* fallback = trigger->EventDataList.Num() > 0 ? &trigger->EventDataList[0].EventAsset : nullptr;
 		WaitForEventAsset(actor, &trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
@@ -122,9 +113,7 @@ void ItemReplacer::WaitForEventAsset(SDK::AActor* owner, SDK::UEventAsset** asse
 		}
 		if (softptr && softptr->WeakPtr.ObjectIndex != 0)
 		{
-			auto eventPtr = static_cast<SDK::TSoftObjectPtr<SDK::UObject>>(*softptr);
-			auto event = static_cast<SDK::UEventAsset*>(SDK::UKismetSystemLibrary::LoadAsset_Blocking(eventPtr));
-			if (event)
+			if (auto event = (*softptr).LoadBlocking())
 			{
 				action(event);
 				return true;
@@ -227,7 +216,15 @@ bool ItemReplacer::ReplaceShopItems()
 		for (int slot = 0; slot < row->Items.Num(); ++slot)
 		{
 			auto& entry = row->Items[slot];
-			if (SwapAtLocation(ShopLocationId(table, it->Key(), slot), entry.Item))
+			auto location = ShopLocationId(table, it->Key(), slot);
+
+			auto vanilla = vanilla_shop.find(location);
+			if (vanilla == vanilla_shop.end())
+				vanilla = vanilla_shop.emplace(location, entry).first;
+			else
+				entry = vanilla->second;
+
+			if (SwapAtLocation(location, entry.Item))
 				entry.StockCount = 1;
 		}
 	}

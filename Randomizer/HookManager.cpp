@@ -17,6 +17,7 @@ HookManager::FMarkClearedFn HookManager::oMarkAsCleared = nullptr;
 HookManager::FFinishActionFn HookManager::oFinishAction = nullptr;
 HookManager::FNotifyGameEndingFn HookManager::oNotifyGameEnding = nullptr;
 HookManager::FAddShopHistoryFn HookManager::oAddShopHistory = nullptr;
+HookManager::FAddItemFn HookManager::oAddItem = nullptr;
 
 HookManager::FCheckHasItemFn HookManager::oCheckHasItem = nullptr;
 HookManager::FCheckHasClearedEventFn HookManager::oCheckHasClearedEvent = nullptr;
@@ -35,13 +36,9 @@ namespace
 	constexpr uintptr_t kOff_FinishAction          = 0x44F7270;
 	constexpr uintptr_t kOff_NotifyGameEnding      = 0x4777300;
 	constexpr uintptr_t kOff_AddShopHistory        = 0x4731DE0;
+	constexpr uintptr_t kOff_AddItem               = 0x4731D20;
 
 	constexpr int kSlot_OnCheckCondition = 87;
-
-	const SDK::FName& EventNameOf(const SDK::UGameplayCondition_HasClearedEvent* condition)
-	{
-		return condition->Event.ObjectID.AssetPath.AssetName;
-	}
 }
 
 HookManager& HookManager::Instance()
@@ -94,15 +91,14 @@ bool HookManager::Init()
 	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SetCurrentSlotIndex", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetCurrentSlot_Hook), reinterpret_cast<void**>(&oSetCurrentSlot));
 
 	//HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook, reinterpret_cast<void**>(&oTriggerEventFinished));
-	HookConditionSlot("GameplayCondition_HasItem", SDK::UGameplayCondition_HasItem::GetDefaultObj(),
-		&CheckHasItem_Hook, reinterpret_cast<void**>(&oCheckHasItem));
-	HookConditionSlot("GameplayCondition_HasClearedEvent", SDK::UGameplayCondition_HasClearedEvent::GetDefaultObj(),
-		&CheckHasClearedEvent_Hook, reinterpret_cast<void**>(&oCheckHasClearedEvent));
+	HookConditionSlot("GameplayCondition_HasItem", SDK::UGameplayCondition_HasItem::GetDefaultObj(), &CheckHasItem_Hook, reinterpret_cast<void**>(&oCheckHasItem));
+	HookConditionSlot("GameplayCondition_HasClearedEvent", SDK::UGameplayCondition_HasClearedEvent::GetDefaultObj(), &CheckHasClearedEvent_Hook, reinterpret_cast<void**>(&oCheckHasClearedEvent));
 
 	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook, reinterpret_cast<void**>(&oMarkAsCleared));
 	HookAt(kOff_FinishAction, &FinishAction_Hook, reinterpret_cast<void**>(&oFinishAction));
 	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook, reinterpret_cast<void**>(&oNotifyGameEnding));
 	HookAt(kOff_AddShopHistory, &AddShopHistory_Hook, reinterpret_cast<void**>(&oAddShopHistory));
+	HookAt(kOff_AddItem, &AddItem_Hook, reinterpret_cast<void**>(&oAddItem));
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -219,7 +215,10 @@ void HookManager::MarkAsCleared_Hook(SDK::UClearComponent* self)
 void HookManager::NotifyGameEnding_Hook(SDK::AGameModeZion* self, SDK::EGameEndingType ending)
 {
 	oNotifyGameEnding(self, ending);
-	ArchipelagoSource::Instance().OnGoalReached();
+
+	bool requiresEndingB = ArchipelagoSource::Instance().Option("goal") == 1;
+	if (!requiresEndingB || ending == SDK::EGameEndingType::EndingB)
+		ArchipelagoSource::Instance().OnGoalReached();
 }
 
 void HookManager::AddShopHistory_Hook(SDK::UShopInfoComponent* self, SDK::EShopType shopType, SDK::FDataTableRowHandle* boughtItem)
@@ -227,6 +226,28 @@ void HookManager::AddShopHistory_Hook(SDK::UShopInfoComponent* self, SDK::EShopT
 	oAddShopHistory(self, shopType, boughtItem);
 	if (boughtItem)
 		ArchipelagoSource::Instance().OnShopPurchase(*boughtItem);
+}
+
+bool HookManager::AddItem_Hook(SDK::UInventoryComponent* self, const SDK::FDataTableRowHandle* itemHandle, SDK::int32 count)
+{
+	if (!itemHandle || !itemHandle->DataTable)
+		return oAddItem(self, itemHandle, count);
+
+	std::string itemName = CustomItemRegistry::ToItemName(*itemHandle);
+	auto chain = CustomItemRegistry::FindChain(itemName);
+	if (!chain)
+		return oAddItem(self, itemHandle, count);
+
+	bool added = false;
+	while (count-- > 0)
+	{
+		auto link = CustomItemRegistry::Instance().NextProgressiveLink(*chain);
+		if (!link)
+			break;
+		auto row = CustomItemRegistry::Instance().Provide(link.value());
+		added = oAddItem(self, &row.value(), 1) || added;
+	}
+	return added;
 }
 
 void HookManager::FinishAction_Hook(SDK::UEventAction* self)
@@ -257,14 +278,46 @@ bool HookManager::CheckHasItem_Hook(SDK::UGameplayCondition_HasItem* self, SDK::
 
 bool HookManager::CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEvent* self, SDK::APlayerController* controller)
 {
+	if (!self)
+		return false;
+
 	static const SDK::FName elevatorFix = SDK::FName::FromString("EVT_ev_s_0180_StreetElevatorFix");
-	if (self && EventNameOf(self) == elevatorFix)
+
+	static const SDK::FName vanillaZones[] = {
+		SDK::FName::FromString("Roots_001_Zone_005"),
+		SDK::FName::FromString("Quarry_001_Zone_003"),
+		SDK::FName::FromString("Estate_001_Zone_007"),
+		SDK::FName::FromString("Factory_001_Zone_019"),
+		SDK::FName::FromString("Kowloon_001_Zone_009"),
+		SDK::FName::FromString("Mine_001_Zone_014"),
+	};
+
+	static const std::pair<SDK::FName, const char*> eventItems[] = {
+		{ SDK::FName::FromString("EVT_ev_s_e5012_RootsLancer_Defeat"), "DT_ItemQuests.quest_eye" },
+		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure1_001"),       "DT_ItemQuests.quest_artifact" },
+		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure2_001"),       "DT_ItemQuests.quest_stone" },
+		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure3_001"),       "DT_ItemQuests.quest_bird" },
+		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure4_001"),       "DT_ItemQuests.quest_board" },
+		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure5_001"),       "DT_ItemQuests.quest_perfume" },
+		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure6_001"),       "DT_ItemQuests.quest_lithograph" },
+		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure6_002"),       "DT_ItemQuests.quest_amulet" },
+	};
+
+	if (self->EventName() == elevatorFix)
 	{
 		int mode = ArchipelagoSource::Instance().Option("central_elevator_fix");
-		if (mode == 2
-			|| (mode == 1 && CustomItemRegistry::Instance().PlayerHas(RandomizerItems::ElevatorKey.id)))
+		if (mode == 2 || CustomItemRegistry::Instance().PlayerHas(RandomizerItems::ElevatorKey.id))
 			return !self->bInvertCondition;
 	}
+
+	auto zoneOuter = (self->Outer && self->Outer->Outer) ? self->Outer->Outer->Outer : nullptr;
+	for (const SDK::FName& vanillaZone : vanillaZones)
+		if (zoneOuter && zoneOuter->Name == vanillaZone)
+			return oCheckHasClearedEvent(self, controller);
+
+	for (const auto& mapping : eventItems)
+		if (self->EventName() == mapping.first)
+			return CustomItemRegistry::Instance().PlayerHas(mapping.second) != self->bInvertCondition;
 
 	return oCheckHasClearedEvent(self, controller);
 }

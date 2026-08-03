@@ -90,7 +90,8 @@ void ArchipelagoSource::OnSocketDisconnected()
 
 void ArchipelagoSource::OnRoomInfo()
 {
-	Logger::Log("AP", "room info, connecting slot");
+	seedName = ap->get_seed();
+	Logger::Log("AP", "room info, connecting slot, seed", seedName);
 	std::list<std::string> tags;
 	if (deathLinkEnabled)
 		tags.push_back("DeathLink");
@@ -129,6 +130,13 @@ void ArchipelagoSource::ReadSlotData(const nlohmann::json& json)
 
 	for (const auto& kv : options)
 		Logger::Log("AP", "option", kv.first, "=", kv.second);
+}
+
+std::optional<std::string> ArchipelagoSource::Seed() const
+{
+	if (seedName.empty())
+		return std::nullopt;
+	return seedName;
 }
 
 int ArchipelagoSource::Option(const std::string& name, int fallback) const
@@ -213,7 +221,7 @@ void ArchipelagoSource::DeliverReceivedItems()
 			continue;
 		}
 
-		if (!GameManager::Instance().GrantItem(nameIt->second))
+		if (!GameManager::Instance().GrantItem(nameIt->second, ItemReplacer::CurrencyCount(nameIt->second)))
 			return;
 
 		GUI::Instance().Notify(item.display);

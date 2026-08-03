@@ -14013,6 +14013,11 @@ public:
 	TSoftObjectPtr<class UEventAsset>             Event;                                             // 0x0030(0x0028)(Edit, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
+	const class FName& EventName() const
+	{
+		return Event.ObjectID.AssetPath.AssetName;
+	}
+
 	static class UClass* StaticClass()
 	{
 		return StaticClassImpl<"GameplayCondition_HasClearedEvent">();

@@ -51,6 +51,20 @@ std::optional<std::string> Configuration::ScoutLocation(const std::string& locat
 	return activeSource->ScoutLocation(location);
 }
 
+std::optional<std::string> Configuration::Seed() const
+{
+	if (!activeSource)
+		return std::nullopt;
+	return activeSource->Seed();
+}
+
+int Configuration::Option(const std::string& name, int fallback) const
+{
+	if (!activeSource)
+		return fallback;
+	return activeSource->Option(name, fallback);
+}
+
 void Configuration::ReportCheck(const std::string& location)
 {
 	if (activeSource)

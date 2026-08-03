@@ -3,6 +3,7 @@
 #include <string>
 #include <optional>
 #include <unordered_map>
+#include <vector>
 
 struct RandomizerItemDef {
 	std::string id;
@@ -10,6 +11,11 @@ struct RandomizerItemDef {
 	std::string name;
 	std::string description;
 	std::string flavorText;
+};
+
+struct ProgressiveChainDef {
+	std::string itemId;
+	std::vector<std::string> links;
 };
 
 namespace RandomizerItems
@@ -22,9 +28,38 @@ namespace RandomizerItems
 		""
 	};
 
-	inline const RandomizerItemDef* const All[] = { &ElevatorKey };
+	inline const RandomizerItemDef ProgressiveDive{
+		"DT_ItemAptitudes.progressive_dive",
+		"DT_ItemAptitudes.dive",
+		"Progressive Dive",
+		"Unlocks Dive, then Underwater Dash",
+		""
+	};
 
-	const RandomizerItemDef* Find(const std::string& id);
+	inline const RandomizerItemDef ProgressiveWallGrab{
+		"DT_ItemAptitudes.progressive_wall_grab",
+		"DT_ItemAptitudes.wall_grab",
+		"Progressive Wall Grab",
+		"Unlocks Wall Grab, then Wall Charge",
+		""
+	};
+
+	inline const RandomizerItemDef* const All[] = { &ElevatorKey, &ProgressiveDive, &ProgressiveWallGrab };
+}
+
+namespace ProgressiveChains
+{
+	inline const ProgressiveChainDef Dive{
+		RandomizerItems::ProgressiveDive.id,
+		{ "DT_ItemAptitudes.dive", "DT_ItemAptitudes.dash_charge_underwater" }
+	};
+
+	inline const ProgressiveChainDef WallGrab{
+		RandomizerItems::ProgressiveWallGrab.id,
+		{ "DT_ItemAptitudes.wall_grab", "DT_ItemAptitudes.wall_charge" }
+	};
+
+	inline const ProgressiveChainDef* const All[] = { &Dive, &WallGrab };
 }
 
 class CustomItemRegistry {
@@ -38,6 +73,11 @@ public:
 	const SDK::FDataTableRowHandle* Lookup(const std::string& itemName);
 	std::optional<SDK::FDataTableRowHandle> Provide(const std::string& itemName);
 	bool PlayerHas(const std::string& itemName, int count = 1);
+
+	std::optional<std::string> NextProgressiveLink(const ProgressiveChainDef& chain);
+
+	static const RandomizerItemDef* FindItem(const std::string& id);
+	static const ProgressiveChainDef* FindChain(const std::string& itemId);
 
 	static std::optional<SDK::TSoftObjectPtr<SDK::UPaperSprite>> IconOf(const std::string& itemName);
 

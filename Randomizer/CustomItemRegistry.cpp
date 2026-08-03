@@ -92,12 +92,28 @@ std::optional<SDK::TSoftObjectPtr<SDK::UPaperSprite>> CustomItemRegistry::IconOf
 	return row->Icon;
 }
 
-const RandomizerItemDef* RandomizerItems::Find(const std::string& id)
+const RandomizerItemDef* CustomItemRegistry::FindItem(const std::string& id)
 {
-	for (const RandomizerItemDef* item : All)
+	for (const RandomizerItemDef* item : RandomizerItems::All)
 		if (item->id == id)
 			return item;
 	return nullptr;
+}
+
+const ProgressiveChainDef* CustomItemRegistry::FindChain(const std::string& itemId)
+{
+	for (const ProgressiveChainDef* chain : ProgressiveChains::All)
+		if (chain->itemId == itemId)
+			return chain;
+	return nullptr;
+}
+
+std::optional<std::string> CustomItemRegistry::NextProgressiveLink(const ProgressiveChainDef& chain)
+{
+	for (const std::string& link : chain.links)
+		if (!PlayerHas(link))
+			return link;
+	return std::nullopt;
 }
 
 void CustomItemRegistry::ResetItems()
@@ -107,7 +123,7 @@ void CustomItemRegistry::ResetItems()
 
 std::optional<SDK::FDataTableRowHandle> CustomItemRegistry::Provide(const std::string& itemName)
 {
-	if (auto def = RandomizerItems::Find(itemName))
+	if (auto def = FindItem(itemName))
 		if (!Has(itemName))
 			CreateItem(*def);
 
@@ -162,7 +178,11 @@ bool CustomItemRegistry::Has(const std::string& itemName) const
 
 void CustomItemRegistry::FillRow(SDK::FInventoryItemData* row, const RandomizerItemDef& def) const
 {
-	row->ItemType = SDK::EInventoryItemType::None;
+	if (row->ItemType == SDK::EInventoryItemType::Aptitude)
+		reinterpret_cast<SDK::FInventoryItemAptitudeData*>(row)->bGrantOnNewGame = false;
+
+	if (row->ItemType == SDK::EInventoryItemType::Tip)
+		row->ItemType = SDK::EInventoryItemType::None;
 	row->Name = SDK::FText::FromString(def.name);
 	row->Description = SDK::FText::FromString(def.description);
 	row->FlavorText = SDK::FText::FromString(def.flavorText);
@@ -175,7 +195,7 @@ void CustomItemRegistry::FillRow(SDK::FInventoryItemData* row, const RandomizerI
 
 bool CustomItemRegistry::CreateItem(const RandomizerItemDef& requested)
 {
-	auto declared = RandomizerItems::Find(requested.id);
+	auto declared = FindItem(requested.id);
 	const RandomizerItemDef& def = declared ? *declared : requested;
 
 	std::string tableName, rowName;
@@ -199,7 +219,6 @@ bool CustomItemRegistry::CreateItem(const RandomizerItemDef& requested)
 	auto source = begin(table->RowMap)->Value();
 	auto clone = static_cast<uint8_t*>(SDK::FMemory::Malloc(size, table->RowStruct->MinAlignemnt));
 	memcpy(clone, source, size);
-
 	FillRow(reinterpret_cast<SDK::FInventoryItemData*>(clone), def);
 
 	auto fname = SDK::FName::FromString(rowName);

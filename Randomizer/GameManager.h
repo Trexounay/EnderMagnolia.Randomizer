@@ -10,6 +10,7 @@ namespace GameTables
 	inline SDK::UDataTable* ItemSkills() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemSkills; }
 	inline SDK::UDataTable* ItemStats() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemStats; }
 	inline SDK::UDataTable* ItemAptitudes() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemAptitudes; }
+	inline SDK::UDataTable* ItemPassives() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemPassives; }
 	inline SDK::UDataTable* GameMapTransitions() { return SDK::AGameModeZion::GetDefaultObj()->DataTableGameMapTransitions; }
 	inline SDK::UDataTable* GameMaps() { return SDK::AGameModeZion::GetDefaultObj()->DataTableGameMaps; }
 	inline SDK::UDataTable* RestPoints() { return SDK::AGameModeZion::GetDefaultObj()->DataTableRestPoints; }
@@ -59,9 +60,15 @@ private:
 	void SetSkillCosts();
 	void EquipStartingSkill();
 
+	void CapturePassiveCosts();
+	void ShufflePassiveCosts();
+
 	std::string currentZone;
 	int currentSaveSlot = -1;
 	bool wasLoading = false;
+
+	struct PassiveCost { int tier; int cost; };
+	std::unordered_map<std::string, PassiveCost> vanillaPassiveCosts;
 
 	ItemReplacer* itemReplacer = nullptr;
 	DebugTeleporter* teleporter = nullptr;

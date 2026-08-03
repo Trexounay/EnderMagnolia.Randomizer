@@ -6,6 +6,10 @@
 #include "CustomItemRegistry.h"
 #include "DebugTeleporter.h"
 #include "SDK.hpp"
+#include <algorithm>
+#include <map>
+#include <random>
+#include <vector>
 
 GameManager& GameManager::Instance()
 {
@@ -50,6 +54,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	for (const RandomizerItemDef* def : RandomizerItems::All)
 		CustomItemRegistry::Instance().CreateItem(*def);
 	Configuration::Instance().OnGameStart(isNewGame);
+	ShufflePassiveCosts();
 	itemReplacer->ResetShopItems();
 	SetStartingWeapon();
 }
@@ -113,6 +118,76 @@ void GameManager::SetSkillCosts()
 	}
 }
 
+void GameManager::CapturePassiveCosts()
+{
+	if (!vanillaPassiveCosts.empty())
+		return;
+
+	auto table = GameTables::ItemPassives();
+	std::map<std::string, std::string> upgradeOf;
+	for (auto p : table->RowMap)
+	{
+		auto data = (SDK::FInventoryItemPassiveData*)(p.Second);
+		auto upgrade = data->UpgradeData.UpgradePassive.RowName.GetRawString();
+		if (data->bCanBeUpgraded && !upgrade.empty())
+			upgradeOf[upgrade] = p.First.GetRawString();
+	}
+
+	for (auto p : table->RowMap)
+	{
+		std::string name = p.First.GetRawString();
+		auto data = (SDK::FInventoryItemPassiveData*)(p.Second);
+
+		int tier = 0;
+		auto parent = upgradeOf.find(name);
+		while (parent != upgradeOf.end())
+		{
+			++tier;
+			parent = upgradeOf.find(parent->second);
+		}
+
+		vanillaPassiveCosts[name] = { tier, data->SlotCost };
+	}
+}
+
+void GameManager::ShufflePassiveCosts()
+{
+	CapturePassiveCosts();
+
+	auto seed = Configuration::Instance().Seed();
+	bool enabled = seed && Configuration::Instance().Option("relic_cost_shuffle") != 0;
+
+	std::map<int, std::vector<std::string>> tiers;
+	for (const auto& kv : vanillaPassiveCosts)
+		tiers[kv.second.tier].push_back(kv.first);
+
+	std::string key = seed ? *seed : "";
+	std::seed_seq sequence(key.begin(), key.end());
+	std::mt19937 rng(sequence);
+
+	std::map<std::string, int> shuffled;
+	for (auto& tier : tiers)
+	{
+		auto& rows = tier.second;
+		std::sort(rows.begin(), rows.end());
+
+		std::vector<int> costs;
+		for (const auto& row : rows)
+			costs.push_back(vanillaPassiveCosts[row].cost);
+
+		if (enabled)
+			std::shuffle(costs.begin(), costs.end(), rng);
+
+		for (size_t i = 0; i < rows.size(); ++i)
+			shuffled[rows[i]] = costs[i];
+	}
+
+	for (auto p : GameTables::ItemPassives()->RowMap)
+		((SDK::FInventoryItemPassiveData*)(p.Second))->SlotCost = shuffled[p.First.GetRawString()];
+
+	Logger::Log(this, "relic costs", enabled ? "shuffled, seed" : "vanilla, seed", key.empty() ? "none" : key);
+}
+
 void GameManager::EquipStartingSkill()
 {
 	auto controller = this->Controller();
@@ -153,6 +228,8 @@ void GameManager::Tick()
 		wasLoading = false;
 		itemReplacer->Tick();
 	}
+	else if (!currentZone.empty())
+		this->ZoneChanged(this->currentZone, "");
 }
 
 bool GameManager::GrantItem(const std::string& itemName, int count)
@@ -204,6 +281,7 @@ void GameManager::OnItemSourceChanged()
 		return;
 
 	Logger::Log(this, "item source changed, shop will be replaced again");
+	ShufflePassiveCosts();
 	itemReplacer->ResetShopItems();
 	if (!currentZone.empty() && !IsLoading())
 		itemReplacer->ZoneChanged(currentZone, currentZone);

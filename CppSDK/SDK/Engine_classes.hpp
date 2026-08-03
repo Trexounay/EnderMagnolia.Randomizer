@@ -18289,6 +18289,13 @@ public:
 static_assert(alignof(UKismetSystemLibrary) == 0x000008, "Wrong alignment on UKismetSystemLibrary");
 static_assert(sizeof(UKismetSystemLibrary) == 0x000028, "Wrong size on UKismetSystemLibrary");
 
+template<typename UEType>
+UEType* TSoftObjectPtr<UEType>::LoadBlocking() const
+{
+	auto asObject = static_cast<TSoftObjectPtr<class UObject>>(*this);
+	return static_cast<UEType*>(UKismetSystemLibrary::LoadAsset_Blocking(asObject));
+}
+
 // Class Engine.MaterialExpressionSubstrateUI
 // 0x0050 (0x0100 - 0x00B0)
 class UMaterialExpressionSubstrateUI final : public UMaterialExpressionSubstrateBSDF

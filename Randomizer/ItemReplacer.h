@@ -3,6 +3,7 @@
 #include <string>
 #include <list>
 #include <functional>
+#include <unordered_map>
 #include "GameManager.h"
 #include "SDK.hpp"
 
@@ -20,13 +21,14 @@ public:
 	static std::string EventLocationId(SDK::UEventAsset* asset, int index = 0);
 	static std::string ShopLocationId(SDK::UDataTable* table, const SDK::FName& rowName, int index);
 	static std::vector<std::string> ShopLocationsFor(const SDK::FDataTableRowHandle& item);
+	static SDK::int32 CurrencyCount(const std::string& itemName);
 
 private:
 	GameManager* GM;
 	bool shop_replaced = false;
+	std::unordered_map<std::string, SDK::FShopItemData> vanilla_shop;
 
 	static SDK::UDataTable* ShopTable();
-	static SDK::int32 CurrencyCount(const std::string& itemName);
 	bool SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count = nullptr) const;
 	std::list<std::function<bool()>> delayed_replacement;
 

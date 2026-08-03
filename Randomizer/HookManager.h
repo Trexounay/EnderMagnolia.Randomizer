@@ -36,6 +36,7 @@ private:
 	using FFinishActionFn = void(*)(SDK::UEventAction*);
 	using FNotifyGameEndingFn = void(*)(SDK::AGameModeZion*, SDK::EGameEndingType);
 	using FAddShopHistoryFn = void(*)(SDK::UShopInfoComponent*, SDK::EShopType, SDK::FDataTableRowHandle*);
+	using FAddItemFn = bool(*)(SDK::UInventoryComponent*, const SDK::FDataTableRowHandle*, SDK::int32);
 	using FCheckHasItemFn = bool(*)(SDK::UGameplayCondition_HasItem*, SDK::APlayerController*);
 	using FCheckHasClearedEventFn = bool(*)(SDK::UGameplayCondition_HasClearedEvent*, SDK::APlayerController*);
 
@@ -44,6 +45,7 @@ private:
 	static FFinishActionFn oFinishAction;
 	static FNotifyGameEndingFn oNotifyGameEnding;
 	static FAddShopHistoryFn oAddShopHistory;
+	static FAddItemFn oAddItem;
 	static FCheckHasItemFn oCheckHasItem;
 	static FCheckHasClearedEventFn oCheckHasClearedEvent;
 
@@ -52,6 +54,7 @@ private:
 	static void FinishAction_Hook(SDK::UEventAction* self);
 	static void NotifyGameEnding_Hook(SDK::AGameModeZion* self, SDK::EGameEndingType ending);
 	static void AddShopHistory_Hook(SDK::UShopInfoComponent* self, SDK::EShopType shopType, SDK::FDataTableRowHandle* boughtItem);
+	static bool AddItem_Hook(SDK::UInventoryComponent* self, const SDK::FDataTableRowHandle* itemHandle, SDK::int32 count);
 	static bool CheckHasItem_Hook(SDK::UGameplayCondition_HasItem* self, SDK::APlayerController* controller);
 	static bool CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEvent* self, SDK::APlayerController* controller);
 
