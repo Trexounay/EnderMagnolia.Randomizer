@@ -34,6 +34,7 @@ public:
 	bool SetStartingWeapon();
 	bool GrantItem(const std::string& itemName, int count = 1);
 	bool KillPlayer();
+	int ClampChapter();
 
 	bool IsLoading() const;
 	int CurrentSaveSlot() const { return currentSaveSlot; }
@@ -55,6 +56,7 @@ private:
 
 	void ZoneChanged(std::string oldZone, std::string newZone);
 	void ZoneReloaded(std::string zone);
+	void GameLoaded();
 
 	void GrantAllSpirits();
 	void SetSkillCosts();
@@ -63,9 +65,12 @@ private:
 	void CapturePassiveCosts();
 	void ShufflePassiveCosts();
 
+	void ExcludeLeversFromZoneCompletion();
+
 	std::string currentZone;
 	int currentSaveSlot = -1;
 	bool wasLoading = false;
+	bool gameLoaded = false;
 
 	struct PassiveCost { int tier; int cost; };
 	std::unordered_map<std::string, PassiveCost> vanillaPassiveCosts;

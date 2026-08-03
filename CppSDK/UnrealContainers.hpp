@@ -163,6 +163,14 @@ namespace UC
 
 			inline const uint32* GetData() const { return reinterpret_cast<const uint32*>(Data.GetAllocation()); }
 
+			inline void MarkUnallocated(int32 Index)
+			{
+				if (!IsValidIndex(Index) || !GetData())
+					return;
+				auto Words = const_cast<uint32*>(GetData());
+				Words[Index / NumBitsPerDWORD] &= ~(1u << (Index & (NumBitsPerDWORD - 1)));
+			}
+
 			inline bool IsValidIndex(int32 Index) const { return Index >= 0 && Index < NumBits; }
 
 			inline bool IsValid() const { return GetData() && NumBits > 0; }
@@ -502,6 +510,7 @@ namespace UC
 
 	public:
 		const ContainerImpl::FBitArray& GetAllocationFlags() const { return AllocationFlags; }
+		ContainerImpl::FBitArray& GetAllocationFlags() { return AllocationFlags; }
 
 	public:
 		inline       SparseArrayElementType& operator[](int32 Index)       { VerifyIndex(Index); return *reinterpret_cast<SparseArrayElementType*>(&Data.GetUnsafe(Index).ElementData); }
@@ -559,6 +568,7 @@ namespace UC
 
 	public:
 		const ContainerImpl::FBitArray& GetAllocationFlags() const { return Elements.GetAllocationFlags(); }
+		ContainerImpl::FBitArray& GetAllocationFlags() { return Elements.GetAllocationFlags(); }
 
 	public:
 		inline       SetElementType& operator[] (int32 Index)       { return Elements[Index].Value; }

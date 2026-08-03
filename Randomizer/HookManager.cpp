@@ -18,6 +18,7 @@ HookManager::FFinishActionFn HookManager::oFinishAction = nullptr;
 HookManager::FNotifyGameEndingFn HookManager::oNotifyGameEnding = nullptr;
 HookManager::FAddShopHistoryFn HookManager::oAddShopHistory = nullptr;
 HookManager::FAddItemFn HookManager::oAddItem = nullptr;
+HookManager::FIncrementEnvLevelFn HookManager::oIncrementEnvLevel = nullptr;
 
 HookManager::FCheckHasItemFn HookManager::oCheckHasItem = nullptr;
 HookManager::FCheckHasClearedEventFn HookManager::oCheckHasClearedEvent = nullptr;
@@ -37,6 +38,7 @@ namespace
 	constexpr uintptr_t kOff_NotifyGameEnding      = 0x4777300;
 	constexpr uintptr_t kOff_AddShopHistory        = 0x4731DE0;
 	constexpr uintptr_t kOff_AddItem               = 0x4731D20;
+	constexpr uintptr_t kOff_IncrementEnvLevel     = 0x4770AA0;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 }
@@ -99,6 +101,7 @@ bool HookManager::Init()
 	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook, reinterpret_cast<void**>(&oNotifyGameEnding));
 	HookAt(kOff_AddShopHistory, &AddShopHistory_Hook, reinterpret_cast<void**>(&oAddShopHistory));
 	HookAt(kOff_AddItem, &AddItem_Hook, reinterpret_cast<void**>(&oAddItem));
+	HookAt(kOff_IncrementEnvLevel, &IncrementEnvLevel_Hook, reinterpret_cast<void**>(&oIncrementEnvLevel));
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -248,6 +251,12 @@ bool HookManager::AddItem_Hook(SDK::UInventoryComponent* self, const SDK::FDataT
 		added = oAddItem(self, &row.value(), 1) || added;
 	}
 	return added;
+}
+
+SDK::int32 HookManager::IncrementEnvLevel_Hook(SDK::AGameModeZion* self)
+{
+	self->EnvironmentLevel++;
+	return GameManager::Instance().ClampChapter();
 }
 
 void HookManager::FinishAction_Hook(SDK::UEventAction* self)

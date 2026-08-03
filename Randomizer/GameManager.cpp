@@ -5,6 +5,7 @@
 #include "ItemReplacer.h"
 #include "CustomItemRegistry.h"
 #include "DebugTeleporter.h"
+#include "HookProbe.h"
 #include "SDK.hpp"
 #include <algorithm>
 #include <map>
@@ -50,6 +51,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	Logger::Log(this, "Game Started slot", slot, "newGame", (int)isNewGame);
 	currentZone.clear();
 	start_weapon = false;
+	gameLoaded = false;
 	CustomItemRegistry::Instance().ResetItems();
 	for (const RandomizerItemDef* def : RandomizerItems::All)
 		CustomItemRegistry::Instance().CreateItem(*def);
@@ -282,6 +284,7 @@ void GameManager::OnItemSourceChanged()
 
 	Logger::Log(this, "item source changed, shop will be replaced again");
 	ShufflePassiveCosts();
+	ClampChapter();
 	itemReplacer->ResetShopItems();
 	if (!currentZone.empty() && !IsLoading())
 		itemReplacer->ZoneChanged(currentZone, currentZone);
@@ -310,9 +313,84 @@ void GameManager::ZoneChanged(std::string oldZone, std::string newZone)
 	this->currentZone = newZone;
 	Logger::Log(this, "Zone Changed", oldZone, "->", newZone);
 	if (!newZone.empty())
+	{
+		if (!gameLoaded)
+		{
+			gameLoaded = true;
+			GameLoaded();
+		}
 		itemReplacer->ZoneChanged(oldZone, newZone);
+	}
 	else
 		itemReplacer->ZoneUnloaded();
+}
+
+void GameManager::GameLoaded()
+{
+	ClampChapter();
+	ExcludeLeversFromZoneCompletion();
+}
+
+void GameManager::ExcludeLeversFromZoneCompletion()
+{
+	auto table = GameTables::GameMaps();
+	if (!table)
+		return;
+
+	auto doorClass = SDK::ABP_Interactable_Door_C::StaticClass();
+	if (!doorClass)
+		return;
+
+	std::string prefix = doorClass->Name.ToString();
+	if (prefix.size() > 2 && prefix.compare(prefix.size() - 2, 2, "_C") == 0)
+		prefix.resize(prefix.size() - 2);
+
+	int removed = 0;
+	for (auto it = begin(table->RowMap); it != end(table->RowMap); ++it)
+	{
+		auto row = reinterpret_cast<SDK::FGameMapData*>(it->Value());
+		auto& zones = row->MapAreaZoneData.ClearablesPerZones;
+
+		for (int z = 0; z < zones.NumAllocated(); ++z)
+		{
+			if (!zones.IsValidIndex(z))
+				continue;
+
+			auto& clearables = zones[z].Second.Set;
+			auto& flags = clearables.GetAllocationFlags();
+			for (int c = 0; c < clearables.NumAllocated(); ++c)
+			{
+				if (!clearables.IsValidIndex(c))
+					continue;
+				if (std::string(clearables[c].GetRawString()).rfind(prefix, 0) != 0)
+					continue;
+				flags.MarkUnallocated(c);
+				++removed;
+			}
+		}
+	}
+
+	Logger::Log(this, "levers excluded from zone completion:", removed);
+}
+
+int GameManager::ClampChapter()
+{
+	auto world = World();
+	auto mode = world ? (SDK::AGameModeZion*)world->AuthorityGameMode : nullptr;
+	if (!mode || !mode->IsA(SDK::AGameModeZion::StaticClass()))
+		return 0;
+
+	int min = Configuration::Instance().Option("min_chapter", 0);
+	int max = Configuration::Instance().Option("max_chapter", 16);
+	int level = mode->EnvironmentLevel;
+	int clamped = level < min ? min : (level > max ? max : level);
+
+	if (clamped != level)
+	{
+		mode->EnvironmentLevel = clamped;
+		Logger::Log(this, "chapter clamped", level, "->", clamped, "range", min, max);
+	}
+	return clamped;
 }
 
 void GameManager::ZoneReloaded(std::string zone)
