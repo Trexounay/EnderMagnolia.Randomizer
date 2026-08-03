@@ -40,6 +40,7 @@ private:
 	using FIncrementEnvLevelFn = SDK::int32(*)(SDK::AGameModeZion*);
 	using FCheckHasItemFn = bool(*)(SDK::UGameplayCondition_HasItem*, SDK::APlayerController*);
 	using FCheckHasClearedEventFn = bool(*)(SDK::UGameplayCondition_HasClearedEvent*, SDK::APlayerController*);
+	using FResetRespawnDefaultsFn = void(*)(SDK::APlayerControllerZion*);
 
 	static FEventFinishedFn oTriggerEventFinished;
 	static FMarkClearedFn oMarkAsCleared;
@@ -50,6 +51,7 @@ private:
 	static FIncrementEnvLevelFn oIncrementEnvLevel;
 	static FCheckHasItemFn oCheckHasItem;
 	static FCheckHasClearedEventFn oCheckHasClearedEvent;
+	static FResetRespawnDefaultsFn oResetRespawnDefaults;
 
 	static void TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result);
 	static void MarkAsCleared_Hook(SDK::UClearComponent* self);
@@ -60,6 +62,7 @@ private:
 	static SDK::int32 IncrementEnvLevel_Hook(SDK::AGameModeZion* self);
 	static bool CheckHasItem_Hook(SDK::UGameplayCondition_HasItem* self, SDK::APlayerController* controller);
 	static bool CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEvent* self, SDK::APlayerController* controller);
+	static void ResetRespawnDefaults_Hook(SDK::APlayerControllerZion* self);
 
 	bool HookConditionSlot(const char* name, SDK::UObject* cdo, void* hook, void** original);
 

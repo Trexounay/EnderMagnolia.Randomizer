@@ -19,6 +19,7 @@ public:
 	void UseArchipelago();
 
 	std::optional<std::string> ScoutLocation(const std::string& location);
+	std::optional<std::string> StartingRestPoint();
 	std::optional<std::string> Seed() const;
 	int Option(const std::string& name, int fallback = 0) const;
 	void ReportCheck(const std::string& location);

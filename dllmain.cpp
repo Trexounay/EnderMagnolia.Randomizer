@@ -10,6 +10,7 @@
 #include "Randomizer/GameManager.h"
 #include "Randomizer/Logger.h"
 #include "Randomizer/Configuration.h"
+#include "Randomizer/UpdateChecker.h"
 
 #include "Randomizer/GUI.h"
 
@@ -30,6 +31,7 @@ DWORD APIENTRY MainThread(HMODULE Module)
 
 	GameManager::Instance().Init();
 	Configuration::Instance().Init(dllPath);
+	UpdateChecker::CheckAsync();
 	GUI::Instance().Init();
 
 	FreeLibraryAndExitThread(Module, 0);

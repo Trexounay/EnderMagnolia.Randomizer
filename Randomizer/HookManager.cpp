@@ -22,6 +22,7 @@ HookManager::FIncrementEnvLevelFn HookManager::oIncrementEnvLevel = nullptr;
 
 HookManager::FCheckHasItemFn HookManager::oCheckHasItem = nullptr;
 HookManager::FCheckHasClearedEventFn HookManager::oCheckHasClearedEvent = nullptr;
+HookManager::FResetRespawnDefaultsFn HookManager::oResetRespawnDefaults = nullptr;
 
 HookManager::FProcessEventFuncPtr HookManager::oProcessEvent = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSetLaunchGameIntent = nullptr;
@@ -39,6 +40,7 @@ namespace
 	constexpr uintptr_t kOff_AddShopHistory        = 0x4731DE0;
 	constexpr uintptr_t kOff_AddItem               = 0x4731D20;
 	constexpr uintptr_t kOff_IncrementEnvLevel     = 0x4770AA0;
+	constexpr uintptr_t kOff_ResetRespawnDefaults  = 0x46B35C0;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 }
@@ -102,6 +104,7 @@ bool HookManager::Init()
 	HookAt(kOff_AddShopHistory, &AddShopHistory_Hook, reinterpret_cast<void**>(&oAddShopHistory));
 	HookAt(kOff_AddItem, &AddItem_Hook, reinterpret_cast<void**>(&oAddItem));
 	HookAt(kOff_IncrementEnvLevel, &IncrementEnvLevel_Hook, reinterpret_cast<void**>(&oIncrementEnvLevel));
+	HookAt(kOff_ResetRespawnDefaults, &ResetRespawnDefaults_Hook, reinterpret_cast<void**>(&oResetRespawnDefaults));
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -202,16 +205,13 @@ void HookManager::TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEve
 
 void HookManager::MarkAsCleared_Hook(SDK::UClearComponent* self)
 {
-	if (self)
-	{
-		SDK::AActor* owner = self->GetOwner();
-		auto boss = owner ? owner->Cast<SDK::ABP_BossSpawner_C>() : nullptr;
-		auto defeatEvent = boss ? boss->LoadedDefeatEvent : nullptr;
-		if (defeatEvent)
-			GameManager::Instance().OnEventFinished(defeatEvent);
-		else
-			GameManager::Instance().OnActorCleared(owner);
-	}
+	SDK::AActor* owner = self->GetOwner();
+	auto boss = owner ? owner->Cast<SDK::ABP_BossSpawner_C>() : nullptr;
+	auto defeatEvent = boss ? boss->LoadedDefeatEvent : nullptr;
+	if (defeatEvent)
+		GameManager::Instance().OnEventFinished(defeatEvent);
+	else
+		GameManager::Instance().OnActorCleared(owner);
 	oMarkAsCleared(self);
 }
 
@@ -259,6 +259,13 @@ SDK::int32 HookManager::IncrementEnvLevel_Hook(SDK::AGameModeZion* self)
 	return GameManager::Instance().ClampChapter();
 }
 
+void HookManager::ResetRespawnDefaults_Hook(SDK::APlayerControllerZion* self)
+{
+	if (auto restPoint = Configuration::Instance().StartingRestPoint())
+		self->DefaultRespawnRestPointData.RowName = SDK::FName::FromString(restPoint.value());
+	oResetRespawnDefaults(self);
+}
+
 void HookManager::FinishAction_Hook(SDK::UEventAction* self)
 {
 	if (self && self->Class)
@@ -280,7 +287,7 @@ void HookManager::FinishAction_Hook(SDK::UEventAction* self)
 
 bool HookManager::CheckHasItem_Hook(SDK::UGameplayCondition_HasItem* self, SDK::APlayerController* controller)
 {
-	if (self && self->bInvertCondition)
+	if (self->bInvertCondition)
 		return false;
 	return oCheckHasItem(self, controller);
 }

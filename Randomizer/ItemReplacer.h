@@ -50,5 +50,6 @@ private:
 	bool ReplaceShopItems();
 	void ReplaceEventAsset(const std::string& actorName, SDK::UEventAsset* asset);
 	void DisableAutoEquip(SDK::UEventAsset* asset);
-	void WaitForEventAsset(SDK::AActor* owner, SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action, SDK::TSoftObjectPtr<SDK::UEventAsset> *softptr);
+	void WaitForEventAsset(SDK::AActor* owner, SDK::TSoftObjectPtr<SDK::UEventAsset>* softptr);
+	void WaitForLoadedEventAsset(SDK::AActor* owner, SDK::UEventAsset** asset);
 };

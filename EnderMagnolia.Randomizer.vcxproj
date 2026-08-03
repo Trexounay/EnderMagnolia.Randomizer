@@ -159,6 +159,7 @@
     <ClInclude Include="Randomizer\IItemSource.h" />
     <ClInclude Include="Randomizer\OfflineSource.h" />
     <ClInclude Include="Randomizer\ArchipelagoSource.h" />
+    <ClInclude Include="Randomizer\UpdateChecker.h" />
     <ClInclude Include="Randomizer\VTableTools.h" />
     <ClInclude Include="CppSDK\SDK.hpp" />
     <ClInclude Include="CppSDK\SDK\Basic.hpp" />
@@ -200,6 +201,7 @@
     <ClCompile Include="Randomizer\CustomItemRegistry.cpp" />
     <ClCompile Include="Randomizer\OfflineSource.cpp" />
     <ClCompile Include="Randomizer\ArchipelagoSource.cpp" />
+    <ClCompile Include="Randomizer\UpdateChecker.cpp" />
     <ClCompile Include="Randomizer\VTableTools.cpp" />
     <ClCompile Include="CppSDK\SDK\Basic.cpp" />
     <ClCompile Include="dllmain.cpp" />

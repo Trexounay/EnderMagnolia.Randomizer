@@ -49,21 +49,13 @@ void ItemReplacer::ReplaceInteractableEvents()
 	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::AInteractable_Event::StaticClass(), &out);
 	for (auto actor : out)
 	{
-		auto actorName = actor->GetName();
 		if (auto npc = actor->Cast<SDK::AInteractable_EventNPC>())
 		{
-			for (auto data : npc->NPCDataList)
-			{
-				if (auto event = data.EventAsset.LoadBlocking())
-					ReplaceEventAsset(actorName, event);
-			}
+			for (int i = 0; i < npc->NPCDataList.Num(); ++i)
+				WaitForEventAsset(actor, &npc->NPCDataList[i].EventAsset);
 		}
 		auto trigger = static_cast<SDK::AInteractable_Event*>(actor);
-		WaitForEventAsset(actor, &trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
-			{
-				ReplaceEventAsset(actorName, asset);
-			}, &trigger->EventAsset
-		);
+		WaitForEventAsset(actor, &trigger->EventAsset);
 	}
 }
 
@@ -73,9 +65,8 @@ void ItemReplacer::ReplaceBossEvents()
 	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_BossSpawner_C::StaticClass(), &out);
 	for (auto actor : out)
 	{
-		auto trigger = static_cast<SDK::ABP_BossSpawner_C*>(actor);
-		if (auto event = trigger->DefeatEvent.LoadBlocking())
-			ReplaceEventAsset(actor->GetName(), event);
+		auto boss = static_cast<SDK::ABP_BossSpawner_C*>(actor);
+		WaitForEventAsset(actor, &boss->DefeatEvent);
 	}
 }
 
@@ -85,41 +76,47 @@ void ItemReplacer::ReplaceTriggerEvents()
 	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ATrigger_Event::StaticClass(), &out);
 	for (auto actor : out)
 	{
-		auto actorName = actor->GetName();
 		auto trigger = static_cast<SDK::ATrigger_Event*>(actor);
 
-		for (auto data : trigger->EventDataList)
-			ReplaceEventAsset(actorName, data.EventAsset.LoadBlocking());
+		for (int i = 0; i < trigger->EventDataList.Num(); ++i)
+			WaitForEventAsset(actor, &trigger->EventDataList[i].EventAsset);
 
-		auto* fallback = trigger->EventDataList.Num() > 0 ? &trigger->EventDataList[0].EventAsset : nullptr;
-		WaitForEventAsset(actor, &trigger->LoadedEventAsset, [this, actorName](SDK::UEventAsset* asset)
-			{
-				ReplaceEventAsset(actorName, asset);
-			}, fallback);
+		if (trigger->EventDataList.Num() == 0)
+			WaitForLoadedEventAsset(actor, &trigger->LoadedEventAsset);
 	}
 }
 
-void ItemReplacer::WaitForEventAsset(SDK::AActor* owner, SDK::UEventAsset** asset, std::function<void(SDK::UEventAsset*)> action, SDK::TSoftObjectPtr<SDK::UEventAsset>* softptr)
+void ItemReplacer::WaitForEventAsset(SDK::AActor* owner, SDK::TSoftObjectPtr<SDK::UEventAsset>* softptr)
 {
-	auto tryResolve = [owner, asset, action, softptr]() -> bool
+	auto actorName = owner->GetName();
+	auto tryResolve = [this, owner, softptr, actorName]() -> bool
 	{
 		if (owner->bActorIsBeingDestroyed)
 			return true;
+		if (softptr->WeakPtr.ObjectIndex == 0)
+			return false;
+		auto event = softptr->LoadBlocking();
+		if (!event)
+			return false;
+		ReplaceEventAsset(actorName, event);
+		return true;
+	};
 
-		if (*asset)
-		{
-			action(*asset);
+	if (!tryResolve())
+		delayed_replacement.push_back(tryResolve);
+}
+
+void ItemReplacer::WaitForLoadedEventAsset(SDK::AActor* owner, SDK::UEventAsset** asset)
+{
+	auto actorName = owner->GetName();
+	auto tryResolve = [this, owner, asset, actorName]() -> bool
+	{
+		if (owner->bActorIsBeingDestroyed)
 			return true;
-		}
-		if (softptr && softptr->WeakPtr.ObjectIndex != 0)
-		{
-			if (auto event = (*softptr).LoadBlocking())
-			{
-				action(event);
-				return true;
-			}
-		}
-		return false;
+		if (!*asset)
+			return false;
+		ReplaceEventAsset(actorName, *asset);
+		return true;
 	};
 
 	if (!tryResolve())

@@ -51,6 +51,11 @@ std::optional<std::string> Configuration::ScoutLocation(const std::string& locat
 	return activeSource->ScoutLocation(location);
 }
 
+std::optional<std::string> Configuration::StartingRestPoint()
+{
+	return ScoutLocation("starting_respite");
+}
+
 std::optional<std::string> Configuration::Seed() const
 {
 	if (!activeSource)
