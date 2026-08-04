@@ -322,7 +322,7 @@ void ArchipelagoSource::LoadIdTable()
 {
 	nameToId.clear();
 	idToName.clear();
-	auto tablePath = Configuration::Instance().DataPath("EnderMagnolia.Randomizer.AP.txt");
+	auto tablePath = Configuration::Instance().DataPath("apids.txt");
 	std::ifstream file(tablePath);
 	if (!file.is_open())
 	{

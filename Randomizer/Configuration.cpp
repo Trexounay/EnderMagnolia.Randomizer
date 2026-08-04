@@ -17,6 +17,8 @@ void Configuration::Init(const std::string& modulePath)
 {
 	auto slash = modulePath.find_last_of("\\/");
 	dataDirectory = slash == std::string::npos ? "" : modulePath.substr(0, slash + 1);
+	dataDirectory += "EnderMagnolia.Randomizer\\";
+	CreateDirectoryA(dataDirectory.c_str(), nullptr);
 	UseOffline();
 }
 
@@ -25,6 +27,15 @@ void Configuration::UseOffline()
 	bool ok = offlineSource.Load();
 	SetSource(&offlineSource);
 	Logger::Log(this, "source: offline, load ok=", (int)ok);
+}
+
+bool Configuration::NewSeed(const std::string& seed)
+{
+	bool ok = offlineSource.NewSeed(seed);
+	Logger::Log(this, "new seed generated ok=", (int)ok);
+	if (ok && activeSource == &offlineSource)
+		GameManager::Instance().OnItemSourceChanged();
+	return ok;
 }
 
 void Configuration::UseArchipelago()
@@ -51,9 +62,16 @@ std::optional<std::string> Configuration::ScoutLocation(const std::string& locat
 	return activeSource->ScoutLocation(location);
 }
 
-std::optional<std::string> Configuration::StartingRestPoint()
+std::optional<SDK::FName> Configuration::StartingRestPoint()
 {
-	return ScoutLocation("starting_respite");
+	int index = Option("starting_respite");
+	if (index <= 0)
+		return std::nullopt;
+
+	auto& rows = GameTables::RestPoints()->RowMap;
+	if (!rows.IsValidIndex(index))
+		return std::nullopt;
+	return rows[index].Key();
 }
 
 std::optional<std::string> Configuration::Seed() const

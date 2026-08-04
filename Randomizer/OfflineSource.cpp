@@ -9,10 +9,59 @@ OfflineSource::OfflineSource(const std::string& path)
 {
 }
 
+std::optional<std::string> OfflineSource::Seed() const
+{
+	if (seedName.empty())
+		return std::nullopt;
+	return seedName;
+}
+
+bool OfflineSource::NewSeed(const std::string& seed)
+{
+	auto& config = Configuration::Instance();
+	std::string exe = config.DataPath("GenerateSeed.exe");
+	std::string workingDir = config.DataPath("");
+
+	STARTUPINFOA startup = {};
+	startup.cb = sizeof(startup);
+	startup.dwFlags = STARTF_USESHOWWINDOW;
+	startup.wShowWindow = SW_HIDE;
+
+	PROCESS_INFORMATION process = {};
+	std::string command = "\"" + exe + "\"";
+	if (!seed.empty())
+		command += " --seed " + seed;
+	if (!CreateProcessA(nullptr, command.data(), nullptr, nullptr, FALSE,
+		CREATE_NO_WINDOW, nullptr, workingDir.c_str(), &startup, &process))
+	{
+		Logger::Log(LogLevel::Error, this, "cannot launch", exe);
+		return false;
+	}
+
+	WaitForSingleObject(process.hProcess, INFINITE);
+
+	DWORD exitCode = 0;
+	GetExitCodeProcess(process.hProcess, &exitCode);
+	CloseHandle(process.hProcess);
+	CloseHandle(process.hThread);
+
+	if (exitCode != 0)
+	{
+		std::ifstream error(config.DataPath("generate_error.txt"));
+		std::string details((std::istreambuf_iterator<char>(error)), std::istreambuf_iterator<char>());
+		Logger::Log(LogLevel::Error, this, "generation failed", details);
+		return false;
+	}
+
+	return Load();
+}
+
 bool OfflineSource::Load()
 {
 	checks_to_items.clear();
 	ap_items.clear();
+	options.clear();
+	seedName.clear();
 	auto fullPath = Configuration::Instance().DataPath(path);
 	std::ifstream file(fullPath);
 	if (!file.is_open())
@@ -45,6 +94,18 @@ bool OfflineSource::Load()
 		trim(location);
 		trim(item);
 
+		if (location == "seed")
+		{
+			seedName = item;
+			continue;
+		}
+
+		if (location.rfind("option.", 0) == 0)
+		{
+			options[location.substr(7)] = std::stoi(item);
+			continue;
+		}
+
 		size_t p1 = item.find('|');
 		if (p1 != std::string::npos)
 		{
@@ -66,7 +127,7 @@ bool OfflineSource::Load()
 			checks_to_items[location] = item;
 		}
 	}
-	Logger::Log(LogLevel::Debug, this, "Found", checks_to_items.size(), "Items", ap_items.size(), "AP");
+	Logger::Log(LogLevel::Debug, this, "Found", checks_to_items.size(), "Items", ap_items.size(), "AP", options.size(), "Options");
 	return true;
 }
 
@@ -89,6 +150,12 @@ std::optional<std::string> OfflineSource::ScoutLocation(const std::string& locat
 
 void OfflineSource::ReportCheck(const std::string& location)
 {
+}
+
+int OfflineSource::Option(const std::string& name, int fallback) const
+{
+	auto it = options.find(name);
+	return it == options.end() ? fallback : it->second;
 }
 
 void OfflineSource::PopulateDataTable()

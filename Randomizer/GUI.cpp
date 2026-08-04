@@ -9,12 +9,16 @@
 
 #include "Randomizer/Logger.h"
 #include "Randomizer/ArchipelagoSource.h"
+#include "Randomizer/Configuration.h"
 
 #ifdef _DEBUG
 #include "Randomizer/DebugMenu.h"
 #endif
 
+#include <shellapi.h>
+
 #include <cstring>
+#include <random>
 #include <string>
 
 namespace
@@ -123,12 +127,24 @@ void GUI::Tick()
 	case PendingAction::Disconnect:
 		ap.Disconnect();
 		break;
+	case PendingAction::NewSeed:
+		if (Configuration::Instance().NewSeed(pendingSeed))
+			Notify("New seed generated");
+		else
+			Notify("Seed generation failed, see generate_error.txt");
+		break;
 	default:
 		break;
 	}
 
 	cachedState.store(ap.GetState());
 	strncpy_s(cachedError, ap.GetError().c_str(), sizeof(cachedError) - 1);
+
+	Configuration& config = Configuration::Instance();
+	cachedOffline.store(config.IsOffline());
+
+	auto seed = config.Offline().Seed();
+	strncpy_s(cachedSeed, seed ? seed.value().c_str() : "", sizeof(cachedSeed) - 1);
 
 #ifdef _DEBUG
 	DebugMenu::Instance().Tick();
@@ -165,6 +181,12 @@ void GUI::Draw()
 		break;
 	}
 
+	if (localTabActive)
+	{
+		statusText = cachedSeed[0] ? cachedSeed : "no seed";
+		statusColor = cachedOffline.load() ? kColorConnected : kColorDisconnected;
+	}
+
 	ImVec4 titleColor(statusColor.x * 0.6f, statusColor.y * 0.6f, statusColor.z * 0.6f, 1.0f);
 	ImGui::PushStyleColor(ImGuiCol_TitleBg, titleColor);
 	ImGui::PushStyleColor(ImGuiCol_TitleBgActive, statusColor);
@@ -173,9 +195,41 @@ void GUI::Draw()
 	std::string title = std::string("Ender Magnolia Randomizer - ") + statusText + "###rando";
 	ImGui::Begin(title.c_str());
 
+	if (ImGui::BeginTabBar("##modes"))
+	{
+		if (ImGui::BeginTabItem("Local"))
+		{
+			localTabActive = true;
+			DrawLocal();
+			ImGui::EndTabItem();
+		}
+		if (ImGui::BeginTabItem("Archipelago"))
+		{
+			localTabActive = false;
+			DrawArchipelago(apState);
+			ImGui::EndTabItem();
+		}
+		ImGui::EndTabBar();
+	}
+
+	ImGui::End();
+
+	ImGui::PopStyleColor(3);
+
+#ifdef _DEBUG
+	DebugMenu::Instance().Draw();
+#endif
+
+	DrawNotifications();
+}
+
+void GUI::DrawArchipelago(APState apState)
+{
 	bool connected = (apState == APState::Connected || apState == APState::Connecting ||
 		apState == APState::Reconnecting);
 	float fieldWidth = 220.0f;
+
+	ImGui::SeparatorText("Server");
 
 	ImGui::BeginDisabled(connected);
 
@@ -191,7 +245,6 @@ void GUI::Draw()
 	ImGui::SameLine();
 	ImGui::SetNextItemWidth(fieldWidth);
 	ImGui::InputText("##pass", pass, sizeof(pass), ImGuiInputTextFlags_Password);
-	ImGui::Checkbox("DeathLink", &deathLink);
 
 	ImGui::EndDisabled();
 
@@ -213,22 +266,54 @@ void GUI::Draw()
 		}
 	}
 
+	ImGui::SeparatorText("Options");
+
+	ImGui::BeginDisabled(connected);
+	ImGui::Checkbox("DeathLink", &deathLink);
+	ImGui::EndDisabled();
+
 	if (apState == APState::Error && cachedError[0])
 	{
 		ImGui::PushStyleColor(ImGuiCol_Text, kColorError);
 		ImGui::TextWrapped("%s", cachedError);
 		ImGui::PopStyleColor();
 	}
+}
 
-	ImGui::End();
+void GUI::DrawLocal()
+{
+	if (!seedEdited && strcmp(seedInput, cachedSeed) != 0)
+		strncpy_s(seedInput, cachedSeed, sizeof(seedInput) - 1);
 
-	ImGui::PopStyleColor(3);
+	ImGui::SeparatorText("Generation");
 
-#ifdef _DEBUG
-	DebugMenu::Instance().Draw();
-#endif
+	ImGui::Text("Seed");
+	ImGui::SameLine();
+	ImGui::SetNextItemWidth(220.0f);
+	if (ImGui::InputText("##seed", seedInput, sizeof(seedInput), ImGuiInputTextFlags_CharsDecimal))
+		seedEdited = true;
 
-	DrawNotifications();
+	if (ImGui::Button(seedEdited ? "Generate" : "Roll"))
+	{
+		if (seedEdited)
+			strncpy_s(pendingSeed, seedInput, sizeof(pendingSeed) - 1);
+		else
+		{
+			std::random_device device;
+			std::uniform_int_distribution<unsigned long long> range(1, 999999999999ull);
+			sprintf_s(pendingSeed, "%llu", range(device));
+		}
+		seedEdited = false;
+		pending.store(PendingAction::NewSeed);
+	}
+
+	ImGui::SeparatorText("Options");
+
+	if (ImGui::Button("Edit yaml"))
+	{
+		std::string args = "/select,\"" + Configuration::Instance().DataPath("player.yaml") + "\"";
+		ShellExecuteA(nullptr, "open", "explorer.exe", args.c_str(), nullptr, SW_SHOWNORMAL);
+	}
 }
 
 void GUI::Notify(const std::string& text)

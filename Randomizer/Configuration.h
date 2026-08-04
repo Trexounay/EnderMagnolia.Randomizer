@@ -2,6 +2,7 @@
 
 #include <string>
 #include <optional>
+#include "SDK.hpp"
 #include "OfflineSource.h"
 #include "ArchipelagoSource.h"
 
@@ -17,10 +18,13 @@ public:
 
 	void UseOffline();
 	void UseArchipelago();
+	bool NewSeed(const std::string& seed);
 
 	std::optional<std::string> ScoutLocation(const std::string& location);
-	std::optional<std::string> StartingRestPoint();
+	std::optional<SDK::FName> StartingRestPoint();
 	std::optional<std::string> Seed() const;
+	bool IsOffline() const { return activeSource == &offlineSource; }
+	const OfflineSource& Offline() const { return offlineSource; }
 	int Option(const std::string& name, int fallback = 0) const;
 	void ReportCheck(const std::string& location);
 	void OnGameStart(bool isNewGame);
