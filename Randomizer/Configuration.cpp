@@ -61,7 +61,7 @@ std::optional<std::string> Configuration::ScoutLocation(const std::string& locat
 		return std::nullopt;
 	return activeSource->ScoutLocation(location);
 }
-
+ 
 std::optional<SDK::FName> Configuration::StartingRestPoint()
 {
 	int index = Option("starting_respite");

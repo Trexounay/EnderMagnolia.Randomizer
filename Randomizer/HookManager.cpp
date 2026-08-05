@@ -82,11 +82,6 @@ bool HookManager::Init()
 	if (!oEngineTick)
 		Logger::Log(LogLevel::Error, this, "Failed to hook engine tick");
 
-#if ENABLE_HOOK_PROBE
-	HookProcessEvent(&HookManager::ProcessEvent_Hook);
-	HookProbe::InstallNativeHooks();
-#endif
-
 	//HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetLaunchGameIntent_Hook), reinterpret_cast<void**>(&oSetLaunchGameIntent));
 
 	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlot", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameSync_Hook), reinterpret_cast<void**>(&oSaveGameSync));

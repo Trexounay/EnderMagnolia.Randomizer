@@ -1689,6 +1689,7 @@ public:
 	bool K2_SetActorRotation(const struct FRotator& NewRotation, bool bTeleportPhysics);
 	bool K2_SetActorTransform(const struct FTransform& NewTransform, bool bSweep, struct FHitResult* SweepHitResult, bool bTeleport);
 	bool K2_TeleportTo(const struct FVector& DestLocation, const struct FRotator& DestRotation);
+	bool SetLocation(const struct FVector& NewLocation);
 	void MakeNoise(float Loudness, class APawn* NoiseInstigator, const struct FVector& NoiseLocation, float MaxRange, class FName Tag);
 	void OnRep_AttachmentReplication();
 	void OnRep_Instigator();
@@ -12707,6 +12708,9 @@ public:
 
 public:
 	static class UWorld* GetWorld();
+
+	class AActor* SpawnActor(class UClass* Class, const struct FTransform& Transform, const struct FActorSpawnParameters& SpawnParameters);
+	class AActor* SpawnActorAbsolute(class UClass* Class, const struct FTransform& AbsoluteTransform, const struct FActorSpawnParameters& SpawnParameters);
 
 	void HandleTimelineScrubbed();
 	class AWorldSettings* K2_GetWorldSettings();

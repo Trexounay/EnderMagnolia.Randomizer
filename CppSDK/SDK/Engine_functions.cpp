@@ -13089,6 +13089,14 @@ bool AActor::K2_TeleportTo(const struct FVector& DestLocation, const struct FRot
 }
 
 
+bool AActor::SetLocation(const struct FVector& NewLocation)
+{
+	struct FHitResult SweepHitResult{};
+
+	return K2_SetActorLocation(NewLocation, false, &SweepHitResult, true);
+}
+
+
 // Function Engine.Actor.MakeNoise
 // (Final, RequiredAPI, BlueprintAuthorityOnly, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
@@ -36625,6 +36633,27 @@ class UWorld* UWorld::GetWorld()
 	}
 
 	return nullptr;
+}
+
+
+class AActor* UWorld::SpawnActor(class UClass* Class, const struct FTransform& Transform, const struct FActorSpawnParameters& SpawnParameters)
+{
+	return InSDKUtils::CallGameFunction(
+		reinterpret_cast<class AActor* (*)(class UWorld*, class UClass*, const struct FTransform*, const struct FActorSpawnParameters*)>(
+			InSDKUtils::GetImageBase() + Offsets::SpawnActor),
+		this, Class, &Transform, &SpawnParameters);
+}
+
+
+class AActor* UWorld::SpawnActorAbsolute(class UClass* Class, const struct FTransform& AbsoluteTransform, const struct FActorSpawnParameters& SpawnParameters)
+{
+	struct FTransform NewTransform = AbsoluteTransform;
+	class USceneComponent* TemplateRootComponent = SpawnParameters.Template ? SpawnParameters.Template->RootComponent : nullptr;
+
+	if (TemplateRootComponent)
+		NewTransform = UKismetMathLibrary::ComposeTransforms(UKismetMathLibrary::InvertTransform(TemplateRootComponent->K2_GetComponentToWorld()), AbsoluteTransform);
+
+	return SpawnActor(Class, NewTransform, SpawnParameters);
 }
 
 
