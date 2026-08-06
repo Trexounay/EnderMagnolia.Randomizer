@@ -41,6 +41,8 @@ private:
 	using FCheckHasItemFn = bool(*)(SDK::UGameplayCondition_HasItem*, SDK::APlayerController*);
 	using FCheckHasClearedEventFn = bool(*)(SDK::UGameplayCondition_HasClearedEvent*, SDK::APlayerController*);
 	using FResetRespawnDefaultsFn = void(*)(SDK::APlayerControllerZion*);
+	using FEventPredicateFn = bool(*)(SDK::UUserWidgetEvent*);
+	using FAutoSkipSettingFn = bool(*)(SDK::UGameSettingsSubsystem*);
 
 	static FEventFinishedFn oTriggerEventFinished;
 	static FMarkClearedFn oMarkAsCleared;
@@ -52,6 +54,9 @@ private:
 	static FCheckHasItemFn oCheckHasItem;
 	static FCheckHasClearedEventFn oCheckHasClearedEvent;
 	static FResetRespawnDefaultsFn oResetRespawnDefaults;
+	static FEventPredicateFn oIsEventAlreadySeen;
+	static FEventPredicateFn oCanAutoSkipEvent;
+	static FAutoSkipSettingFn oGetAutoSkipSetting;
 
 	static void TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result);
 	static void MarkAsCleared_Hook(SDK::UClearComponent* self);
@@ -63,6 +68,9 @@ private:
 	static bool CheckHasItem_Hook(SDK::UGameplayCondition_HasItem* self, SDK::APlayerController* controller);
 	static bool CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEvent* self, SDK::APlayerController* controller);
 	static void ResetRespawnDefaults_Hook(SDK::APlayerControllerZion* self);
+	static bool IsEventAlreadySeen_Hook(SDK::UUserWidgetEvent* self);
+	static bool CanAutoSkipEvent_Hook(SDK::UUserWidgetEvent* self);
+	static bool GetAutoSkipSetting_Hook(SDK::UGameSettingsSubsystem* self);
 
 	bool HookConditionSlot(const char* name, SDK::UObject* cdo, void* hook, void** original);
 

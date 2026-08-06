@@ -23,6 +23,9 @@ HookManager::FIncrementEnvLevelFn HookManager::oIncrementEnvLevel = nullptr;
 HookManager::FCheckHasItemFn HookManager::oCheckHasItem = nullptr;
 HookManager::FCheckHasClearedEventFn HookManager::oCheckHasClearedEvent = nullptr;
 HookManager::FResetRespawnDefaultsFn HookManager::oResetRespawnDefaults = nullptr;
+HookManager::FEventPredicateFn HookManager::oIsEventAlreadySeen = nullptr;
+HookManager::FEventPredicateFn HookManager::oCanAutoSkipEvent = nullptr;
+HookManager::FAutoSkipSettingFn HookManager::oGetAutoSkipSetting = nullptr;
 
 HookManager::FProcessEventFuncPtr HookManager::oProcessEvent = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSetLaunchGameIntent = nullptr;
@@ -41,6 +44,9 @@ namespace
 	constexpr uintptr_t kOff_AddItem               = 0x4731D20;
 	constexpr uintptr_t kOff_IncrementEnvLevel     = 0x4770AA0;
 	constexpr uintptr_t kOff_ResetRespawnDefaults  = 0x46B35C0;
+	constexpr uintptr_t kOff_IsEventAlreadySeen    = 0x47BAC60;
+	constexpr uintptr_t kOff_CanAutoSkipEvent      = 0x47B06F0;
+	constexpr uintptr_t kOff_GetAutoSkipSetting    = 0x476DEC0;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 }
@@ -101,9 +107,17 @@ bool HookManager::Init()
 	HookAt(kOff_IncrementEnvLevel, &IncrementEnvLevel_Hook, reinterpret_cast<void**>(&oIncrementEnvLevel));
 	HookAt(kOff_ResetRespawnDefaults, &ResetRespawnDefaults_Hook, reinterpret_cast<void**>(&oResetRespawnDefaults));
 
+	HookAt(kOff_IsEventAlreadySeen, &IsEventAlreadySeen_Hook, reinterpret_cast<void**>(&oIsEventAlreadySeen));
+	HookAt(kOff_CanAutoSkipEvent, &CanAutoSkipEvent_Hook, reinterpret_cast<void**>(&oCanAutoSkipEvent));
+	HookAt(kOff_GetAutoSkipSetting, &GetAutoSkipSetting_Hook, reinterpret_cast<void**>(&oGetAutoSkipSetting));
+
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
 		Logger::Log(LogLevel::Error, this, "MH_ApplyQueued failed:", MH_StatusToString(applied));
+
+#if ENABLE_HOOK_PROBE
+	HookProbe::InstallSkipDiagnostic();
+#endif
 
 	Logger::Log(this, "Init ok");
 	return true;
@@ -333,11 +347,40 @@ bool HookManager::CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEv
 	return oCheckHasClearedEvent(self, controller);
 }
 
+bool HookManager::IsEventAlreadySeen_Hook(SDK::UUserWidgetEvent* self)
+{
+	if (Configuration::Instance().Option("auto_skip_cutscenes") == 0)
+		return oIsEventAlreadySeen(self);
+
+	auto player = self->GetEventPlayer();
+	if (player->EventAsset->GetName() == "EVT_ev_s_0010_Opening")
+		player->SkipEvent();
+	return true;
+}
+
+bool HookManager::CanAutoSkipEvent_Hook(SDK::UUserWidgetEvent* self)
+{
+	if (Configuration::Instance().Option("auto_skip_cutscenes") == 0)
+		return oCanAutoSkipEvent(self);
+	return true;
+}
+
+bool HookManager::GetAutoSkipSetting_Hook(SDK::UGameSettingsSubsystem* self)
+{
+	if (Configuration::Instance().Option("auto_skip_cutscenes") == 0)
+		return oGetAutoSkipSetting(self);
+	return true;
+}
+
 void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)
 {
 	GUI::Instance().Tick();
 	ArchipelagoSource::Instance().Tick();
 	GameManager::Instance().Tick();
+#if ENABLE_HOOK_PROBE
+	HookProbe::TickCutsceneSkip();
+	HookProbe::TickBossSwap();
+#endif
 	oEngineTick(self, dt, idle);
 }
 
