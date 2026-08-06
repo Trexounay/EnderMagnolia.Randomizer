@@ -319,16 +319,13 @@ void GUI::DrawLocal()
 				Notify("Could not create player.yaml, template is missing");
 		}
 
-		std::string args;
-		if (GetFileAttributesA(yaml.c_str()) != INVALID_FILE_ATTRIBUTES)
-			args = "/select,\"" + yaml + "\"";
-		else
+		std::string target = yaml;
+		if (GetFileAttributesA(yaml.c_str()) == INVALID_FILE_ATTRIBUTES)
 		{
-			std::string folder = Configuration::Instance().DataPath("");
-			folder.pop_back();
-			args = "\"" + folder + "\"";
+			target = Configuration::Instance().DataPath("");
+			target.pop_back();
 		}
-		ShellExecuteA(nullptr, "open", "explorer.exe", args.c_str(), nullptr, SW_SHOWNORMAL);
+		ShellExecuteA(nullptr, "open", target.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 	}
 }
 

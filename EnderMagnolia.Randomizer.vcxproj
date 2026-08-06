@@ -21,13 +21,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -73,7 +73,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
-      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/bigobj /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
@@ -105,7 +105,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
-      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/bigobj /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -221,15 +221,11 @@
     <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
     <Import Project="$(VcpkgRootDir)\scripts\buildsystems\msbuild\vcpkg.targets" Condition="Exists('$(VcpkgRootDir)\scripts\buildsystems\msbuild\vcpkg.targets')" />
     <Import Project="packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets" Condition="Exists('packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets')" />
-    <Import Project="packages\boost.1.87.0\build\boost.targets" Condition="Exists('packages\boost.1.87.0\build\boost.targets')" />
-    <Import Project="packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets" Condition="Exists('packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\asio-cppp-latest.1.24.0\build\native\asio-cppp-latest.targets'))" />
-    <Error Condition="!Exists('packages\boost.1.87.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\boost.1.87.0\build\boost.targets'))" />
-    <Error Condition="!Exists('packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\boost_random-vc142.1.87.0\build\boost_random-vc142.targets'))" />
   </Target>
 </Project>
