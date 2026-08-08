@@ -67,6 +67,9 @@ private:
 
 	void ExcludeLeversFromZoneCompletion();
 
+	void DuplicateDoorSwitches(const std::string& zone);
+	void DuplicateDoorSwitch(SDK::ABP_Interactable_Door_Magic_C* original);
+
 	std::string currentZone;
 	int currentSaveSlot = -1;
 	bool wasLoading = false;

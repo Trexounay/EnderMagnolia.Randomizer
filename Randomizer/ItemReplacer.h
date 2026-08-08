@@ -27,6 +27,7 @@ private:
 	GameManager* GM;
 	bool shop_replaced = false;
 	std::unordered_map<std::string, SDK::FShopItemData> vanilla_shop;
+	std::unordered_map<std::string, SDK::UEventAsset*> swapped_assets;
 
 	static SDK::UDataTable* ShopTable();
 	bool SwapAtLocation(std::string locationName, SDK::FDataTableRowHandle& item, SDK::int32* count = nullptr) const;

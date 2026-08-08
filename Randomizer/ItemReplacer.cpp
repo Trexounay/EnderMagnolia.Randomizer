@@ -14,6 +14,7 @@ ItemReplacer::ItemReplacer()
 void ItemReplacer::ZoneChanged(const std::string& oldZone, const std::string& newZone)
 {
 	delayed_replacement.clear();
+	swapped_assets.clear();
 	ReplaceItemActors<SDK::ABP_Interactable_AddItem_C>();
 	ReplaceItemActors<SDK::ABP_Interactable_AddTutorial_C>();
 	ReplaceItemActors<SDK::ABP_Interactable_TreasureBox_C>();
@@ -93,13 +94,10 @@ void ItemReplacer::WaitForEventAsset(SDK::AActor* owner, SDK::TSoftObjectPtr<SDK
 	{
 		if (owner->bActorIsBeingDestroyed)
 			return true;
-		if (softptr->WeakPtr.ObjectIndex == 0)
-			return false;
 		auto event = softptr->LoadBlocking();
-		if (!event)
-			return false;
-		ReplaceEventAsset(actorName, event);
-		return true;
+		if (event)
+			ReplaceEventAsset(actorName, event);
+		return false;
 	};
 
 	if (!tryResolve())
@@ -113,10 +111,9 @@ void ItemReplacer::WaitForLoadedEventAsset(SDK::AActor* owner, SDK::UEventAsset*
 	{
 		if (owner->bActorIsBeingDestroyed)
 			return true;
-		if (!*asset)
-			return false;
-		ReplaceEventAsset(actorName, *asset);
-		return true;
+		if (*asset)
+			ReplaceEventAsset(actorName, *asset);
+		return false;
 	};
 
 	if (!tryResolve())
@@ -127,6 +124,12 @@ void ItemReplacer::ReplaceEventAsset(const std::string& actorName, SDK::UEventAs
 {
 	if (!asset)
 		return;
+
+	auto assetName = asset->GetName();
+	auto seen = swapped_assets.find(assetName);
+	if (seen != swapped_assets.end() && seen->second == asset)
+		return;
+	swapped_assets[assetName] = asset;
 
 	auto items = EnumerateEventItems(asset);
 	for (int i = 0; i < (int)items.size(); ++i)

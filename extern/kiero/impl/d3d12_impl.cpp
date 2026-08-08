@@ -54,6 +54,13 @@ LRESULT CALLBACK hkWindowProc12(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 {
 	if (ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lParam) > 0)
 		return 1L;
+
+	if (ImGui::GetCurrentContext() && ImGui::GetIO().WantTextInput)
+	{
+		if (uMsg == WM_KEYDOWN || uMsg == WM_SYSKEYDOWN || uMsg == WM_CHAR || uMsg == WM_SYSCHAR || uMsg == WM_INPUT)
+			return 1L;
+	}
+
 	return ::CallWindowProcW(oWndProc, hwnd, uMsg, wParam, lParam);
 }
 

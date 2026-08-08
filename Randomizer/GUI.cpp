@@ -192,7 +192,7 @@ void GUI::Draw()
 	ImGui::PushStyleColor(ImGuiCol_TitleBgActive, statusColor);
 	ImGui::PushStyleColor(ImGuiCol_TitleBgCollapsed, titleColor);
 
-	std::string title = std::string("Ender Magnolia Randomizer - ") + statusText + "###rando";
+	std::string title = std::string("Randomizer - ") + statusText + "###rando";
 	ImGui::Begin(title.c_str());
 
 	if (ImGui::BeginTabBar("##modes"))

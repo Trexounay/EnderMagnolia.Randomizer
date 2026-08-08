@@ -10753,6 +10753,25 @@ static_assert(alignof(FAnimTrack) == 0x000008, "Wrong alignment on FAnimTrack");
 static_assert(sizeof(FAnimTrack) == 0x000010, "Wrong size on FAnimTrack");
 static_assert(offsetof(FAnimTrack, AnimSegments) == 0x000000, "Member 'FAnimTrack::AnimSegments' has a wrong offset!");
 
+struct FActorSpawnParameters
+{
+public:
+	class FName                                   Name;
+	class AActor*                                 Template;
+	class AActor*                                 Owner;
+	class APawn*                                  Instigator;
+	class ULevel*                                 OverrideLevel;
+	class UChildActorComponent*                   OverrideParentComponent;
+	ESpawnActorCollisionHandlingMethod            SpawnCollisionHandlingOverride;
+	ESpawnActorScaleMethod                        TransformScaleMethod;
+	uint8                                         Bitfields;
+	uint8                                         NameMode;
+	int32                                         ObjectFlags;
+	uint8                                         Pad_38[0x8];
+	void*                                         CustomPreSpawnInitalization[0x3];
+};
+static_assert(sizeof(FActorSpawnParameters) == 0x000058, "Wrong size on FActorSpawnParameters");
+
 // ScriptStruct Engine.ActorTickFunction
 // 0x0008 (0x0030 - 0x0028)
 struct FActorTickFunction final : public FTickFunction

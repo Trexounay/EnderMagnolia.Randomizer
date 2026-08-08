@@ -25,6 +25,13 @@ namespace UC
 	typedef uint32_t uint32;
 	typedef uint64_t uint64;
 
+	class GameFunctions
+	{
+	public:
+		static inline void* MapFindOrAdd = nullptr;
+		static inline void* SetAdd = nullptr;
+	};
+
 	template<typename ArrayElementType>
 	class TArray;
 
@@ -578,6 +585,16 @@ namespace UC
 		inline bool operator!=(const TSet<SetElementType>& Other) const { return Elements != Other.Elements; }
 
 	public:
+		inline void Add(const SetElementType& Element)
+		{
+			uint32 Hash = Element.GetTypeHash();
+			if (!GameFunctions::SetAdd)
+				SetElementType::InitInternal();
+			reinterpret_cast<void*(*)(void*, uint32*, const SetElementType*, int64)>(
+				GameFunctions::SetAdd)(this, &Hash, &Element, 0);
+		}
+
+	public:
 		template<typename T> friend Iterators::TSetIterator<T> begin(const TSet& Set);
 		template<typename T> friend Iterators::TSetIterator<T> end  (const TSet& Set);
 	};
@@ -617,6 +634,14 @@ namespace UC
 			}
 		
 			return end(*this);
+		}
+
+		inline ValueElementType& FindOrAdd(const KeyElementType& Key)
+		{
+			if (!GameFunctions::MapFindOrAdd)
+				KeyElementType::InitInternal();
+			return *reinterpret_cast<ValueElementType*(*)(void*, uint32, const KeyElementType*)>(
+				GameFunctions::MapFindOrAdd)(this, Key.GetTypeHash(), &Key);
 		}
 
 	public:

@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <map>
 #include <random>
+#include <set>
 #include <vector>
 
 GameManager& GameManager::Instance()
@@ -320,15 +321,85 @@ void GameManager::ZoneChanged(std::string oldZone, std::string newZone)
 			GameLoaded();
 		}
 		itemReplacer->ZoneChanged(oldZone, newZone);
+		if (Configuration::Instance().Option("starting_respite") > 0)
+			DuplicateDoorSwitches(newZone);
 	}
 	else
 		itemReplacer->ZoneUnloaded();
+}
+
+void GameManager::DuplicateDoorSwitches(const std::string& zone)
+{
+	static const std::set<std::string> zones = {
+		"Street_001_Zone_003",
+		"Ruins_001_Zone_010",
+		"Crossroad_001_Zone_004",
+		"Quarry_001_Zone_001",
+	};
+
+	if (zones.find(zone) == zones.end())
+		return;
+
+	SDK::TArray<SDK::AActor*> actors;
+	SDK::UGameplayStatics::GetAllActorsOfClass(World(),
+		SDK::ABP_Interactable_Door_Magic_C::StaticClass(), &actors);
+
+	for (int i = 0; i < actors.Num(); ++i)
+	{
+		auto original = static_cast<SDK::ABP_Interactable_Door_Magic_C*>(actors[i]);
+		if (!original->ClearComponent->IsCleared())
+			DuplicateDoorSwitch(original);
+	}
+}
+
+void GameManager::DuplicateDoorSwitch(SDK::ABP_Interactable_Door_Magic_C* original)
+{
+	auto door = original->Doors.Num() > 0 ? original->Doors[0] : nullptr;
+	if (!door)
+		return;
+
+	auto switchLocation = original->K2_GetActorLocation();
+	auto doorLocation = door->K2_GetActorLocation();
+	SDK::FVector offset{ 0, (switchLocation.Y - doorLocation.Y) / 2, 0 };
+
+	auto doorTarget = doorLocation + offset;
+	auto switchTarget = doorTarget + offset;
+	auto cloneTarget = doorTarget - offset;
+
+	SDK::FActorSpawnParameters parms{
+		.Template = original,
+		.Owner = original,
+		.OverrideLevel = original->GetLevel(),
+		.SpawnCollisionHandlingOverride = SDK::ESpawnActorCollisionHandlingMethod::AlwaysSpawn,
+		.TransformScaleMethod = SDK::ESpawnActorScaleMethod::MultiplyWithRoot,
+		.ObjectFlags = 8,
+	};
+
+	auto transform = original->RootComponent->K2_GetComponentToWorld();
+	transform.Translation = cloneTarget;
+
+	auto clone = static_cast<SDK::ABP_Interactable_Door_Magic_C*>(
+		World()->SpawnActorAbsolute(original->Class, transform, parms));
+	if (!clone)
+		return;
+
+	original->SetLocation(switchTarget);
+	door->SetLocation(doorTarget);
+	clone->SetLocation(cloneTarget);
+
+	auto scale = clone->RootComponent->RelativeScale3D;
+	clone->RootComponent->SetRelativeScale3D(SDK::FVector{ scale.X, -scale.Y, scale.Z });
+
+	clone->ClearComponent->ClearActorData = original->ClearComponent->ClearActorData;
+
+	Logger::Log(this, "duplicated switch", original->GetName(), "->", clone->GetName());
 }
 
 void GameManager::GameLoaded()
 {
 	ClampChapter();
 	ExcludeLeversFromZoneCompletion();
+
 }
 
 void GameManager::ExcludeLeversFromZoneCompletion()

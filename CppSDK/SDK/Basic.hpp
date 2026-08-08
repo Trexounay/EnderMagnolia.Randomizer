@@ -51,6 +51,10 @@ namespace Offsets
 	constexpr int32 QuantizeSizeIdx   = 0x0000000A;
 	constexpr int32 GetAllocSizeIdx   = 0x0000000B;
 	constexpr int32 GetDescNameIdx    = 0x00000015;
+	constexpr int32 FNameHash         = 0x010B13E0;
+	constexpr int32 MapFindOrAdd      = 0x046FB270;
+	constexpr int32 SetAdd            = 0x00F9E0B0;
+	constexpr int32 SpawnActor        = 0x03770670;
 }
 
 namespace InSDKUtils
@@ -364,6 +368,8 @@ public:
 	static void InitInternal()
 	{
 		AppendString = reinterpret_cast<void*>(InSDKUtils::GetImageBase() + Offsets::AppendString);
+		UC::GameFunctions::MapFindOrAdd = reinterpret_cast<void*>(InSDKUtils::GetImageBase() + Offsets::MapFindOrAdd);
+		UC::GameFunctions::SetAdd = reinterpret_cast<void*>(InSDKUtils::GetImageBase() + Offsets::SetAdd);
 	}
 	static void InitManually(void* Location)
 	{
@@ -373,6 +379,12 @@ public:
 	int32 GetDisplayIndex() const
 	{
 		return ComparisonIndex;
+	}
+
+	uint32 GetTypeHash() const
+	{
+		auto Hash = reinterpret_cast<uint32(*)(int32)>(InSDKUtils::GetImageBase() + Offsets::FNameHash);
+		return InSDKUtils::CallGameFunction(Hash, ComparisonIndex) + Number;
 	}
 	
 	std::string GetRawString() const
