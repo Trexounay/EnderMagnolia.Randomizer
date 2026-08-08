@@ -26,6 +26,7 @@ private:
 	void Draw();
 	void DrawArchipelago(APState apState);
 	void DrawLocal();
+	void DrawMisc();
 	void DrawNotifications();
 
 	void ApplySetting(const char* line);
@@ -38,7 +39,7 @@ private:
 	std::mutex notifMutex;
 	std::deque<Notification> notifications;
 
-	enum class PendingAction { None, Connect, Disconnect, NewSeed };
+	enum class PendingAction { None, Connect, Disconnect, NewSeed, GoHome };
 
 	char host[256] = "127.0.0.1";
 	char slot[128] = "Lilac";
@@ -56,8 +57,8 @@ private:
 
 	char seedInput[32] = {};
 	bool seedEdited = false;
-	bool localTabActive = true;
 	char pendingSeed[32] = {};
 	std::atomic<bool> cachedOffline{ true };
 	char cachedSeed[32] = {};
+	std::atomic<bool> cachedInGame{ false };
 };

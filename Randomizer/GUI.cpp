@@ -10,6 +10,7 @@
 #include "Randomizer/Logger.h"
 #include "Randomizer/ArchipelagoSource.h"
 #include "Randomizer/Configuration.h"
+#include "Randomizer/GameManager.h"
 
 #ifdef _DEBUG
 #include "Randomizer/DebugMenu.h"
@@ -133,6 +134,10 @@ void GUI::Tick()
 		else
 			Notify("Seed generation failed, see generate_error.txt");
 		break;
+	case PendingAction::GoHome:
+		if (!GameManager::Instance().GoHome())
+			Notify("Cannot fast travel right now");
+		break;
 	default:
 		break;
 	}
@@ -145,6 +150,8 @@ void GUI::Tick()
 
 	auto seed = config.Offline().Seed();
 	strncpy_s(cachedSeed, seed ? seed.value().c_str() : "", sizeof(cachedSeed) - 1);
+
+	cachedInGame.store(GameManager::Instance().IsInGame());
 
 #ifdef _DEBUG
 	DebugMenu::Instance().Tick();
@@ -181,10 +188,10 @@ void GUI::Draw()
 		break;
 	}
 
-	if (localTabActive)
+	if (cachedOffline.load() && apState == APState::Disconnected)
 	{
 		statusText = cachedSeed[0] ? cachedSeed : "no seed";
-		statusColor = (cachedSeed[0] && cachedOffline.load()) ? kColorConnected : kColorDisconnected;
+		statusColor = cachedSeed[0] ? kColorConnected : kColorDisconnected;
 	}
 
 	ImVec4 titleColor(statusColor.x * 0.6f, statusColor.y * 0.6f, statusColor.z * 0.6f, 1.0f);
@@ -199,14 +206,17 @@ void GUI::Draw()
 	{
 		if (ImGui::BeginTabItem("Local"))
 		{
-			localTabActive = true;
 			DrawLocal();
 			ImGui::EndTabItem();
 		}
 		if (ImGui::BeginTabItem("Archipelago"))
 		{
-			localTabActive = false;
 			DrawArchipelago(apState);
+			ImGui::EndTabItem();
+		}
+		if (ImGui::BeginTabItem("Misc"))
+		{
+			DrawMisc();
 			ImGui::EndTabItem();
 		}
 		ImGui::EndTabBar();
@@ -327,6 +337,16 @@ void GUI::DrawLocal()
 		}
 		ShellExecuteA(nullptr, "open", target.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 	}
+}
+
+void GUI::DrawMisc()
+{
+	ImGui::SeparatorText("Helpers");
+
+	ImGui::BeginDisabled(!cachedInGame.load());
+	if (ImGui::Button("Go Home"))
+		pending.store(PendingAction::GoHome);
+	ImGui::EndDisabled();
 }
 
 void GUI::Notify(const std::string& text)

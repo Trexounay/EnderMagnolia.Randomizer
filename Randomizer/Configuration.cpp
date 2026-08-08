@@ -31,6 +31,10 @@ void Configuration::UseOffline()
 
 bool Configuration::NewSeed(const std::string& seed)
 {
+	APState apState = ArchipelagoSource::Instance().GetState();
+	if (apState == APState::Error || apState == APState::Reconnecting)
+		ArchipelagoSource::Instance().Disconnect();
+
 	bool ok = offlineSource.NewSeed(seed);
 	Logger::Log(this, "new seed generated ok=", (int)ok);
 	if (ok && activeSource == &offlineSource)

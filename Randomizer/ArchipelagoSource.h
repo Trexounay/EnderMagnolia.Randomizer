@@ -5,6 +5,7 @@
 #include <memory>
 #include <vector>
 #include <map>
+#include <set>
 #include <unordered_map>
 #include <optional>
 #include "apclient.hpp"
@@ -90,6 +91,7 @@ private:
 	void DeliverRemoteDeath();
 
 	std::string IndexKey() const;
+	void FlushQueuedChecks();
 	void LoadIndex();
 	void RequeueItems();
 	void QueueItem(const APClient::NetworkItem& item);
@@ -120,6 +122,8 @@ private:
 
 	int apItemIndex = 0;
 	std::unordered_map<std::string, std::string> location_to_item;
+
+	std::map<std::string, std::set<int64_t>> queuedChecks;
 
 	bool deathLinkEnabled = false;
 	double deathLinkEpoch = 0;

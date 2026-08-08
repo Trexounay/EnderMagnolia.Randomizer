@@ -109,6 +109,7 @@ void ArchipelagoSource::OnSlotConnected(const nlohmann::json& json)
 	ReadSlotData(json);
 	scouts.clear();
 	ScoutAll();
+	FlushQueuedChecks();
 	Configuration::Instance().UseArchipelago();
 	if (GameManager::Instance().CurrentSaveSlot() >= 0 && !GameManager::Instance().IsLoading())
 		LoadIndex();
@@ -411,8 +412,26 @@ void ArchipelagoSource::ReportCheck(const std::string& location)
 		Logger::Log(LogLevel::Warning, "AP", "check: unknown location", location);
 		return;
 	}
+	if (!ap)
+	{
+		queuedChecks[seedName].insert(it->second);
+		Logger::Log("AP", "check queued, no connection", location, it->second);
+		return;
+	}
+
 	Logger::Log("AP", "check", location, it->second);
 	ap->LocationChecks({ it->second });
+}
+
+void ArchipelagoSource::FlushQueuedChecks()
+{
+	auto queued = queuedChecks.find(seedName);
+	if (queued == queuedChecks.end())
+		return;
+
+	Logger::Log("AP", "sending", queued->second.size(), "queued checks for seed", seedName);
+	ap->LocationChecks(std::list<int64_t>(queued->second.begin(), queued->second.end()));
+	queuedChecks.erase(queued);
 }
 
 void ArchipelagoSource::OnShopPurchase(const SDK::FDataTableRowHandle& boughtItem)
