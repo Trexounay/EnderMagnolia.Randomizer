@@ -184,7 +184,7 @@ void GUI::Draw()
 	if (localTabActive)
 	{
 		statusText = cachedSeed[0] ? cachedSeed : "no seed";
-		statusColor = cachedOffline.load() ? kColorConnected : kColorDisconnected;
+		statusColor = (cachedSeed[0] && cachedOffline.load()) ? kColorConnected : kColorDisconnected;
 	}
 
 	ImVec4 titleColor(statusColor.x * 0.6f, statusColor.y * 0.6f, statusColor.z * 0.6f, 1.0f);
@@ -311,7 +311,23 @@ void GUI::DrawLocal()
 
 	if (ImGui::Button("Edit yaml"))
 	{
-		std::string args = "/select,\"" + Configuration::Instance().DataPath("player.yaml") + "\"";
+		std::string yaml = Configuration::Instance().DataPath("player.yaml");
+		if (GetFileAttributesA(yaml.c_str()) == INVALID_FILE_ATTRIBUTES)
+		{
+			std::string source = Configuration::Instance().DataPath("templates\\Ender Magnolia.yaml");
+			if (!CopyFileA(source.c_str(), yaml.c_str(), TRUE))
+				Notify("Could not create player.yaml, template is missing");
+		}
+
+		std::string args;
+		if (GetFileAttributesA(yaml.c_str()) != INVALID_FILE_ATTRIBUTES)
+			args = "/select,\"" + yaml + "\"";
+		else
+		{
+			std::string folder = Configuration::Instance().DataPath("");
+			folder.pop_back();
+			args = "\"" + folder + "\"";
+		}
 		ShellExecuteA(nullptr, "open", "explorer.exe", args.c_str(), nullptr, SW_SHOWNORMAL);
 	}
 }
