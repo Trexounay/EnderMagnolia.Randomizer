@@ -160,15 +160,15 @@
     <ClInclude Include="Randomizer\OfflineSource.h" />
     <ClInclude Include="Randomizer\ArchipelagoSource.h" />
     <ClInclude Include="Randomizer\UpdateChecker.h" />
-    <ClInclude Include="Randomizer\VTableTools.h" />
+    <ClInclude Include="Randomizer\VTableTools.h" Condition="Exists('$(MSBuildThisFileDirectory)Randomizer\VTableTools.h')" />
     <ClInclude Include="CppSDK\SDK.hpp" />
     <ClInclude Include="CppSDK\SDK\Basic.hpp" />
     <ClInclude Include="Randomizer\GameManager.h" />
     <ClInclude Include="Randomizer\HookManager.h" />
-    <ClInclude Include="Randomizer\HookProbe.h" />
+    <ClInclude Include="Randomizer\HookProbe.h" Condition="Exists('$(MSBuildThisFileDirectory)Randomizer\HookProbe.h')" />
     <ClInclude Include="Randomizer\Logger.h" />
     <ClInclude Include="Randomizer\ItemReplacer.h" />
-    <ClInclude Include="Randomizer\DataTableRowInserter.h" />
+    <ClInclude Include="Randomizer\DataTableRowInserter.h" Condition="Exists('$(MSBuildThisFileDirectory)Randomizer\DataTableRowInserter.h')" />
     <ClInclude Include="version\version.h" />
   </ItemGroup>
   <ItemGroup>
@@ -202,15 +202,15 @@
     <ClCompile Include="Randomizer\OfflineSource.cpp" />
     <ClCompile Include="Randomizer\ArchipelagoSource.cpp" />
     <ClCompile Include="Randomizer\UpdateChecker.cpp" />
-    <ClCompile Include="Randomizer\VTableTools.cpp" />
+    <ClCompile Include="Randomizer\VTableTools.cpp" Condition="Exists('$(MSBuildThisFileDirectory)Randomizer\VTableTools.cpp')" />
     <ClCompile Include="CppSDK\SDK\Basic.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Randomizer\GameManager.cpp" />
     <ClCompile Include="Randomizer\HookManager.cpp" />
-    <ClCompile Include="Randomizer\HookProbe.cpp" />
+    <ClCompile Include="Randomizer\HookProbe.cpp" Condition="Exists('$(MSBuildThisFileDirectory)Randomizer\HookProbe.cpp')" />
     <ClCompile Include="Randomizer\Logger.cpp" />
     <ClCompile Include="Randomizer\ItemReplacer.cpp" />
-    <ClCompile Include="Randomizer\DataTableRowInserter.cpp" />
+    <ClCompile Include="Randomizer\DataTableRowInserter.cpp" Condition="Exists('$(MSBuildThisFileDirectory)Randomizer\DataTableRowInserter.cpp')" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

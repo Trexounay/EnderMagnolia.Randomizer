@@ -5,7 +5,9 @@
 #include "CustomItemRegistry.h"
 #include "ArchipelagoSource.h"
 #include "GUI.h"
+#if ENABLE_HOOK_PROBE
 #include "HookProbe.h"
+#endif
 
 #include <Windows.h>
 #include "minhook/include/MinHook.h"

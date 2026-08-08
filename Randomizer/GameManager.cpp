@@ -5,7 +5,9 @@
 #include "ItemReplacer.h"
 #include "CustomItemRegistry.h"
 #include "DebugTeleporter.h"
+#if ENABLE_HOOK_PROBE
 #include "HookProbe.h"
+#endif
 #include "SDK.hpp"
 #include <algorithm>
 #include <map>
