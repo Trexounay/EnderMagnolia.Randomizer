@@ -2,6 +2,7 @@
 
 #include <string>
 #include <optional>
+#include <unordered_map>
 #include "SDK.hpp"
 #include "OfflineSource.h"
 #include "ArchipelagoSource.h"
@@ -26,6 +27,7 @@ public:
 	bool IsOffline() const { return activeSource == &offlineSource; }
 	const OfflineSource& Offline() const { return offlineSource; }
 	int Option(const std::string& name, int fallback = 0) const;
+	void SetOption(const std::string& name, int value);
 	void ReportCheck(const std::string& location);
 	void OnGameStart(bool isNewGame);
 	void OnGameSaved();
@@ -41,4 +43,6 @@ private:
 	std::string dataDirectory;
 	OfflineSource offlineSource;
 	IItemSource* activeSource = nullptr;
+
+	std::unordered_map<std::string, int> localOptions;
 };

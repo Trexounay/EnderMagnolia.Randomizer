@@ -87,9 +87,18 @@ std::optional<std::string> Configuration::Seed() const
 
 int Configuration::Option(const std::string& name, int fallback) const
 {
+	auto local = localOptions.find(name);
+	if (local != localOptions.end())
+		fallback = local->second;
+
 	if (!activeSource)
 		return fallback;
 	return activeSource->Option(name, fallback);
+}
+
+void Configuration::SetOption(const std::string& name, int value)
+{
+	localOptions[name] = value;
 }
 
 void Configuration::ReportCheck(const std::string& location)

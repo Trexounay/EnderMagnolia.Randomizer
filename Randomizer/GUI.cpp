@@ -66,11 +66,18 @@ void GUI::ApplySetting(const char* line)
 	int dl = 0;
 	if (sscanf_s(line, "deathlink=%d", &dl) == 1)
 		deathLink = (dl != 0);
+	int skip = 0;
+	if (sscanf_s(line, "autoskip=%d", &skip) == 1)
+	{
+		autoSkip = (skip != 0);
+		Request([v = autoSkip] { Configuration::Instance().SetOption("auto_skip_cutscenes", v ? 1 : 0); });
+	}
 }
 
 void GUI::WriteSettings(ImGuiTextBuffer* buf) const
 {
 	buf->appendf("[Randomizer][Connection]\nhost=%s\nslot=%s\ndeathlink=%d\n\n", host, slot, deathLink ? 1 : 0);
+	buf->appendf("[Randomizer][Misc]\nautoskip=%d\n\n", autoSkip ? 1 : 0);
 }
 
 void GUI::RegisterSettingsHandler()
@@ -115,43 +122,54 @@ void GUI::RenderTrampoline()
 	GUI::Instance().Draw();
 }
 
+bool GUI::Request(std::function<void()> action)
+{
+	if (commandPending.load())
+		return false;
+
+	command = std::move(action);
+	commandPending.store(true);
+	return true;
+}
+
+void GUI::RunCommand()
+{
+	if (!commandPending.load())
+		return;
+
+	std::function<void()> action = std::move(command);
+	command = nullptr;
+	commandPending.store(false);
+	action();
+}
+
+void GUI::Publish(const GameState& next)
+{
+	std::lock_guard<std::mutex> lock(stateMutex);
+	state = next;
+}
+
+GUI::GameState GUI::Read() const
+{
+	std::lock_guard<std::mutex> lock(stateMutex);
+	return state;
+}
+
 void GUI::Tick()
 {
+	RunCommand();
+
 	ArchipelagoSource& ap = ArchipelagoSource::Instance();
-
-	switch (pending.exchange(PendingAction::None))
-	{
-	case PendingAction::Connect:
-		ap.SetDeathLink(pendingDeathLink);
-		ap.Connect(pendingHost, pendingSlot, pendingPass);
-		break;
-	case PendingAction::Disconnect:
-		ap.Disconnect();
-		break;
-	case PendingAction::NewSeed:
-		if (Configuration::Instance().NewSeed(pendingSeed))
-			Notify("New seed generated");
-		else
-			Notify("Seed generation failed, see generate_error.txt");
-		break;
-	case PendingAction::GoHome:
-		if (!GameManager::Instance().GoHome())
-			Notify("Cannot fast travel right now");
-		break;
-	default:
-		break;
-	}
-
-	cachedState.store(ap.GetState());
-	strncpy_s(cachedError, ap.GetError().c_str(), sizeof(cachedError) - 1);
-
 	Configuration& config = Configuration::Instance();
-	cachedOffline.store(config.IsOffline());
 
+	GameState next;
+	next.apState = ap.GetState();
+	next.error = ap.GetError();
+	next.offline = config.IsOffline();
 	auto seed = config.Offline().Seed();
-	strncpy_s(cachedSeed, seed ? seed.value().c_str() : "", sizeof(cachedSeed) - 1);
-
-	cachedInGame.store(GameManager::Instance().IsInGame());
+	next.seed = seed ? seed.value() : "";
+	next.inGame = GameManager::Instance().IsInGame();
+	Publish(next);
 
 #ifdef _DEBUG
 	DebugMenu::Instance().Tick();
@@ -160,11 +178,11 @@ void GUI::Tick()
 
 void GUI::Draw()
 {
-	APState apState = cachedState.load();
+	frame = Read();
 
 	const char* statusText = "Disconnected";
 	ImVec4 statusColor = kColorDisconnected;
-	switch (apState)
+	switch (frame.apState)
 	{
 	case APState::Disconnected:
 		statusText = "Disconnected";
@@ -188,10 +206,10 @@ void GUI::Draw()
 		break;
 	}
 
-	if (cachedOffline.load() && apState == APState::Disconnected)
+	if (frame.offline && frame.apState == APState::Disconnected)
 	{
-		statusText = cachedSeed[0] ? cachedSeed : "no seed";
-		statusColor = cachedSeed[0] ? kColorConnected : kColorDisconnected;
+		statusText = frame.seed.empty() ? "no seed" : frame.seed.c_str();
+		statusColor = frame.seed.empty() ? kColorDisconnected : kColorConnected;
 	}
 
 	ImVec4 titleColor(statusColor.x * 0.6f, statusColor.y * 0.6f, statusColor.z * 0.6f, 1.0f);
@@ -211,7 +229,7 @@ void GUI::Draw()
 		}
 		if (ImGui::BeginTabItem("Archipelago"))
 		{
-			DrawArchipelago(apState);
+			DrawArchipelago();
 			ImGui::EndTabItem();
 		}
 		if (ImGui::BeginTabItem("Misc"))
@@ -233,10 +251,10 @@ void GUI::Draw()
 	DrawNotifications();
 }
 
-void GUI::DrawArchipelago(APState apState)
+void GUI::DrawArchipelago()
 {
-	bool connected = (apState == APState::Connected || apState == APState::Connecting ||
-		apState == APState::Reconnecting);
+	bool connected = (frame.apState == APState::Connected || frame.apState == APState::Connecting ||
+		frame.apState == APState::Reconnecting);
 	float fieldWidth = 220.0f;
 
 	ImGui::SeparatorText("Server");
@@ -261,18 +279,19 @@ void GUI::DrawArchipelago(APState apState)
 	if (connected)
 	{
 		if (ImGui::Button("Disconnect"))
-			pending.store(PendingAction::Disconnect);
+			Request([] { ArchipelagoSource::Instance().Disconnect(); });
 	}
 	else
 	{
 		if (ImGui::Button("Connect!"))
 		{
 			ImGui::MarkIniSettingsDirty();
-			strncpy_s(pendingHost, host, sizeof(pendingHost) - 1);
-			strncpy_s(pendingSlot, slot, sizeof(pendingSlot) - 1);
-			strncpy_s(pendingPass, pass, sizeof(pendingPass) - 1);
-			pendingDeathLink = deathLink;
-			pending.store(PendingAction::Connect);
+			Request([h = std::string(host), s = std::string(slot), p = std::string(pass), dl = deathLink]
+			{
+				ArchipelagoSource& ap = ArchipelagoSource::Instance();
+				ap.SetDeathLink(dl);
+				ap.Connect(h, s, p);
+			});
 		}
 	}
 
@@ -282,18 +301,18 @@ void GUI::DrawArchipelago(APState apState)
 	ImGui::Checkbox("DeathLink", &deathLink);
 	ImGui::EndDisabled();
 
-	if (apState == APState::Error && cachedError[0])
+	if (frame.apState == APState::Error && !frame.error.empty())
 	{
 		ImGui::PushStyleColor(ImGuiCol_Text, kColorError);
-		ImGui::TextWrapped("%s", cachedError);
+		ImGui::TextWrapped("%s", frame.error.c_str());
 		ImGui::PopStyleColor();
 	}
 }
 
 void GUI::DrawLocal()
 {
-	if (!seedEdited && strcmp(seedInput, cachedSeed) != 0)
-		strncpy_s(seedInput, cachedSeed, sizeof(seedInput) - 1);
+	if (!seedEdited && strcmp(seedInput, frame.seed.c_str()) != 0)
+		strncpy_s(seedInput, frame.seed.c_str(), sizeof(seedInput) - 1);
 
 	ImGui::SeparatorText("Generation");
 
@@ -305,16 +324,22 @@ void GUI::DrawLocal()
 
 	if (ImGui::Button(seedEdited ? "Generate" : "Roll"))
 	{
-		if (seedEdited)
-			strncpy_s(pendingSeed, seedInput, sizeof(pendingSeed) - 1);
-		else
+		char rolled[32] = {};
+		if (!seedEdited)
 		{
 			std::random_device device;
 			std::uniform_int_distribution<unsigned long long> range(1, 999999999999ull);
-			sprintf_s(pendingSeed, "%llu", range(device));
+			sprintf_s(rolled, "%llu", range(device));
 		}
+
+		Request([this, s = std::string(seedEdited ? seedInput : rolled)]
+		{
+			if (Configuration::Instance().NewSeed(s))
+				Notify("New seed generated");
+			else
+				Notify("Seed generation failed, see generate_error.txt");
+		});
 		seedEdited = false;
-		pending.store(PendingAction::NewSeed);
 	}
 
 	ImGui::SeparatorText("Options");
@@ -343,10 +368,26 @@ void GUI::DrawMisc()
 {
 	ImGui::SeparatorText("Helpers");
 
-	ImGui::BeginDisabled(!cachedInGame.load());
+	ImGui::BeginDisabled(!frame.inGame);
 	if (ImGui::Button("Go Home"))
-		pending.store(PendingAction::GoHome);
+	{
+		Request([this]
+		{
+			if (!GameManager::Instance().GoHome())
+				Notify("Cannot fast travel right now");
+		});
+	}
 	ImGui::EndDisabled();
+
+	ImGui::SeparatorText("Options");
+
+	if (ImGui::Checkbox("Auto skip cutscenes", &autoSkip))
+	{
+		if (Request([v = autoSkip] { Configuration::Instance().SetOption("auto_skip_cutscenes", v ? 1 : 0); }))
+			ImGui::MarkIniSettingsDirty();
+		else
+			autoSkip = !autoSkip;
+	}
 }
 
 void GUI::Notify(const std::string& text)

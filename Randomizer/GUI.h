@@ -1,6 +1,7 @@
 #pragma once
 
 #include <atomic>
+#include <functional>
 #include <mutex>
 #include <deque>
 #include <string>
@@ -24,7 +25,7 @@ private:
 	static void RenderTrampoline();
 	static void RegisterSettingsHandler();
 	void Draw();
-	void DrawArchipelago(APState apState);
+	void DrawArchipelago();
 	void DrawLocal();
 	void DrawMisc();
 	void DrawNotifications();
@@ -39,26 +40,33 @@ private:
 	std::mutex notifMutex;
 	std::deque<Notification> notifications;
 
-	enum class PendingAction { None, Connect, Disconnect, NewSeed, GoHome };
+	struct GameState {
+		APState apState = APState::Disconnected;
+		std::string error;
+		std::string seed;
+		bool offline = true;
+		bool inGame = false;
+	};
+
+	void Publish(const GameState& next);
+	GameState Read() const;
+
+	mutable std::mutex stateMutex;
+	GameState state;
+	GameState frame;
+
+	bool Request(std::function<void()> action);
+	void RunCommand();
+
+	std::atomic<bool> commandPending{ false };
+	std::function<void()> command;
 
 	char host[256] = "127.0.0.1";
 	char slot[128] = "Lilac";
 	char pass[128] = {};
 	bool deathLink = false;
-
-	std::atomic<PendingAction> pending{ PendingAction::None };
-	char pendingHost[256] = {};
-	char pendingSlot[128] = {};
-	char pendingPass[128] = {};
-	bool pendingDeathLink = false;
-
-	std::atomic<APState> cachedState{ APState::Disconnected };
-	char cachedError[256] = {};
+	bool autoSkip = false;
 
 	char seedInput[32] = {};
 	bool seedEdited = false;
-	char pendingSeed[32] = {};
-	std::atomic<bool> cachedOffline{ true };
-	char cachedSeed[32] = {};
-	std::atomic<bool> cachedInGame{ false };
 };
