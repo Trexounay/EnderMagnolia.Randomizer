@@ -298,6 +298,8 @@ void GameManager::OnGameSaved()
 
 void GameManager::OnItemSourceChanged()
 {
+	GUI::Instance().ClearItemNotifications();
+
 	if (!itemReplacer)
 		return;
 

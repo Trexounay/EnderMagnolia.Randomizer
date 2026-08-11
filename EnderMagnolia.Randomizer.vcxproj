@@ -62,6 +62,7 @@
     <IntDir>Build\Intermediate\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>version</TargetName>
     <OutDir>Build\$(Platform)\$(Configuration)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -172,9 +173,12 @@
     <ClInclude Include="version\version.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CppSDK\SDK\AssetRegistry_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Engine_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\EventSystem_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\UMG_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\WBP_Text_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Zion_functions.cpp" />
     <ClCompile Include="extern\imgui\backends\imgui_impl_dx11.cpp" />
     <ClCompile Include="extern\imgui\backends\imgui_impl_dx12.cpp" />

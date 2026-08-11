@@ -48033,7 +48033,7 @@ void UKismetSystemLibrary::LoadAssetClass(const class UObject* WorldContextObjec
 // TSoftClassPtr<class UClass>             AssetClass                                             (Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // class UClass*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class UClass* UKismetSystemLibrary::LoadClassAsset_Blocking(TSoftClassPtr<class UClass> AssetClass)
+class UClass* UKismetSystemLibrary::LoadClassAsset_Blocking(TSoftClassPtr<class UObject> AssetClass)
 {
 	static class UFunction* Func = nullptr;
 

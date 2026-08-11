@@ -10,6 +10,7 @@
 #include "Randomizer/Logger.h"
 #include "Randomizer/ArchipelagoSource.h"
 #include "Randomizer/Configuration.h"
+#include "Randomizer/CustomItemRegistry.h"
 #include "Randomizer/GameManager.h"
 
 #ifdef _DEBUG
@@ -158,6 +159,7 @@ GUI::GameState GUI::Read() const
 void GUI::Tick()
 {
 	RunCommand();
+	PumpItemNotifications();
 
 	ArchipelagoSource& ap = ArchipelagoSource::Instance();
 	Configuration& config = Configuration::Instance();
@@ -396,6 +398,60 @@ void GUI::Notify(const std::string& text)
 	notifications.push_back({ text, 5.0f });
 	if (notifications.size() > 8)
 		notifications.pop_front();
+}
+
+void GUI::NotifyItem(const std::string& item, const std::string& subtitle)
+{
+	pendingItems.push_back({ item, subtitle });
+}
+
+void GUI::ClearItemNotifications()
+{
+	pendingItems.clear();
+}
+
+void GUI::PumpItemNotifications()
+{
+	if (pendingItems.empty())
+		return;
+
+	const auto now = std::chrono::steady_clock::now();
+	if (now - lastItemNotification < std::chrono::milliseconds(500))
+		return;
+
+	GameManager& gm = GameManager::Instance();
+	if (!gm.World() || !gm.GameInstance() || gm.IsLoading())
+		return;
+
+	const PendingItem pending = pendingItems.front();
+	pendingItems.pop_front();
+	lastItemNotification = now;
+
+	auto notifyRow = CustomItemRegistry::Instance().WriteNotification(pending.item);
+	if (!notifyRow)
+	{
+		Logger::Log(LogLevel::Warning, this, "NotifyItem unknown item", pending.item);
+		return;
+	}
+
+	if (achievementHolder && widgetWorld == gm.World())
+		achievementHolder->RemoveFromParent();
+
+	SDK::UClass* holderClass = gm.GameInstance()->AchievementNotificationWidgetClass.LoadBlocking();
+	SDK::UUserWidget* holder = SDK::UWidgetBlueprintLibrary::Create(gm.World(), holderClass, gm.Controller());
+	holder->AddToViewport(29000);
+
+	achievementHolder = static_cast<SDK::UUserWidgetAchievementNotificationHolder*>(holder);
+	widgetWorld = gm.World();
+	achievementHolder->OnRefreshVisibility(true);
+	achievementHolder->QueueAchievementNotification(*notifyRow);
+
+	auto* canvas = static_cast<SDK::UPanelWidget*>(achievementHolder->WidgetTree->RootWidget);
+	auto* notification = static_cast<SDK::UUserWidget*>(canvas->GetChildAt(0));
+	auto* overlay = static_cast<SDK::UPanelWidget*>(notification->WidgetTree->RootWidget);
+	auto* textColumn = static_cast<SDK::UPanelWidget*>(overlay->GetChildAt(2));
+
+	static_cast<SDK::UTextBlock*>(textColumn->GetChildAt(1))->SetText(SDK::FText::FromString(pending.subtitle));
 }
 
 void GUI::DrawNotifications()

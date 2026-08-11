@@ -1,11 +1,14 @@
 #pragma once
 
 #include <atomic>
+#include <chrono>
 #include <functional>
 #include <mutex>
 #include <deque>
 #include <string>
 #include "Randomizer/ArchipelagoSource.h"
+
+namespace SDK { class UUserWidgetAchievementNotificationHolder; class UWorld; }
 
 class GUI {
 public:
@@ -14,6 +17,8 @@ public:
 	void Init();
 	void Tick();
 	void Notify(const std::string& text);
+	void NotifyItem(const std::string& item, const std::string& subtitle);
+	void ClearItemNotifications();
 
 private:
 	GUI() = default;
@@ -39,6 +44,18 @@ private:
 	};
 	std::mutex notifMutex;
 	std::deque<Notification> notifications;
+
+	void PumpItemNotifications();
+
+	struct PendingItem {
+		std::string item;
+		std::string subtitle;
+	};
+	std::deque<PendingItem> pendingItems;
+	std::chrono::steady_clock::time_point lastItemNotification{};
+
+	SDK::UUserWidgetAchievementNotificationHolder* achievementHolder = nullptr;
+	SDK::UWorld* widgetWorld = nullptr;
 
 	struct GameState {
 		APState apState = APState::Disconnected;

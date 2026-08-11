@@ -200,9 +200,7 @@ void ArchipelagoSource::QueueItem(const APClient::NetworkItem& item)
 	if (item.index < receivedIndex)
 		return;
 
-	std::string name = ap->get_item_name(item.item, ap->get_game());
-	std::string sender = ap->get_player_alias(item.player);
-	receivedItems.push_back({ item.item, item.index, "Received " + name + " from " + sender });
+	receivedItems.push_back({ item.item, item.index, ap->get_player_alias(item.player) });
 }
 
 void ArchipelagoSource::DeliverReceivedItems()
@@ -225,7 +223,7 @@ void ArchipelagoSource::DeliverReceivedItems()
 		if (!GameManager::Instance().GrantItem(nameIt->second, ItemReplacer::CurrencyCount(nameIt->second)))
 			return;
 
-		GUI::Instance().Notify(item.display);
+		GUI::Instance().NotifyItem(nameIt->second, "Received from " + item.player);
 		receivedIndex = item.index + 1;
 		receivedItems.erase(receivedItems.begin());
 	}

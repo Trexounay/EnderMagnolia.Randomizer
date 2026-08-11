@@ -524,6 +524,35 @@ public:
 		return TextData->TextSource.ToString();
 	}
 
+	FText& Retain()
+	{
+		if (TextData)
+		{
+			InSDKUtils::CallGameFunction(
+				InSDKUtils::GetVirtualFunction<uint32(*)(const void*)>(TextData, 1), TextData);
+		}
+		return *this;
+	}
+
+	FText& Release()
+	{
+		if (TextData)
+		{
+			InSDKUtils::CallGameFunction(
+				InSDKUtils::GetVirtualFunction<uint32(*)(const void*)>(TextData, 2), TextData);
+		}
+		return *this;
+	}
+
+	uint32 GetRefCount() const
+	{
+		if (!TextData)
+			return 0;
+
+		return InSDKUtils::CallGameFunction(
+			InSDKUtils::GetVirtualFunction<uint32(*)(const void*)>(TextData, 3), TextData);
+	}
+
 	static FText FromString(const std::string& s);
 };
 static_assert(alignof(FText) == 0x000008, "Wrong alignment on FText");
@@ -656,6 +685,14 @@ template<typename UEType>
 class TSoftObjectPtr : public FSoftObjectPtr
 {
 public:
+	TSoftObjectPtr() = default;
+
+	template<typename OtherType, typename = std::enable_if_t<std::is_convertible_v<OtherType*, UEType*>>>
+	TSoftObjectPtr(const TSoftObjectPtr<OtherType>& Other)
+		: FSoftObjectPtr(Other)
+	{
+	}
+
 	UEType* Get() const
 	{
 		return static_cast<UEType*>(TPersistentObjectPtr::Get());
@@ -671,6 +708,14 @@ template<typename UEType>
 class TSoftClassPtr : public FSoftObjectPtr
 {
 public:
+	TSoftClassPtr() = default;
+
+	template<typename OtherType, typename = std::enable_if_t<std::is_convertible_v<OtherType*, UEType*>>>
+	TSoftClassPtr(const TSoftClassPtr<OtherType>& Other)
+		: FSoftObjectPtr(Other)
+	{
+	}
+
 	UEType* Get() const
 	{
 		return static_cast<UEType*>(TPersistentObjectPtr::Get());
@@ -679,6 +724,7 @@ public:
 	{
 		return static_cast<UEType*>(TPersistentObjectPtr::Get());
 	}
+	class UClass* LoadBlocking() const;
 };
 
 // Predefined struct FScriptInterface

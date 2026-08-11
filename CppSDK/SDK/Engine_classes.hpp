@@ -18202,7 +18202,7 @@ public:
 	static void LoadAsset(const class UObject* WorldContextObject, TSoftObjectPtr<class UObject> Asset, TDelegate<void(class UObject* Loaded)> OnLoaded, const struct FLatentActionInfo& LatentInfo);
 	static class UObject* LoadAsset_Blocking(TSoftObjectPtr<class UObject> Asset);
 	static void LoadAssetClass(const class UObject* WorldContextObject, TSoftClassPtr<class UClass> AssetClass, TDelegate<void(TSubclassOf<class UObject> Loaded)> OnLoaded, const struct FLatentActionInfo& LatentInfo);
-	static class UClass* LoadClassAsset_Blocking(TSoftClassPtr<class UClass> AssetClass);
+	static class UClass* LoadClassAsset_Blocking(TSoftClassPtr<class UObject> AssetClass);
 	static void LoadInterstitialAd(int32 AdIdIndex);
 	static void LogString(const class FString& InString, bool bPrintToLog);
 	static struct FARFilter MakeARFilter(const TArray<class FName>& PackageNames, const TArray<class FName>& PackagePaths, const TArray<struct FSoftObjectPath>& SoftObjectPaths, const TArray<struct FTopLevelAssetPath>& ClassPaths, const TSet<struct FTopLevelAssetPath>& RecursiveClassPathsExclusionSet, const TArray<class FName>& ClassNames, const TSet<class FName>& RecursiveClassesExclusionSet, const bool bRecursivePaths, const bool bRecursiveClasses, const bool bIncludeOnlyOnDiskAssets);
@@ -18298,6 +18298,13 @@ UEType* TSoftObjectPtr<UEType>::LoadBlocking() const
 {
 	auto asObject = static_cast<TSoftObjectPtr<class UObject>>(*this);
 	return static_cast<UEType*>(UKismetSystemLibrary::LoadAsset_Blocking(asObject));
+}
+
+template<typename UEType>
+class UClass* TSoftClassPtr<UEType>::LoadBlocking() const
+{
+	auto asObject = static_cast<TSoftClassPtr<class UObject>>(*this);
+	return UKismetSystemLibrary::LoadClassAsset_Blocking(asObject);
 }
 
 // Class Engine.MaterialExpressionSubstrateUI
@@ -19856,8 +19863,24 @@ public:
 		return nullptr;
 	}
 
+	uint8* FindRow(class FName RowName)
+	{
+		for (auto It = begin(RowMap); It != end(RowMap); ++It)
+		{
+			if (It->Key() == RowName)
+				return It->Value();
+		}
+		return nullptr;
+	}
+
 	template<typename T>
 	T* FindRowAs(const std::string& RowName)
+	{
+		return reinterpret_cast<T*>(FindRow(RowName));
+	}
+
+	template<typename T>
+	T* FindRowAs(class FName RowName)
 	{
 		return reinterpret_cast<T*>(FindRow(RowName));
 	}

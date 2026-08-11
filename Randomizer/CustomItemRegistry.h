@@ -69,6 +69,7 @@ public:
 	bool CreateItem(const RandomizerItemDef& def);
 	bool Has(const std::string& itemName) const;
 	void ResetItems();
+	std::optional<SDK::FName> WriteNotification(const std::string& itemName);
 
 	const SDK::FDataTableRowHandle* Lookup(const std::string& itemName);
 	std::optional<SDK::FDataTableRowHandle> Provide(const std::string& itemName);
@@ -89,6 +90,8 @@ private:
 	~CustomItemRegistry() = default;
 	CustomItemRegistry(const CustomItemRegistry&) = delete;
 	CustomItemRegistry& operator=(const CustomItemRegistry&) = delete;
+
+	static constexpr const char* NotificationRow = "ap_notify";
 
 	static SDK::UDataTable* Table(const std::string& tableName);
 	static bool SplitId(const std::string& itemName, std::string& table, std::string& rowName);

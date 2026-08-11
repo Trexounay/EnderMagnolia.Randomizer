@@ -29,7 +29,7 @@ enum ItemsHandling {
 struct ReceivedItem {
 	int64_t item;
 	int index;
-	std::string display;
+	std::string player;
 };
 
 struct ScoutedLocation {
