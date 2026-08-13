@@ -1,10 +1,14 @@
 #pragma once
 
 #include <atomic>
+#include <chrono>
+#include <functional>
 #include <mutex>
 #include <deque>
 #include <string>
 #include "Randomizer/ArchipelagoSource.h"
+
+namespace SDK { class UUserWidgetAchievementNotificationHolder; class UWorld; }
 
 class GUI {
 public:
@@ -13,6 +17,8 @@ public:
 	void Init();
 	void Tick();
 	void Notify(const std::string& text);
+	void NotifyItem(const std::string& item, const std::string& subtitle);
+	void ClearItemNotifications();
 
 private:
 	GUI() = default;
@@ -24,8 +30,9 @@ private:
 	static void RenderTrampoline();
 	static void RegisterSettingsHandler();
 	void Draw();
-	void DrawArchipelago(APState apState);
+	void DrawArchipelago();
 	void DrawLocal();
+	void DrawMisc();
 	void DrawNotifications();
 
 	void ApplySetting(const char* line);
@@ -38,26 +45,45 @@ private:
 	std::mutex notifMutex;
 	std::deque<Notification> notifications;
 
-	enum class PendingAction { None, Connect, Disconnect, NewSeed };
+	void PumpItemNotifications();
+
+	struct PendingItem {
+		std::string item;
+		std::string subtitle;
+	};
+	std::deque<PendingItem> pendingItems;
+	std::chrono::steady_clock::time_point lastItemNotification{};
+
+	SDK::UUserWidgetAchievementNotificationHolder* achievementHolder = nullptr;
+	SDK::UWorld* widgetWorld = nullptr;
+
+	struct GameState {
+		APState apState = APState::Disconnected;
+		std::string error;
+		std::string seed;
+		bool offline = true;
+		bool inGame = false;
+	};
+
+	void Publish(const GameState& next);
+	GameState Read() const;
+
+	mutable std::mutex stateMutex;
+	GameState state;
+	GameState frame;
+
+	bool Request(std::function<void()> action);
+	void RunCommand();
+
+	std::atomic<bool> commandPending{ false };
+	std::function<void()> command;
 
 	char host[256] = "127.0.0.1";
 	char slot[128] = "Lilac";
 	char pass[128] = {};
 	bool deathLink = false;
-
-	std::atomic<PendingAction> pending{ PendingAction::None };
-	char pendingHost[256] = {};
-	char pendingSlot[128] = {};
-	char pendingPass[128] = {};
-	bool pendingDeathLink = false;
-
-	std::atomic<APState> cachedState{ APState::Disconnected };
-	char cachedError[256] = {};
+	bool autoSkip = false;
 
 	char seedInput[32] = {};
 	bool seedEdited = false;
-	bool localTabActive = true;
-	char pendingSeed[32] = {};
-	std::atomic<bool> cachedOffline{ true };
-	char cachedSeed[32] = {};
 };

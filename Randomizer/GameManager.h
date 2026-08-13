@@ -34,9 +34,11 @@ public:
 	bool SetStartingWeapon();
 	bool GrantItem(const std::string& itemName, int count = 1);
 	bool KillPlayer();
+	bool GoHome();
 	int ClampChapter();
 
 	bool IsLoading() const;
+	bool IsInGame() const { return !currentZone.empty() && !IsLoading(); }
 	int CurrentSaveSlot() const { return currentSaveSlot; }
 	SDK::UWorldLoaderSubsystem* Loader() const;
 	SDK::USaveSubsystem* SaveSubsystem() const;

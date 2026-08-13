@@ -18,6 +18,7 @@ const std::unordered_map<std::string, size_t> CustomItemRegistry::dataTableOffse
 	{ "DT_ItemMaterials", offsetof(SDK::AGameModeZion, DataTableItemMaterials) },
 	{ "DT_ItemTips", offsetof(SDK::AGameModeZion, DataTableItemTips) },
 	{ "DT_ItemKeys", offsetof(SDK::AGameModeZion, DataTableItemKeys) },
+	{ "DT_Achievements", offsetof(SDK::AGameModeZion, DataTableAchievements) },
 	{ "DT_ItemQuests", offsetof(SDK::AGameModeZion, DataTableItemQuests) },
 	{ "DT_ItemCostumes", offsetof(SDK::AGameModeZion, DataTableItemCostumes) },
 	{ "DT_ItemGallery", offsetof(SDK::AGameModeZion, DataTableItemGallery) },
@@ -119,6 +120,33 @@ std::optional<std::string> CustomItemRegistry::NextProgressiveLink(const Progres
 void CustomItemRegistry::ResetItems()
 {
 	itemRows.clear();
+}
+
+std::optional<SDK::FName> CustomItemRegistry::WriteNotification(const std::string& itemName)
+{
+	auto handle = Provide(itemName);
+	if (!handle)
+		return std::nullopt;
+
+	static const SDK::FName notifyRow = SDK::FName::FromString(NotificationRow);
+
+	auto item = handle->DataTable->FindRowAs<SDK::FInventoryItemData>(handle->RowName);
+	auto table = Table("DT_Achievements");
+
+	if (!table->FindRow(notifyRow))
+	{
+		int32_t size = table->RowStruct->Size;
+		auto clone = static_cast<uint8_t*>(SDK::FMemory::Malloc(size, table->RowStruct->MinAlignemnt));
+		memcpy(clone, begin(table->RowMap)->Value(), size);
+		reinterpret_cast<SDK::FAchievementData*>(clone)->Description = SDK::FText::FromString("");
+		table->AddRowInternal(notifyRow, clone);
+	}
+
+	auto row = table->FindRowAs<SDK::FAchievementData>(notifyRow);
+	row->Name = item->Name.Retain();
+	row->LockedIcon = item->Icon;
+	row->UnlockedIcon = item->Icon;
+	return notifyRow;
 }
 
 std::optional<SDK::FDataTableRowHandle> CustomItemRegistry::Provide(const std::string& itemName)

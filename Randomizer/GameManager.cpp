@@ -5,7 +5,9 @@
 #include "ItemReplacer.h"
 #include "CustomItemRegistry.h"
 #include "DebugTeleporter.h"
+#if ENABLE_HOOK_PROBE
 #include "HookProbe.h"
+#endif
 #include "SDK.hpp"
 #include <algorithm>
 #include <map>
@@ -273,6 +275,22 @@ bool GameManager::KillPlayer()
 	return true;
 }
 
+bool GameManager::GoHome()
+{
+	auto world = World();
+	auto mode = world ? (SDK::AGameModeZion*)world->AuthorityGameMode : nullptr;
+	auto controller = world ? Controller() : nullptr;
+	if (!mode || !controller || IsLoading() || controller->IsInEvent())
+		return false;
+
+	auto home = Configuration::Instance().StartingRestPoint()
+		.value_or(controller->DefaultRespawnRestPointData.RowName);
+
+	Logger::Log(this, "go home", home.GetRawString());
+	mode->FastTravel(home);
+	return true;
+}
+
 void GameManager::OnGameSaved()
 {
 	Configuration::Instance().OnGameSaved();
@@ -280,6 +298,8 @@ void GameManager::OnGameSaved()
 
 void GameManager::OnItemSourceChanged()
 {
+	GUI::Instance().ClearItemNotifications();
+
 	if (!itemReplacer)
 		return;
 

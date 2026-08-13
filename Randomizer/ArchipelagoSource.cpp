@@ -109,6 +109,7 @@ void ArchipelagoSource::OnSlotConnected(const nlohmann::json& json)
 	ReadSlotData(json);
 	scouts.clear();
 	ScoutAll();
+	FlushQueuedChecks();
 	Configuration::Instance().UseArchipelago();
 	if (GameManager::Instance().CurrentSaveSlot() >= 0 && !GameManager::Instance().IsLoading())
 		LoadIndex();
@@ -199,9 +200,7 @@ void ArchipelagoSource::QueueItem(const APClient::NetworkItem& item)
 	if (item.index < receivedIndex)
 		return;
 
-	std::string name = ap->get_item_name(item.item, ap->get_game());
-	std::string sender = ap->get_player_alias(item.player);
-	receivedItems.push_back({ item.item, item.index, "Received " + name + " from " + sender });
+	receivedItems.push_back({ item.item, item.index, ap->get_player_alias(item.player) });
 }
 
 void ArchipelagoSource::DeliverReceivedItems()
@@ -224,7 +223,7 @@ void ArchipelagoSource::DeliverReceivedItems()
 		if (!GameManager::Instance().GrantItem(nameIt->second, ItemReplacer::CurrencyCount(nameIt->second)))
 			return;
 
-		GUI::Instance().Notify(item.display);
+		GUI::Instance().NotifyItem(nameIt->second, "Received from " + item.player);
 		receivedIndex = item.index + 1;
 		receivedItems.erase(receivedItems.begin());
 	}
@@ -411,8 +410,26 @@ void ArchipelagoSource::ReportCheck(const std::string& location)
 		Logger::Log(LogLevel::Warning, "AP", "check: unknown location", location);
 		return;
 	}
+	if (!ap)
+	{
+		queuedChecks[seedName].insert(it->second);
+		Logger::Log("AP", "check queued, no connection", location, it->second);
+		return;
+	}
+
 	Logger::Log("AP", "check", location, it->second);
 	ap->LocationChecks({ it->second });
+}
+
+void ArchipelagoSource::FlushQueuedChecks()
+{
+	auto queued = queuedChecks.find(seedName);
+	if (queued == queuedChecks.end())
+		return;
+
+	Logger::Log("AP", "sending", queued->second.size(), "queued checks for seed", seedName);
+	ap->LocationChecks(std::list<int64_t>(queued->second.begin(), queued->second.end()));
+	queuedChecks.erase(queued);
 }
 
 void ArchipelagoSource::OnShopPurchase(const SDK::FDataTableRowHandle& boughtItem)

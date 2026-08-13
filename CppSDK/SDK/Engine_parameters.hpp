@@ -22830,7 +22830,7 @@ static_assert(offsetof(KismetSystemLibrary_LoadAssetClass, LatentInfo) == 0x0000
 struct KismetSystemLibrary_LoadClassAsset_Blocking final
 {
 public:
-	TSoftClassPtr<class UClass>                   AssetClass;                                        // 0x0000(0x0028)(Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSoftClassPtr<class UObject>                  AssetClass;                                        // 0x0000(0x0028)(Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class UClass*                                 ReturnValue;                                       // 0x0028(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 static_assert(alignof(KismetSystemLibrary_LoadClassAsset_Blocking) == 0x000008, "Wrong alignment on KismetSystemLibrary_LoadClassAsset_Blocking");
