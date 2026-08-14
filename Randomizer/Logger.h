@@ -66,8 +66,9 @@ public:
 #endif
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-		CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
-		GetConsoleScreenBufferInfo(hConsole, &consoleInfo);
+		CONSOLE_SCREEN_BUFFER_INFO consoleInfo{};
+		if (!GetConsoleScreenBufferInfo(hConsole, &consoleInfo))
+			return;
 		WORD oldColor = consoleInfo.wAttributes;
 
 		WORD color = oldColor;

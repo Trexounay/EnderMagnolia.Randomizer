@@ -17036,7 +17036,10 @@ class UShopInfoComponent final : public UActorComponent
 {
 public:
 	TArray<TSoftObjectPtr<class UDataTable>>      DatatableDisplayOrder;                             // 0x00A0(0x0010)(Edit, ZeroConstructor, DisableEditOnInstance, UObjectWrapper, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_B0[0xA8];                                      // 0x00B0(0x00A8)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         Level;                                             // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_B4[0x4];                                       // 0x00B4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<EShopType, struct FShopBuyHistory>       ShopHistories;                                     // 0x00B8(0x0050)(NativeAccessSpecifierPrivate)
+	TMap<EShopType, struct FShopSeenHistory>      SeenHistories;                                     // 0x0108(0x0050)(NativeAccessSpecifierPrivate)
 
 public:
 	void AddShopHistory(EShopType ShopType, const struct FDataTableRowHandle& BoughtItem);
@@ -17062,6 +17065,9 @@ public:
 static_assert(alignof(UShopInfoComponent) == 0x000008, "Wrong alignment on UShopInfoComponent");
 static_assert(sizeof(UShopInfoComponent) == 0x000158, "Wrong size on UShopInfoComponent");
 static_assert(offsetof(UShopInfoComponent, DatatableDisplayOrder) == 0x0000A0, "Member 'UShopInfoComponent::DatatableDisplayOrder' has a wrong offset!");
+static_assert(offsetof(UShopInfoComponent, Level) == 0x0000B0, "Member 'UShopInfoComponent::Level' has a wrong offset!");
+static_assert(offsetof(UShopInfoComponent, ShopHistories) == 0x0000B8, "Member 'UShopInfoComponent::ShopHistories' has a wrong offset!");
+static_assert(offsetof(UShopInfoComponent, SeenHistories) == 0x000108, "Member 'UShopInfoComponent::SeenHistories' has a wrong offset!");
 
 // Class Zion.SleepActivatorComponent
 // 0x0040 (0x00E0 - 0x00A0)

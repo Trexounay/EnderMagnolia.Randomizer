@@ -1,4 +1,5 @@
 #include "Configuration.h"
+#include "ArchipelagoSource.h"
 #include "GameManager.h"
 #include "Logger.h"
 
@@ -89,7 +90,7 @@ int Configuration::Option(const std::string& name, int fallback) const
 {
 	auto local = localOptions.find(name);
 	if (local != localOptions.end())
-		fallback = local->second;
+		return local->second;
 
 	if (!activeSource)
 		return fallback;
@@ -101,10 +102,20 @@ void Configuration::SetOption(const std::string& name, int value)
 	localOptions[name] = value;
 }
 
+float Configuration::Progress() const
+{
+	if (!activeSource)
+		return 0.0f;
+	return activeSource->Progress();
+}
+
 void Configuration::ReportCheck(const std::string& location)
 {
-	if (activeSource)
-		activeSource->ReportCheck(location);
+	if (!activeSource)
+		return;
+
+	activeSource->ReportCheck(location);
+	GameManager::Instance().ClampChapter();
 }
 
 void Configuration::OnGameStart(bool isNewGame)
@@ -117,4 +128,10 @@ void Configuration::OnGameSaved()
 {
 	if (activeSource)
 		activeSource->OnGameSaved();
+}
+
+void Configuration::Tick()
+{
+	ArchipelagoSource::Instance().Tick();
+	offlineSource.Tick();
 }

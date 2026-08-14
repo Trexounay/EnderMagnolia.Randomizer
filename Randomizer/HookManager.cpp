@@ -29,8 +29,6 @@ HookManager::FEventPredicateFn HookManager::oIsEventAlreadySeen = nullptr;
 HookManager::FEventPredicateFn HookManager::oCanAutoSkipEvent = nullptr;
 HookManager::FAutoSkipSettingFn HookManager::oGetAutoSkipSetting = nullptr;
 
-HookManager::FProcessEventFuncPtr HookManager::oProcessEvent = nullptr;
-HookManager::FNativeFuncPtr HookManager::oSetLaunchGameIntent = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oHPReachedZero = nullptr;
@@ -90,8 +88,6 @@ bool HookManager::Init()
 	if (!oEngineTick)
 		Logger::Log(LogLevel::Error, this, "Failed to hook engine tick");
 
-	//HookNativeFunction(SDK::UGameInstanceZion::StaticClass(), "GameInstanceZion", "SetLaunchGameIntent", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetLaunchGameIntent_Hook), reinterpret_cast<void**>(&oSetLaunchGameIntent));
-
 	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlot", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameSync_Hook), reinterpret_cast<void**>(&oSaveGameSync));
 	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlotAsync", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameAsync_Hook), reinterpret_cast<void**>(&oSaveGameAsync));
 	HookNativeFunction(SDK::UDeathComponent::StaticClass(), "DeathComponent", "OnHPReachedZero", reinterpret_cast<FNativeFuncPtr>(&HookManager::HPReachedZero_Hook), reinterpret_cast<void**>(&oHPReachedZero));
@@ -118,7 +114,7 @@ bool HookManager::Init()
 		Logger::Log(LogLevel::Error, this, "MH_ApplyQueued failed:", MH_StatusToString(applied));
 
 #if ENABLE_HOOK_PROBE
-	HookProbe::InstallSkipDiagnostic();
+	HookProbe::Install();
 #endif
 
 	Logger::Log(this, "Init ok");
@@ -183,12 +179,6 @@ void* HookManager::HookVTableFunction(void* instance, int index, void* hook)
 	return original;
 }
 
-bool HookManager::HookProcessEvent(FProcessEventFuncPtr detour)
-{
-	void* origPtr = reinterpret_cast<void*>(SDK::InSDKUtils::GetImageBase() + SDK::Offsets::ProcessEvent);
-	return CreateHook(origPtr, detour, reinterpret_cast<void**>(&oProcessEvent), "ProcessEvent");
-}
-
 bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std::string className, const std::string funcName, FNativeFuncPtr detour, void** original)
 {
 	if (!defaultClass)
@@ -230,7 +220,7 @@ void HookManager::NotifyGameEnding_Hook(SDK::AGameModeZion* self, SDK::EGameEndi
 {
 	oNotifyGameEnding(self, ending);
 
-	bool requiresEndingB = ArchipelagoSource::Instance().Option("goal") == 1;
+	bool requiresEndingB = Configuration::Instance().Option("goal") == 1;
 	if (!requiresEndingB || ending == SDK::EGameEndingType::EndingB)
 		ArchipelagoSource::Instance().OnGoalReached();
 }
@@ -332,7 +322,7 @@ bool HookManager::CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEv
 
 	if (self->EventName() == elevatorFix)
 	{
-		int mode = ArchipelagoSource::Instance().Option("central_elevator_fix");
+		int mode = Configuration::Instance().Option("central_elevator_fix");
 		if (mode == 2 || CustomItemRegistry::Instance().PlayerHas(RandomizerItems::ElevatorKey.id))
 			return !self->bInvertCondition;
 	}
@@ -356,7 +346,33 @@ bool HookManager::IsEventAlreadySeen_Hook(SDK::UUserWidgetEvent* self)
 
 	auto player = self->GetEventPlayer();
 	if (player->EventAsset->GetName() == "EVT_ev_s_0010_Opening")
+	{
 		player->SkipEvent();
+		return true;
+	}
+
+	SDK::UEventAction_Fade* last = nullptr;
+	int lastIndex = -1;
+	for (auto entry : player->EventAsset->Nodes)
+	{
+		auto node = entry.Value()->Cast<SDK::UEventNodeAction>();
+		if (!node || node->ExecutionIndex < lastIndex)
+			continue;
+
+		for (int i = 0; i < node->Actions.Num(); ++i)
+		{
+			auto fade = node->Actions[i]->Cast<SDK::UEventAction_Fade>();
+			if (!fade || fade->FadeLayer != SDK::EFadeLayer::Event)
+				continue;
+			last = fade;
+			lastIndex = node->ExecutionIndex;
+		}
+	}
+
+	if (last && last->FadeType == SDK::EFadeType::FadeIn)
+		last->bPostSkipAction = true;
+
+
 	return true;
 }
 
@@ -377,26 +393,12 @@ bool HookManager::GetAutoSkipSetting_Hook(SDK::UGameSettingsSubsystem* self)
 void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)
 {
 	GUI::Instance().Tick();
-	ArchipelagoSource::Instance().Tick();
+	Configuration::Instance().Tick();
 	GameManager::Instance().Tick();
 #if ENABLE_HOOK_PROBE
-	HookProbe::TickCutsceneSkip();
-	HookProbe::TickBossSwap();
+	HookProbe::Tick();
 #endif
 	oEngineTick(self, dt, idle);
-}
-
-void HookManager::ProcessEvent_Hook(const SDK::UObject* obj, SDK::UFunction* func, void* params)
-{
-	oProcessEvent(obj, func, params);
-#if ENABLE_HOOK_PROBE
-	HookProbe::OnProcessEvent(obj, func, params);
-#endif
-}
-
-void HookManager::SetLaunchGameIntent_Hook(SDK::UGameInstanceZion* Context, SDK::FFrame* Stack, void* Result)
-{
-	oSetLaunchGameIntent(Context, Stack, Result);
 }
 
 void HookManager::SaveGameSync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, bool* Result)

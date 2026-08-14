@@ -2,6 +2,7 @@
 
 #include "IItemSource.h"
 #include <string>
+#include <deque>
 #include <memory>
 #include <vector>
 #include <map>
@@ -48,13 +49,12 @@ public:
 	void Connect(const std::string& host, const std::string& slot, const std::string& pass);
 	void Disconnect();
 
-	void Tick();
+	void Tick() override;
 
 	APState GetState() const { return state; }
 	const std::string& GetError() const { return errorMsg; }
 
 	int Option(const std::string& name, int fallback = 0) const override;
-	bool OptionIs(const std::string& name, int value) const { return Option(name) == value; }
 	std::optional<std::string> Seed() const override;
 
 	void SetDeathLink(bool enabled);
@@ -66,6 +66,7 @@ public:
 	void ReportCheck(const std::string& location) override;
 	void OnGameStart(bool isNewGame) override;
 	void OnGameSaved() override;
+	float Progress() const override;
 
 private:
 	ArchipelagoSource() = default;
@@ -113,7 +114,7 @@ private:
 	int receivedIndex = 0;
 	bool indexLoaded = false;
 	std::vector<APClient::NetworkItem> allItems;
-	std::vector<ReceivedItem> receivedItems;
+	std::deque<ReceivedItem> receivedItems;
 
 	std::unordered_map<std::string, int> options;
 	std::unordered_map<std::string, int64_t> nameToId;

@@ -10,7 +10,6 @@
 class ItemReplacer
 {
 public:
-	ItemReplacer();
 	void ZoneChanged(const std::string &oldZone, const std::string &newZone);
 	void ZoneUnloaded();
 	void ResetShopItems();
@@ -24,7 +23,6 @@ public:
 	static SDK::int32 CurrencyCount(const std::string& itemName);
 
 private:
-	GameManager* GM;
 	bool shop_replaced = false;
 	std::unordered_map<std::string, SDK::FShopItemData> vanilla_shop;
 	std::unordered_map<std::string, SDK::UEventAsset*> swapped_assets;
@@ -37,7 +35,7 @@ private:
 	void ReplaceItemActors()
 	{
 		UC::TArray<SDK::AActor*> out;
-		SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), T::StaticClass(), &out);
+		SDK::UGameplayStatics::GetAllActorsOfClass(GameManager::Instance().World(), T::StaticClass(), &out);
 		for (auto Actor : out)
 		{
 			auto typed = static_cast<T*>(Actor);

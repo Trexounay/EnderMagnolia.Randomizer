@@ -178,6 +178,7 @@
     <ClCompile Include="CppSDK\SDK\Engine_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\EventSystem_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\UMG_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\WBP_Event_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\WBP_Text_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Zion_functions.cpp" />
     <ClCompile Include="extern\imgui\backends\imgui_impl_dx11.cpp" />

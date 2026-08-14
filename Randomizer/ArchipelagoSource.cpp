@@ -216,7 +216,7 @@ void ArchipelagoSource::DeliverReceivedItems()
 		if (nameIt == idToName.end())
 		{
 			Logger::Log(LogLevel::Warning, "AP", "received item id not in table", item.item);
-			receivedItems.erase(receivedItems.begin());
+			receivedItems.pop_front();
 			continue;
 		}
 
@@ -225,7 +225,7 @@ void ArchipelagoSource::DeliverReceivedItems()
 
 		GUI::Instance().NotifyItem(nameIt->second, "Received from " + item.player);
 		receivedIndex = item.index + 1;
-		receivedItems.erase(receivedItems.begin());
+		receivedItems.pop_front();
 	}
 }
 
@@ -282,19 +282,16 @@ void ArchipelagoSource::OnPlayerDeath()
 
 void ArchipelagoSource::OnBounced(const nlohmann::json& json)
 {
-	if (!deathLinkEnabled)
+	if (!deathLinkEnabled || !json.contains("tags") || !json.contains("data") || !json["data"].is_object())
 		return;
-	if (!json.contains("tags"))
-		return;
+
 	bool isDeathLink = false;
 	for (const auto& tag : json["tags"])
 		if (tag.get<std::string>() == "DeathLink")
 			isDeathLink = true;
-	if (!isDeathLink)
-		return;
 
 	const auto& data = json["data"];
-	if (data.contains("source") && data["source"].get<std::string>() == connSlot)
+	if (!isDeathLink || (data.contains("source") && data["source"].get<std::string>() == connSlot))
 		return;
 
 	double time = data.contains("time") ? data["time"].get<double>() : 0;
@@ -488,6 +485,16 @@ void ArchipelagoSource::OnGameStart(bool isNewGame)
 void ArchipelagoSource::OnGameSaved()
 {
 	CommitIndex();
+}
+
+float ArchipelagoSource::Progress() const
+{
+	if (!ap || state != APState::Connected)
+		return 0.0f;
+
+	size_t checked = ap->get_checked_locations().size();
+	size_t total = checked + ap->get_missing_locations().size();
+	return total == 0 ? 0.0f : (float)checked / total;
 }
 
 void ArchipelagoSource::PopulateDataTable()

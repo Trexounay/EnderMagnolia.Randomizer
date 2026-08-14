@@ -34,7 +34,6 @@ DWORD APIENTRY MainThread(HMODULE Module)
 	UpdateChecker::CheckAsync();
 	GUI::Instance().Init();
 
-	FreeLibraryAndExitThread(Module, 0);
 	return 0;
 }
 
@@ -43,12 +42,11 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	LPVOID lpReserved
 )
 {
-	std::thread* second;
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
 		setupWrappers();
-		second = new std::thread(MainThread, hModule);
+		std::thread(MainThread, hModule).detach();
 		break;
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:

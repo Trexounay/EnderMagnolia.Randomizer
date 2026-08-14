@@ -1425,3 +1425,12 @@ using TActorBasedCycleFixup = CyclicDependencyFixupImpl::TCyclicClassFixup<Under
 
 }
 
+
+template<>
+struct std::hash<SDK::FName>
+{
+	size_t operator()(const SDK::FName& Name) const noexcept
+	{
+		return (size_t)Name.Number << 32 | (UC::uint32)Name.ComparisonIndex;
+	}
+};

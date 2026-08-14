@@ -6,11 +6,6 @@
 #include "CustomItemRegistry.h"
 #include <vector>
 
-ItemReplacer::ItemReplacer()
-{
-	GM = &GameManager::Instance();
-}
-
 void ItemReplacer::ZoneChanged(const std::string& oldZone, const std::string& newZone)
 {
 	delayed_replacement.clear();
@@ -47,7 +42,7 @@ void ItemReplacer::Tick()
 void ItemReplacer::ReplaceInteractableEvents()
 {
 	UC::TArray<SDK::AActor*> out;
-	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::AInteractable_Event::StaticClass(), &out);
+	SDK::UGameplayStatics::GetAllActorsOfClass(GameManager::Instance().World(), SDK::AInteractable_Event::StaticClass(), &out);
 	for (auto actor : out)
 	{
 		if (auto npc = actor->Cast<SDK::AInteractable_EventNPC>())
@@ -63,7 +58,7 @@ void ItemReplacer::ReplaceInteractableEvents()
 void ItemReplacer::ReplaceBossEvents()
 {
 	UC::TArray<SDK::AActor*> out;
-	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ABP_BossSpawner_C::StaticClass(), &out);
+	SDK::UGameplayStatics::GetAllActorsOfClass(GameManager::Instance().World(), SDK::ABP_BossSpawner_C::StaticClass(), &out);
 	for (auto actor : out)
 	{
 		auto boss = static_cast<SDK::ABP_BossSpawner_C*>(actor);
@@ -74,7 +69,7 @@ void ItemReplacer::ReplaceBossEvents()
 void ItemReplacer::ReplaceTriggerEvents()
 {
 	UC::TArray<SDK::AActor*> out;
-	SDK::UGameplayStatics::GetAllActorsOfClass(GM->World(), SDK::ATrigger_Event::StaticClass(), &out);
+	SDK::UGameplayStatics::GetAllActorsOfClass(GameManager::Instance().World(), SDK::ATrigger_Event::StaticClass(), &out);
 	for (auto actor : out)
 	{
 		auto trigger = static_cast<SDK::ATrigger_Event*>(actor);
@@ -94,7 +89,9 @@ void ItemReplacer::WaitForEventAsset(SDK::AActor* owner, SDK::TSoftObjectPtr<SDK
 	{
 		if (owner->bActorIsBeingDestroyed)
 			return true;
-		auto event = softptr->LoadBlocking();
+		auto event = softptr->Get();
+		if (!event)
+			event = softptr->LoadBlocking();
 		if (event)
 			ReplaceEventAsset(actorName, event);
 		return false;

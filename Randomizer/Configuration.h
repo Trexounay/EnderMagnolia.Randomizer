@@ -5,7 +5,6 @@
 #include <unordered_map>
 #include "SDK.hpp"
 #include "OfflineSource.h"
-#include "ArchipelagoSource.h"
 
 class IItemSource;
 
@@ -28,9 +27,11 @@ public:
 	const OfflineSource& Offline() const { return offlineSource; }
 	int Option(const std::string& name, int fallback = 0) const;
 	void SetOption(const std::string& name, int value);
+	float Progress() const;
 	void ReportCheck(const std::string& location);
 	void OnGameStart(bool isNewGame);
 	void OnGameSaved();
+	void Tick();
 
 private:
 	Configuration() = default;

@@ -2,6 +2,10 @@
 #include "Logger.h"
 #include "CustomItemRegistry.h"
 #include "Configuration.h"
+#include "GameManager.h"
+#include "GUI.h"
+#include "ItemReplacer.h"
+#include "SDK.hpp"
 #include <fstream>
 
 OfflineSource::OfflineSource(const std::string& path)
@@ -58,9 +62,13 @@ bool OfflineSource::NewSeed(const std::string& seed)
 
 bool OfflineSource::Load()
 {
+	IndexChecks();
+
 	checks_to_items.clear();
 	ap_items.clear();
 	options.clear();
+	start_inventory.clear();
+	pending_start_items.clear();
 	seedName.clear();
 	auto fullPath = Configuration::Instance().DataPath(path);
 	std::ifstream file(fullPath);
@@ -106,6 +114,12 @@ bool OfflineSource::Load()
 			continue;
 		}
 
+		if (location.rfind("start.", 0) == 0)
+		{
+			start_inventory.push_back(item);
+			continue;
+		}
+
 		size_t p1 = item.find('|');
 		if (p1 != std::string::npos)
 		{
@@ -127,13 +141,140 @@ bool OfflineSource::Load()
 			checks_to_items[location] = item;
 		}
 	}
-	Logger::Log(LogLevel::Debug, this, "Found", checks_to_items.size(), "Items", ap_items.size(), "AP", options.size(), "Options");
+	Logger::Log(LogLevel::Debug, this, "Found", checks_to_items.size(), "Items", ap_items.size(), "AP", options.size(), "Options", start_inventory.size(), "Starting Items");
 	return true;
+}
+
+void OfflineSource::IndexChecks()
+{
+	if (!actor_checks.empty())
+		return;
+
+	std::unordered_map<std::string, SDK::FName> names;
+	auto name = [&](const std::string& text)
+	{
+		auto known = names.find(text);
+		if (known == names.end())
+			known = names.emplace(text, SDK::FName::FromString(text)).first;
+		return known->second;
+	};
+
+	std::ifstream file(Configuration::Instance().DataPath("apids.txt"));
+	std::string line;
+	while (std::getline(file, line))
+	{
+		size_t separator = line.find(':');
+		if (separator == std::string::npos)
+			continue;
+		if (std::strtoll(line.c_str(), nullptr, 10) >= 1000)
+			break;
+
+		std::string location = line.substr(separator + 1);
+		location.erase(location.find_last_not_of(" \t\r") + 1);
+
+		if (location == "starting_skill")
+			continue;
+
+		size_t dot = location.find('.');
+		if (location.rfind("DT_Shop_Main.", 0) == 0)
+			++shop_checks;
+		else if (location.rfind("EVT_", 0) == 0)
+			event_checks.insert(name(location.substr(0, dot)));
+		else
+			actor_checks[name(location.substr(0, dot))].insert(name(location.substr(dot + 1)));
+	}
+}
+
+float OfflineSource::Progress() const
+{
+	auto& game = GameManager::Instance();
+	if (!game.IsInGame())
+		return 0.0f;
+
+	auto controller = game.Controller();
+	auto clearManager = SDK::UClearManagerComponent::Get(game.World());
+
+	int total = shop_checks + (int)event_checks.size() + 1;
+	for (const auto& zone : actor_checks)
+		total += (int)zone.second.size();
+
+	int cleared = 0;
+
+	auto& clearedActors = clearManager->ClearedSavedActors;
+	for (int z = 0; z < clearedActors.NumAllocated(); ++z)
+	{
+		if (!clearedActors.IsValidIndex(z))
+			continue;
+
+		auto zone = actor_checks.find(clearedActors[z].Key());
+		if (zone == actor_checks.end())
+			continue;
+
+		auto& actors = clearedActors[z].Value().Set;
+		for (int a = 0; a < actors.NumAllocated(); ++a)
+			if (actors.IsValidIndex(a) && zone->second.count(actors[a]))
+				++cleared;
+	}
+
+	auto& clearedEvents = controller->ClearedEvents;
+	for (int e = 0; e < clearedEvents.NumAllocated(); ++e)
+	{
+		if (!clearedEvents.IsValidIndex(e))
+			continue;
+
+		if (event_checks.count(clearedEvents[e]))
+			++cleared;
+	}
+
+	int bought = 0;
+	auto& histories = controller->ShopInfoComponent->ShopHistories;
+	for (int h = 0; h < histories.NumAllocated(); ++h)
+	{
+		if (!histories.IsValidIndex(h))
+			continue;
+
+		auto& items = histories[h].Value().Items;
+		for (int i = 0; i < items.NumAllocated(); ++i)
+			if (items.IsValidIndex(i))
+				bought += items[i].Value();
+	}
+	cleared += bought < shop_checks ? bought : shop_checks;
+
+	if (controller->SkillComponent->HasAnyEquippedSkill())
+		++cleared;
+
+	return (float)cleared / total;
 }
 
 void OfflineSource::OnGameStart(bool isNewGame)
 {
 	PopulateDataTable();
+
+	pending_start_items.clear();
+	if (isNewGame)
+		pending_start_items.assign(start_inventory.begin(), start_inventory.end());
+}
+
+void OfflineSource::Tick()
+{
+	DeliverStartInventory();
+}
+
+void OfflineSource::DeliverStartInventory()
+{
+	if (GameManager::Instance().IsLoading())
+		return;
+
+	while (!pending_start_items.empty())
+	{
+		const std::string& item = pending_start_items.front();
+		if (!GameManager::Instance().GrantItem(item, ItemReplacer::CurrencyCount(item)))
+			return;
+
+		Logger::Log(LogLevel::Debug, this, "granted starting item", item);
+		GUI::Instance().NotifyItem(item, "Starting item");
+		pending_start_items.pop_front();
+	}
 }
 
 void OfflineSource::OnGameSaved()

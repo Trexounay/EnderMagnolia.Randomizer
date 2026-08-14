@@ -17,7 +17,6 @@ namespace GameTables
 }
 
 class ItemReplacer;
-class DebugTeleporter;
 
 class GameManager
 {
@@ -81,6 +80,5 @@ private:
 	std::unordered_map<std::string, PassiveCost> vanillaPassiveCosts;
 
 	ItemReplacer* itemReplacer = nullptr;
-	DebugTeleporter* teleporter = nullptr;
 	bool start_weapon = false;
 };

@@ -4,10 +4,6 @@
 #include "Logger.h"
 #include "ItemReplacer.h"
 #include "CustomItemRegistry.h"
-#include "DebugTeleporter.h"
-#if ENABLE_HOOK_PROBE
-#include "HookProbe.h"
-#endif
 #include "SDK.hpp"
 #include <algorithm>
 #include <map>
@@ -45,7 +41,6 @@ void GameManager::Init()
 {
 	Logger::Log(this, "Init ok");
 	itemReplacer = new ItemReplacer();
-	teleporter = new DebugTeleporter();
 }
 
 void GameManager::OnGameStart(int slot, bool isNewGame)
@@ -109,6 +104,7 @@ void GameManager::SetSkillCosts()
 		cost.Count = 1;
 
 		auto levels = skillData->SkillLevelTable->RowMap;
+
 		auto level_1 = (SDK::FSkillLevelData*)levels[skillData->InitialLevel - 1].Second;
 		if (level_1->UnlockMaterials && level_1->UnlockMaterials.Num() > 0)
 		{
@@ -120,6 +116,15 @@ void GameManager::SetSkillCosts()
 			buffer[0] = cost;
 			level_1->UnlockMaterials = UC::TExternalArray<SDK::FSkillMaterialData>(buffer, 1);
 		}
+/*
+		for (auto entry : levels)
+		{
+			auto level = (SDK::FSkillLevelData*)entry.Second;
+			auto buffer = (SDK::FSkillMaterialData*)SDK::FMemory::Malloc(sizeof(SDK::FSkillMaterialData));
+			buffer[0] = cost;
+			level->UnlockMaterials = UC::TExternalArray<SDK::FSkillMaterialData>(buffer, 1);
+		}
+*/
 	}
 }
 
@@ -244,9 +249,6 @@ bool GameManager::GrantItem(const std::string& itemName, int count)
 		return false;
 
 	auto row = CustomItemRegistry::Instance().Provide(itemName);
-	if (!row.has_value())
-		return false;
-
 	controller->InventoryComponent->AddItem(row.value(), count);
 	return true;
 }
@@ -474,6 +476,10 @@ int GameManager::ClampChapter()
 	int min = Configuration::Instance().Option("min_chapter", 0);
 	int max = Configuration::Instance().Option("max_chapter", 16);
 	int level = mode->EnvironmentLevel;
+
+	if (Configuration::Instance().Option("chapter_scaling") == 1)
+		level = min + (int)(Configuration::Instance().Progress() * (max - min) + 0.5f);
+
 	int clamped = level < min ? min : (level > max ? max : level);
 
 	if (clamped != level)

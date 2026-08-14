@@ -450,10 +450,10 @@ void DebugMenu::DrawZoneTravel()
 
 void DebugMenu::TickEvents()
 {
-	int action = eventAction.exchange(0);
-
 	if (GameManager::Instance().IsLoading())
 		return;
+
+	int action = eventAction.exchange(0);
 
 	std::lock_guard<std::mutex> lock(eventMutex);
 	bool justListed = false;
