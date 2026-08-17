@@ -71,6 +71,8 @@ private:
 
 	void CapturePassiveCosts();
 	void ShufflePassiveCosts();
+	void CaptureUpgradeCosts();
+	void ShuffleUpgradeCosts();
 	void ShuffleBGM();
 	void ShuffleSpecialSkills();
 
@@ -86,6 +88,7 @@ private:
 
 	struct PassiveCost { int tier; int cost; };
 	std::unordered_map<std::string, PassiveCost> vanillaPassiveCosts;
+	std::vector<std::pair<SDK::FSkillLevelData*, SDK::TArray<SDK::FSkillMaterialData>>> vanillaUpgradeCosts;
 	std::vector<std::pair<SDK::int32, std::wstring>> bgmTracks;
 	std::vector<int> bgmShuffle;
 	struct SpecialSkill { SDK::FSkillData* data; std::vector<uint8_t> vanilla; };

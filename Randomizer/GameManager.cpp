@@ -57,6 +57,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 		CustomItemRegistry::Instance().CreateItem(*def);
 	Configuration::Instance().OnGameStart(isNewGame);
 	ShufflePassiveCosts();
+	ShuffleUpgradeCosts();
 	ShuffleBGM();
 	itemReplacer->ResetShopItems();
 	InitSkills();
@@ -289,10 +290,51 @@ void GameManager::ShufflePassiveCosts()
 			shuffled[rows[i]] = costs[i];
 	}
 
+	// make sure grav relic doesn't cost more than 2
+	if (auto it = shuffled.find("reduce_gravity"); it != shuffled.end() && it->second > 2)
+		it->second = 2;
+
 	for (auto p : GameTables::ItemPassives()->RowMap)
 		((SDK::FInventoryItemPassiveData*)(p.Second))->SlotCost = shuffled[p.First.GetRawString()];
+}
 
-	Logger::Log(this, "relic costs", enabled ? "shuffled, seed" : "vanilla, seed", key.empty() ? "none" : key);
+void GameManager::CaptureUpgradeCosts()
+{
+	for (auto s : GameTables::ItemSkills()->RowMap)
+	{
+		auto skillData = (SDK::FInventoryItemSkillData*)(s.Second);
+		auto& levels = skillData->SkillLevelTable->RowMap;
+		for (int i = skillData->InitialLevel; i < levels.NumAllocated(); ++i)
+		{
+			auto level = (SDK::FSkillLevelData*)(levels[i].Second);
+			vanillaUpgradeCosts.push_back({ level, level->UnlockMaterials });
+		}
+	}
+}
+
+void GameManager::ShuffleUpgradeCosts()
+{
+	if (vanillaUpgradeCosts.empty())
+		CaptureUpgradeCosts();
+
+	auto seed = Configuration::Instance().Seed();
+	bool enabled = seed && Configuration::Instance().Option("skill_cost_shuffle") != 0;
+
+	std::string key = seed ? *seed : "";
+	std::seed_seq sequence(key.begin(), key.end());
+	std::mt19937 rng(sequence);
+
+	std::vector<SDK::TArray<SDK::FSkillMaterialData>> costs;
+	for (const auto& slot : vanillaUpgradeCosts)
+		costs.push_back(slot.second);
+
+	if (enabled)
+		std::shuffle(costs.begin(), costs.end(), rng);
+
+	for (size_t i = 0; i < vanillaUpgradeCosts.size(); ++i)
+		vanillaUpgradeCosts[i].first->UnlockMaterials = costs[i];
+
+	Logger::Log(this, "skill upgrade costs", enabled ? "shuffled, seed" : "vanilla, seed", key.empty() ? "none" : key);
 }
 
 void GameManager::ShuffleBGM()
@@ -507,6 +549,7 @@ void GameManager::OnItemSourceChanged()
 
 	Logger::Log(this, "item source changed, shop will be replaced again");
 	ShufflePassiveCosts();
+	ShuffleUpgradeCosts();
 	ShuffleBGM();
 	ShuffleSpecialSkills();
 	ClampChapter();
