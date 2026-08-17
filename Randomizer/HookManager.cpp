@@ -31,6 +31,7 @@ HookManager::FAutoSkipSettingFn HookManager::oGetAutoSkipSetting = nullptr;
 HookManager::FApplyAudioSettingsFn HookManager::oApplyAudioSettings = nullptr;
 HookManager::FPlayBGMFn HookManager::oPlayBGM = nullptr;
 HookManager::FMapClearFn HookManager::oMapClear = nullptr;
+HookManager::FGoToPageFn HookManager::oGoToPage = nullptr;
 
 HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
@@ -53,6 +54,7 @@ namespace
 	constexpr uintptr_t kOff_ApplyAudioSettings    = 0x47635F0;
 	constexpr uintptr_t kOff_PlayBGM               = 0x477B950;
 	constexpr uintptr_t kOff_MapClear              = 0x47B1320;
+	constexpr uintptr_t kOff_GoToPage              = 0x47BA2C0;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 }
@@ -118,6 +120,7 @@ bool HookManager::Init()
 	HookAt(kOff_ApplyAudioSettings, &ApplyAudioSettings_Hook, reinterpret_cast<void**>(&oApplyAudioSettings));
 	HookAt(kOff_PlayBGM, &PlayBGM_Hook, reinterpret_cast<void**>(&oPlayBGM));
 	HookAt(kOff_MapClear, &MapClear_Hook, reinterpret_cast<void**>(&oMapClear));
+	HookAt(kOff_GoToPage, &GoToPage_Hook, reinterpret_cast<void**>(&oGoToPage));
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -461,6 +464,19 @@ void HookManager::MapClear_Hook(SDK::UUserWidgetMap* self)
 			child->SetVisibility(SDK::ESlateVisibility::Collapsed);
 			break;
 		}
+	}
+}
+
+void HookManager::GoToPage_Hook(SDK::UUserWidgetGameMenu* self, SDK::int32 pageIndex)
+{
+	oGoToPage(self, pageIndex);
+
+	for (auto slot : self->PageSwitcher->Slots)
+	{
+		if (auto page = slot->Content;
+			page->Class == SDK::UWBP_GameMenu_Page_Skill_C::StaticClass())
+			GameManager::Instance().SetSkillMenuNavigation(
+				static_cast<SDK::UWBP_GameMenu_Page_Skill_C*>(page));
 	}
 }
 

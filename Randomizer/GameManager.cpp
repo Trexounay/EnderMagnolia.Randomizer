@@ -132,6 +132,102 @@ void GameManager::SetSkillCosts()
 	}
 }
 
+void GameManager::SetSkillMenuNavigation(SDK::UWBP_GameMenu_Page_Skill_C* page)
+{
+	using SDK::EUINavigation;
+
+	auto holder = static_cast<SDK::UPanelWidget*>(
+		page->WBP_SpiritSkillList->SkillListHolder);
+
+	static constexpr int probe[3][3] = { { 0, 1, 2 }, { 1, 0, 2 }, { 2, 1, 0 } };
+
+	SDK::UWidget* cell[5][6] = {};
+	SDK::UWidget* first = nullptr;
+
+	for (int i = 0; i < holder->Slots.Num(); ++i)
+	{
+		auto spirit = static_cast<SDK::UWBP_SpiritSkillSet_C*>(holder->Slots[i]->Content);
+		SDK::UWBP_SpiritSkillEntry_C* entries[3] = { spirit->WBP_SpiritSkill_Skill1,
+			spirit->WBP_SpiritSkill_Skill2, spirit->WBP_SpiritSkill_Skill3 };
+
+		for (int e = 0; e < 3; ++e)
+		{
+			if (entries[e]->bHasItem)
+			{
+				cell[i / 2][(i % 2) * 3 + e] = entries[e];
+				if (!first)
+					first = entries[e];
+			}
+		}
+	}
+
+	int rows = (holder->Slots.Num() + 1) / 2;
+	auto equipped = page->WBP_EquippedSkillSet;
+	SDK::UWidget* panel = equipped->WBP_SkillEntry_AttackA;
+
+	if (first)
+	{
+		panel->SetNavigationRuleExplicit(EUINavigation::Down, first);
+		equipped->WBP_SkillEntry_AttackB->SetNavigationRuleExplicit(EUINavigation::Down, first);
+		equipped->WBP_SkillEntry_AttackC->SetNavigationRuleExplicit(EUINavigation::Down, first);
+		equipped->WBP_SkillEntry_AttackD->SetNavigationRuleExplicit(EUINavigation::Down, first);
+	}
+
+	for (int row = 0; row < rows; ++row)
+	{
+		for (int col = 0; col < 6; ++col)
+		{
+			auto entry = cell[row][col];
+			if (!entry)
+				continue;
+
+			int base = (col / 3) * 3;
+			int other = base ? 0 : 3;
+			const int* order = probe[col - base];
+
+			SDK::UWidget* up = nullptr;
+			for (int r = row - 1; r >= 0 && !up; --r)
+				for (int k = 0; k < 3 && !up; ++k)
+					up = cell[r][base + order[k]];
+			if (row > 0)
+				entry->SetNavigationRuleExplicit(EUINavigation::Up, up ? up : panel);
+
+			SDK::UWidget* down = nullptr;
+			for (int step = 1; step < rows && !down; ++step)
+				for (int k = 0; k < 3 && !down; ++k)
+					down = cell[(row + step) % rows][base + order[k]];
+			if (down)
+				entry->SetNavigationRuleExplicit(EUINavigation::Down, down);
+
+			for (int side = -1; side <= 1; side += 2)
+			{
+				SDK::UWidget* target = nullptr;
+				for (int c = col + side; c >= 0 && c < 6 && !target; c += side)
+					target = cell[row][c];
+
+				if ((base == 0) == (side > 0))
+				{
+					for (int step = 1; step < rows && !target; ++step)
+					{
+						for (int away = -1; away <= 1 && !target; away += 2)
+						{
+							int r = row + away * step;
+							if (r < 0 || r >= rows)
+								continue;
+							for (int k = 0; k < 3 && !target; ++k)
+								target = cell[r][other + order[k]];
+						}
+					}
+				}
+
+				if (target)
+					entry->SetNavigationRuleExplicit(
+						side < 0 ? EUINavigation::Left : EUINavigation::Right, target);
+			}
+		}
+	}
+}
+
 void GameManager::CapturePassiveCosts()
 {
 	if (!vanillaPassiveCosts.empty())

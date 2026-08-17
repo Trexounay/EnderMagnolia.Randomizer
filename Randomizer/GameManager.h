@@ -34,6 +34,7 @@ public:
 	void OnEventFinished(SDK::UEventAsset* asset);
 	void OnActorCleared(SDK::AActor* actor);
 	bool SetStartingWeapon();
+	void SetSkillMenuNavigation(SDK::UWBP_GameMenu_Page_Skill_C* page);
 	bool GrantItem(const std::string& itemName, int count = 1);
 	bool KillPlayer();
 	bool GoHome();
