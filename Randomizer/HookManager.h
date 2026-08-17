@@ -42,6 +42,9 @@ private:
 	using FResetRespawnDefaultsFn = void(*)(SDK::APlayerControllerZion*);
 	using FEventPredicateFn = bool(*)(SDK::UUserWidgetEvent*);
 	using FAutoSkipSettingFn = bool(*)(SDK::UGameSettingsSubsystem*);
+	using FApplyAudioSettingsFn = void(*)(SDK::USoundSubsystem*, SDK::FAudioVolumeSettings*);
+	using FPlayBGMFn = void(*)(SDK::USoundSubsystem*, SDK::UFMODEvent*);
+	using FMapClearFn = void(*)(SDK::UUserWidgetMap*);
 
 	static FEventFinishedFn oTriggerEventFinished;
 	static FMarkClearedFn oMarkAsCleared;
@@ -56,6 +59,9 @@ private:
 	static FEventPredicateFn oIsEventAlreadySeen;
 	static FEventPredicateFn oCanAutoSkipEvent;
 	static FAutoSkipSettingFn oGetAutoSkipSetting;
+	static FApplyAudioSettingsFn oApplyAudioSettings;
+	static FPlayBGMFn oPlayBGM;
+	static FMapClearFn oMapClear;
 
 	static void TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result);
 	static void MarkAsCleared_Hook(SDK::UClearComponent* self);
@@ -70,6 +76,9 @@ private:
 	static bool IsEventAlreadySeen_Hook(SDK::UUserWidgetEvent* self);
 	static bool CanAutoSkipEvent_Hook(SDK::UUserWidgetEvent* self);
 	static bool GetAutoSkipSetting_Hook(SDK::UGameSettingsSubsystem* self);
+	static void ApplyAudioSettings_Hook(SDK::USoundSubsystem* self, SDK::FAudioVolumeSettings* settings);
+	static void PlayBGM_Hook(SDK::USoundSubsystem* self, SDK::UFMODEvent* event);
+	static void MapClear_Hook(SDK::UUserWidgetMap* self);
 
 	bool HookConditionSlot(const char* name, SDK::UObject* cdo, void* hook, void** original);
 

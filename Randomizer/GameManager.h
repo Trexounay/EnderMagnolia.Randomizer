@@ -1,8 +1,11 @@
 #pragma once
 #include "SDK.hpp"
+#include <map>
 #include <optional>
 #include <string>
 #include <unordered_map>
+#include <utility>
+#include <vector>
 
 namespace GameTables
 {
@@ -36,6 +39,8 @@ public:
 	bool GoHome();
 	int ClampChapter();
 
+	SDK::UFMODEvent* SwapBGM(SDK::UFMODEvent* event);
+
 	bool IsLoading() const;
 	bool IsInGame() const { return !currentZone.empty() && !IsLoading(); }
 	int CurrentSaveSlot() const { return currentSaveSlot; }
@@ -65,6 +70,8 @@ private:
 
 	void CapturePassiveCosts();
 	void ShufflePassiveCosts();
+	void ShuffleBGM();
+	void ShuffleSpecialSkills();
 
 	void ExcludeLeversFromZoneCompletion();
 
@@ -78,6 +85,10 @@ private:
 
 	struct PassiveCost { int tier; int cost; };
 	std::unordered_map<std::string, PassiveCost> vanillaPassiveCosts;
+	std::vector<std::pair<SDK::int32, std::wstring>> bgmTracks;
+	std::vector<int> bgmShuffle;
+	struct SpecialSkill { SDK::FSkillData* data; std::vector<uint8_t> vanilla; };
+	std::map<int, std::map<std::string, SpecialSkill>> vanillaSpecials;
 
 	ItemReplacer* itemReplacer = nullptr;
 	bool start_weapon = false;

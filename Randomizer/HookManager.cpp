@@ -28,6 +28,9 @@ HookManager::FResetRespawnDefaultsFn HookManager::oResetRespawnDefaults = nullpt
 HookManager::FEventPredicateFn HookManager::oIsEventAlreadySeen = nullptr;
 HookManager::FEventPredicateFn HookManager::oCanAutoSkipEvent = nullptr;
 HookManager::FAutoSkipSettingFn HookManager::oGetAutoSkipSetting = nullptr;
+HookManager::FApplyAudioSettingsFn HookManager::oApplyAudioSettings = nullptr;
+HookManager::FPlayBGMFn HookManager::oPlayBGM = nullptr;
+HookManager::FMapClearFn HookManager::oMapClear = nullptr;
 
 HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
@@ -47,6 +50,9 @@ namespace
 	constexpr uintptr_t kOff_IsEventAlreadySeen    = 0x47BAC60;
 	constexpr uintptr_t kOff_CanAutoSkipEvent      = 0x47B06F0;
 	constexpr uintptr_t kOff_GetAutoSkipSetting    = 0x476DEC0;
+	constexpr uintptr_t kOff_ApplyAudioSettings    = 0x47635F0;
+	constexpr uintptr_t kOff_PlayBGM               = 0x477B950;
+	constexpr uintptr_t kOff_MapClear              = 0x47B1320;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 }
@@ -108,6 +114,10 @@ bool HookManager::Init()
 	HookAt(kOff_IsEventAlreadySeen, &IsEventAlreadySeen_Hook, reinterpret_cast<void**>(&oIsEventAlreadySeen));
 	HookAt(kOff_CanAutoSkipEvent, &CanAutoSkipEvent_Hook, reinterpret_cast<void**>(&oCanAutoSkipEvent));
 	HookAt(kOff_GetAutoSkipSetting, &GetAutoSkipSetting_Hook, reinterpret_cast<void**>(&oGetAutoSkipSetting));
+
+	HookAt(kOff_ApplyAudioSettings, &ApplyAudioSettings_Hook, reinterpret_cast<void**>(&oApplyAudioSettings));
+	HookAt(kOff_PlayBGM, &PlayBGM_Hook, reinterpret_cast<void**>(&oPlayBGM));
+	HookAt(kOff_MapClear, &MapClear_Hook, reinterpret_cast<void**>(&oMapClear));
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -388,6 +398,70 @@ bool HookManager::GetAutoSkipSetting_Hook(SDK::UGameSettingsSubsystem* self)
 	if (Configuration::Instance().Option("auto_skip_cutscenes") == 0)
 		return oGetAutoSkipSetting(self);
 	return true;
+}
+
+void HookManager::ApplyAudioSettings_Hook(SDK::USoundSubsystem* self, SDK::FAudioVolumeSettings* settings)
+{
+	if (Configuration::Instance().Option("shuffle_bgm") == 0 || !settings->bOverrideBGM)
+		return oApplyAudioSettings(self, settings);
+
+	SDK::FAudioVolumeSettings swapped = *settings;
+	swapped.BGM = GameManager::Instance().SwapBGM(settings->BGM);
+	oApplyAudioSettings(self, &swapped);
+}
+
+void HookManager::PlayBGM_Hook(SDK::USoundSubsystem* self, SDK::UFMODEvent* event)
+{
+	if (Configuration::Instance().Option("shuffle_bgm") == 0)
+		return oPlayBGM(self, event);
+
+	oPlayBGM(self, GameManager::Instance().SwapBGM(event));
+}
+
+void HookManager::MapClear_Hook(SDK::UUserWidgetMap* self)
+{
+	oMapClear(self);
+
+	auto map = static_cast<SDK::UWBP_Map_C*>(self);
+	auto canvas = map->MainHolder;
+
+	SDK::UWBP_Completion_C* completion = nullptr;
+	for (int i = 0; i < canvas->GetChildrenCount() && !completion; ++i)
+	{
+		auto child = canvas->GetChildAt(i);
+		if (child != map->WBP_Completion_Map
+			&& child->Class == SDK::UWBP_Completion_C::StaticClass())
+			completion = static_cast<SDK::UWBP_Completion_C*>(child);
+	}
+
+	if (!completion)
+	{
+		completion = static_cast<SDK::UWBP_Completion_C*>(SDK::UWidgetBlueprintLibrary::Create(
+			map, SDK::UWBP_Completion_C::StaticClass(), nullptr));
+
+		SDK::FAnchorData layout =
+			static_cast<SDK::UCanvasPanelSlot*>(map->MapAreaName->Slot)->GetLayout();
+		layout.Alignment.Y = 1.0;
+		layout.Offsets.Top += 10.0f;
+
+		auto slot = static_cast<SDK::UCanvasPanelSlot*>(canvas->AddChild(completion));
+		slot->SetLayout(layout);
+		slot->SetAutoSize(true);
+	}
+
+	completion->SetCompletionRatio(Configuration::Instance().Progress());
+	completion->SetVisibility(SDK::ESlateVisibility::HitTestInvisible);
+
+	auto overlay = static_cast<SDK::UPanelWidget*>(completion->WidgetTree->RootWidget);
+	for (int i = 0; i < overlay->GetChildrenCount(); ++i)
+	{
+		auto child = overlay->GetChildAt(i);
+		if (child->Class == SDK::UImage::StaticClass())
+		{
+			child->SetVisibility(SDK::ESlateVisibility::Collapsed);
+			break;
+		}
+	}
 }
 
 void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)

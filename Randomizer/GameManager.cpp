@@ -6,7 +6,9 @@
 #include "CustomItemRegistry.h"
 #include "SDK.hpp"
 #include <algorithm>
+#include <cstring>
 #include <map>
+#include <numeric>
 #include <random>
 #include <set>
 #include <vector>
@@ -55,6 +57,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 		CustomItemRegistry::Instance().CreateItem(*def);
 	Configuration::Instance().OnGameStart(isNewGame);
 	ShufflePassiveCosts();
+	ShuffleBGM();
 	itemReplacer->ResetShopItems();
 	SetStartingWeapon();
 }
@@ -69,6 +72,7 @@ bool GameManager::SetStartingWeapon()
 
 	GrantAllSpirits();
 	SetSkillCosts();
+	ShuffleSpecialSkills();
 	EquipStartingSkill();
 
 	start_weapon = true;
@@ -116,15 +120,15 @@ void GameManager::SetSkillCosts()
 			buffer[0] = cost;
 			level_1->UnlockMaterials = UC::TExternalArray<SDK::FSkillMaterialData>(buffer, 1);
 		}
-/*
-		for (auto entry : levels)
-		{
-			auto level = (SDK::FSkillLevelData*)entry.Second;
-			auto buffer = (SDK::FSkillMaterialData*)SDK::FMemory::Malloc(sizeof(SDK::FSkillMaterialData));
-			buffer[0] = cost;
-			level->UnlockMaterials = UC::TExternalArray<SDK::FSkillMaterialData>(buffer, 1);
-		}
-*/
+		/*
+				for (auto entry : levels)
+				{
+					auto level = (SDK::FSkillLevelData*)entry.Second;
+					auto buffer = (SDK::FSkillMaterialData*)SDK::FMemory::Malloc(sizeof(SDK::FSkillMaterialData));
+					buffer[0] = cost;
+					level->UnlockMaterials = UC::TExternalArray<SDK::FSkillMaterialData>(buffer, 1);
+				}
+		*/
 	}
 }
 
@@ -196,6 +200,109 @@ void GameManager::ShufflePassiveCosts()
 		((SDK::FInventoryItemPassiveData*)(p.Second))->SlotCost = shuffled[p.First.GetRawString()];
 
 	Logger::Log(this, "relic costs", enabled ? "shuffled, seed" : "vanilla, seed", key.empty() ? "none" : key);
+}
+
+void GameManager::ShuffleBGM()
+{
+	bgmShuffle.clear();
+
+	auto seed = Configuration::Instance().Seed();
+	if (!seed || Configuration::Instance().Option("shuffle_bgm") == 0)
+		return;
+
+	if (bgmTracks.empty())
+	{
+		auto registry = reinterpret_cast<SDK::IAssetRegistry*>(
+			SDK::UAssetRegistryHelpers::GetAssetRegistry().ObjectPointer);
+
+		SDK::TArray<SDK::FAssetData> assets;
+		registry->GetAssetsByPath(SDK::FName::FromString("/Game/FMOD/Events/BGM"), &assets, false, false);
+
+		std::vector<std::pair<std::string, int>> found;
+		for (int i = 0; i < assets.Num(); ++i)
+			found.push_back({ assets[i].AssetName.GetRawString(), i });
+
+		std::sort(found.begin(), found.end());
+
+		for (const auto& entry : found)
+			bgmTracks.push_back({ assets[entry.second].AssetName.ComparisonIndex,
+				L"event:/BGM/" + std::wstring(entry.first.begin(), entry.first.end()) });
+	}
+
+	bgmShuffle.resize(bgmTracks.size());
+	std::iota(bgmShuffle.begin(), bgmShuffle.end(), 0);
+
+	std::seed_seq sequence(seed->begin(), seed->end());
+	std::mt19937 rng(sequence);
+	std::shuffle(bgmShuffle.begin(), bgmShuffle.end(), rng);
+
+	Logger::Log(this, "bgm shuffled", (int)bgmShuffle.size(), "tracks, seed", *seed);
+}
+
+SDK::UFMODEvent* GameManager::SwapBGM(SDK::UFMODEvent* event)
+{
+	SDK::int32 id = event->Name.ComparisonIndex;
+
+	for (size_t i = 0; i < bgmTracks.size(); ++i)
+		if (bgmTracks[i].first == id)
+			return SDK::UFMODBlueprintStatics::FindEventByName(bgmTracks[bgmShuffle.at(i)].second.c_str());
+
+	return event;
+}
+
+void GameManager::ShuffleSpecialSkills()
+{
+	auto controller = Controller();
+	if (!controller || !controller->SkillComponent)
+		return;
+
+	constexpr size_t size = sizeof(SDK::FSkillData);
+	if (vanillaSpecials.empty())
+		for (auto s : GameTables::ItemSkills()->RowMap)
+		{
+			int tier = 0;
+			for (auto l : ((SDK::FInventoryItemSkillData*)(s.Second))->SkillLevelTable->RowMap)
+			{
+				auto data = &((SDK::FSkillLevelData*)(l.Second))->SpecialSkillData;
+				auto& entry = vanillaSpecials[++tier][s.First.GetRawString()];
+				entry.data = data;
+				entry.vanilla.assign((uint8_t*)data, (uint8_t*)data + size);
+			}
+		}
+
+	auto seed = Configuration::Instance().Seed();
+	bool enabled = seed && Configuration::Instance().Option("shuffle_sp") != 0;
+	std::string key = seed ? *seed : "";
+	std::seed_seq sequence(key.begin(), key.end());
+	std::mt19937 rng(sequence);
+
+	for (const auto& tier : vanillaSpecials)
+	{
+		std::vector<const uint8_t*> source;
+		for (const auto& entry : tier.second)
+			source.push_back(entry.second.vanilla.data());
+
+		if (enabled)
+			std::shuffle(source.begin(), source.end(), rng);
+
+		size_t i = 0;
+		for (const auto& entry : tier.second)
+			memcpy(entry.second.data, source[i++], size);
+	}
+
+	auto component = controller->SkillComponent;
+	for (auto slot : { SDK::ESkillSlot::A, SDK::ESkillSlot::B, SDK::ESkillSlot::C, SDK::ESkillSlot::D })
+	{
+		if (!component->HasEquippedSkill(slot))
+			continue;
+
+		SDK::FName id = component->GetEquippedSkillID(slot);
+		component->UnEquip(slot, false);
+		component->Equip(slot, id, false, false);
+	}
+	component->LoadEquippedSkills();
+
+	Logger::Log(this, "special skills", enabled ? "shuffled, seed" : "vanilla, seed", key.empty() ? "none" : key);
 }
 
 void GameManager::EquipStartingSkill()
@@ -307,6 +414,8 @@ void GameManager::OnItemSourceChanged()
 
 	Logger::Log(this, "item source changed, shop will be replaced again");
 	ShufflePassiveCosts();
+	ShuffleBGM();
+	ShuffleSpecialSkills();
 	ClampChapter();
 	itemReplacer->ResetShopItems();
 	if (!currentZone.empty() && !IsLoading())

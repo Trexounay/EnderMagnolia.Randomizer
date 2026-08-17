@@ -89,9 +89,7 @@ void ItemReplacer::WaitForEventAsset(SDK::AActor* owner, SDK::TSoftObjectPtr<SDK
 	{
 		if (owner->bActorIsBeingDestroyed)
 			return true;
-		auto event = softptr->Get();
-		if (!event)
-			event = softptr->LoadBlocking();
+		auto event = softptr->LoadBlocking();
 		if (event)
 			ReplaceEventAsset(actorName, event);
 		return false;

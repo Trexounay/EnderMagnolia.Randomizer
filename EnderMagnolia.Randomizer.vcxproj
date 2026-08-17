@@ -74,7 +74,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
-      <AdditionalOptions>/bigobj /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/bigobj /Zc:__cplusplus /FS %(AdditionalOptions)</AdditionalOptions>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>CppSDK/SDK;.;CppSDK;extern;extern\apclientpp;extern\websocketpp;extern\wswrap\include;extern\json\include;extern\websocketpp\websocketpp\common;extern\imgui;extern\imgui\backends;extern\kiero;extern\minhook</AdditionalIncludeDirectories>
@@ -176,8 +176,10 @@
     <ClCompile Include="CppSDK\SDK\AssetRegistry_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Engine_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\FMODStudio_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\EventSystem_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\UMG_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\WBP_Completion_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\WBP_Event_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\WBP_Text_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Zion_functions.cpp" />
