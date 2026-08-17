@@ -174,6 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppSDK\SDK\AssetRegistry_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\BP_BossSpawner_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\CoreUObject_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\Engine_functions.cpp" />
     <ClCompile Include="CppSDK\SDK\FMODStudio_functions.cpp" />

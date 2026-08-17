@@ -3,7 +3,7 @@
 
 #include "Logger.h"
 
-#define ENABLE_HOOK_PROBE 0
+#define ENABLE_HOOK_PROBE 1
 
 namespace SDK { struct FFrame; }
 

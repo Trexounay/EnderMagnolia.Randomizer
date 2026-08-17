@@ -276,7 +276,10 @@ SDK::int32 HookManager::IncrementEnvLevel_Hook(SDK::AGameModeZion* self)
 void HookManager::ResetRespawnDefaults_Hook(SDK::APlayerControllerZion* self)
 {
 	if (auto restPoint = Configuration::Instance().StartingRestPoint())
+	{
 		self->DefaultRespawnRestPointData.RowName = restPoint.value();
+		self->NewGameHPPercentage = 100.0f;
+	}
 	oResetRespawnDefaults(self);
 }
 

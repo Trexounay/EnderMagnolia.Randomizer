@@ -50,7 +50,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	currentSaveSlot = slot;
 	Logger::Log(this, "Game Started slot", slot, "newGame", (int)isNewGame);
 	currentZone.clear();
-	start_weapon = false;
+	skillsInitialized = false;
 	gameLoaded = false;
 	CustomItemRegistry::Instance().ResetItems();
 	for (const RandomizerItemDef* def : RandomizerItems::All)
@@ -59,24 +59,21 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	ShufflePassiveCosts();
 	ShuffleBGM();
 	itemReplacer->ResetShopItems();
-	SetStartingWeapon();
+	InitSkills();
 }
 
-bool GameManager::SetStartingWeapon()
+void GameManager::InitSkills()
 {
-	if (start_weapon)
-		return true;
 	auto controller = this->Controller();
 	if (!controller || !controller->InventoryComponent || !controller->SkillComponent)
-		return false;
+		return;
 
 	GrantAllSpirits();
 	SetSkillCosts();
 	ShuffleSpecialSkills();
 	EquipStartingSkill();
 
-	start_weapon = true;
-	return true;
+	skillsInitialized = true;
 }
 
 void GameManager::GrantAllSpirits()
@@ -422,8 +419,8 @@ void GameManager::Tick()
 	if (!itemReplacer)
 		return;
 
-	if (!start_weapon)
-		SetStartingWeapon();
+	if (!skillsInitialized)
+		InitSkills();
 	auto zoneSystem = SDK::UZoneSystemComponent::Get(World());
 
 	if (IsLoading())
