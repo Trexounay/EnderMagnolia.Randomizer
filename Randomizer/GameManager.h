@@ -34,6 +34,7 @@ public:
 	void OnEventFinished(SDK::UEventAsset* asset);
 	void OnActorCleared(SDK::AActor* actor);
 	void SetSkillMenuNavigation(SDK::UWBP_GameMenu_Page_Skill_C* page);
+	void RefreshZoneLabels(SDK::UWBP_Map_C* map = nullptr);
 	bool GrantItem(const std::string& itemName, int count = 1);
 	bool KillPlayer();
 	bool GoHome();
@@ -69,6 +70,7 @@ private:
 	void SetSkillCosts();
 	void EquipStartingSkill();
 
+	void SetShopPrices();
 	void CapturePassiveCosts();
 	void ShufflePassiveCosts();
 	void CaptureUpgradeCosts();
@@ -77,6 +79,7 @@ private:
 	void ShuffleSpecialSkills();
 
 	void ExcludeLeversFromZoneCompletion();
+	void CreateZoneLabels(SDK::UWBP_Map_C* map);
 
 	void DuplicateDoorSwitches(const std::string& zone);
 	void DuplicateDoorSwitch(SDK::ABP_Interactable_Door_Magic_C* original);

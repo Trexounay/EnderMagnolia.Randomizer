@@ -71,14 +71,20 @@ void GUI::ApplySetting(const char* line)
 	if (sscanf_s(line, "autoskip=%d", &skip) == 1)
 	{
 		autoSkip = (skip != 0);
-		Request([v = autoSkip] { Configuration::Instance().SetOption("auto_skip_cutscenes", v ? 1 : 0); });
+		Configuration::Instance().SetOption("auto_skip_cutscenes", autoSkip ? 1 : 0);
+	}
+	int names = 0;
+	if (sscanf_s(line, "zonenames=%d", &names) == 1)
+	{
+		zoneNames = (names != 0);
+		Configuration::Instance().SetOption("map_zone_names", zoneNames ? 1 : 0);
 	}
 }
 
 void GUI::WriteSettings(ImGuiTextBuffer* buf) const
 {
 	buf->appendf("[Randomizer][Connection]\nhost=%s\nslot=%s\ndeathlink=%d\n\n", host, slot, deathLink ? 1 : 0);
-	buf->appendf("[Randomizer][Misc]\nautoskip=%d\n\n", autoSkip ? 1 : 0);
+	buf->appendf("[Randomizer][Misc]\nautoskip=%d\nzonenames=%d\n\n", autoSkip ? 1 : 0, zoneNames ? 1 : 0);
 }
 
 void GUI::RegisterSettingsHandler()
@@ -389,6 +395,18 @@ void GUI::DrawMisc()
 			ImGui::MarkIniSettingsDirty();
 		else
 			autoSkip = !autoSkip;
+	}
+
+	if (ImGui::Checkbox("Zone names on map", &zoneNames))
+	{
+		if (Request([v = zoneNames]
+			{
+				Configuration::Instance().SetOption("map_zone_names", v ? 1 : 0);
+				GameManager::Instance().RefreshZoneLabels();
+			}))
+			ImGui::MarkIniSettingsDirty();
+		else
+			zoneNames = !zoneNames;
 	}
 }
 

@@ -3,7 +3,7 @@
 
 #include "Logger.h"
 
-#define ENABLE_HOOK_PROBE 1
+#define ENABLE_HOOK_PROBE 0
 
 namespace SDK { struct FFrame; }
 
@@ -45,6 +45,7 @@ private:
 	using FApplyAudioSettingsFn = void(*)(SDK::USoundSubsystem*, SDK::FAudioVolumeSettings*);
 	using FPlayBGMFn = void(*)(SDK::USoundSubsystem*, SDK::UFMODEvent*);
 	using FMapClearFn = void(*)(SDK::UUserWidgetMap*);
+	using FZoomFn = void(*)(SDK::UUserWidgetMap*, float);
 	using FGoToPageFn = void(*)(SDK::UUserWidgetGameMenu*, SDK::int32);
 
 	static FEventFinishedFn oTriggerEventFinished;
@@ -89,9 +90,11 @@ private:
 	static FNativeFuncPtr oSaveGameAsync;
 	static FNativeFuncPtr oHPReachedZero;
 	static FNativeFuncPtr oSetCurrentSlot;
+	static FZoomFn oZoom;
 
 	static void SaveGameSync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, bool* Result);
 	static void SaveGameAsync_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, void* Result);
 	static void HPReachedZero_Hook(SDK::UDeathComponent* Context, SDK::FFrame* Stack, void* Result);
 	static void SetCurrentSlot_Hook(SDK::USaveSubsystem* Context, SDK::FFrame* Stack, void* Result);
+	static void Zoom_Hook(SDK::UUserWidgetMap* self, float delta);
 };

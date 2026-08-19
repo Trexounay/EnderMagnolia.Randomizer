@@ -118,9 +118,13 @@ bool UObject::IsA(class UClass* TypeClass) const
 	return Class->IsSubclassOf(TypeClass);
 }
 
+bool UObject::IsValidLowLevel() const
+{
+	if (!Class)
+		return false;
 
-// Predefined Function
-// Checks whether this object is a classes' default-object
+	return GObjects->GetByIndex(Index) == this;
+}
 
 bool UObject::IsDefaultObject() const
 {

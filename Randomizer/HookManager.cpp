@@ -37,6 +37,7 @@ HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oHPReachedZero = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSetCurrentSlot = nullptr;
+HookManager::FZoomFn HookManager::oZoom = nullptr;
 
 namespace
 {
@@ -55,6 +56,7 @@ namespace
 	constexpr uintptr_t kOff_PlayBGM               = 0x477B950;
 	constexpr uintptr_t kOff_MapClear              = 0x47B1320;
 	constexpr uintptr_t kOff_GoToPage              = 0x47BA2C0;
+	constexpr uintptr_t kOff_Zoom                  = 0x47D42C0;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 }
@@ -121,6 +123,7 @@ bool HookManager::Init()
 	HookAt(kOff_PlayBGM, &PlayBGM_Hook, reinterpret_cast<void**>(&oPlayBGM));
 	HookAt(kOff_MapClear, &MapClear_Hook, reinterpret_cast<void**>(&oMapClear));
 	HookAt(kOff_GoToPage, &GoToPage_Hook, reinterpret_cast<void**>(&oGoToPage));
+	HookAt(kOff_Zoom, &Zoom_Hook, reinterpret_cast<void**>(&oZoom));
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -440,7 +443,7 @@ void HookManager::MapClear_Hook(SDK::UUserWidgetMap* self)
 			completion = static_cast<SDK::UWBP_Completion_C*>(child);
 	}
 
-	if (!completion)
+	if (!completion || !completion->IsValidLowLevel())
 	{
 		completion = static_cast<SDK::UWBP_Completion_C*>(SDK::UWidgetBlueprintLibrary::Create(
 			map, SDK::UWBP_Completion_C::StaticClass(), nullptr));
@@ -468,6 +471,8 @@ void HookManager::MapClear_Hook(SDK::UUserWidgetMap* self)
 			break;
 		}
 	}
+
+	GameManager::Instance().RefreshZoneLabels(map);
 }
 
 void HookManager::GoToPage_Hook(SDK::UUserWidgetGameMenu* self, SDK::int32 pageIndex)
@@ -522,6 +527,12 @@ void HookManager::SetCurrentSlot_Hook(SDK::USaveSubsystem* Context, SDK::FFrame*
 		bool isNewGame = GameManager::Instance().GameInstance()->GetLaunchGameIntent() == SDK::ELaunchGameIntent::NewGame;
 		GameManager::Instance().OnGameStart(Context->CurrentSlotIndex, isNewGame);
 	}
+}
+
+void HookManager::Zoom_Hook(SDK::UUserWidgetMap* self, float delta)
+{
+	oZoom(self, delta);
+	GameManager::Instance().RefreshZoneLabels(static_cast<SDK::UWBP_Map_C*>(self));
 }
 
 #pragma endregion

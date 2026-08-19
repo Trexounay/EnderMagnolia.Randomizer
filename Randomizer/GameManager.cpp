@@ -3,6 +3,7 @@
 #include "GUI.h"
 #include "Logger.h"
 #include "ItemReplacer.h"
+#include "ItemPrices.h"
 #include "CustomItemRegistry.h"
 #include "SDK.hpp"
 #include <algorithm>
@@ -12,6 +13,14 @@
 #include <random>
 #include <set>
 #include <vector>
+
+std::string ZoneCaption(const SDK::FName& levelName)
+{
+	const char sep[] = "_001_Zone_";
+	std::string name = levelName.GetRawString();
+	auto at = name.rfind(sep);
+	return name.substr(0, at) + " " + std::to_string(atoi(name.c_str() + at + sizeof(sep) - 1));
+}
 
 GameManager& GameManager::Instance()
 {
@@ -56,6 +65,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	for (const RandomizerItemDef* def : RandomizerItems::All)
 		CustomItemRegistry::Instance().CreateItem(*def);
 	Configuration::Instance().OnGameStart(isNewGame);
+	SetShopPrices();
 	ShufflePassiveCosts();
 	ShuffleUpgradeCosts();
 	ShuffleBGM();
@@ -118,6 +128,8 @@ void GameManager::SetSkillCosts()
 			buffer[0] = cost;
 			level_1->UnlockMaterials = UC::TExternalArray<SDK::FSkillMaterialData>(buffer, 1);
 		}
+
+		// test for setting progressive prices
 		/*
 				for (auto entry : levels)
 				{
@@ -223,6 +235,114 @@ void GameManager::SetSkillMenuNavigation(SDK::UWBP_GameMenu_Page_Skill_C* page)
 						side < 0 ? EUINavigation::Left : EUINavigation::Right, target);
 			}
 		}
+	}
+}
+
+void GameManager::CreateZoneLabels(SDK::UWBP_Map_C* map)
+{
+	for (auto area : map->MapAreaWidgets)
+	{
+		auto zones = static_cast<SDK::UPanelWidget*>(area->ZonesHolder);
+		auto labels = static_cast<SDK::UPanelWidget*>(area->ZoomScaled_IconsHolder);
+		for (auto slot : labels->Slots)
+		{
+			auto child = slot->Content;
+			// labels already created -> skip
+			if (child->IsValidLowLevel() && child->Class == SDK::UWBP_Text_C::StaticClass())
+				return;
+		}
+
+		for (auto zoneSlot : zones->Slots)
+		{
+			auto zone = zoneSlot->Content;
+			auto label = static_cast<SDK::UWBP_Text_C*>(SDK::UWidgetBlueprintLibrary::Create(
+				map, SDK::UWBP_Text_C::StaticClass(), nullptr));
+
+			auto slot = static_cast<SDK::UCanvasPanelSlot*>(labels->AddChild(label));
+			slot->SetLayout(static_cast<SDK::UCanvasPanelSlot*>(zone->Slot)->GetLayout());
+			slot->SetAutoSize(true);
+			slot->SetZOrder(100);
+
+			SDK::FText caption = SDK::FText::FromString(
+				ZoneCaption(static_cast<SDK::UWBP_MapZone_C*>(zone)->ZoneLevelName));
+			label->New_Param = caption;
+			label->TextBlock_0->SetText(caption);
+
+			SDK::FSlateColor color{};
+			color.SpecifiedColor = SDK::FLinearColor{ 1.0f, 0.78f, 0.35f, 1.0f };
+			color.ColorUseRule = SDK::ESlateColorStylingMode::UseColor_Specified;
+			label->TextBlock_0->SetColorAndOpacity(color);
+
+			SDK::FSlateFontInfo font = label->TextBlock_0->Font;
+			font.Size = 20.0f;
+			font.OutlineSettings.OutlineSize = 2;
+			font.OutlineSettings.OutlineColor = SDK::FLinearColor{ 0.05f, 0.02f, 0.0f, 0.95f };
+			font.OutlineSettings.bSeparateFillAlpha = true;
+			label->TextBlock_0->SetFont(font);
+		}
+	}
+}
+
+void GameManager::RefreshZoneLabels(SDK::UWBP_Map_C* map)
+{
+	if (!map)
+		map = static_cast<SDK::UWBP_Map_C*>(Controller()->WidgetMap);
+	if (!map->IsValidLowLevel() || map->Class != SDK::UWBP_Map_C::StaticClass()
+		|| !map->ScaleBox->IsValidLowLevel())
+		return;
+
+	bool show = Configuration::Instance().Option("map_zone_names", 0) != 0;
+	if (show)
+		CreateZoneLabels(map);
+
+	auto wanted = show && map->ScaleBox->UserSpecifiedScale >= map->HideIconsZoomThreshold
+		? SDK::ESlateVisibility::HitTestInvisible
+		: SDK::ESlateVisibility::Collapsed;
+
+	for (auto area : map->MapAreaWidgets)
+	{
+		auto labels = static_cast<SDK::UPanelWidget*>(area->ZoomScaled_IconsHolder);
+		auto zones = static_cast<SDK::UPanelWidget*>(area->ZonesHolder);
+
+		bool wasVisible = false;
+		for (auto slot : labels->Slots)
+		{
+			auto label = slot->Content;
+			if (!label->IsValidLowLevel() || label->Class != SDK::UWBP_Text_C::StaticClass())
+				continue;
+			wasVisible |= label->Visibility != SDK::ESlateVisibility::Collapsed;
+			if (label->Visibility != wanted)
+				label->SetVisibility(wanted);
+		}
+
+		if (!show)
+			continue;
+
+		auto zoneWanted = show ? SDK::ESlateVisibility::HitTestInvisible
+			: SDK::ESlateVisibility::Hidden;
+
+		for (auto slot : zones->Slots)
+		{
+			auto zone = slot->Content;
+			if (zone->IsValidLowLevel() && zone->Class == SDK::UWBP_MapZone_C::StaticClass()
+				&& zone->Visibility != zoneWanted)
+				zone->SetVisibility(zoneWanted);
+		}
+	}
+}
+
+void GameManager::SetShopPrices()
+{
+	for (const auto& entry : ItemPrices::Overrides)
+	{
+		auto handle = CustomItemRegistry::FromItemName(entry.item);
+		if (!handle)
+			continue;
+
+		auto row = handle->DataTable->FindRowAs<SDK::FInventoryItemData>(handle->RowName);
+		row->BuyInfo.CurrencyType = SDK::ECurrencyType::Default;
+		row->BuyInfo.CostType = SDK::EValueType::Fixed;
+		row->BuyInfo.FixedValue = entry.price;
 	}
 }
 
@@ -548,6 +668,7 @@ void GameManager::OnItemSourceChanged()
 		return;
 
 	Logger::Log(this, "item source changed, shop will be replaced again");
+	SetShopPrices();
 	ShufflePassiveCosts();
 	ShuffleUpgradeCosts();
 	ShuffleBGM();

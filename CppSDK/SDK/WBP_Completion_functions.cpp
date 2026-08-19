@@ -80,7 +80,8 @@ void UWBP_Completion_C::SetCompletionRatio(double CompletionRatio)
 {
 	static class UFunction* Func = nullptr;
 
-	if (Func == nullptr)
+	// Func is not stable here
+	if (Func == nullptr || !Func->IsValidLowLevel())
 		Func = Class->GetFunction("WBP_Completion_C", "SetCompletionRatio");
 
 	Params::WBP_Completion_C_SetCompletionRatio Parms{};

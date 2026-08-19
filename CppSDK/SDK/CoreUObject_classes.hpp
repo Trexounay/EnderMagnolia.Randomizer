@@ -40,6 +40,8 @@ public:
 	bool IsA(EClassCastFlags TypeFlags) const;
 	bool IsA(class UClass* TypeClass) const;
 
+	bool IsValidLowLevel() const;
+
 	template<typename UEType = UClass>
 	UEType* Cast()
 	{

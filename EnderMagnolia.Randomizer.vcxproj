@@ -158,6 +158,7 @@
     <ClInclude Include="Randomizer\Configuration.h" />
     <ClInclude Include="Randomizer\CustomItemRegistry.h" />
     <ClInclude Include="Randomizer\IItemSource.h" />
+    <ClInclude Include="Randomizer\ItemPrices.h" />
     <ClInclude Include="Randomizer\OfflineSource.h" />
     <ClInclude Include="Randomizer\ArchipelagoSource.h" />
     <ClInclude Include="Randomizer\UpdateChecker.h" />

@@ -153,6 +153,13 @@
     </ClCompile>
     <ClCompile Include="CppSDK\SDK\EventSystem_functions.cpp" />
     <ClCompile Include="Randomizer\GUI.cpp" />
+    <ClCompile Include="CppSDK\SDK\AssetRegistry_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\BP_BossSpawner_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\FMODStudio_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\UMG_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\WBP_Completion_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\WBP_Event_functions.cpp" />
+    <ClCompile Include="CppSDK\SDK\WBP_Text_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSDK\SDK\Engine_classes.hpp">
@@ -288,6 +295,9 @@
       <Filter>version</Filter>
     </ClInclude>
     <ClInclude Include="Randomizer\GUI.h" />
+    <ClInclude Include="Randomizer\ItemPrices.h">
+      <Filter>Randomizer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

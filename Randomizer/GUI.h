@@ -83,6 +83,7 @@ private:
 	char pass[128] = {};
 	bool deathLink = false;
 	bool autoSkip = false;
+	bool zoneNames = false;
 
 	char seedInput[32] = {};
 	bool seedEdited = false;
