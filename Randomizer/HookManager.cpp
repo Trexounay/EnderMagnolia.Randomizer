@@ -435,18 +435,28 @@ void HookManager::MapClear_Hook(SDK::UUserWidgetMap* self)
 	auto canvas = map->MainHolder;
 
 	SDK::UWBP_Completion_C* completion = nullptr;
-	for (int i = 0; i < canvas->GetChildrenCount() && !completion; ++i)
-	{
-		auto child = canvas->GetChildAt(i);
-		if (child != map->WBP_Completion_Map
-			&& child->Class == SDK::UWBP_Completion_C::StaticClass())
-			completion = static_cast<SDK::UWBP_Completion_C*>(child);
-	}
 
-	if (!completion || !completion->IsValidLowLevel())
+	for (auto slot: canvas->Slots)
+	{
+		auto child = slot->Content;
+		if (child != map->WBP_Completion_Map
+			&& child->IsValidLowLevel()
+			&& child->Class == SDK::UWBP_Completion_C::StaticClass())
+		{
+			completion = static_cast<SDK::UWBP_Completion_C*>(child);
+			break;
+		}
+	}
+	if (!completion)
 	{
 		completion = static_cast<SDK::UWBP_Completion_C*>(SDK::UWidgetBlueprintLibrary::Create(
 			map, SDK::UWBP_Completion_C::StaticClass(), nullptr));
+
+		if (!completion)
+		{
+			GameManager::Instance().RefreshZoneLabels(map);
+			return;
+		}
 
 		SDK::FAnchorData layout =
 			static_cast<SDK::UCanvasPanelSlot*>(map->MapAreaName->Slot)->GetLayout();
@@ -462,9 +472,10 @@ void HookManager::MapClear_Hook(SDK::UUserWidgetMap* self)
 	completion->SetVisibility(SDK::ESlateVisibility::HitTestInvisible);
 
 	auto overlay = static_cast<SDK::UPanelWidget*>(completion->WidgetTree->RootWidget);
-	for (int i = 0; i < overlay->GetChildrenCount(); ++i)
+
+	for (auto slot : overlay->Slots)
 	{
-		auto child = overlay->GetChildAt(i);
+		auto child = slot->Content;
 		if (child->Class == SDK::UImage::StaticClass())
 		{
 			child->SetVisibility(SDK::ESlateVisibility::Collapsed);

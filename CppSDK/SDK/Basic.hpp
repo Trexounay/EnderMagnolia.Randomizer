@@ -36,6 +36,7 @@ namespace Offsets
 {
 	constexpr int32 GObjects          = 0x07F4C830;
 	constexpr int32 AppendString      = 0x010A5920;
+	constexpr int32 FNameCtor         = 0x010A04C0;
 	constexpr int32 GNames            = 0x07E95AC0;
 	constexpr int32 GWorld            = 0x080CC7A8;
 	constexpr int32 ProcessEvent      = 0x0128FEB0;
@@ -52,6 +53,7 @@ namespace Offsets
 	constexpr int32 GetAllocSizeIdx   = 0x0000000B;
 	constexpr int32 GetDescNameIdx    = 0x00000015;
 	constexpr int32 FNameHash         = 0x010B13E0;
+	constexpr int32 FindFunctionByName = 0x0117D360;
 	constexpr int32 MapFindOrAdd      = 0x046FB270;
 	constexpr int32 SetAdd            = 0x00F9E0B0;
 	constexpr int32 SpawnActor        = 0x03770670;
@@ -154,8 +156,6 @@ namespace BasicFilesImpleUtils
 	uint64 GetObjFNameAsUInt64(class UClass* Class);
 
 	UObject* GetObjectByIndex(int32 Index);
-
-	UFunction* FindFunctionByFName(const FName* Name);
 }
 
 template<StringLiteral Name, bool bIsFullName = false>
@@ -421,6 +421,16 @@ public:
 	bool operator!=(const FName& Other) const
 	{
 		return ComparisonIndex != Other.ComparisonIndex || Number != Other.Number;
+	}
+
+	static FName FromWchar(const wchar_t* s, bool Add = true)
+	{
+		auto Ctor = reinterpret_cast<FName*(*)(FName*, const wchar_t*, int32)>(
+			InSDKUtils::GetImageBase() + Offsets::FNameCtor);
+
+		FName Out{};
+		InSDKUtils::CallGameFunction(Ctor, &Out, s, Add ? 1 : 0);
+		return Out;
 	}
 
 	static FName FromString(const std::string& s);

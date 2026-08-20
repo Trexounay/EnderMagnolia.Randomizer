@@ -113133,7 +113133,7 @@ class FName UKismetStringLibrary::Conv_StringToName(const class FString& InStrin
 FName FName::FromString(const std::string& s)
 {
 	std::wstring w(s.begin(), s.end());
-	return UKismetStringLibrary::Conv_StringToName(FString(w.c_str()));
+	return FromWchar(w.c_str());
 }
 
 

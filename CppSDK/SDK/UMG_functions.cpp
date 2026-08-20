@@ -14831,7 +14831,7 @@ void UTextBlock::SetFont(const struct FSlateFontInfo& InFontInfo)
 {
 	static class UFunction* Func = nullptr;
 
-	if (Func == nullptr)
+	if (Func == nullptr || !Func->IsValidLowLevel())
 		Func = Class->GetFunction("TextBlock", "SetFont");
 
 	Params::TextBlock_SetFont Parms{};

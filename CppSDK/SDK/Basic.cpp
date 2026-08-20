@@ -51,22 +51,6 @@ namespace SDK
 		return UObject::GObjects->GetByIndex(Index);
 	}
 
-	UFunction* BasicFilesImpleUtils::FindFunctionByFName(const FName* Name)
-	{
-		for (int i = 0; i < UObject::GObjects->Num(); ++i)
-		{
-			UObject* Object = UObject::GObjects->GetByIndex(i);
-
-			if (!Object)
-				continue;
-
-			if (Object->Name == *Name)
-				return static_cast<UFunction*>(Object);
-		}
-
-		return nullptr;
-	}
-
 
 	// Predefined Function
 

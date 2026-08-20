@@ -19,6 +19,8 @@ std::string ZoneCaption(const SDK::FName& levelName)
 	const char sep[] = "_001_Zone_";
 	std::string name = levelName.GetRawString();
 	auto at = name.rfind(sep);
+	if (at == std::string::npos)
+		return name;
 	return name.substr(0, at) + " " + std::to_string(atoi(name.c_str() + at + sizeof(sep) - 1));
 }
 
@@ -240,6 +242,27 @@ void GameManager::SetSkillMenuNavigation(SDK::UWBP_GameMenu_Page_Skill_C* page)
 
 void GameManager::CreateZoneLabels(SDK::UWBP_Map_C* map)
 {
+	auto areaName = map->MapAreaName;
+	auto fontSource = (areaName && areaName->IsValidLowLevel()) ? areaName->MapAreaName : nullptr;
+	if (!fontSource || !fontSource->IsValidLowLevel())
+	{
+		Logger::Log(LogLevel::Warning, "CreateZoneLabels: no font source", (void*)areaName);
+		return;
+	}
+
+	SDK::FSlateFontInfo font = fontSource->Font;
+	font.Size = 30.0f;
+	font.OutlineSettings.OutlineSize = 4;
+	font.OutlineSettings.OutlineColor = SDK::FLinearColor{ 0.05f, 0.02f, 0.0f, 0.95f };
+	font.OutlineSettings.bSeparateFillAlpha = true;
+
+	auto textClass = SDK::UTextBlock::StaticClass();
+	auto mapZoneClass = SDK::UWBP_MapZone_C::StaticClass();
+
+	SDK::FSlateColor color{};
+	color.SpecifiedColor = SDK::FLinearColor{ 1.0f, 0.78f, 0.35f, 1.0f };
+	color.ColorUseRule = SDK::ESlateColorStylingMode::UseColor_Specified;
+
 	for (auto area : map->MapAreaWidgets)
 	{
 		auto zones = static_cast<SDK::UPanelWidget*>(area->ZonesHolder);
@@ -247,38 +270,35 @@ void GameManager::CreateZoneLabels(SDK::UWBP_Map_C* map)
 		for (auto slot : labels->Slots)
 		{
 			auto child = slot->Content;
-			// labels already created -> skip
-			if (child->IsValidLowLevel() && child->Class == SDK::UWBP_Text_C::StaticClass())
+			// labels already created : skip
+			if (child->IsValidLowLevel() && child->Class == textClass && child->Outer == labels)
 				return;
 		}
 
 		for (auto zoneSlot : zones->Slots)
 		{
 			auto zone = zoneSlot->Content;
-			auto label = static_cast<SDK::UWBP_Text_C*>(SDK::UWidgetBlueprintLibrary::Create(
-				map, SDK::UWBP_Text_C::StaticClass(), nullptr));
+			if (!zone->IsValidLowLevel() || zone->Class != mapZoneClass)
+				continue;
+
+			auto zoneName = static_cast<SDK::UWBP_MapZone_C*>(zone)->ZoneLevelName;
+			auto label = static_cast<SDK::UTextBlock*>(
+				SDK::UGameplayStatics::SpawnObject(textClass, labels));
+			if (!label)
+			{
+				Logger::Log(LogLevel::Warning, "CreateZoneLabels: SpawnObject failed for",
+					zoneName.GetRawString(), "class", (void*)textClass);
+				return;
+			}
+
+			label->Font = font;
+			label->ColorAndOpacity = color;
+			label->Text = SDK::FText::FromString(ZoneCaption(zoneName));
 
 			auto slot = static_cast<SDK::UCanvasPanelSlot*>(labels->AddChild(label));
-			slot->SetLayout(static_cast<SDK::UCanvasPanelSlot*>(zone->Slot)->GetLayout());
+			slot->SetLayout(static_cast<SDK::UCanvasPanelSlot*>(zone->Slot)->LayoutData);
 			slot->SetAutoSize(true);
 			slot->SetZOrder(100);
-
-			SDK::FText caption = SDK::FText::FromString(
-				ZoneCaption(static_cast<SDK::UWBP_MapZone_C*>(zone)->ZoneLevelName));
-			label->New_Param = caption;
-			label->TextBlock_0->SetText(caption);
-
-			SDK::FSlateColor color{};
-			color.SpecifiedColor = SDK::FLinearColor{ 1.0f, 0.78f, 0.35f, 1.0f };
-			color.ColorUseRule = SDK::ESlateColorStylingMode::UseColor_Specified;
-			label->TextBlock_0->SetColorAndOpacity(color);
-
-			SDK::FSlateFontInfo font = label->TextBlock_0->Font;
-			font.Size = 20.0f;
-			font.OutlineSettings.OutlineSize = 2;
-			font.OutlineSettings.OutlineColor = SDK::FLinearColor{ 0.05f, 0.02f, 0.0f, 0.95f };
-			font.OutlineSettings.bSeparateFillAlpha = true;
-			label->TextBlock_0->SetFont(font);
 		}
 	}
 }
@@ -286,12 +306,18 @@ void GameManager::CreateZoneLabels(SDK::UWBP_Map_C* map)
 void GameManager::RefreshZoneLabels(SDK::UWBP_Map_C* map)
 {
 	if (!map)
-		map = static_cast<SDK::UWBP_Map_C*>(Controller()->WidgetMap);
+	{
+		auto controller = Controller();
+		if (!controller)
+			return;
+		map = static_cast<SDK::UWBP_Map_C*>(controller->WidgetMap);
+	}
 	if (!map->IsValidLowLevel() || map->Class != SDK::UWBP_Map_C::StaticClass()
 		|| !map->ScaleBox->IsValidLowLevel())
 		return;
 
 	bool show = Configuration::Instance().Option("map_zone_names", 0) != 0;
+
 	if (show)
 		CreateZoneLabels(map);
 
@@ -299,18 +325,18 @@ void GameManager::RefreshZoneLabels(SDK::UWBP_Map_C* map)
 		? SDK::ESlateVisibility::HitTestInvisible
 		: SDK::ESlateVisibility::Collapsed;
 
+	auto textClass = SDK::UTextBlock::StaticClass();
+	auto zoneClass = SDK::UWBP_MapZone_C::StaticClass();
 	for (auto area : map->MapAreaWidgets)
 	{
 		auto labels = static_cast<SDK::UPanelWidget*>(area->ZoomScaled_IconsHolder);
 		auto zones = static_cast<SDK::UPanelWidget*>(area->ZonesHolder);
 
-		bool wasVisible = false;
 		for (auto slot : labels->Slots)
 		{
 			auto label = slot->Content;
-			if (!label->IsValidLowLevel() || label->Class != SDK::UWBP_Text_C::StaticClass())
+			if (!label->IsValidLowLevel() || label->Class != textClass || label->Outer != labels)
 				continue;
-			wasVisible |= label->Visibility != SDK::ESlateVisibility::Collapsed;
 			if (label->Visibility != wanted)
 				label->SetVisibility(wanted);
 		}
@@ -318,13 +344,11 @@ void GameManager::RefreshZoneLabels(SDK::UWBP_Map_C* map)
 		if (!show)
 			continue;
 
-		auto zoneWanted = show ? SDK::ESlateVisibility::HitTestInvisible
-			: SDK::ESlateVisibility::Hidden;
-
+		auto zoneWanted = SDK::ESlateVisibility::HitTestInvisible;
 		for (auto slot : zones->Slots)
 		{
 			auto zone = slot->Content;
-			if (zone->IsValidLowLevel() && zone->Class == SDK::UWBP_MapZone_C::StaticClass()
+			if (zone->IsValidLowLevel() && zone->Class == zoneClass
 				&& zone->Visibility != zoneWanted)
 				zone->SetVisibility(zoneWanted);
 		}

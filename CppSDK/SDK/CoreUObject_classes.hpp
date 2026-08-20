@@ -360,6 +360,7 @@ public:
 
 public:
 	class UFunction* GetFunction(const std::string& ClassName, const std::string& FuncName) const;
+	class UFunction* FindFunctionByName(const class FName& Name, bool IncludeSuper = true) const;
 
 public:
 	static class UClass* StaticClass()

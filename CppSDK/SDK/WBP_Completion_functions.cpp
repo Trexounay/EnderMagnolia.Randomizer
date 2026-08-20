@@ -22,10 +22,8 @@ namespace SDK
 
 void UWBP_Completion_C::Construct()
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Completion_C", "Construct");
+	static FName Name = FName::FromString("Construct");
+	class UFunction* Func = Class->FindFunctionByName(Name);
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -38,10 +36,8 @@ void UWBP_Completion_C::Construct()
 
 void UWBP_Completion_C::ExecuteUbergraph_WBP_Completion(int32 EntryPoint)
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Completion_C", "ExecuteUbergraph_WBP_Completion");
+	static FName Name = FName::FromString("ExecuteUbergraph_WBP_Completion");
+	class UFunction* Func = Class->FindFunctionByName(Name);
 
 	Params::WBP_Completion_C_ExecuteUbergraph_WBP_Completion Parms{};
 
@@ -58,10 +54,8 @@ void UWBP_Completion_C::ExecuteUbergraph_WBP_Completion(int32 EntryPoint)
 
 void UWBP_Completion_C::SetCompletionPercentage(int32 CompletionPercentage_0)
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Completion_C", "SetCompletionPercentage");
+	static FName Name = FName::FromString("SetCompletionPercentage");
+	class UFunction* Func = Class->FindFunctionByName(Name);
 
 	Params::WBP_Completion_C_SetCompletionPercentage Parms{};
 
@@ -78,11 +72,8 @@ void UWBP_Completion_C::SetCompletionPercentage(int32 CompletionPercentage_0)
 
 void UWBP_Completion_C::SetCompletionRatio(double CompletionRatio)
 {
-	static class UFunction* Func = nullptr;
-
-	// Func is not stable here
-	if (Func == nullptr || !Func->IsValidLowLevel())
-		Func = Class->GetFunction("WBP_Completion_C", "SetCompletionRatio");
+	static FName Name = FName::FromString("SetCompletionRatio");
+	class UFunction* Func = Class->FindFunctionByName(Name);
 
 	Params::WBP_Completion_C_SetCompletionRatio Parms{};
 
@@ -99,10 +90,8 @@ void UWBP_Completion_C::SetCompletionRatio(double CompletionRatio)
 
 void UWBP_Completion_C::ShouldBeDisplayed(bool* bShouldBeDisplayed)
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Completion_C", "ShouldBeDisplayed");
+	static FName Name = FName::FromString("ShouldBeDisplayed");
+	class UFunction* Func = Class->FindFunctionByName(Name);
 
 	Params::WBP_Completion_C_ShouldBeDisplayed Parms{};
 

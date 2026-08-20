@@ -173,13 +173,22 @@ bool UStruct::IsSubclassOf(const UStruct* Base) const
 // Predefined Function
 // Gets a UFunction from this UClasses' 'Children' list
 
+class UFunction* UClass::FindFunctionByName(const class FName& Name, bool IncludeSuper) const
+{
+	return reinterpret_cast<UFunction*(*)(const UClass*, FName, int32)>(
+		InSDKUtils::GetImageBase() + Offsets::FindFunctionByName)(this, Name, IncludeSuper ? 1 : 0);
+}
+
 class UFunction* UClass::GetFunction(const std::string& ClassName, const std::string& FuncName) const
 {
+	return FindFunctionByName(FName::FromString(FuncName));
+
+	/*
 	for(const UStruct* Clss = this; Clss; Clss = Clss->Super)
 	{
 		if (Clss->GetName() != ClassName)
 			continue;
-			
+
 		for (UField* Field = Clss->Children; Field; Field = Field->Next)
 		{
 			if(Field->HasTypeFlag(EClassCastFlags::Function) && Field->GetName() == FuncName)
@@ -188,6 +197,7 @@ class UFunction* UClass::GetFunction(const std::string& ClassName, const std::st
 	}
 
 	return nullptr;
+	*/
 }
 
 }

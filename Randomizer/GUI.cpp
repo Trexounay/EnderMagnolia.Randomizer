@@ -402,7 +402,8 @@ void GUI::DrawMisc()
 		if (Request([v = zoneNames]
 			{
 				Configuration::Instance().SetOption("map_zone_names", v ? 1 : 0);
-				GameManager::Instance().RefreshZoneLabels();
+				if (GameManager::Instance().IsInGame())
+					GameManager::Instance().RefreshZoneLabels();
 			}))
 			ImGui::MarkIniSettingsDirty();
 		else
@@ -457,6 +458,12 @@ void GUI::PumpItemNotifications()
 
 	SDK::UClass* holderClass = gm.GameInstance()->AchievementNotificationWidgetClass.LoadBlocking();
 	SDK::UUserWidget* holder = SDK::UWidgetBlueprintLibrary::Create(gm.World(), holderClass, gm.Controller());
+	if (!holder)
+	{
+		Logger::Log(LogLevel::Warning, this, "NotifyItem holder Create failed", (void*)holderClass);
+		return;
+	}
+
 	holder->AddToViewport(29000);
 
 	achievementHolder = static_cast<SDK::UUserWidgetAchievementNotificationHolder*>(holder);
