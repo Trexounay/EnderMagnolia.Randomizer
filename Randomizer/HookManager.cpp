@@ -33,6 +33,7 @@ HookManager::FPlayBGMFn HookManager::oPlayBGM = nullptr;
 HookManager::FMapClearFn HookManager::oMapClear = nullptr;
 HookManager::FGoToPageFn HookManager::oGoToPage = nullptr;
 HookManager::FEquipSkillFn HookManager::oEquipSkill = nullptr;
+HookManager::FBTConditionFn HookManager::oIsNewGamePlusCondition = nullptr;
 
 HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
@@ -61,6 +62,7 @@ namespace
 	constexpr uintptr_t kOff_EquipSkill            = 0x473CD50;
 
 	constexpr int kSlot_OnCheckCondition = 87;
+	constexpr int kSlot_CalculateRawCondition = 103;
 }
 
 HookManager& HookManager::Instance()
@@ -100,33 +102,34 @@ bool HookManager::Init()
 	if (!oEngineTick)
 		Logger::Log(LogLevel::Error, this, "Failed to hook engine tick");
 
-	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlot", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameSync_Hook), reinterpret_cast<void**>(&oSaveGameSync));
-	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlotAsync", reinterpret_cast<FNativeFuncPtr>(&HookManager::SaveGameAsync_Hook), reinterpret_cast<void**>(&oSaveGameAsync));
-	HookNativeFunction(SDK::UDeathComponent::StaticClass(), "DeathComponent", "OnHPReachedZero", reinterpret_cast<FNativeFuncPtr>(&HookManager::HPReachedZero_Hook), reinterpret_cast<void**>(&oHPReachedZero));
-	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SetCurrentSlotIndex", reinterpret_cast<FNativeFuncPtr>(&HookManager::SetCurrentSlot_Hook), reinterpret_cast<void**>(&oSetCurrentSlot));
+	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlot", &HookManager::SaveGameSync_Hook, &oSaveGameSync);
+	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SaveGameInCurrentSlotAsync", &HookManager::SaveGameAsync_Hook, &oSaveGameAsync);
+	HookNativeFunction(SDK::UDeathComponent::StaticClass(), "DeathComponent", "OnHPReachedZero", &HookManager::HPReachedZero_Hook, &oHPReachedZero);
+	HookNativeFunction(SDK::USaveSubsystem::StaticClass(), "SaveSubsystem", "SetCurrentSlotIndex", &HookManager::SetCurrentSlot_Hook, &oSetCurrentSlot);
 
-	//HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook, reinterpret_cast<void**>(&oTriggerEventFinished));
-	HookConditionSlot("GameplayCondition_HasItem", SDK::UGameplayCondition_HasItem::GetDefaultObj(), &CheckHasItem_Hook, reinterpret_cast<void**>(&oCheckHasItem));
-	HookConditionSlot("GameplayCondition_HasClearedEvent", SDK::UGameplayCondition_HasClearedEvent::GetDefaultObj(), &CheckHasClearedEvent_Hook, reinterpret_cast<void**>(&oCheckHasClearedEvent));
+	//HookAt(kOff_TriggerEventFinished, &TriggerEventFinished_Hook, &oTriggerEventFinished);
+	HookVirtual("GameplayCondition_HasItem", SDK::UGameplayCondition_HasItem::GetDefaultObj(), kSlot_OnCheckCondition, &CheckHasItem_Hook, &oCheckHasItem);
+	HookVirtual("GameplayCondition_HasClearedEvent", SDK::UGameplayCondition_HasClearedEvent::GetDefaultObj(), kSlot_OnCheckCondition, &CheckHasClearedEvent_Hook, &oCheckHasClearedEvent);
+	HookVirtual("BTDecorator_IsNewGamePlus", SDK::UBTDecorator_IsNewGamePlus::GetDefaultObj(), kSlot_CalculateRawCondition, &IsNewGamePlusCondition_Hook, &oIsNewGamePlusCondition);
 
-	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook, reinterpret_cast<void**>(&oMarkAsCleared));
-	HookAt(kOff_FinishAction, &FinishAction_Hook, reinterpret_cast<void**>(&oFinishAction));
-	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook, reinterpret_cast<void**>(&oNotifyGameEnding));
-	HookAt(kOff_AddShopHistory, &AddShopHistory_Hook, reinterpret_cast<void**>(&oAddShopHistory));
-	HookAt(kOff_AddItem, &AddItem_Hook, reinterpret_cast<void**>(&oAddItem));
-	HookAt(kOff_IncrementEnvLevel, &IncrementEnvLevel_Hook, reinterpret_cast<void**>(&oIncrementEnvLevel));
-	HookAt(kOff_ResetRespawnDefaults, &ResetRespawnDefaults_Hook, reinterpret_cast<void**>(&oResetRespawnDefaults));
+	HookAt(kOff_MarkAsCleared, &MarkAsCleared_Hook, &oMarkAsCleared);
+	HookAt(kOff_FinishAction, &FinishAction_Hook, &oFinishAction);
+	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook, &oNotifyGameEnding);
+	HookAt(kOff_AddShopHistory, &AddShopHistory_Hook, &oAddShopHistory);
+	HookAt(kOff_AddItem, &AddItem_Hook, &oAddItem);
+	HookAt(kOff_IncrementEnvLevel, &IncrementEnvLevel_Hook, &oIncrementEnvLevel);
+	HookAt(kOff_ResetRespawnDefaults, &ResetRespawnDefaults_Hook, &oResetRespawnDefaults);
 
-	HookAt(kOff_IsEventAlreadySeen, &IsEventAlreadySeen_Hook, reinterpret_cast<void**>(&oIsEventAlreadySeen));
-	HookAt(kOff_CanAutoSkipEvent, &CanAutoSkipEvent_Hook, reinterpret_cast<void**>(&oCanAutoSkipEvent));
-	HookAt(kOff_GetAutoSkipSetting, &GetAutoSkipSetting_Hook, reinterpret_cast<void**>(&oGetAutoSkipSetting));
+	HookAt(kOff_IsEventAlreadySeen, &IsEventAlreadySeen_Hook, &oIsEventAlreadySeen);
+	HookAt(kOff_CanAutoSkipEvent, &CanAutoSkipEvent_Hook, &oCanAutoSkipEvent);
+	HookAt(kOff_GetAutoSkipSetting, &GetAutoSkipSetting_Hook, &oGetAutoSkipSetting);
 
-	HookAt(kOff_ApplyAudioSettings, &ApplyAudioSettings_Hook, reinterpret_cast<void**>(&oApplyAudioSettings));
-	HookAt(kOff_PlayBGM, &PlayBGM_Hook, reinterpret_cast<void**>(&oPlayBGM));
-	HookAt(kOff_MapClear, &MapClear_Hook, reinterpret_cast<void**>(&oMapClear));
-	HookAt(kOff_GoToPage, &GoToPage_Hook, reinterpret_cast<void**>(&oGoToPage));
-	HookAt(kOff_Zoom, &Zoom_Hook, reinterpret_cast<void**>(&oZoom));
-	HookAt(kOff_EquipSkill, &EquipSkill_Hook, reinterpret_cast<void**>(&oEquipSkill));
+	HookAt(kOff_ApplyAudioSettings, &ApplyAudioSettings_Hook, &oApplyAudioSettings);
+	HookAt(kOff_PlayBGM, &PlayBGM_Hook, &oPlayBGM);
+	HookAt(kOff_MapClear, &MapClear_Hook, &oMapClear);
+	HookAt(kOff_GoToPage, &GoToPage_Hook, &oGoToPage);
+	HookAt(kOff_Zoom, &Zoom_Hook, &oZoom);
+	HookAt(kOff_EquipSkill, &EquipSkill_Hook, &oEquipSkill);
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -158,27 +161,6 @@ bool HookManager::CreateHook(void* target, void* hook, void** original, const ch
 	return true;
 }
 
-bool HookManager::HookConditionSlot(const char* name, SDK::UObject* cdo, void* hook, void** original)
-{
-	if (!cdo)
-	{
-		Logger::Log(LogLevel::Error, this, "no CDO for condition", name);
-		return false;
-	}
-
-	void** vtable = *reinterpret_cast<void***>(cdo);
-	if (!vtable)
-		return false;
-
-	return CreateHook(vtable[kSlot_OnCheckCondition], hook, original, name);
-}
-
-bool HookManager::HookAt(uintptr_t offset, void* hook, void** original)
-{
-	uintptr_t base = SDK::InSDKUtils::GetImageBase();
-	return CreateHook(reinterpret_cast<void*>(base + offset), hook, original, "rva hook");
-}
-
 void* HookManager::HookVTableFunction(void* instance, int index, void* hook)
 {
 	if (!instance)
@@ -198,7 +180,7 @@ void* HookManager::HookVTableFunction(void* instance, int index, void* hook)
 	return original;
 }
 
-bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std::string className, const std::string funcName, FNativeFuncPtr detour, void** original)
+bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std::string className, const std::string funcName, void* detour, FNativeFuncPtr* original)
 {
 	if (!defaultClass)
 	{
@@ -211,7 +193,7 @@ bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std:
 		Logger::Log(LogLevel::Error, this, "no function", className, ".", funcName);
 		return false;
 	}
-	return CreateHook(Func->ExecFunction, detour, original, funcName.c_str());
+	return CreateHook(Func->ExecFunction, detour, reinterpret_cast<void**>(original), funcName.c_str());
 }
 #pragma endregion
 
@@ -515,6 +497,14 @@ void HookManager::EquipSkill_Hook(SDK::USkillComponent* self, SDK::ESkillSlot sl
 	}
 
 	oEquipSkill(self, slot, skillID, addToCurrentLoadout, autoLoad);
+}
+
+bool HookManager::IsNewGamePlusCondition_Hook(void* self, void* ownerComp, void* nodeMemory)
+{
+	if (Configuration::Instance().Option("ngplus_ai", 0) != 0)
+		return true;
+
+	return oIsNewGamePlusCondition(self, ownerComp, nodeMemory);
 }
 
 void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)

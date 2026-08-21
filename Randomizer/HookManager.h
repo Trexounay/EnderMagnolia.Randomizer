@@ -21,9 +21,14 @@ private:
 	HookManager(const HookManager&) = delete;
 	HookManager& operator=(const HookManager&) = delete;
 
-	bool HookNativeFunction(const SDK::UClass* defaultClass, const std::string className, const std::string funcName, FNativeFuncPtr detour, void** original);
+	bool HookNativeFunction(const SDK::UClass* defaultClass, const std::string className, const std::string funcName, void* detour, FNativeFuncPtr* original);
 	void* HookVTableFunction(void* instance, int index, void* hook);
-	bool HookAt(uintptr_t offset, void* hook, void** original);
+	template<typename Fn>
+	bool HookAt(uintptr_t offset, Fn detour, Fn* original)
+	{
+		uintptr_t base = SDK::InSDKUtils::GetImageBase();
+		return CreateHook(reinterpret_cast<void*>(base + offset), detour, reinterpret_cast<void**>(original), "rva hook");
+	}
 	bool CreateHook(void* target, void* hook, void** original, const char* name);
 
 	using FEngineTickFn = void(__fastcall*)(void* self, float dt, bool idle);
@@ -48,6 +53,7 @@ private:
 	using FZoomFn = void(*)(SDK::UUserWidgetMap*, float);
 	using FGoToPageFn = void(*)(SDK::UUserWidgetGameMenu*, SDK::int32);
 	using FEquipSkillFn = void(*)(SDK::USkillComponent*, SDK::ESkillSlot, const SDK::FName*, bool, bool);
+	using FBTConditionFn = bool(*)(void*, void*, void*);
 
 	static FEventFinishedFn oTriggerEventFinished;
 	static FMarkClearedFn oMarkAsCleared;
@@ -67,6 +73,7 @@ private:
 	static FMapClearFn oMapClear;
 	static FGoToPageFn oGoToPage;
 	static FEquipSkillFn oEquipSkill;
+	static FBTConditionFn oIsNewGamePlusCondition;
 
 	static void TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result);
 	static void MarkAsCleared_Hook(SDK::UClearComponent* self);
@@ -86,8 +93,23 @@ private:
 	static void MapClear_Hook(SDK::UUserWidgetMap* self);
 	static void GoToPage_Hook(SDK::UUserWidgetGameMenu* self, SDK::int32 pageIndex);
 	static void EquipSkill_Hook(SDK::USkillComponent* self, SDK::ESkillSlot slot, const SDK::FName* skillID, bool addToCurrentLoadout, bool autoLoad);
+	static bool IsNewGamePlusCondition_Hook(void* self, void* ownerComp, void* nodeMemory);
 
-	bool HookConditionSlot(const char* name, SDK::UObject* cdo, void* hook, void** original);
+	template<typename Fn>
+	bool HookVirtual(const char* name, SDK::UObject* cdo, int slot, Fn detour, Fn* original)
+	{
+		if (!cdo)
+		{
+			Logger::Log(LogLevel::Error, this, "no CDO for", name);
+			return false;
+		}
+
+		void** vtable = *reinterpret_cast<void***>(cdo);
+		if (!vtable)
+			return false;
+
+		return CreateHook(vtable[slot], detour, reinterpret_cast<void**>(original), name);
+	}
 
 	static FNativeFuncPtr oSaveGameSync;
 	static FNativeFuncPtr oSaveGameAsync;
