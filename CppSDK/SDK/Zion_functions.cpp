@@ -5827,24 +5827,8 @@ bool UAchievementsSubsystem::IsUsingInternalAchievements() const
 
 void USkillComponent::Equip(ESkillSlot SkillSlot, const class FName& SkillID, bool bAddToCurrentLoadout, bool bAutoLoad)
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "Equip");
-
-	Params::SkillComponent_Equip Parms{};
-
-	Parms.SkillSlot = SkillSlot;
-	Parms.SkillID = SkillID;
-	Parms.bAddToCurrentLoadout = bAddToCurrentLoadout;
-	Parms.bAutoLoad = bAutoLoad;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
+	reinterpret_cast<void(*)(USkillComponent*, ESkillSlot, const class FName*, bool, bool)>(
+		InSDKUtils::GetImageBase() + 0x473CD50)(this, SkillSlot, &SkillID, bAddToCurrentLoadout, bAutoLoad);
 }
 
 
@@ -5902,22 +5886,8 @@ void USkillComponent::LoadEquippedSkills()
 
 void USkillComponent::UnEquip(ESkillSlot SkillSlot, bool bRemoveFromCurrentLoadout)
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "UnEquip");
-
-	Params::SkillComponent_UnEquip Parms{};
-
-	Parms.SkillSlot = SkillSlot;
-	Parms.bRemoveFromCurrentLoadout = bRemoveFromCurrentLoadout;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
+	reinterpret_cast<void(*)(USkillComponent*, ESkillSlot, bool)>(
+		InSDKUtils::GetImageBase() + 0x475B0F0)(this, SkillSlot, bRemoveFromCurrentLoadout);
 }
 
 
@@ -6119,23 +6089,8 @@ const struct FSkillLevelData USkillComponent::GetEquippedSkillLevelData(ESkillSl
 
 ESkillSlot USkillComponent::GetEquippedSkillSlotFromID(const class FName& SkillID) const
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SkillComponent", "GetEquippedSkillSlotFromID");
-
-	Params::SkillComponent_GetEquippedSkillSlotFromID Parms{};
-
-	Parms.SkillID = SkillID;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
+	return reinterpret_cast<ESkillSlot(*)(const USkillComponent*, const class FName*)>(
+		InSDKUtils::GetImageBase() + 0x47424F0)(this, &SkillID);
 }
 
 

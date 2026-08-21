@@ -32,6 +32,7 @@ HookManager::FApplyAudioSettingsFn HookManager::oApplyAudioSettings = nullptr;
 HookManager::FPlayBGMFn HookManager::oPlayBGM = nullptr;
 HookManager::FMapClearFn HookManager::oMapClear = nullptr;
 HookManager::FGoToPageFn HookManager::oGoToPage = nullptr;
+HookManager::FEquipSkillFn HookManager::oEquipSkill = nullptr;
 
 HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
@@ -57,6 +58,7 @@ namespace
 	constexpr uintptr_t kOff_MapClear              = 0x47B1320;
 	constexpr uintptr_t kOff_GoToPage              = 0x47BA2C0;
 	constexpr uintptr_t kOff_Zoom                  = 0x47D42C0;
+	constexpr uintptr_t kOff_EquipSkill            = 0x473CD50;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 }
@@ -124,6 +126,7 @@ bool HookManager::Init()
 	HookAt(kOff_MapClear, &MapClear_Hook, reinterpret_cast<void**>(&oMapClear));
 	HookAt(kOff_GoToPage, &GoToPage_Hook, reinterpret_cast<void**>(&oGoToPage));
 	HookAt(kOff_Zoom, &Zoom_Hook, reinterpret_cast<void**>(&oZoom));
+	HookAt(kOff_EquipSkill, &EquipSkill_Hook, reinterpret_cast<void**>(&oEquipSkill));
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -202,7 +205,7 @@ bool HookManager::HookNativeFunction(const SDK::UClass *defaultClass, const std:
 		Logger::Log(LogLevel::Error, this, "no default class");
 		return false;
 	}
-	auto Func = defaultClass->GetFunction(className, funcName);
+	auto Func = defaultClass->FindFunctionByName(SDK::FName::FromString(funcName));
 	if (!Func || !Func->ExecFunction)
 	{
 		Logger::Log(LogLevel::Error, this, "no function", className, ".", funcName);
@@ -494,9 +497,24 @@ void HookManager::GoToPage_Hook(SDK::UUserWidgetGameMenu* self, SDK::int32 pageI
 	{
 		if (auto page = slot->Content;
 			page->Class == SDK::UWBP_GameMenu_Page_Skill_C::StaticClass())
+		{
+			GameManager::Instance().SetMultiSkillPerSpirit();
 			GameManager::Instance().SetSkillMenuNavigation(
 				static_cast<SDK::UWBP_GameMenu_Page_Skill_C*>(page));
+		}
 	}
+}
+
+void HookManager::EquipSkill_Hook(SDK::USkillComponent* self, SDK::ESkillSlot slot, const SDK::FName* skillID, bool addToCurrentLoadout, bool autoLoad)
+{
+	if (Configuration::Instance().Option("allow_multiskill", 0) != 0)
+	{
+		SDK::ESkillSlot previous = self->GetEquippedSkillSlotFromID(*skillID);
+		if (previous != SDK::ESkillSlot::Invalid && previous != slot)
+			self->UnEquip(previous, addToCurrentLoadout);
+	}
+
+	oEquipSkill(self, slot, skillID, addToCurrentLoadout, autoLoad);
 }
 
 void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)

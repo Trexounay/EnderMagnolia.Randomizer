@@ -34,6 +34,7 @@ public:
 	void OnEventFinished(SDK::UEventAsset* asset);
 	void OnActorCleared(SDK::AActor* actor);
 	void SetSkillMenuNavigation(SDK::UWBP_GameMenu_Page_Skill_C* page);
+	void SetMultiSkillPerSpirit();
 	void RefreshZoneLabels(SDK::UWBP_Map_C* map = nullptr);
 	bool GrantItem(const std::string& itemName, int count = 1);
 	bool KillPlayer();
@@ -99,4 +100,6 @@ private:
 
 	ItemReplacer* itemReplacer = nullptr;
 	bool skillsInitialized = false;
+	bool multiSkillPatched = false;
+	SDK::uint8 multiSkillOriginalBytes[2] = {};
 };

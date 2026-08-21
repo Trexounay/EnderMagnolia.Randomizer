@@ -72,6 +72,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	ShuffleUpgradeCosts();
 	ShuffleBGM();
 	itemReplacer->ResetShopItems();
+	SetMultiSkillPerSpirit();
 	InitSkills();
 }
 
@@ -142,6 +143,27 @@ void GameManager::SetSkillCosts()
 				}
 		*/
 	}
+}
+
+void GameManager::SetMultiSkillPerSpirit()
+{
+	bool enabled = Configuration::Instance().Option("allow_multiskill", 0) != 0;
+	auto cls = SDK::UWBP_SpiritSkillSet_C::StaticClass();
+	if (enabled == multiSkillPatched || !cls)
+		return;
+
+	auto func = cls->FindFunctionByName(SDK::FName::FromString("UnEquipAllSkills"));
+	auto script = *reinterpret_cast<SDK::uint8**>(reinterpret_cast<SDK::uint8*>(func) + 0x60);
+	const SDK::uint8 silenced[2] = { 0x04, 0x0B };
+	if (enabled)
+		std::memcpy(multiSkillOriginalBytes, script, 2);
+
+	// black magic
+	DWORD protection = 0;
+	VirtualProtect(script, 2, PAGE_READWRITE, &protection);
+	std::memcpy(script, enabled ? silenced : multiSkillOriginalBytes, 2);
+	VirtualProtect(script, 2, protection, &protection);
+	multiSkillPatched = enabled;
 }
 
 void GameManager::SetSkillMenuNavigation(SDK::UWBP_GameMenu_Page_Skill_C* page)
