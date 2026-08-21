@@ -31,8 +31,10 @@ public:
 	class UObject*                                Outer;                                             // 0x0020(0x0008)(NOT AUTO-GENERATED PROPERTY)
 
 public:
-	static class UObject* FindObjectFastImpl(const std::string& Name, EClassCastFlags RequiredType = EClassCastFlags::None);
-	static class UObject* FindObjectImpl(const std::string& FullName, EClassCastFlags RequiredType = EClassCastFlags::None);
+	static class UObject* ScanObjectImpl(const std::string& Name, EClassCastFlags RequiredType = EClassCastFlags::None);
+	static class UObject* FindFirstObjectImpl(class UClass* Class, const std::string& Name, bool ExactClass = false);
+	static class UObject* FindFirstObjectImpl(class UClass* Class, const class FName& Name, bool ExactClass = false);
+
 
 	std::string GetFullName() const;
 	std::string GetName() const;
@@ -54,24 +56,20 @@ public:
 	void ExecuteUbergraph(int32 EntryPoint);
 
 public:
-	static class UClass* FindClass(const std::string& ClassFullName)
-	{
-		return FindObject<class UClass>(ClassFullName, EClassCastFlags::Class);
-	}
-	static class UClass* FindClassFast(const std::string& ClassName)
-	{
-		return FindObjectFast<class UClass>(ClassName, EClassCastFlags::Class);
-	}
-	
 	template<typename UEType = UObject>
-	static UEType* FindObject(const std::string& Name, EClassCastFlags RequiredType = EClassCastFlags::None)
+	static UEType* ScanObject(const std::string& Name, EClassCastFlags RequiredType = EClassCastFlags::None)
 	{
-		return static_cast<UEType*>(FindObjectImpl(Name, RequiredType));
+		return static_cast<UEType*>(ScanObjectImpl(Name, RequiredType));
 	}
 	template<typename UEType = UObject>
-	static UEType* FindObjectFast(const std::string& Name, EClassCastFlags RequiredType = EClassCastFlags::None)
+	static UEType* FindFirstObject(const std::string& Name, bool ExactClass = false)
 	{
-		return static_cast<UEType*>(FindObjectFastImpl(Name, RequiredType));
+		return static_cast<UEType*>(FindFirstObjectImpl(UEType::StaticClass(), Name, ExactClass));
+	}
+	template<typename UEType = UObject>
+	static UEType* FindFirstObject(const class FName& Name, bool ExactClass = false)
+	{
+		return static_cast<UEType*>(FindFirstObjectImpl(UEType::StaticClass(), Name, ExactClass));
 	}
 
 	static void FindObjectsByClass(SDK::UClass* cls, std::vector<UObject*> &out)
@@ -365,7 +363,26 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"Class">();
+		static class UClass* Clss = nullptr;
+
+		if (Clss == nullptr)
+		{
+			for (int i = 0; i < GObjects->Num() && !Clss; ++i)
+			{
+				UObject* Object = GObjects->GetByIndex(i);
+
+				if (!Object)
+					continue;
+
+				UObject* Cls = Object->Class;
+				while (Cls->Class != Cls)
+					Cls = Cls->Class;
+
+				Clss = static_cast<class UClass*>(Cls);
+			}
+		}
+
+		return Clss;
 	}
 	static class UClass* GetDefaultObj()
 	{

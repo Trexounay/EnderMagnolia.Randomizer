@@ -54,6 +54,8 @@ namespace Offsets
 	constexpr int32 GetDescNameIdx    = 0x00000015;
 	constexpr int32 FNameHash         = 0x010B13E0;
 	constexpr int32 FindFunctionByName = 0x0117D360;
+	constexpr int32 FindFirstObject     = 0x012BD610;
+	constexpr int32 FindFirstObjectFast = 0x012C9670;
 	constexpr int32 MapFindOrAdd      = 0x046FB270;
 	constexpr int32 SetAdd            = 0x00F9E0B0;
 	constexpr int32 SpawnActor        = 0x03770670;
@@ -147,7 +149,6 @@ namespace BasicFilesImpleUtils
 {
 	// Helper functions for StaticClassImpl and StaticBPGeneratedClassImpl
 	UClass* FindClassByName(const std::string& Name);
-	UClass* FindClassByFullName(const std::string& Name);
 
 	std::string GetObjectName(class UClass* Class);
 	int32 GetObjectIndex(class UClass* Class);
@@ -158,25 +159,18 @@ namespace BasicFilesImpleUtils
 	UObject* GetObjectByIndex(int32 Index);
 }
 
-template<StringLiteral Name, bool bIsFullName = false>
+template<StringLiteral Name>
 class UClass* StaticClassImpl()
 {
 	static class UClass* Clss = nullptr;
 
 	if (Clss == nullptr)
-	{
-		if constexpr (bIsFullName) {
-			Clss = BasicFilesImpleUtils::FindClassByFullName(Name);
-		}
-		else /* default */ {
-			Clss = BasicFilesImpleUtils::FindClassByName(Name);
-		}
-	}
+		Clss = BasicFilesImpleUtils::FindClassByName(Name);
 
 	return Clss;
 }
 
-template<StringLiteral Name, bool bIsFullName = false, StringLiteral NonFullName = "">
+template<StringLiteral Name>
 class UClass* StaticBPGeneratedClassImpl()
 {
 	/* Could be external function, not really unique to this StaticClass functon */
@@ -194,33 +188,16 @@ class UClass* StaticBPGeneratedClassImpl()
 	static int32 ClassIdx = 0x0;
 	static uint64 ClassName = 0x0;
 
-	/* Use the full name to find an object */
-	if constexpr (bIsFullName)
-	{
-		if (ClassIdx == 0x0) [[unlikely]]
-			return SetClassIndex(BasicFilesImpleUtils::FindClassByFullName(Name), ClassIdx, ClassName);
+	if (ClassIdx == 0x0) [[unlikely]]
+		return SetClassIndex(BasicFilesImpleUtils::FindClassByName(Name), ClassIdx, ClassName);
 
-		UClass* ClassObj = static_cast<UClass*>(BasicFilesImpleUtils::GetObjectByIndex(ClassIdx));
+	UClass* ClassObj = static_cast<UClass*>(BasicFilesImpleUtils::GetObjectByIndex(ClassIdx));
 
-		/* Could use cast flags too to save some string comparisons */
-		if (!ClassObj || BasicFilesImpleUtils::GetObjFNameAsUInt64(ClassObj) != ClassName)
-			return SetClassIndex(BasicFilesImpleUtils::FindClassByFullName(Name), ClassIdx, ClassName);
+	/* Could use cast flags too to save some string comparisons */
+	if (!ClassObj || BasicFilesImpleUtils::GetObjFNameAsUInt64(ClassObj) != ClassName)
+		return SetClassIndex(BasicFilesImpleUtils::FindClassByName(Name), ClassIdx, ClassName);
 
-		return ClassObj;
-	}
-	else /* Default, use just the name to find an object*/
-	{
-		if (ClassIdx == 0x0) [[unlikely]]
-			return SetClassIndex(BasicFilesImpleUtils::FindClassByName(Name), ClassIdx, ClassName);
-
-		UClass* ClassObj = static_cast<UClass*>(BasicFilesImpleUtils::GetObjectByIndex(ClassIdx));
-
-		/* Could use cast flags too to save some string comparisons */
-		if (!ClassObj || BasicFilesImpleUtils::GetObjFNameAsUInt64(ClassObj) != ClassName)
-			return SetClassIndex(BasicFilesImpleUtils::FindClassByName(Name), ClassIdx, ClassName);
-
-		return ClassObj;
-	}
+	return ClassObj;
 }
 
 template<class ClassType>

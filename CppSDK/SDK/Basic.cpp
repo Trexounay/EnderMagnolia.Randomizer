@@ -23,12 +23,7 @@ namespace SDK
 
 	class UClass* BasicFilesImpleUtils::FindClassByName(const std::string& Name)
 	{
-		return UObject::FindClassFast(Name);
-	}
-
-	class UClass* BasicFilesImpleUtils::FindClassByFullName(const std::string& Name)
-	{
-		return UObject::FindClass(Name);
+		return UObject::FindFirstObject<class UClass>(Name);
 	}
 
 	std::string BasicFilesImpleUtils::GetObjectName(class UClass* Class)

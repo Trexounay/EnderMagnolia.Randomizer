@@ -20,36 +20,16 @@ namespace SDK
 // Predefined Function
 // Finds a UObject in the global object array by name, optionally with ECastFlags to reduce heavy string comparison
 
-class UObject* UObject::FindObjectFastImpl(const std::string& Name, EClassCastFlags RequiredType)
+class UObject* UObject::ScanObjectImpl(const std::string& Name, EClassCastFlags RequiredType)
 {
 	for (int i = 0; i < GObjects->Num(); ++i)
 	{
 		UObject* Object = GObjects->GetByIndex(i);
-	
+
 		if (!Object)
 			continue;
-		
+
 		if (Object->HasTypeFlag(RequiredType) && Object->GetName() == Name)
-			return Object;
-	}
-
-	return nullptr;
-}
-
-
-// Predefined Function
-// Finds a UObject in the global object array by full-name, optionally with ECastFlags to reduce heavy string comparison
-
-class UObject* UObject::FindObjectImpl(const std::string& FullName, EClassCastFlags RequiredType)
-{
-	for (int i = 0; i < GObjects->Num(); ++i)
-	{
-		UObject* Object = GObjects->GetByIndex(i);
-	
-		if (!Object)
-			continue;
-		
-		if (Object->HasTypeFlag(RequiredType) && Object->GetFullName() == FullName)
 			return Object;
 	}
 
@@ -172,6 +152,26 @@ bool UStruct::IsSubclassOf(const UStruct* Base) const
 
 // Predefined Function
 // Gets a UFunction from this UClasses' 'Children' list
+
+class UObject* UObject::FindFirstObjectImpl(class UClass* Class, const std::string& Name, bool ExactClass)
+{
+	std::wstring Wide(Name.begin(), Name.end());
+
+	auto Find = reinterpret_cast<UObject*(*)(UClass*, const wchar_t*, int32, uint8, const wchar_t*)>(
+		InSDKUtils::GetImageBase() + Offsets::FindFirstObject);
+
+	return InSDKUtils::CallGameFunction(Find, Class, Wide.c_str(), ExactClass ? 2 : 0, 0, nullptr);
+}
+
+
+class UObject* UObject::FindFirstObjectImpl(class UClass* Class, const class FName& Name, bool ExactClass)
+{
+	auto Find = reinterpret_cast<UObject*(*)(const UClass*, FName, bool, int32, int32)>(
+		InSDKUtils::GetImageBase() + Offsets::FindFirstObjectFast);
+
+	return InSDKUtils::CallGameFunction(Find, Class, Name, ExactClass, 0, 0);
+}
+
 
 class UFunction* UClass::FindFunctionByName(const class FName& Name, bool IncludeSuper) const
 {
