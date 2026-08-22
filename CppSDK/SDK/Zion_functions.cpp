@@ -33799,10 +33799,8 @@ void UUserWidgetAchievementNotificationHolder::OnLaunchAchievementNotification(c
 
 void UUserWidgetAchievementNotificationHolder::OnRefreshVisibility(bool bVisible)
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UserWidgetAchievementNotificationHolder", "OnRefreshVisibility");
+	static FName Name = FName::FromString("OnRefreshVisibility");
+	class UFunction* Func = Class->FindFunctionByName(Name);
 
 	Params::UserWidgetAchievementNotificationHolder_OnRefreshVisibility Parms{};
 

@@ -4,7 +4,7 @@
 
 class UpdateChecker {
 public:
-	static inline const char* kVersion = "0.1.4";
+	static inline const char* kVersion = "0.1.5";
 
 	static void CheckAsync();
 

@@ -24,10 +24,8 @@ namespace SDK
 
 void ABP_BossSpawner_C::UnregisterFromCamera(class APawn* Enemy)
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BossSpawner_C", "UnregisterFromCamera");
+	static FName Name = FName::FromString("UnregisterFromCamera");
+	class UFunction* Func = Class->FindFunctionByName(Name);
 
 	Params::BP_BossSpawner_C_UnregisterFromCamera Parms{};
 
@@ -96,10 +94,8 @@ void ABP_BossSpawner_C::TryLoadEventBlocking(TSoftObjectPtr<class UObject> SoftE
 
 void ABP_BossSpawner_C::RegisterToCamera(class APawn* Enemy)
 {
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_BossSpawner_C", "RegisterToCamera");
+	static FName Name = FName::FromString("RegisterToCamera");
+	class UFunction* Func = Class->FindFunctionByName(Name);
 
 	Params::BP_BossSpawner_C_RegisterToCamera Parms{};
 
