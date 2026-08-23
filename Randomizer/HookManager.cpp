@@ -34,6 +34,7 @@ HookManager::FMapClearFn HookManager::oMapClear = nullptr;
 HookManager::FGoToPageFn HookManager::oGoToPage = nullptr;
 HookManager::FEquipSkillFn HookManager::oEquipSkill = nullptr;
 HookManager::FBTConditionFn HookManager::oIsNewGamePlusCondition = nullptr;
+HookManager::FOpenGameMapFn HookManager::oOpenGameMap = nullptr;
 
 HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
@@ -60,6 +61,7 @@ namespace
 	constexpr uintptr_t kOff_GoToPage              = 0x47BA2C0;
 	constexpr uintptr_t kOff_Zoom                  = 0x47D42C0;
 	constexpr uintptr_t kOff_EquipSkill            = 0x473CD50;
+	constexpr uintptr_t kOff_OpenGameMap           = 0x477ADD0;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 	constexpr int kSlot_CalculateRawCondition = 103;
@@ -130,6 +132,7 @@ bool HookManager::Init()
 	HookAt(kOff_GoToPage, &GoToPage_Hook, &oGoToPage);
 	HookAt(kOff_Zoom, &Zoom_Hook, &oZoom);
 	HookAt(kOff_EquipSkill, &EquipSkill_Hook, &oEquipSkill);
+	HookAt(kOff_OpenGameMap, &OpenGameMap_Hook, &oOpenGameMap);
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -505,6 +508,19 @@ bool HookManager::IsNewGamePlusCondition_Hook(void* self, void* ownerComp, void*
 		return true;
 
 	return oIsNewGamePlusCondition(self, ownerComp, nodeMemory);
+}
+
+void HookManager::OpenGameMap_Hook(SDK::UWorldLoaderSubsystem* self, SDK::FDataTableRowHandle* gameMap, SDK::FName playerStartTag, bool forceReload, SDK::FFadeDescriptionData* fadeOut, SDK::FFadeDescriptionData* fadeIn)
+{
+	auto to = Configuration::Instance().ScoutTransition({ gameMap->RowName, playerStartTag });
+	if (!to)
+	{
+		oOpenGameMap(self, gameMap, playerStartTag, forceReload, fadeOut, fadeIn);
+		return;
+	}
+
+	SDK::FDataTableRowHandle redirected{ gameMap->DataTable, to->gameMap };
+	oOpenGameMap(self, &redirected, to->playerStartTag, forceReload, fadeOut, fadeIn);
 }
 
 void __fastcall HookManager::EngineTick_Hook(void* self, float dt, bool idle)

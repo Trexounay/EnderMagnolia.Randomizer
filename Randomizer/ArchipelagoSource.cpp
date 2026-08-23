@@ -33,6 +33,7 @@ void ArchipelagoSource::Disconnect()
 	ap.reset();
 	state = APState::Disconnected;
 	options.clear();
+	transitions.clear();
 	Logger::Log("AP", "disconnected");
 	Configuration::Instance().UseOffline();
 }
@@ -118,19 +119,29 @@ void ArchipelagoSource::OnSlotConnected(const nlohmann::json& json)
 void ArchipelagoSource::ReadSlotData(const nlohmann::json& json)
 {
 	options.clear();
+	transitions.clear();
 	if (!json.is_object())
 		return;
 
 	for (auto it = json.begin(); it != json.end(); ++it)
 	{
-		if (it.value().is_number_integer())
+		if (it.key().rfind("er.", 0) == 0)
+		{
+			const std::string& src = it.key();
+			std::string dst = it.value().get<std::string>();
+			size_t fromDot = src.find('.', 3);
+			size_t toDot = dst.find('.');
+			GameMapTransition from{ SDK::FName::FromString(src.substr(3, fromDot - 3)),
+				SDK::FName::FromString(src.substr(fromDot + 1)) };
+			GameMapTransition to{ SDK::FName::FromString(dst.substr(0, toDot)),
+				SDK::FName::FromString(dst.substr(toDot + 1)) };
+			transitions[from] = to;
+		}
+		else if (it.value().is_number_integer())
 			options[it.key()] = it.value().get<int>();
 		else if (it.value().is_boolean())
 			options[it.key()] = it.value().get<bool>() ? 1 : 0;
 	}
-
-	for (const auto& kv : options)
-		Logger::Log("AP", "option", kv.first, "=", kv.second);
 }
 
 std::optional<std::string> ArchipelagoSource::Seed() const
@@ -395,6 +406,14 @@ std::optional<std::string> ArchipelagoSource::ScoutLocation(const std::string& l
 {
 	auto it = location_to_item.find(location);
 	if (it == location_to_item.end())
+		return std::nullopt;
+	return it->second;
+}
+
+std::optional<GameMapTransition> ArchipelagoSource::ScoutTransition(const GameMapTransition& from)
+{
+	auto it = transitions.find(from);
+	if (it == transitions.end())
 		return std::nullopt;
 	return it->second;
 }

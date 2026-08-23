@@ -66,6 +66,13 @@ std::optional<std::string> Configuration::ScoutLocation(const std::string& locat
 		return std::nullopt;
 	return activeSource->ScoutLocation(location);
 }
+
+std::optional<GameMapTransition> Configuration::ScoutTransition(const GameMapTransition& from)
+{
+	if (!activeSource)
+		return std::nullopt;
+	return activeSource->ScoutTransition(from);
+}
  
 std::optional<SDK::FName> Configuration::StartingRestPoint()
 {

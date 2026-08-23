@@ -67,6 +67,7 @@ bool OfflineSource::Load()
 	checks_to_items.clear();
 	ap_items.clear();
 	options.clear();
+	transitions.clear();
 	start_inventory.clear();
 	pending_start_items.clear();
 	seedName.clear();
@@ -120,6 +121,18 @@ bool OfflineSource::Load()
 			continue;
 		}
 
+		if (location.rfind("er.", 0) == 0)
+		{
+			size_t fromDot = location.find('.', 3);
+			size_t toDot = item.find('.');
+			GameMapTransition from{ SDK::FName::FromString(location.substr(3, fromDot - 3)),
+				SDK::FName::FromString(location.substr(fromDot + 1)) };
+			GameMapTransition to{ SDK::FName::FromString(item.substr(0, toDot)),
+				SDK::FName::FromString(item.substr(toDot + 1)) };
+			transitions[from] = to;
+			continue;
+		}
+
 		size_t p1 = item.find('|');
 		if (p1 != std::string::npos)
 		{
@@ -141,7 +154,6 @@ bool OfflineSource::Load()
 			checks_to_items[location] = item;
 		}
 	}
-	Logger::Log(LogLevel::Debug, this, "Found", checks_to_items.size(), "Items", ap_items.size(), "AP", options.size(), "Options", start_inventory.size(), "Starting Items");
 	return true;
 }
 
@@ -285,6 +297,14 @@ std::optional<std::string> OfflineSource::ScoutLocation(const std::string& locat
 {
 	auto it = checks_to_items.find(location);
 	if (it == checks_to_items.end())
+		return std::nullopt;
+	return it->second;
+}
+
+std::optional<GameMapTransition> OfflineSource::ScoutTransition(const GameMapTransition& from)
+{
+	auto it = transitions.find(from);
+	if (it == transitions.end())
 		return std::nullopt;
 	return it->second;
 }

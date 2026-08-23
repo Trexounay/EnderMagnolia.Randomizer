@@ -67,6 +67,7 @@ public:
 	void OnGameStart(bool isNewGame) override;
 	void OnGameSaved() override;
 	float Progress() const override;
+	std::optional<GameMapTransition> ScoutTransition(const GameMapTransition& from) override;
 
 private:
 	ArchipelagoSource() = default;
@@ -101,6 +102,8 @@ private:
 	void LoadIdTable();
 	void ScoutAll();
 	void PopulateDataTable();
+
+	std::map<GameMapTransition, GameMapTransition> transitions;
 
 	std::unique_ptr<APClient> ap;
 	APState state = APState::Disconnected;

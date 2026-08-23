@@ -358,6 +358,11 @@ public:
 		return ComparisonIndex;
 	}
 
+	uint64 GetAsUInt64() const
+	{
+		return *reinterpret_cast<const uint64*>(this);
+	}
+
 	uint32 GetTypeHash() const
 	{
 		auto Hash = reinterpret_cast<uint32(*)(int32)>(InSDKUtils::GetImageBase() + Offsets::FNameHash);

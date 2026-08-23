@@ -3,6 +3,7 @@
 #include "SDK.hpp"
 #include <string>
 #include <deque>
+#include <map>
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
@@ -28,6 +29,7 @@ public:
 	void Tick() override;
 	int Option(const std::string& name, int fallback = 0) const override;
 	float Progress() const override;
+	std::optional<GameMapTransition> ScoutTransition(const GameMapTransition& from) override;
 
 private:
 	void PopulateDataTable();
@@ -39,6 +41,7 @@ private:
 	std::unordered_map<std::string, std::string> checks_to_items;
 	std::unordered_map<std::string, APItemInfo> ap_items;
 	std::unordered_map<std::string, int> options;
+	std::map<GameMapTransition, GameMapTransition> transitions;
 	std::vector<std::string> start_inventory;
 	std::deque<std::string> pending_start_items;
 

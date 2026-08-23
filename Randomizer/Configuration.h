@@ -21,6 +21,7 @@ public:
 	bool NewSeed(const std::string& seed);
 
 	std::optional<std::string> ScoutLocation(const std::string& location);
+	std::optional<GameMapTransition> ScoutTransition(const GameMapTransition& from);
 	std::optional<SDK::FName> StartingRestPoint();
 	std::optional<std::string> Seed() const;
 	bool IsOffline() const { return activeSource == &offlineSource; }
