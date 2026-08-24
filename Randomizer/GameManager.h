@@ -42,6 +42,7 @@ public:
 	int ClampChapter();
 
 	SDK::UFMODEvent* SwapBGM(SDK::UFMODEvent* event);
+	std::optional<SDK::FName> PickEnemy(SDK::UObject* owner, const SDK::FName& currentRow);
 
 	bool IsLoading() const;
 	bool IsInGame() const { return !currentZone.empty() && !IsLoading(); }
@@ -78,6 +79,7 @@ private:
 	void ShuffleUpgradeCosts();
 	void ShuffleBGM();
 	void ShuffleSpecialSkills();
+	void ShuffleEnemies();
 
 	void ExcludeLeversFromZoneCompletion();
 	void CreateZoneLabels(SDK::UWBP_Map_C* map);
@@ -95,6 +97,7 @@ private:
 	std::vector<std::pair<SDK::FSkillLevelData*, SDK::TArray<SDK::FSkillMaterialData>>> vanillaUpgradeCosts;
 	std::vector<std::pair<SDK::int32, std::wstring>> bgmTracks;
 	std::vector<int> bgmShuffle;
+	std::vector<SDK::FName> enemyPool;
 	struct SpecialSkill { SDK::FSkillData* data; std::vector<uint8_t> vanilla; };
 	std::map<int, std::map<std::string, SpecialSkill>> vanillaSpecials;
 

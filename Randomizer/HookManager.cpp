@@ -35,6 +35,7 @@ HookManager::FGoToPageFn HookManager::oGoToPage = nullptr;
 HookManager::FEquipSkillFn HookManager::oEquipSkill = nullptr;
 HookManager::FBTConditionFn HookManager::oIsNewGamePlusCondition = nullptr;
 HookManager::FOpenGameMapFn HookManager::oOpenGameMap = nullptr;
+HookManager::FSpawnEnemyFn HookManager::oSpawnEnemy = nullptr;
 
 HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
@@ -62,6 +63,7 @@ namespace
 	constexpr uintptr_t kOff_Zoom                  = 0x47D42C0;
 	constexpr uintptr_t kOff_EquipSkill            = 0x473CD50;
 	constexpr uintptr_t kOff_OpenGameMap           = 0x477ADD0;
+	constexpr uintptr_t kOff_SpawnEnemy            = 0x46C55B0;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 	constexpr int kSlot_CalculateRawCondition = 103;
@@ -133,6 +135,7 @@ bool HookManager::Init()
 	HookAt(kOff_Zoom, &Zoom_Hook, &oZoom);
 	HookAt(kOff_EquipSkill, &EquipSkill_Hook, &oEquipSkill);
 	HookAt(kOff_OpenGameMap, &OpenGameMap_Hook, &oOpenGameMap);
+	HookAt(kOff_SpawnEnemy, &SpawnEnemy_Hook, &oSpawnEnemy);
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -413,6 +416,17 @@ void HookManager::PlayBGM_Hook(SDK::USoundSubsystem* self, SDK::UFMODEvent* even
 		return oPlayBGM(self, event);
 
 	oPlayBGM(self, GameManager::Instance().SwapBGM(event));
+}
+
+void HookManager::SpawnEnemy_Hook(SDK::AEnemySpawner* self, const SDK::FTransform* where)
+{
+	if (Configuration::Instance().Option("random_enemies") != 0)
+	{
+		auto& handle = self->EnemyRowHandle;
+		if (auto row = GameManager::Instance().PickEnemy(self, handle.RowName))
+			handle.RowName = *row;
+	}
+	oSpawnEnemy(self, where);
 }
 
 void HookManager::MapClear_Hook(SDK::UUserWidgetMap* self)

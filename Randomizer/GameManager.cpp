@@ -71,6 +71,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	ShufflePassiveCosts();
 	ShuffleUpgradeCosts();
 	ShuffleBGM();
+	ShuffleEnemies();
 	itemReplacer->ResetShopItems();
 	SetMultiSkillPerSpirit();
 	InitSkills();
@@ -551,6 +552,46 @@ SDK::UFMODEvent* GameManager::SwapBGM(SDK::UFMODEvent* event)
 	return event;
 }
 
+void GameManager::ShuffleEnemies()
+{
+	enemyPool.clear();
+	if (Configuration::Instance().Option("random_enemies") == 0)
+		return;
+	static const SDK::FName bossAI = SDK::FName::FromWchar(L"AIC_Base_Enemy_Boss_C");
+	static const SDK::FName gunmanAI = SDK::FName::FromWchar(L"AIC_e5110_Gunman_C");
+
+	for (auto& row : Mode()->DataTableEnemies->RowMap)
+	{
+		auto data = (SDK::FEnemyData*)row.Second;
+		const auto& ai = data->AIControllerClass.ObjectID.AssetPath.AssetName;
+		// exclude bosses
+		if (ai != bossAI && ai != gunmanAI)
+			enemyPool.push_back(row.Key());
+	}
+
+	std::string key = Configuration::Instance().Seed().value_or("");
+	std::seed_seq sequence(key.begin(), key.end());
+	std::mt19937 rng(sequence);
+	std::shuffle(enemyPool.begin(), enemyPool.end(), rng);
+}
+
+std::optional<SDK::FName> GameManager::PickEnemy(SDK::UObject* owner, const SDK::FName& currentRow)
+{
+	if (std::find(enemyPool.begin(), enemyPool.end(), currentRow) == enemyPool.end())
+		return std::nullopt;
+	std::string key = owner->Outer->GetName() + "." + owner->GetName();
+	
+	// https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+	uint32_t hash = 0x811C9DC5;
+	for (unsigned char c : key)
+	{
+		hash ^= c;
+		hash *= 0x01000193;
+	}
+
+	return enemyPool[hash % enemyPool.size()];
+}
+
 void GameManager::ShuffleSpecialSkills()
 {
 	auto controller = Controller();
@@ -719,6 +760,7 @@ void GameManager::OnItemSourceChanged()
 	ShuffleUpgradeCosts();
 	ShuffleBGM();
 	ShuffleSpecialSkills();
+	ShuffleEnemies();
 	ClampChapter();
 	itemReplacer->ResetShopItems();
 	if (!currentZone.empty() && !IsLoading())

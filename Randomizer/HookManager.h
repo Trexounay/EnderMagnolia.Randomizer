@@ -59,6 +59,7 @@ private:
 	using FEquipSkillFn = void(*)(SDK::USkillComponent*, SDK::ESkillSlot, const SDK::FName*, bool, bool);
 	using FBTConditionFn = bool(*)(void*, void*, void*);
 	using FOpenGameMapFn = void(*)(SDK::UWorldLoaderSubsystem*, SDK::FDataTableRowHandle*, SDK::FName, bool, SDK::FFadeDescriptionData*, SDK::FFadeDescriptionData*);
+	using FSpawnEnemyFn = void(*)(SDK::AEnemySpawner*, const SDK::FTransform*);
 
 	static FEventFinishedFn oTriggerEventFinished;
 	static FMarkClearedFn oMarkAsCleared;
@@ -80,6 +81,7 @@ private:
 	static FEquipSkillFn oEquipSkill;
 	static FBTConditionFn oIsNewGamePlusCondition;
 	static FOpenGameMapFn oOpenGameMap;
+	static FSpawnEnemyFn oSpawnEnemy;
 
 	static void TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result);
 	static void MarkAsCleared_Hook(SDK::UClearComponent* self);
@@ -101,6 +103,7 @@ private:
 	static void EquipSkill_Hook(SDK::USkillComponent* self, SDK::ESkillSlot slot, const SDK::FName* skillID, bool addToCurrentLoadout, bool autoLoad);
 	static bool IsNewGamePlusCondition_Hook(void* self, void* ownerComp, void* nodeMemory);
 	static void OpenGameMap_Hook(SDK::UWorldLoaderSubsystem* self, SDK::FDataTableRowHandle* gameMap, SDK::FName playerStartTag, bool forceReload, SDK::FFadeDescriptionData* fadeOut, SDK::FFadeDescriptionData* fadeIn);
+	static void SpawnEnemy_Hook(SDK::AEnemySpawner* self, const SDK::FTransform* where);
 
 	template<typename Fn>
 	bool HookVirtual(const char* name, SDK::UObject* cdo, int slot, Fn detour, Fn* original)
