@@ -560,7 +560,9 @@ void GameManager::ShuffleEnemies()
 	static const SDK::FName bossAI = SDK::FName::FromWchar(L"AIC_Base_Enemy_Boss_C");
 	static const SDK::FName gunmanAI = SDK::FName::FromWchar(L"AIC_e5110_Gunman_C");
 
-	for (auto& row : Mode()->DataTableEnemies->RowMap)
+	auto table = SDK::AGameModeZion::GetDefaultObj()->DataTableEnemies;
+
+	for (auto& row : table->RowMap)
 	{
 		auto data = (SDK::FEnemyData*)row.Second;
 		const auto& ai = data->AIControllerClass.ObjectID.AssetPath.AssetName;
