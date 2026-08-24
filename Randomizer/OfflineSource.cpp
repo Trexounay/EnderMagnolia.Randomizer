@@ -8,6 +8,18 @@
 #include "SDK.hpp"
 #include <fstream>
 
+static void Trim(std::string& text)
+{
+	auto first = text.find_first_not_of(" \t\r");
+	if (first == std::string::npos)
+	{
+		text.clear();
+		return;
+	}
+	text.erase(0, first);
+	text.erase(text.find_last_not_of(" \t\r") + 1);
+}
+
 OfflineSource::OfflineSource(const std::string& path)
 	: path(path)
 {
@@ -79,14 +91,6 @@ bool OfflineSource::Load()
 		return false;
 	}
 
-	auto trim = [](std::string& s)
-	{
-		auto a = s.find_first_not_of(" \t");
-		if (a == std::string::npos) { s.clear(); return; }
-		s.erase(0, a);
-		s.erase(s.find_last_not_of(" \t") + 1);
-	};
-
 	int ap_index = 0;
 	std::string line;
 	while (std::getline(file, line))
@@ -100,8 +104,8 @@ bool OfflineSource::Load()
 
 		std::string location = line.substr(0, separator);
 		std::string item = line.substr(separator + 1);
-		trim(location);
-		trim(item);
+		Trim(location);
+		Trim(item);
 
 		if (location == "seed")
 		{
@@ -141,9 +145,9 @@ bool OfflineSource::Load()
 			info.item = item.substr(0, p1);
 			info.player = (p2 == std::string::npos) ? "" : item.substr(p1 + 1, p2 - p1 - 1);
 			info.game = (p2 == std::string::npos) ? "" : item.substr(p2 + 1);
-			trim(info.item);
-			trim(info.player);
-			trim(info.game);
+			Trim(info.item);
+			Trim(info.player);
+			Trim(info.game);
 
 			std::string key = "custom.ap_" + std::to_string(ap_index++);
 			ap_items[location] = info;

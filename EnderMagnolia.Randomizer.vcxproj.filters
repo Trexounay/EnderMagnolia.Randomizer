@@ -148,9 +148,6 @@
     <ClCompile Include="Randomizer\ItemReplacer.cpp">
       <Filter>Randomizer</Filter>
     </ClCompile>
-    <ClCompile Include="Randomizer\DataTableRowInserter.cpp">
-      <Filter>Randomizer</Filter>
-    </ClCompile>
     <ClCompile Include="CppSDK\SDK\EventSystem_functions.cpp" />
     <ClCompile Include="Randomizer\GUI.cpp" />
     <ClCompile Include="CppSDK\SDK\AssetRegistry_functions.cpp" />
@@ -286,9 +283,6 @@
       <Filter>Randomizer</Filter>
     </ClInclude>
     <ClInclude Include="Randomizer\ItemReplacer.h">
-      <Filter>Randomizer</Filter>
-    </ClInclude>
-    <ClInclude Include="Randomizer\DataTableRowInserter.h">
       <Filter>Randomizer</Filter>
     </ClInclude>
     <ClInclude Include="version\version.h">
