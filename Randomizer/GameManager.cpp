@@ -561,7 +561,6 @@ void GameManager::ShuffleEnemies()
 	static const SDK::FName gunmanAI = SDK::FName::FromWchar(L"AIC_e5110_Gunman_C");
 
 	auto table = SDK::AGameModeZion::GetDefaultObj()->DataTableEnemies;
-
 	for (auto& row : table->RowMap)
 	{
 		auto data = (SDK::FEnemyData*)row.Second;
@@ -581,7 +580,8 @@ std::optional<SDK::FName> GameManager::PickEnemy(SDK::UObject* owner, const SDK:
 {
 	if (std::find(enemyPool.begin(), enemyPool.end(), currentRow) == enemyPool.end())
 		return std::nullopt;
-	std::string key = owner->Outer->GetName() + "." + owner->GetName();
+	std::string key = owner->Outer->GetName() + "." + owner->GetName() + currentRow.GetRawString();
+
 	
 	// https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
 	uint32_t hash = 0x811C9DC5;
