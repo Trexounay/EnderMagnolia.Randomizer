@@ -150,13 +150,19 @@ void GameManager::SetMultiSkillPerSpirit()
 {
 	bool enabled = Configuration::Instance().Option("allow_multiskill", 0) != 0;
 	auto cls = SDK::UWBP_SpiritSkillSet_C::StaticClass();
-	if (enabled == multiSkillPatched || !cls)
+	if (!cls)
 		return;
 
 	auto func = cls->FindFunctionByName(SDK::FName::FromString("UnEquipAllSkills"));
 	auto script = *reinterpret_cast<SDK::uint8**>(reinterpret_cast<SDK::uint8*>(func) + 0x60);
+
 	const SDK::uint8 silenced[2] = { 0x04, 0x0B };
-	if (enabled)
+
+	bool patched = script[0] == silenced[0] && script[1] == silenced[1];
+	if (patched == enabled)
+		return;
+
+	if (!patched)
 		std::memcpy(multiSkillOriginalBytes, script, 2);
 
 	// black magic
@@ -164,7 +170,6 @@ void GameManager::SetMultiSkillPerSpirit()
 	VirtualProtect(script, 2, PAGE_READWRITE, &protection);
 	std::memcpy(script, enabled ? silenced : multiSkillOriginalBytes, 2);
 	VirtualProtect(script, 2, protection, &protection);
-	multiSkillPatched = enabled;
 }
 
 void GameManager::SetSkillMenuNavigation(SDK::UWBP_GameMenu_Page_Skill_C* page)
@@ -938,11 +943,8 @@ int GameManager::ClampChapter()
 
 	int clamped = level < min ? min : (level > max ? max : level);
 
-	if (clamped != level)
-	{
+	if (clamped != mode->EnvironmentLevel)
 		mode->EnvironmentLevel = clamped;
-		Logger::Log(this, "chapter clamped", level, "->", clamped, "range", min, max);
-	}
 	return clamped;
 }
 

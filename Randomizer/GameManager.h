@@ -103,6 +103,5 @@ private:
 
 	ItemReplacer* itemReplacer = nullptr;
 	bool skillsInitialized = false;
-	bool multiSkillPatched = false;
 	SDK::uint8 multiSkillOriginalBytes[2] = {};
 };
