@@ -9,6 +9,9 @@
 #include "HookProbe.h"
 #endif
 
+#include <random>
+#include <utility>
+
 #include <Windows.h>
 #include "minhook/include/MinHook.h"
 
@@ -41,6 +44,7 @@ HookManager::FNativeFuncPtr HookManager::oSaveGameSync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oHPReachedZero = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSetCurrentSlot = nullptr;
+HookManager::FSpawnEntityFn HookManager::oSpawnEntity = nullptr;
 HookManager::FZoomFn HookManager::oZoom = nullptr;
 
 namespace
@@ -64,6 +68,7 @@ namespace
 	constexpr uintptr_t kOff_EquipSkill            = 0x473CD50;
 	constexpr uintptr_t kOff_OpenGameMap           = 0x477ADD0;
 	constexpr uintptr_t kOff_SpawnEnemy            = 0x46C55B0;
+	constexpr uintptr_t kOff_SpawnEntity           = 0x4754AB0;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 	constexpr int kSlot_CalculateRawCondition = 103;
@@ -136,6 +141,7 @@ bool HookManager::Init()
 	HookAt(kOff_EquipSkill, &EquipSkill_Hook, &oEquipSkill);
 	HookAt(kOff_OpenGameMap, &OpenGameMap_Hook, &oOpenGameMap);
 	HookAt(kOff_SpawnEnemy, &SpawnEnemy_Hook, &oSpawnEnemy);
+	//HookAt(kOff_SpawnEntity, &SpawnEntity_Hook, &oSpawnEntity);
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -420,13 +426,45 @@ void HookManager::PlayBGM_Hook(SDK::USoundSubsystem* self, SDK::UFMODEvent* even
 
 void HookManager::SpawnEnemy_Hook(SDK::AEnemySpawner* self, const SDK::FTransform* where)
 {
-	if (Configuration::Instance().Option("random_enemies") != 0)
+	auto& handle = self->EnemyRowHandle;
+	auto key = self->Outer->GetName() + "." + self->GetName() + "." + handle.RowName.GetRawString();
+	auto row = GameManager::Instance().PickEnemy(key, handle.RowName);
+
+	// no replacement
+	if (!row)
+		return oSpawnEnemy(self, where);
+
+	static const std::pair<SDK::FName, SDK::FVector> fixups[] =
 	{
-		auto& handle = self->EnemyRowHandle;
-		if (auto row = GameManager::Instance().PickEnemy(self, handle.RowName))
+		{ SDK::FName::FromWchar(L"e5230_finder_phase1"), { 0.0, 500.0, -100.0 } },
+	};
+
+	self->bOverrideBehaviorIdle = false;
+	self->bOverrideBehaviorAggression = false;
+	self->bOverridePatrolRange = false;
+
+	// weird arena
+	SDK::FTransform placement = *where;
+	for (const auto& [spawned, offset] : fixups)
+		if (handle.RowName == spawned)
+			placement.Translation += offset;
+
+	handle.RowName = *row;
+	oSpawnEnemy(self, &placement);
+}
+
+// spawn sub-enemies, rat nest/velnest
+void HookManager::SpawnEntity_Hook(SDK::USpawnerComponent* self, const SDK::FSpawnData* data)
+{
+	auto& handle = ((SDK::FSpawnData*)data)->EntityRowHandle;
+	auto table = GameManager::Instance().Mode()->DataTableEnemies;
+
+	if (handle.DataTable == table)
+	{
+		if (auto row = GameManager::Instance().PickEnemy(handle.RowName.ToString(), handle.RowName))
 			handle.RowName = *row;
 	}
-	oSpawnEnemy(self, where);
+	oSpawnEntity(self, data);
 }
 
 void HookManager::MapClear_Hook(SDK::UUserWidgetMap* self)

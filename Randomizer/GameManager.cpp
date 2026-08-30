@@ -72,6 +72,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 	ShuffleUpgradeCosts();
 	ShuffleBGM();
 	ShuffleEnemies();
+	ShuffleBosses();
 	itemReplacer->ResetShopItems();
 	SetMultiSkillPerSpirit();
 	InitSkills();
@@ -557,6 +558,54 @@ SDK::UFMODEvent* GameManager::SwapBGM(SDK::UFMODEvent* event)
 	return event;
 }
 
+void GameManager::ShuffleBosses()
+{ 
+	bossPool.clear();
+	if (Configuration::Instance().Option("random_bosses") == 0)
+		return;
+
+	static const std::set<std::string> bosses =
+	{
+		//"e0500_tentacle", // rotation, arena
+		"e0510_ray",
+		"e2030_sector",
+		"e5003_reaper",
+		"e5010_lancer",
+		"e5012_lancer",
+		"e5030_rogue",
+		"e5050_ronin",
+		"e5060_beast",
+		"e5070_witch",
+		"e5110_gunman",
+		"e5200_pounder",
+		"e5230_finder_phase1", // fix spanw pos
+		//"e5230_finder_phase2", // small room
+		"e5230_finder_phase3",
+		"e6000_rider",
+		"e6010_cluster",
+		//"e6010_cluster_mode3", // P2
+		"e6020_director",
+		//"e6030_owner",  // water
+		//"e6040_darker", // P2
+		"e6050_master",
+		"e6051_master",
+		"e6052_master",
+		"e6053_master",
+	};
+	auto table = SDK::AGameModeZion::GetDefaultObj()->DataTableEnemies;
+	for (auto& row : table->RowMap)
+	{
+		// only bosses
+		if (bosses.contains(row.First.ToString()))
+			bossPool.push_back(row.Key());
+	}
+
+	std::string key = Configuration::Instance().Seed().value_or("");
+	std::seed_seq sequence(key.begin(), key.end());
+	std::mt19937 rng(sequence);
+	std::shuffle(bossPool.begin(), bossPool.end(), rng);
+}
+
 void GameManager::ShuffleEnemies()
 {
 	enemyPool.clear();
@@ -581,12 +630,23 @@ void GameManager::ShuffleEnemies()
 	std::shuffle(enemyPool.begin(), enemyPool.end(), rng);
 }
 
-std::optional<SDK::FName> GameManager::PickEnemy(SDK::UObject* owner, const SDK::FName& currentRow)
+std::optional<SDK::FName> GameManager::PickEnemy(const std::string& key, const SDK::FName& currentRow)
 {
-	if (std::find(enemyPool.begin(), enemyPool.end(), currentRow) == enemyPool.end())
+	std::vector<SDK::FName> pool;
+	if (Configuration::Instance().Option("random_enemies") != 0 && std::find(enemyPool.begin(), enemyPool.end(), currentRow) != enemyPool.end())
+	{
+		pool = enemyPool;
+	}
+	else if (Configuration::Instance().Option("random_bosses") != 0 && std::find(bossPool.begin(), bossPool.end(), currentRow) != bossPool.end())
+	{
+		Logger::Log(this, "PickEnemy: boss", currentRow.GetRawString());
+		pool = bossPool;
+		return SDK::FName::FromString("e2030_sector");
+	}
+	else
+	{
 		return std::nullopt;
-	std::string key = owner->Outer->GetName() + "." + owner->GetName() + currentRow.GetRawString();
-
+	}
 	
 	// https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
 	uint32_t hash = 0x811C9DC5;
@@ -596,7 +656,7 @@ std::optional<SDK::FName> GameManager::PickEnemy(SDK::UObject* owner, const SDK:
 		hash *= 0x01000193;
 	}
 
-	return enemyPool[hash % enemyPool.size()];
+	return pool[hash % pool.size()];
 }
 
 void GameManager::ShuffleSpecialSkills()
@@ -768,6 +828,7 @@ void GameManager::OnItemSourceChanged()
 	ShuffleBGM();
 	ShuffleSpecialSkills();
 	ShuffleEnemies();
+	ShuffleBosses();
 	ClampChapter();
 	itemReplacer->ResetShopItems();
 	if (!currentZone.empty() && !IsLoading())
