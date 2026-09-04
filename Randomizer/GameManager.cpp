@@ -994,8 +994,8 @@ int GameManager::ClampChapter()
 	if (!mode || !mode->IsA(SDK::AGameModeZion::StaticClass()))
 		return 0;
 
-	int min = Configuration::Instance().Option("min_chapter", 0);
-	int max = Configuration::Instance().Option("max_chapter", 16);
+	int min = std::max(Configuration::Instance().Option("min_chapter", 0), 1);
+	int max = std::min(Configuration::Instance().Option("max_chapter", 16), 16);
 	int level = mode->EnvironmentLevel;
 
 	if (Configuration::Instance().Option("chapter_scaling") == 1)
