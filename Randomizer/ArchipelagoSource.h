@@ -35,6 +35,7 @@ struct ReceivedItem {
 
 struct ScoutedLocation {
 	int64_t itemId;
+	int64_t locationId;
 	int player;
 	bool mine;
 	std::string itemName;
@@ -124,7 +125,6 @@ private:
 	std::unordered_map<int64_t, std::string> idToName;
 	std::unordered_map<std::string, ScoutedLocation> scouts;
 
-	int apItemIndex = 0;
 	std::unordered_map<std::string, std::string> location_to_item;
 
 	std::map<std::string, std::set<int64_t>> queuedChecks;

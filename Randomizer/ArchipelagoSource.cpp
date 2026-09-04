@@ -377,6 +377,7 @@ void ArchipelagoSource::OnLocationInfo(const std::list<APClient::NetworkItem>& i
 
 		ScoutedLocation s;
 		s.itemId = item.item;
+		s.locationId = item.location;
 		s.player = item.player;
 		s.mine = (item.player == me);
 		s.game = ap->get_player_game(item.player);
@@ -519,7 +520,6 @@ float ArchipelagoSource::Progress() const
 void ArchipelagoSource::PopulateDataTable()
 {
 	location_to_item.clear();
-	apItemIndex = 0;
 
 	for (auto& kv : scouts)
 	{
@@ -539,7 +539,7 @@ void ArchipelagoSource::PopulateDataTable()
 		else
 		{
 			RandomizerItemDef def;
-			def.id = "custom.ap_" + std::to_string(apItemIndex++);
+			def.id = "custom.ap_" + std::to_string(scout.locationId);
 			def.name = scout.itemName;
 			def.description = "Item for " + scout.playerAlias;
 			def.flavorText = "This is an Archipelago item for " + scout.game;

@@ -585,7 +585,7 @@ void GameManager::ShuffleBosses()
 		"e6010_cluster",
 		//"e6010_cluster_mode3", // P2
 		"e6020_director",
-		//"e6030_owner",  // water
+		"e6030_owner",  // water
 		//"e6040_darker", // P2
 		"e6050_master",
 		"e6051_master",
@@ -632,6 +632,7 @@ void GameManager::ShuffleEnemies()
 
 std::optional<SDK::FName> GameManager::PickEnemy(const std::string& key, const SDK::FName& currentRow)
 {
+	static int toto = 0;
 	std::vector<SDK::FName> pool;
 	if (Configuration::Instance().Option("random_enemies") != 0 && std::find(enemyPool.begin(), enemyPool.end(), currentRow) != enemyPool.end())
 	{
@@ -639,9 +640,7 @@ std::optional<SDK::FName> GameManager::PickEnemy(const std::string& key, const S
 	}
 	else if (Configuration::Instance().Option("random_bosses") != 0 && std::find(bossPool.begin(), bossPool.end(), currentRow) != bossPool.end())
 	{
-		Logger::Log(this, "PickEnemy: boss", currentRow.GetRawString());
 		pool = bossPool;
-		return SDK::FName::FromString("e2030_sector");
 	}
 	else
 	{

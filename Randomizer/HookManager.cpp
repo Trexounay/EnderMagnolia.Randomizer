@@ -45,6 +45,7 @@ HookManager::FNativeFuncPtr HookManager::oSaveGameAsync = nullptr;
 HookManager::FNativeFuncPtr HookManager::oHPReachedZero = nullptr;
 HookManager::FNativeFuncPtr HookManager::oSetCurrentSlot = nullptr;
 HookManager::FSpawnEntityFn HookManager::oSpawnEntity = nullptr;
+HookManager::FOnMovementModeChangedFn HookManager::oOnMovementModeChanged = nullptr;
 HookManager::FZoomFn HookManager::oZoom = nullptr;
 
 namespace
@@ -69,6 +70,7 @@ namespace
 	constexpr uintptr_t kOff_OpenGameMap           = 0x477ADD0;
 	constexpr uintptr_t kOff_SpawnEnemy            = 0x46C55B0;
 	constexpr uintptr_t kOff_SpawnEntity           = 0x4754AB0;
+	constexpr uintptr_t kOff_OnMovementModeChanged = 0x46BD050;
 
 	constexpr int kSlot_OnCheckCondition = 87;
 	constexpr int kSlot_CalculateRawCondition = 103;
@@ -141,7 +143,8 @@ bool HookManager::Init()
 	HookAt(kOff_EquipSkill, &EquipSkill_Hook, &oEquipSkill);
 	HookAt(kOff_OpenGameMap, &OpenGameMap_Hook, &oOpenGameMap);
 	HookAt(kOff_SpawnEnemy, &SpawnEnemy_Hook, &oSpawnEnemy);
-	//HookAt(kOff_SpawnEntity, &SpawnEntity_Hook, &oSpawnEntity);
+	HookAt(kOff_OnMovementModeChanged, &OnMovementModeChanged_Hook, &oOnMovementModeChanged);
+	HookAt(kOff_SpawnEntity, &SpawnEntity_Hook, &oSpawnEntity);
 
 	MH_STATUS applied = MH_ApplyQueued();
 	if (applied != MH_OK)
@@ -431,7 +434,7 @@ void HookManager::SpawnEnemy_Hook(SDK::AEnemySpawner* self, const SDK::FTransfor
 	auto row = GameManager::Instance().PickEnemy(key, handle.RowName);
 
 	// no replacement
-	if (!row)
+	if (!row || handle.RowName == *row)
 		return oSpawnEnemy(self, where);
 
 	static const std::pair<SDK::FName, SDK::FVector> fixups[] =
@@ -461,10 +464,32 @@ void HookManager::SpawnEntity_Hook(SDK::USpawnerComponent* self, const SDK::FSpa
 
 	if (handle.DataTable == table)
 	{
-		if (auto row = GameManager::Instance().PickEnemy(handle.RowName.ToString(), handle.RowName))
+		static std::mt19937 rng(std::random_device{}());
+		if (auto row = GameManager::Instance().PickEnemy(std::to_string(rng()), handle.RowName))
 			handle.RowName = *row;
 	}
 	oSpawnEntity(self, data);
+}
+
+void HookManager::OnMovementModeChanged_Hook(SDK::ACharacterZion* self,
+	SDK::EMovementMode prevMode, SDK::uint8 prevCustomMode)
+{
+	bool enabled = (Configuration::Instance().Option("random_enemies") != 0 ||
+		(Configuration::Instance().Option("random_bosses") != 0 && GameManager::Instance().Zone() == "Paradise_001_Zone_018"));
+	if (enabled && self->bInstantKillOnSwim && self->CharacterMovement->MovementMode == SDK::EMovementMode::MOVE_Swimming)
+	{
+		self->CharacterMovement->NavAgentProps.bCanSwim = 0;
+		if (prevMode == SDK::EMovementMode::MOVE_Flying || self->CharacterMovement->NavAgentProps.bCanFly)
+		{
+			self->CharacterMovement->SetMovementMode(SDK::EMovementMode::MOVE_Flying, prevCustomMode);
+		}
+		else
+		{
+			self->CharacterMovement->SetMovementMode(SDK::EMovementMode::MOVE_Falling, prevCustomMode);
+			self->CharacterMovement->AddImpulse(SDK::FVector(0, 0, -1500), true);
+		}
+	}
+	oOnMovementModeChanged(self, prevMode, prevCustomMode);
 }
 
 void HookManager::MapClear_Hook(SDK::UUserWidgetMap* self)

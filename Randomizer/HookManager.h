@@ -57,6 +57,7 @@ private:
 	using FOpenGameMapFn = void(*)(SDK::UWorldLoaderSubsystem*, SDK::FDataTableRowHandle*, SDK::FName, bool, SDK::FFadeDescriptionData*, SDK::FFadeDescriptionData*);
 	using FSpawnEnemyFn = void(*)(SDK::AEnemySpawner*, const SDK::FTransform*);
 	using FSpawnEntityFn = void(*)(SDK::USpawnerComponent*, const SDK::FSpawnData*);
+	using FOnMovementModeChangedFn = void(*)(SDK::ACharacterZion*, SDK::EMovementMode, SDK::uint8);
 
 	static FEventFinishedFn oTriggerEventFinished;
 	static FMarkClearedFn oMarkAsCleared;
@@ -80,6 +81,7 @@ private:
 	static FOpenGameMapFn oOpenGameMap;
 	static FSpawnEnemyFn oSpawnEnemy;
 	static FSpawnEntityFn oSpawnEntity;
+	static FOnMovementModeChangedFn oOnMovementModeChanged;
 
 	static void TriggerEventFinished_Hook(SDK::ATrigger_Event* self, SDK::UEventPlayer* eventPlayer, bool completed, SDK::EEventPlayerResult result);
 	static void MarkAsCleared_Hook(SDK::UClearComponent* self);
@@ -103,6 +105,7 @@ private:
 	static void OpenGameMap_Hook(SDK::UWorldLoaderSubsystem* self, SDK::FDataTableRowHandle* gameMap, SDK::FName playerStartTag, bool forceReload, SDK::FFadeDescriptionData* fadeOut, SDK::FFadeDescriptionData* fadeIn);
 	static void SpawnEnemy_Hook(SDK::AEnemySpawner* self, const SDK::FTransform* where);
 	static void SpawnEntity_Hook(SDK::USpawnerComponent* self, const SDK::FSpawnData* data);
+	static void OnMovementModeChanged_Hook(SDK::ACharacterZion* self, SDK::EMovementMode prevMode, SDK::uint8 prevCustomMode);
 
 	template<typename Fn>
 	bool HookVirtual(const char* name, SDK::UObject* cdo, int slot, Fn detour, Fn* original)
