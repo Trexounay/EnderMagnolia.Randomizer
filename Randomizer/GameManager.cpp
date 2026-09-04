@@ -591,6 +591,18 @@ void GameManager::ShuffleBosses()
 		"e6051_master",
 		"e6052_master",
 		"e6053_master",
+
+		"e0122_wheeler",
+		"e0030_guard",
+		"e0162_gang",
+		"e0203_scarab",
+		"e0222_security",
+		"e0233_researcher",
+		"e0252_ninja",
+		"e0253_ninja",
+		"e0262_komuso",
+		"e0281_banshee",
+
 	};
 	auto table = SDK::AGameModeZion::GetDefaultObj()->DataTableEnemies;
 	for (auto& row : table->RowMap)
