@@ -436,6 +436,7 @@ void ArchipelagoSource::ReportCheck(const std::string& location)
 
 	Logger::Log("AP", "check", location, it->second);
 	ap->LocationChecks({ it->second });
+	GameManager::Instance().ClampChapter();
 }
 
 void ArchipelagoSource::FlushQueuedChecks()

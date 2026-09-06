@@ -14902,7 +14902,8 @@ public:
 	TMap<class FName, int32>                      Items;                                             // 0x0058(0x0050)(Edit, Transient, EditConst, NativeAccessSpecifierPrivate)
 	TSet<class FName>                             CheckedItems;                                      // 0x00A8(0x0050)(Edit, Transient, EditConst, NativeAccessSpecifierPrivate)
 	class UDataTable*                             DataTable;                                         // 0x00F8(0x0008)(ZeroConstructor, Transient, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_100[0x8];                                      // 0x0100(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         MaxCount;                                          // 0x0100(0x0004)(NotVisible, Native, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_104[0x4];                                      // 0x0104(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	TMap<class FName, int32> GetAllItemsAvailable();
@@ -14931,6 +14932,7 @@ static_assert(sizeof(UInventory) == 0x000108, "Wrong size on UInventory");
 static_assert(offsetof(UInventory, Items) == 0x000058, "Member 'UInventory::Items' has a wrong offset!");
 static_assert(offsetof(UInventory, CheckedItems) == 0x0000A8, "Member 'UInventory::CheckedItems' has a wrong offset!");
 static_assert(offsetof(UInventory, DataTable) == 0x0000F8, "Member 'UInventory::DataTable' has a wrong offset!");
+static_assert(offsetof(UInventory, MaxCount) == 0x000100, "Member 'UInventory::MaxCount' has a wrong offset!");
 
 // Class Zion.InventoryAptitude
 // 0x0040 (0x0148 - 0x0108)

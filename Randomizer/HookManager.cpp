@@ -23,6 +23,7 @@ HookManager::FFinishActionFn HookManager::oFinishAction = nullptr;
 HookManager::FNotifyGameEndingFn HookManager::oNotifyGameEnding = nullptr;
 HookManager::FAddShopHistoryFn HookManager::oAddShopHistory = nullptr;
 HookManager::FAddItemFn HookManager::oAddItem = nullptr;
+HookManager::FInventoryAddItemFn HookManager::oInventoryAddItem = nullptr;
 HookManager::FIncrementEnvLevelFn HookManager::oIncrementEnvLevel = nullptr;
 
 HookManager::FCheckHasItemFn HookManager::oCheckHasItem = nullptr;
@@ -56,6 +57,7 @@ namespace
 	constexpr uintptr_t kOff_NotifyGameEnding      = 0x4777300;
 	constexpr uintptr_t kOff_AddShopHistory        = 0x4731DE0;
 	constexpr uintptr_t kOff_AddItem               = 0x4731D20;
+	constexpr uintptr_t kOff_InventoryAddItem      = 0x47AF9B0;
 	constexpr uintptr_t kOff_IncrementEnvLevel     = 0x4770AA0;
 	constexpr uintptr_t kOff_ResetRespawnDefaults  = 0x46B35C0;
 	constexpr uintptr_t kOff_IsEventAlreadySeen    = 0x47BAC60;
@@ -128,6 +130,7 @@ bool HookManager::Init()
 	HookAt(kOff_NotifyGameEnding, &NotifyGameEnding_Hook, &oNotifyGameEnding);
 	HookAt(kOff_AddShopHistory, &AddShopHistory_Hook, &oAddShopHistory);
 	HookAt(kOff_AddItem, &AddItem_Hook, &oAddItem);
+	HookAt(kOff_InventoryAddItem, &InventoryAddItem_Hook, &oInventoryAddItem);
 	HookAt(kOff_IncrementEnvLevel, &IncrementEnvLevel_Hook, &oIncrementEnvLevel);
 	HookAt(kOff_ResetRespawnDefaults, &ResetRespawnDefaults_Hook, &oResetRespawnDefaults);
 
@@ -270,6 +273,13 @@ bool HookManager::AddItem_Hook(SDK::UInventoryComponent* self, const SDK::FDataT
 	return added;
 }
 
+bool HookManager::InventoryAddItem_Hook(SDK::UInventory* self, const SDK::FName* itemId, SDK::int32 count)
+{
+	if (self && self->MaxCount < 99 && self->DataTable == GameTables::ItemQuests())
+		self->MaxCount = 99;
+	return oInventoryAddItem(self, itemId, count);
+}
+
 SDK::int32 HookManager::IncrementEnvLevel_Hook(SDK::AGameModeZion* self)
 {
 	self->EnvironmentLevel++;
@@ -335,15 +345,17 @@ bool HookManager::CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEv
 		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure3_001"),       "DT_ItemQuests.quest_bird" },
 		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure4_001"),       "DT_ItemQuests.quest_board" },
 		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure5_001"),       "DT_ItemQuests.quest_perfume" },
-		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure6_001"),       "DT_ItemQuests.quest_lithograph" },
+//		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure6_001"),       "DT_ItemQuests.quest_lithograph" },
 		{ SDK::FName::FromString("EVT_ev_n_Levy_Treasure6_002"),       "DT_ItemQuests.quest_amulet" },
 	};
 
 	if (self->EventName() == elevatorFix)
 	{
 		int mode = Configuration::Instance().Option("central_elevator_fix");
-		if (mode == 2 || CustomItemRegistry::Instance().PlayerHas(RandomizerItems::ElevatorKey.id))
+		if (mode == 2)
 			return !self->bInvertCondition;
+		if (mode == 1)
+			return CustomItemRegistry::Instance().PlayerHas(RandomizerItems::ElevatorKey.id) != self->bInvertCondition;
 	}
 
 	auto zoneOuter = (self->Outer && self->Outer->Outer) ? self->Outer->Outer->Outer : nullptr;
@@ -351,6 +363,14 @@ bool HookManager::CheckHasClearedEvent_Hook(SDK::UGameplayCondition_HasClearedEv
 		if (zoneOuter && zoneOuter->Name == vanillaZone)
 			return oCheckHasClearedEvent(self, controller);
 
+	static const auto name = SDK::FName::FromString("EVT_ev_n_Levy_Treasure6_001");
+	if (self->EventName() == name)
+	{
+		int count = Configuration::Instance().Option("stele_count", 1);
+		if (count < 1)
+			return !self->bInvertCondition;
+		return CustomItemRegistry::Instance().PlayerHas("DT_ItemQuests.quest_lithograph", count) != self->bInvertCondition;
+	}
 	for (const auto& mapping : eventItems)
 		if (self->EventName() == mapping.first)
 			return CustomItemRegistry::Instance().PlayerHas(mapping.second) != self->bInvertCondition;
@@ -430,7 +450,8 @@ void HookManager::PlayBGM_Hook(SDK::USoundSubsystem* self, SDK::UFMODEvent* even
 void HookManager::SpawnEnemy_Hook(SDK::AEnemySpawner* self, const SDK::FTransform* where)
 {
 	auto& handle = self->EnemyRowHandle;
-	auto key = self->Outer->GetName() + "." + self->GetName() + "." + handle.RowName.GetRawString();
+	auto zone = GameManager::Instance().Mode()->ZoneSystemComponent->GetActiveZoneLevelName().ToString();
+	auto key = zone + "." + self->GetName() + "." + handle.RowName.GetRawString();
 	auto row = GameManager::Instance().PickEnemy(key, handle.RowName);
 
 	// no replacement

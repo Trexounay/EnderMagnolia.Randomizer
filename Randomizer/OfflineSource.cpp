@@ -315,6 +315,10 @@ std::optional<GameMapTransition> OfflineSource::ScoutTransition(const GameMapTra
 
 void OfflineSource::ReportCheck(const std::string& location)
 {
+	auto it = checks_to_items.find(location);
+	if (it == checks_to_items.end())
+		return ;
+	GameManager::Instance().ClampChapter();
 }
 
 int OfflineSource::Option(const std::string& name, int fallback) const

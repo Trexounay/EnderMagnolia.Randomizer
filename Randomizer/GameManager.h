@@ -14,6 +14,7 @@ namespace GameTables
 	inline SDK::UDataTable* ItemStats() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemStats; }
 	inline SDK::UDataTable* ItemAptitudes() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemAptitudes; }
 	inline SDK::UDataTable* ItemPassives() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemPassives; }
+	inline SDK::UDataTable* ItemQuests() { return SDK::AGameModeZion::GetDefaultObj()->DataTableItemQuests; }
 	inline SDK::UDataTable* GameMapTransitions() { return SDK::AGameModeZion::GetDefaultObj()->DataTableGameMapTransitions; }
 	inline SDK::UDataTable* GameMaps() { return SDK::AGameModeZion::GetDefaultObj()->DataTableGameMaps; }
 	inline SDK::UDataTable* RestPoints() { return SDK::AGameModeZion::GetDefaultObj()->DataTableRestPoints; }
@@ -100,6 +101,7 @@ private:
 	std::vector<int> bgmShuffle;
 	std::vector<SDK::FName> enemyPool;
 	std::vector<SDK::FName> bossPool;
+	std::vector<int> bossShuffle;
 	struct SpecialSkill { SDK::FSkillData* data; std::vector<uint8_t> vanilla; };
 	std::map<int, std::map<std::string, SpecialSkill>> vanillaSpecials;
 

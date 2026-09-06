@@ -122,7 +122,6 @@ void Configuration::ReportCheck(const std::string& location)
 		return;
 
 	activeSource->ReportCheck(location);
-	GameManager::Instance().ClampChapter();
 }
 
 void Configuration::OnGameStart(bool isNewGame)

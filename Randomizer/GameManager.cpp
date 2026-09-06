@@ -83,7 +83,6 @@ void GameManager::InitSkills()
 	auto controller = this->Controller();
 	if (!controller || !controller->InventoryComponent || !controller->SkillComponent)
 		return;
-
 	GrantAllSpirits();
 	SetSkillCosts();
 	ShuffleSpecialSkills();
@@ -280,7 +279,7 @@ void GameManager::CreateZoneLabels(SDK::UWBP_Map_C* map)
 	}
 
 	SDK::FSlateFontInfo font = fontSource->Font;
-	font.Size = 30.0f;
+	font.Size = 25.0f;
 	font.OutlineSettings.OutlineSize = 4;
 	font.OutlineSettings.OutlineColor = SDK::FLinearColor{ 0.05f, 0.02f, 0.0f, 0.95f };
 	font.OutlineSettings.bSeparateFillAlpha = true;
@@ -561,13 +560,13 @@ SDK::UFMODEvent* GameManager::SwapBGM(SDK::UFMODEvent* event)
 void GameManager::ShuffleBosses()
 { 
 	bossPool.clear();
+	bossShuffle.clear();
 	if (Configuration::Instance().Option("random_bosses") == 0)
 		return;
 
-	static const std::set<std::string> bosses =
+	static const std::string bosses[] =
 	{
 		//"e0500_tentacle", // rotation, arena
-		"e0510_ray",
 		"e2030_sector",
 		"e5003_reaper",
 		"e5010_lancer",
@@ -583,15 +582,14 @@ void GameManager::ShuffleBosses()
 		"e5230_finder_phase3",
 		"e6000_rider",
 		"e6010_cluster",
-		//"e6010_cluster_mode3", // P2
+		"e6010_cluster_mode3", // P2
 		"e6020_director",
 		"e6030_owner",  // water
-		//"e6040_darker", // P2
+		"e6040_darker", // P2
 		"e6050_master",
 		"e6051_master",
 		"e6052_master",
 		"e6053_master",
-
 		"e0122_wheeler",
 		"e0030_guard",
 		"e0162_gang",
@@ -602,20 +600,41 @@ void GameManager::ShuffleBosses()
 		"e0253_ninja",
 		"e0262_komuso",
 		"e0281_banshee",
-
+		"e0510_ray",
+		"e0510_ray",
+		"e0510_ray",
+		"e0510_ray",
 	};
-	auto table = SDK::AGameModeZion::GetDefaultObj()->DataTableEnemies;
-	for (auto& row : table->RowMap)
-	{
-		// only bosses
-		if (bosses.contains(row.First.ToString()))
-			bossPool.push_back(row.Key());
-	}
+
+	for (const auto& name : bosses)
+		bossPool.push_back(SDK::FName::FromString(name));
+
+	bossShuffle.resize(bossPool.size());
+	std::iota(bossShuffle.begin(), bossShuffle.end(), 0);
 
 	std::string key = Configuration::Instance().Seed().value_or("");
 	std::seed_seq sequence(key.begin(), key.end());
 	std::mt19937 rng(sequence);
-	std::shuffle(bossPool.begin(), bossPool.end(), rng);
+	std::shuffle(bossShuffle.begin(), bossShuffle.end(), rng);
+
+	const int cluster = (int)(std::find(std::begin(bosses), std::end(bosses), "e6010_cluster") - std::begin(bosses));
+	const int gunman = (int)(std::find(std::begin(bosses), std::end(bosses), "e5110_gunman") - std::begin(bosses));
+	const int p2[] =
+	{
+		(int)(std::find(std::begin(bosses), std::end(bosses), "e6010_cluster_mode3") - std::begin(bosses)),
+		(int)(std::find(std::begin(bosses), std::end(bosses), "e6040_darker") - std::begin(bosses)),
+	};
+
+	for (int slot : p2)
+	{
+		int other = slot;
+		while (bossShuffle[slot] == cluster || bossShuffle[slot] == gunman)
+		{
+			other = (other + 1) % (int)bossShuffle.size();
+			if (other != p2[0] && other != p2[1])
+				std::swap(bossShuffle[slot], bossShuffle[other]);
+		}
+	}
 }
 
 void GameManager::ShuffleEnemies()
@@ -644,15 +663,34 @@ void GameManager::ShuffleEnemies()
 
 std::optional<SDK::FName> GameManager::PickEnemy(const std::string& key, const SDK::FName& currentRow)
 {
-	static int toto = 0;
 	std::vector<SDK::FName> pool;
 	if (Configuration::Instance().Option("random_enemies") != 0 && std::find(enemyPool.begin(), enemyPool.end(), currentRow) != enemyPool.end())
 	{
 		pool = enemyPool;
 	}
-	else if (Configuration::Instance().Option("random_bosses") != 0 && std::find(bossPool.begin(), bossPool.end(), currentRow) != bossPool.end())
+	else if (int mode = Configuration::Instance().Option("random_bosses"); mode != 0)
 	{
-		pool = bossPool;
+		auto it = std::find(bossPool.begin(), bossPool.end(), currentRow);
+		if (it == bossPool.end())
+			return std::nullopt;
+
+		if (mode == 1) // shuffle
+		{
+			auto index = it - bossPool.begin();
+			static const SDK::FName ray = SDK::FName::FromWchar(L"e0510_ray");
+			static const std::string rayKeys[] =
+			{
+				"Roots_001_Zone_015.BP_BossSpawner_NoSave_C_0.e0510_ray",
+				"Roots_001_Zone_016.BP_BossSpawner_NoSave_C_1.e0510_ray",
+				"Roots_001_Zone_019.BP_BossSpawner_NoSave_C_0.e0510_ray",
+				"Roots_001_Zone_020.BP_BossSpawner_NoSave_C_0.e0510_ray",
+			};
+			
+			if (currentRow == ray)
+				index += std::find(std::begin(rayKeys), std::end(rayKeys), key) - std::begin(rayKeys);
+			return bossPool[bossShuffle[index]];
+		}
+		pool = bossPool; // random
 	}
 	else
 	{
@@ -666,8 +704,19 @@ std::optional<SDK::FName> GameManager::PickEnemy(const std::string& key, const S
 		hash ^= c;
 		hash *= 0x01000193;
 	}
+	auto pick = hash % pool.size();
 
-	return pool[hash % pool.size()];
+	static const SDK::FName clusterP2 = SDK::FName::FromWchar(L"e6010_cluster_mode3");
+	static const SDK::FName gunmanP2 = SDK::FName::FromWchar(L"e6040_darker");
+
+	if (currentRow == clusterP2 || currentRow == gunmanP2)
+	{
+		static const SDK::FName clusterP1 = SDK::FName::FromWchar(L"e6010_cluster");
+		static const SDK::FName gunmanP1 = SDK::FName::FromWchar(L"e5110_gunman");
+		while (pool[pick] == clusterP1 || pool[pick] == gunmanP1)
+			pick = (pick + 1) % pool.size();
+	}
+	return pool[pick];
 }
 
 void GameManager::ShuffleSpecialSkills()
@@ -1003,7 +1052,8 @@ int GameManager::ClampChapter()
 {
 	auto world = World();
 	auto mode = world ? (SDK::AGameModeZion*)world->AuthorityGameMode : nullptr;
-	if (!mode || !mode->IsA(SDK::AGameModeZion::StaticClass()))
+	auto isInGame = GameManager::Instance().IsInGame();
+	if (!mode || !mode->IsA(SDK::AGameModeZion::StaticClass()) || !isInGame)
 		return 0;
 
 	int min = std::max(Configuration::Instance().Option("min_chapter", 0), 1);
