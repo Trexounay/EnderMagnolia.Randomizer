@@ -68,6 +68,7 @@ void GameManager::OnGameStart(int slot, bool isNewGame)
 		CustomItemRegistry::Instance().CreateItem(*def);
 	Configuration::Instance().OnGameStart(isNewGame);
 	SetShopPrices();
+	SetRecollectionBossDrops();
 	ShufflePassiveCosts();
 	ShuffleUpgradeCosts();
 	ShuffleBGM();
@@ -395,6 +396,24 @@ void GameManager::SetShopPrices()
 		row->BuyInfo.CurrencyType = SDK::ECurrencyType::Default;
 		row->BuyInfo.CostType = SDK::EValueType::Fixed;
 		row->BuyInfo.FixedValue = entry.price;
+	}
+}
+
+void GameManager::SetRecollectionBossDrops()
+{
+	static const std::string rows[] = { "reboss_s", "reboss_m", "reboss_l" };
+
+	auto table = SDK::UDropComponent::GetDefaultObj()->DropDataHandle.DataTable;
+	for (const auto& name : rows)
+	{
+		auto row = table->FindRowAs<SDK::FDropData>(name);
+		for (int g = 0; g < row->Drops.Num(); ++g)
+		{
+			auto& drops = row->Drops[g].Drops;
+			for (int d = 0; d < drops.Num(); ++d)
+				if (drops[d].Type == SDK::EDropType::Currency)
+					drops[d].CurrencyType = SDK::ECurrencyType::Default;
+		}
 	}
 }
 
@@ -883,6 +902,7 @@ void GameManager::OnItemSourceChanged()
 
 	Logger::Log(this, "item source changed, shop will be replaced again");
 	SetShopPrices();
+	SetRecollectionBossDrops();
 	ShufflePassiveCosts();
 	ShuffleUpgradeCosts();
 	ShuffleBGM();

@@ -74,6 +74,7 @@ private:
 	void EquipStartingSkill();
 
 	void SetShopPrices();
+	void SetRecollectionBossDrops();
 	void CapturePassiveCosts();
 	void ShufflePassiveCosts();
 	void CaptureUpgradeCosts();
