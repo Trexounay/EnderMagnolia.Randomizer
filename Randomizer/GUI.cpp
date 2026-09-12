@@ -13,7 +13,7 @@
 #include "Randomizer/CustomItemRegistry.h"
 #include "Randomizer/GameManager.h"
 
-#ifdef _DEBUG
+#ifdef EM_DEBUG_GUI
 #include "Randomizer/DebugMenu.h"
 #endif
 
@@ -179,7 +179,7 @@ void GUI::Tick()
 	next.inGame = GameManager::Instance().IsInGame();
 	Publish(next);
 
-#ifdef _DEBUG
+#ifdef EM_DEBUG_GUI
 	DebugMenu::Instance().Tick();
 #endif
 }
@@ -252,7 +252,7 @@ void GUI::Draw()
 
 	ImGui::PopStyleColor(3);
 
-#ifdef _DEBUG
+#ifdef EM_DEBUG_GUI
 	DebugMenu::Instance().Draw();
 #endif
 

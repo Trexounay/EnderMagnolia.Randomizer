@@ -544,6 +544,7 @@ void ArchipelagoSource::PopulateDataTable()
 			def.name = scout.itemName;
 			def.description = "Item for " + scout.playerAlias;
 			def.flavorText = "This is an Archipelago item for " + scout.game;
+			def.price = 100;
 			CustomItemRegistry::Instance().CreateItem(def);
 			location_to_item[location] = def.id;
 		}

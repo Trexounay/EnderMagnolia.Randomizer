@@ -215,6 +215,9 @@ void CustomItemRegistry::FillRow(SDK::FInventoryItemData* row, const RandomizerI
 	row->Description = SDK::FText::FromString(def.description);
 	row->FlavorText = SDK::FText::FromString(def.flavorText);
 	row->Icon = IconOf(def.iconFrom).value_or(DefaultIcon());
+	row->BuyInfo.CurrencyType = SDK::ECurrencyType::Default;
+	row->BuyInfo.CostType = SDK::EValueType::Fixed;
+	row->BuyInfo.FixedValue = def.price;
 	row->DescriptionFormatElements = {};
 	row->DescriptionStringElements = {};
 	row->FlavorTextFormatElements = {};

@@ -11,6 +11,7 @@ struct RandomizerItemDef {
 	std::string name;
 	std::string description;
 	std::string flavorText;
+	int price = 0;
 };
 
 struct ProgressiveChainDef {
