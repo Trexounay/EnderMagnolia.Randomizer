@@ -278,7 +278,7 @@ void OfflineSource::Tick()
 
 void OfflineSource::DeliverStartInventory()
 {
-	if (GameManager::Instance().IsLoading())
+	if (pending_start_items.empty() || GameManager::Instance().IsLoading())
 		return;
 
 	while (!pending_start_items.empty())
@@ -291,6 +291,8 @@ void OfflineSource::DeliverStartInventory()
 		GUI::Instance().NotifyItem(item, "Starting item");
 		pending_start_items.pop_front();
 	}
+
+	GameManager::Instance().SaveSubsystem()->SaveGameInCurrentSlot();
 }
 
 void OfflineSource::OnGameSaved()
